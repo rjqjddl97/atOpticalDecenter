@@ -1,0 +1,590 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B3F2B416-217B-4402-AE1A-9B5FA856D2FE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>atOpticalDecenter</RootNamespace>
+    <AssemblyName>atOpticalDecenter</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="DevExpress.Data.v18.2, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Dialogs.v18.2.Core, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v18.2, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v18.2.Core, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v18.2.Core, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v18.2.Core, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v18.2.Core, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v18.2.Core, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.SpellChecker.v18.2.Core, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v18.2, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v18.2, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDialogs.v18.2, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.2, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v18.2.Core, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v18.2.Win, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v18.2, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraLayout.v18.2, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v18.2, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v18.2, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpellChecker.v18.2, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v18.2, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v18.2, Version=18.2.18.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Input.Manipulations" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="atOpticalDecenterForInspectSeq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="atOpticalDecenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="atOpticalDecenter.Designer.cs">
+      <DependentUpon>atOpticalDecenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomPages\LedSpotInspectionInfomation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomPages\LedSpotInspectionInfomation.Designer.cs">
+      <DependentUpon>LedSpotInspectionInfomation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomPages\MotionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomPages\MotionControl.Designer.cs">
+      <DependentUpon>MotionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomPages\RemoteIOControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomPages\RemoteIOControl.Designer.cs">
+      <DependentUpon>RemoteIOControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Functions\StepHandler\Base\IStepHandler.cs" />
+    <Compile Include="Functions\StepHandler\Base\StepHandlerBase.cs" />
+    <Compile Include="Functions\StepHandler\Inspection\DryRunStep.cs" />
+    <Compile Include="Functions\StepHandler\Inspection\InspectionStep1.cs" />
+    <Compile Include="Functions\StepHandler\Inspection\InspectMaxDistanceStep.cs" />
+    <Compile Include="Functions\StepHandler\WorkingStateInfo.cs" />
+    <Compile Include="Functions\Time\TimeChecker.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecipeEditor.Designer.cs">
+      <DependentUpon>RecipeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemDirectorySetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemDirectorySetting.Designer.cs">
+      <DependentUpon>SystemDirectorySetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemEditor.Designer.cs">
+      <DependentUpon>SystemEditor.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="atOpticalDecenter.resx">
+      <DependentUpon>atOpticalDecenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomPages\LedSpotInspectionInfomation.resx">
+      <DependentUpon>LedSpotInspectionInfomation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomPages\MotionControl.resx">
+      <DependentUpon>MotionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomPages\RemoteIOControl.resx">
+      <DependentUpon>RemoteIOControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RecipeEditor.resx">
+      <DependentUpon>RecipeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemDirectorySetting.resx">
+      <DependentUpon>SystemDirectorySetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemEditor.resx">
+      <DependentUpon>SystemEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disconnect_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\media_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\media_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_32x322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AiCControlLibrary\AiCControlLibrary\AiCControlLibrary.csproj">
+      <Project>{8689df06-271f-4142-990e-302eb1d5eb82}</Project>
+      <Name>AiCControlLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ARMLibrary\ARMLibrary.csproj">
+      <Project>{3317e14d-5027-47b6-bc64-2cfe527a50d2}</Project>
+      <Name>ARMLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BaslerCamera\BaslerCamera.csproj">
+      <Project>{2600afac-f152-48ed-8a1b-854df03a4e07}</Project>
+      <Name>BaslerCamera</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageLibrary\ImageLibrary.csproj">
+      <Project>{3d3d288f-ac41-45d0-b114-8c8d3a9aa0e7}</Project>
+      <Name>ImageLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOLibrary\RecipeManager.csproj">
+      <Project>{03022a76-0fb0-41e4-bed3-ed108203bb96}</Project>
+      <Name>RecipeManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogLibrary\LogLibrary.csproj">
+      <Project>{d3f9449d-4dbe-4bc9-b24c-fac0934e862f}</Project>
+      <Name>LogLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoSensorProductLibrary\PhotoProduct\PhotoProduct.csproj">
+      <Project>{138ce3c1-7a32-49cc-879c-98d6fa6de978}</Project>
+      <Name>PhotoProduct</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exportfile_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pageorientationportrait_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exportfile_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exportfile_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply_16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\renamedatasource_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editcomment_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\touchmode_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RobotDisableButton.ImageOptions.Image.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Apply_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RobotDisableButton.ImageOptions.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RobotEnableButton_Image_.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RobotEnableButton.ImageOptions.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RobotEnableButton.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3dline_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Action_Deny.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\autonics-logo.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bordersinside_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bordersinside_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boreport_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boreport_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boreport_16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boreport_16x163.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boreport_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boreport_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boreport_32x322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boreport_32x323.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boscheduler_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boscheduler_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bubble_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bubble2_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BugReport_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChartsRotate_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\connect_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\connectedall_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\connectedpart_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cut_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DafualtFax_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DafualtFax_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disconnectedall_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DocumentMap_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forward_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fullextent_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fullextent_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\historyitem_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconSetRedToBlack4_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconSetSigns3_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Info_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\initialstate_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\initialstate_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Line_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\morefunctions_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\morefunctions_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notes_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pie_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PieLabelsTooltips_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Play_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pointer_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pointer_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prev_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Properties_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\properties_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\properties_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Radio_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Radio_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Record_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\record_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Redo_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh2_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh2_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refreshallpivottable_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refreshallpivottable_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refreshallpivottable_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refreshallpivottable_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Suggestion_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Suggestion_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Task_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Technology_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\technology_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\technology_16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\technology_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\technology_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Undo_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpDownBars_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Warning_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WiFi_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WiFi_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\connect_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disconnect_16X16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Functions\StepHandler\Correction\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,143 @@
+Info|2024/06/20 20:06:49.127|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/20 20:06:49.165|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/20 20:06:49.165|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/20 20:06:49.165|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/20 20:06:49.165|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/20 20:06:49.604|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/20 20:06:51.643|LogLibrary.Log|NetWork|PLC와 통신 연결 실패 IP :127.0.0.1
+Info|2024/06/20 20:06:51.643|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/20 20:06:51.648|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/20 20:06:51.661|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/20 20:06:51.661|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/20 20:06:51.661|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/20 20:06:51.661|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/20 20:10:42.311|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/20 20:10:42.351|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/20 20:10:42.351|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/20 20:10:42.351|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/20 20:10:42.351|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/20 20:10:42.659|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/20 20:10:44.700|LogLibrary.Log|NetWork|PLC와 통신 연결 실패 IP :127.0.0.1
+Info|2024/06/20 20:10:44.700|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/20 20:10:44.700|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/20 20:10:44.709|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/20 20:10:44.709|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/20 20:10:44.709|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/20 20:10:44.709|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/20 20:10:56.202|LogLibrary.Log|atPhoto|원본 화면 맞춤: 56.0%
+Info|2024/06/20 20:11:04.289|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 20:11:04.847|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 20:28:58.448|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 20:29:10.179|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 20:32:04.976|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 20:33:52.901|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 20:33:59.313|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 20:34:27.801|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 20:34:30.401|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 20:34:55.794|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:00:45.960|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/20 21:00:45.999|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/20 21:00:46.005|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/20 21:00:46.005|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/20 21:00:46.005|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/20 21:00:46.307|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/20 21:00:48.342|LogLibrary.Log|NetWork|PLC와 통신 연결 실패 IP :127.0.0.1
+Info|2024/06/20 21:00:48.342|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/20 21:00:48.342|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/20 21:00:48.350|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/20 21:00:48.350|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/20 21:00:48.350|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/20 21:00:48.350|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/20 21:00:53.939|LogLibrary.Log|atPhoto|원본 화면 맞춤: 56.0%
+Info|2024/06/20 21:00:57.857|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:01:20.571|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:01:30.531|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:01:33.042|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:01:39.961|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:02:18.926|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:02:28.793|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:02:30.729|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:02:36.577|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:02:38.532|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:02:47.349|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:02:49.123|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:02:51.854|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:03:27.261|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:03:37.492|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:03:40.860|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:03:43.403|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:06:28.146|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:07:06.602|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:07:22.377|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:08:31.495|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:08:50.303|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:08:58.802|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:09:00.847|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:09:28.730|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:09:31.470|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:09:54.416|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:09:57.559|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:11:48.824|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:13:10.882|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:13:15.195|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:20:23.291|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:20:27.910|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:22:10.648|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:22:20.148|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:22:23.062|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:22:35.604|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:22:37.224|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:23:26.116|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:23:29.036|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:23:50.900|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:23:52.853|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:24:38.141|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:24:40.137|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:24:49.561|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:24:51.174|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:25:22.086|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:25:23.912|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:25:47.321|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:25:49.376|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:26:39.560|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:26:41.328|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:41:16.916|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/20 21:41:16.955|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/20 21:41:16.961|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/20 21:41:16.961|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/20 21:41:16.961|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/20 21:41:17.262|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/20 21:41:19.299|LogLibrary.Log|NetWork|PLC와 통신 연결 실패 IP :127.0.0.1
+Info|2024/06/20 21:41:19.299|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/20 21:41:19.304|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/20 21:41:19.304|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/20 21:41:19.304|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/20 21:41:19.304|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/20 21:41:19.304|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/20 21:41:32.622|LogLibrary.Log|atPhoto|광축 측정 시작
+Error|2024/06/20 21:42:46.878|LogLibrary.Log|atPhoto|LED 검사 프로세싱이 실행되지 않았습니다.
+Info|2024/06/20 21:42:50.038|LogLibrary.Log|atPhoto|원본 화면 맞춤: 56.0%
+Info|2024/06/20 21:46:23.055|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/20 21:46:23.095|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/20 21:46:23.101|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/20 21:46:23.101|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/20 21:46:23.101|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/20 21:46:23.402|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/20 21:46:25.427|LogLibrary.Log|NetWork|PLC와 통신 연결 실패 IP :127.0.0.1
+Info|2024/06/20 21:46:25.427|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/20 21:46:25.427|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/20 21:46:25.427|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/20 21:46:25.427|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/20 21:46:25.427|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/20 21:46:25.427|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/20 21:46:32.003|LogLibrary.Log|atPhoto|원본 화면 맞춤: 56.0%
+Info|2024/06/20 21:46:39.618|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/20 21:46:41.521|LogLibrary.Log|Image|CCL 완료(레이블 수:5185, Blob 수:0)
+Info|2024/06/20 21:46:44.332|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/20 21:47:03.639|LogLibrary.Log|Image|CCL 완료(레이블 수:5185, Blob 수:0)
+Info|2024/06/20 21:48:36.241|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/20 21:48:57.998|LogLibrary.Log|Image|CCL 완료(레이블 수:5163, Blob 수:0)
+Info|2024/06/20 21:49:08.661|LogLibrary.Log|atPhoto|원본 화면 맞춤: 25.2%
+Info|2024/06/20 21:49:10.100|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/20 21:49:11.829|LogLibrary.Log|Image|CCL 완료(레이블 수:1, Blob 수:0)
+Info|2024/06/20 21:49:14.639|LogLibrary.Log|atPhoto|원본 화면 맞춤: 25.2%

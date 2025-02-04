@@ -1,0 +1,6 @@
+Info|2024/05/14 21:48:49.777|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/05/14 21:48:49.816|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/05/14 21:48:49.822|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/05/14 21:48:53.819|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/05/14 21:48:53.819|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/05/14 21:48:54.228|LogLibrary.Log|atPhoto|카메라 초기화 실패

@@ -1,0 +1,256 @@
+Info|2024/06/01 20:04:03.567|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/01 20:04:03.606|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/01 20:04:03.606|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/01 20:04:03.606|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/01 20:04:03.606|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/01 20:04:04.034|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/01 20:04:06.098|LogLibrary.Log|NetWork|PLC와 통신 연결 실패 IP :127.0.0.1
+Info|2024/06/01 20:04:06.098|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/01 20:04:06.098|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/01 20:04:06.116|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/01 20:04:06.116|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/01 20:04:06.116|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/01 20:04:06.116|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/01 20:04:30.965|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:04:55.958|LogLibrary.Log|Image|CCL 완료(레이블 수:8313, Blob 수:1)
+Info|2024/06/01 20:05:46.596|LogLibrary.Log|atPhoto|원본 화면 맞춤: 18.5%
+Info|2024/06/01 20:05:46.599|LogLibrary.Log|atPhoto|결과 화면 맞춤: 12.2%
+Info|2024/06/01 20:09:08.508|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/01 20:09:08.548|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/01 20:09:08.553|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/01 20:09:08.553|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/01 20:09:08.553|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/01 20:09:08.855|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/01 20:09:10.880|LogLibrary.Log|NetWork|PLC와 통신 연결 실패 IP :127.0.0.1
+Info|2024/06/01 20:09:10.880|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/01 20:09:10.880|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/01 20:09:10.880|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/01 20:09:10.880|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/01 20:09:10.880|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/01 20:09:10.880|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/01 20:09:27.291|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:09:27.397|LogLibrary.Log|Image|CCL 완료(레이블 수:8313, Blob 수:1)
+Info|2024/06/01 20:09:56.561|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:16:14.250|LogLibrary.Log|Image|CCL 완료(레이블 수:8313, Blob 수:1)
+Info|2024/06/01 20:16:30.892|LogLibrary.Log|atPhoto|원본 화면 맞춤: 18.5%
+Info|2024/06/01 20:16:30.892|LogLibrary.Log|atPhoto|결과 화면 맞춤: 12.2%
+Info|2024/06/01 20:16:34.381|LogLibrary.Log|atPhoto|원본 화면 맞춤: 18.5%
+Info|2024/06/01 20:16:34.381|LogLibrary.Log|atPhoto|결과 화면 맞춤: 12.2%
+Info|2024/06/01 20:16:36.302|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:17:01.515|LogLibrary.Log|Image|CCL 완료(레이블 수:8313, Blob 수:1)
+Info|2024/06/01 20:17:15.078|LogLibrary.Log|atPhoto|원본 화면 맞춤: 18.5%
+Info|2024/06/01 20:17:15.078|LogLibrary.Log|atPhoto|결과 화면 맞춤: 12.2%
+Info|2024/06/01 20:17:19.767|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:17:19.816|LogLibrary.Log|Image|CCL 완료(레이블 수:5703, Blob 수:1)
+Info|2024/06/01 20:17:26.809|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:17:26.870|LogLibrary.Log|Image|CCL 완료(레이블 수:8065, Blob 수:1)
+Info|2024/06/01 20:17:33.193|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:17:33.263|LogLibrary.Log|Image|CCL 완료(레이블 수:9888, Blob 수:1)
+Info|2024/06/01 20:17:42.163|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:17:42.228|LogLibrary.Log|Image|CCL 완료(레이블 수:9888, Blob 수:1)
+Info|2024/06/01 20:18:20.073|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:18:20.139|LogLibrary.Log|Image|CCL 완료(레이블 수:9888, Blob 수:1)
+Info|2024/06/01 20:19:02.992|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:19:06.402|LogLibrary.Log|Image|CCL 완료(레이블 수:9888, Blob 수:1)
+Info|2024/06/01 20:20:41.654|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/01 20:20:41.695|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/01 20:20:41.695|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/01 20:20:41.695|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/01 20:20:41.695|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/01 20:20:42.003|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/01 20:20:44.028|LogLibrary.Log|NetWork|PLC와 통신 연결 실패 IP :127.0.0.1
+Info|2024/06/01 20:20:44.028|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/01 20:20:44.028|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/01 20:20:44.037|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/01 20:20:44.037|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/01 20:20:44.037|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/01 20:20:44.037|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/01 20:21:01.358|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:21:04.627|LogLibrary.Log|Image|CCL 완료(레이블 수:10366, Blob 수:1)
+Info|2024/06/01 20:21:28.511|LogLibrary.Log|atPhoto|원본 화면 맞춤: 18.5%
+Info|2024/06/01 20:21:28.511|LogLibrary.Log|atPhoto|결과 화면 맞춤: 12.2%
+Info|2024/06/01 20:21:56.165|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:22:06.154|LogLibrary.Log|Image|CCL 완료(레이블 수:10366, Blob 수:1)
+Info|2024/06/01 20:30:37.242|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/01 20:30:37.281|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/01 20:30:37.287|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/01 20:30:37.287|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/01 20:30:37.287|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/01 20:30:37.590|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/01 20:30:39.616|LogLibrary.Log|NetWork|PLC와 통신 연결 실패 IP :127.0.0.1
+Info|2024/06/01 20:30:39.616|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/01 20:30:39.616|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/01 20:30:39.616|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/01 20:30:39.616|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/01 20:30:39.616|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/01 20:30:39.616|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/01 20:30:52.914|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:30:56.916|LogLibrary.Log|Image|CCL 완료(레이블 수:10366, Blob 수:1)
+Info|2024/06/01 20:31:08.538|LogLibrary.Log|atPhoto|원본 화면 맞춤: 18.5%
+Info|2024/06/01 20:31:08.538|LogLibrary.Log|atPhoto|결과 화면 맞춤: 12.2%
+Info|2024/06/01 20:31:18.261|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:31:18.326|LogLibrary.Log|Image|CCL 완료(레이블 수:7414, Blob 수:1)
+Info|2024/06/01 20:31:23.355|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:31:23.422|LogLibrary.Log|Image|CCL 완료(레이블 수:9888, Blob 수:1)
+Info|2024/06/01 20:31:33.419|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:31:33.484|LogLibrary.Log|Image|CCL 완료(레이블 수:7589, Blob 수:1)
+Info|2024/06/01 20:31:40.721|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:31:40.793|LogLibrary.Log|Image|CCL 완료(레이블 수:11529, Blob 수:1)
+Info|2024/06/01 20:31:45.509|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 20:31:45.584|LogLibrary.Log|Image|CCL 완료(레이블 수:8039, Blob 수:1)
+Info|2024/06/01 20:36:17.323|LogLibrary.Log|atPhoto|원본 화면 맞춤: 18.5%
+Info|2024/06/01 20:36:17.323|LogLibrary.Log|atPhoto|결과 화면 맞춤: 12.2%
+Info|2024/06/01 20:36:33.408|LogLibrary.Log|atPhoto|원본 화면 맞춤: 18.5%
+Info|2024/06/01 20:36:33.408|LogLibrary.Log|atPhoto|결과 화면 맞춤: 12.2%
+Info|2024/06/01 21:07:43.274|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:07:43.342|LogLibrary.Log|Image|CCL 완료(레이블 수:10773, Blob 수:1)
+Info|2024/06/01 21:07:49.785|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:07:49.850|LogLibrary.Log|Image|CCL 완료(레이블 수:7328, Blob 수:1)
+Info|2024/06/01 21:11:53.847|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/01 21:11:53.887|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/01 21:11:53.887|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/01 21:11:53.887|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/01 21:11:53.887|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/01 21:11:54.309|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/01 21:11:56.355|LogLibrary.Log|NetWork|PLC와 통신 연결 실패 IP :127.0.0.1
+Info|2024/06/01 21:11:56.355|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/01 21:11:56.355|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/01 21:11:56.365|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/01 21:11:56.365|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/01 21:11:56.365|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/01 21:11:56.365|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/01 21:12:15.617|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:12:15.919|LogLibrary.Log|Image|CCL 완료(레이블 수:10366, Blob 수:1)
+Info|2024/06/01 21:12:17.012|LogLibrary.Log|atPhoto|원본 화면 맞춤: 18.5%
+Info|2024/06/01 21:12:27.732|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:12:27.797|LogLibrary.Log|Image|CCL 완료(레이블 수:10366, Blob 수:1)
+Info|2024/06/01 21:12:34.532|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:12:34.606|LogLibrary.Log|Image|CCL 완료(레이블 수:9888, Blob 수:1)
+Info|2024/06/01 21:12:42.263|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:12:42.332|LogLibrary.Log|Image|CCL 완료(레이블 수:9888, Blob 수:1)
+Info|2024/06/01 21:12:48.141|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:12:48.212|LogLibrary.Log|Image|CCL 완료(레이블 수:9888, Blob 수:1)
+Info|2024/06/01 21:12:49.536|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:12:49.601|LogLibrary.Log|Image|CCL 완료(레이블 수:9888, Blob 수:1)
+Info|2024/06/01 21:12:58.017|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:12:58.080|LogLibrary.Log|Image|CCL 완료(레이블 수:7589, Blob 수:1)
+Info|2024/06/01 21:13:19.974|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:13:20.039|LogLibrary.Log|Image|CCL 완료(레이블 수:7589, Blob 수:1)
+Info|2024/06/01 21:13:24.988|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:13:25.054|LogLibrary.Log|Image|CCL 완료(레이블 수:11529, Blob 수:1)
+Info|2024/06/01 21:13:47.756|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:13:47.846|LogLibrary.Log|Image|CCL 완료(레이블 수:11958, Blob 수:1)
+Info|2024/06/01 21:13:50.252|LogLibrary.Log|atPhoto|원본 화면 맞춤: 18.5%
+Info|2024/06/01 21:13:57.824|LogLibrary.Log|atPhoto|원본 화면 맞춤: 18.5%
+Info|2024/06/01 21:14:04.263|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:14:04.343|LogLibrary.Log|Image|CCL 완료(레이블 수:15782, Blob 수:1)
+Info|2024/06/01 21:14:10.983|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:14:11.077|LogLibrary.Log|Image|CCL 완료(레이블 수:16726, Blob 수:1)
+Info|2024/06/01 21:14:16.911|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:14:17.002|LogLibrary.Log|Image|CCL 완료(레이블 수:19136, Blob 수:1)
+Info|2024/06/01 21:14:25.170|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:14:25.236|LogLibrary.Log|Image|CCL 완료(레이블 수:14427, Blob 수:1)
+Info|2024/06/01 21:20:06.227|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/01 21:20:06.267|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/01 21:20:06.273|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/01 21:20:06.273|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/01 21:20:06.273|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/01 21:20:06.578|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/01 21:20:08.604|LogLibrary.Log|NetWork|PLC와 통신 연결 실패 IP :127.0.0.1
+Info|2024/06/01 21:20:08.604|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/01 21:20:08.604|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/01 21:20:08.604|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/01 21:20:08.604|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/01 21:20:08.614|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/01 21:20:08.614|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/01 21:20:22.775|LogLibrary.Log|atPhoto|원본 화면 맞춤: 25.2%
+Info|2024/06/01 21:20:26.760|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:20:26.861|LogLibrary.Log|Image|CCL 완료(레이블 수:13127, Blob 수:1)
+Info|2024/06/01 21:20:30.536|LogLibrary.Log|atPhoto|원본 화면 맞춤: 25.2%
+Info|2024/06/01 21:20:32.800|LogLibrary.Log|atPhoto|원본 화면 맞춤: 25.2%
+Info|2024/06/01 21:20:50.177|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:20:50.257|LogLibrary.Log|Image|CCL 완료(레이블 수:12776, Blob 수:1)
+Info|2024/06/01 21:22:55.015|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:22:55.102|LogLibrary.Log|Image|CCL 완료(레이블 수:11958, Blob 수:1)
+Info|2024/06/01 21:23:07.875|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:23:07.935|LogLibrary.Log|Image|CCL 완료(레이블 수:10708, Blob 수:1)
+Info|2024/06/01 21:23:15.302|LogLibrary.Log|atPhoto|원본 화면 맞춤: 25.2%
+Info|2024/06/01 21:23:22.680|LogLibrary.Log|atPhoto|원본 화면 맞춤: 25.2%
+Info|2024/06/01 21:24:13.594|LogLibrary.Log|atPhoto|원본 화면 맞춤: 25.2%
+Info|2024/06/01 21:24:26.295|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:24:26.358|LogLibrary.Log|Image|CCL 완료(레이블 수:12260, Blob 수:1)
+Info|2024/06/01 21:24:33.124|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:24:33.194|LogLibrary.Log|Image|CCL 완료(레이블 수:13127, Blob 수:1)
+Info|2024/06/01 21:24:39.776|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:24:39.837|LogLibrary.Log|Image|CCL 완료(레이블 수:13606, Blob 수:1)
+Info|2024/06/01 21:24:47.217|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:24:47.285|LogLibrary.Log|Image|CCL 완료(레이블 수:13045, Blob 수:1)
+Info|2024/06/01 21:25:01.045|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:25:01.111|LogLibrary.Log|Image|CCL 완료(레이블 수:12260, Blob 수:1)
+Info|2024/06/01 21:25:12.594|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:25:12.634|LogLibrary.Log|Image|CCL 완료(레이블 수:604, Blob 수:1)
+Info|2024/06/01 21:25:18.328|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:25:18.373|LogLibrary.Log|Image|CCL 완료(레이블 수:1687, Blob 수:1)
+Info|2024/06/01 21:25:25.222|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:25:25.266|LogLibrary.Log|Image|CCL 완료(레이블 수:4034, Blob 수:1)
+Info|2024/06/01 21:25:35.557|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:25:35.601|LogLibrary.Log|Image|CCL 완료(레이블 수:4453, Blob 수:1)
+Info|2024/06/01 21:25:46.844|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:25:46.916|LogLibrary.Log|Image|CCL 완료(레이블 수:7302, Blob 수:1)
+Info|2024/06/01 21:26:28.250|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:26:28.292|LogLibrary.Log|Image|CCL 완료(레이블 수:1391, Blob 수:1)
+Info|2024/06/01 21:26:37.167|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:26:37.220|LogLibrary.Log|Image|CCL 완료(레이블 수:6823, Blob 수:1)
+Info|2024/06/01 21:26:45.361|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:26:45.412|LogLibrary.Log|Image|CCL 완료(레이블 수:3230, Blob 수:1)
+Info|2024/06/01 21:26:51.839|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:26:51.888|LogLibrary.Log|Image|CCL 완료(레이블 수:2516, Blob 수:1)
+Info|2024/06/01 21:27:07.260|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:27:07.300|LogLibrary.Log|Image|CCL 완료(레이블 수:1981, Blob 수:1)
+Info|2024/06/01 21:27:14.191|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:27:14.237|LogLibrary.Log|Image|CCL 완료(레이블 수:2411, Blob 수:1)
+Info|2024/06/01 21:28:25.992|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:28:26.055|LogLibrary.Log|Image|CCL 완료(레이블 수:10366, Blob 수:1)
+Info|2024/06/01 21:28:31.243|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:28:31.309|LogLibrary.Log|Image|CCL 완료(레이블 수:7414, Blob 수:1)
+Info|2024/06/01 21:28:36.938|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:28:37.002|LogLibrary.Log|Image|CCL 완료(레이블 수:9888, Blob 수:1)
+Info|2024/06/01 21:28:41.770|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:28:41.831|LogLibrary.Log|Image|CCL 완료(레이블 수:7589, Blob 수:1)
+Info|2024/06/01 21:28:46.683|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:28:46.739|LogLibrary.Log|Image|CCL 완료(레이블 수:8459, Blob 수:1)
+Info|2024/06/01 21:29:04.633|LogLibrary.Log|atPhoto|원본 화면 맞춤: 25.2%
+Info|2024/06/01 21:30:32.090|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:30:32.152|LogLibrary.Log|Image|CCL 완료(레이블 수:11529, Blob 수:1)
+Info|2024/06/01 21:31:49.556|LogLibrary.Log|atPhoto|원본 화면 맞춤: 25.2%
+Info|2024/06/01 21:32:00.686|LogLibrary.Log|atPhoto|원본 화면 맞춤: 25.2%
+Info|2024/06/01 21:52:04.033|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/01 21:52:04.072|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/01 21:52:04.072|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/01 21:52:04.072|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/01 21:52:04.072|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/01 21:52:04.380|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/01 21:52:06.421|LogLibrary.Log|NetWork|PLC와 통신 연결 실패 IP :127.0.0.1
+Info|2024/06/01 21:52:06.421|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/01 21:52:06.426|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/01 21:52:06.426|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/01 21:52:06.426|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/01 21:52:06.426|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/01 21:52:06.426|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/01 21:52:31.457|LogLibrary.Log|atPhoto|원본 화면 맞춤: 25.2%
+Info|2024/06/01 21:52:34.203|LogLibrary.Log|atPhoto|원본 화면 맞춤: 25.2%
+Info|2024/06/01 21:52:36.869|LogLibrary.Log|atPhoto|광축 측정 시작
+Info|2024/06/01 21:52:36.964|LogLibrary.Log|Image|CCL 완료(레이블 수:10366, Blob 수:1)
+Info|2024/06/01 21:53:33.497|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/01 21:53:33.536|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/01 21:53:33.536|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/01 21:53:33.536|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/01 21:53:33.536|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/01 21:53:33.845|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/01 21:53:35.886|LogLibrary.Log|NetWork|PLC와 통신 연결 실패 IP :127.0.0.1
+Info|2024/06/01 21:53:35.886|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/01 21:53:35.886|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/01 21:53:35.895|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/01 21:53:35.895|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/01 21:53:35.895|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/01 21:53:35.895|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료

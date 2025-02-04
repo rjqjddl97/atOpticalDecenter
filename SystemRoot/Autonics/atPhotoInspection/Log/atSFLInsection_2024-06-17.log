@@ -1,0 +1,224 @@
+Info|2024/06/17 21:02:13.578|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 21:02:13.619|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 21:02:13.619|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 21:02:13.619|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 21:02:13.619|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 21:02:14.069|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 21:02:14.085|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:02:14.085|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 21:02:14.085|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 21:02:14.105|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 21:02:14.105|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 21:02:14.105|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 21:02:14.105|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 21:07:06.920|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 21:07:06.960|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 21:07:06.960|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 21:07:06.960|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 21:07:06.960|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 21:07:07.268|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 21:07:07.280|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:07:07.300|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 21:07:07.303|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 21:07:07.303|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 21:07:07.303|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 21:07:07.303|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 21:07:07.303|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 21:07:53.112|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 21:07:53.151|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 21:07:53.151|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 21:07:53.151|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 21:07:53.151|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 21:07:53.459|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 21:07:53.507|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:07:53.507|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 21:07:53.507|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 21:07:53.507|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 21:07:53.507|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 21:07:53.507|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 21:07:53.507|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 21:12:17.542|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 21:12:17.582|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 21:12:17.582|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 21:12:17.582|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 21:12:17.582|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 21:12:17.893|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 21:12:17.908|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:12:17.908|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 21:12:17.913|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 21:12:17.913|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 21:12:17.913|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 21:12:17.913|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 21:12:17.913|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 21:16:24.014|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 21:16:24.055|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 21:16:24.055|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 21:16:24.055|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 21:16:24.055|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 21:16:24.364|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 21:16:24.391|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:16:24.395|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 21:16:24.395|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 21:16:24.395|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 21:16:24.395|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 21:16:24.395|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 21:16:24.395|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 21:19:43.325|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 21:19:43.365|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 21:19:43.365|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 21:19:43.365|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 21:19:43.365|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 21:19:43.673|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 21:19:43.700|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:19:43.700|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 21:19:43.709|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 21:19:43.709|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 21:19:43.709|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 21:19:43.709|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 21:19:43.709|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 21:23:55.481|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 21:23:55.521|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 21:23:55.521|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 21:23:55.521|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 21:23:55.521|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 21:23:55.829|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 21:23:55.842|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:23:55.842|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 21:23:55.842|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 21:23:55.851|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 21:23:55.851|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 21:23:55.851|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 21:23:55.851|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 21:25:54.058|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 21:25:54.101|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 21:25:54.101|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 21:25:54.101|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 21:25:54.101|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 21:25:54.411|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 21:25:54.411|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:25:54.411|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 21:25:54.428|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 21:25:54.428|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 21:25:54.428|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 21:25:54.428|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 21:25:54.428|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 21:28:56.034|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 21:28:56.075|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 21:28:56.075|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 21:28:56.075|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 21:28:56.075|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 21:28:56.383|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 21:28:56.395|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:28:56.417|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 21:28:56.417|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 21:28:56.417|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 21:28:56.417|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 21:28:56.417|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 21:28:56.417|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 21:33:26.615|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 21:33:26.658|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 21:33:26.665|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 21:33:26.665|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 21:33:26.665|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 21:33:26.969|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 21:33:26.984|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:33:26.984|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 21:33:26.990|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 21:33:26.990|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 21:33:26.990|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 21:33:26.990|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 21:33:26.990|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 21:35:19.625|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:35:20.437|LogLibrary.Log|NetWork|PLC와 통신 해제 성공
+Info|2024/06/17 21:35:21.125|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:35:44.187|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 21:35:44.226|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 21:35:44.226|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 21:35:44.226|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 21:35:44.226|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 21:35:44.534|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 21:35:44.546|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:35:44.546|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 21:35:44.552|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 21:35:44.552|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 21:35:44.552|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 21:35:44.552|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 21:35:44.552|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 21:38:43.713|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 21:38:43.755|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 21:38:43.755|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 21:38:43.755|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 21:38:43.755|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 21:38:44.063|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 21:38:44.088|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:38:44.088|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 21:38:44.088|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 21:38:44.098|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 21:38:44.098|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 21:38:44.098|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 21:38:44.098|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 21:47:32.301|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 21:47:32.341|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 21:47:32.341|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 21:47:32.341|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 21:47:32.341|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 21:47:32.651|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 21:47:32.664|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 21:47:32.664|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 21:47:32.664|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 21:47:32.664|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 21:47:32.664|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 21:47:32.664|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 21:47:32.664|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 22:03:56.106|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 22:03:56.146|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 22:03:56.146|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 22:03:56.146|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 22:03:56.146|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 22:03:56.452|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 22:03:56.465|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 22:03:56.465|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 22:03:56.465|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 22:03:56.474|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 22:03:56.474|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 22:03:56.474|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 22:03:56.474|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 22:08:41.471|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 22:08:41.512|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 22:08:41.512|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 22:08:41.512|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 22:08:41.512|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 22:08:41.821|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 22:08:41.833|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 22:08:41.833|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 22:08:41.833|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 22:08:41.833|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 22:08:41.833|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 22:08:41.833|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 22:08:41.833|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 22:10:07.549|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 22:10:07.589|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 22:10:07.589|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 22:10:07.589|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 22:10:07.589|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 22:10:07.899|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 22:10:07.939|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 22:10:07.939|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 22:10:07.945|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 22:10:07.945|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 22:10:07.945|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 22:10:07.945|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 22:10:07.945|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료
+Info|2024/06/17 22:14:53.097|LogLibrary.Log|atPhoto|시스템 파일 읽기 성공:D:\Work\C_Sharp\2024\atPhotoInspection\SystemRoot\Autonics\atPhotoInspection\System\SystemParameters.ini
+Info|2024/06/17 22:14:53.137|LogLibrary.Log|atPhoto|로그 데이터 및 이벤트 등록을 완료
+Info|2024/06/17 22:14:53.137|LogLibrary.Log|atPhoto|통신 모듈 초기화 완료.
+Info|2024/06/17 22:14:53.137|LogLibrary.Log|atPhoto|Photo 센서 검사 프로그램을 시작
+Info|2024/06/17 22:14:53.137|LogLibrary.Log|atPhoto|파일 시스템을 설정 및 로드 시작
+Error|2024/06/17 22:14:53.447|LogLibrary.Log|atPhoto|카메라 초기화 실패
+Info|2024/06/17 22:14:53.464|LogLibrary.Log|NetWork|PLC와 통신 연결 성공 IP :127.0.0.1
+Info|2024/06/17 22:14:53.464|LogLibrary.Log|PhotoSensor|포토센서와 통신 연결 실패:COM1
+Info|2024/06/17 22:14:53.464|LogLibrary.Log|PanelMeta|판넬메타와 통신 연결 실패:COM6
+Info|2024/06/17 22:14:53.473|LogLibrary.Log|atPhoto|검사 통계 초기화 완료
+Info|2024/06/17 22:14:53.473|LogLibrary.Log|atPhoto|리본 메뉴 구성을 초기화 완료
+Info|2024/06/17 22:14:53.473|LogLibrary.Log|atPhoto|레시피 초기화 완료
+Info|2024/06/17 22:14:53.473|LogLibrary.Log|atPhoto|검사 동작 스레드 등록 완료

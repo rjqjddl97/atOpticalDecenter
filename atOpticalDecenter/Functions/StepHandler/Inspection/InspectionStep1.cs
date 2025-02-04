@@ -1,0 +1,538 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using atOpticalDecenter.Functions.StepHandler.Base;
+using AiCControlLibrary.SerialCommunication.Control;
+using AiCControlLibrary.SerialCommunication.Data;
+using ARMLibrary.SerialCommunication.Control;
+using ARMLibrary.SerialCommunication.Data;
+
+namespace atOpticalDecenter.Functions.StepHandler.Inspection
+{
+    public class InspectionStep1 : StepHandlerBase, IStepHandler
+    {
+        private WorkingStep mStep = WorkingStep.Idle;
+        public static int iGrapCount = 0;
+        ARMData mIOControl = new ARMData();
+        public InspectionStep1()
+        {
+            //Do some init here.
+            ErrorStepString = "투광 LED 검사";
+        }
+
+        private enum WorkingStep
+        {
+            Idle,
+            CheckStatus,
+            CheckShortDistanceInspect,
+            SensorPowerOn,
+            WaitStablePower,
+            MoveInspect1Pos,
+            WaitMovingSignal1,
+            WaitInspect1Pos,
+            InspectLEDSpot1,
+            WaitGrabImageSpot1,
+            AnalysisLEDSpot1,
+            MoveInspect2Pos,
+            WaitMovingSignal2,
+            WaitInspect2Pos,
+            InspectLedSpot2,
+            WaitGrabImageSpot2,
+            AnalysisLEDSpot2,
+            CalcurateData,            
+            MoveProductInspectPos,
+            SensorPowerOff,
+            SetNDFilter,
+            ReleaseNDFilter,
+            ErrorOccured,
+        }
+        private void Run()
+        {
+            switch (mStep)
+            {
+                case WorkingStep.Idle:
+                    break;
+                case WorkingStep.CheckStatus:
+                    if (!IsEssentialInstanceSetted)
+                    {
+                        mStep = WorkingStep.ErrorOccured;
+                    }
+                    else
+                    {
+                        //if (mCodesysPLC.IsConnected())
+                        //{
+                        //    if (Convert.ToBoolean(mPLCInfomationData.mStatus & 0x00000008))
+                        //    {
+                        //        mInspectResultData.InspectParameterInitial(mWorkParam._ProductDistance, mWorkParam._LEDInspectionShortDistance, _ImageResolution_H, _ImageResolution_V, fOnePixelResolution);
+                        //        mStep = WorkingStep.CheckShortDistanceInspect;
+                        //    }
+                        //    else
+                        //        mStep = WorkingStep.ErrorOccured;
+                        //}
+                        //else
+                        //    mStep = WorkingStep.ErrorOccured;
+                    }
+                    break;
+                case WorkingStep.CheckShortDistanceInspect:
+                    if (mWorkParam._ProductDistance >= mWorkParam._LEDInspectionShortDistance)
+                    {
+                        mStep = WorkingStep.SensorPowerOn;
+                    }
+                    else
+                        mStep = WorkingStep.Idle;
+                    break;
+                case WorkingStep.SensorPowerOn:
+                    //if(mWorkParam._ProductOutputType == 1)
+                    //    mOutputControl.Bit64 |= 0x00000002;               // Photo Sensor NPN/PNP Signal Set
+                    //mOutputControl.Bit64 |= 0x00000001;               // Photo Sensor Power On Signal Set
+                    //byte[] iodata = new byte[4];
+                    //iodata = mOutputControl.GetData();
+                    //mCodesysPLC.SendCommand(UserCodesysData.Protocol_MSG.MSG_CMD_OUT_CTRL, iodata);
+                    //mTimeChecker.SetTime(PHOTO_SENSOR_POWER_STABLE_TIME);
+                    mStep = WorkingStep.WaitStablePower;
+                    break;
+                case WorkingStep.WaitStablePower:
+                    if (mTimeChecker.IsTimeOver())
+                    {
+                        mStep = WorkingStep.MoveInspect1Pos;
+                    }
+                    break;
+                case WorkingStep.MoveInspect1Pos:
+                    if (mWorkParam.InspectionPositions.Count > 0)
+                    {
+                        //for (int i = 0; i < mWorkParam.InspectionPositions.Count; i++)
+                        //{
+                        //    if (mWorkParam.InspectionPositions[i].ePositionType == RecipeManager.INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE)
+                        //    {
+                        //        byte[] data = new byte[32];
+                        //        UserCodesysData.TargetRobotPosition mCmdPosMove = new UserCodesysData.TargetRobotPosition();
+                        //        RecipeManager.CalibrationParams.Position mPrePos = new RecipeManager.CalibrationParams.Position();
+                        //        RecipeManager.CalibrationParams.Position mDeltaPos = new RecipeManager.CalibrationParams.Position();
+
+                        //        mCmdPosMove.X = (double)mWorkParam.InspectionPositions[i].PositionX;
+                        //        mCmdPosMove.Y = (double)mWorkParam.InspectionPositions[i].PositionY1;
+                        //        mCmdPosMove.Z = (double)mWorkParam.InspectionPositions[i].PositionY2;
+                        //        mCmdPosMove.Roll = (double)mWorkParam.InspectionPositions[i].PositionZ;
+                        //        mCmdPosMove.Pitch = (double)mWorkParam.InspectionPositions[i].PositionFilterZ;
+                        //        mCmdPosMove.Yaw = (double)mWorkParam.InspectionPositions[i].PositionFilterR;
+
+                        //        if (bCalibrationActive)
+                        //        {
+                        //            mPrePos.X = mCmdPosMove.X;
+                        //            mPrePos.Y1 = mCmdPosMove.Y;
+                        //            mPrePos.Y2 = mCmdPosMove.Z;
+                        //            mPrePos.Z = mCmdPosMove.Roll;
+                        //            mPrePos.FZ = mCmdPosMove.Pitch;
+                        //            mPrePos.FR = mCmdPosMove.Yaw;
+
+                        //            mDeltaPos = mCalibrationParam.EmiterCalibratinoDeltaPosition(mPrePos);
+                        //            mCmdPosMove.X += (double)mDeltaPos.X;
+                        //            mCmdPosMove.Y += (double)mDeltaPos.Y1;
+                        //            mCmdPosMove.Z += (double)mDeltaPos.Y2;
+                        //            mCmdPosMove.Roll += (double)mDeltaPos.Z;
+                        //            mCmdPosMove.Pitch += (double)mDeltaPos.FZ;
+                        //            mCmdPosMove.Yaw += (double)mDeltaPos.FR;
+                        //        }
+
+                        //        if (fMoveVelocity < 1f)
+                        //            fMoveVelocity = 100f;
+                        //        if (fMoveAcceleration < 1f)
+                        //            fMoveAcceleration = 1000f;
+
+                        //        mCmdPosMove.Speed = (double)fMoveVelocity;
+                        //        mCmdPosMove.Acceleration = (double)fMoveAcceleration;
+                        //        if (mCmdPosMove.Speed <= 0) mCmdPosMove.Speed = 1;
+                        //        if (mCmdPosMove.Acceleration <= 0) mCmdPosMove.Acceleration = 1;
+                        //        data = mCmdPosMove.GetData();
+                        //        // Send Cordinate Move Command                                
+                        //        mCodesysPLC.SendCommand(UserCodesysData.Protocol_MSG.MSG_CMD_GOPOS_ABS, data);
+                        //        mStep = WorkingStep.WaitMovingSignal1;
+                        //        mRetryCount = 0;
+                        //        mTimeChecker.SetTime(D_PLC_MOTION_READYSIGNAL_WAIT_TIME);
+                        //        break;
+                        //    }
+                        //}
+                    }
+                    else
+                        mStep = WorkingStep.ErrorOccured;                     
+                    break;
+                case WorkingStep.WaitMovingSignal1:
+                    if (mTimeChecker.IsTimeOver())
+                    {                        
+                        //if (Convert.ToBoolean(mPLCInfomationData.mStatus & 0x00000050))
+                        //{
+                        //    iGrapCount = 0;
+                        //    mTimeChecker.SetTime(D_PLC_MOTION_READYSIGNAL_WAIT_TIME);
+                        //    mStep = WorkingStep.WaitInspect1Pos;
+                        //}
+                    }
+                    break;
+                case WorkingStep.WaitInspect1Pos:
+                    if (mTimeChecker.IsTimeOver())
+                    {
+                        iGrapCount = 0;
+                        mStep = WorkingStep.InspectLEDSpot1;
+                    }
+                    //else
+                    //{
+                    //    mRetryCount++;
+                    //    if (mRetryCount >= RETRY_LIMIT)
+                    //    {
+                    //        mRetryCount = 0;
+                    //        mStep = WorkingStep.Idle;
+                    //    }
+                    //    else
+                    //    {
+                    //        mStep = WorkingStep.WaitInspect1Pos;
+                    //    }
+                    //}
+                    break;
+                case WorkingStep.InspectLEDSpot1:
+                    //if (Convert.ToBoolean(mPLCInfomationData.mStatus & 0x00000050))                    
+                    {
+                        TakePicture();
+                        mTimeChecker.SetTime(D_WAIT_CAMERA_GRAB_DELAY);
+                        mStep = WorkingStep.WaitGrabImageSpot1;
+                    }
+                    break;
+                case WorkingStep.WaitGrabImageSpot1 :
+                    if (mTimeChecker.IsTimeOver() || IsGrabbed)
+                    {
+                        if (IsGrabbed)
+                        {
+                            mRetryCount = 0;
+                            mStep = WorkingStep.AnalysisLEDSpot1;
+                            //if (iGrapCount > 1)
+                            //{
+                            //    mStep = WorkingStep.AnalysisLEDSpot1;
+                            //}
+                            //else
+                            //{
+                            //    iGrapCount += 1;
+                            //    mStep = WorkingStep.InspectLEDSpot1;
+                            //}
+
+                        }
+                        else
+                        {
+                            mRetryCount++;
+                            if (mRetryCount >= RETRY_LIMIT)
+                            {
+                                mRetryCount = 0;
+                                mStep = WorkingStep.ErrorOccured;
+                            }
+                            else
+                            {
+                                iGrapCount = 0;
+                                mStep = WorkingStep.InspectLEDSpot1;
+                            }
+                        }
+                    }
+                    break;
+                case WorkingStep.AnalysisLEDSpot1:
+                    LedSpotImageProcess(0);
+                    mStep = WorkingStep.MoveInspect2Pos;
+                    break;
+                case WorkingStep.MoveInspect2Pos:
+                    //if (Convert.ToBoolean(mPLCInfomationData.mStatus & 0x00000050))
+                    //{
+                    //    if (mWorkParam.InspectionPositions.Count > 0)
+                    //    {
+                    //        for (int i = 0; i < mWorkParam.InspectionPositions.Count; i++)
+                    //        {
+                    //            if (mWorkParam.InspectionPositions[i].ePositionType == RecipeManager.INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE)
+                    //            {
+                    //                byte[] data = new byte[32];
+                    //                UserCodesysData.TargetRobotPosition mCmdPosMove = new UserCodesysData.TargetRobotPosition();
+                    //                RecipeManager.CalibrationParams.Position mPrePos = new RecipeManager.CalibrationParams.Position();
+                    //                RecipeManager.CalibrationParams.Position mDeltaPos = new RecipeManager.CalibrationParams.Position();
+
+                    //                if (mWorkParam._LEDInspectionCameraDistance >= SHORT_DISTANCE_MOVE_CAMERA_OFFSET)
+                    //                    mWorkParam._LEDInspectionCameraDistance = (float)SHORT_DISTANCE_MOVE_CAMERA_OFFSET;
+
+                    //                mCmdPosMove.X = (double)mWorkParam.InspectionPositions[i].PositionX;
+                    //                mCmdPosMove.Y = (double)(mWorkParam.InspectionPositions[i].PositionY1 + mWorkParam._LEDInspectionCameraDistance);
+                    //                mCmdPosMove.Z = (double)mWorkParam.InspectionPositions[i].PositionY2;
+                    //                mCmdPosMove.Roll = (double)mWorkParam.InspectionPositions[i].PositionZ;
+                    //                mCmdPosMove.Pitch = (double)mWorkParam.InspectionPositions[i].PositionFilterZ;
+                    //                mCmdPosMove.Yaw = (double)mWorkParam.InspectionPositions[i].PositionFilterR;
+
+                    //                if (bCalibrationActive)
+                    //                {
+                    //                    mPrePos.X = mCmdPosMove.X;
+                    //                    mPrePos.Y1 = mCmdPosMove.Y;
+                    //                    mPrePos.Y2 = mCmdPosMove.Z;
+                    //                    mPrePos.Z = mCmdPosMove.Roll;
+                    //                    mPrePos.FZ = mCmdPosMove.Pitch;
+                    //                    mPrePos.FR = mCmdPosMove.Yaw;
+
+                    //                    mDeltaPos = mCalibrationParam.EmiterCalibratinoDeltaPosition(mPrePos);
+                    //                    mCmdPosMove.X += (double)mDeltaPos.X;
+                    //                    mCmdPosMove.Y += (double)mDeltaPos.Y1;
+                    //                    mCmdPosMove.Z += (double)mDeltaPos.Y2;
+                    //                    mCmdPosMove.Roll += (double)mDeltaPos.Z;
+                    //                    mCmdPosMove.Pitch += (double)mDeltaPos.FZ;
+                    //                    mCmdPosMove.Yaw += (double)mDeltaPos.FR;
+                    //                }
+                    //                if (fMoveVelocity < 1f)
+                    //                    fMoveVelocity = 100f;
+                    //                if (fMoveAcceleration < 1f)
+                    //                    fMoveAcceleration = 1000f;
+                    //                mCmdPosMove.Speed = (double)fMoveVelocity;
+                    //                mCmdPosMove.Acceleration = (double)fMoveAcceleration;
+                    //                if (mCmdPosMove.Speed <= 0) mCmdPosMove.Speed = 1;
+                    //                if (mCmdPosMove.Acceleration <= 0) mCmdPosMove.Acceleration = 1;
+                    //                data = mCmdPosMove.GetData();
+                    //                // Send Cordinate Move Command
+                    //                TakePicture();
+                    //                mCodesysPLC.SendCommand(UserCodesysData.Protocol_MSG.MSG_CMD_GOPOS_ABS, data);
+                    //                mStep = WorkingStep.WaitMovingSignal2;
+                    //                mRetryCount = 0;
+                    //                mTimeChecker.SetTime(D_PLC_MOTION_READYSIGNAL_WAIT_TIME);
+                    //                break;
+                    //            }
+                    //        }
+                    //    }
+                    //}
+                    break;
+                case WorkingStep.WaitMovingSignal2:
+                    if (mTimeChecker.IsTimeOver())
+                    {
+                        //if (Convert.ToBoolean(mPLCInfomationData.mStatus & 0x00000050))
+                        //{
+                        //    iGrapCount = 0;
+                        //    mTimeChecker.SetTime(D_PLC_MOTION_READYSIGNAL_WAIT_TIME);
+                        //    mStep = WorkingStep.WaitInspect2Pos;
+                        //}
+                    }
+                    break;
+                case WorkingStep.WaitInspect2Pos:
+                    if (mTimeChecker.IsTimeOver())
+                    {
+                        iGrapCount = 0;
+                        mStep = WorkingStep.InspectLedSpot2;
+                    }
+                    //else
+                    //{
+                    //    mRetryCount++;
+                    //    if (mRetryCount >= RETRY_LIMIT)
+                    //    {
+                    //        mRetryCount = 0;
+                    //        mStep = WorkingStep.Idle;
+                    //    }
+                    //    else
+                    //    {
+                    //        mStep = WorkingStep.WaitInspect1Pos;
+                    //    }
+                    //}
+                    break;
+                case WorkingStep.InspectLedSpot2:
+                    //if (Convert.ToBoolean(mPLCInfomationData.mStatus & 0x00000050))
+                    //{
+                    //    TakePicture();
+                    //    mTimeChecker.SetTime(D_WAIT_CAMERA_GRAB_DELAY);
+                    //    mStep = WorkingStep.WaitGrabImageSpot2;
+                    //}
+                    break;
+                case WorkingStep.WaitGrabImageSpot2:
+                    if (mTimeChecker.IsTimeOver() || IsGrabbed)
+                    {
+                        if (IsGrabbed)
+                        {
+                            mRetryCount = 0;
+                            mTimeChecker.SetTime(D_WAIT_CAMERA_GRAB_DELAY);
+                            mStep = WorkingStep.AnalysisLEDSpot2;
+                            //if (iGrapCount > 1)
+                            //{
+                            //    mStep = WorkingStep.AnalysisLEDSpot2;
+                            //}
+                            //else
+                            //{
+                            //    iGrapCount += 1;
+                            //    mStep = WorkingStep.InspectLedSpot2;
+                            //}
+                        }
+                        else
+                        {
+                            mRetryCount++;
+                            if (mRetryCount >= RETRY_LIMIT)
+                            {
+                                mRetryCount = 0;
+                                mStep = WorkingStep.ErrorOccured;
+                            }
+                            else
+                            {
+                                iGrapCount = 0;
+                                mStep = WorkingStep.InspectLedSpot2;
+                            }
+                        }
+                    }
+                    break;
+                case WorkingStep.AnalysisLEDSpot2:
+                    if (mTimeChecker.IsTimeOver())
+                    {
+                        LedSpotImageProcess(1);
+
+                        mStep = WorkingStep.CalcurateData;
+                    }                    
+                    break;
+                case WorkingStep.CalcurateData:
+                    // 투광 LED 편심, 발산각, ND Filter의 감쇄율 계산 및 합격 여부 판단.
+                    LedSpotCalcuate();
+                    mStep = WorkingStep.MoveProductInspectPos;
+                    break;
+
+                case WorkingStep.MoveProductInspectPos:
+                    //if (Convert.ToBoolean(mPLCInfomationData.mStatus & 0x00000050))
+                    //{
+                    //    if (mWorkParam.InspectionPositions.Count > 0)
+                    //    {
+                    //        for (int i = 0; i < mWorkParam.InspectionPositions.Count; i++)
+                    //        {
+                    //            if (mWorkParam.InspectionPositions[i].ePositionType == RecipeManager.INSPECTION_POSITION_MODE.POSITION_BASE_MODE)
+                    //            {
+                    //                byte[] data = new byte[32];
+                    //                UserCodesysData.TargetRobotPosition mCmdPosMove = new UserCodesysData.TargetRobotPosition();
+                    //                RecipeManager.CalibrationParams.Position mPrePos = new RecipeManager.CalibrationParams.Position();
+                    //                RecipeManager.CalibrationParams.Position mDeltaPos = new RecipeManager.CalibrationParams.Position();
+
+                    //                mCmdPosMove.X = (double)mWorkParam.InspectionPositions[i].PositionX;
+                    //                mCmdPosMove.Y = (double)mWorkParam.InspectionPositions[i].PositionY1;
+                    //                mCmdPosMove.Z = (double)mWorkParam.InspectionPositions[i].PositionY2;
+                    //                mCmdPosMove.Roll = (double)mWorkParam.InspectionPositions[i].PositionZ;
+                    //                mCmdPosMove.Pitch = (double)mWorkParam.InspectionPositions[i].PositionFilterZ;
+                    //                mCmdPosMove.Yaw = (double)(double)mInspectResultData.fND_FilterAngle;
+
+                    //                if (bCalibrationActive)
+                    //                {
+                    //                    mPrePos.X = mCmdPosMove.X;
+                    //                    mPrePos.Y1 = mCmdPosMove.Y;
+                    //                    mPrePos.Y2 = mCmdPosMove.Z;
+                    //                    mPrePos.Z = mCmdPosMove.Roll;
+                    //                    mPrePos.FZ = mCmdPosMove.Pitch;
+                    //                    mPrePos.FR = mCmdPosMove.Yaw;
+
+                    //                    mDeltaPos = mCalibrationParam.InspectCalibratinoDeltaPosition(mPrePos);
+                    //                    mCmdPosMove.X += (double)mDeltaPos.X;
+                    //                    mCmdPosMove.Y += (double)mDeltaPos.Y1;
+                    //                    mCmdPosMove.Z += (double)mDeltaPos.Y2;
+                    //                    mCmdPosMove.Roll += (double)mDeltaPos.Z;
+                    //                    mCmdPosMove.Pitch += (double)mDeltaPos.FZ;
+                    //                    mCmdPosMove.Yaw += (double)mDeltaPos.FR;
+                    //                }                                    
+                    //                if (fMoveVelocity < 1f)
+                    //                    fMoveVelocity = 100f;
+                    //                if (fMoveAcceleration < 1f)
+                    //                    fMoveAcceleration = 1000f;
+                    //                mCmdPosMove.Speed = (double)fMoveVelocity;
+                    //                mCmdPosMove.Acceleration = (double)fMoveAcceleration;
+                    //                if (mCmdPosMove.Speed <= 0) mCmdPosMove.Speed = 1;
+                    //                if (mCmdPosMove.Acceleration <= 0) mCmdPosMove.Acceleration = 1;
+                    //                data = mCmdPosMove.GetData();
+                    //                // Send Cordinate Move Command
+                    //                //TakePicture();
+                    //                mCodesysPLC.SendCommand(UserCodesysData.Protocol_MSG.MSG_CMD_GOPOS_ABS, data);
+                    //                mStep = WorkingStep.SensorPowerOff;
+                    //                break;
+                    //            }
+                    //        }
+                    //    }
+                    //}
+                    break;
+                case WorkingStep.SensorPowerOff:
+                    //mOutputControl.Bit64 = mPLCInfomationData.mOutputData.Bit64;               // Photo Sensor Power On Signal Set
+                    //mOutputControl.B0 = false;
+                    //mOutputControl.B1 = false;
+                    //byte[] Offdata = new byte[4];
+                    //Offdata = mOutputControl.GetData();
+                    //mCodesysPLC.SendCommand(UserCodesysData.Protocol_MSG.MSG_CMD_OUT_CTRL, Offdata);
+                    //mTimeChecker.SetTime(PHOTO_SENSOR_POWER_STABLE_TIME);
+                    //mStep = WorkingStep.Idle;
+                    break;
+                case WorkingStep.SetNDFilter:
+                    break;
+                case WorkingStep.ReleaseNDFilter:
+                    //if (Convert.ToBoolean(mPLCInfomationData.mStatus & 0x00000050))
+                    //{
+                    //    if (InspectPos.Count > 0)
+                    //    {
+                    //        for (int i = 0; i < InspectPos.Count; i++)
+                    //        {
+                    //            if (InspectPos[i].ePositionType == RecipeManager.INSPECTION_POSITION_MODE.POSITION_BASE_MODE)
+                    //            {
+                    //                byte[] data = new byte[32];
+                    //                UserCodesysData.TargetRobotPosition mCmdPosMove = new UserCodesysData.TargetRobotPosition();
+                    //                mCmdPosMove.X = (double)InspectPos[i].PositionX;
+                    //                mCmdPosMove.Y = (double)InspectPos[i].PositionY1;
+                    //                mCmdPosMove.Z = (double)InspectPos[i].PositionY2;
+                    //                mCmdPosMove.Roll = (double)InspectPos[i].PositionZ;
+                    //                mCmdPosMove.Pitch = (double)10f;
+                    //                mCmdPosMove.Yaw = (double)InspectPos[i].PositionFilterR;
+                    //                if (fMoveVelocity < 1f)
+                    //                    fMoveVelocity = 100f;
+                    //                if (fMoveAcceleration < 1f)
+                    //                    fMoveAcceleration = 1000f;
+                    //                mCmdPosMove.Speed = (double)fMoveVelocity;
+                    //                mCmdPosMove.Acceleration = (double)fMoveAcceleration;
+                    //                if (mCmdPosMove.Speed <= 0) mCmdPosMove.Speed = 1;
+                    //                if (mCmdPosMove.Acceleration <= 0) mCmdPosMove.Acceleration = 1;
+                    //                data = mCmdPosMove.GetData();
+                    //                // Send Cordinate Move Command
+                    //                mCodesysPLC.SendCommand(UserCodesysData.Protocol_MSG.MSG_CMD_GOPOS_ABS, data);
+                    //                mStep = WorkingStep.Idle;
+                    //                break;
+                    //            }
+                    //        }
+                    //    }
+                    //}
+                    break;
+                default: break;
+            }
+        }
+        public void Init()
+        {
+        }
+        public RetType Execute()
+        {
+            if (mStep == WorkingStep.Idle)
+            {
+                mStep = WorkingStep.CheckStatus;
+                Run();
+                return RetType.Busy;
+            }
+            else
+            {
+                return RetType.Error;
+            }
+        }
+
+        public RetType GetStatus()
+        {
+            Run();
+
+            if (mStep == WorkingStep.ErrorOccured)
+                return RetType.Error;
+            else if (mStep != WorkingStep.Idle)
+                return RetType.Busy;
+            else
+                return RetType.Ready;
+        }
+
+        public bool ClearError()
+        {
+            if (mStep == WorkingStep.ErrorOccured)
+            {
+                AlarmNumber = 0;
+                mStep = WorkingStep.Idle;
+                return true;
+            }
+            return false;
+        }
+        public int GetAlarmNumber()
+        {
+            return AlarmNumber;
+        }
+    }
+}
