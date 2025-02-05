@@ -856,10 +856,7 @@ namespace AiCControlLibrary.SerialCommunication.Data
                             Array.Copy(CurrentMotionData, 0, _mAiCMotionDatas._CurrentDatas, 0, CurrentMotionData.Length);
 
                             _mAiCMotionDatas._Id = nID;
-
-                            //AiCProduct[nID] = AiCElement;
-                            MotionMonitorEvent?.Invoke(_mAiCMotionDatas);
-                            //Array.Clear(AiCElement[2], 0, CurrentMotionData.Length);
+                            MotionMonitorEvent?.Invoke(_mAiCMotionDatas);                            
                         }
                     }
                 }

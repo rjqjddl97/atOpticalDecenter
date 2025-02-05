@@ -37,10 +37,11 @@ namespace atOpticalDecenter
         private InspectionStepType mInspectStep = InspectionStepType.Idle;
         bool _InspectionWorking = false;
         public InspectResultData mResultData = new InspectResultData();
+        public RobotInformation mRobotInformation = new RobotInformation();
         private enum InspectionStepType
         {
             Idle = 0,
-            CheckWaitPLCReady,
+            CheckWaitRobotReady,
             ExcuteInspection,
             CheckInspection,
             FinishedInspection,
@@ -71,6 +72,10 @@ namespace atOpticalDecenter
         public void UpdatePhotoInspectedData(InspectResultData InspectedData)
         {
             mResultData = InspectedData;
+        }
+        public void UpdateRobotInfomation(RobotInformation update)
+        {
+            //mStepBase.UpdatePLCInfomation(update);
         }
         private void InitStepBase()
         {
@@ -106,15 +111,6 @@ namespace atOpticalDecenter
                 if (_workParams._ProductMaxDistanceProcessEnable)
                     mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.InspectMaxDistanceStep());
             }
-            //mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.InspectionDistanceRangeStep());
-            //if (_workParams.InspectionPositions.Count > 0)
-            //{
-            //    for (int i = 0; i < _workParams.InspectionPositions.Count; i++)
-            //    {
-
-                //    }
-                //}
-
         }
         private void MakeDryRunList()
         {
@@ -139,8 +135,8 @@ namespace atOpticalDecenter
                             case InspectionStepType.Idle:
                                 AlarmTriggedToPLC = false;
                                 break;
-                            case InspectionStepType.CheckWaitPLCReady:
-                                // PLC 체크후 준비 상태면 실행 상태로 변환 아니면 대기!! 
+                            case InspectionStepType.CheckWaitRobotReady:
+                                // Robot 체크후 준비 상태면 실행 상태로 변환 아니면 대기!! 
                                 RunningIndex = 0;
                                 mInspectStep = InspectionStepType.ExcuteInspection;
 

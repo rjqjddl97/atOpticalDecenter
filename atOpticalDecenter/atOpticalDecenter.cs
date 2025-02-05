@@ -2643,7 +2643,7 @@ namespace atOpticalDecenter
 
                 MakeInspectionList();
                 _InspectionWorking = true;
-                mInspectStep = InspectionStepType.CheckWaitPLCReady;
+                mInspectStep = InspectionStepType.CheckWaitRobotReady;
 
                 InspectionRecipeParameterSetup();
 
@@ -2735,7 +2735,7 @@ namespace atOpticalDecenter
 
                 MakeDryRunList();
                 _InspectionWorking = true;
-                mInspectStep = InspectionStepType.CheckWaitPLCReady;
+                mInspectStep = InspectionStepType.CheckWaitRobotReady;
                 CheckTackTime.Start();
                 _backgroundWorkerPhotoInspection.RunWorkerAsync();
 

@@ -143,7 +143,7 @@ namespace RecipeManager
         public enum ErrorStatus
         {
             EmergencyStop = 0,
-            DrvCommunity,
+            DrvError,
             ServoPower,
             Homming,
             OpReady,
@@ -194,6 +194,21 @@ namespace RecipeManager
         public bool GetStatus(ErrorStatus status)
         {
             return ((mError & (1U << (int)status)) != 0);
+        }
+
+        public void SetStatus(RobotStatus status, bool value)
+        {
+            if (value)
+                mStatus |= (1U << (int)status);
+            else
+                mStatus &= ~(1U << (int)status);
+        }
+        public void SetError(ErrorStatus status, bool value)
+        {
+            if (value)
+                mError |= (1U << (int)status);
+            else
+                mError &= ~(1U << (int)status);
         }
     }
 }
