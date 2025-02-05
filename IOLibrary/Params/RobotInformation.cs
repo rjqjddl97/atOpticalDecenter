@@ -11,7 +11,7 @@ namespace RecipeManager
         private const double DECIMALPOINT = 0.001;
         private const double RECOVER_DECIMALPOINT = 1000;
 
-        public event Action<RobotInfomation> RobotInfomationUpdatedEvent;
+        //public event Action<RobotInfomation> RobotInfomationUpdatedEvent;
 
         public double PositionX { get; set; }
         public double PositionY { get; set; }
@@ -186,7 +186,7 @@ namespace RecipeManager
             return (mOutputData.Bit64 & (1U << i)) != 0;
         }
 
-        public bool GetStatus(PLCStatus status)
+        public bool GetStatus(RobotStatus status)
         {
             return ((mStatus & (1U << (int)status)) != 0);
         }
