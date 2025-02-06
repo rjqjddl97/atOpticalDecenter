@@ -48,18 +48,18 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     else
                     {
-                        /*
-                        if (mCodesysPLC.IsConnected())
+                        ///*
+                        if (mMotionDrvCtrl.IsOpen())
                         {
-                            if (Convert.ToBoolean(mPLCData.mReceivedRobotInfomation.mStatus & 0x0000000b))
+                            if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                                 mStep = WorkingStep.MoveInspectPos;
                             else
                                 mStep = WorkingStep.ErrorOccured;
                         }
                         else
                             mStep = WorkingStep.ErrorOccured;
-                        */
-                        mInspectResultData.InspectParameterInitial(mWorkParam._ProductDistance,mWorkParam._LEDInspectionShortDistance, _ImageResolution_H, _ImageResolution_V, fOnePixelResolution);
+                        //*/
+                        //mInspectResultData.InspectParameterInitial(mWorkParam._ProductDistance,mWorkParam._LEDInspectionShortDistance, _ImageResolution_H, _ImageResolution_V, fOnePixelResolution);
                         mStep = WorkingStep.ExcuteCameraGrab;
                     }
                     break;
@@ -126,8 +126,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.ExcuteCameraGrab:
-                    TakePicture();
-                    mTimeChecker.SetTime(D_WAIT_CAMERA_GRAB_DELAY);
+                    //TakePicture();
+                    //mTimeChecker.SetTime(D_WAIT_CAMERA_GRAB_DELAY);
                     mStep = WorkingStep.WaitGrabImage;
                     break;
                 case WorkingStep.WaitGrabImage:
@@ -136,22 +136,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         if (IsGrabbed)
                         {
                             mRetryCount = 0;
-                            /*
-                            mInspectResultData.mFirstLedSpot.Left = 100;
-                            mInspectResultData.mFirstLedSpot.Top = 100;
-                            mInspectResultData.mFirstLedSpot.Width = 100;
-                            mInspectResultData.mFirstLedSpot.Height = 100;
-
-                            mStep = WorkingStep.MoveInspectPos2;                            
-                            */
-                            LedSpotImageProcess(0);
-                            mInspectResultData.mFirstLedSpot = mFirstLedSpot;
-                            mInspectResultData.CalculateLedBlob(0);
-                            //mInspectResultData.mFirstLedSpot.Left = mFirstLedSpot.Left;
-                            //mInspectResultData.mFirstLedSpot.Top = mFirstLedSpot.Top;
-                            //mInspectResultData.mFirstLedSpot.Width = mFirstLedSpot.Width;
-                            //mInspectResultData.mFirstLedSpot.Height = mFirstLedSpot.Height;
-                            //UpdateInspectdData();                            
+                            //LedSpotImageProcess(0);
+                            //mInspectResultData.mFirstLedSpot = mFirstLedSpot;
+                            //mInspectResultData.CalculateLedBlob(0);
                             mStep = WorkingStep.Idle;
                         }
                         else
@@ -230,8 +217,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.ExcuteCameraGrab2:
-                    TakePicture();
-                    mTimeChecker.SetTime(D_WAIT_CAMERA_GRAB_DELAY);
+                    //TakePicture();
+                    //mTimeChecker.SetTime(D_WAIT_CAMERA_GRAB_DELAY);
                     mStep = WorkingStep.WaitGrabImage2;
                     break;
                 case WorkingStep.WaitGrabImage2:
@@ -261,8 +248,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.CalculateData:
-                    mInspectResultData.CalculateOpticalInspect(mWorkParam._ProductType);
-                    mInspectResultData.bOpticalInspect = true;
+                    //mInspectResultData.CalculateOpticalInspect(mWorkParam._ProductType);
+                    //mInspectResultData.bOpticalInspect = true;
                     mStep = WorkingStep.MoveFilterPos;
                     break;
                 case WorkingStep.MoveFilterPos:

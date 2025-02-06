@@ -83,7 +83,7 @@ namespace atOpticalDecenter
             mResultData.fImageSensorSize_H = (double)_systemParams._cameraParams.ImageSensorHSize;
             mResultData.fImageSensorSize_V = (double)_systemParams._cameraParams.ImageSensorVSize;
             mResultData.fLensFocusLength = (double)_systemParams._cameraParams.LensFocusLength;            
-            //mStepBase = new Functions.StepHandler.Base.StepHandlerBase(mPLCCommunicateManager,mPhotoCommunicationManager,mMT4xPanelMeterCommunicationManager,_systemParams,_workParams, mResultData);
+            mStepBase = new Functions.StepHandler.Base.StepHandlerBase(_mMotionControlCommManager,_mRemteIOCommManager,_systemParams,_workParams, mResultData,mRobotInformation);
             //mStepBase.PhotoInspectedDataUpdate += UpdatePhotoInspectedData;
             
             TakePictureEvent += GrabPicture;            

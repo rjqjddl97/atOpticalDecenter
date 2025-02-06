@@ -657,11 +657,16 @@ namespace CustomPages
                         _mRobotInfomation.PositionY = Convert.ToDouble(textEditPresentPosY.Text);
                         _mRobotInfomation.PositionZ = Convert.ToDouble(textEditPresentPosZ.Text);
 
-                        if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B4) && Convert.ToBoolean(_mAiCData.OutputStaus[1].B4) && Convert.ToBoolean(_mAiCData.OutputStaus[2].B4))                        
-                            _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.ServoOn, true);                        
-                        else                        
+                        if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B4) && Convert.ToBoolean(_mAiCData.OutputStaus[1].B4) && Convert.ToBoolean(_mAiCData.OutputStaus[2].B4))
+                        {
+                            _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.ServoOn, true);
+                            _isRobotEnable = true;
+                        }
+                        else
+                        {
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.ServoOn, false);
-                        
+                            _isRobotEnable = false;
+                        }
 
                         if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B1) && Convert.ToBoolean(_mAiCData.OutputStaus[1].B1) && Convert.ToBoolean(_mAiCData.OutputStaus[2].B1))                        
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.Inposition, true);                        
@@ -690,89 +695,16 @@ namespace CustomPages
                             DisconnectButton.Enabled = true;
                         }
 
-                        if (Convert.ToBoolean(_mAiCData.InfoStatus1[0].B14) && Convert.ToBoolean(_mAiCData.InfoStatus1[1].B14) && Convert.ToBoolean(_mAiCData.InfoStatus1[2].B14))
-                            _isRobotEnable = true;
-                        else
-                            _isRobotEnable = false;
-
                         if (_isRobotEnable)
                         {
-
                             this.RobotEnableButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("RobotDisableButton.ImageOptions.Image")));
                             RobotEnableButton.Invoke(new MethodInvoker(delegate { RobotEnableButton.Text = "모션제 비활성화"; }));
-                            //byte[] SeData = new byte[1024];
-                            //for (int i = 1; i < 4; i++)
-                            //{
-                            //    SeData = _mAiCCommunicationManager.mDrvCtrl.ServoOnOffControl((byte)i, false);
-                            //    _mAiCCommunicationManager.SendData(SeData);
-                            //}
                         }
                         else
                         {
                             this.RobotEnableButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("RobotEnableButton.ImageOptions.Image")));
                             RobotEnableButton.Invoke(new MethodInvoker(delegate { RobotEnableButton.Text = "모션제어 활성화"; }));
-                            //byte[] SeData = new byte[1024];
-                            //for (int i = 1; i < 4; i++)
-                            //{
-                            //    SeData = _mAiCCommunicationManager.mDrvCtrl.ServoOnOffControl((byte)i, true);
-                            //    _mAiCCommunicationManager.SendData(SeData);
-                            //}
                         }
-                        //if (_isAutomode)
-                        //{
-                        //    checkButtonMenualMode.Invoke(new MethodInvoker(delegate { checkButtonMenualMode.Text = "수동 모드 전환"; }));
-                        //    radioGroupMenualMode.Enabled = false;
-                        //    radioGroupMenualControlMode.Enabled = false;
-                        //    radioGroupMenualValueMode.Enabled = false;
-                        //    checkButtonLowValue.Enabled = false;
-                        //    checkButtonMiddleValue.Enabled = false;
-                        //    checkButtonHighValue.Enabled = false;
-                        //    checkEditCalibration.Enabled = true;
-                        //    if (checkEditCalibration.Checked)
-                        //    {
-                        //        radioGroupCalibration.Enabled = true;
-                        //    }
-                        //    else
-                        //    {
-                        //        radioGroupCalibration.Enabled = false;
-                        //    }
-
-                        //    JogControlPannelDIsable();
-                        //    CoordinateControlPanelEnable();
-                        //}
-                        //else
-                        //{
-                        //    checkButtonMenualMode.Invoke(new MethodInvoker(delegate { checkButtonMenualMode.Text = "자동 모드 전환"; }));
-                        //    radioGroupMenualMode.Enabled = true;
-                        //    radioGroupMenualControlMode.Enabled = true;
-                        //    radioGroupMenualValueMode.Enabled = true;
-                        //    checkButtonLowValue.Enabled = true;
-                        //    checkButtonMiddleValue.Enabled = true;
-                        //    checkButtonHighValue.Enabled = true;
-                        //    checkEditCalibration.Enabled = false;
-                        //    radioGroupCalibration.Enabled = false;
-                        //    if (radioGroupMenualControlMode.SelectedIndex != 2)
-                        //    {
-                        //        if (radioGroupMenualMode.SelectedIndex == 0)
-                        //            CoordinateControlPanelDisable();
-                        //        JogControlPannelEnable();
-                        //    }
-                        //    else
-                        //    {
-                        //        if (radioGroupMenualMode.SelectedIndex == 1)
-                        //        {
-                        //            CoordinateControlPanelEnable();
-                        //            JogControlPannelDIsable();
-                        //        }
-                        //        else
-                        //        {
-                        //            if (radioGroupMenualMode.SelectedIndex == 0)
-                        //            {
-                        //                CoordinateControlPanelDisable();
-                        //            }
-                        //        }
-                        //    }
-                        //}
                     }
                 }
             }

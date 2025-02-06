@@ -92,6 +92,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public static float fMoveAcceleration { get; set; } = 1000f;
         public static bool bCalibrationActive { get; set; } = false;
         public static RecipeManager.CalibrationParams mCalibrationParam = new RecipeManager.CalibrationParams();
+        public static RecipeManager.RobotInformation mRobotInformation { get; set; } = null;
 
         public static List<InspectionPosition> InspectPos = new List<InspectionPosition>();
         public static InspectResultData mInspectResultData = null;
@@ -214,18 +215,19 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         {
             
         }
-        public StepHandlerBase(AiCControlLibrary.SerialCommunication.Control.CommunicationManager aic, ARMLibrary.SerialCommunication.Control.CommunicationManager arm, SystemParams systemparam, WorkParams workparam, InspectResultData ResultData)
+        public StepHandlerBase(AiCControlLibrary.SerialCommunication.Control.CommunicationManager aic, ARMLibrary.SerialCommunication.Control.CommunicationManager arm, SystemParams systemparam, WorkParams workparam, InspectResultData ResultData, RobotInformation robotinfo)
         {
             mMotionDrvCtrl = aic;
             mRemoteIOCtrl = arm;
             mWorkParam = workparam;
+            mRobotInformation = robotinfo;
             mFirstLedSpot = new Blob();
             mFinalLedSpot = new Blob();
             mInspectResultData = ResultData;
             bCalibrationActive = systemparam._calibrationParams._CoordinateCalibrationActive;
             _ImageResolution_H = systemparam._cameraParams.HResolution;
             _ImageResolution_V = systemparam._cameraParams.VResolution;
-            fOnePixelResolution = systemparam._cameraParams.OnePixelResolution;
+            fOnePixelResolution = systemparam._cameraParams.OnePixelResolution;            
         }        
         protected bool IsEssentialInstanceSetted
         {
