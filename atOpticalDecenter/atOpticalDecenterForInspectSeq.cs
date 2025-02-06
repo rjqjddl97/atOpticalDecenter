@@ -75,7 +75,7 @@ namespace atOpticalDecenter
         }
         public void UpdateRobotInfomation(RobotInformation update)
         {
-            //mStepBase.UpdatePLCInfomation(update);
+            mStepBase.UpdateRobotInfomation(update);
         }
         private void InitStepBase()
         {
@@ -189,7 +189,7 @@ namespace atOpticalDecenter
 
                         if (mInspectStep == InspectionStepType.Idle)
                         {
-                            _backgroundWorkerPhotoInspection.ReportProgress(RunningIndex, new WorkingStateInfo()
+                            _backgroundWorkerOpticalDecenterInspection.ReportProgress(RunningIndex, new WorkingStateInfo()
                             {
                                 WorkingStatus = WorkingStateInfo.WorkingType.Checking
                             });
@@ -198,7 +198,7 @@ namespace atOpticalDecenter
                         {
                             if (RunningIndex < mPhotoInspectionList.Count)
                             {
-                                _backgroundWorkerPhotoInspection.ReportProgress(RunningIndex, new WorkingStateInfo()
+                                _backgroundWorkerOpticalDecenterInspection.ReportProgress(RunningIndex, new WorkingStateInfo()
                                 {
                                     WorkingStatus = WorkingStateInfo.WorkingType.CorrectionAndInspection,
                                     CurrentStep = RunningIndex,
@@ -210,7 +210,7 @@ namespace atOpticalDecenter
                         }
                         else if (mInspectStep == InspectionStepType.FinishedInspection)
                         {
-                            _backgroundWorkerPhotoInspection.ReportProgress(RunningIndex, new WorkingStateInfo()
+                            _backgroundWorkerOpticalDecenterInspection.ReportProgress(RunningIndex, new WorkingStateInfo()
                             {
                                 WorkingStatus = WorkingStateInfo.WorkingType.CorrectionAndInspection,
                                 CurrentStep = mPhotoInspectionList.Count,
@@ -222,7 +222,7 @@ namespace atOpticalDecenter
                         }
                         else if (mInspectStep == InspectionStepType.ErrorOccurred)
                         {
-                            _backgroundWorkerPhotoInspection.ReportProgress(RunningIndex, new WorkingStateInfo()
+                            _backgroundWorkerOpticalDecenterInspection.ReportProgress(RunningIndex, new WorkingStateInfo()
                             {
                                 WorkingStatus = WorkingStateInfo.WorkingType.Error,
                                 CurrentStep = RunningIndex,

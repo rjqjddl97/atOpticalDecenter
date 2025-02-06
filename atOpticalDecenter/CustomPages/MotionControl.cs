@@ -66,7 +66,7 @@ namespace CustomPages
         public byte _CmdID = 1;
         public bool _IsInitialDrive = false;
 
-        public event Action<AiCData> MotionInfomationUpdatedEvent;
+        public event Action<RecipeManager.RobotInformation> RobotInfomationUpdatedEvent;
 
         RecipeManager.CalibrationParams CalibrationParam = new RecipeManager.CalibrationParams();
         RecipeManager.RobotInformation _mRobotInfomation = new RecipeManager.RobotInformation();
@@ -124,7 +124,7 @@ namespace CustomPages
             textEditSendPacketData.Enabled = false;
             SendPacketDataButton.Enabled = false;
             memoEditCommunicationLogmessage.Enabled = false;
-            UpdateTimer.Interval = 300;
+            UpdateTimer.Interval = 100;
             UpdateTimer.Elapsed += new ElapsedEventHandler(UpdateMotionData);
         }
         public void SetCommunicateManager(ref CommunicationManager manager)
@@ -294,24 +294,26 @@ namespace CustomPages
         {
             _mAiCData._mAiCMotionDatas = update;
             
-            //SetMotionStatus(_mAiCData._mAiCMotionDatas);
+            SetMotionStatus(_mAiCData._mAiCMotionDatas);
+            //RobotInfomationUpdatedEvent?.Invoke(_mRobotInfomation);
         }
         private void UpdateMotionData(object sender, ElapsedEventArgs e)
         {
-            if (_mAiCCommunicationManager.IsOpen())
-            {                
-                if (!_IsInitialDrive)
-                {
-                    byte[] data = new byte[100];
-                    for (int i = 0; i < _mAiCCommunicationManager.mDrvCtrl.DeviceIDCount; i++)
-                    {
-                        data = _mAiCCommunicationManager.mDrvCtrl.DriveInitialSetting((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[i], 10, 10000, 100, 100);
-                        _mAiCCommunicationManager.SendData(data);
-                    }
-                    _IsInitialDrive = true;
-                }                
-            }
-            SetMotionStatus(_mAiCData._mAiCMotionDatas);
+            //if (_mAiCCommunicationManager.IsOpen())
+            //{                
+            //    if (!_IsInitialDrive)
+            //    {
+            //        byte[] data = new byte[100];
+            //        for (int i = 0; i < _mAiCCommunicationManager.mDrvCtrl.DeviceIDCount; i++)
+            //        {
+            //            data = _mAiCCommunicationManager.mDrvCtrl.DriveInitialSetting((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[i], 10, 10000, 100, 100);
+            //            _mAiCCommunicationManager.SendData(data);
+            //        }
+            //        _IsInitialDrive = true;
+            //    }                
+            //}
+            //SetMotionStatus(_mAiCData._mAiCMotionDatas);
+            RobotInfomationUpdatedEvent?.Invoke(_mRobotInfomation); 
         }
         public void ShowStatus(DevExpress.XtraEditors.LabelControl label, bool status)
         {
@@ -657,7 +659,8 @@ namespace CustomPages
                         _mRobotInfomation.PositionY = Convert.ToDouble(textEditPresentPosY.Text);
                         _mRobotInfomation.PositionZ = Convert.ToDouble(textEditPresentPosZ.Text);
 
-                        if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B4) && Convert.ToBoolean(_mAiCData.OutputStaus[1].B4) && Convert.ToBoolean(_mAiCData.OutputStaus[2].B4))
+                        //if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B4) && Convert.ToBoolean(_mAiCData.OutputStaus[1].B4) && Convert.ToBoolean(_mAiCData.OutputStaus[2].B4))
+                        if ( Convert.ToBoolean(_mAiCData.OutputStaus[0].B4) )
                         {
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.ServoOn, true);
                             _isRobotEnable = true;
@@ -668,7 +671,8 @@ namespace CustomPages
                             _isRobotEnable = false;
                         }
 
-                        if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B1) && Convert.ToBoolean(_mAiCData.OutputStaus[1].B1) && Convert.ToBoolean(_mAiCData.OutputStaus[2].B1))                        
+                        //if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B1) && Convert.ToBoolean(_mAiCData.OutputStaus[1].B1) && Convert.ToBoolean(_mAiCData.OutputStaus[2].B1))                        
+                        if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B1))
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.Inposition, true);                        
                         else
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.Inposition, false);
@@ -778,6 +782,7 @@ namespace CustomPages
                 ShowStatus(labelControlOutput1_3, Convert.ToBoolean(_mAiCData.OutputStaus[0].B2));
                 ShowStatus(labelControlOutput1_4, Convert.ToBoolean(_mAiCData.OutputStaus[0].B3));
                 ShowStatus(labelControlOutput1_5, Convert.ToBoolean(_mAiCData.OutputStaus[0].B4));              // Servo On
+                ShowStatus(labelControlOutput1_6, Convert.ToBoolean(_mRobotInfomation.GetStatus(RecipeManager.RobotInformation.RobotStatus.Inposition)));              // Servo On
             }
             else if (AxisNum == 2)
             {

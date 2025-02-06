@@ -158,9 +158,9 @@
             this.layoutControl19 = new DevExpress.XtraLayout.LayoutControl();
             this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl24 = new DevExpress.XtraLayout.LayoutControl();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlOutput1_8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlOutput1_7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlOutput1_6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControlOutput1_5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControlOutput1_4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControlOutput1_3 = new DevExpress.XtraEditors.LabelControl();
@@ -2499,9 +2499,9 @@
             // 
             // layoutControl24
             // 
-            this.layoutControl24.Controls.Add(this.labelControl15);
-            this.layoutControl24.Controls.Add(this.labelControl14);
-            this.layoutControl24.Controls.Add(this.labelControl13);
+            this.layoutControl24.Controls.Add(this.labelControlOutput1_8);
+            this.layoutControl24.Controls.Add(this.labelControlOutput1_7);
+            this.layoutControl24.Controls.Add(this.labelControlOutput1_6);
             this.layoutControl24.Controls.Add(this.labelControlOutput1_5);
             this.layoutControl24.Controls.Add(this.labelControlOutput1_4);
             this.layoutControl24.Controls.Add(this.labelControlOutput1_3);
@@ -2544,32 +2544,32 @@
             this.layoutControl24.TabIndex = 0;
             this.layoutControl24.Text = "layoutControl24";
             // 
-            // labelControl15
+            // labelControlOutput1_8
             // 
-            this.labelControl15.Location = new System.Drawing.Point(344, 150);
-            this.labelControl15.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(111, 14);
-            this.labelControl15.StyleController = this.layoutControl24;
-            this.labelControl15.TabIndex = 39;
+            this.labelControlOutput1_8.Location = new System.Drawing.Point(344, 150);
+            this.labelControlOutput1_8.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput1_8.Name = "labelControlOutput1_8";
+            this.labelControlOutput1_8.Size = new System.Drawing.Size(111, 14);
+            this.labelControlOutput1_8.StyleController = this.layoutControl24;
+            this.labelControlOutput1_8.TabIndex = 39;
             // 
-            // labelControl14
+            // labelControlOutput1_7
             // 
-            this.labelControl14.Location = new System.Drawing.Point(231, 150);
-            this.labelControl14.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(109, 14);
-            this.labelControl14.StyleController = this.layoutControl24;
-            this.labelControl14.TabIndex = 38;
+            this.labelControlOutput1_7.Location = new System.Drawing.Point(231, 150);
+            this.labelControlOutput1_7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput1_7.Name = "labelControlOutput1_7";
+            this.labelControlOutput1_7.Size = new System.Drawing.Size(109, 14);
+            this.labelControlOutput1_7.StyleController = this.layoutControl24;
+            this.labelControlOutput1_7.TabIndex = 38;
             // 
-            // labelControl13
+            // labelControlOutput1_6
             // 
-            this.labelControl13.Location = new System.Drawing.Point(118, 150);
-            this.labelControl13.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(109, 14);
-            this.labelControl13.StyleController = this.layoutControl24;
-            this.labelControl13.TabIndex = 37;
+            this.labelControlOutput1_6.Location = new System.Drawing.Point(118, 150);
+            this.labelControlOutput1_6.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput1_6.Name = "labelControlOutput1_6";
+            this.labelControlOutput1_6.Size = new System.Drawing.Size(109, 14);
+            this.labelControlOutput1_6.StyleController = this.layoutControl24;
+            this.labelControlOutput1_6.TabIndex = 37;
             // 
             // labelControlOutput1_5
             // 
@@ -3444,7 +3444,7 @@
             // 
             // layoutControlItem211
             // 
-            this.layoutControlItem211.Control = this.labelControl13;
+            this.layoutControlItem211.Control = this.labelControlOutput1_6;
             this.layoutControlItem211.Location = new System.Drawing.Point(113, 144);
             this.layoutControlItem211.MaxSize = new System.Drawing.Size(113, 55);
             this.layoutControlItem211.MinSize = new System.Drawing.Size(80, 18);
@@ -3456,7 +3456,7 @@
             // 
             // layoutControlItem212
             // 
-            this.layoutControlItem212.Control = this.labelControl14;
+            this.layoutControlItem212.Control = this.labelControlOutput1_7;
             this.layoutControlItem212.Location = new System.Drawing.Point(226, 144);
             this.layoutControlItem212.MaxSize = new System.Drawing.Size(113, 55);
             this.layoutControlItem212.MinSize = new System.Drawing.Size(80, 18);
@@ -3468,7 +3468,7 @@
             // 
             // layoutControlItem213
             // 
-            this.layoutControlItem213.Control = this.labelControl15;
+            this.layoutControlItem213.Control = this.labelControlOutput1_8;
             this.layoutControlItem213.Location = new System.Drawing.Point(339, 144);
             this.layoutControlItem213.MaxSize = new System.Drawing.Size(115, 55);
             this.layoutControlItem213.MinSize = new System.Drawing.Size(80, 18);
@@ -8828,9 +8828,9 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem177;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem165;
         private DevExpress.XtraLayout.LayoutControl layoutControl24;
-        private DevExpress.XtraEditors.LabelControl labelControl15;
-        private DevExpress.XtraEditors.LabelControl labelControl14;
-        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.LabelControl labelControlOutput1_8;
+        private DevExpress.XtraEditors.LabelControl labelControlOutput1_7;
+        private DevExpress.XtraEditors.LabelControl labelControlOutput1_6;
         private DevExpress.XtraEditors.LabelControl labelControlOutput1_5;
         private DevExpress.XtraEditors.LabelControl labelControlOutput1_4;
         private DevExpress.XtraEditors.LabelControl labelControlOutput1_3;

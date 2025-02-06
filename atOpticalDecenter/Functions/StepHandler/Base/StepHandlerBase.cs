@@ -39,7 +39,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public const int D_PLC_BUTTON_CONTROL = 3000;
         public const int D_PLC_WAIT_INIT_INSPECTION = 2000 + D_MARGIN;
         public const int D_PLC_MOTION_COMMAND_TIMEOUT = 60000;
-        public const int D_PLC_MOTION_READYSIGNAL_WAIT_TIME = 3000;
+        public const int D_PLC_MOTION_READYSIGNAL_WAIT_TIME = 1000;
 
         public const int D_PERIPHERAL_SETTING_TIME = 2500;
         public const int D_WAIT_PUT_POWERSOURCE_STABLE_STATUS = 1800;
@@ -93,6 +93,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public static bool bCalibrationActive { get; set; } = false;
         public static RecipeManager.CalibrationParams mCalibrationParam = new RecipeManager.CalibrationParams();
         public static RecipeManager.RobotInformation mRobotInformation { get; set; } = null;
+        public static RecipeManager.SystemParams mSystemParam { get; set; } = null;
 
         public static List<InspectionPosition> InspectPos = new List<InspectionPosition>();
         public static InspectResultData mInspectResultData = null;
@@ -123,6 +124,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public static int _ImageResolution_H = 0;
         public static int _ImageResolution_V = 0;
         public static double CmdFilterAngleIndex = 0;
+        public static long _DelayTimerCounter = 0;
+        public static long _CameraGrabWaitTime = 0;
 
         public event Action<InspectResultData> PhotoInspectedDataUpdate;
         public InspectResultData mInspectResultUpdate = new InspectResultData();
@@ -220,6 +223,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             mMotionDrvCtrl = aic;
             mRemoteIOCtrl = arm;
             mWorkParam = workparam;
+            mSystemParam = systemparam;
             mRobotInformation = robotinfo;
             mFirstLedSpot = new Blob();
             mFinalLedSpot = new Blob();
@@ -227,7 +231,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             bCalibrationActive = systemparam._calibrationParams._CoordinateCalibrationActive;
             _ImageResolution_H = systemparam._cameraParams.HResolution;
             _ImageResolution_V = systemparam._cameraParams.VResolution;
-            fOnePixelResolution = systemparam._cameraParams.OnePixelResolution;            
+            fOnePixelResolution = systemparam._cameraParams.OnePixelResolution;
+            _DelayTimerCounter = D_PLC_MOTION_READYSIGNAL_WAIT_TIME;
+            _CameraGrabWaitTime = D_WAIT_CAMERA_GRAB_DELAY;
         }        
         protected bool IsEssentialInstanceSetted
         {
@@ -242,10 +248,10 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                 return true;
             }
         }
-        //public void UpdatePLCInfomation(CodesysCommunication.Data.UserCodesysData.RobotInfomation InfoData)
-        //{
-        //    mPLCInfomationData = InfoData;
-        //}
+        public void UpdateRobotInfomation(RecipeManager.RobotInformation InfoData)
+        {
+            mRobotInformation = InfoData;
+        }
         public void OnCameraImageGrab(Image image)
         {
             try

@@ -87,7 +87,7 @@ namespace atOpticalDecenter
         RectangleF _frtArearect = new RectangleF();
         ManualResetEvent _waitHandle = new ManualResetEvent(false);
 
-        BackgroundWorker _backgroundWorkerPhotoInspection = new BackgroundWorker();
+        BackgroundWorker _backgroundWorkerOpticalDecenterInspection = new BackgroundWorker();
 
         string Cameraname;
 
@@ -274,11 +274,11 @@ namespace atOpticalDecenter
         }
         private void InitializedBackGroundWorkers()
         {
-            _backgroundWorkerPhotoInspection.WorkerReportsProgress = true;
-            _backgroundWorkerPhotoInspection.WorkerSupportsCancellation = true;
-            _backgroundWorkerPhotoInspection.DoWork += new DoWorkEventHandler(backgroundWorkerInspection_DoWork);
-            _backgroundWorkerPhotoInspection.ProgressChanged += new ProgressChangedEventHandler(backgroundWorkerInspection_ProgressChanged);
-            _backgroundWorkerPhotoInspection.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerInspection_RunWorkerCompleted);            
+            _backgroundWorkerOpticalDecenterInspection.WorkerReportsProgress = true;
+            _backgroundWorkerOpticalDecenterInspection.WorkerSupportsCancellation = true;
+            _backgroundWorkerOpticalDecenterInspection.DoWork += new DoWorkEventHandler(backgroundWorkerInspection_DoWork);
+            _backgroundWorkerOpticalDecenterInspection.ProgressChanged += new ProgressChangedEventHandler(backgroundWorkerInspection_ProgressChanged);
+            _backgroundWorkerOpticalDecenterInspection.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerInspection_RunWorkerCompleted);            
         }
         private void LogUpdated(object obj, LogEventArgs e)
         {
@@ -518,6 +518,43 @@ namespace atOpticalDecenter
             // connect command
             return true;
         }
+        private bool AiCModuleConnect(string sComport = null)
+        {
+            if (!_mMotionControlCommManager.IsOpen())
+            {
+                AiCControlLibrary.SerialCommunication.Control.SerialPortSetData setPort = new AiCControlLibrary.SerialCommunication.Control.SerialPortSetData();
+                setPort.PortName = _systemParams._AiCParams.SerialParameters.PortName;
+                setPort.BaudRate = (int)_systemParams._AiCParams.SerialParameters.BaudRates;
+                setPort.DataBits = (int)_systemParams._AiCParams.SerialParameters.DataBits;
+                setPort.StopBits = System.IO.Ports.StopBits.One; //(StopBits)_systemParams._AiCParams.SerialParameters.StopBits;
+                setPort.Parity = System.IO.Ports.Parity.None;
+
+                MotionControl.ConnectionOpen(setPort);
+
+                if (_mMotionControlCommManager.IsOpen())
+                {
+                    MotionControl.RobotInfomationUpdatedEvent += UpdateRobotInfomation;
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 성공."));
+                }
+                else
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 실패."));
+            }
+            else
+            {
+                MotionControl.ConnectionClosed();
+                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 해제 성공."));
+            }
+            return _mMotionControlCommManager.IsOpen();
+        }
+        private bool AiCModuleDisConnect()
+        {
+            if (_mMotionControlCommManager.IsOpen())
+            {
+                MotionControl.ConnectionClosed();
+                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 해제 성공."));
+            }
+            return _mMotionControlCommManager.IsOpen();
+        }
         private bool ARMRemoteIOModuleConnect(string sComport = null)
         {
             if (!_mRemteIOCommManager.IsOpen())
@@ -549,8 +586,7 @@ namespace atOpticalDecenter
             {                
                 _mRemteIOCommManager.Disconnect();
             }
-            return _mRemteIOCommManager.IsOpen();
-            return true;
+            return _mRemteIOCommManager.IsOpen();            
         }
         public void InitializePanelMeterModule()
         {            
@@ -953,9 +989,12 @@ namespace atOpticalDecenter
                         setPort.Parity = System.IO.Ports.Parity.None;
 
                         MotionControl.ConnectionOpen(setPort);
-                        
+
                         if (_mMotionControlCommManager.IsOpen())
+                        {
+                            MotionControl.RobotInfomationUpdatedEvent += UpdateRobotInfomation;
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 성공."));
+                        }
                         else
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 실패."));
                     }
@@ -988,10 +1027,13 @@ namespace atOpticalDecenter
                         setPort.StopBits = System.IO.Ports.StopBits.One; //(StopBits)_systemParams._AiCParams.SerialParameters.StopBits;
                         setPort.Parity = System.IO.Ports.Parity.None;
 
-                        MotionControl.ConnectionOpen(setPort);                        
+                        MotionControl.ConnectionOpen(setPort);
 
                         if (_mMotionControlCommManager.IsOpen())
+                        {
+                            MotionControl.RobotInfomationUpdatedEvent += UpdateRobotInfomation;
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 성공."));
+                        }
                         else
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 실패."));
                     }
@@ -2648,7 +2690,7 @@ namespace atOpticalDecenter
                 InspectionRecipeParameterSetup();
 
                 CheckTackTime.Start();
-                _backgroundWorkerPhotoInspection.RunWorkerAsync();
+                _backgroundWorkerOpticalDecenterInspection.RunWorkerAsync();
                 
                 mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 실행");
             }
@@ -2658,7 +2700,7 @@ namespace atOpticalDecenter
                 _isInspecting = false;
                 _InspectionWorking = false;
                 mInspectStep = InspectionStepType.Idle;
-                _backgroundWorkerPhotoInspection.CancelAsync();
+                _backgroundWorkerOpticalDecenterInspection.CancelAsync();
                 UpdateProcessTime(false);
                 mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 강제 종료");
             }
@@ -2737,7 +2779,7 @@ namespace atOpticalDecenter
                 _InspectionWorking = true;
                 mInspectStep = InspectionStepType.CheckWaitRobotReady;
                 CheckTackTime.Start();
-                _backgroundWorkerPhotoInspection.RunWorkerAsync();
+                _backgroundWorkerOpticalDecenterInspection.RunWorkerAsync();
 
                 mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 실행");
             }
