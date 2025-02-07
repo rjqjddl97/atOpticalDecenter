@@ -24,6 +24,9 @@ namespace CustomPages
         private CommunicationManager _mARMCommunicationManager = null;
         private ARMData _mARMData;
 
+        RecipeManager.RobotInformation _mRobotInfomation = new RecipeManager.RobotInformation();
+        public event Action<RecipeManager.RobotInformation> RobotInfomationUpdatedEvent;
+
         public bool IsOpenStatus = false;
         public string _SerialPortName = "COM5";
         public int _iBaudrate = 6;
@@ -73,7 +76,7 @@ namespace CustomPages
             textEditSendPacketData.Enabled = false;
             SendPacketDataButton.Enabled = false;
             memoEditCommunicationLogmessage.Enabled = false;
-            UpdateTimer.Interval = 300;
+            UpdateTimer.Interval = 100;
             UpdateTimer.Elapsed += new ElapsedEventHandler(UpdateRemoteIOData);
         }
         public void SetCommunicateManager(ref CommunicationManager manager)
@@ -500,12 +503,22 @@ namespace CustomPages
         {
             if (_mARMCommunicationManager.IsOpen())
             {
-                SetIOStatus( _mARMData._mRemoteIODatas);           
+                //SetIOStatus( _mARMData._mRemoteIODatas);     
+                RobotInfomationUpdatedEvent?.Invoke(_mRobotInfomation);
             }
         }
         public void SetIOStatus(ARMData.RemoteIODatas update)
         {
             ARMData.IO_16Bit InData = new ARMData.IO_16Bit();
+            ulong inputs = 0;
+            inputs = Convert.ToUInt16(update._CurrentInputs[1]);
+            inputs = (inputs << 16) | (Convert.ToUInt16(update._CurrentInputs[0]));
+            _mRobotInfomation.mInputData.Bit64 = inputs;
+
+            inputs = Convert.ToUInt16(update._CurrentOutputs[1]);
+            inputs = (inputs << 16) | (Convert.ToUInt16(update._CurrentOutputs[0]));
+            _mRobotInfomation.mOutputData.Bit64 = inputs;
+
             InData.Bit16 = Convert.ToUInt16(update._CurrentInputs[0]);
             ShowStatus(labelControlDIn1, Convert.ToBoolean(InData.B0));
             ShowStatus(labelControlDIn2, Convert.ToBoolean(InData.B1));

@@ -75,8 +75,21 @@ namespace atOpticalDecenter
         }
         public void UpdateRobotInfomation(RobotInformation update)
         {
+            mRobotInformation.PositionX = update.PositionX;
+            mRobotInformation.PositionY = update.PositionY;
+            mRobotInformation.PositionZ = update.PositionZ;
+            mRobotInformation.mStatus = update.mStatus;
+            mRobotInformation.mError = update.mError;
+
             mStepBase.UpdateRobotInfomation(update);
         }
+        public void UpdateRobotIOInfomation(RobotInformation update)
+        {
+            mRobotInformation.mInputData = update.mInputData;
+            mRobotInformation.mOutputData = update.mOutputData;
+            mStepBase.UpdateRobotInfomation(mRobotInformation);
+        }
+        
         private void InitStepBase()
         {
             mResultData.ImageResolution = (double)_systemParams._cameraParams.OnePixelResolution;
@@ -228,9 +241,9 @@ namespace atOpticalDecenter
                                 CurrentStep = RunningIndex,
                             });
                         }
-                        System.Threading.Thread.Sleep(479);
+                        System.Threading.Thread.Sleep(1000);
                         //11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97,
-                        //101, 103, 107, 109, 113, 127, 131, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199
+                        //101, 103, 107, 109, 113, 127, 131, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199,479
                     }
                 }
             }

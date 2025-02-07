@@ -670,6 +670,11 @@ namespace CustomPages
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.ServoOn, false);
                             _isRobotEnable = false;
                         }
+                        //if ( (Convert.ToDouble(textEditTargetVel1) != 0) && (Convert.ToDouble(textEditTargetVel2) != 0) && (Convert.ToDouble(textEditTargetVel3) != 0) )
+                        if ( (Convert.ToDouble(textEditTargetVel1.Text) != 0) )
+                            _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.Moving, true);
+                        else
+                            _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.Moving, false);
 
                         //if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B1) && Convert.ToBoolean(_mAiCData.OutputStaus[1].B1) && Convert.ToBoolean(_mAiCData.OutputStaus[2].B1))                        
                         if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B1))
@@ -782,7 +787,7 @@ namespace CustomPages
                 ShowStatus(labelControlOutput1_3, Convert.ToBoolean(_mAiCData.OutputStaus[0].B2));
                 ShowStatus(labelControlOutput1_4, Convert.ToBoolean(_mAiCData.OutputStaus[0].B3));
                 ShowStatus(labelControlOutput1_5, Convert.ToBoolean(_mAiCData.OutputStaus[0].B4));              // Servo On
-                ShowStatus(labelControlOutput1_6, Convert.ToBoolean(_mRobotInfomation.GetStatus(RecipeManager.RobotInformation.RobotStatus.Inposition)));              // Servo On
+                ShowStatus(labelControlOutput1_6, Convert.ToBoolean(_mRobotInfomation.GetStatus(RecipeManager.RobotInformation.RobotStatus.Moving)));              // Servo On
             }
             else if (AxisNum == 2)
             {

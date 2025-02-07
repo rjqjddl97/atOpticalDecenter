@@ -569,7 +569,10 @@ namespace atOpticalDecenter
                 RemoteIOControl.ConnectionOpen(setPort);
 
                 if (_mRemteIOCommManager.IsOpen())
+                {
+                    RemoteIOControl.RobotInfomationUpdatedEvent += UpdateRobotIOInfomation;
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("ARM 통신 연결 성공."));
+                }
                 else
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("ARM 통신 연결 실패."));
             }
@@ -1011,7 +1014,10 @@ namespace atOpticalDecenter
                         RemoteIOControl.ConnectionOpen(setPort);
 
                         if (_mRemteIOCommManager.IsOpen())
+                        {
+                            RemoteIOControl.RobotInfomationUpdatedEvent += UpdateRobotIOInfomation;
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("ARM 통신 연결 성공."));
+                        }
                         else
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("ARM 통신 연결 실패."));
                     }
@@ -1058,7 +1064,10 @@ namespace atOpticalDecenter
                         RemoteIOControl.ConnectionOpen(setPort);
 
                         if (_mRemteIOCommManager.IsOpen())
+                        {
+                            RemoteIOControl.RobotInfomationUpdatedEvent += UpdateRobotIOInfomation;
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("ARM 통신 연결 성공."));
+                        }
                         else
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("ARM 통신 연결 실패."));
                     }

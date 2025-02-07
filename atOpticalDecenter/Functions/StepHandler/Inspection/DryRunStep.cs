@@ -54,12 +54,12 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                             if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                             {
                                 byte[] data = new byte[100];
-                                data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[0], Convert.ToInt32(10 * mSystemParam._motionParams.MM2PulseRatioX));
+                                data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[0], Convert.ToInt32(5 * mSystemParam._motionParams.MM2PulseRatioX));
                                 mMotionDrvCtrl.SendData(data);
                                 data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
                                 mMotionDrvCtrl.SendData(data);
-                                mStep = WorkingStep.MoveInspectPos;
-                                mRobotInformation.mStatus = 0x00000002;
+                                mTimeChecker.SetTime(_DelayTimerCounter);
+                                mStep = WorkingStep.CheckInposition;                                
                             }
                             else
                                 mStep = WorkingStep.ErrorOccured;
@@ -72,13 +72,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.MoveInspectPos:
-                    //if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
-                    {
-                        //byte[] data = new byte[8];
-                        //data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
-                        //mMotionDrvCtrl.SendData(data);
-                        mTimeChecker.SetTime(_DelayTimerCounter);
-                        mStep = WorkingStep.CheckInposition;
+                    if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
+                    {                        
                         /*
                         if (mWorkParam.InspectionPositions.Count > 0)
                         {
@@ -148,12 +143,12 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
                         byte[] data = new byte[100];
-                        data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[0], Convert.ToInt32(50 * mSystemParam._motionParams.MM2PulseRatioX));
+                        data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[0], Convert.ToInt32(15 * mSystemParam._motionParams.MM2PulseRatioX));
                         mMotionDrvCtrl.SendData(data);
                         data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
                         mMotionDrvCtrl.SendData(data);
-                        mStep = WorkingStep.MoveInspectPos2;
-                        mRobotInformation.mStatus = 0x00000002;
+                        mTimeChecker.SetTime(_DelayTimerCounter);
+                        mStep = WorkingStep.CheckInposition2;                        
                     }
 
                     //TakePicture();                                        
@@ -189,13 +184,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     */                     
                     break;
                 case WorkingStep.MoveInspectPos2:
-                    //if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
+                    if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
-                        //byte[] data = new byte[8];
-                        //data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
-                        //mMotionDrvCtrl.SendData(data);
-                        mTimeChecker.SetTime(_DelayTimerCounter);
-                        mStep = WorkingStep.CheckInposition2;
                         /*
                         if (mWorkParam.InspectionPositions.Count > 0)
                         {
@@ -269,8 +259,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         mMotionDrvCtrl.SendData(data);
                         data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
                         mMotionDrvCtrl.SendData(data);
-                        mStep = WorkingStep.CalculateData;
-                        mRobotInformation.mStatus = 0x00000002;
+                        mTimeChecker.SetTime(_DelayTimerCounter);
+                        mStep = WorkingStep.CheckInpositionFilter;                        
                     }
                     //TakePicture();                    
                     //mTimeChecker.SetTime(D_WAIT_CAMERA_GRAB_DELAY);
@@ -311,12 +301,12 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     break;
                 case WorkingStep.MoveFilterPos:
 
-                    //if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
+                    if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
                         //byte[] data = new byte[8];
                         //data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
                         //mMotionDrvCtrl.SendData(data);
-                        mTimeChecker.SetTime(_DelayTimerCounter);
+                        
                         mStep = WorkingStep.CheckInpositionFilter;
                     }
 
@@ -354,22 +344,14 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.CheckInpositionFilter:
-
-                    if (mTimeChecker.IsTimeOver())
+                    if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
                         mStep = WorkingStep.InspectResult;
                     }
-                    //if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
-                    //{
-                    //    mStep = WorkingStep.InspectResult;
-                    //}
                     break;
                 case WorkingStep.InspectResult:
-                    if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
-                    {
-                        mInspectResultData.bTotalResult = true;
-                        mStep = WorkingStep.Idle;
-                    }
+                    mInspectResultData.bTotalResult = true;
+                    mStep = WorkingStep.Idle;                    
                     break;
                 case WorkingStep.ErrorOccured:
                     break;
