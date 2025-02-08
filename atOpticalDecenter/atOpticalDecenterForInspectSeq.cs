@@ -81,13 +81,13 @@ namespace atOpticalDecenter
             mRobotInformation.mStatus = update.mStatus;
             mRobotInformation.mError = update.mError;
 
-            mStepBase.UpdateRobotInfomation(update);
+            mStepBase.UpdateRobotInfomation(mRobotInformation);
         }
         public void UpdateRobotIOInfomation(RobotInformation update)
         {
             mRobotInformation.mInputData = update.mInputData;
             mRobotInformation.mOutputData = update.mOutputData;
-            mStepBase.UpdateRobotInfomation(mRobotInformation);
+            mStepBase.UpdateRobotIOInfomation(mRobotInformation);
         }
         
         private void InitStepBase()

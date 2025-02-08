@@ -39,6 +39,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public const int D_PLC_BUTTON_CONTROL = 3000;
         public const int D_PLC_WAIT_INIT_INSPECTION = 2000 + D_MARGIN;
         public const int D_PLC_MOTION_COMMAND_TIMEOUT = 60000;
+        public const int D_MOTION_COMMAND_RESPONSE_WAIT_TIME = 1000;
         public const int D_PLC_MOTION_READYSIGNAL_WAIT_TIME = 1000;
 
         public const int D_PERIPHERAL_SETTING_TIME = 2500;
@@ -232,7 +233,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             _ImageResolution_H = systemparam._cameraParams.HResolution;
             _ImageResolution_V = systemparam._cameraParams.VResolution;
             fOnePixelResolution = systemparam._cameraParams.OnePixelResolution;
-            _DelayTimerCounter = D_PLC_MOTION_READYSIGNAL_WAIT_TIME;
+            _DelayTimerCounter = D_MOTION_COMMAND_RESPONSE_WAIT_TIME;
             _CameraGrabWaitTime = D_WAIT_CAMERA_GRAB_DELAY;
         }        
         protected bool IsEssentialInstanceSetted
@@ -250,7 +251,17 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         }
         public void UpdateRobotInfomation(RecipeManager.RobotInformation InfoData)
         {
-            mRobotInformation = InfoData;
+            mRobotInformation.PositionX = InfoData.PositionX;
+            mRobotInformation.PositionY = InfoData.PositionY;
+            mRobotInformation.PositionZ = InfoData.PositionZ;
+            mRobotInformation.mStatus = InfoData.mStatus;
+            mRobotInformation.mError = InfoData.mError;            
+
+        }
+        public void UpdateRobotIOInfomation(RecipeManager.RobotInformation InfoData)
+        {
+            mRobotInformation.mInputData = InfoData.mInputData;
+            mRobotInformation.mOutputData = InfoData.mOutputData;
         }
         public void OnCameraImageGrab(Image image)
         {

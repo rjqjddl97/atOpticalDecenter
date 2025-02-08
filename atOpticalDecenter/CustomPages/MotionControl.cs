@@ -299,19 +299,19 @@ namespace CustomPages
         }
         private void UpdateMotionData(object sender, ElapsedEventArgs e)
         {
-            //if (_mAiCCommunicationManager.IsOpen())
-            //{                
-            //    if (!_IsInitialDrive)
-            //    {
-            //        byte[] data = new byte[100];
-            //        for (int i = 0; i < _mAiCCommunicationManager.mDrvCtrl.DeviceIDCount; i++)
-            //        {
-            //            data = _mAiCCommunicationManager.mDrvCtrl.DriveInitialSetting((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[i], 10, 10000, 100, 100);
-            //            _mAiCCommunicationManager.SendData(data);
-            //        }
-            //        _IsInitialDrive = true;
-            //    }                
-            //}
+            if (_mAiCCommunicationManager.IsOpen())
+            {
+                if (!_IsInitialDrive)
+                {
+                    byte[] data = new byte[100];
+                    for (int i = 0; i < _mAiCCommunicationManager.mDrvCtrl.DeviceIDCount; i++)
+                    {
+                        data = _mAiCCommunicationManager.mDrvCtrl.DriveInitialSetting((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[i], 10, 10000, 50, 50);
+                        _mAiCCommunicationManager.SendData(data);
+                    }
+                    _IsInitialDrive = true;
+                }
+            }
             //SetMotionStatus(_mAiCData._mAiCMotionDatas);
             RobotInfomationUpdatedEvent?.Invoke(_mRobotInfomation); 
         }

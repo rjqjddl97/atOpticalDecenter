@@ -141,6 +141,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     break;
                 case WorkingStep.ExcuteCameraGrab:
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
+                    //if (mRobotInformation.mInputData.B6)
                     {
                         byte[] data = new byte[100];
                         data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[0], Convert.ToInt32(15 * mSystemParam._motionParams.MM2PulseRatioX));
@@ -148,7 +149,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
                         mMotionDrvCtrl.SendData(data);
                         mTimeChecker.SetTime(_DelayTimerCounter);
-                        mStep = WorkingStep.CheckInposition2;                        
+                        mStep = WorkingStep.WaitGrabImage;                        
                     }
 
                     //TakePicture();                                        
@@ -156,6 +157,10 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     //mStep = WorkingStep.WaitGrabImage;
                     break;
                 case WorkingStep.WaitGrabImage:
+                    if (mRobotInformation.mInputData.B6)
+                    {
+                        mStep = WorkingStep.ExcuteCameraGrab2;
+                    }
                     /*
                     if (mTimeChecker.IsTimeOver() || IsGrabbed)
                     {
@@ -253,6 +258,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     break;
                 case WorkingStep.ExcuteCameraGrab2:
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
+                    //if (mRobotInformation.mInputData.B6)
                     {
                         byte[] data = new byte[100];
                         data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[0], Convert.ToInt32(0 * mSystemParam._motionParams.MM2PulseRatioX));

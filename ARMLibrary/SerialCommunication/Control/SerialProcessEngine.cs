@@ -26,7 +26,7 @@ namespace ARMLibrary.SerialCommunication.Control
         };
         private Thread engine;
 
-        private const int EngineSleepTime = 250;
+        private const int EngineSleepTime = 100;
         private const int ReceiveBuffSize = 4096;
         private SerialEngineStep mSerialEngineStep;
         private List<byte[]> mContinuousCheckList = new List<byte[]>();
