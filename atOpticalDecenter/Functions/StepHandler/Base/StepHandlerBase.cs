@@ -52,10 +52,10 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
 
         public const int PLC_OUTPUT_SIGNAL_WAIT_TIME = 1000;        
                
-        public const int PHOTO_REVERSE_VOLTAGE_WAIT_TIME = 2000;        
-        public const int PHOTO_SENSOR_POWER_STABLE_TIME = 1000;
-        public const int PHOTO_SENSOR_OVERCURRENT_STABLE_TIME = 1000;
-        public const int PHOTO_SENSOR_RESPONSE_WAIT_TIMEOUT = 500;
+        public const int REVERSE_VOLTAGE_WAIT_TIME = 2000;        
+        public const int SENSOR_POWER_STABLE_TIME = 1000;
+        public const int SENSOR_OVERCURRENT_STABLE_TIME = 1000;
+        public const int SENSOR_RESPONSE_WAIT_TIMEOUT = 500;
 
         public const int LIGHT_ON_LOAD_VOLTAGE = 2;
         public const int DARK_ON_LOAD_VOLTAGE = 24;

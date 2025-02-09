@@ -159,6 +159,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                 case WorkingStep.WaitGrabImage:
                     if (mRobotInformation.mInputData.B6)
                     {
+                        byte[] data = new byte[8];
+                        data = mRemoteIOCtrl.mRemoteIOCtrl.Output1byteCommand(mRemoteIOCtrl.mRemoteIOCtrl.DrvID[0], ARMLibrary.SerialCommunication.Data.ARMData.OUTPUT_CONTROL_MAP.Output0, (ushort)0xff00);
+                        mRemoteIOCtrl.SendData(data);
                         mStep = WorkingStep.ExcuteCameraGrab2;
                     }
                     /*
@@ -352,6 +355,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                 case WorkingStep.CheckInpositionFilter:
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
+                        byte[] data = new byte[8];
+                        data = mRemoteIOCtrl.mRemoteIOCtrl.Output1byteCommand(mRemoteIOCtrl.mRemoteIOCtrl.DrvID[0], ARMLibrary.SerialCommunication.Data.ARMData.OUTPUT_CONTROL_MAP.Output0, (ushort)0x0000);
+                        mRemoteIOCtrl.SendData(data);
                         mStep = WorkingStep.InspectResult;
                     }
                     break;

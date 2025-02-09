@@ -6,23 +6,22 @@ using System.Threading.Tasks;
 using atOpticalDecenter.Functions.StepHandler.Base;
 using RecipeManager;
 
-
 namespace atOpticalDecenter.Functions.StepHandler.Inspection
 {
-    class Step2MovePostion1 : StepHandlerBase, IStepHandler
+    public class Step5MovePosition2 : StepHandlerBase, IStepHandler
     {
         private WorkingStep mStep = WorkingStep.Idle;
-        public Step2MovePostion1()
+        public Step5MovePosition2()
         {
             //Do some init here.
             //ErrorStepString = "Move Inpsect Position 1";
-            ErrorStepString = "1번째 검사 위치 이동";
+            ErrorStepString = "2번째 검사 위치 이동";
         }
         private enum WorkingStep
         {
             Idle,
             CheckStatus,
-            SetMoveTargetPosition,            
+            SetMoveTargetPosition,
             MoveInspectPosition,
             WaitDelayTimeCommand,
             WaitCheckInposition,
@@ -74,18 +73,18 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
                         if (mWorkParam.InspectionPositions.Count > 0)
-                        {
+                        {                            
                             for (int i = 0; i < mWorkParam.InspectionPositions.Count; i++)
                             {
-                                if (mWorkParam.InspectionPositions[i].ePositionType == RecipeManager.INSPECTION_POSITION_MODE.POSITION_BASE_MODE)
+                                if (mWorkParam.InspectionPositions[i].ePositionType == RecipeManager.INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE)
                                 {
                                     byte[] data = new byte[100];
 
                                     for (int j = 0; j < 3; j++)
                                     {
                                         if (j == 0)
-                                        {
-                                            data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[j], Convert.ToInt32((double)mWorkParam.InspectionPositions[i].PositionX * mSystemParam._motionParams.MM2PulseRatioX));
+                                        {                                            
+                                            data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[j], Convert.ToInt32((double)(mWorkParam.InspectionPositions[i].PositionX + mWorkParam._LEDInspectionCameraDistance) * mSystemParam._motionParams.MM2PulseRatioX));
                                         }
                                         else if (j == 1)
                                         {
@@ -127,7 +126,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         mStep = WorkingStep.Idle;
                     }
                     break;
-                default : break;
+                default: break;
             }
         }
         public void Init()

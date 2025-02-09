@@ -150,7 +150,13 @@
     <Compile Include="Functions\StepHandler\Inspection\InspectionStep1.cs" />
     <Compile Include="Functions\StepHandler\Inspection\InspectMaxDistanceStep.cs" />
     <Compile Include="Functions\StepHandler\Inspection\Step1JigCheck.cs" />
-    <Compile Include="Functions\StepHandler\Inspection\Step2MovePostion1.cs" />
+    <Compile Include="Functions\StepHandler\Inspection\Step3MovePostion1.cs" />
+    <Compile Include="Functions\StepHandler\Inspection\Step2SensorPowerOn.cs" />
+    <Compile Include="Functions\StepHandler\Inspection\Step4Spot1Measure.cs" />
+    <Compile Include="Functions\StepHandler\Inspection\Step5MovePosition2.cs" />
+    <Compile Include="Functions\StepHandler\Inspection\Step6Spot2Measure.cs" />
+    <Compile Include="Functions\StepHandler\Inspection\Step7SensorPowerOff.cs" />
+    <Compile Include="Functions\StepHandler\Inspection\Step8CalculateResult.cs" />
     <Compile Include="Functions\StepHandler\WorkingStateInfo.cs" />
     <Compile Include="Functions\Time\TimeChecker.cs" />
     <Compile Include="LoginForm.cs">

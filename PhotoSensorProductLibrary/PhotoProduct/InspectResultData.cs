@@ -46,6 +46,20 @@ namespace PhotoProduct
         public double fGaussianDistribution = 0;
         public double fAlbedo = 0;
 
+        public double fOpticalCenterPositionX = 0;
+        public double fOpticalCenterPositionY = 0;
+        public double fOpticalCenterPositionZ = 0;
+
+        public double fMeasureP1X = 0;
+        public double fMeasureP1Y = 0;
+        public double fMeasureP1Z = 0;
+
+        public double fMeasureP2X = 0;
+        public double fMeasureP2Y = 0;
+        public double fMeasureP2Z = 0;
+
+
+
         public double[] fOpticalAngle = new double[2];
         public double[] fOpticalSize = new double[2];
         public double[] fOpticalReducttionQuantity = new double[2];     // PD에 도달한 수광량

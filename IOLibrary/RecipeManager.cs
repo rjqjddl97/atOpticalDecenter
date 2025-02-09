@@ -57,9 +57,6 @@ namespace RecipeManager
             workParam._ProductOutputType = Convert.ToInt32(recipeData[WorkParamSections[1]]["ProductOutputType"]);            
             workParam._ProductDetectMerterial = Convert.ToInt32(recipeData[WorkParamSections[1]]["ProductDetecMerterial"]);
             workParam._ProductDistanceMargin = Convert.ToSingle(recipeData[WorkParamSections[1]]["ProductDistaneMargin"]);
-            workParam._ProductMaxDistanceProcessEnable = Convert.ToBoolean(recipeData[WorkParamSections[1]]["ProductMaxDistanceProcessEnable"]);
-            workParam._ProductOriginDistanceProcessEnable = Convert.ToBoolean(recipeData[WorkParamSections[1]]["ProductOriginDistanceProcessEnable"]);
-            workParam._ProductMinObjectDetectProcessEnable = Convert.ToBoolean(recipeData[WorkParamSections[1]]["ProductMinObjectDetectProcessEnable"]);
 
             workParam._LEDInspectionUseEnable = Convert.ToBoolean(recipeData[WorkParamSections[2]]["LEDInspectionUseEnable"]);
             workParam._LEDInspectionShortDistance= Convert.ToSingle(recipeData[WorkParamSections[2]]["LEDInspectionShortDistance"]);
@@ -117,9 +114,6 @@ namespace RecipeManager
             recipeData[WorkParamSections[1]].AddKey("ProductOutputType", workParam._ProductOutputType.ToString());
             recipeData[WorkParamSections[1]].AddKey("ProductDetecMerterial", workParam._ProductDetectMerterial.ToString());
             recipeData[WorkParamSections[1]].AddKey("ProductDistaneMargin", workParam._ProductDistanceMargin.ToString());
-            recipeData[WorkParamSections[1]].AddKey("ProductMaxDistanceProcessEnable", workParam._ProductMaxDistanceProcessEnable.ToString());
-            recipeData[WorkParamSections[1]].AddKey("ProductOriginDistanceProcessEnable", workParam._ProductOriginDistanceProcessEnable.ToString());
-            recipeData[WorkParamSections[1]].AddKey("ProductMinObjectDetectProcessEnable", workParam._ProductMinObjectDetectProcessEnable.ToString());
 
             recipeData.Sections.AddSection(WorkParamSections[2]);
             recipeData[WorkParamSections[2]].AddKey("LEDInspectionUseEnable", workParam._LEDInspectionUseEnable.ToString());

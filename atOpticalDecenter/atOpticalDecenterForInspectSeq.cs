@@ -107,22 +107,17 @@ namespace atOpticalDecenter
         {
             mPhotoInspectionList.Clear();
 
-            if (_workParams._ProductType == 5)       // 0: 미러반사형, 1: 한정거리반사, 2: 확산반사, 3: BGS반사, 4: 협시계반사, 5: 투광, 6: 수광
+            if ((_workParams._ProductType == 0) || (_workParams._ProductType == 1) || (_workParams._ProductType == 2) || (_workParams._ProductType == 3) || (_workParams._ProductType == 4) || (_workParams._ProductType == 5))       // 0: 미러반사형, 1: 한정거리반사, 2: 확산반사, 3: BGS반사, 4: 협시계반사, 5: 투광, 6: 수광
             {
-                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.InspectionStep1());
-                if (_workParams._ProductMaxDistanceProcessEnable)
-                    mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.InspectMaxDistanceStep());
-            }
-            else if ((_workParams._ProductType == 0) || (_workParams._ProductType == 1) || (_workParams._ProductType == 2) || (_workParams._ProductType == 3) || (_workParams._ProductType == 4))
-            {
-                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.InspectionStep1());
-                if (_workParams._ProductMaxDistanceProcessEnable)
-                    mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.InspectMaxDistanceStep());
-            }
-            else
-            {
-                if (_workParams._ProductMaxDistanceProcessEnable)
-                    mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.InspectMaxDistanceStep());
+                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step1JigCheck());
+                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step2SensorPowerOn());
+                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step3MovePostion1());
+                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step4Spot1Measure());
+                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step5MovePosition2());
+                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step6Spot2Measure());
+                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step7SensorPowerOff());
+                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step8CalculateResult());
+
             }
         }
         private void MakeDryRunList()
@@ -241,7 +236,7 @@ namespace atOpticalDecenter
                                 CurrentStep = RunningIndex,
                             });
                         }
-                        System.Threading.Thread.Sleep(1000);
+                        System.Threading.Thread.Sleep(479);
                         //11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97,
                         //101, 103, 107, 109, 113, 127, 131, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199,479
                     }
@@ -341,17 +336,27 @@ namespace atOpticalDecenter
 
                 if (IsPass)
                 {
-                    strFilePath += string.Format(@"\Pass\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
+                    //strFilePath += string.Format(@"\Pass\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
+                    strFilePath += string.Format(@"\Pass\{0}_{1:00}", _workParams.RecipeName, _inspectionStartTime.Hour);
                 }
                 else
                 {
-                    strFilePath += string.Format(@"\Fail\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
+                    //strFilePath += string.Format(@"\Fail\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
+                    strFilePath += string.Format(@"\Fail\{0}_{1:00}", _workParams.RecipeName, _inspectionStartTime.Hour);
                 }
-
-                if (!Directory.Exists(strFilePath))
-                    Directory.CreateDirectory(strFilePath);
-
                 string strResultFile = strFilePath + @"\Result.csv";
+                string strTemp = string.Empty;
+                
+                if (!Directory.Exists(strFilePath))
+                {
+                    Directory.CreateDirectory(strFilePath);
+                    strTemp = string.Format("RecipeName,Product Model, Operating Distance,Camera ExposureTime(us),Spot1 Size(mm),Spot2 Size(mm),Image Bright(pixel),Eccentricity Distane(mm),Divergence Angle,Reduction rate, ND Filter Angle, Min Distance ND Angle, Max Distance ND Angle");
+                    using (StreamWriter sw = new StreamWriter(strResultFile, true))
+                    {
+                        sw.WriteLine(strTemp);
+                    }
+                }
+                //string strResultFile = strFilePath + @"\Result.csv";
 
                 using (StreamWriter sw = new StreamWriter(strResultFile, true))
                 {
@@ -360,8 +365,6 @@ namespace atOpticalDecenter
                     //strTemp = string.Format("{0},{1},{2}", _statistics.TotalCount, _workParams.RecipeName, (_isInsepctionResult) ? "Pass" : "Fail");
                     //sw.WriteLine(strTemp);
 
-                    string strTemp = string.Format("RecipeName,Product Model, Operating Distance,Camera ExposureTime(us),Spot1 Size(mm),Spot2 Size(mm),Image Bright(pixel),Eccentricity Distane(mm),Divergence Angle,Reduction rate, ND Filter Angle, Min Distance ND Angle, Max Distance ND Angle");
-                    sw.WriteLine(strTemp);
 
                     //mResultData
 
