@@ -2117,6 +2117,7 @@ namespace CustomPages
             if (_mAiCCommunicationManager.IsOpen())
             {
                 byte[] data = new byte[100];
+                double vel = Convert.ToDouble(textEditTargetVelocity.Text);
 
                 for (int i = 0; i < _mAiCData.DeviceIDCount; i++)
                 {
@@ -2126,10 +2127,15 @@ namespace CustomPages
                             data = _mAiCCommunicationManager.mDrvCtrl.SetMoveTargetVelocity((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[0], Convert.ToInt32(Convert.ToDouble(textEditTargetVelocity.Text) * _MotionParam.MM2PulseRatioX));
                             break;
                         case 1:
-                            data = _mAiCCommunicationManager.mDrvCtrl.SetMoveTargetVelocity((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[1], Convert.ToInt32(Convert.ToDouble(textEditTargetVelocity.Text) * _MotionParam.MM2PulseRatioY));
+                            if (vel > 50)
+                                vel = 50;
+
+                            data = _mAiCCommunicationManager.mDrvCtrl.SetMoveTargetVelocity((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[1], Convert.ToInt32(vel * _MotionParam.MM2PulseRatioY));
                             break;
                         case 2:
-                            data = _mAiCCommunicationManager.mDrvCtrl.SetMoveTargetVelocity((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[2], Convert.ToInt32(Convert.ToDouble(textEditTargetVelocity.Text) * _MotionParam.MM2PulseRatioZ));
+                            if (vel > 50)
+                                vel = 50;
+                            data = _mAiCCommunicationManager.mDrvCtrl.SetMoveTargetVelocity((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[2], Convert.ToInt32(vel * _MotionParam.MM2PulseRatioZ));
                             break;
                         default: data = _mAiCCommunicationManager.mDrvCtrl.SetMoveTargetVelocity((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[0], 10000); break;
                     }

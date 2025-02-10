@@ -48,19 +48,25 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                             {
                                 byte[] data = new byte[100];
 
+                                double vel = (double)mSystemParam._motionParams.MoveVelocity;
+
                                 for (int i = 0; i < 3; i++)
                                 {
                                     if (i == 0)
                                     {
-                                        data = mMotionDrvCtrl.mDrvCtrl.SetMoveTargetVelocity((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[i], Convert.ToInt32((float)mSystemParam._motionParams.MoveVelocity * mSystemParam._motionParams.MM2PulseRatioX));
+                                        data = mMotionDrvCtrl.mDrvCtrl.SetMoveTargetVelocity((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[i], Convert.ToInt32(vel * mSystemParam._motionParams.MM2PulseRatioX));
                                     }
                                     else if (i == 1)
                                     {
-                                        data = mMotionDrvCtrl.mDrvCtrl.SetMoveTargetVelocity((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[i], Convert.ToInt32((float)mSystemParam._motionParams.MoveVelocity * mSystemParam._motionParams.MM2PulseRatioY));
+                                        if (vel > D_MICRO_MOTION_VELOCITY_LIMIT)
+                                            vel = D_MICRO_MOTION_VELOCITY_LIMIT;
+                                        data = mMotionDrvCtrl.mDrvCtrl.SetMoveTargetVelocity((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[i], Convert.ToInt32(vel * mSystemParam._motionParams.MM2PulseRatioY));
                                     }
                                     else if (i == 2)
                                     {
-                                        data = mMotionDrvCtrl.mDrvCtrl.SetMoveTargetVelocity((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[i], Convert.ToInt32((float)mSystemParam._motionParams.MoveVelocity * mSystemParam._motionParams.MM2PulseRatioZ));
+                                        if (vel > D_MICRO_MOTION_VELOCITY_LIMIT)
+                                            vel = D_MICRO_MOTION_VELOCITY_LIMIT;
+                                        data = mMotionDrvCtrl.mDrvCtrl.SetMoveTargetVelocity((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[i], Convert.ToInt32(vel * mSystemParam._motionParams.MM2PulseRatioZ));
                                     }
                                     mMotionDrvCtrl.SendData(data);
                                 }
@@ -112,7 +118,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
                         mMotionDrvCtrl.SendData(data);
                         mTimeChecker.SetTime(_DelayTimerCounter);
-                        mStep = WorkingStep.MoveInspectPosition;
+                        mStep = WorkingStep.WaitDelayTimeCommand;
                     }
                     break;
                 case WorkingStep.WaitDelayTimeCommand:

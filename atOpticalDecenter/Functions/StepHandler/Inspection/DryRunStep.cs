@@ -54,7 +54,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                             if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                             {
                                 byte[] data = new byte[100];
-                                data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[0], Convert.ToInt32(5 * mSystemParam._motionParams.MM2PulseRatioX));
+                                data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[0], Convert.ToInt32(55 * mSystemParam._motionParams.MM2PulseRatioX));
                                 mMotionDrvCtrl.SendData(data);
                                 data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
                                 mMotionDrvCtrl.SendData(data);
@@ -144,7 +144,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     //if (mRobotInformation.mInputData.B6)
                     {
                         byte[] data = new byte[100];
-                        data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[0], Convert.ToInt32(15 * mSystemParam._motionParams.MM2PulseRatioX));
+                        data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[0], Convert.ToInt32(105 * mSystemParam._motionParams.MM2PulseRatioX));
                         mMotionDrvCtrl.SendData(data);
                         data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
                         mMotionDrvCtrl.SendData(data);
@@ -157,7 +157,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     //mStep = WorkingStep.WaitGrabImage;
                     break;
                 case WorkingStep.WaitGrabImage:
-                    if (mRobotInformation.mInputData.B6)
+                    if (mRobotInformation.mInputData.B1)
                     {
                         byte[] data = new byte[8];
                         data = mRemoteIOCtrl.mRemoteIOCtrl.Output1byteCommand(mRemoteIOCtrl.mRemoteIOCtrl.DrvID[0], ARMLibrary.SerialCommunication.Data.ARMData.OUTPUT_CONTROL_MAP.Output0, (ushort)0xff00);
@@ -264,7 +264,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     //if (mRobotInformation.mInputData.B6)
                     {
                         byte[] data = new byte[100];
-                        data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[0], Convert.ToInt32(0 * mSystemParam._motionParams.MM2PulseRatioX));
+                        data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[0], Convert.ToInt32(70 * mSystemParam._motionParams.MM2PulseRatioX));
                         mMotionDrvCtrl.SendData(data);
                         data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
                         mMotionDrvCtrl.SendData(data);

@@ -15,7 +15,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
         {
             //Do some init here.
             //ErrorStepString = "Sensor Power On";
-            ErrorStepString = "센서 전원 On";
+            ErrorStepString = "센서 전원 Off";
         }
         private enum WorkingStep
         {
@@ -48,7 +48,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     break;
                 case WorkingStep.SensorPowerOff:
 
-                    data = mRemoteIOCtrl.mRemoteIOCtrl.Output1byteCommand(mRemoteIOCtrl.mRemoteIOCtrl.DrvID[0], ARMLibrary.SerialCommunication.Data.ARMData.OUTPUT_CONTROL_MAP.Output0, (ushort)0xff00);
+                    data = mRemoteIOCtrl.mRemoteIOCtrl.Output1byteCommand(mRemoteIOCtrl.mRemoteIOCtrl.DrvID[0], ARMLibrary.SerialCommunication.Data.ARMData.OUTPUT_CONTROL_MAP.Output0, (ushort)0x0000);
                     mRemoteIOCtrl.SendData(data);
 
                     mTimeChecker.SetTime(_DelayTimerCounter);

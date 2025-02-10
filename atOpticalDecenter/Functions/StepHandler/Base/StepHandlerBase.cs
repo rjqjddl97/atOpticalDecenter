@@ -41,6 +41,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public const int D_PLC_MOTION_COMMAND_TIMEOUT = 60000;
         public const int D_MOTION_COMMAND_RESPONSE_WAIT_TIME = 1000;
         public const int D_PLC_MOTION_READYSIGNAL_WAIT_TIME = 1000;
+        public const int D_MICRO_MOTION_VELOCITY_LIMIT = 50;
 
         public const int D_PERIPHERAL_SETTING_TIME = 2500;
         public const int D_WAIT_PUT_POWERSOURCE_STABLE_STATUS = 1800;

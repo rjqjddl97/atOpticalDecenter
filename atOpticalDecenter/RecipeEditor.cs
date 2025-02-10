@@ -220,36 +220,7 @@ namespace atOpticalDecenter
                     MessageBox.Show(string.Format("{0}\r\n{1}", ex.Message, ex.StackTrace));
                 }
             }
-        }
-
-        private void simpleButtonInspectionPositionRegister_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void simpleButtonInspectionPositionDelete_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void simpleButtonInspectionPositionEdit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void simpleButtonReplaceDown_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void simpleButtonReplaceUp_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void gridViewInspectionPositions_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
-        {
-
-        }
+        } 
         /*
         private void vGridControlInspectionParam_Leave(object sender, EventArgs e)
         {
@@ -1697,6 +1668,324 @@ namespace atOpticalDecenter
             }
 
             _workParam._LedInspectionWorkAreaHeight = value;
+        }
+        private void simpleButtonInspectionPositionRegister_Click(object sender, EventArgs e)
+        {
+            InspectionPosition inspectionPos = new InspectionPosition();
+
+            float fResult;
+
+            if (float.TryParse(textEditInspectionPositionX.Text, out fResult))
+            {
+                if (fResult >= 15 && fResult <= 780)
+                    inspectionPos.PositionX = fResult;
+                else
+                {
+                    if (fResult < 15)
+                        inspectionPos.PositionX = 15;
+                    if (fResult > 780)
+                        inspectionPos.PositionX = 780;
+                }
+            }
+            else
+            {
+                MessageBox.Show("잘못된 X 위치입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            if (float.TryParse(textEditInspectionPositionY.Text, out fResult))
+            {
+                if (fResult >= -20 && fResult <= 50)
+                    inspectionPos.PositionY = fResult;
+                else
+                {
+                    if (fResult < -20)
+                        inspectionPos.PositionY = -20;
+                    if (fResult > 50)
+                        inspectionPos.PositionY = 50;
+                }
+            }
+            else
+            {
+                MessageBox.Show("잘못된 Y 위치입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            if (float.TryParse(textEditInspectionPositionZ.Text, out fResult))
+            {
+                if (fResult >= -20 && fResult <= 50)
+                    inspectionPos.PositionZ = fResult;
+                else
+                {
+                    if (fResult < -20)
+                        inspectionPos.PositionY = -20;
+                    if (fResult > 50)
+                        inspectionPos.PositionY = 50;
+                }
+            }
+            else
+            {
+                MessageBox.Show("잘못된 Z 위치입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+            for (int i = 0; i < _workParam.InspectionPositions.Count; ++i)
+            {
+                float fX = _workParam.InspectionPositions[i].PositionX;
+                float fY = _workParam.InspectionPositions[i].PositionY;
+                float fZ = _workParam.InspectionPositions[i].PositionZ;
+                if (fX == inspectionPos.PositionX)
+                {
+                    if (fY == inspectionPos.PositionY)
+                    {
+                        if (fZ == inspectionPos.PositionZ)
+                        {
+                            MessageBox.Show("동일한 위치 좌표가 이미 등록되어 있습니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            //inspectionPos.ePositionType = (INSPECTION_POSITION_MODE)comboBoxEditInspectionPositionType.SelectedIndex;
+
+            if (comboBoxEditInspectionPositionType.SelectedIndex == 0)
+                inspectionPos.ePositionType = INSPECTION_POSITION_MODE.POSITION_BASE_MODE;
+            else if (comboBoxEditInspectionPositionType.SelectedIndex == 1)
+                inspectionPos.ePositionType = INSPECTION_POSITION_MODE.POSITION_MAX_DISTANCE_MODE;
+            else if (comboBoxEditInspectionPositionType.SelectedIndex == 2)
+                inspectionPos.ePositionType = INSPECTION_POSITION_MODE.POSITION_MIN_ORIGIN_DISTANCE_MODE;
+            else
+                inspectionPos.ePositionType = INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE;
+
+            string strMessage = string.Format("Index:{0}, Type:{1}, X:{2}, Y:{3}, Z:{4} 값을 등록하시겠습니까?",
+                gridViewInspectionPositions.RowCount + 1,
+                inspectionPos.ePositionType,
+                inspectionPos.PositionX,
+                inspectionPos.PositionY,
+                inspectionPos.PositionZ);
+
+            if (MessageBox.Show(strMessage, "등록", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                return;
+
+            inspectionPos.Index = gridViewInspectionPositions.RowCount + 1;
+            _workParam.InspectionPositions.Add(inspectionPos);
+
+            gridViewInspectionPositions.FocusedRowHandle = _workParam.InspectionPositions.Count - 1;
+            _gridRowIndex = _workParam.InspectionPositions.Count - 1;
+
+            gridViewInspectionPositions.RefreshData();
+
+            barButtonItemRecipeSave.Enabled = true;
+
+            //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(),
+            //    string.Format("X:{0}, Y:{1}, 검사모드:{2}를 등록", inspectionPos.X, inspectionPos.Y, inspectionPos.eInspectionMode.ToString()));
+        }
+        private void simpleButtonInspectionPositionDelete_Click(object sender, EventArgs e)
+        {
+            int rowIndex = gridViewInspectionPositions.GetFocusedDataSourceRowIndex();
+
+            if (rowIndex < 0)
+                return;
+
+            string strMessage = string.Format("Index:{0}, Type:{1}, X:{2}, Y:{3}, Z:{4} 값을 삭제하시겠습니까?",
+                _workParam.InspectionPositions[rowIndex].Index,
+                _workParam.InspectionPositions[rowIndex].ePositionType,
+                _workParam.InspectionPositions[rowIndex].PositionX,
+                _workParam.InspectionPositions[rowIndex].PositionY,
+                _workParam.InspectionPositions[rowIndex].PositionZ);
+
+            if (MessageBox.Show(strMessage, "삭제", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                return;
+
+            //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(),
+            //    string.Format("X:{0}, Y:{1}, 검사모드:{2}를 삭제", _workParam.InspectionPositions[rowIndex].X, _workParam.InspectionPositions[rowIndex].Y, _workParam.InspectionPositions[rowIndex].eInspectionMode.ToString()));
+
+            if (rowIndex < _workParam.InspectionPositions.Count)
+            {
+                _workParam.InspectionPositions.RemoveAt(rowIndex);
+
+                for (int i = 0; i < _workParam.InspectionPositions.Count; ++i)
+                {
+                    _workParam.InspectionPositions[i].Index = (i + 1);
+                }
+
+                if (_gridRowIndex == _workParam.InspectionPositions.Count)
+                    _gridRowIndex = _workParam.InspectionPositions.Count - 1;
+
+                gridViewInspectionPositions.FocusedRowHandle = _gridRowIndex;
+
+                gridViewInspectionPositions.RefreshData();
+                pictureEditInspectImage.Refresh();
+
+                barButtonItemRecipeSave.Enabled = true;
+            }
+        }
+
+        private void simpleButtonInspectionPositionEdit_Click(object sender, EventArgs e)
+        {
+            int rowIndex = gridViewInspectionPositions.GetFocusedDataSourceRowIndex();
+
+            if (rowIndex < 0 || rowIndex >= _workParam.InspectionPositions.Count)
+                return;
+
+            float fResult;
+
+            InspectionPosition inspectionPos = new InspectionPosition();
+
+            inspectionPos.Index = rowIndex + 1;
+
+            if (float.TryParse(textEditInspectionPositionX.Text, out fResult))
+            {
+                if (fResult >= 15 && fResult <= 780)
+                    inspectionPos.PositionX = fResult;
+                else
+                {
+                    if (fResult < 15)
+                        inspectionPos.PositionX = 15;
+                    if (fResult > 780)
+                        inspectionPos.PositionX = 780;
+                }
+            }
+            else
+            {
+                MessageBox.Show("잘못된 X 위치입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            if (float.TryParse(textEditInspectionPositionY.Text, out fResult))
+            {
+                if (fResult >= -20 && fResult <= 50)
+                    inspectionPos.PositionY = fResult;
+                else
+                {
+                    if (fResult < -20)
+                        inspectionPos.PositionY = -20;
+                    if (fResult > 50)
+                        inspectionPos.PositionY = 50;
+                }
+            }
+            else
+            {
+                MessageBox.Show("잘못된 Y1 위치입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            if (float.TryParse(textEditInspectionPositionZ.Text, out fResult))
+            {
+                if (fResult >= -20 && fResult <= 50)
+                    inspectionPos.PositionZ = fResult;
+                else
+                {
+                    if (fResult < -20)
+                        inspectionPos.PositionZ = -20;
+                    if (fResult > 50)
+                        inspectionPos.PositionZ = 50;
+                }
+            }
+            else
+            {
+                MessageBox.Show("잘못된 Z 위치입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            if (comboBoxEditInspectionPositionType.SelectedIndex == 0)
+                inspectionPos.ePositionType = INSPECTION_POSITION_MODE.POSITION_BASE_MODE;
+            else if (comboBoxEditInspectionPositionType.SelectedIndex == 1)
+                inspectionPos.ePositionType = INSPECTION_POSITION_MODE.POSITION_MAX_DISTANCE_MODE;
+            else if (comboBoxEditInspectionPositionType.SelectedIndex == 2)
+                inspectionPos.ePositionType = INSPECTION_POSITION_MODE.POSITION_MIN_ORIGIN_DISTANCE_MODE;
+            else
+                inspectionPos.ePositionType = INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE;
+
+            string strMessage = string.Format("Index:{0}, Type:{1}, X:{2}, Y1:{3}, Z:{4} 값을 수정하시겠습니까?",
+                inspectionPos.Index,
+                inspectionPos.ePositionType,
+                inspectionPos.PositionX,
+                inspectionPos.PositionY,
+                inspectionPos.PositionZ);
+
+            if (MessageBox.Show(strMessage, "수정", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                return;
+
+            _workParam.InspectionPositions[rowIndex] = inspectionPos;
+
+            gridViewInspectionPositions.RefreshData();
+            pictureEditInspectImage.Refresh();
+
+            barButtonItemRecipeSave.Enabled = true;
+
+            //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(),
+            //    string.Format("X:{0}, Y:{1}, 검사모드:{2}를 수정", inspectionPos.X, inspectionPos.Y, inspectionPos.eInspectionMode.ToString()));
+        }
+
+        private void simpleButtonReplaceDown_Click(object sender, EventArgs e)
+        {
+            if (_gridRowIndex < 0 || _gridRowIndex == _workParam.InspectionPositions.Count - 1)
+                return;
+
+            InspectionPosition tempPos1 = _workParam.InspectionPositions[_gridRowIndex];
+            InspectionPosition tempPos2 = _workParam.InspectionPositions[_gridRowIndex + 1];
+            int tempIndex = tempPos1.Index;
+
+            tempPos1.Index = tempPos2.Index;
+            tempPos2.Index = tempIndex;
+
+            _workParam.InspectionPositions[_gridRowIndex] = tempPos2;
+            _workParam.InspectionPositions[_gridRowIndex + 1] = tempPos1;
+
+            _gridRowIndex += 1;
+            gridViewInspectionPositions.FocusedRowHandle = _gridRowIndex;
+            gridViewInspectionPositions.RefreshData();
+            vGridControlInspectionParam.Refresh();
+            pictureEditInspectImage.Refresh();
+
+            barButtonItemRecipeSave.Enabled = true;
+        }
+
+        private void simpleButtonReplaceUp_Click(object sender, EventArgs e)
+        {
+            if (_gridRowIndex <= 0 || _gridRowIndex > _workParam.InspectionPositions.Count - 1)
+                return;
+
+            InspectionPosition tempPos1 = _workParam.InspectionPositions[_gridRowIndex - 1];
+            InspectionPosition tempPos2 = _workParam.InspectionPositions[_gridRowIndex];
+
+            int tempIndex = tempPos1.Index;
+
+            tempPos1.Index = tempPos2.Index;
+            tempPos2.Index = tempIndex;
+
+            _workParam.InspectionPositions[_gridRowIndex - 1] = tempPos2;
+            _workParam.InspectionPositions[_gridRowIndex] = tempPos1;
+
+            _gridRowIndex -= 1;
+            gridViewInspectionPositions.FocusedRowHandle = _gridRowIndex;
+            gridViewInspectionPositions.RefreshData();
+            vGridControlInspectionParam.Refresh();
+            pictureEditInspectImage.Refresh();
+
+            barButtonItemRecipeSave.Enabled = true;
+        }
+
+        private void gridViewInspectionPositions_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            _gridRowIndex = e.RowHandle;
+
+            if (_gridRowIndex < 0 || _gridRowIndex >= _workParam.InspectionPositions.Count)
+                return;
+
+            textEditInspectionPositionX.Text = _workParam.InspectionPositions[_gridRowIndex].PositionX.ToString();
+            textEditInspectionPositionY.Text = _workParam.InspectionPositions[_gridRowIndex].PositionY.ToString();
+            textEditInspectionPositionZ.Text = _workParam.InspectionPositions[_gridRowIndex].PositionZ.ToString();
+            comboBoxEditInspectionPositionType.SelectedIndex = (int)_workParam.InspectionPositions[_gridRowIndex].ePositionType;
+
+            pictureEditInspectImage.Refresh();
         }
     }
 }

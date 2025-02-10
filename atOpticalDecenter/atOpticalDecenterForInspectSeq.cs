@@ -112,9 +112,9 @@ namespace atOpticalDecenter
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step1JigCheck());
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step2SensorPowerOn());
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step3MovePostion1());
-                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step4Spot1Measure());
+                //mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step4Spot1Measure());
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step5MovePosition2());
-                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step6Spot2Measure());
+                //mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step6Spot2Measure());
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step7SensorPowerOff());
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step8CalculateResult());
 
@@ -138,6 +138,8 @@ namespace atOpticalDecenter
                     Functions.StepHandler.Base.StepHandlerBase.RetType mWorkingStatus;
                     while (_InspectionWorking)
                     {
+                        TimeSpan ts = CheckTackTime.Elapsed;
+                        barStaticItemInspectionTime.Caption = string.Format("검사 시간: 00:{0:00}:{1:00}.{2}", ts.Minutes, ts.Seconds, ts.Milliseconds);
                         switch (mInspectStep)
                         {
                             case InspectionStepType.Idle:
@@ -275,7 +277,6 @@ namespace atOpticalDecenter
                         position = (int)(((double)mStateInfo.CurrentStep / (double)mStateInfo.LastStep) * 100);
 
                     barEditItemInspectionProgress.EditValue = position;
-                    
                 }
                 else if (mStateInfo.WorkingStatus == WorkingStateInfo.WorkingType.Error)
                 {
@@ -350,7 +351,7 @@ namespace atOpticalDecenter
                 if (!Directory.Exists(strFilePath))
                 {
                     Directory.CreateDirectory(strFilePath);
-                    strTemp = string.Format("RecipeName,Product Model, Operating Distance,Camera ExposureTime(us),Spot1 Size(mm),Spot2 Size(mm),Image Bright(pixel),Eccentricity Distane(mm),Divergence Angle,Reduction rate, ND Filter Angle, Min Distance ND Angle, Max Distance ND Angle");
+                    strTemp = string.Format("WorkTime, RecipeName,Product Model, Operating Distance,Camera ExposureTime(us),Spot1 Size(mm),Spot2 Size(mm),Image Bright(pixel),Eccentricity Distane(mm),Divergence Angle,Reduction rate, ND Filter Angle, Min Distance ND Angle, Max Distance ND Angle");
                     using (StreamWriter sw = new StreamWriter(strResultFile, true))
                     {
                         sw.WriteLine(strTemp);
@@ -368,7 +369,8 @@ namespace atOpticalDecenter
 
                     //mResultData
 
-                    strTemp = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12}",
+                    strTemp = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}",
+                        _inspectionStartTime.TimeOfDay.ToString(),
                         _workParams.RecipeName,
                         _workParams._ProductModelName,
                         Convert.ToString(_workParams._ProductDistance),

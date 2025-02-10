@@ -45,7 +45,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     break;
                 case WorkingStep.JigCheck:
 
-                    if (mRobotInformation.mInputData.B0)                    // Jig Input Ch0 ~ Ch7 Select. 
+                    if (mRobotInformation.mInputData.B3)                    // Jig Input Ch0 ~ Ch7 Select. 
                     {
                         mStep = WorkingStep.Idle;
                     }

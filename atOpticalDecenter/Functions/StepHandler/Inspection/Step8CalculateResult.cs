@@ -16,7 +16,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
         {
             //Do some init here.
             //ErrorStepString = "Spot1 Image Capture";
-            ErrorStepString = "광원2 크기 측정";
+            ErrorStepString = "광원 편심 계산 및 결과";
         }
         private enum WorkingStep
         {
@@ -81,8 +81,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         }
                         else
                             mStep = WorkingStep.ErrorOccured;
-                    }
-                    mStep = WorkingStep.Idle;                    
+                    }                                   
                     break;
                 case WorkingStep.MoveWaitingPosition:
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))

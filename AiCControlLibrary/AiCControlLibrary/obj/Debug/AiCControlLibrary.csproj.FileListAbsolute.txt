@@ -41,3 +41,8 @@ D:\Work\C_Sharp\2025\PhotoOpticalInspect\OpticalDecenter\atOpticalDecenter\AiCCo
 D:\Work\C_Sharp\2025\PhotoOpticalInspect\OpticalDecenter\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\obj\Debug\AiCControlLibrary.csprojResolveAssemblyReference.cache
 D:\Work\C_Sharp\2025\PhotoOpticalInspect\OpticalDecenter\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\obj\Debug\AiCControlLibrary.dll
 D:\Work\C_Sharp\2025\PhotoOpticalInspect\OpticalDecenter\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\obj\Debug\AiCControlLibrary.pdb
+C:\Work\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\bin\Debug\AiCControlLibrary.dll
+C:\Work\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\bin\Debug\AiCControlLibrary.pdb
+C:\Work\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\obj\Debug\AiCControlLibrary.csproj.CoreCompileInputs.cache
+C:\Work\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\obj\Debug\AiCControlLibrary.dll
+C:\Work\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\obj\Debug\AiCControlLibrary.pdb

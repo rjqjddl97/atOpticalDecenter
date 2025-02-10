@@ -56,9 +56,6 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         mTimeChecker.SetTime(_DelayTimerCounter);
                         mStep = WorkingStep.WaitStableCaptureTime;
                     }
-                    else
-                        mStep = WorkingStep.ErrorOccured;
-
                     break;
                 case WorkingStep.WaitStableCaptureTime:
 
