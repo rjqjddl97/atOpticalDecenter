@@ -58,6 +58,13 @@ namespace PhotoProduct
         public double fMeasureP2Y = 0;
         public double fMeasureP2Z = 0;
 
+        public double fLineVectorX = 0;
+        public double fLineVectorY = 0;
+        public double fLineVectorZ = 0;
+
+        public double fDecenterX = 0;
+        public double fDecenterY = 0;
+        public double fDecenterZ = 0;
 
 
         public double[] fOpticalAngle = new double[2];
@@ -147,7 +154,7 @@ namespace PhotoProduct
             if (PointIndex == 0)
             {
                 //fOpticalAngle[PointIndex] = ((mFirstLedSpot.Width + mFirstLedSpot.Height) / 2f) * fImageFOV;                                // P1 빔발산각                
-                fOpticalSize[PointIndex] = ((mFirstLedSpot.Width + mFirstLedSpot.Height) / 2f) * fPixelResolution;            // 빔 크기 계산.
+                fOpticalSize[PointIndex] = ((mFirstLedSpot.Width + mFirstLedSpot.Height) / 2f) * fPixelResolution;            // 빔 크기 계산.                
             }
             else
             {
@@ -173,6 +180,24 @@ namespace PhotoProduct
                 fODFilterReduce = -Math.Log10(fOpticalReducttionQuantity[0] / fOpticalReducttionQuantity[1]);
                 fND_FilterAngle = FindODFilterAngle(fODFilterReduce, iProductType) + ND_FILTER_ZERO_ANNGLE;
             }
+        }
+        public bool CalculateOpticalDecenter()
+        {
+            if ((fMeasureP2X - fMeasureP1X) == 0) return false;
+            //if ((fMeasureP2Y - fMeasureP1Y) == 0) return false;
+            //if ((fMeasureP2Z - fMeasureP1Z) == 0) return false;
+
+            fLineVectorX = (fMeasureP2X - fMeasureP1X);
+            fLineVectorY = (fMeasureP2Y - fMeasureP1Y);
+            fLineVectorZ = (fMeasureP2Z - fMeasureP1Z);
+            //fOpticalEccentricity = 0;            
+            fDecenterX = 0;
+            fDecenterY = ((-fMeasureP1X / fLineVectorX) * fLineVectorY) + fMeasureP1Y;
+            fDecenterZ = ((-fMeasureP1X / fLineVectorX) * fLineVectorZ) + fMeasureP1Z;
+
+
+            fOpticalEccentricity = Math.Sqrt(Math.Pow((fDecenterY - fMeasureP1Y), 2) + Math.Pow((fDecenterZ - fMeasureP1Z), 2));
+            return true;
         }
         public void CalcOpticalReduceQuantity(int producttype)
         {

@@ -232,7 +232,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.AnalysisLEDSpot1:
-                    LedSpotImageProcess(0);
+                    LedSpotImageProcess(0, mRobotInformation.PositionX, mRobotInformation.PositionY, mRobotInformation.PositionZ);
                     mStep = WorkingStep.MoveInspect2Pos;
                     break;
                 case WorkingStep.MoveInspect2Pos:
@@ -373,7 +373,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                 case WorkingStep.AnalysisLEDSpot2:
                     if (mTimeChecker.IsTimeOver())
                     {
-                        LedSpotImageProcess(1);
+                        LedSpotImageProcess(1, mRobotInformation.PositionX, mRobotInformation.PositionY, mRobotInformation.PositionZ);
 
                         mStep = WorkingStep.CalcurateData;
                     }                    

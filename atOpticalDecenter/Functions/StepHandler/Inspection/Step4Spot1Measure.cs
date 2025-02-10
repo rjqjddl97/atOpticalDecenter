@@ -86,7 +86,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.MeasureSpot:
-                    LedSpotImageProcess(0);
+                    LedSpotImageProcess(0, mRobotInformation.PositionX,mRobotInformation.PositionY,mRobotInformation.PositionZ);
                     mStep = WorkingStep.Idle;
                     break;
                 default: break;
