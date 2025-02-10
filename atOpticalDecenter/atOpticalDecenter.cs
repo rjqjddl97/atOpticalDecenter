@@ -71,7 +71,8 @@ namespace atOpticalDecenter
         bool _isAreaMove = false;
         bool _isSetROICheck = false;
         bool _IsLogin = false;
-
+        bool _IsReciepLoad = false;
+        bool _IsHommingFinished = false;
         
         int _frameCount = 0;
         bool IsCameraOpen = false;
@@ -916,6 +917,7 @@ namespace atOpticalDecenter
                     // inspection flag
                     _isInspecting = false;
                     _isInspectionDone = false;
+                    _IsReciepLoad = true;
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("레시피 읽기 완료. 레시피 경로:{0}", strRecipeFilePath));
                 }
             }
@@ -2669,7 +2671,7 @@ namespace atOpticalDecenter
         {
             if (_isInspecting == false)
             {
-                CheckTackTime.Reset();                
+                CheckTackTime.Reset();
                 barCheckItemInspectionStart.Caption = string.Format("검사 중지");
                 _isInspecting = true;
                 // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
@@ -2700,17 +2702,68 @@ namespace atOpticalDecenter
 
                 CheckTackTime.Start();
                 _backgroundWorkerOpticalDecenterInspection.RunWorkerAsync();
-                
+
                 mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 실행");
             }
             else
-            {               
+            {
                 barCheckItemInspectionStart.Caption = string.Format("검사 시작");
                 _isInspecting = false;
                 _InspectionWorking = false;
                 mInspectStep = InspectionStepType.Idle;
                 _backgroundWorkerOpticalDecenterInspection.CancelAsync();
                 UpdateProcessTime(false);
+                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 강제 종료");
+            }
+        }
+        public void InspectionSequenceStart()
+        {
+            if (_isInspecting == false)
+            {
+                CheckTackTime.Reset();                
+                _isInspecting = true;
+                // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
+                //
+                if (_isContinuousShot)
+                {
+                    _Camera.Stop();
+                    _isContinuousShot = false;
+                    barButtonItemSingleShot.Enabled = true;
+                    barButtonItemContinueousShot.Enabled = true;
+                }
+                barCheckItemShowCenterMark.Enabled = true;
+
+                mStepBase.SetJobInfo(mLogin.JobInformation);
+                mStepBase.SetProductSeries((PhotoProduct.Enums.ProductSeries)_workParams._ProductSeries);
+                mStepBase.SetProductType((PhotoProduct.Enums.ProductType)_workParams._ProductType);
+                mStepBase.SetProductName(_workParams._ProductModelName);
+                mStepBase.SetOutputType((PhotoProduct.Enums.OutputType)_workParams._ProductOutputType);
+                mStepBase.SetOPMode((PhotoProduct.Enums.OperatingMode)_workParams._ProductOperatingMdoe);
+                mStepBase.SetDetectMertrial((PhotoProduct.Enums.DetectMeterial)_workParams._ProductDetectMerterial);
+                mStepBase.ClearTimeForFullSequence();
+
+                MakeInspectionList();
+                _InspectionWorking = true;
+                mInspectStep = InspectionStepType.CheckWaitRobotReady;
+
+                InspectionRecipeParameterSetup();
+
+                CheckTackTime.Start();
+                _backgroundWorkerOpticalDecenterInspection.RunWorkerAsync();
+                barCheckItemInspectionStart.Caption = string.Format("검사 중지");
+                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 실행");
+            }
+        }
+        public void InspectionSequenceStop()
+        {
+            if (_isInspecting)
+            {                
+                _isInspecting = false;
+                _InspectionWorking = false;
+                mInspectStep = InspectionStepType.Idle;
+                _backgroundWorkerOpticalDecenterInspection.CancelAsync();
+                UpdateProcessTime(false);
+                barCheckItemInspectionStart.Caption = string.Format("검사 시작");
                 mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 강제 종료");
             }
         }

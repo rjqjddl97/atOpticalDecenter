@@ -41,6 +41,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     else
                     {
+                        if (mRobotInformation.mInputData.B0)
+                            mStep = WorkingStep.ErrorOccured;
+
                         if (mRemoteIOCtrl.IsOpen())
                         {
                             _DelayTimerCounter = mWorkParam._LEDInspectionAcquisitionDelaytime;
@@ -49,6 +52,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.CaptureImage:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
 
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
@@ -58,6 +63,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.WaitStableCaptureTime:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
 
                     if (mTimeChecker.IsTimeOver() || IsGrabbed)
                     {
@@ -83,6 +90,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.MeasureSpot:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
+
                     LedSpotImageProcess(0, mRobotInformation.PositionX,mRobotInformation.PositionY,mRobotInformation.PositionZ);
                     mStep = WorkingStep.Idle;
                     break;

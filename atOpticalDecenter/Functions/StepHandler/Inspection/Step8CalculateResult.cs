@@ -42,12 +42,17 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     else
                     {
+                        if (mRobotInformation.mInputData.B0)
+                            mStep = WorkingStep.ErrorOccured;
+
                         _DelayTimerCounter = D_MOTION_COMMAND_RESPONSE_WAIT_TIME;
                         mStep = WorkingStep.CalculateDecenter;
                     }
                     break;
                 case WorkingStep.CalculateDecenter:
-                                        
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
+
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
                         LedSpotCalcuate();
@@ -84,6 +89,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }                                   
                     break;
                 case WorkingStep.MoveWaitingPosition:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
+
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
                         byte[] data = new byte[8];
@@ -94,12 +102,18 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.WaitDelayTimeCommand:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
+
                     if (mTimeChecker.IsTimeOver())
                     {
                         mStep = WorkingStep.InpositionCheck;
                     }
                     break;
                 case WorkingStep.InpositionCheck:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
+
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
                         mStep = WorkingStep.Idle;

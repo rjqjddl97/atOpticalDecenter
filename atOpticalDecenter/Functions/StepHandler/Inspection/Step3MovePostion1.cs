@@ -42,6 +42,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     else
                     {
+                        if (mRobotInformation.mInputData.B0)
+                            mStep = WorkingStep.ErrorOccured;
+
                         if (mMotionDrvCtrl.IsOpen())
                         {
                             if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
@@ -77,6 +80,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.SetMoveTargetPosition:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
+
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
                         if (mWorkParam.InspectionPositions.Count > 0)
@@ -112,6 +118,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.MoveInspectPosition:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
+
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
                         byte[] data = new byte[8];
@@ -122,12 +131,18 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.WaitDelayTimeCommand:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
+
                     if (mTimeChecker.IsTimeOver())
                     {
                         mStep = WorkingStep.WaitCheckInposition;
                     }
                     break;
                 case WorkingStep.WaitCheckInposition:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
+
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
                         mStep = WorkingStep.Idle;

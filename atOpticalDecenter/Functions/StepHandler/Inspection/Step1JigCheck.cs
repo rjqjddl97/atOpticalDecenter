@@ -37,6 +37,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     else
                     {
+                        if (mRobotInformation.mInputData.B0)
+                            mStep = WorkingStep.ErrorOccured;
                         if (mRemoteIOCtrl.IsOpen())
                         {
                             mStep = WorkingStep.JigCheck;
@@ -44,6 +46,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.JigCheck:
+
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
 
                     if (mRobotInformation.mInputData.B3)                    // Jig Input Ch0 ~ Ch7 Select. 
                     {

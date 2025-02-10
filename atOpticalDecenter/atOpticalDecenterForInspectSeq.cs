@@ -87,6 +87,29 @@ namespace atOpticalDecenter
         {
             mRobotInformation.mInputData = update.mInputData;
             mRobotInformation.mOutputData = update.mOutputData;
+
+            if (!mRobotInformation.mInputData.B0)
+            {
+                if (mRobotInformation.mInputData.B1)
+                {
+                    if (_IsReciepLoad)
+                    {
+                        InspectionSequenceStart();
+                    }
+                }
+                if (mRobotInformation.mInputData.B2)
+                {
+                    if (_isInspecting)
+                    {
+                        InspectionSequenceStop();
+                    }
+                }
+            }
+            else
+            {
+                InspectionSequenceStop();
+                _IsHommingFinished = false;
+            }
             mStepBase.UpdateRobotIOInfomation(mRobotInformation);
         }
         

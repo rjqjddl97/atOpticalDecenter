@@ -39,6 +39,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     else
                     {
+                        if (mRobotInformation.mInputData.B0)
+                            mStep = WorkingStep.ErrorOccured;
+
                         if (mRemoteIOCtrl.IsOpen())
                         {
                             _DelayTimerCounter = SENSOR_POWER_STABLE_TIME;
@@ -47,6 +50,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.SensorPowerOff:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
 
                     data = mRemoteIOCtrl.mRemoteIOCtrl.Output1byteCommand(mRemoteIOCtrl.mRemoteIOCtrl.DrvID[0], ARMLibrary.SerialCommunication.Data.ARMData.OUTPUT_CONTROL_MAP.Output0, (ushort)0x0000);
                     mRemoteIOCtrl.SendData(data);
@@ -57,6 +62,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
 
                     break;
                 case WorkingStep.WaitSignalCommandTime:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
+
                     if (mTimeChecker.IsTimeOver())
                     {
                         mStep = WorkingStep.Idle;
