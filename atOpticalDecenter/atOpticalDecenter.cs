@@ -913,7 +913,8 @@ namespace atOpticalDecenter
                     RecipeFileIO.ReadRecipeFile(_workParams, strRecipeFilePath);
 
                     UpdateRecipeUI(strRecipeName);
-
+                    _workParams.ImageCenterX = (_systemParams._cameraParams.HResolution / 2);
+                    _workParams.ImageCenterY = (_systemParams._cameraParams.VResolution / 2);
                     // inspection flag
                     _isInspecting = false;
                     _isInspectionDone = false;
@@ -2927,8 +2928,10 @@ namespace atOpticalDecenter
                         mResultData.mFinalLedSpot = _MenaulInspectLed2blobs[0];                        
                         mResultData.CalculateLedBlob(1);
                     }
+                    mResultData.WorkDistance = Convert.ToDouble(rowInspectSpotCameraDistance.Properties.Value);
                     mResultData.CalculateOpticalInspect((int)Enum.Parse(typeof(ModelType), rowInspectSpotProductType.Properties.Value.ToString()));
                     InpsectResultUpdate();
+                    xtraTabControlMainSetup.SelectedTabPageIndex = 4;
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("투광 LED 발산각 측정 종료"));
                 }
                 else

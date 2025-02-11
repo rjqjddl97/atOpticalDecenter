@@ -26,3 +26,14 @@ D:\Work\C_Sharp\2025\PhotoOpticalInspect\OpticalDecenter\atOpticalDecenter\LogLi
 D:\Work\C_Sharp\2025\PhotoOpticalInspect\OpticalDecenter\atOpticalDecenter\LogLibrary\obj\x64\Debug\LogLibrary.csprojResolveAssemblyReference.cache
 D:\Work\C_Sharp\2025\PhotoOpticalInspect\OpticalDecenter\atOpticalDecenter\LogLibrary\obj\x64\Debug\LogLibrary.dll
 D:\Work\C_Sharp\2025\PhotoOpticalInspect\OpticalDecenter\atOpticalDecenter\LogLibrary\obj\x64\Debug\LogLibrary.pdb
+D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\bin\x64\Debug\NLog.config
+D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\bin\x64\Debug\NLog.xsd
+D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\bin\x64\Debug\LogLibrary.dll
+D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\bin\x64\Debug\LogLibrary.pdb
+D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\bin\x64\Debug\NLog.dll
+D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\bin\x64\Debug\NLog.xml
+D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\x64\Debug\LogLibrary.csprojAssemblyReference.cache
+D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\x64\Debug\LogLibrary.csproj.CoreCompileInputs.cache
+D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\x64\Debug\LogLibrary.csproj.CopyComplete
+D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\x64\Debug\LogLibrary.dll
+D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\x64\Debug\LogLibrary.pdb

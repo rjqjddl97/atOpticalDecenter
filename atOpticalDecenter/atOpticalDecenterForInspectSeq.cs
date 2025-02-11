@@ -343,6 +343,7 @@ namespace atOpticalDecenter
             pledSpotInspectionInfomation._InspectLedND_FilterAngle = mResultData.fND_FilterAngle;
             pledSpotInspectionInfomation._InspectOperateMax_Distance = mResultData.fMaxOperateDistance;
             pledSpotInspectionInfomation._InspectOperateMin_Distance = mResultData.fMinOperateDistance;
+
             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("투광 LED 특성 검사 결과 , Spot1 Size :{0:000.000}mm, Spot2 Size :{1:000.000}mm, " +
                 "이미지 밝기 :{2:000}pixel, 광원 편심 :{3:00.000}mm, 광 발산각 :{4:00.000}˚, 감쇄율 :{5:00.000}, ND필터 예측각도 :{6:000}˚ , 최대거리 ND필터 :{7:000}˚",
                 mResultData.fOpticalSize[0], mResultData.fOpticalSize[1], mResultData.fOpticalSpotImageBright, mResultData.fOpticalEccentricity, (mResultData.fOpticalEmiterAngle * (180 / Math.PI)),

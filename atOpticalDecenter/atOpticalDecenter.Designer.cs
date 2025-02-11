@@ -120,6 +120,7 @@
             this.rowInspectSpotProductType = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowInspectSpotProductDistance = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowInspectSpotInspectDistance = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowInspectSpotCameraDistance = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowInspectSpot1ImagePath = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowInspectSpot1Image = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowInspectSpot2ImagePath = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -165,23 +166,7 @@
             this.RemoteIOControl = new CustomPages.RemoteIOControl();
             this.xtraTabPageInspectResult = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl6 = new DevExpress.XtraLayout.LayoutControl();
-            this.vGridControl4 = new DevExpress.XtraVerticalGrid.VGridControl();
-            this.categoryInspectResult = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
-            this.rowInspectCountNumber = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowRecipeName = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowInspectionElapsetime = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowInspectTotalResult = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowLedBlobInspect = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowCalibrationWhitePaper = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowCalibrationBlackPaper = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowBaseInspect = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowBaseReverseVoltageInpect = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowBaseOverCurrentsInspect = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowSwitchOutputInspect = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowSwitchOutputOverCurrent = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowCurrentConception = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup8 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -192,10 +177,6 @@
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.layoutControlMain = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
-            this.pledSpotInspectionInfomation = new CustomPages.LedSpotInspectionInfomation();
-            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.pictureEditSystemImage = new DevExpress.XtraEditors.PictureEdit();
             this.contextMenuStripImageROI = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemSetTempleteArea = new System.Windows.Forms.ToolStripMenuItem();
@@ -204,7 +185,6 @@
             this.toolStripMenuItemSetFitSizeImage = new System.Windows.Forms.ToolStripMenuItem();
             this.layoutControlGroupMainPannel = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.openFileDialogPatternImage = new System.Windows.Forms.OpenFileDialog();
@@ -217,7 +197,9 @@
             this.openFileDialogSpot1Image = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSpot2Image = new System.Windows.Forms.OpenFileDialog();
             this.barButtonItemConnectionPLC = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemConnectionPhotoSensor = new DevExpress.XtraBars.BarButtonItem();            
+            this.barButtonItemConnectionPhotoSensor = new DevExpress.XtraBars.BarButtonItem();
+            this.pledSpotInspectionInfomation = new CustomPages.LedSpotInspectionInfomation();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBarInspectionProcess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditInspectionResult)).BeginInit();
@@ -267,9 +249,7 @@
             this.xtraTabPageInspectResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).BeginInit();
             this.layoutControl6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vGridControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).BeginInit();
@@ -282,19 +262,15 @@
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
-            this.layoutControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditSystemImage.Properties)).BeginInit();
             this.contextMenuStripImageROI.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupMainPannel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuTemplateCrop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -1165,7 +1141,7 @@
             // 
             this.vGridControl5.BandsInterval = 1;
             this.vGridControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl5.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl5.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControl5.Location = new System.Drawing.Point(3, 123);
             this.vGridControl5.Margin = new System.Windows.Forms.Padding(1);
@@ -1228,6 +1204,7 @@
             this.rowInspectSpotProductType,
             this.rowInspectSpotProductDistance,
             this.rowInspectSpotInspectDistance,
+            this.rowInspectSpotCameraDistance,
             this.rowInspectSpot1ImagePath,
             this.rowInspectSpot1Image,
             this.rowInspectSpot2ImagePath,
@@ -1260,6 +1237,12 @@
             this.rowInspectSpotInspectDistance.Name = "rowInspectSpotInspectDistance";
             this.rowInspectSpotInspectDistance.Properties.Caption = "단축 검사 거리[mm]";
             this.rowInspectSpotInspectDistance.Properties.Value = 500;
+            // 
+            // rowInspectSpotCameraDistance
+            // 
+            this.rowInspectSpotCameraDistance.Name = "rowInspectSpotCameraDistance";
+            this.rowInspectSpotCameraDistance.Properties.Caption = "카메라 이동거리[mm]";
+            this.rowInspectSpotCameraDistance.Properties.Value = 50D;
             // 
             // rowInspectSpot1ImagePath
             // 
@@ -1436,7 +1419,7 @@
             // 
             this.vGridControl2.BandsInterval = 1;
             this.vGridControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl2.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControl2.Location = new System.Drawing.Point(3, 3);
             this.vGridControl2.Margin = new System.Windows.Forms.Padding(1);
@@ -1621,6 +1604,7 @@
             // 
             this.MotionControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MotionControl.Location = new System.Drawing.Point(0, 0);
+            this.MotionControl.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.MotionControl.Name = "MotionControl";
             this.MotionControl.Size = new System.Drawing.Size(353, 386);
             this.MotionControl.TabIndex = 0;
@@ -1650,7 +1634,7 @@
             // 
             // layoutControl6
             // 
-            this.layoutControl6.Controls.Add(this.vGridControl4);
+            this.layoutControl6.Controls.Add(this.pledSpotInspectionInfomation);
             this.layoutControl6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl6.Location = new System.Drawing.Point(0, 0);
             this.layoutControl6.Name = "layoutControl6";
@@ -1660,122 +1644,15 @@
             this.layoutControl6.TabIndex = 0;
             this.layoutControl6.Text = "layoutControl6";
             // 
-            // vGridControl4
-            // 
-            this.vGridControl4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.vGridControl4.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
-            this.vGridControl4.Location = new System.Drawing.Point(12, 12);
-            this.vGridControl4.Name = "vGridControl4";
-            this.vGridControl4.RecordWidth = 102;
-            this.vGridControl4.RowHeaderWidth = 98;
-            this.vGridControl4.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.categoryInspectResult});
-            this.vGridControl4.Size = new System.Drawing.Size(329, 362);
-            this.vGridControl4.TabIndex = 4;
-            // 
-            // categoryInspectResult
-            // 
-            this.categoryInspectResult.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.rowInspectCountNumber,
-            this.rowRecipeName,
-            this.rowInspectionElapsetime,
-            this.rowInspectTotalResult,
-            this.rowLedBlobInspect,
-            this.rowCalibrationWhitePaper,
-            this.rowCalibrationBlackPaper,
-            this.rowBaseInspect,
-            this.rowBaseReverseVoltageInpect,
-            this.rowBaseOverCurrentsInspect,
-            this.rowSwitchOutputInspect,
-            this.rowSwitchOutputOverCurrent,
-            this.rowCurrentConception});
-            this.categoryInspectResult.Height = 19;
-            this.categoryInspectResult.Name = "categoryInspectResult";
-            this.categoryInspectResult.Properties.Caption = "검사 결과";
-            // 
-            // rowInspectCountNumber
-            // 
-            this.rowInspectCountNumber.Name = "rowInspectCountNumber";
-            this.rowInspectCountNumber.Properties.Caption = "검사 번호";
-            // 
-            // rowRecipeName
-            // 
-            this.rowRecipeName.Name = "rowRecipeName";
-            this.rowRecipeName.Properties.Caption = "레시피 이름";
-            // 
-            // rowInspectionElapsetime
-            // 
-            this.rowInspectionElapsetime.Name = "rowInspectionElapsetime";
-            this.rowInspectionElapsetime.Properties.Caption = "검사 시간";
-            // 
-            // rowInspectTotalResult
-            // 
-            this.rowInspectTotalResult.Name = "rowInspectTotalResult";
-            this.rowInspectTotalResult.Properties.Caption = "전체 검사 결과";
-            // 
-            // rowLedBlobInspect
-            // 
-            this.rowLedBlobInspect.Name = "rowLedBlobInspect";
-            this.rowLedBlobInspect.Properties.Caption = "광 특성 검사결과";
-            // 
-            // rowCalibrationWhitePaper
-            // 
-            this.rowCalibrationWhitePaper.Name = "rowCalibrationWhitePaper";
-            this.rowCalibrationWhitePaper.Properties.Caption = "백색지 교정 결과";
-            // 
-            // rowCalibrationBlackPaper
-            // 
-            this.rowCalibrationBlackPaper.Name = "rowCalibrationBlackPaper";
-            this.rowCalibrationBlackPaper.Properties.Caption = "흑색지 교정 결과";
-            // 
-            // rowBaseInspect
-            // 
-            this.rowBaseInspect.Name = "rowBaseInspect";
-            this.rowBaseInspect.Properties.Caption = "기본 출력 검사결과";
-            // 
-            // rowBaseReverseVoltageInpect
-            // 
-            this.rowBaseReverseVoltageInpect.Name = "rowBaseReverseVoltageInpect";
-            this.rowBaseReverseVoltageInpect.Properties.Caption = "전원 역전압 검사결과";
-            // 
-            // rowBaseOverCurrentsInspect
-            // 
-            this.rowBaseOverCurrentsInspect.Name = "rowBaseOverCurrentsInspect";
-            this.rowBaseOverCurrentsInspect.Properties.Caption = "과전류 보호 검사결과";
-            // 
-            // rowSwitchOutputInspect
-            // 
-            this.rowSwitchOutputInspect.Name = "rowSwitchOutputInspect";
-            this.rowSwitchOutputInspect.Properties.Caption = "출력 전환 검사결과";
-            // 
-            // rowSwitchOutputOverCurrent
-            // 
-            this.rowSwitchOutputOverCurrent.Name = "rowSwitchOutputOverCurrent";
-            this.rowSwitchOutputOverCurrent.Properties.Caption = "출력 전환 과전류 검사결과";
-            // 
-            // rowCurrentConception
-            // 
-            this.rowCurrentConception.Name = "rowCurrentConception";
-            this.rowCurrentConception.Properties.Caption = "소비 전류 결과";
-            // 
             // layoutControlGroup5
             // 
             this.layoutControlGroup5.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.layoutControlGroup5.GroupBordersVisible = false;
             this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem12});
+            this.layoutControlItem5});
             this.layoutControlGroup5.Name = "layoutControlGroup5";
             this.layoutControlGroup5.Size = new System.Drawing.Size(353, 386);
             this.layoutControlGroup5.TextVisible = false;
-            // 
-            // layoutControlItem12
-            // 
-            this.layoutControlItem12.Control = this.vGridControl4;
-            this.layoutControlItem12.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(333, 366);
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem12.TextVisible = false;
             // 
             // layoutControlGroup4
             // 
@@ -1857,7 +1734,6 @@
             // 
             // layoutControlMain
             // 
-            this.layoutControlMain.Controls.Add(this.layoutControl3);
             this.layoutControlMain.Controls.Add(this.pictureEditSystemImage);
             this.layoutControlMain.Location = new System.Drawing.Point(3, 3);
             this.layoutControlMain.Name = "layoutControlMain";
@@ -1866,57 +1742,6 @@
             this.layoutControlMain.Size = new System.Drawing.Size(640, 436);
             this.layoutControlMain.TabIndex = 4;
             this.layoutControlMain.Text = "layoutControl2";
-            // 
-            // layoutControl3
-            // 
-            this.layoutControl3.Controls.Add(this.pledSpotInspectionInfomation);
-            this.layoutControl3.Location = new System.Drawing.Point(474, 3);
-            this.layoutControl3.Margin = new System.Windows.Forms.Padding(0);
-            this.layoutControl3.Name = "layoutControl3";
-            this.layoutControl3.Root = this.layoutControlGroup2;
-            this.layoutControl3.Size = new System.Drawing.Size(163, 430);
-            this.layoutControl3.TabIndex = 7;
-            this.layoutControl3.Text = "layoutControl3";
-            // 
-            // pledSpotInspectionInfomation
-            // 
-            this.pledSpotInspectionInfomation._InspectLedBlobBright = 0D;
-            this.pledSpotInspectionInfomation._InspectLedBlobHsize = 0D;
-            this.pledSpotInspectionInfomation._InspectLedBlobVsize = 0D;
-            this.pledSpotInspectionInfomation._InspectLedND_FilterAngle = 0D;
-            this.pledSpotInspectionInfomation._InspectLedODFilterReduce = 0D;
-            this.pledSpotInspectionInfomation._InspectLedOpticalEccentricity = 0D;
-            this.pledSpotInspectionInfomation._InspectLedOpticalEmiterAngle = 0D;
-            this.pledSpotInspectionInfomation._InspectOperateMax_Distance = 0D;
-            this.pledSpotInspectionInfomation._InspectOperateMin_Distance = 0D;
-            this.pledSpotInspectionInfomation._InspectOpticalResult = false;
-            this.pledSpotInspectionInfomation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pledSpotInspectionInfomation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pledSpotInspectionInfomation.Location = new System.Drawing.Point(2, 2);
-            this.pledSpotInspectionInfomation.Margin = new System.Windows.Forms.Padding(0);
-            this.pledSpotInspectionInfomation.Name = "pledSpotInspectionInfomation";
-            this.pledSpotInspectionInfomation.Size = new System.Drawing.Size(159, 426);
-            this.pledSpotInspectionInfomation.TabIndex = 4;
-            // 
-            // layoutControlGroup2
-            // 
-            this.layoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup2.GroupBordersVisible = false;
-            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem6});
-            this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlGroup2.Size = new System.Drawing.Size(163, 430);
-            this.layoutControlGroup2.TextVisible = false;
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.pledSpotInspectionInfomation;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(163, 430);
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextVisible = false;
             // 
             // pictureEditSystemImage
             // 
@@ -1928,7 +1753,7 @@
             this.pictureEditSystemImage.Properties.ShowMenu = false;
             this.pictureEditSystemImage.Properties.ShowScrollBars = true;
             this.pictureEditSystemImage.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.False;
-            this.pictureEditSystemImage.Size = new System.Drawing.Size(467, 430);
+            this.pictureEditSystemImage.Size = new System.Drawing.Size(634, 430);
             this.pictureEditSystemImage.StyleController = this.layoutControlMain;
             this.pictureEditSystemImage.TabIndex = 4;
             this.pictureEditSystemImage.ImageChanged += new System.EventHandler(this.pictureEditSystemImage_ImageChanged);
@@ -1979,8 +1804,7 @@
             this.layoutControlGroupMainPannel.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.layoutControlGroupMainPannel.GroupBordersVisible = false;
             this.layoutControlGroupMainPannel.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem2,
-            this.layoutControlItem5});
+            this.layoutControlItem2});
             this.layoutControlGroupMainPannel.Name = "layoutControlGroupMainPannel";
             this.layoutControlGroupMainPannel.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
             this.layoutControlGroupMainPannel.Size = new System.Drawing.Size(640, 436);
@@ -1991,18 +1815,9 @@
             this.layoutControlItem2.Control = this.pictureEditSystemImage;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(471, 434);
+            this.layoutControlItem2.Size = new System.Drawing.Size(638, 434);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.layoutControl3;
-            this.layoutControlItem5.Location = new System.Drawing.Point(471, 0);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(167, 434);
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem5.TextVisible = false;
             // 
             // layoutControlGroup1
             // 
@@ -2084,6 +1899,35 @@
             this.barButtonItemConnectionPhotoSensor.Name = "barButtonItemConnectionPhotoSensor";
             this.barButtonItemConnectionPhotoSensor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemConnectAll_ItemClick);
             // 
+            // pledSpotInspectionInfomation
+            // 
+            this.pledSpotInspectionInfomation._InspectLedBlobBright = 0D;
+            this.pledSpotInspectionInfomation._InspectLedBlobHsize = 0D;
+            this.pledSpotInspectionInfomation._InspectLedBlobVsize = 0D;
+            this.pledSpotInspectionInfomation._InspectLedND_FilterAngle = 0D;
+            this.pledSpotInspectionInfomation._InspectLedODFilterReduce = 0D;
+            this.pledSpotInspectionInfomation._InspectLedOpticalEccentricity = 0D;
+            this.pledSpotInspectionInfomation._InspectLedOpticalEmiterAngle = 0D;
+            this.pledSpotInspectionInfomation._InspectOperateMax_Distance = 0D;
+            this.pledSpotInspectionInfomation._InspectOperateMin_Distance = 0D;
+            this.pledSpotInspectionInfomation._InspectOpticalResult = false;
+            this.pledSpotInspectionInfomation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pledSpotInspectionInfomation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pledSpotInspectionInfomation.Location = new System.Drawing.Point(12, 12);
+            this.pledSpotInspectionInfomation.Margin = new System.Windows.Forms.Padding(0);
+            this.pledSpotInspectionInfomation.Name = "pledSpotInspectionInfomation";
+            this.pledSpotInspectionInfomation.Size = new System.Drawing.Size(329, 362);
+            this.pledSpotInspectionInfomation.TabIndex = 4;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.pledSpotInspectionInfomation;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(333, 366);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
+            // 
             // atOpticalDecenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -2151,9 +1995,7 @@
             this.xtraTabPageInspectResult.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).EndInit();
             this.layoutControl6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.vGridControl4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).EndInit();
@@ -2166,19 +2008,15 @@
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).EndInit();
             this.layoutControlMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
-            this.layoutControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditSystemImage.Properties)).EndInit();
             this.contextMenuStripImageROI.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupMainPannel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuTemplateCrop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2245,15 +2083,10 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraEditors.PictureEdit pictureEditSystemImage;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraLayout.LayoutControl layoutControl3;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraTab.XtraTabControl xtraTabControlMainSetup;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageCamera;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageImageProcess;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageInspectResult;
-        private CustomPages.LedSpotInspectionInfomation pledSpotInspectionInfomation;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraVerticalGrid.VGridControl vGridControl1;
         private DevExpress.XtraVerticalGrid.Rows.CategoryRow categoryCamera;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowCameraConnect;
@@ -2289,23 +2122,7 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControl layoutControl6;
-        private DevExpress.XtraVerticalGrid.VGridControl vGridControl4;
-        private DevExpress.XtraVerticalGrid.Rows.CategoryRow categoryInspectResult;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowInspectCountNumber;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowRecipeName;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowInspectionElapsetime;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowInspectTotalResult;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLedBlobInspect;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowCalibrationWhitePaper;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowCalibrationBlackPaper;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowBaseInspect;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowBaseReverseVoltageInpect;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowBaseOverCurrentsInspect;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSwitchOutputInspect;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSwitchOutputOverCurrent;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowCurrentConception;
         private DevExpress.XtraLayout.LayoutControl layoutControl7;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
@@ -2373,6 +2190,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemConnectionPhotoSensor;
         private CustomPages.MotionControl MotionControl;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageRemoteIO;
-        private CustomPages.RemoteIOControl RemoteIOControl;        
+        private CustomPages.RemoteIOControl RemoteIOControl;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowInspectSpotCameraDistance;
+        private CustomPages.LedSpotInspectionInfomation pledSpotInspectionInfomation;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }
