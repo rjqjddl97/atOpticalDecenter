@@ -11,10 +11,11 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
     public class Step1JigCheck : StepHandlerBase, IStepHandler
     {
         private WorkingStep mStep = WorkingStep.Idle;
+        string strstep = string.Empty;
         public Step1JigCheck()
         {
             //Do some init here.
-            ErrorStepString = "Jig Check Step";
+            ErrorStepString = "Jig Check";
         }
         private enum WorkingStep
         {
@@ -26,6 +27,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
         private void Run()
         {
             byte[] posdata = new byte[32];
+            ErrorStepString = "Jig Check - " + strstep;
             switch (mStep)
             {
                 case WorkingStep.Idle:
@@ -46,7 +48,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.JigCheck:
-
+                    strstep = "지그신호 확인중";
                     if (mRobotInformation.mInputData.B0)
                         mStep = WorkingStep.ErrorOccured;
 

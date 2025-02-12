@@ -11,6 +11,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
     public class Step7SensorPowerOff : StepHandlerBase, IStepHandler
     {
         private WorkingStep mStep = WorkingStep.Idle;
+        string strstep = string.Empty;
         public Step7SensorPowerOff()
         {
             //Do some init here.

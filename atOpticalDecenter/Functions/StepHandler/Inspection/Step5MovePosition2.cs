@@ -11,6 +11,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
     public class Step5MovePosition2 : StepHandlerBase, IStepHandler
     {
         private WorkingStep mStep = WorkingStep.Idle;
+        string strstep = string.Empty;
         public Step5MovePosition2()
         {
             //Do some init here.

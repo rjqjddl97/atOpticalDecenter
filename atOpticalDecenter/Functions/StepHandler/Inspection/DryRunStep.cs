@@ -11,6 +11,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
     public class DryRunStep : StepHandlerBase, IStepHandler
     {
         private WorkingStep mStep = WorkingStep.Idle;
+        string strstep = string.Empty;
         public DryRunStep()
         {
             //Do some init here.
@@ -37,6 +38,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
         private void Run()
         {
             byte[] posdata = new byte[32];
+            ErrorStepString = "DryRun 테스트 모드 - " + strstep;
             switch (mStep)
             {
                 case WorkingStep.Idle:
@@ -49,6 +51,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     else
                     {
                         ///*
+                        strstep = "P1 위치 이동";
                         if (mMotionDrvCtrl.IsOpen())
                         {
                             if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
@@ -140,6 +143,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     //}
                     break;
                 case WorkingStep.ExcuteCameraGrab:
+                    strstep = "P2 위치 이동";
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     //if (mRobotInformation.mInputData.B6)
                     {
@@ -149,7 +153,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
                         mMotionDrvCtrl.SendData(data);
                         mTimeChecker.SetTime(_DelayTimerCounter);
-                        mStep = WorkingStep.WaitGrabImage;                        
+                        //mStep = WorkingStep.WaitGrabImage;  
+                        mStep = WorkingStep.CheckInposition2;
                     }
 
                     //TakePicture();                                        
@@ -260,6 +265,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     //}
                     break;
                 case WorkingStep.ExcuteCameraGrab2:
+                    strstep = "P3 위치 이동";
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     //if (mRobotInformation.mInputData.B6)
                     {
@@ -269,7 +275,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
                         mMotionDrvCtrl.SendData(data);
                         mTimeChecker.SetTime(_DelayTimerCounter);
-                        mStep = WorkingStep.CheckInpositionFilter;                        
+                        //mStep = WorkingStep.CheckInpositionFilter;                        
+                        mStep = WorkingStep.InspectResult;
                     }
                     //TakePicture();                    
                     //mTimeChecker.SetTime(D_WAIT_CAMERA_GRAB_DELAY);
@@ -309,7 +316,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     mStep = WorkingStep.MoveFilterPos;
                     break;
                 case WorkingStep.MoveFilterPos:
-
+                    
                     if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
                     {
                         //byte[] data = new byte[8];

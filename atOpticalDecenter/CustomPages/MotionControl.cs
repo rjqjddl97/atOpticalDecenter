@@ -659,8 +659,8 @@ namespace CustomPages
                         _mRobotInfomation.PositionY = Convert.ToDouble(textEditPresentPosY.Text);
                         _mRobotInfomation.PositionZ = Convert.ToDouble(textEditPresentPosZ.Text);
 
-                        //if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B4) && Convert.ToBoolean(_mAiCData.OutputStaus[1].B4) && Convert.ToBoolean(_mAiCData.OutputStaus[2].B4))
-                        if ( Convert.ToBoolean(_mAiCData.OutputStaus[0].B4) )
+                        if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B4) && Convert.ToBoolean(_mAiCData.OutputStaus[1].B4) && Convert.ToBoolean(_mAiCData.OutputStaus[2].B4))
+                        //if ( Convert.ToBoolean(_mAiCData.OutputStaus[0].B4) )
                         {
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.ServoOn, true);
                             _isRobotEnable = true;
@@ -670,14 +670,14 @@ namespace CustomPages
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.ServoOn, false);
                             _isRobotEnable = false;
                         }
-                        //if ( (Convert.ToDouble(textEditTargetVel1) != 0) && (Convert.ToDouble(textEditTargetVel2) != 0) && (Convert.ToDouble(textEditTargetVel3) != 0) )
-                        if ( (Convert.ToDouble(textEditTargetVel1.Text) != 0) )
+                        if ( (Convert.ToDouble(textEditTargetVel1) != 0) && (Convert.ToDouble(textEditTargetVel2) != 0) && (Convert.ToDouble(textEditTargetVel3) != 0) )
+                        //if ( (Convert.ToDouble(textEditTargetVel1.Text) != 0) )
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.Moving, true);
                         else
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.Moving, false);
 
-                        //if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B1) && Convert.ToBoolean(_mAiCData.OutputStaus[1].B1) && Convert.ToBoolean(_mAiCData.OutputStaus[2].B1))                        
-                        if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B1))
+                        if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B1) && Convert.ToBoolean(_mAiCData.OutputStaus[1].B1) && Convert.ToBoolean(_mAiCData.OutputStaus[2].B1))                        
+                        //if (Convert.ToBoolean(_mAiCData.OutputStaus[0].B1))
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.Inposition, true);                        
                         else
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.Inposition, false);

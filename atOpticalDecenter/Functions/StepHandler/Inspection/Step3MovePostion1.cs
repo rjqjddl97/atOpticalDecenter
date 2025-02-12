@@ -12,6 +12,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
     class Step3MovePostion1 : StepHandlerBase, IStepHandler
     {
         private WorkingStep mStep = WorkingStep.Idle;
+        string strstep = string.Empty;
         public Step3MovePostion1()
         {
             //Do some init here.

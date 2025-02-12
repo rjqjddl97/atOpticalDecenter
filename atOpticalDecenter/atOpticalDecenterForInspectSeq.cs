@@ -38,6 +38,7 @@ namespace atOpticalDecenter
         bool _InspectionWorking = false;
         public InspectResultData mResultData = new InspectResultData();
         public RobotInformation mRobotInformation = new RobotInformation();
+        
         private enum InspectionStepType
         {
             Idle = 0,
@@ -163,6 +164,7 @@ namespace atOpticalDecenter
                     {
                         TimeSpan ts = CheckTackTime.Elapsed;
                         barStaticItemInspectionTime.Caption = string.Format("검사 시간: 00:{0:00}:{1:00}.{2}", ts.Minutes, ts.Seconds, ts.Milliseconds);
+                        barStaticItemInspectionStatus.Caption = string.Format("진행: ") + ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[RunningIndex]).StepInformation;
                         switch (mInspectStep)
                         {
                             case InspectionStepType.Idle:
@@ -238,7 +240,7 @@ namespace atOpticalDecenter
                                     CurrentStepName = ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[RunningIndex]).StepInformation,
                                     LastStep = mPhotoInspectionList.Count,
                                     ElapsedTime = mStepBase.GetOptionInspectionElapseTime
-                                });
+                                });                                                                
                             }
                         }
                         else if (mInspectStep == InspectionStepType.FinishedInspection)
@@ -281,14 +283,14 @@ namespace atOpticalDecenter
             barCheckItemInspectionStart.Caption = string.Format("검사 시작");
             barStaticItemInspectionStatus.Caption = string.Format("진행: 검사 완료");
             InpsectResultUpdate();
-            CreateResultFile(true);
+            CreateResultFile(mResultData.bTotalResult);
            System.Console.WriteLine("bacground work Photo Inspection run worker completed");
         }
         private void backgroundWorkerInspection_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             try
             {
-                WorkingStateInfo mStateInfo = (WorkingStateInfo)e.UserState;
+                WorkingStateInfo mStateInfo = (WorkingStateInfo)e.UserState;                
                 barStaticItemInspectionStatus.Caption = string.Format("진행: ") + mStateInfo.CurrentStepName;
                 if (mStateInfo.WorkingStatus == WorkingStateInfo.WorkingType.Checking)
                 {
@@ -343,6 +345,7 @@ namespace atOpticalDecenter
             pledSpotInspectionInfomation._InspectLedND_FilterAngle = mResultData.fND_FilterAngle;
             pledSpotInspectionInfomation._InspectOperateMax_Distance = mResultData.fMaxOperateDistance;
             pledSpotInspectionInfomation._InspectOperateMin_Distance = mResultData.fMinOperateDistance;
+            pledSpotInspectionInfomation._InspectOpticalResult = mResultData.bTotalResult;
 
             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("투광 LED 특성 검사 결과 , Spot1 Size :{0:000.000}mm, Spot2 Size :{1:000.000}mm, " +
                 "이미지 밝기 :{2:000}pixel, 광원 편심 :{3:00.000}mm, 광 발산각 :{4:00.000}˚, 감쇄율 :{5:00.000}, ND필터 예측각도 :{6:000}˚ , 최대거리 ND필터 :{7:000}˚",

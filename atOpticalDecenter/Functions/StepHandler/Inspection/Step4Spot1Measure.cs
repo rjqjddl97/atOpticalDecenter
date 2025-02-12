@@ -12,6 +12,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
     {
         private WorkingStep mStep = WorkingStep.Idle;
         public static int iGrapCount = 0;
+        string strstep = string.Empty;
         public Step4Spot1Measure()
         {
             //Do some init here.

@@ -11,6 +11,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
     public class Step2SensorPowerOn : StepHandlerBase, IStepHandler
     {
         private WorkingStep mStep = WorkingStep.Idle;
+        string strstep = string.Empty;
         public Step2SensorPowerOn()
         {
             //Do some init here.
@@ -28,6 +29,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
         private void Run()
         {
             byte[] data = new byte[32];
+            ErrorStepString = "센서전원 - " + strstep;
             switch (mStep)
             {
                 case WorkingStep.Idle:
@@ -50,6 +52,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.SensorPowerOn:
+                    strstep = "Power On";
                     if (mRobotInformation.mInputData.B0)
                         mStep = WorkingStep.ErrorOccured;
 
