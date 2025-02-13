@@ -578,7 +578,7 @@ namespace atOpticalDecenter
             else if (currentRow == rowMotionMoveVelocity)
             {
                 fValue = Convert.ToSingle(rowMotionMoveVelocity.Properties.Value);
-                if (value == 0)
+                if (fValue == 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\n이동 속도 값은 0보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionMoveVelocity.Properties.Value = _systemParameters._motionParams.MoveVelocity;
@@ -591,7 +591,7 @@ namespace atOpticalDecenter
             else if (currentRow == rowMotionMenaulVelocity)
             {
                 fValue = Convert.ToSingle(rowMotionMenaulVelocity.Properties.Value);
-                if (value == 0)
+                if (fValue == 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\n수동 이동 속도 값은 0보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionMenaulVelocity.Properties.Value = _systemParameters._motionParams.MenualMoveVelocity;
@@ -604,7 +604,7 @@ namespace atOpticalDecenter
             else if (currentRow == rowMotionMoveAcceleration)
             {
                 fValue = Convert.ToSingle(rowMotionMoveAcceleration.Properties.Value);
-                if (value == 0)
+                if (fValue == 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\n이동 가속도 값은 0보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionMoveAcceleration.Properties.Value = _systemParameters._motionParams.MoveAcceleration;
@@ -656,7 +656,7 @@ namespace atOpticalDecenter
             else if (currentRow == rowMotionGearRatioX)
             {
                 fValue = Convert.ToSingle(rowMotionGearRatioX.Properties.Value);
-                if (value == 0)
+                if (fValue == 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nX축 기어비 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionGearRatioX.Properties.Value = _systemParameters._motionParams.GearRatioX;
@@ -669,7 +669,7 @@ namespace atOpticalDecenter
             else if (currentRow == rowMotionGearRatioY)
             {
                 fValue = Convert.ToSingle(rowMotionGearRatioY.Properties.Value);
-                if (value == 0)
+                if (fValue == 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nY축 기어비 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionGearRatioY.Properties.Value = _systemParameters._motionParams.GearRatioY;
@@ -682,7 +682,7 @@ namespace atOpticalDecenter
             else if (currentRow == rowMotionGearRatioZ)
             {
                 fValue = Convert.ToSingle(rowMotionGearRatioZ.Properties.Value);
-                if (value == 0)
+                if (fValue == 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nZ축 기어비 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionGearRatioZ.Properties.Value = _systemParameters._motionParams.GearRatioZ;
@@ -695,7 +695,7 @@ namespace atOpticalDecenter
             else if (currentRow == rowMotionBallLeadX)
             {
                 fValue = Convert.ToSingle(rowMotionGearRatioX.Properties.Value);
-                if (value == 0)
+                if (fValue == 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nX축 Ball Lead 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionBallLeadX.Properties.Value = _systemParameters._motionParams.BallLeadX;
@@ -708,7 +708,7 @@ namespace atOpticalDecenter
             else if (currentRow == rowMotionBallLeadY)
             {
                 fValue = Convert.ToSingle(rowMotionGearRatioY.Properties.Value);
-                if (value == 0)
+                if (fValue == 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nY축 Ball Lead 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionBallLeadY.Properties.Value = _systemParameters._motionParams.BallLeadY;
@@ -721,7 +721,7 @@ namespace atOpticalDecenter
             else if (currentRow == rowMotionBallLeadZ)
             {
                 fValue = Convert.ToSingle(rowMotionGearRatioZ.Properties.Value);
-                if (value == 0)
+                if (fValue == 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nZ축 Ball Lead 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionBallLeadZ.Properties.Value = _systemParameters._motionParams.BallLeadZ;
@@ -907,10 +907,9 @@ namespace atOpticalDecenter
                 }
                 if (_systemParameters._AiCParams.IDs.Count > 0)
                 {
-                    AiCParams._IDs tempList = _systemParameters._AiCParams.IDs[0];
-                    tempList._devicename = tempIDs._devicename;
-                    tempList._idNumber = tempIDs._idNumber;
-                }
+                    simpleButtonSystemFileSave.Enabled = true;
+                    _systemParameters._AiCParams.IDs[0] = tempIDs;
+                }             
             }
             else if (currentRow == rowAiCYAxis)
             {
@@ -932,9 +931,8 @@ namespace atOpticalDecenter
                 }
                 if (_systemParameters._AiCParams.IDs.Count > 1)
                 {
-                    AiCParams._IDs tempList = _systemParameters._AiCParams.IDs[1];
-                    tempList._devicename = tempIDs._devicename;
-                    tempList._idNumber = tempIDs._idNumber;
+                    simpleButtonSystemFileSave.Enabled = true;
+                    _systemParameters._AiCParams.IDs[1] = tempIDs;
                 }
             }
             else if (currentRow == rowAiCZAxis)
@@ -957,9 +955,8 @@ namespace atOpticalDecenter
                 }
                 if (_systemParameters._AiCParams.IDs.Count > 2)
                 {
-                    AiCParams._IDs tempList = _systemParameters._AiCParams.IDs[2];
-                    tempList._devicename = tempIDs._devicename;
-                    tempList._idNumber = tempIDs._idNumber;
+                    simpleButtonSystemFileSave.Enabled = true;
+                    _systemParameters._AiCParams.IDs[2] = tempIDs;
                 }
             }
             else if (currentRow == rowAiCLoaderAxis)
@@ -980,11 +977,10 @@ namespace atOpticalDecenter
                     vGridControlSystemParameters.Refresh();
                     return;
                 }
-                if (_systemParameters._AiCParams.IDs.Count > 1)
+                if (_systemParameters._AiCParams.IDs.Count > 3)
                 {
-                    AiCParams._IDs tempList = _systemParameters._AiCParams.IDs[4];
-                    tempList._devicename = tempIDs._devicename;
-                    tempList._idNumber = tempIDs._idNumber;
+                    simpleButtonSystemFileSave.Enabled = true;
+                    _systemParameters._AiCParams.IDs[3] = tempIDs;
                 }
             }
             else if (currentRow == rowRemoteIOCommunicationStopbit)
@@ -1206,10 +1202,9 @@ namespace atOpticalDecenter
                 }
                 if (_systemParameters._remoteIOParams.IDs.Count > 0)
                 {
-                    RemoteIOParams._IDs tempList = _systemParameters._remoteIOParams.IDs[0];
-                    tempList._devicename = tempIDs._devicename;
-                    tempList._idNumber = tempIDs._idNumber;
-                }
+                    simpleButtonSystemFileSave.Enabled = true;
+                    _systemParameters._remoteIOParams.IDs[0] = tempIDs;
+                }                
                 //*/
             }
             else if (currentRow == rowRemoteIOOutputIDs)
@@ -1223,7 +1218,7 @@ namespace atOpticalDecenter
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\n판넬메타 이름 설정을 입력하세요.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //rowPanelMeterCommunicationPortName.Properties.Value = _systemParameters._panelmeterParams.;
-                    if (_systemParameters._remoteIOParams.IDs.Count > 0)
+                    if (_systemParameters._remoteIOParams.IDs.Count > 1)
                     {
                         rowRemoteIOOutputProperties1.Value = _systemParameters._remoteIOParams.IDs[1]._devicename;
                         rowRemoteIOOutputProperties2.Value = _systemParameters._remoteIOParams.IDs[1]._idNumber;
@@ -1231,12 +1226,11 @@ namespace atOpticalDecenter
                     vGridControlSystemParameters.Refresh();
                     return;
                 }
-                if (_systemParameters._remoteIOParams.IDs.Count > 0)
+                if (_systemParameters._remoteIOParams.IDs.Count > 1)
                 {
-                    RemoteIOParams._IDs tempList = _systemParameters._remoteIOParams.IDs[1];
-                    tempList._devicename = tempIDs._devicename;
-                    tempList._idNumber = tempIDs._idNumber;
-                }
+                    simpleButtonSystemFileSave.Enabled = true;
+                    _systemParameters._remoteIOParams.IDs[1] = tempIDs;
+                }           
                 //*/
             }
             else if (currentRow == rowSystemADMSUse)

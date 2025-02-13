@@ -86,13 +86,14 @@ namespace RecipeManager
             fileSystem.Sections["FileSystem"].AddKey("RecipeFolderPath", _strRecipeFolderPath);
             fileSystem.Sections["FileSystem"].AddKey("ResultFolderPath", _strResultFolderPath);
             fileSystem.Sections["FileSystem"].AddKey("SystemFolderPath", _strSystemFolderPath);
+            fileSystem.Sections["FileSystem"].AddKey("ImageFolderPath", _strImageFolderPath);
 
             parser.WriteFile(string.Format(@"{0}\{1}", _strSystemFolderPath, _strFileSystemFileName), fileSystem);
         }
 
         static public void CreateSystemDirectory()
         {
-            string[] strSystemFolders = new string[] { SystemDirectoryParams.RootFolderPath, SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.LogFolderPath, SystemDirectoryParams.ResultFolderPath, SystemDirectoryParams.RecipeFolderPath };
+            string[] strSystemFolders = new string[] { SystemDirectoryParams.RootFolderPath, SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.LogFolderPath, SystemDirectoryParams.ResultFolderPath, SystemDirectoryParams.RecipeFolderPath, SystemDirectoryParams.ImageFolderPath };
 
             for (int i = 0; i < strSystemFolders.Length; ++i)
             {

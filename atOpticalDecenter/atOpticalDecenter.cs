@@ -529,7 +529,7 @@ namespace atOpticalDecenter
                 _id[i] = (byte)_systemParams._AiCParams.IDs[i]._idNumber;
             }
             MotionControl.SetCommunicationData(3, _id);
-            AiCModuleConnect(); // connect command
+            //AiCModuleConnect(); // connect command
             return true;
         }
 
@@ -543,7 +543,7 @@ namespace atOpticalDecenter
                 _id[i] = (byte)_systemParams._remoteIOParams.IDs[i]._idNumber;
             }
             RemoteIOControl.SetCommunicationData(_systemParams._remoteIOParams.ConnectedNumber, _id);
-            ARMRemoteIOModuleConnect();// connect command
+            //ARMRemoteIOModuleConnect();// connect command
             return true;
         }
         private bool AiCModuleConnect(string sComport = null)

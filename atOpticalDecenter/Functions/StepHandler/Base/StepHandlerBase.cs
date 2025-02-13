@@ -128,6 +128,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public static double CmdFilterAngleIndex = 0;
         public static long _DelayTimerCounter = 0;
         public static long _CameraGrabWaitTime = 0;
+        public static string _ImageSavePath = string.Empty;
 
         public event Action<InspectResultData> PhotoInspectedDataUpdate;
         public InspectResultData mInspectResultUpdate = new InspectResultData();
@@ -139,6 +140,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public void SetOutputType(PhotoProduct.Enums.OutputType type) => mOutputType = type;
         public void SetOPMode(PhotoProduct.Enums.OperatingMode OpMode) => mOpMode = OpMode;
         public void SetDetectMertrial(PhotoProduct.Enums.DetectMeterial detector) => mDetectMertial = detector;
+        public void SetImageSavePath(string path) => _ImageSavePath = path;
 
         public long GetCorrectionAndInspectionElapseTime => mStopWatchForCorrectionAndInspection.ElapsedMilliseconds;
         public long GetOptionInspectionElapseTime => mStopWatchForOptionInspection.ElapsedMilliseconds;

@@ -306,7 +306,7 @@ namespace CustomPages
                     byte[] data = new byte[100];
                     for (int i = 0; i < _mAiCCommunicationManager.mDrvCtrl.DeviceIDCount; i++)
                     {
-                        data = _mAiCCommunicationManager.mDrvCtrl.DriveInitialSetting((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[i], 10, 5000, 100, 100);
+                        data = _mAiCCommunicationManager.mDrvCtrl.DriveInitialSetting((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[i], 10, 5000, 200, 200);
                         _mAiCCommunicationManager.SendData(data);
                     }
                     _IsInitialDrive = true;
@@ -670,7 +670,7 @@ namespace CustomPages
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.ServoOn, false);
                             _isRobotEnable = false;
                         }
-                        if ( (Convert.ToDouble(textEditTargetVel1) != 0) && (Convert.ToDouble(textEditTargetVel2) != 0) && (Convert.ToDouble(textEditTargetVel3) != 0) )
+                        if ( (Convert.ToDouble(textEditTargetVel1.Text) != 0) && (Convert.ToDouble(textEditTargetVel2.Text) != 0) && (Convert.ToDouble(textEditTargetVel3.Text) != 0) )
                         //if ( (Convert.ToDouble(textEditTargetVel1.Text) != 0) )
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.Moving, true);
                         else

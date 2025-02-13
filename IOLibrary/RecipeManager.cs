@@ -252,7 +252,7 @@ namespace RecipeManager
             {
                 if (systemParam._remoteIOParams.ConnectedNumber == 1)
                 {
-                    systemParam._remoteIOParams.SetInitialIDs(systemParam._AiCParams.ConnectedNumber);
+                    systemParam._remoteIOParams.SetInitialIDs(systemParam._remoteIOParams.ConnectedNumber);
                     RemoteIOParams._IDs tempRemoteList;
                     tempRemoteList._devicename = Convert.ToString(systemData[SystemParamSections[4]]["DeviceIDsInfomation1_Name"]);
                     tempRemoteList._idNumber = Convert.ToInt32(systemData[SystemParamSections[4]]["DeviceIDsInfomation1_ID"]);
@@ -260,7 +260,7 @@ namespace RecipeManager
                 }
                 else if (systemParam._remoteIOParams.ConnectedNumber == 2)
                 {
-                    systemParam._remoteIOParams.SetInitialIDs(systemParam._AiCParams.ConnectedNumber);
+                    systemParam._remoteIOParams.SetInitialIDs(systemParam._remoteIOParams.ConnectedNumber);
                     RemoteIOParams._IDs tempRemoteList;
                     tempRemoteList._devicename = Convert.ToString(systemData[SystemParamSections[4]]["DeviceIDsInfomation1_Name"]);
                     tempRemoteList._idNumber = Convert.ToInt32(systemData[SystemParamSections[4]]["DeviceIDsInfomation1_ID"]);
@@ -375,11 +375,11 @@ namespace RecipeManager
             systemData[SystemParamSections[4]].AddKey("SerialParity", Enum.GetName(typeof(Parity), (Parity)systemParam._remoteIOParams.SerialParameters.Parity));
             systemData[SystemParamSections[4]].AddKey("SerialStopBits", Enum.GetName(typeof(StopBits), (StopBits)systemParam._remoteIOParams.SerialParameters.StopBits));
             systemData[SystemParamSections[4]].AddKey("SerialHandshake", Enum.GetName(typeof(Handshake), (Handshake)systemParam._remoteIOParams.SerialParameters.Handshake));
-            systemData[SystemParamSections[3]].AddKey("ConnectedDeviceNumber", systemParam._AiCParams.ConnectedNumber.ToString());
-            systemData[SystemParamSections[3]].AddKey("DeviceIDsInfomation1_Name", systemParam._remoteIOParams.IDs[0]._devicename);
-            systemData[SystemParamSections[3]].AddKey("DeviceIDsInfomation1_ID", systemParam._remoteIOParams.IDs[0]._idNumber.ToString());
-            systemData[SystemParamSections[3]].AddKey("DeviceIDsInfomation2_Name", systemParam._remoteIOParams.IDs[1]._devicename);
-            systemData[SystemParamSections[3]].AddKey("DeviceIDsInfomation2_ID", systemParam._remoteIOParams.IDs[1]._idNumber.ToString());
+            systemData[SystemParamSections[4]].AddKey("ConnectedDeviceNumber", systemParam._AiCParams.ConnectedNumber.ToString());
+            systemData[SystemParamSections[4]].AddKey("DeviceIDsInfomation1_Name", systemParam._remoteIOParams.IDs[0]._devicename);
+            systemData[SystemParamSections[4]].AddKey("DeviceIDsInfomation1_ID", systemParam._remoteIOParams.IDs[0]._idNumber.ToString());
+            systemData[SystemParamSections[4]].AddKey("DeviceIDsInfomation2_Name", systemParam._remoteIOParams.IDs[1]._devicename);
+            systemData[SystemParamSections[4]].AddKey("DeviceIDsInfomation2_ID", systemParam._remoteIOParams.IDs[1]._idNumber.ToString());
 
             // ADMS Parameters
             systemData.Sections.AddSection(SystemParamSections[5]);

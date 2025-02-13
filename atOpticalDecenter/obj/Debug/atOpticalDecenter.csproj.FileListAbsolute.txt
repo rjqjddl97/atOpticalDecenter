@@ -746,6 +746,7 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\bin\Debug\DLL\Pyl
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\bin\Debug\DLL\uxapi_v11.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\bin\Debug\DLL\uxtopapi_v5_1.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\bin\Debug\DLL\XmlParser_MD_VC141_v3_1_Basler_pylon_v5_1.dll
+D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\bin\Debug\atOpticalDecenter.exe.config
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\bin\Debug\atOpticalDecenter.exe
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\bin\Debug\atOpticalDecenter.pdb
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\bin\Debug\AiCControlLibrary.dll
@@ -904,4 +905,3 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOptic
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.csproj.CopyComplete
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.exe
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.pdb
-D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\bin\Debug\atOpticalDecenter.exe.config

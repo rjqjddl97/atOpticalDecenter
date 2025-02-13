@@ -136,7 +136,7 @@ namespace atOpticalDecenter
             mResultData.fLensFocusLength = (double)_systemParams._cameraParams.LensFocusLength;            
             mStepBase = new Functions.StepHandler.Base.StepHandlerBase(_mMotionControlCommManager,_mRemteIOCommManager,_systemParams,_workParams, mResultData,mRobotInformation);
             //mStepBase.PhotoInspectedDataUpdate += UpdatePhotoInspectedData;
-            
+            mStepBase.SetImageSavePath(global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath);
             TakePictureEvent += GrabPicture;            
             ImageGrabbed += mStepBase.OnCameraImageGrab;
 
@@ -150,9 +150,9 @@ namespace atOpticalDecenter
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step1JigCheck());
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step2SensorPowerOn());
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step3MovePostion1());
-                //mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step4Spot1Measure());
+                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step4Spot1Measure());
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step5MovePosition2());
-                //mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step6Spot2Measure());
+                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step6Spot2Measure());
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step7SensorPowerOff());
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step8CalculateResult());
 
