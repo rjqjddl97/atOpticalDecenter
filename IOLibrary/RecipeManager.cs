@@ -216,7 +216,7 @@ namespace RecipeManager
                 systemParam._AiCParams.IDs[0] = tempList;
                 tempList._devicename = Convert.ToString(systemData[SystemParamSections[3]]["DeviceIDsInfomation2_Name"]);
                 tempList._idNumber = Convert.ToInt32(systemData[SystemParamSections[3]]["DeviceIDsInfomation2_ID"]);
-                systemParam._AiCParams.IDs[1] = tempList;                
+                systemParam._AiCParams.IDs[1] = tempList;
                 tempList._devicename = Convert.ToString(systemData[SystemParamSections[3]]["DeviceIDsInfomation3_Name"]);
                 tempList._idNumber = Convert.ToInt32(systemData[SystemParamSections[3]]["DeviceIDsInfomation3_ID"]);
                 systemParam._AiCParams.IDs[2] = tempList;
@@ -237,6 +237,14 @@ namespace RecipeManager
                 tempList._devicename = Convert.ToString(systemData[SystemParamSections[3]]["DeviceIDsInfomation4_Name"]);
                 tempList._idNumber = Convert.ToInt32(systemData[SystemParamSections[3]]["DeviceIDsInfomation4_ID"]);
                 systemParam._AiCParams.IDs[3] = tempList;
+            }
+            else
+            {
+                systemParam._AiCParams.SetInitialIDs(1);
+                AiCParams._IDs tempList;
+                tempList._devicename = Convert.ToString(systemData[SystemParamSections[3]]["DeviceIDsInfomation1_Name"]);
+                tempList._idNumber = Convert.ToInt32(systemData[SystemParamSections[3]]["DeviceIDsInfomation1_ID"]);
+                systemParam._AiCParams.IDs[0] = tempList;
             }
 
             // Remote IO Parameters
@@ -272,7 +280,7 @@ namespace RecipeManager
             }
             else
             {
-                systemParam._AiCParams.ConnectedNumber = 1;
+                systemParam._remoteIOParams.ConnectedNumber = 1;
                 systemParam._remoteIOParams.SetInitialIDs(systemParam._AiCParams.ConnectedNumber);
                 RemoteIOParams._IDs tempRemoteList;
                 tempRemoteList._devicename = "IO";
@@ -375,7 +383,7 @@ namespace RecipeManager
             systemData[SystemParamSections[4]].AddKey("SerialParity", Enum.GetName(typeof(Parity), (Parity)systemParam._remoteIOParams.SerialParameters.Parity));
             systemData[SystemParamSections[4]].AddKey("SerialStopBits", Enum.GetName(typeof(StopBits), (StopBits)systemParam._remoteIOParams.SerialParameters.StopBits));
             systemData[SystemParamSections[4]].AddKey("SerialHandshake", Enum.GetName(typeof(Handshake), (Handshake)systemParam._remoteIOParams.SerialParameters.Handshake));
-            systemData[SystemParamSections[4]].AddKey("ConnectedDeviceNumber", systemParam._AiCParams.ConnectedNumber.ToString());
+            systemData[SystemParamSections[4]].AddKey("ConnectedDeviceNumber", systemParam._remoteIOParams.ConnectedNumber.ToString());
             systemData[SystemParamSections[4]].AddKey("DeviceIDsInfomation1_Name", systemParam._remoteIOParams.IDs[0]._devicename);
             systemData[SystemParamSections[4]].AddKey("DeviceIDsInfomation1_ID", systemParam._remoteIOParams.IDs[0]._idNumber.ToString());
             systemData[SystemParamSections[4]].AddKey("DeviceIDsInfomation2_Name", systemParam._remoteIOParams.IDs[1]._devicename);

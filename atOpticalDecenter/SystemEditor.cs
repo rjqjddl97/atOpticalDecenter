@@ -141,6 +141,7 @@ namespace atOpticalDecenter
             _systemParameters._AiCParams.SerialParameters.StopBits = (StopBits)Enum.Parse(typeof(StopBits), Convert.ToString(rowAiCCommunicationStopbit.Properties.Value));
             _systemParameters._AiCParams.SerialParameters.DataBits = Convert.ToInt32(rowAiCCommunicationDatabit.Properties.Value);
             _systemParameters._AiCParams.SerialParameters.Handshake = (Handshake)Enum.Parse(typeof(Handshake), Convert.ToString(rowAiCCommunicationHandshake.Properties.Value));
+            _systemParameters._AiCParams.ConnectedNumber = Convert.ToInt32(rowAiCCommunicationCounter.Properties.Value);
             AiCParams._IDs items = new AiCParams._IDs();            
             items._devicename = Convert.ToString(rowAiC1Properties1.Value);
             items._idNumber = Convert.ToInt32(rowAiC1Properties2.Value);
@@ -254,6 +255,7 @@ namespace atOpticalDecenter
             rowAiCCommunicationStopbit.Properties.Value = _systemParameters._AiCParams.SerialParameters.StopBits;
             rowAiCCommunicationParity.Properties.Value = _systemParameters._AiCParams.SerialParameters.Parity;
             rowAiCCommunicationHandshake.Properties.Value = _systemParameters._AiCParams.SerialParameters.Handshake;
+            rowAiCCommunicationCounter.Properties.Value = _systemParameters._AiCParams.ConnectedNumber;
             if (_systemParameters._AiCParams.IDs.Count > 0)
             {
                 rowAiC1Properties1.Value = _systemParameters._AiCParams.IDs[0]._devicename;
@@ -886,6 +888,22 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._AiCParams.SerialParameters.PortName = strTemp;
+            }
+            else if (currentRow == rowAiCCommunicationCounter)
+            {
+                ///*
+                value = Convert.ToInt32(rowAiCCommunicationCounter.Properties.Value);
+                if (value < 0)
+                {
+                    MessageBox.Show("잘못된 값을 입력했습니다.\r\n AiC 연결대수는 0보다 크거나 같은 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    rowAiCCommunicationCounter.Properties.Value = _systemParameters._AiCParams.ConnectedNumber;
+                    vGridControlSystemParameters.Refresh();
+                    return;
+                }
+
+                simpleButtonSystemFileSave.Enabled = true;
+                _systemParameters._AiCParams.ConnectedNumber = value;
+                //*/
             }
             else if (currentRow == rowAiCXAxis)
             {
