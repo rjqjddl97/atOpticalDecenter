@@ -694,7 +694,7 @@ namespace atOpticalDecenter
             }
             else if (currentRow == rowMotionBallLeadX)
             {
-                fValue = Convert.ToSingle(rowMotionGearRatioX.Properties.Value);
+                fValue = Convert.ToSingle(rowMotionBallLeadX.Properties.Value);
                 if (fValue == 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nX축 Ball Lead 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -707,7 +707,7 @@ namespace atOpticalDecenter
             }
             else if (currentRow == rowMotionBallLeadY)
             {
-                fValue = Convert.ToSingle(rowMotionGearRatioY.Properties.Value);
+                fValue = Convert.ToSingle(rowMotionBallLeadY.Properties.Value);
                 if (fValue == 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nY축 Ball Lead 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
