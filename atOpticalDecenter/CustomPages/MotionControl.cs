@@ -1831,8 +1831,9 @@ namespace CustomPages
             for (int i = 1; i < 4; i++)
             {
                 SeData = _mAiCCommunicationManager.mDrvCtrl.HomeStartCommand((byte)i);
-                _mAiCCommunicationManager.SendData(SeData);
+                _mAiCCommunicationManager.SendData(SeData);                
             }
+            _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.OperationReady, true);
         }
 
         private void EmergencyStopButton_Click(object sender, EventArgs e)

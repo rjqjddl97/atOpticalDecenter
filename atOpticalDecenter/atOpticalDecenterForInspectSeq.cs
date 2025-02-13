@@ -82,7 +82,14 @@ namespace atOpticalDecenter
             mRobotInformation.mStatus = update.mStatus;
             mRobotInformation.mError = update.mError;
 
-            mStepBase.UpdateRobotInfomation(mRobotInformation);
+            if (_IsHommingFinished)
+                mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
+
+            if (mStepBase != null)
+                mStepBase.UpdateRobotInfomation(mRobotInformation);
+
+            if (mRobotInformation.GetStatus(RobotInformation.RobotStatus.OperationReady))
+                _IsHommingFinished = true;
         }
         public void UpdateRobotIOInfomation(RobotInformation update)
         {
@@ -104,9 +111,9 @@ namespace atOpticalDecenter
                     {
                         //InspectionSequenceStop();
                         byte[] SeData = new byte[8];
-                        for (int i = 1; i < 4; i++)
+                        for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
                         {
-                            SeData = _mMotionControlCommManager.mDrvCtrl.AlarmResetCommand((byte)i);
+                            SeData = _mMotionControlCommManager.mDrvCtrl.AlarmResetCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
                             _mMotionControlCommManager.SendData(SeData);
                         }
                     }
@@ -117,7 +124,8 @@ namespace atOpticalDecenter
                 InspectionSequenceStop();
                 _IsHommingFinished = false;
             }
-            mStepBase.UpdateRobotIOInfomation(mRobotInformation);
+            if (mStepBase != null)
+                mStepBase.UpdateRobotIOInfomation(mRobotInformation);
         }
         
         private void InitStepBase()

@@ -249,7 +249,7 @@ namespace atOpticalDecenter
                         if (_mMotionControlCommManager.IsOpen())
                         {
                             byte[] SeData = new byte[8];
-                            for (int i = 1; i < 4; i++)
+                            for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
                             {
                                 SeData = _mMotionControlCommManager.mDrvCtrl.HomeStartCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
                                 _mMotionControlCommManager.SendData(SeData);
