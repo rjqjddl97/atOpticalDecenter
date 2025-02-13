@@ -306,7 +306,7 @@ namespace CustomPages
                     byte[] data = new byte[100];
                     for (int i = 0; i < _mAiCCommunicationManager.mDrvCtrl.DeviceIDCount; i++)
                     {
-                        data = _mAiCCommunicationManager.mDrvCtrl.DriveInitialSetting((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[i], 10, 10000, 50, 50);
+                        data = _mAiCCommunicationManager.mDrvCtrl.DriveInitialSetting((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[i], 10, 5000, 100, 100);
                         _mAiCCommunicationManager.SendData(data);
                     }
                     _IsInitialDrive = true;

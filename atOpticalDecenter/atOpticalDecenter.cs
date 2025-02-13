@@ -125,12 +125,14 @@ namespace atOpticalDecenter
                     SystemDirectoryParams.RecipeFolderPath = system.RecipeFolderPath;
                     SystemDirectoryParams.ResultFolderPath = system.ResultFolderPath;
                     SystemDirectoryParams.SystemFolderPath = system.SystemFolderPath;
+                    SystemDirectoryParams.ImageFolderPath = system.ImageFolderPath;
 
                     global::atOpticalDecenter.Properties.Settings.Default.strRootFolderPath = SystemDirectoryParams.RootFolderPath;
                     global::atOpticalDecenter.Properties.Settings.Default.strLogFolderPath = SystemDirectoryParams.LogFolderPath;
                     global::atOpticalDecenter.Properties.Settings.Default.strRecipeFolderPath = SystemDirectoryParams.RecipeFolderPath;
                     global::atOpticalDecenter.Properties.Settings.Default.strResultFolderPath = SystemDirectoryParams.ResultFolderPath;
                     global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath = SystemDirectoryParams.SystemFolderPath;
+                    global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath = SystemDirectoryParams.ImageFolderPath;
                     global::atOpticalDecenter.Properties.Settings.Default.Save();
 
                     SystemDirectoryParams.CreateSystemDirectory();
@@ -239,6 +241,26 @@ namespace atOpticalDecenter
 
                 UpdateConnectStatusForAll();
                 InitialGuiAllEdit();
+
+                if (!_IsHommingFinished)
+                {
+                    if (MessageBox.Show("원점복귀가 진행을 합니다.","원점복귀",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (_mMotionControlCommManager.IsOpen())
+                        {
+                            byte[] SeData = new byte[8];
+                            for (int i = 1; i < 4; i++)
+                            {
+                                SeData = _mMotionControlCommManager.mDrvCtrl.HomeStartCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
+                                _mMotionControlCommManager.SendData(SeData);
+                            }
+                            _IsHommingFinished = true;                            
+                        }
+                        else
+                            _IsHommingFinished = false;
+                        mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -315,7 +337,7 @@ namespace atOpticalDecenter
                     string strRootFolder = string.Empty;
                     string strTempFolder = string.Empty;
 
-                    strRootFolder = string.Format(@"{0}\Autonics\atPhotoInspection", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+                    strRootFolder = string.Format(@"{0}\Autonics\atOpticalDecenters", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
                     global::atOpticalDecenter.Properties.Settings.Default.strRootFolderPath = strRootFolder;
                     SystemDirectoryParams.RootFolderPath = strRootFolder;
 
@@ -334,6 +356,10 @@ namespace atOpticalDecenter
                     strTempFolder = string.Format(@"{0}\Result", strRootFolder);
                     global::atOpticalDecenter.Properties.Settings.Default.strResultFolderPath = strTempFolder;
                     SystemDirectoryParams.ResultFolderPath = strTempFolder;
+                    
+                    strTempFolder = string.Format(@"{0}\Image", strRootFolder);
+                    global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath = strTempFolder;
+                    SystemDirectoryParams.ImageFolderPath = strTempFolder;
 
                     global::atOpticalDecenter.Properties.Settings.Default.Save();
                 }
@@ -344,6 +370,7 @@ namespace atOpticalDecenter
                     SystemDirectoryParams.RecipeFolderPath = global::atOpticalDecenter.Properties.Settings.Default.strRecipeFolderPath;
                     SystemDirectoryParams.LogFolderPath = global::atOpticalDecenter.Properties.Settings.Default.strLogFolderPath;
                     SystemDirectoryParams.ResultFolderPath = global::atOpticalDecenter.Properties.Settings.Default.strResultFolderPath;
+                    SystemDirectoryParams.ImageFolderPath = global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath;
                 }
 
                 SystemDirectoryParams.CreateSystemDirectory();
@@ -502,7 +529,7 @@ namespace atOpticalDecenter
                 _id[i] = (byte)_systemParams._AiCParams.IDs[i]._idNumber;
             }
             MotionControl.SetCommunicationData(3, _id);
-            // connect command
+            AiCModuleConnect(); // connect command
             return true;
         }
 
@@ -516,7 +543,7 @@ namespace atOpticalDecenter
                 _id[i] = (byte)_systemParams._remoteIOParams.IDs[i]._idNumber;
             }
             RemoteIOControl.SetCommunicationData(_systemParams._remoteIOParams.ConnectedNumber, _id);
-            // connect command
+            ARMRemoteIOModuleConnect();// connect command
             return true;
         }
         private bool AiCModuleConnect(string sComport = null)
@@ -2677,6 +2704,7 @@ namespace atOpticalDecenter
                 _isInspecting = true;
                 // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
                 //
+
                 if (_isContinuousShot)
                 {
                     _Camera.Stop();
@@ -2686,25 +2714,35 @@ namespace atOpticalDecenter
                 }
                 barCheckItemShowCenterMark.Enabled = true;
 
-                mStepBase.SetJobInfo(mLogin.JobInformation);
-                mStepBase.SetProductSeries((PhotoProduct.Enums.ProductSeries)_workParams._ProductSeries);
-                mStepBase.SetProductType((PhotoProduct.Enums.ProductType)_workParams._ProductType);
-                mStepBase.SetProductName(_workParams._ProductModelName);
-                mStepBase.SetOutputType((PhotoProduct.Enums.OutputType)_workParams._ProductOutputType);
-                mStepBase.SetOPMode((PhotoProduct.Enums.OperatingMode)_workParams._ProductOperatingMdoe);
-                mStepBase.SetDetectMertrial((PhotoProduct.Enums.DetectMeterial)_workParams._ProductDetectMerterial);
-                mStepBase.ClearTimeForFullSequence();
+                if (mRobotInformation.GetStatus(RobotInformation.RobotStatus.OperationReady))
+                {
+                    mStepBase.SetJobInfo(mLogin.JobInformation);
+                    mStepBase.SetProductSeries((PhotoProduct.Enums.ProductSeries)_workParams._ProductSeries);
+                    mStepBase.SetProductType((PhotoProduct.Enums.ProductType)_workParams._ProductType);
+                    mStepBase.SetProductName(_workParams._ProductModelName);
+                    mStepBase.SetOutputType((PhotoProduct.Enums.OutputType)_workParams._ProductOutputType);
+                    mStepBase.SetOPMode((PhotoProduct.Enums.OperatingMode)_workParams._ProductOperatingMdoe);
+                    mStepBase.SetDetectMertrial((PhotoProduct.Enums.DetectMeterial)_workParams._ProductDetectMerterial);
+                    mStepBase.ClearTimeForFullSequence();
 
-                MakeInspectionList();
-                _InspectionWorking = true;
-                mInspectStep = InspectionStepType.CheckWaitRobotReady;
+                    MakeInspectionList();
+                    _InspectionWorking = true;
+                    mInspectStep = InspectionStepType.CheckWaitRobotReady;
 
-                InspectionRecipeParameterSetup();
+                    InspectionRecipeParameterSetup();
 
-                CheckTackTime.Start();
-                _backgroundWorkerOpticalDecenterInspection.RunWorkerAsync();
+                    CheckTackTime.Start();
+                    _backgroundWorkerOpticalDecenterInspection.RunWorkerAsync();
 
-                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 실행");
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 실행");
+                }
+                else
+                {
+                    barCheckItemInspectionStart.Caption = string.Format("검사 시작");
+                    _isInspecting = false;
+                    MessageBox.Show("모션 원점복귀를 실행하세요","검사 중지");
+                }
+
             }
             else
             {

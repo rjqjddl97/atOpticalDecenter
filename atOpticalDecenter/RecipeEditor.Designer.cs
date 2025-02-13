@@ -629,7 +629,7 @@
             // 
             // vGridControlInspectionParam
             // 
-            this.vGridControlInspectionParam.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControlInspectionParam.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControlInspectionParam.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControlInspectionParam.Location = new System.Drawing.Point(3, 3);
             this.vGridControlInspectionParam.Name = "vGridControlInspectionParam";
@@ -1078,6 +1078,7 @@
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl1);
+            this.MaximumSize = new System.Drawing.Size(1024, 768);
             this.Name = "RecipeEditor";
             this.Ribbon = this.ribbonControl1;
             this.ShowIcon = false;

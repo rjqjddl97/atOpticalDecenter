@@ -16,6 +16,7 @@ namespace RecipeManager
         static string _strLogFolderPath = string.Empty;
         static string _strResultFolderPath = string.Empty;
         static string _strRecipeFolderPath = string.Empty;
+        static string _strImageFolderPath = string.Empty;
 
         static string _strSystemFileName = "SystemParameters.ini";
         static string _strStatisticsFileName = "Statistics.ini";
@@ -51,7 +52,11 @@ namespace RecipeManager
             get { return _strRecipeFolderPath; }
             set { _strRecipeFolderPath = value; }
         }
-
+        static public string ImageFolderPath
+        {
+            get { return _strImageFolderPath; }
+            set { _strImageFolderPath = value; }
+        }
         static public string SystemFileName
         {
             get { return _strSystemFileName; }

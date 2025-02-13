@@ -167,7 +167,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             iThreshold_V = mWorkParam._LEDInspectionReferenceThresholdV;
             Bitmap tempImage = Utils.Clone<Bitmap>((Bitmap)mSourceImage);
             Bitmap inspectsource = new Bitmap(mSourceImage.Width, mSourceImage.Height);
-            string filepath = "D:\\Picture\\" + DateTime.Now.ToString("yyyyMMdd");
+            
+            
+            string filepath = global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath + DateTime.Now.ToString("yyyyMMdd");
             if (!Directory.Exists(filepath))
                 Directory.CreateDirectory(filepath);
             if (tempImage.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
