@@ -171,7 +171,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             Bitmap inspectsource = new Bitmap(mSourceImage.Width, mSourceImage.Height);
             
             
-            string filepath = global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath + DateTime.Now.ToString("yyyyMMdd");
+            string filepath = global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath + "\\" + DateTime.Now.ToString("yyyyMMdd");
             if (!Directory.Exists(filepath))
                 Directory.CreateDirectory(filepath);
             if (tempImage.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
@@ -186,9 +186,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                 mInspectResultData.fOpticalSpotImageBright = (double)mFirstLedSpot.PixelPeak;
                 mInspectResultData.WorkDistance = (double)mWorkParam._LEDInspectionCameraDistance;
                 mInspectResultData.CalculateLedBlob(0);                
-                mInspectResultData.fMeasureP1X = posx + (((_ImageResolution_H / 2) - mFirstLedSpot.CenterX) * fOnePixelResolution);
+                mInspectResultData.fMeasureP1X = posx + ((mFirstLedSpot.CenterX - (_ImageResolution_H / 2)) * fOnePixelResolution);
                 mInspectResultData.fMeasureP1Y = posy;
-                mInspectResultData.fMeasureP1Z = posz + (((_ImageResolution_V / 2) - mFirstLedSpot.CenterY) * fOnePixelResolution);
+                mInspectResultData.fMeasureP1Z = posz + ((mFirstLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
                 if (mSystemParam._saveResultLEDMeasurement)
                 {
                     inspectsource.Save(filepath + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + "_P1.bmp");
@@ -200,9 +200,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                 //mFinalLedSpot = ImageLibrary.OpticalSpot.OpticalSpotDetectProcess(mSourceImage, (iThreshold_H * 3) / 4, (iThreshold_V * 3) / 4, iMin, iMax);
                 mInspectResultData.mFinalLedSpot = mFinalLedSpot;
                 mInspectResultData.CalculateLedBlob(1);                
-                mInspectResultData.fMeasureP2X = posx + (((_ImageResolution_H / 2) - mFinalLedSpot.CenterX) * fOnePixelResolution);
+                mInspectResultData.fMeasureP2X = posx + ((mFinalLedSpot.CenterX - (_ImageResolution_H / 2)) * fOnePixelResolution);
                 mInspectResultData.fMeasureP2Y = posy;
-                mInspectResultData.fMeasureP2Z = posz + (((_ImageResolution_V / 2) - mFinalLedSpot.CenterY) * fOnePixelResolution);
+                mInspectResultData.fMeasureP2Z = posz + ((mFinalLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
                 mInspectResultData.CalculateOpticalDecenter();
                 if (mSystemParam._saveResultLEDMeasurement)
                 {
@@ -213,6 +213,10 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         protected void LedSpotCalcuate()
         {
             mInspectResultData.CalculateOpticalInspect(mWorkParam._ProductType);
+            if ((mInspectResultData.fOpticalEmiterAngle >= -(mWorkParam._LEDInspectionDivergenceAngle*(Math.PI/180))) && (mInspectResultData.fOpticalEmiterAngle <= (mWorkParam._LEDInspectionDivergenceAngle * (Math.PI / 180))))
+                mInspectResultData.bTotalResult = true;
+            else
+                mInspectResultData.bTotalResult = false;
         }
         public InspectResultData UpdateInspectdData()
         {
@@ -287,6 +291,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             {
                 if (image != null)
                 {
+                    mSourceImage = null;
                     mSourceImage = Utils.Clone(image);
                     IsGrabbed = true;
 #if DEBUG

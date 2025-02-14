@@ -46,3 +46,4 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary
 D:\Work\Visual_C++\Project\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\obj\Debug\AiCControlLibrary.csproj.CoreCompileInputs.cache
 D:\Work\Visual_C++\Project\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\obj\Debug\AiCControlLibrary.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\obj\Debug\AiCControlLibrary.pdb
+C:\Work\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\obj\Debug\AiCControlLibrary.csprojAssemblyReference.cache

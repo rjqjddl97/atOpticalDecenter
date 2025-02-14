@@ -23,9 +23,11 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
         {
             Idle,
             CheckStatus,
-            SetMoveTargetPosition,            
+            WaitDelayTimeVelocityCommand,
+            SetMoveTargetPosition,
+            WaitDelaySetPositionCommand,
             MoveInspectPosition,
-            WaitDelayTimeCommand,
+            WaitDelayTimePositionCommand,
             WaitCheckInposition,
             ErrorOccured,
         }
@@ -54,7 +56,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
 
                                 double vel = (double)mSystemParam._motionParams.MoveVelocity;
 
-                                for (int i = 0; i < 3; i++)
+                                for (int i = 0; i < mMotionDrvCtrl.mDrvCtrl.DeviceIDCount; i++)
                                 {
                                     if (i == 0)
                                     {
@@ -75,9 +77,19 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                                     mMotionDrvCtrl.SendData(data);
                                 }
                                 _DelayTimerCounter = D_MOTION_COMMAND_RESPONSE_WAIT_TIME;
-                                mStep = WorkingStep.SetMoveTargetPosition;
+                                mTimeChecker.SetTime(_DelayTimerCounter);
+                                mStep = WorkingStep.WaitDelayTimeVelocityCommand;
                             }
                         }
+                    }
+                    break;
+                case WorkingStep.WaitDelayTimeVelocityCommand:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
+
+                    if (mTimeChecker.IsTimeOver())
+                    {
+                        mStep = WorkingStep.SetMoveTargetPosition;
                     }
                     break;
                 case WorkingStep.SetMoveTargetPosition:
@@ -94,7 +106,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                                 {
                                     byte[] data = new byte[100];
 
-                                    for (int j = 0; j < 3; j++)
+                                    for (int j = 0; j < mMotionDrvCtrl.mDrvCtrl.DeviceIDCount; j++)
                                     {
                                         if (j == 0)
                                         {                                            
@@ -112,10 +124,20 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                                     }
                                 }
                             }
-                            mStep = WorkingStep.MoveInspectPosition;
+                            mTimeChecker.SetTime(_DelayTimerCounter);
+                            mStep = WorkingStep.WaitDelaySetPositionCommand;
                         }
                         else
                             mStep = WorkingStep.ErrorOccured;
+                    }
+                    break;
+                case WorkingStep.WaitDelaySetPositionCommand:
+                    if (mRobotInformation.mInputData.B0)
+                        mStep = WorkingStep.ErrorOccured;
+
+                    if (mTimeChecker.IsTimeOver())
+                    {
+                        mStep = WorkingStep.MoveInspectPosition;
                     }
                     break;
                 case WorkingStep.MoveInspectPosition:
@@ -128,10 +150,10 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
                         mMotionDrvCtrl.SendData(data);
                         mTimeChecker.SetTime(_DelayTimerCounter);
-                        mStep = WorkingStep.WaitDelayTimeCommand;
+                        mStep = WorkingStep.WaitDelayTimePositionCommand;
                     }
                     break;
-                case WorkingStep.WaitDelayTimeCommand:
+                case WorkingStep.WaitDelayTimePositionCommand:
                     if (mRobotInformation.mInputData.B0)
                         mStep = WorkingStep.ErrorOccured;
 

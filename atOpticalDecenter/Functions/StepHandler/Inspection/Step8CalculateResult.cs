@@ -65,7 +65,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                                 {
                                     byte[] data = new byte[100];
 
-                                    for (int j = 0; j < 3; j++)
+                                    for (int j = 0; j < mMotionDrvCtrl.mDrvCtrl.DeviceIDCount; j++)
                                     {
                                         if (j == 0)
                                         {

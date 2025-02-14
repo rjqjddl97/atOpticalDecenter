@@ -178,7 +178,8 @@ namespace atOpticalDecenter
                     {
                         TimeSpan ts = CheckTackTime.Elapsed;
                         barStaticItemInspectionTime.Caption = string.Format("검사 시간: 00:{0:00}:{1:00}.{2}", ts.Minutes, ts.Seconds, ts.Milliseconds);
-                        barStaticItemInspectionStatus.Caption = string.Format("진행: ") + ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[RunningIndex]).StepInformation;
+                        if (RunningIndex < mPhotoInspectionList.Count)
+                            barStaticItemInspectionStatus.Caption = string.Format("진행: ") + ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[RunningIndex]).StepInformation;
                         switch (mInspectStep)
                         {
                             case InspectionStepType.Idle:
@@ -277,7 +278,7 @@ namespace atOpticalDecenter
                                 CurrentStep = RunningIndex,
                             });
                         }
-                        System.Threading.Thread.Sleep(479);
+                        System.Threading.Thread.Sleep(191);
                         //11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97,
                         //101, 103, 107, 109, 113, 127, 131, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199,479
                     }
@@ -298,7 +299,8 @@ namespace atOpticalDecenter
             barStaticItemInspectionStatus.Caption = string.Format("진행: 검사 완료");
             InpsectResultUpdate();
             CreateResultFile(mResultData.bTotalResult);
-           System.Console.WriteLine("bacground work Photo Inspection run worker completed");
+            barEditItemInspectionProgress.EditValue = 100;
+            System.Console.WriteLine("bacground work Photo Inspection run worker completed");
         }
         private void backgroundWorkerInspection_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
@@ -363,9 +365,9 @@ namespace atOpticalDecenter
             xtraTabControlMainSetup.SelectedTabPageIndex = 4;
 
             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("투광 LED 특성 검사 결과 , Spot1 Size :{0:000.000}mm, Spot2 Size :{1:000.000}mm, " +
-                "이미지 밝기 :{2:000}pixel, 광원 편심 :{3:00.000}mm, 광 발산각 :{4:00.000}˚, 감쇄율 :{5:00.000}, ND필터 예측각도 :{6:000}˚ , 최대거리 ND필터 :{7:000}˚",
+                "이미지 밝기 :{2:000}pixel, 광원 편심 :{3:00.000}mm, 광 발산각 :{4:00.000}˚, 감쇄율 :{5:00.000}, ND필터 예측각도 :{6:000}˚ , 최대거리 ND필터 :{7:000}˚, 검사 결과 : {8}",
                 mResultData.fOpticalSize[0], mResultData.fOpticalSize[1], mResultData.fOpticalSpotImageBright, mResultData.fOpticalEccentricity, (mResultData.fOpticalEmiterAngle * (180 / Math.PI)),
-                mResultData.fODFilterReduce, mResultData.fND_FilterAngle, mResultData.fMaxOperateDistance));
+                mResultData.fODFilterReduce, mResultData.fND_FilterAngle, mResultData.fMaxOperateDistance, (mResultData.bTotalResult ? "Pass" : "Fail")));
         }
         public void CreateResultFile(bool IsPass)
         {
@@ -382,12 +384,12 @@ namespace atOpticalDecenter
                     if (IsPass)
                     {
                         //strFilePath += string.Format(@"\Pass\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
-                        strFilePath += string.Format(@"\Pass\{0}_{1:00}", _workParams.RecipeName, _inspectionStartTime.Hour);
+                        strFilePath += string.Format(@"\Pass\{0}", _workParams.RecipeName);
                     }
                     else
                     {
                         //strFilePath += string.Format(@"\Fail\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
-                        strFilePath += string.Format(@"\Fail\{0}_{1:00}", _workParams.RecipeName, _inspectionStartTime.Hour);
+                        strFilePath += string.Format(@"\Fail\{0}", _workParams.RecipeName);
                     }
                     string strResultFile = strFilePath + @"\Result.csv";
                     string strTemp = string.Empty;
@@ -395,7 +397,7 @@ namespace atOpticalDecenter
                     if (!Directory.Exists(strFilePath))
                     {
                         Directory.CreateDirectory(strFilePath);
-                        strTemp = string.Format("WorkTime, RecipeName,Product Model, Operating Distance,Camera ExposureTime(us),Spot1 Size(mm),Spot2 Size(mm),Image Bright(pixel),Eccentricity Distane(mm),Divergence Angle,Reduction rate, ND Filter Angle, Min Distance ND Angle, Max Distance ND Angle");
+                        strTemp = string.Format("WorkTime, RecipeName,Product Model, Operating Distance,Camera ExposureTime(us),Spot1 Size(mm),Spot2 Size(mm),Image Bright(pixel),Eccentricity Distane(mm),Divergence Angle,Reduction rate, ND Filter Angle, Min Distance ND Angle, Max Distance ND Angle, Inspect Result");
                         using (StreamWriter sw = new StreamWriter(strResultFile, true))
                         {
                             sw.WriteLine(strTemp);
@@ -405,7 +407,7 @@ namespace atOpticalDecenter
 
                     using (StreamWriter sw = new StreamWriter(strResultFile, true))
                     {
-                        strTemp = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}",
+                        strTemp = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14}",
                             _inspectionStartTime.TimeOfDay.ToString(),
                             _workParams.RecipeName,
                             _workParams._ProductModelName,
@@ -419,7 +421,8 @@ namespace atOpticalDecenter
                             mResultData.fODFilterReduce,
                             mResultData.fND_FilterAngle,
                             mResultData.fMinOperateDistance,
-                            mResultData.fMaxOperateDistance
+                            mResultData.fMaxOperateDistance,
+                            (mResultData.bTotalResult ? "Pass" : "Fail")
                             );
                         sw.WriteLine(strTemp);
                     }

@@ -67,7 +67,6 @@
             this.barButtonItemInitializeStatistics = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemConnectionCamera = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemWorkInfo = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemDryRun = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageEquipementFunctions = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonSystemPage = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupFile = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -166,7 +165,9 @@
             this.RemoteIOControl = new CustomPages.RemoteIOControl();
             this.xtraTabPageInspectResult = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl6 = new DevExpress.XtraLayout.LayoutControl();
+            this.pledSpotInspectionInfomation = new CustomPages.LedSpotInspectionInfomation();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup8 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -198,8 +199,6 @@
             this.openFileDialogSpot2Image = new System.Windows.Forms.OpenFileDialog();
             this.barButtonItemConnectionPLC = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemConnectionPhotoSensor = new DevExpress.XtraBars.BarButtonItem();
-            this.pledSpotInspectionInfomation = new CustomPages.LedSpotInspectionInfomation();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBarInspectionProcess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditInspectionResult)).BeginInit();
@@ -250,6 +249,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).BeginInit();
             this.layoutControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).BeginInit();
@@ -270,7 +270,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuTemplateCrop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -310,8 +309,7 @@
             this.barEditItemTotalFailCount,
             this.barButtonItemInitializeStatistics,
             this.barButtonItemConnectionCamera,
-            this.barButtonItemWorkInfo,
-            this.barButtonItemDryRun});
+            this.barButtonItemWorkInfo});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 36;
             this.ribbonControl1.Name = "ribbonControl1";
@@ -666,15 +664,6 @@
             this.barButtonItemWorkInfo.Name = "barButtonItemWorkInfo";
             this.barButtonItemWorkInfo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemWorkInfo_ItemClick);
             // 
-            // barButtonItemDryRun
-            // 
-            this.barButtonItemDryRun.Caption = "테스트 실행";
-            this.barButtonItemDryRun.Id = 35;
-            this.barButtonItemDryRun.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemDryRun.ImageOptions.Image")));
-            this.barButtonItemDryRun.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemDryRun.ImageOptions.LargeImage")));
-            this.barButtonItemDryRun.Name = "barButtonItemDryRun";
-            this.barButtonItemDryRun.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDryRun_ItemClick);
-            // 
             // ribbonPageEquipementFunctions
             // 
             this.ribbonPageEquipementFunctions.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -744,7 +733,6 @@
             // 
             // ribbonPageGroupInspection
             // 
-            this.ribbonPageGroupInspection.ItemLinks.Add(this.barButtonItemDryRun);
             this.ribbonPageGroupInspection.ItemLinks.Add(this.barCheckItemInspectionStart);
             this.ribbonPageGroupInspection.ItemLinks.Add(this.barEditItemInspectionProgress, true);
             this.ribbonPageGroupInspection.ItemLinks.Add(this.barStaticItemInspectionStatus);
@@ -1644,6 +1632,26 @@
             this.layoutControl6.TabIndex = 0;
             this.layoutControl6.Text = "layoutControl6";
             // 
+            // pledSpotInspectionInfomation
+            // 
+            this.pledSpotInspectionInfomation._InspectLedBlobBright = 0D;
+            this.pledSpotInspectionInfomation._InspectLedBlobHsize = 0D;
+            this.pledSpotInspectionInfomation._InspectLedBlobVsize = 0D;
+            this.pledSpotInspectionInfomation._InspectLedND_FilterAngle = 0D;
+            this.pledSpotInspectionInfomation._InspectLedODFilterReduce = 0D;
+            this.pledSpotInspectionInfomation._InspectLedOpticalEccentricity = 0D;
+            this.pledSpotInspectionInfomation._InspectLedOpticalEmiterAngle = 0D;
+            this.pledSpotInspectionInfomation._InspectOperateMax_Distance = 0D;
+            this.pledSpotInspectionInfomation._InspectOperateMin_Distance = 0D;
+            this.pledSpotInspectionInfomation._InspectOpticalResult = false;
+            this.pledSpotInspectionInfomation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pledSpotInspectionInfomation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pledSpotInspectionInfomation.Location = new System.Drawing.Point(12, 12);
+            this.pledSpotInspectionInfomation.Margin = new System.Windows.Forms.Padding(0);
+            this.pledSpotInspectionInfomation.Name = "pledSpotInspectionInfomation";
+            this.pledSpotInspectionInfomation.Size = new System.Drawing.Size(329, 362);
+            this.pledSpotInspectionInfomation.TabIndex = 4;
+            // 
             // layoutControlGroup5
             // 
             this.layoutControlGroup5.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -1653,6 +1661,15 @@
             this.layoutControlGroup5.Name = "layoutControlGroup5";
             this.layoutControlGroup5.Size = new System.Drawing.Size(353, 386);
             this.layoutControlGroup5.TextVisible = false;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.pledSpotInspectionInfomation;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(333, 366);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
             // 
             // layoutControlGroup4
             // 
@@ -1899,35 +1916,6 @@
             this.barButtonItemConnectionPhotoSensor.Name = "barButtonItemConnectionPhotoSensor";
             this.barButtonItemConnectionPhotoSensor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemConnectAll_ItemClick);
             // 
-            // pledSpotInspectionInfomation
-            // 
-            this.pledSpotInspectionInfomation._InspectLedBlobBright = 0D;
-            this.pledSpotInspectionInfomation._InspectLedBlobHsize = 0D;
-            this.pledSpotInspectionInfomation._InspectLedBlobVsize = 0D;
-            this.pledSpotInspectionInfomation._InspectLedND_FilterAngle = 0D;
-            this.pledSpotInspectionInfomation._InspectLedODFilterReduce = 0D;
-            this.pledSpotInspectionInfomation._InspectLedOpticalEccentricity = 0D;
-            this.pledSpotInspectionInfomation._InspectLedOpticalEmiterAngle = 0D;
-            this.pledSpotInspectionInfomation._InspectOperateMax_Distance = 0D;
-            this.pledSpotInspectionInfomation._InspectOperateMin_Distance = 0D;
-            this.pledSpotInspectionInfomation._InspectOpticalResult = false;
-            this.pledSpotInspectionInfomation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pledSpotInspectionInfomation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pledSpotInspectionInfomation.Location = new System.Drawing.Point(12, 12);
-            this.pledSpotInspectionInfomation.Margin = new System.Windows.Forms.Padding(0);
-            this.pledSpotInspectionInfomation.Name = "pledSpotInspectionInfomation";
-            this.pledSpotInspectionInfomation.Size = new System.Drawing.Size(329, 362);
-            this.pledSpotInspectionInfomation.TabIndex = 4;
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.pledSpotInspectionInfomation;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(333, 366);
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem5.TextVisible = false;
-            // 
             // atOpticalDecenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1996,6 +1984,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).EndInit();
             this.layoutControl6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).EndInit();
@@ -2016,7 +2005,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuTemplateCrop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2156,7 +2144,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxCameraName;
         private DevExpress.XtraBars.BarButtonItem barButtonItemWorkInfo;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemDryRun;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowThresholdV;
         private DevExpress.XtraVerticalGrid.Rows.CategoryRow categorySpotInpsect;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowInspectSpot1ImagePath;

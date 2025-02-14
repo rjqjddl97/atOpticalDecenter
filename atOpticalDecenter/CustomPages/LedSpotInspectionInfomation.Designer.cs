@@ -27,10 +27,14 @@
         /// 이 메서드의 내용을 코드 편집기로 수정하지 마세요.
         /// </summary>
         private void InitializeComponent()
-        {
+        {   
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LedSpotInspectionInfomation));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
+            this.repositoryItemImageComboBoxInspectionResultOnOff = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.imageListOnOff = new System.Windows.Forms.ImageList(this.components);
             this.categoryImageProcessResult = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.rowProductSeries = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowProductModelName = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -40,6 +44,7 @@
             this.rowAlignmentDistance = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowDivergenceAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowNDReduceRatio = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowNDFilterAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowOperateMinDistance = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowOperateMaxDistance = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowInspectResult = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -47,12 +52,12 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.rowNDFilterAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxInspectionResultOnOff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
@@ -87,17 +92,39 @@
             // vGridControl1
             // 
             this.vGridControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl1.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControl1.Location = new System.Drawing.Point(3, 3);
             this.vGridControl1.Margin = new System.Windows.Forms.Padding(0);
             this.vGridControl1.Name = "vGridControl1";
             this.vGridControl1.RecordWidth = 72;
+            this.vGridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBoxInspectionResultOnOff});
             this.vGridControl1.RowHeaderWidth = 128;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.categoryImageProcessResult});
             this.vGridControl1.Size = new System.Drawing.Size(321, 248);
             this.vGridControl1.TabIndex = 4;
+            // 
+            // repositoryItemImageComboBoxInspectionResultOnOff
+            // 
+            this.repositoryItemImageComboBoxInspectionResultOnOff.AutoHeight = false;
+            this.repositoryItemImageComboBoxInspectionResultOnOff.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBoxInspectionResultOnOff.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.repositoryItemImageComboBoxInspectionResultOnOff.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", false, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", true, 1)});
+            this.repositoryItemImageComboBoxInspectionResultOnOff.Name = "repositoryItemImageComboBoxInspectionResultOnOff";
+            this.repositoryItemImageComboBoxInspectionResultOnOff.ReadOnly = true;
+            this.repositoryItemImageComboBoxInspectionResultOnOff.SmallImages = this.imageListOnOff;
+            // 
+            // imageListOnOff
+            // 
+            this.imageListOnOff.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListOnOff.ImageStream")));
+            this.imageListOnOff.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListOnOff.Images.SetKeyName(0, "IconSetRedToBlack4_16x16.png");
+            this.imageListOnOff.Images.SetKeyName(1, "IconSetSigns3_16x16.png");
             // 
             // categoryImageProcessResult
             // 
@@ -119,7 +146,6 @@
             // 
             // rowProductSeries
             // 
-            //this.rowProductSeries.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rowProductSeries.Appearance.Options.UseFont = true;
             this.rowProductSeries.Appearance.Options.UseTextOptions = true;
             this.rowProductSeries.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -129,7 +155,6 @@
             // 
             // rowProductModelName
             // 
-            //this.rowProductModelName.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rowProductModelName.Appearance.Options.UseFont = true;
             this.rowProductModelName.Appearance.Options.UseTextOptions = true;
             this.rowProductModelName.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -139,7 +164,6 @@
             // 
             // rowLedSpotBlobInspectHSize
             // 
-            //this.rowLedSpotBlobInspectHSize.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rowLedSpotBlobInspectHSize.Appearance.Options.UseFont = true;
             this.rowLedSpotBlobInspectHSize.Appearance.Options.UseTextOptions = true;
             this.rowLedSpotBlobInspectHSize.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -166,7 +190,6 @@
             // 
             // rowAlignmentDistance
             // 
-            //this.rowAlignmentDistance.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rowAlignmentDistance.Appearance.Options.UseFont = true;
             this.rowAlignmentDistance.Appearance.Options.UseTextOptions = true;
             this.rowAlignmentDistance.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -176,7 +199,6 @@
             // 
             // rowDivergenceAngle
             // 
-            //this.rowDivergenceAngle.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rowDivergenceAngle.Appearance.Options.UseFont = true;
             this.rowDivergenceAngle.Appearance.Options.UseTextOptions = true;
             this.rowDivergenceAngle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
@@ -186,13 +208,21 @@
             // 
             // rowNDReduceRatio
             // 
-            //this.rowNDReduceRatio.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F);
             this.rowNDReduceRatio.Appearance.Options.UseFont = true;
             this.rowNDReduceRatio.Appearance.Options.UseTextOptions = true;
             this.rowNDReduceRatio.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowNDReduceRatio.Name = "rowNDReduceRatio";
             this.rowNDReduceRatio.Properties.Caption = "ND 필터감쇄율";
             this.rowNDReduceRatio.Properties.ReadOnly = true;
+            // 
+            // rowNDFilterAngle
+            // 
+            this.rowNDFilterAngle.Appearance.Options.UseFont = true;
+            this.rowNDFilterAngle.Appearance.Options.UseTextOptions = true;
+            this.rowNDFilterAngle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowNDFilterAngle.Name = "rowNDFilterAngle";
+            this.rowNDFilterAngle.Properties.Caption = "ND 필터 예측각도";
+            this.rowNDFilterAngle.Properties.ReadOnly = true;
             // 
             // rowOperateMinDistance
             // 
@@ -214,11 +244,14 @@
             // 
             // rowInspectResult
             // 
-            //this.rowInspectResult.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rowInspectResult.Appearance.Options.UseFont = true;
             this.rowInspectResult.Name = "rowInspectResult";
+            this.rowInspectResult.OptionsRow.AllowFocus = false;
+            this.rowInspectResult.Properties.AllowEdit = false;
             this.rowInspectResult.Properties.Caption = "투광 검사 결과";
             this.rowInspectResult.Properties.ReadOnly = true;
+            this.rowInspectResult.Properties.RowEdit = this.repositoryItemImageComboBoxInspectionResultOnOff;
+            this.rowInspectResult.Properties.Value = true;
             // 
             // layoutControlGroup2
             // 
@@ -261,15 +294,6 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // rowNDFilterAngle
-            // 
-            this.rowNDFilterAngle.Appearance.Options.UseFont = true;
-            this.rowNDFilterAngle.Appearance.Options.UseTextOptions = true;
-            this.rowNDFilterAngle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.rowNDFilterAngle.Name = "rowNDFilterAngle";
-            this.rowNDFilterAngle.Properties.Caption = "ND 필터 예측각도";
-            this.rowNDFilterAngle.Properties.ReadOnly = true;
-            // 
             // LedSpotInspectionInfomation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -285,6 +309,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxInspectionResultOnOff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
@@ -294,7 +319,7 @@
         }
 
         #endregion
-
+                
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
@@ -315,5 +340,7 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowOperateMinDistance;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowOperateMaxDistance;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowNDFilterAngle;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBoxInspectionResultOnOff;
+        private System.Windows.Forms.ImageList imageListOnOff;
     }
 }

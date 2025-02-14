@@ -48,6 +48,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         if (mRemoteIOCtrl.IsOpen())
                         {
                             _DelayTimerCounter = mWorkParam._LEDInspectionAcquisitionDelaytime;
+                            IsGrabbed = false;
                             mStep = WorkingStep.CaptureImage;
                         }
                     }

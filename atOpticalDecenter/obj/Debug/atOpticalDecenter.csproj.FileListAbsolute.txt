@@ -905,3 +905,4 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOptic
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.csproj.CopyComplete
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.exe
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.pdb
+C:\Work\atOpticalDecenter\atOpticalDecenter\bin\Debug\atOpticalDecenter.exe.config
