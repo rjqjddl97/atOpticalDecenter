@@ -178,7 +178,7 @@
             // 
             // vGridControlSystemParameters
             // 
-            this.vGridControlSystemParameters.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControlSystemParameters.Cursor = System.Windows.Forms.Cursors.Hand;
             this.vGridControlSystemParameters.CustomizationFormBounds = new System.Drawing.Rectangle(1643, 643, 243, 271);
             this.vGridControlSystemParameters.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControlSystemParameters.Location = new System.Drawing.Point(3, 3);
@@ -1126,7 +1126,7 @@
             // rowSaveResultLEDMeasurement
             // 
             this.rowSaveResultLEDMeasurement.Name = "rowSaveResultLEDMeasurement";
-            this.rowSaveResultLEDMeasurement.Properties.Caption = "투광 LED 실패이미지";
+            this.rowSaveResultLEDMeasurement.Properties.Caption = "투광 LED 이미지 저장";
             this.rowSaveResultLEDMeasurement.Properties.Value = false;
             // 
             // rowSaveResultStatistics

@@ -60,9 +60,9 @@ namespace atOpticalDecenter
                 if (_Camera.IsAllocated)
                 {
                     _Camera.OneShot(_waitHandle);
-                    _isOpticalMeasurement = false;                    
-                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "자동 검사 중 싱글 샷");
+                    _isOpticalMeasurement = false;                                        
                     barButtonItemFitSize.PerformClick();
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "자동 검사 중 싱글 샷");
                 }
             }
             catch (Exception)
@@ -372,93 +372,58 @@ namespace atOpticalDecenter
             try
             {
                 // Report.csv
-                _inspectionStartTime = DateTime.Now;
-                string strFilePath = string.Format(@"{0}\{1:0000}{2:00}{3:00}",
-                    SystemDirectoryParams.ResultFolderPath,
-                    _inspectionStartTime.Year, _inspectionStartTime.Month, _inspectionStartTime.Day);
+                if (_systemParams._saveResultStatistics)
+                {
+                    _inspectionStartTime = DateTime.Now;
+                    string strFilePath = string.Format(@"{0}\{1:0000}{2:00}{3:00}",
+                        SystemDirectoryParams.ResultFolderPath,
+                        _inspectionStartTime.Year, _inspectionStartTime.Month, _inspectionStartTime.Day);
 
-                if (IsPass)
-                {
-                    //strFilePath += string.Format(@"\Pass\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
-                    strFilePath += string.Format(@"\Pass\{0}_{1:00}", _workParams.RecipeName, _inspectionStartTime.Hour);
-                }
-                else
-                {
-                    //strFilePath += string.Format(@"\Fail\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
-                    strFilePath += string.Format(@"\Fail\{0}_{1:00}", _workParams.RecipeName, _inspectionStartTime.Hour);
-                }
-                string strResultFile = strFilePath + @"\Result.csv";
-                string strTemp = string.Empty;
-                
-                if (!Directory.Exists(strFilePath))
-                {
-                    Directory.CreateDirectory(strFilePath);
-                    strTemp = string.Format("WorkTime, RecipeName,Product Model, Operating Distance,Camera ExposureTime(us),Spot1 Size(mm),Spot2 Size(mm),Image Bright(pixel),Eccentricity Distane(mm),Divergence Angle,Reduction rate, ND Filter Angle, Min Distance ND Angle, Max Distance ND Angle");
+                    if (IsPass)
+                    {
+                        //strFilePath += string.Format(@"\Pass\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
+                        strFilePath += string.Format(@"\Pass\{0}_{1:00}", _workParams.RecipeName, _inspectionStartTime.Hour);
+                    }
+                    else
+                    {
+                        //strFilePath += string.Format(@"\Fail\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
+                        strFilePath += string.Format(@"\Fail\{0}_{1:00}", _workParams.RecipeName, _inspectionStartTime.Hour);
+                    }
+                    string strResultFile = strFilePath + @"\Result.csv";
+                    string strTemp = string.Empty;
+
+                    if (!Directory.Exists(strFilePath))
+                    {
+                        Directory.CreateDirectory(strFilePath);
+                        strTemp = string.Format("WorkTime, RecipeName,Product Model, Operating Distance,Camera ExposureTime(us),Spot1 Size(mm),Spot2 Size(mm),Image Bright(pixel),Eccentricity Distane(mm),Divergence Angle,Reduction rate, ND Filter Angle, Min Distance ND Angle, Max Distance ND Angle");
+                        using (StreamWriter sw = new StreamWriter(strResultFile, true))
+                        {
+                            sw.WriteLine(strTemp);
+                        }
+                    }
+                    //string strResultFile = strFilePath + @"\Result.csv";
+
                     using (StreamWriter sw = new StreamWriter(strResultFile, true))
                     {
+                        strTemp = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}",
+                            _inspectionStartTime.TimeOfDay.ToString(),
+                            _workParams.RecipeName,
+                            _workParams._ProductModelName,
+                            Convert.ToString(_workParams._ProductDistance),
+                            _workParams._LEDInspectionExposureTime,
+                            mResultData.fOpticalSize[0],
+                            mResultData.fOpticalSize[1],
+                            mResultData.fOpticalSpotImageBright,
+                            mResultData.fOpticalEccentricity,
+                            mResultData.fOpticalEmiterAngle * (180 / Math.PI),
+                            mResultData.fODFilterReduce,
+                            mResultData.fND_FilterAngle,
+                            mResultData.fMinOperateDistance,
+                            mResultData.fMaxOperateDistance
+                            );
                         sw.WriteLine(strTemp);
                     }
-                }
-                //string strResultFile = strFilePath + @"\Result.csv";
-
-                using (StreamWriter sw = new StreamWriter(strResultFile, true))
-                {
-                    //string strTemp = string.Format("Inspection Total Number,Recipe Name,Result");
-                    //sw.WriteLine(strTemp);
-                    //strTemp = string.Format("{0},{1},{2}", _statistics.TotalCount, _workParams.RecipeName, (_isInsepctionResult) ? "Pass" : "Fail");
-                    //sw.WriteLine(strTemp);
-
-
-                    //mResultData
-
-                    strTemp = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}",
-                        _inspectionStartTime.TimeOfDay.ToString(),
-                        _workParams.RecipeName,
-                        _workParams._ProductModelName,
-                        Convert.ToString(_workParams._ProductDistance),
-                        _workParams._LEDInspectionExposureTime,
-                        mResultData.fOpticalSize[0],
-                        mResultData.fOpticalSize[1],
-                        mResultData.fOpticalSpotImageBright,
-                        mResultData.fOpticalEccentricity,
-                        mResultData.fOpticalEmiterAngle * (180 / Math.PI),
-                        mResultData.fODFilterReduce,
-                        mResultData.fND_FilterAngle,
-                        mResultData.fMinOperateDistance,
-                        mResultData.fMaxOperateDistance
-                        );
-                    sw.WriteLine(strTemp);
-
-                    //strTemp = string.Format("Camera ExposureTime(us),Spot_W Size(mm), Spot_H Size(mm),Image Bright(pixel)");
-                    //sw.WriteLine(strTemp);
-
-                    //strTemp = string.Format("{0},{1},{2},{3}",
-                    //    _workParams._LEDInspectionExposureTime,
-                    //    mResultData.fOpticalSize,
-                    //    _workParams.InspectionPositions[i].Y,
-                    //    _workParams.InspectionPositions[i].eInspectionMode.ToString(),
-                    //    _workParams.InspectionPositions[i].Similarity,
-                    //    _workParams.InspectionPositions[i].Distance,
-                    //    (_workParams.InspectionPositions[i].IsResult) ? "Pass" : "Fail");
-
-                    //sw.WriteLine(strTemp);
-
-                    //strTemp = string.Format("Eccentricity Distane(mm),Divergence Angle(˚),Reduction rate, ND Filter Angle(˚), Min Distance ND Angle(˚), Max Distance ND Angle(˚)");
-                    //sw.WriteLine(strTemp);
-
-                    //strTemp = string.Format("{0},{1},{2},{3},{4},{5}",
-                    //    i + 1,
-                    //    _workParams.InspectionPositions[i].X,
-                    //    _workParams.InspectionPositions[i].Y,
-                    //    _workParams.InspectionPositions[i].eInspectionMode.ToString(),
-                    //    _workParams.InspectionPositions[i].Similarity,
-                    //    _workParams.InspectionPositions[i].Distance,
-                    //    (_workParams.InspectionPositions[i].IsResult) ? "Pass" : "Fail");
-
-                    //sw.WriteLine(strTemp);
-                }
-
-                
+                }                
                 //if (_systemParams.IsSaveDistanceMap)
                 //{
                 //    // 거리 데이터 저장
