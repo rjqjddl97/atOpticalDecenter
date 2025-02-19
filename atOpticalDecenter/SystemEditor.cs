@@ -7,6 +7,7 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Timers;
 using DevExpress.XtraEditors;
 using System.IO;
 using RecipeManager;
@@ -109,15 +110,15 @@ namespace atOpticalDecenter
             _systemParameters._calibrationParams._imagetoSystemXcoordi = Convert.ToSingle(rowImageToSystemX.Properties.Value);
             _systemParameters._calibrationParams._imagetoSystemYcoordi = Convert.ToSingle(rowImageToSystemX.Properties.Value);
             _systemParameters._calibrationParams._CoordinateCalibrationActive = Convert.ToBoolean(rowCoordinateCalibrationActive.Properties.Value);
-            _systemParameters._calibrationParams._X_reference_Distance = Convert.ToSingle(rowReferenceXdistance.Properties.Value);
-            _systemParameters._calibrationParams._X_DeltaX = Convert.ToSingle(rowXdeltaX.Properties.Value);
-            _systemParameters._calibrationParams._X_DeltaZ = Convert.ToSingle(rowXdeltaZ.Properties.Value);
-            _systemParameters._calibrationParams._Z_reference_Distance = Convert.ToSingle(rowReferenceZdistance.Properties.Value);
-            _systemParameters._calibrationParams._Z_DeltaX = Convert.ToSingle(rowZdeltaX.Properties.Value);
-            _systemParameters._calibrationParams._Z_DeltaZ = Convert.ToSingle(rowZdeltaZ.Properties.Value);
-            _systemParameters._calibrationParams._Y_reference_Distance = Convert.ToSingle(rowReferenceYdistance.Properties.Value);
-            _systemParameters._calibrationParams._Y_DeltaX = Convert.ToSingle(rowYdeltaX.Properties.Value);
-            _systemParameters._calibrationParams._Y_DeltaZ = Convert.ToSingle(rowYdeltaZ.Properties.Value);
+            _systemParameters._calibrationParams._Position_Reference_X = Convert.ToSingle(rowReference_X.Properties.Value);
+            _systemParameters._calibrationParams._Position_Reference_Y = Convert.ToSingle(rowReference_Y.Properties.Value);
+            _systemParameters._calibrationParams._Position_Reference_Z = Convert.ToSingle(rowReference_Z.Properties.Value);
+            _systemParameters._calibrationParams._Position_1_X = Convert.ToSingle(rowReferenceP1_X.Properties.Value);
+            _systemParameters._calibrationParams._Position_1_Y = Convert.ToSingle(rowReferenceP1_Y.Properties.Value);
+            _systemParameters._calibrationParams._Position_1_Z = Convert.ToSingle(rowReferenceP1_Z.Properties.Value);
+            _systemParameters._calibrationParams._Position_2_X = Convert.ToSingle(rowReferenceP2_X.Properties.Value);
+            _systemParameters._calibrationParams._Position_2_Y = Convert.ToSingle(rowReferenceP2_Y.Properties.Value);
+            _systemParameters._calibrationParams._Position_2_Z = Convert.ToSingle(rowReferenceP2_Z.Properties.Value);
 
             // System Parameter의 Motion 파라미터 초기화
             _systemParameters._motionParams.MenualMoveVelocity = Convert.ToSingle(rowMotionMenaulVelocity.Properties.Value);
@@ -224,15 +225,15 @@ namespace atOpticalDecenter
             rowImageToSystemX.Properties.Value = _systemParameters._calibrationParams._imagetoSystemXcoordi;
             rowImageToSystemZ.Properties.Value = _systemParameters._calibrationParams._imagetoSystemYcoordi;
             rowCoordinateCalibrationActive.Properties.Value = _systemParameters._calibrationParams._CoordinateCalibrationActive;
-            rowReferenceXdistance.Properties.Value = _systemParameters._calibrationParams._X_reference_Distance;
-            rowXdeltaX.Properties.Value = _systemParameters._calibrationParams._X_DeltaX;
-            rowXdeltaZ.Properties.Value = _systemParameters._calibrationParams._X_DeltaZ;
-            rowReferenceZdistance.Properties.Value = _systemParameters._calibrationParams._Z_reference_Distance;
-            rowZdeltaX.Properties.Value = _systemParameters._calibrationParams._Z_DeltaX;
-            rowZdeltaZ.Properties.Value = _systemParameters._calibrationParams._Z_DeltaZ;
-            rowReferenceYdistance.Properties.Value = _systemParameters._calibrationParams._Y_reference_Distance;
-            rowYdeltaX.Properties.Value = _systemParameters._calibrationParams._Y_DeltaX;
-            rowYdeltaZ.Properties.Value = _systemParameters._calibrationParams._Y_DeltaZ;
+            rowReference_X.Properties.Value = _systemParameters._calibrationParams._Position_Reference_X;
+            rowReference_Y.Properties.Value = _systemParameters._calibrationParams._Position_Reference_Y;
+            rowReference_Z.Properties.Value = _systemParameters._calibrationParams._Position_Reference_Z;
+            rowReferenceP1_X.Properties.Value = _systemParameters._calibrationParams._Position_1_X;
+            rowReferenceP1_Y.Properties.Value = _systemParameters._calibrationParams._Position_1_Y;
+            rowReferenceP1_Z.Properties.Value = _systemParameters._calibrationParams._Position_1_Z;
+            rowReferenceP2_X.Properties.Value = _systemParameters._calibrationParams._Position_2_X;
+            rowReferenceP2_Y.Properties.Value = _systemParameters._calibrationParams._Position_2_Y;
+            rowReferenceP2_Z.Properties.Value = _systemParameters._calibrationParams._Position_2_Z;
 
             // Motion Parameters
             rowMotionMenaulVelocity.Properties.Value = _systemParameters._motionParams.MenualMoveVelocity;
@@ -329,6 +330,7 @@ namespace atOpticalDecenter
         {
             int value = 0;
             float fValue = 0;
+            double dfValue = 0;
             string strTemp = string.Empty;
 
             if (currentRow == rowCameraFriendlyName)
@@ -509,74 +511,60 @@ namespace atOpticalDecenter
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._calibrationParams._CoordinateCalibrationActive = check;
             }
-            else if (currentRow == rowReferenceXdistance)
+            else if (currentRow == rowReference_X)
             {
-                fValue = Convert.ToSingle(rowReferenceXdistance.Properties.Value);
-                if (fValue == 0)
-                {
-                    MessageBox.Show("잘못된 값을 입력했습니다.\r\nX축 이동 기준값은 0보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    rowReferenceXdistance.Properties.Value = _systemParameters._calibrationParams._X_reference_Distance;
-                    vGridControlSystemParameters.Refresh();
-                    return;
-                }
+                dfValue = Convert.ToDouble(rowReference_X.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
-                _systemParameters._calibrationParams._X_reference_Distance = fValue;
+                _systemParameters._calibrationParams._Position_Reference_X = dfValue;
             }
-            else if (currentRow == rowXdeltaX)
+            else if (currentRow == rowReference_Y)
             {
-                fValue = Convert.ToSingle(rowXdeltaX.Properties.Value);
+                dfValue = Convert.ToDouble(rowReference_Y.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
-                _systemParameters._calibrationParams._X_DeltaX = fValue;
+                _systemParameters._calibrationParams._Position_Reference_Y = dfValue;
             }
-            else if (currentRow == rowXdeltaZ)
+            else if (currentRow == rowReference_Z)
             {
-                fValue = Convert.ToSingle(rowXdeltaZ.Properties.Value);
+                dfValue = Convert.ToDouble(rowReference_Z.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
-                _systemParameters._calibrationParams._X_DeltaZ = fValue;
+                _systemParameters._calibrationParams._Position_Reference_Z = dfValue;
             }
-            else if (currentRow == rowReferenceZdistance)
+            else if (currentRow == rowReferenceP1_X)
             {
-                fValue = Convert.ToSingle(rowReferenceZdistance.Properties.Value);
+                dfValue = Convert.ToDouble(rowReferenceP1_X.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
-                _systemParameters._calibrationParams._Z_reference_Distance = fValue;
+                _systemParameters._calibrationParams._Position_1_X = dfValue;
             }
-            else if (currentRow == rowZdeltaX)
+            else if (currentRow == rowReferenceP1_Y)
             {
-                fValue = Convert.ToSingle(rowZdeltaX.Properties.Value);
+                dfValue = Convert.ToDouble(rowReferenceP1_Y.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
-                _systemParameters._calibrationParams._Z_DeltaX = fValue;
+                _systemParameters._calibrationParams._Position_1_Y = dfValue;
             }
-            else if (currentRow == rowZdeltaZ)
+            else if (currentRow == rowReferenceP1_Z)
             {
-                fValue = Convert.ToSingle(rowZdeltaZ.Properties.Value);
+                dfValue = Convert.ToDouble(rowReferenceP1_Z.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
-                _systemParameters._calibrationParams._Z_DeltaZ = fValue;
+                _systemParameters._calibrationParams._Position_1_Z = dfValue;
             }
-            else if (currentRow == rowReferenceYdistance)
+            else if (currentRow == rowReferenceP2_X)
             {
-                fValue = Convert.ToSingle(rowReferenceYdistance.Properties.Value);
-                if (fValue == 0)
-                {
-                    MessageBox.Show("잘못된 값을 입력했습니다.\r\nY축 이동 기준값은 0보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    rowReferenceXdistance.Properties.Value = _systemParameters._calibrationParams._X_reference_Distance;
-                    vGridControlSystemParameters.Refresh();
-                    return;
-                }
+                dfValue = Convert.ToDouble(rowReferenceP2_X.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
-                _systemParameters._calibrationParams._Y_reference_Distance = fValue;
+                _systemParameters._calibrationParams._Position_2_X = dfValue;
             }
-            else if (currentRow == rowYdeltaX)
+            else if (currentRow == rowReferenceP2_Y)
             {
-                fValue = Convert.ToSingle(rowYdeltaX.Properties.Value);
+                dfValue = Convert.ToDouble(rowReferenceP2_Y.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
-                _systemParameters._calibrationParams._Y_DeltaX = fValue;
+                _systemParameters._calibrationParams._Position_2_Y = dfValue;
             }
-            else if (currentRow == rowYdeltaZ)
+            else if (currentRow == rowReferenceP2_Z)
             {
-                fValue = Convert.ToSingle(rowYdeltaZ.Properties.Value);
+                dfValue = Convert.ToDouble(rowReferenceP2_Z.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
-                _systemParameters._calibrationParams._Y_DeltaZ = fValue;
-            }
+                _systemParameters._calibrationParams._Position_2_Z = dfValue;
+            } 
             else if (currentRow == rowMotionMoveVelocity)
             {
                 fValue = Convert.ToSingle(rowMotionMoveVelocity.Properties.Value);
@@ -1402,6 +1390,8 @@ namespace atOpticalDecenter
 
                     // Recipe File
                     RecipeFileIO.WriteSystemFile(_systemParameters, strSavePath);
+                    //Task.Delay(1000);
+                    //LoadSystemParameters();
                 }
                 catch (Exception ex)
                 {

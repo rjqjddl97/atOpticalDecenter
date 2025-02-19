@@ -144,6 +144,25 @@ namespace atOpticalDecenter
             SystemEditor editor = new SystemEditor();
 
             editor.ShowDialog();
+            string strTemp = string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.SystemFileName);
+
+            if (File.Exists(strTemp))
+            {
+                // System 파일 열기
+                RecipeFileIO.ReadSystemFile(_systemParams, strTemp);
+                _ImageHist_W = new double[_systemParams._cameraParams.HResolution];
+                _ImageHist_H = new double[_systemParams._cameraParams.VResolution];
+                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("시스템 파일 읽기 성공:{0}", strTemp));
+            }
+            else
+            {
+                _ImageHist_W = null;
+                _ImageHist_H = null;
+                // Default File 생성
+                mLog.WriteLog(LogLevel.Fatal, LogClass.atPhoto.ToString(), string.Format("시스템 파라미터를 읽을 수 없습니다.{0}", strTemp));
+                mLog.WriteLog(LogLevel.Fatal, LogClass.atPhoto.ToString(), string.Format("메뉴-시스템 편집기를 이용하여, 시스템 파일을 생성하십시오."));
+            }
+            StepBaseSystemParameterUpdate();
         }
         private void atOpticalDecenter_Load(object sender, EventArgs e)
         {
@@ -2752,6 +2771,7 @@ namespace atOpticalDecenter
                 mInspectStep = InspectionStepType.Idle;
                 _backgroundWorkerOpticalDecenterInspection.CancelAsync();
                 UpdateProcessTime(false);
+                barEditItemInspectionResult.EditValue = "Ready";
                 mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 강제 종료");
             }
         }
@@ -2786,7 +2806,7 @@ namespace atOpticalDecenter
                 mInspectStep = InspectionStepType.CheckWaitRobotReady;
 
                 InspectionRecipeParameterSetup();
-
+                barEditItemInspectionResult.EditValue = "Running";
                 CheckTackTime.Start();
                 _backgroundWorkerOpticalDecenterInspection.RunWorkerAsync();
                 barCheckItemInspectionStart.Caption = string.Format("검사 중지");
@@ -2803,6 +2823,7 @@ namespace atOpticalDecenter
                 _backgroundWorkerOpticalDecenterInspection.CancelAsync();
                 UpdateProcessTime(false);
                 barCheckItemInspectionStart.Caption = string.Format("검사 시작");
+                barEditItemInspectionResult.EditValue = "Ready";
                 mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 강제 종료");
             }
         }

@@ -60,15 +60,12 @@
             this.rowImageToSystemX = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowImageToSystemZ = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowCoordinateCalibrationActive = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowReferenceXdistance = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowXdeltaX = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowXdeltaZ = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowReferenceZdistance = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowZdeltaX = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowZdeltaZ = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowReferenceYdistance = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowYdeltaX = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowYdeltaZ = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowReferenceP1_X = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowReferenceP1_Y = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowReferenceP1_Z = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowReferenceP2_X = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowReferenceP2_Y = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowReferenceP2_Z = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.categoryMotionParameters = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.rowMotionResolutionX = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowMotionResolutionY = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -139,6 +136,9 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.rowReference_X = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowReference_Y = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowReference_Z = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControlSystemParameters)).BeginInit();
@@ -178,7 +178,7 @@
             // 
             // vGridControlSystemParameters
             // 
-            this.vGridControlSystemParameters.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.vGridControlSystemParameters.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControlSystemParameters.CustomizationFormBounds = new System.Drawing.Rectangle(1643, 643, 243, 271);
             this.vGridControlSystemParameters.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControlSystemParameters.Location = new System.Drawing.Point(3, 3);
@@ -206,7 +206,8 @@
             this.categoryRemoteIOCommunicationParameters,
             this.categorySystemADMSInformation,
             this.categorySaveResult,
-            this.categorySystemLanguage});
+            this.categorySystemLanguage
+            });
             this.vGridControlSystemParameters.Size = new System.Drawing.Size(484, 636);
             this.vGridControlSystemParameters.TabIndex = 4;
             this.vGridControlSystemParameters.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControlSystemParameters_CellValueChanged);
@@ -397,7 +398,7 @@
             this.rowCameraImageSensorSizeH.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowCameraImageSensorSizeH.Name = "rowCameraImageSensorSizeH";
             this.rowCameraImageSensorSizeH.Properties.Caption = "카메라 이미지센서 크기(가로)[mm]";
-            this.rowCameraImageSensorSizeH.Properties.Value = 6.44D;
+            this.rowCameraImageSensorSizeH.Properties.Value = 7.2D;
             // 
             // rowCameraImageSensorSizeV
             // 
@@ -406,7 +407,7 @@
             this.rowCameraImageSensorSizeV.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowCameraImageSensorSizeV.Name = "rowCameraImageSensorSizeV";
             this.rowCameraImageSensorSizeV.Properties.Caption = "카메라 이미지센서 크기(세로)[mm]";
-            this.rowCameraImageSensorSizeV.Properties.Value = 4.62D;
+            this.rowCameraImageSensorSizeV.Properties.Value = 5.4D;
             // 
             // rowCameraLensFocusLenth
             // 
@@ -424,15 +425,16 @@
             this.rowImageToSystemX,
             this.rowImageToSystemZ,
             this.rowCoordinateCalibrationActive,
-            this.rowReferenceXdistance,
-            this.rowXdeltaX,
-            this.rowXdeltaZ,
-            this.rowReferenceZdistance,
-            this.rowZdeltaX,
-            this.rowZdeltaZ,
-            this.rowReferenceYdistance,
-            this.rowYdeltaX,
-            this.rowYdeltaZ});
+            this.rowReference_X,
+            this.rowReference_Y,
+            this.rowReference_Z,
+            this.rowReferenceP1_X,
+            this.rowReferenceP1_Y,
+            this.rowReferenceP1_Z,
+            this.rowReferenceP2_X,
+            this.rowReferenceP2_Y,
+            this.rowReferenceP2_Z
+            });
             this.categoryCalibraitionParameters.Name = "categoryCalibraitionParameters";
             this.categoryCalibraitionParameters.Properties.Caption = "보정 파라미터";
             // 
@@ -472,86 +474,86 @@
             this.rowCoordinateCalibrationActive.Properties.Caption = "좌표계 보정 활성화유무";
             this.rowCoordinateCalibrationActive.Properties.Value = false;
             // 
-            // rowReferenceXdistance
+            // rowReference_X
             // 
-            this.rowReferenceXdistance.Appearance.Options.UseTextOptions = true;
-            this.rowReferenceXdistance.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.rowReferenceXdistance.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.rowReferenceXdistance.Name = "rowReferenceXdistance";
-            this.rowReferenceXdistance.Properties.Caption = "X축 기준증가량";
-            this.rowReferenceXdistance.Properties.Value = 0;
+            this.rowReference_X.Appearance.Options.UseTextOptions = true;
+            this.rowReference_X.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowReference_X.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowReference_X.Name = "rowReference_X";
+            this.rowReference_X.Properties.Caption = "기준X 좌표";
+            this.rowReference_X.Properties.Value = 0;
             // 
-            // rowXdeltaX
+            // rowReference_Y
             // 
-            this.rowXdeltaX.Appearance.Options.UseTextOptions = true;
-            this.rowXdeltaX.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.rowXdeltaX.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.rowXdeltaX.Name = "rowXdeltaX";
-            this.rowXdeltaX.Properties.Caption = "X축기준 X 증가량";
-            this.rowXdeltaX.Properties.Value = 0;
+            this.rowReference_Y.Appearance.Options.UseTextOptions = true;
+            this.rowReference_Y.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowReference_Y.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowReference_Y.Name = "rowReference_Y";
+            this.rowReference_Y.Properties.Caption = "기준Y 좌표";
+            this.rowReference_Y.Properties.Value = 17.08;
             // 
-            // rowXdeltaZ
+            // rowReference_Z
             // 
-            this.rowXdeltaZ.Appearance.Options.UseTextOptions = true;
-            this.rowXdeltaZ.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.rowXdeltaZ.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.rowXdeltaZ.Name = "rowXdeltaZ";
-            this.rowXdeltaZ.Properties.Caption = "X축기준 Z 증가량";
-            this.rowXdeltaZ.Properties.Value = 0;
+            this.rowReference_Z.Appearance.Options.UseTextOptions = true;
+            this.rowReference_Z.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowReference_Z.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowReference_Z.Name = "rowReference_Z";
+            this.rowReference_Z.Properties.Caption = "기준Z 좌표";
+            this.rowReference_Z.Properties.Value = 9.99;
             // 
-            // rowReferenceZdistance
+            // rowReferenceP1_X
             // 
-            this.rowReferenceZdistance.Appearance.Options.UseTextOptions = true;
-            this.rowReferenceZdistance.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.rowReferenceZdistance.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.rowReferenceZdistance.Name = "rowReferenceZdistance";
-            this.rowReferenceZdistance.Properties.Caption = "Z축 기준증가량";
-            this.rowReferenceZdistance.Properties.Value = 0;
+            this.rowReferenceP1_X.Appearance.Options.UseTextOptions = true;
+            this.rowReferenceP1_X.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowReferenceP1_X.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowReferenceP1_X.Name = "rowReferenceP1_X";
+            this.rowReferenceP1_X.Properties.Caption = "교정점 P1 X좌표";
+            this.rowReferenceP1_X.Properties.Value = 30;
             // 
-            // rowZdeltaX
+            // rowReferenceP1_Y
             // 
-            this.rowZdeltaX.Appearance.Options.UseTextOptions = true;
-            this.rowZdeltaX.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.rowZdeltaX.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.rowZdeltaX.Name = "rowZdeltaX";
-            this.rowZdeltaX.Properties.Caption = "Z축기준 X 증가량";
-            this.rowZdeltaX.Properties.Value = 0;
+            this.rowReferenceP1_Y.Appearance.Options.UseTextOptions = true;
+            this.rowReferenceP1_Y.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowReferenceP1_Y.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowReferenceP1_Y.Name = "rowReferenceP1_Y";
+            this.rowReferenceP1_Y.Properties.Caption = "교정점 P1 Y좌표";
+            this.rowReferenceP1_Y.Properties.Value = 17.017;
             // 
-            // rowZdeltaZ
+            // rowReferenceP1_Z
             // 
-            this.rowZdeltaZ.Appearance.Options.UseTextOptions = true;
-            this.rowZdeltaZ.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.rowZdeltaZ.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.rowZdeltaZ.Name = "rowZdeltaZ";
-            this.rowZdeltaZ.Properties.Caption = "Z축기준 Z 증가량";
-            this.rowZdeltaZ.Properties.Value = 0;
+            this.rowReferenceP1_Z.Appearance.Options.UseTextOptions = true;
+            this.rowReferenceP1_Z.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowReferenceP1_Z.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowReferenceP1_Z.Name = "rowReferenceP1_Z";
+            this.rowReferenceP1_Z.Properties.Caption = "교정점 P1 Z좌표";
+            this.rowReferenceP1_Z.Properties.Value = 9.99;
             // 
-            // rowReferenceYdistance
+            // rowReferenceP2_X
             // 
-            this.rowReferenceYdistance.Appearance.Options.UseTextOptions = true;
-            this.rowReferenceYdistance.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.rowReferenceYdistance.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.rowReferenceYdistance.Name = "rowReferenceYdistance";
-            this.rowReferenceYdistance.Properties.Caption = "Y축 기준증가량";
-            this.rowReferenceYdistance.Properties.Value = 0;
+            this.rowReferenceP2_X.Appearance.Options.UseTextOptions = true;
+            this.rowReferenceP2_X.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowReferenceP2_X.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowReferenceP2_X.Name = "rowReferenceP2_X";
+            this.rowReferenceP2_X.Properties.Caption = "교정점 P2 X좌표";
+            this.rowReferenceP2_X.Properties.Value = 100;
             // 
-            // rowYdeltaX
+            // rowReferenceP2_Y
             // 
-            this.rowYdeltaX.Appearance.Options.UseTextOptions = true;
-            this.rowYdeltaX.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.rowYdeltaX.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.rowYdeltaX.Name = "rowYdeltaX";
-            this.rowYdeltaX.Properties.Caption = "Y축기준 X 증가량";
-            this.rowYdeltaX.Properties.Value = 0;
+            this.rowReferenceP2_Y.Appearance.Options.UseTextOptions = true;
+            this.rowReferenceP2_Y.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowReferenceP2_Y.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowReferenceP2_Y.Name = "rowReferenceP2_Y";
+            this.rowReferenceP2_Y.Properties.Caption = "교정점 P2 Y좌표";
+            this.rowReferenceP2_Y.Properties.Value = 16.955;
             // 
-            // rowYdeltaZ
+            // rowReferenceP2_Z
             // 
-            this.rowYdeltaZ.Appearance.Options.UseTextOptions = true;
-            this.rowYdeltaZ.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.rowYdeltaZ.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.rowYdeltaZ.Name = "rowYdeltaZ";
-            this.rowYdeltaZ.Properties.Caption = "Y축기준 Z 증가량";
-            this.rowYdeltaZ.Properties.Value = 0;
+            this.rowReferenceP2_Z.Appearance.Options.UseTextOptions = true;
+            this.rowReferenceP2_Z.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowReferenceP2_Z.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowReferenceP2_Z.Name = "rowReferenceP2_Z";
+            this.rowReferenceP2_Z.Properties.Caption = "교정점 P2 Z좌표";
+            this.rowReferenceP2_Z.Properties.Value = 10.084;
             // 
             // categoryMotionParameters
             // 
@@ -1326,15 +1328,12 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxCalibrationImageX;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxCalibrationImageY;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowCoordinateSwitch;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReferenceXdistance;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowXdeltaX;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReferenceZdistance;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowZdeltaZ;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowXdeltaZ;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowZdeltaX;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReferenceYdistance;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowYdeltaX;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowYdeltaZ;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReferenceP1_X;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReferenceP1_Y;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReferenceP2_X;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReferenceP2_Z;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReferenceP1_Z;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReferenceP2_Y;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowMotionGearRatioX;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowMotionGearRatioY;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowMotionGearRatioZ;
@@ -1362,5 +1361,8 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowMotionBallLeadX;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowMotionBallLeadY;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowMotionBallLeadZ;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReference_X;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReference_Y;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReference_Z;
     }
 }

@@ -257,7 +257,11 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             fOnePixelResolution = systemparam._cameraParams.OnePixelResolution;
             _DelayTimerCounter = D_MOTION_COMMAND_RESPONSE_WAIT_TIME;
             _CameraGrabWaitTime = D_WAIT_CAMERA_GRAB_DELAY;
-        }        
+        }
+        public void StepHandlerBaseSystemParamUpdate(SystemParams systemparam)
+        {
+            mSystemParam = systemparam;
+        }
         protected bool IsEssentialInstanceSetted
         {
             get

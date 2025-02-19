@@ -141,6 +141,10 @@ namespace atOpticalDecenter
             ImageGrabbed += mStepBase.OnCameraImageGrab;
 
         }
+        private void StepBaseSystemParameterUpdate()
+        {
+            mStepBase.StepHandlerBaseSystemParamUpdate(_systemParams);
+        }
         private void MakeInspectionList()
         {
             mPhotoInspectionList.Clear();
@@ -268,6 +272,7 @@ namespace atOpticalDecenter
                                 LastStep = mPhotoInspectionList.Count,
                                 ElapsedTime = mStepBase.GetOptionInspectionElapseTime
                             });
+                            barEditItemInspectionResult.EditValue = "Stop";
                             mResultData = mStepBase.UpdateInspectdData();
                         }
                         else if (mInspectStep == InspectionStepType.ErrorOccurred)
@@ -277,6 +282,12 @@ namespace atOpticalDecenter
                                 WorkingStatus = WorkingStateInfo.WorkingType.Error,
                                 CurrentStep = RunningIndex,
                             });
+                            string strerr = string.Empty;
+                            strerr = "Error : " + ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[RunningIndex]).StepInformation;
+                            barEditItemInspectionResult.EditValue = "Stop";
+                            mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), strerr);
+                            //MessageBox.Show(strerr);                            
+                            break;
                         }
                         System.Threading.Thread.Sleep(191);
                         //11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97,
@@ -300,6 +311,7 @@ namespace atOpticalDecenter
             InpsectResultUpdate();
             CreateResultFile(mResultData.bTotalResult);
             barEditItemInspectionProgress.EditValue = 100;
+            barEditItemInspectionResult.EditValue = "Ready";
             System.Console.WriteLine("bacground work Photo Inspection run worker completed");
         }
         private void backgroundWorkerInspection_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -308,6 +320,7 @@ namespace atOpticalDecenter
             {
                 WorkingStateInfo mStateInfo = (WorkingStateInfo)e.UserState;                
                 barStaticItemInspectionStatus.Caption = string.Format("진행: ") + mStateInfo.CurrentStepName;
+                barEditItemInspectionResult.EditValue = "Running";
                 if (mStateInfo.WorkingStatus == WorkingStateInfo.WorkingType.Checking)
                 {
                 }
