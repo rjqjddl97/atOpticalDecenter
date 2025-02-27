@@ -27,8 +27,8 @@ namespace RecipeManager
         public int InspectionOpticalSpotCenterX { get; set; } = 813;
         public int InspectionOpticalSpotCenterY { get; set; } = 615;
         public float InspectionDistanceThreshold { get; set; } = 500F;
-        public Rectangle InspectionPassArea { get; set; } = new Rectangle(250, 100, 480, 860);        
-
+        public Rectangle InspectionPassArea { get; set; } = new Rectangle(250, 100, 480, 860);
+        public bool _bJobWorkInfomationEnable { get; set; } = false;
         public SystemParams()
         {
 

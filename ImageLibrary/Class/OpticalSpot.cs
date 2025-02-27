@@ -37,7 +37,7 @@ namespace ImageLibrary
 
         }
 
-        unsafe static public Blob OpticalSpotDetectProcess(Bitmap sourceImage, int binaryTheshold_H, int binaryTheshold_V, int blobSizeMinimum, int blobSizeMaximum)
+        unsafe static public Blob OpticalSpotDetectProcess(Bitmap sourceImage, int binaryTheshold_H, int binaryTheshold_V, int blobSizeMinimum, int blobSizeMaximum, ref double[] dHist_W, ref double[] dHist_H)
         {
             int i;
             if (sourceImage != null)
@@ -92,7 +92,7 @@ namespace ImageLibrary
                         //PointF ptCenter = new PointF((float)centeroids.At<double>(i, 0), (float)centeroids.At<double>(i, 1));
                         PointF ptCenter = new PointF((float)(left + (width / 2f)), (float)(top + (height / 2f)));
 
-                        GetPixelHistogramStep(sourceImage, inspetarea, ref refimgw, ref refimgh, ref IndexPeak_X, ref IndexPeak_Y);
+                        GetPixelHistogramStep(sourceImage, inspetarea, ref refimgw, ref refimgh, ref IndexPeak_X, ref IndexPeak_Y);                        
 
                         peakindexx = IndexPeak_X;
                         peakindexy = IndexPeak_Y;
@@ -101,8 +101,12 @@ namespace ImageLibrary
                         peak = (int)(refimgw[peakindexx]);
                         //mLedBlobs.Add(new Blob(label++, left, top, width, height, size, ptCenter.X, ptCenter.Y));
                         if ((width >= (int)(blobSizeMinimum * 0.5)) && (height >= (int)(blobSizeMinimum * 0.5)))
+                        {
+                            refimgw.CopyTo(dHist_W, 0);
                             mLedBlobs_H.Add(new Blob(label++, left, top, width, height, size, ptCenter.X, ptCenter.Y, peakindexx, peakindexy, peak));
-                        //mLedBlobs.Add(new Blob(label++, left, top, width, height, size, ptCenter.X, ptCenter.Y, peakindexx, peakindexy, peak));                        
+                        }
+                        
+                                               
                     }
                 }
                 Cv2.Threshold(src, dst, binaryTheshold_V, 255, ThresholdTypes.Binary);
@@ -126,16 +130,19 @@ namespace ImageLibrary
                         //PointF ptCenter = new PointF((float)centeroids.At<double>(i, 0), (float)centeroids.At<double>(i, 1));
                         PointF ptCenter = new PointF((float)(left + (width / 2f)), (float)(top + (height / 2f)));
 
-                        GetPixelHistogramStep(sourceImage, inspetarea, ref refimgw, ref refimgh, ref IndexPeak_X, ref IndexPeak_Y);
+                        GetPixelHistogramStep(sourceImage, inspetarea, ref refimgw, ref refimgh, ref IndexPeak_X, ref IndexPeak_Y);                        
 
                         peakindexx = IndexPeak_X;
                         peakindexy = IndexPeak_Y;
 
                         peak = (int)(refimgh[peakindexy]);
 
-                        //mLedBlobs.Add(new Blob(label++, left, top, width, height, size, ptCenter.X, ptCenter.Y));
                         if ((width >= (int)(blobSizeMinimum * 0.5)) && (height >= (int)(blobSizeMinimum * 0.5)))
+                        {
+                            refimgh.CopyTo(dHist_H, 0);
                             mLedBlobs_V.Add(new Blob(label++, left, top, width, height, size, ptCenter.X, ptCenter.Y, peakindexx, peakindexy, peak));
+                        }
+                        
                         
                     }
                 }
@@ -162,6 +169,10 @@ namespace ImageLibrary
                     stats.Dispose();
                     centeroids.Dispose();
                     mLedBlobs = null;
+                    tempimageh = null;
+                    tempimagew = null;
+                    dHist_H = null;
+                    dHist_W = null;
                     return null;
                 }
                 else if (mLedBlobs.Count == 1)

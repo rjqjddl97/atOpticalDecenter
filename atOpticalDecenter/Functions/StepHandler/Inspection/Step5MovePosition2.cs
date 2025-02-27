@@ -49,7 +49,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
 
                         if (mMotionDrvCtrl.IsOpen())
                         {
-                            if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
+                            if ((mRobotInformation.mStatus & 0x00000042) == 0x00000042)             // Inpsotion, Servo On Satus
                             {
                                 byte[] data = new byte[100];
 
@@ -95,7 +95,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     if (mRobotInformation.mInputData.B0)
                         mStep = WorkingStep.ErrorOccured;
 
-                    if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
+                    if ((mRobotInformation.mStatus & 0x00000042) == 0x00000042)             // Inpsotion, Servo On Satus
                     {
                         if (mWorkParam.InspectionPositions.Count > 0)
                         {                            
@@ -143,7 +143,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     if (mRobotInformation.mInputData.B0)
                         mStep = WorkingStep.ErrorOccured;
 
-                    if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
+                    if ((mRobotInformation.mStatus & 0x00000042) == 0x00000042)             // Inpsotion, Servo On Satus
                     {
                         byte[] data = new byte[8];
                         data = mMotionDrvCtrl.mDrvCtrl.MoveAbsoluteCommand(129);
@@ -165,7 +165,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     if (mRobotInformation.mInputData.B0)
                         mStep = WorkingStep.ErrorOccured;
 
-                    if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
+                    if ((mRobotInformation.mStatus & 0x00000042) == 0x00000042)             // Inpsotion, Servo On Satus
                     {
                         mStep = WorkingStep.Idle;
                     }

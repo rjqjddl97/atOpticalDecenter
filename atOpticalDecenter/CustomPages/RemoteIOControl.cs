@@ -16,7 +16,7 @@ using System.IO;
 using System.IO.Ports;
 using System.Timers;
 
-using RecipeManager.Params;
+using RecipeManager;
 namespace CustomPages
 {
     public partial class RemoteIOControl : DevExpress.XtraEditors.XtraUserControl
@@ -133,9 +133,9 @@ namespace CustomPages
             }
             return ret;
         }
-        public StopBits SelectStopBit(int Select)
+        public System.IO.Ports.StopBits SelectStopBit(int Select)
         {
-            StopBits ret = 0;
+            System.IO.Ports.StopBits ret = 0;
             switch (Select)
             {
                 case 0: ret = System.IO.Ports.StopBits.One; break;
@@ -144,9 +144,9 @@ namespace CustomPages
             }
             return ret;
         }
-        public Parity SelectParity(int Select)
+        public System.IO.Ports.Parity SelectParity(int Select)
         {
-            Parity ret = 0;
+            System.IO.Ports.Parity ret = 0;
             switch (Select)
             {
                 case 0: ret = System.IO.Ports.Parity.None; break;        // None

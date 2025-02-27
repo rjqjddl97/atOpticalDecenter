@@ -27,6 +27,8 @@ namespace PhotoProduct
         public double fPixelResolution = 0;
         public Blob mFirstLedSpot = new Blob();
         public Blob mFinalLedSpot = new Blob();
+        public double[] _ImageHist_H = null;
+        public double[] _ImageHist_V = null;
         public double fOpticalEccentricity = 0;             // 
         public double fOpticalEmiterAngle = 0;              // 투광 발산각
         public double fND_FilterAngle = 0;                  // ND 필터 각도
@@ -126,14 +128,14 @@ namespace PhotoProduct
         {
 
         }
-        public void InspectParameterInitial(double fDistance,double fShortDistance,int Pixel_H, int Pixel_V, double fPixelPerUnit)
+        public void InspectParameterInitial(double fDistance, double fShortDistance, int Pixel_H, int Pixel_V, double fPixelPerUnit)
         {
             double f0 = ND_FILTER_REDUCE_RATE / ND_FILTER_RANGE;
             for (int i = 0; i < ND_FILTER_RANGE; i++)
             {
                 if (i == 0)
                 {
-                    OD_Define[i] = f0 ;
+                    OD_Define[i] = f0;
                 }
                 else
                 {
@@ -143,7 +145,12 @@ namespace PhotoProduct
             RealInspectDistance = fDistance;
             ShortInspectDistance = fShortDistance;
             fPixelResolution = fPixelPerUnit;
-            SetAngleFOV(Pixel_H,Pixel_V);
+            SetAngleFOV(Pixel_H, Pixel_V);
+        }
+        public void InspectInitialImageBuffer(int Pixel_H, int Pixel_V)
+        {
+            _ImageHist_H = new double[Pixel_H];
+            _ImageHist_V = new double[Pixel_V];
         }
         public void SetAngleFOV(int Pixel_H, int Pixel_V)
         {

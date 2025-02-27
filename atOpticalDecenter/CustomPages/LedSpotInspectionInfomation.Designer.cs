@@ -92,7 +92,7 @@
             // vGridControl1
             // 
             this.vGridControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControl1.Location = new System.Drawing.Point(3, 3);
             this.vGridControl1.Margin = new System.Windows.Forms.Padding(0);
@@ -148,6 +148,7 @@
             // 
             this.rowProductSeries.Appearance.Options.UseFont = true;
             this.rowProductSeries.Appearance.Options.UseTextOptions = true;
+            this.rowProductSeries.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.rowProductSeries.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowProductSeries.Name = "rowProductSeries";
             this.rowProductSeries.Properties.Caption = "제품 시리즈";
@@ -157,6 +158,7 @@
             // 
             this.rowProductModelName.Appearance.Options.UseFont = true;
             this.rowProductModelName.Appearance.Options.UseTextOptions = true;
+            this.rowProductModelName.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.rowProductModelName.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowProductModelName.Name = "rowProductModelName";
             this.rowProductModelName.Properties.Caption = "제품 모델명";
@@ -166,6 +168,7 @@
             // 
             this.rowLedSpotBlobInspectHSize.Appearance.Options.UseFont = true;
             this.rowLedSpotBlobInspectHSize.Appearance.Options.UseTextOptions = true;
+            this.rowLedSpotBlobInspectHSize.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.rowLedSpotBlobInspectHSize.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowLedSpotBlobInspectHSize.Name = "rowLedSpotBlobInspectHSize";
             this.rowLedSpotBlobInspectHSize.Properties.Caption = "Spot 1 크기[mm]";
@@ -174,6 +177,7 @@
             // rowLedSpotBlobInspectVSize
             // 
             this.rowLedSpotBlobInspectVSize.Appearance.Options.UseTextOptions = true;
+            this.rowLedSpotBlobInspectVSize.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.rowLedSpotBlobInspectVSize.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowLedSpotBlobInspectVSize.Name = "rowLedSpotBlobInspectVSize";
             this.rowLedSpotBlobInspectVSize.Properties.Caption = "Spot 2 크기[mm]";
@@ -183,6 +187,7 @@
             // 
             this.rowLedSpotImageBright.Appearance.Options.UseFont = true;
             this.rowLedSpotImageBright.Appearance.Options.UseTextOptions = true;
+            this.rowLedSpotImageBright.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.rowLedSpotImageBright.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowLedSpotImageBright.Name = "rowLedSpotImageBright";
             this.rowLedSpotImageBright.Properties.Caption = "광원 이미지 밝기";
@@ -192,6 +197,7 @@
             // 
             this.rowAlignmentDistance.Appearance.Options.UseFont = true;
             this.rowAlignmentDistance.Appearance.Options.UseTextOptions = true;
+            this.rowAlignmentDistance.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.rowAlignmentDistance.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowAlignmentDistance.Name = "rowAlignmentDistance";
             this.rowAlignmentDistance.Properties.Caption = "편심 거리[mm]";
@@ -201,7 +207,8 @@
             // 
             this.rowDivergenceAngle.Appearance.Options.UseFont = true;
             this.rowDivergenceAngle.Appearance.Options.UseTextOptions = true;
-            this.rowDivergenceAngle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.rowDivergenceAngle.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.rowDivergenceAngle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowDivergenceAngle.Name = "rowDivergenceAngle";
             this.rowDivergenceAngle.Properties.Caption = "광원 발산 각도[˚]";
             this.rowDivergenceAngle.Properties.ReadOnly = true;
@@ -210,6 +217,7 @@
             // 
             this.rowNDReduceRatio.Appearance.Options.UseFont = true;
             this.rowNDReduceRatio.Appearance.Options.UseTextOptions = true;
+            this.rowNDReduceRatio.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.rowNDReduceRatio.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowNDReduceRatio.Name = "rowNDReduceRatio";
             this.rowNDReduceRatio.Properties.Caption = "ND 필터감쇄율";
@@ -219,6 +227,7 @@
             // 
             this.rowNDFilterAngle.Appearance.Options.UseFont = true;
             this.rowNDFilterAngle.Appearance.Options.UseTextOptions = true;
+            this.rowNDFilterAngle.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.rowNDFilterAngle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowNDFilterAngle.Name = "rowNDFilterAngle";
             this.rowNDFilterAngle.Properties.Caption = "ND 필터 예측각도";
@@ -228,6 +237,7 @@
             // 
             this.rowOperateMinDistance.Appearance.Options.UseFont = true;
             this.rowOperateMinDistance.Appearance.Options.UseTextOptions = true;
+            this.rowOperateMinDistance.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.rowOperateMinDistance.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowOperateMinDistance.Height = 17;
             this.rowOperateMinDistance.Name = "rowOperateMinDistance";
@@ -238,6 +248,8 @@
             // 
             this.rowOperateMaxDistance.Appearance.Options.UseFont = true;
             this.rowOperateMaxDistance.Appearance.Options.UseTextOptions = true;
+            this.rowOperateMaxDistance.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.rowOperateMaxDistance.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowOperateMaxDistance.Name = "rowOperateMaxDistance";
             this.rowOperateMaxDistance.Properties.Caption = "최대 거리[ND 필터 각도]";
             this.rowOperateMaxDistance.Properties.ReadOnly = true;
@@ -245,6 +257,9 @@
             // rowInspectResult
             // 
             this.rowInspectResult.Appearance.Options.UseFont = true;
+            this.rowInspectResult.Appearance.Options.UseTextOptions = true;
+            this.rowInspectResult.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.rowInspectResult.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowInspectResult.Name = "rowInspectResult";
             this.rowInspectResult.OptionsRow.AllowFocus = false;
             this.rowInspectResult.Properties.AllowEdit = false;

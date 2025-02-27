@@ -143,7 +143,8 @@ namespace atOpticalDecenter
         }
         private void StepBaseSystemParameterUpdate()
         {
-            mStepBase.StepHandlerBaseSystemParamUpdate(_systemParams);
+            if (mStepBase != null)
+                mStepBase.StepHandlerBaseSystemParamUpdate(_systemParams);
         }
         private void MakeInspectionList()
         {
@@ -237,6 +238,10 @@ namespace atOpticalDecenter
                                 _InspectionWorking = false;
                                 break;
                             case InspectionStepType.ErrorOccurred:
+                                _InspectionWorking = false;
+                                barEditItemInspectionResult.EditValue = "Error" + ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[RunningIndex]).StepInformation;
+                                repositoryItemTextEditInspectionResult.Appearance.ForeColor = System.Drawing.Color.Red;
+                                _isInspectError = false;
                                 break;
                             default: break;                                
                         }
@@ -282,14 +287,15 @@ namespace atOpticalDecenter
                                 WorkingStatus = WorkingStateInfo.WorkingType.Error,
                                 CurrentStep = RunningIndex,
                             });
+                            _isInspectError = false;
                             string strerr = string.Empty;
                             strerr = "Error : " + ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[RunningIndex]).StepInformation;
                             barEditItemInspectionResult.EditValue = "Stop";
                             mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), strerr);
-                            //MessageBox.Show(strerr);                            
+                            MessageBox.Show(strerr, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                             break;
                         }
-                        System.Threading.Thread.Sleep(191);
+                        System.Threading.Thread.Sleep(97);
                         //11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97,
                         //101, 103, 107, 109, 113, 127, 131, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199,479
                     }
@@ -308,8 +314,11 @@ namespace atOpticalDecenter
             UpdateProcessTime(false);
             barCheckItemInspectionStart.Caption = string.Format("검사 시작");
             barStaticItemInspectionStatus.Caption = string.Format("진행: 검사 완료");
-            InpsectResultUpdate();
-            CreateResultFile(mResultData.bTotalResult);
+            if (!_isInspectError)
+            {
+                InpsectResultUpdate();
+                CreateResultFile(mResultData.bTotalResult);
+            }
             barEditItemInspectionProgress.EditValue = 100;
             barEditItemInspectionResult.EditValue = "Ready";
             System.Console.WriteLine("bacground work Photo Inspection run worker completed");

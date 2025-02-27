@@ -27,7 +27,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
         private void Run()
         {
             byte[] posdata = new byte[32];
-            ErrorStepString = "Jig Check - " + strstep;
+            //ErrorStepString = "Jig Check - " + strstep;
             switch (mStep)
             {
                 case WorkingStep.Idle:
@@ -48,7 +48,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     }
                     break;
                 case WorkingStep.JigCheck:
-                    strstep = "지그신호 확인중";
+                    //strstep = "지그신호 확인중";
                     if (mRobotInformation.mInputData.B0)
                         mStep = WorkingStep.ErrorOccured;
 
@@ -57,8 +57,11 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         mStep = WorkingStep.Idle;
                     }
                     else
+                    {
+                        strstep = "Jig Not Contact or Noting";
+                        ErrorStepString += strstep;
                         mStep = WorkingStep.ErrorOccured;
-
+                    }
                     break;
 
                 default: break;

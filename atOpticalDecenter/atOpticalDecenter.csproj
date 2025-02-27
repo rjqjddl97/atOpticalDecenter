@@ -147,8 +147,6 @@
     <Compile Include="Functions\StepHandler\Base\IStepHandler.cs" />
     <Compile Include="Functions\StepHandler\Base\StepHandlerBase.cs" />
     <Compile Include="Functions\StepHandler\Inspection\DryRunStep.cs" />
-    <Compile Include="Functions\StepHandler\Inspection\InspectionStep1.cs" />
-    <Compile Include="Functions\StepHandler\Inspection\InspectMaxDistanceStep.cs" />
     <Compile Include="Functions\StepHandler\Inspection\Step1JigCheck.cs" />
     <Compile Include="Functions\StepHandler\Inspection\Step3MovePostion1.cs" />
     <Compile Include="Functions\StepHandler\Inspection\Step2SensorPowerOn.cs" />
@@ -271,6 +269,10 @@
     <ProjectReference Include="..\LogLibrary\LogLibrary.csproj">
       <Project>{d3f9449d-4dbe-4bc9-b24c-fac0934e862f}</Project>
       <Name>LogLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoDBLibrary\PhotoDBLibrary\PhotoDBLibrary.csproj">
+      <Project>{e7dbe42f-446f-4160-ae33-b111a093b5b2}</Project>
+      <Name>PhotoDBLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\PhotoSensorProductLibrary\PhotoProduct\PhotoProduct.csproj">
       <Project>{138ce3c1-7a32-49cc-879c-98d6fa6de978}</Project>

@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.textEditWorkerID = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEditWorkerName = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEditJobInformation = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleButtonLogIn = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.simpleButtonExit = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonLogIn = new DevExpress.XtraEditors.SimpleButton();
+            this.textEditJobInformation = new DevExpress.XtraEditors.TextEdit();
+            this.textEditWorkerName = new DevExpress.XtraEditors.TextEdit();
+            this.textEditWorkerID = new DevExpress.XtraEditors.TextEdit();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditWorkerID.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditWorkerName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditJobInformation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditWorkerName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditWorkerID.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
@@ -68,6 +68,60 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // simpleButtonExit
+            // 
+            this.simpleButtonExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.simpleButtonExit.Location = new System.Drawing.Point(151, 84);
+            this.simpleButtonExit.Name = "simpleButtonExit";
+            this.simpleButtonExit.Size = new System.Drawing.Size(135, 22);
+            this.simpleButtonExit.StyleController = this.layoutControl1;
+            this.simpleButtonExit.TabIndex = 8;
+            this.simpleButtonExit.Text = "종료";
+            // 
+            // simpleButtonLogIn
+            // 
+            this.simpleButtonLogIn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.simpleButtonLogIn.Location = new System.Drawing.Point(12, 84);
+            this.simpleButtonLogIn.Name = "simpleButtonLogIn";
+            this.simpleButtonLogIn.Size = new System.Drawing.Size(135, 22);
+            this.simpleButtonLogIn.StyleController = this.layoutControl1;
+            this.simpleButtonLogIn.TabIndex = 7;
+            this.simpleButtonLogIn.Text = "로그인";
+            // 
+            // textEditJobInformation
+            // 
+            this.textEditJobInformation.EditValue = "00000000-0000";
+            this.textEditJobInformation.EnterMoveNextControl = true;
+            this.textEditJobInformation.Location = new System.Drawing.Point(69, 60);
+            this.textEditJobInformation.Name = "textEditJobInformation";
+            this.textEditJobInformation.Size = new System.Drawing.Size(217, 20);
+            this.textEditJobInformation.StyleController = this.layoutControl1;
+            this.textEditJobInformation.TabIndex = 6;
+            this.textEditJobInformation.EditValueChanged += new System.EventHandler(this.textEditJobInformation_EditValueChanged);
+            this.textEditJobInformation.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.textEditJobInformation_EditValueChanging);
+            // 
+            // textEditWorkerName
+            // 
+            this.textEditWorkerName.EditValue = "김철수";
+            this.textEditWorkerName.EnterMoveNextControl = true;
+            this.textEditWorkerName.Location = new System.Drawing.Point(69, 36);
+            this.textEditWorkerName.Name = "textEditWorkerName";
+            this.textEditWorkerName.Size = new System.Drawing.Size(217, 20);
+            this.textEditWorkerName.StyleController = this.layoutControl1;
+            this.textEditWorkerName.TabIndex = 5;
+            this.textEditWorkerName.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.textEditWorkerName_EditValueChanging);
+            // 
+            // textEditWorkerID
+            // 
+            this.textEditWorkerID.EditValue = "10000000";
+            this.textEditWorkerID.EnterMoveNextControl = true;
+            this.textEditWorkerID.Location = new System.Drawing.Point(69, 12);
+            this.textEditWorkerID.Name = "textEditWorkerID";
+            this.textEditWorkerID.Size = new System.Drawing.Size(217, 20);
+            this.textEditWorkerID.StyleController = this.layoutControl1;
+            this.textEditWorkerID.TabIndex = 4;
+            this.textEditWorkerID.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.textEditWorkerID_EditValueChanging);
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -82,16 +136,6 @@
             this.Root.Size = new System.Drawing.Size(298, 118);
             this.Root.TextVisible = false;
             // 
-            // textEditWorkerID
-            // 
-            this.textEditWorkerID.EditValue = "10000000";
-            this.textEditWorkerID.Location = new System.Drawing.Point(70, 12);
-            this.textEditWorkerID.Name = "textEditWorkerID";
-            this.textEditWorkerID.Size = new System.Drawing.Size(216, 20);
-            this.textEditWorkerID.StyleController = this.layoutControl1;
-            this.textEditWorkerID.TabIndex = 4;
-            this.textEditWorkerID.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.textEditWorkerID_EditValueChanging);
-            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.textEditWorkerID;
@@ -100,16 +144,6 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(278, 24);
             this.layoutControlItem1.Text = "작업자 사번";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(54, 14);
-            // 
-            // textEditWorkerName
-            // 
-            this.textEditWorkerName.EditValue = "김철수";
-            this.textEditWorkerName.Location = new System.Drawing.Point(70, 36);
-            this.textEditWorkerName.Name = "textEditWorkerName";
-            this.textEditWorkerName.Size = new System.Drawing.Size(216, 20);
-            this.textEditWorkerName.StyleController = this.layoutControl1;
-            this.textEditWorkerName.TabIndex = 5;
-            this.textEditWorkerName.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.textEditWorkerName_EditValueChanging);
             // 
             // layoutControlItem2
             // 
@@ -120,16 +154,6 @@
             this.layoutControlItem2.Text = "작업자 이름";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(54, 14);
             // 
-            // textEditJobInformation
-            // 
-            this.textEditJobInformation.EditValue = "00000000-0000";
-            this.textEditJobInformation.Location = new System.Drawing.Point(70, 60);
-            this.textEditJobInformation.Name = "textEditJobInformation";
-            this.textEditJobInformation.Size = new System.Drawing.Size(216, 20);
-            this.textEditJobInformation.StyleController = this.layoutControl1;
-            this.textEditJobInformation.TabIndex = 6;
-            this.textEditJobInformation.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.textEditJobInformation_EditValueChanging);
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.textEditJobInformation;
@@ -139,16 +163,6 @@
             this.layoutControlItem3.Text = "작업 지시서";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(54, 14);
             // 
-            // simpleButtonLogIn
-            // 
-            this.simpleButtonLogIn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.simpleButtonLogIn.Location = new System.Drawing.Point(12, 84);
-            this.simpleButtonLogIn.Name = "simpleButtonLogIn";
-            this.simpleButtonLogIn.Size = new System.Drawing.Size(135, 22);
-            this.simpleButtonLogIn.StyleController = this.layoutControl1;
-            this.simpleButtonLogIn.TabIndex = 7;
-            this.simpleButtonLogIn.Text = "로그인";
-            // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.simpleButtonLogIn;
@@ -157,16 +171,6 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(139, 26);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
-            // 
-            // simpleButtonExit
-            // 
-            this.simpleButtonExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButtonExit.Location = new System.Drawing.Point(151, 84);
-            this.simpleButtonExit.Name = "simpleButtonExit";
-            this.simpleButtonExit.Size = new System.Drawing.Size(135, 22);
-            this.simpleButtonExit.StyleController = this.layoutControl1;
-            this.simpleButtonExit.TabIndex = 8;
-            this.simpleButtonExit.Text = "종료";
             // 
             // layoutControlItem5
             // 
@@ -188,12 +192,12 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditWorkerID.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditWorkerName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditJobInformation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditWorkerName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditWorkerID.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();

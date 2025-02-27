@@ -174,6 +174,7 @@ namespace atOpticalDecenter
             _systemParameters._remoteIOParams.IDs.Add(remoteitems);
             // System Parameter의 ADMS 파라미터 초기화
             _systemParameters._admsParams._enableCheck = Convert.ToBoolean(rowSystemADMSUse.Properties.Value);
+            _systemParameters._bJobWorkInfomationEnable = Convert.ToBoolean(rowSystemJobWorkUse.Properties.Value);
             _systemParameters._admsParams._IpAddress = Convert.ToString(rowSystemADMSIPAddress.Properties.Value);
             _systemParameters._admsParams._port = Convert.ToInt32(rowSystemADMSPort.Properties.Value);
             _systemParameters._admsParams._userID = Convert.ToString(rowSystemADMSUserID.Properties.Value);
@@ -299,6 +300,7 @@ namespace atOpticalDecenter
 
             // ADMS Parameters
             rowSystemADMSUse.Properties.Value = _systemParameters._admsParams._enableCheck;
+            rowSystemJobWorkUse.Properties.Value = _systemParameters._bJobWorkInfomationEnable;
             rowSystemADMSIPAddress.Properties.Value = _systemParameters._admsParams._IpAddress;
             rowSystemADMSPort.Properties.Value = _systemParameters._admsParams._port;
             rowSystemADMSUserID.Properties.Value = _systemParameters._admsParams._userID;
@@ -1244,6 +1246,12 @@ namespace atOpticalDecenter
                 bool check = Convert.ToBoolean(rowSystemADMSUse.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._admsParams._enableCheck = check;
+            }
+            else if (currentRow == rowSystemJobWorkUse)
+            {
+                bool check = Convert.ToBoolean(rowSystemJobWorkUse.Properties.Value);
+                simpleButtonSystemFileSave.Enabled = true;
+                _systemParameters._bJobWorkInfomationEnable = check;
             }
             else if (currentRow == rowSystemADMSIPAddress)
             {

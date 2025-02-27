@@ -24,6 +24,7 @@ using ImageLibrary;
 using PhotoProduct;
 using atOpticalDecenter;
 using AiCControlLibrary;
+using PhotoDBLibrary;
 
 namespace atOpticalDecenter
 {
@@ -52,10 +53,14 @@ namespace atOpticalDecenter
         public AiCControlLibrary.SerialCommunication.Control.CommunicationManager _mMotionControlCommManager = null;
         public ARMLibrary.SerialCommunication.Control.CommunicationManager _mRemteIOCommManager = null;
 
+        DBControl _JobWorkDbCtrl = new DBControl();
+        ADMSEquipmentInfo _admsEquipment = new ADMSEquipmentInfo();
+        ADMSProductInfo _admsProduct = new ADMSProductInfo();
 
         bool _isInspecting = false;
         bool _isInspectionDone = false;
         bool _isInsepctionResult = false;
+        bool _isInspectError = false;
         System.Drawing.Image _sourceImage = null;
         System.Drawing.Image _resultImage = null;
 
@@ -263,7 +268,7 @@ namespace atOpticalDecenter
 
                 if (!_IsHommingFinished)
                 {
-                    if (MessageBox.Show("원점복귀가 진행을 합니다.","원점복귀",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("원점복귀를 진행을 합니다.","원점복귀",MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         if (_mMotionControlCommManager.IsOpen())
                         {
@@ -297,7 +302,7 @@ namespace atOpticalDecenter
         }
         private void atOpticalDecenter_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show(string.Format("단축거리 검사 시스템을 종료하시겠습니까?"), "시스템 종료", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+            if (MessageBox.Show(string.Format("광 편심 검사 시스템을 종료하시겠습니까?"), "시스템 종료", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
             {
                 e.Cancel = true;
                 return;
@@ -637,72 +642,7 @@ namespace atOpticalDecenter
                 _mRemteIOCommManager.Disconnect();
             }
             return _mRemteIOCommManager.IsOpen();            
-        }
-        public void InitializePanelMeterModule()
-        {            
-            //panelMeterControl._SerialPortName = _systemParams._panelmeterParams.SerialParameters.PortName;
-            //panelMeterControl._iBaudrate = _systemParams._panelmeterParams.SerialParameters.BaudRates;
-            //panelMeterControl._iDataBit = _systemParams._panelmeterParams.SerialParameters.DataBits;
-            //panelMeterControl._iStopBit = Convert.ToInt32(_systemParams._panelmeterParams.SerialParameters.StopBits);
-            //panelMeterControl._iParity = Convert.ToInt32(_systemParams._panelmeterParams.SerialParameters.Parity);
-            //panelMeterControl._iFlowControl = Convert.ToInt32(_systemParams._panelmeterParams.SerialParameters.Handshake);
-            //_PanelMedtaData.Clear();
-            //if (_systemParams._panelmeterParams.IDs.Count > 0)
-            //{
-            //    for (int i = 0; i < _systemParams._panelmeterParams.IDs.Count; i++)
-            //    {
-            //        _PanelMedtaData.Add(i, 0.0);
-            //    }
-            //}
-            
-            //PanelMetaConnect();
-        }
-        private bool PanelMetaConnect(string sComport = null)
-        {
-            //if (mMT4xPanelMeterCommunicationManager.IsOpen()) return true;
-
-            //if (sComport == null)
-            //    sComport = _systemParams._panelmeterParams.SerialParameters.PortName;
-
-            //try
-            //{
-            //    MT4WContorlLibrary.SerialCommunication.Control.SerialPortSetData SerialSetData = new MT4WContorlLibrary.SerialCommunication.Control.SerialPortSetData();
-            //    SerialSetData.PortName = sComport;
-            //    SerialSetData.BaudRate = _systemParams._panelmeterParams.SerialParameters.BaudRates;
-            //    SerialSetData.DataBits = _systemParams._photoParams.SerialParameters.DataBits;
-            //    SerialSetData.Parity = (System.IO.Ports.Parity)Enum.Parse(typeof(RecipeManager.Parity), Convert.ToString("None"));
-            //    SerialSetData.StopBits = (System.IO.Ports.StopBits)Enum.Parse(typeof(RecipeManager.StopBits), Convert.ToString("One"));
-            //    SerialSetData.ReadTimeout = 2000;
-            //    SerialSetData.WriteTimeout = 2000;
-            //    mMT4xPanelMeterCommunicationManager.SetSerialData(SerialSetData);
-            //    if (mMT4xPanelMeterCommunicationManager.Connect())
-            //    {                    
-            //        mLog.WriteLog(LogLevel.Info, LogClass.PanelMeta.ToString(), string.Format("판넬메타와 통신 연결 성공:{0}", sComport));
-            //        mMT4xPanelMeterCommunicationManager.ReceiveDataUpdateEvent += PanelMetaDataUpdate;
-            //    }
-            //    else
-            //    {
-            //        mLog.WriteLog(LogLevel.Info, LogClass.PanelMeta.ToString(), string.Format("판넬메타와 통신 연결 실패:{0}", sComport));
-            //    }
-            //}
-            //catch (Exception)
-            //{
-            //    mLog.WriteLog(LogLevel.Info, LogClass.PanelMeta.ToString(), string.Format("판넬메타와 통신 연결 실패:{0}", sComport));
-            //}
-            //return mMT4xPanelMeterCommunicationManager.IsOpen();
-            return true;
-        }
-        private bool PanelMetaDisConnect()
-        {
-            //if (mMT4xPanelMeterCommunicationManager.IsOpen())
-            //{                
-            //    mMT4xPanelMeterCommunicationManager.Disconnect();
-            //    mMT4xPanelMeterCommunicationManager.ReceiveDataUpdateEvent -= PanelMetaDataUpdate;
-            //}
-            //return mMT4xPanelMeterCommunicationManager.IsOpen();
-            return true;
-        }
-
+        }    
         private void InitializeStatistics()
         {
             string strTemp = string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.StatisticsFileName);
@@ -2721,6 +2661,7 @@ namespace atOpticalDecenter
                 CheckTackTime.Reset();
                 barCheckItemInspectionStart.Caption = string.Format("검사 중지");
                 _isInspecting = true;
+                _isInspectError = false;
                 // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
                 //
 
@@ -2768,6 +2709,7 @@ namespace atOpticalDecenter
                 barCheckItemInspectionStart.Caption = string.Format("검사 시작");
                 _isInspecting = false;
                 _InspectionWorking = false;
+                _isInspectError = false;
                 mInspectStep = InspectionStepType.Idle;
                 _backgroundWorkerOpticalDecenterInspection.CancelAsync();
                 UpdateProcessTime(false);
@@ -2781,6 +2723,7 @@ namespace atOpticalDecenter
             {
                 CheckTackTime.Reset();                
                 _isInspecting = true;
+                _isInspectError = false;
                 // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
                 //
                 if (_isContinuousShot)
@@ -2819,6 +2762,7 @@ namespace atOpticalDecenter
             {                
                 _isInspecting = false;
                 _InspectionWorking = false;
+                _isInspectError = false;
                 mInspectStep = InspectionStepType.Idle;
                 _backgroundWorkerOpticalDecenterInspection.CancelAsync();
                 UpdateProcessTime(false);
@@ -2833,79 +2777,64 @@ namespace atOpticalDecenter
             LoginForm logInForm = new LoginForm();
             if (logInForm.ShowDialog() == DialogResult.OK)
             {
-                //if (_admsEquipment.WorkerID.Equals(logInForm.WorkerID) && _admsEquipment.WorkerName.Equals(logInForm.WorkerName) && _admsEquipment.JobInformation.Equals(logInForm.JobInformation))
-                //{
-                //    MessageBox.Show("같은 로그인 정보입니다.", "변경", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //}
-                //else
-                //{
-                //    string strLog = string.Format("로그인 정보가 변경되었습니다.\n\n작업자 사번: {0} → {1}\n작업자 이름: {2} → {3}\n작업지시서: {4} → {5}\n\n변경하시겠습니까?",
-                //        _admsEquipment.WorkerID, logInForm.WorkerID, _admsEquipment.WorkerName, logInForm.WorkerName, _admsEquipment.JobInformation, logInForm.JobInformation);
+                if (_admsEquipment.WorkerID.Equals(logInForm.WorkerID) && _admsEquipment.WorkerName.Equals(logInForm.WorkerName) && _admsEquipment.JobInformation.Equals(logInForm.JobInformation))
+                {
+                    MessageBox.Show("같은 로그인 정보입니다.", "변경", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string strLog = string.Format("로그인 정보가 변경되었습니다.\n\n작업자 사번: {0} → {1}\n작업자 이름: {2} → {3}\n작업지시서: {4} → {5}\n\n변경하시겠습니까?",
+                        _admsEquipment.WorkerID, logInForm.WorkerID, _admsEquipment.WorkerName, logInForm.WorkerName, _admsEquipment.JobInformation, logInForm.JobInformation);
 
-                //    if (MessageBox.Show(strLog, "변경", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
-                //    {
-                //        if (_admsEquipment.JobInformation != logInForm.JobInformation)
-                //        {
-                //            _admsEquipment.Time = DateTime.Now;
-                //            _admsEquipment.Event = ADMSEquipmentEvent.JOB;
-                //            _admsEquipment.EventSubState = ADMSEquipmentEventSubState.CHANGE;
-                //            _admsEquipment.JobInformation = logInForm.JobInformation;
-                //            _admsEquipment.Description = "작업지시서를 변경합니다.";
+                    if (MessageBox.Show(strLog, "변경", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                    {
+                        //if (_admsEquipment.JobInformation != logInForm.JobInformation)
+                        //{
+                        //    _admsEquipment.Time = DateTime.Now;
+                        //    _admsEquipment.Event = ADMSEquipmentEvent.JOB;
+                        //    _admsEquipment.EventSubState = ADMSEquipmentEventSubState.CHANGE;
+                        //    _admsEquipment.JobInformation = logInForm.JobInformation;
+                        //    _admsEquipment.Description = "작업지시서를 변경합니다.";
 
-                //            if (Convert.ToBoolean(_dicSystemParams[SystemDictionary.ADMSUse]))
-                //                UpdateADMSEquipmentStatus();
-                //        }
+                        //    if (_systemParams._admsParams._enableCheck)
+                        //    {
+                        //        ;// DB 상태 업데이트 구문 추가 필요!!
+                        //    }
+                        //}
 
-                //        _admsEquipment.WorkerID = logInForm.WorkerID;
-                //        _admsEquipment.WorkerName = logInForm.WorkerName;
-                //        _admsEquipment.JobInformation = logInForm.JobInformation;
+                        _admsEquipment.WorkerID = logInForm.WorkerID;
+                        _admsEquipment.WorkerName = logInForm.WorkerName;
+                        _admsEquipment.JobInformation = logInForm.JobInformation;
 
-                //        barStaticItemLogIn.Caption = string.Format("사번: {0}, 이름: {1}, 작업지시서: {2}", _admsEquipment.WorkerID, _admsEquipment.WorkerName, _admsEquipment.JobInformation);
-                //    }
-                //}
+                        if (_systemParams._bJobWorkInfomationEnable)
+                        {
+
+                            if (_JobWorkDbCtrl.SearchDBforKeyword("work_ord_no", string.Format("{0}", logInForm.JobInformation), true))
+                            {
+                                string recpename = string.Empty;
+
+                                recpename = GetRecipeNameToDB();
+
+                                if (recpename != "")
+                                    RecipeOpen(recpename);
+
+                                MessageBox.Show("작업지시서를 확인 후 레시피를 선택 했습니다.", "DB확인", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                            }
+                            else
+                                MessageBox.Show("작업지시서를 없습니다.", "DB 미확인", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        }
+                        else
+                        {
+                            barListItemRecipeOpen.Enabled = true;
+                        }
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("로그인 정보가 변경되지 않았습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("로그인 정보가 변경되지 않았습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
             }
-        }
-
-        private void barButtonItemDryRun_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (_isInspecting == false)
-            {
-                CheckTackTime.Reset();
-                barCheckItemInspectionStart.Caption = string.Format("검사 중지");
-                _isInspecting = true;
-                // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
-                //
-                if (_isContinuousShot)
-                {
-                    _Camera.Stop();
-                    _isContinuousShot = false;
-                    barButtonItemSingleShot.Enabled = true;
-                    barButtonItemContinueousShot.Enabled = true;
-                }
-                barCheckItemShowCenterMark.Enabled = true;
-
-                mStepBase.SetJobInfo(mLogin.JobInformation);
-                mStepBase.SetProductSeries((PhotoProduct.Enums.ProductSeries)_workParams._ProductSeries);
-                mStepBase.SetProductType((PhotoProduct.Enums.ProductType)_workParams._ProductType);
-                mStepBase.SetProductName(_workParams._ProductModelName);
-                mStepBase.SetOutputType((PhotoProduct.Enums.OutputType)_workParams._ProductOutputType);
-                mStepBase.SetOPMode((PhotoProduct.Enums.OperatingMode)_workParams._ProductOperatingMdoe);
-                mStepBase.SetDetectMertrial((PhotoProduct.Enums.DetectMeterial)_workParams._ProductDetectMerterial);
-                mStepBase.ClearTimeForFullSequence();
-
-                MakeDryRunList();
-                _InspectionWorking = true;
-                mInspectStep = InspectionStepType.CheckWaitRobotReady;
-                CheckTackTime.Start();
-                _backgroundWorkerOpticalDecenterInspection.RunWorkerAsync();
-
-                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 실행");
-            }
-        }
+        }        
         public void InspectionRecipeParameterSetup()
         {
             // Camera exposure time change
@@ -3093,6 +3022,77 @@ namespace atOpticalDecenter
                 "이미지 밝기 :{2:000}pixel, 광원 편심 :{3:00.000}mm, 광 발산각 :{4:00.000}˚, 감쇄율 :{5:00.000}, ND필터 예측각도 :{6:000}˚ , 최대거리 ND필터 :{7:000}˚",
                 mResultData.fOpticalSize[0], mResultData.fOpticalSize[1], mResultData.fOpticalSpotImageBright, mResultData.fOpticalEccentricity,(mResultData.fOpticalEmiterAngle * (180 / Math.PI)),
                 mResultData.fODFilterReduce, mResultData.fND_FilterAngle, mResultData.fMaxOperateDistance));
+        }
+        public string GetRecipeNameToDB()
+        {
+            string retStr = string.Empty;
+            string strsource = string.Empty;
+            int strindex = 0, splitindex = 0;
+            if (_JobWorkDbCtrl._rOrderDataList.Count == 1)
+            {
+                for (int i = 0; i < _JobWorkDbCtrl._rOrderDataList.Count; i++)
+                {
+                    if (_JobWorkDbCtrl._rOrderDataList[i].StatusType == 3)
+                    {
+                        strsource = _JobWorkDbCtrl._rOrderDataList[i].ItemName;
+                        retStr = strsource;
+                        //byte[] strbytes = new byte[strsource.Length];                        
+                        //strbytes = Encoding.UTF8.GetBytes(strsource);
+                        //for (int j = 0; j < strsource.Length; j++)
+                        //{
+                        //    if (strbytes[j] == '-')
+                        //        strindex++;
+                        //    if (strindex > 1)
+                        //    {
+                        //        splitindex = j;
+                        //        break;
+                        //    }                            
+                        //}
+                        //if (splitindex <= strsource.Length)
+                        //    retStr = strsource.Substring(0, splitindex);
+                        ////retStr = Encoding.UTF8.GetString(strbytes);
+
+                    }
+                }
+                return retStr;
+            }
+            else
+                return retStr;
+        }
+
+        private void barButtonItemHomming_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (_mMotionControlCommManager.IsOpen())
+            {
+                if (MessageBox.Show("원점복귀를 진행을 합니다.", "원점복귀", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    byte[] SeData = new byte[8];
+                    for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                    {
+                        SeData = _mMotionControlCommManager.mDrvCtrl.HomeStartCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
+                        _mMotionControlCommManager.SendData(SeData);
+                    }
+                    _IsHommingFinished = true;
+                    mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
+                }
+            }
+
+        }
+
+        private void barButtonItemReset_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (_mMotionControlCommManager.IsOpen())
+            {
+                if (MessageBox.Show("알람 리셋을 진행을 합니다.", "알람 리셋", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    byte[] SeData = new byte[8];
+                    for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                    {
+                        SeData = _mMotionControlCommManager.mDrvCtrl.AlarmResetCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
+                        _mMotionControlCommManager.SendData(SeData);
+                    }                    
+                }
+            }
         }
     }
 }

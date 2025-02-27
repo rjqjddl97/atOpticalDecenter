@@ -60,6 +60,9 @@
             this.rowImageToSystemX = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowImageToSystemZ = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowCoordinateCalibrationActive = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowReference_X = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowReference_Y = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowReference_Z = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowReferenceP1_X = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowReferenceP1_Y = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowReferenceP1_Z = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -136,9 +139,7 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.rowReference_X = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowReference_Y = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowReference_Z = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowSystemJobWorkUse = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControlSystemParameters)).BeginInit();
@@ -178,7 +179,7 @@
             // 
             // vGridControlSystemParameters
             // 
-            this.vGridControlSystemParameters.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControlSystemParameters.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControlSystemParameters.CustomizationFormBounds = new System.Drawing.Rectangle(1643, 643, 243, 271);
             this.vGridControlSystemParameters.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControlSystemParameters.Location = new System.Drawing.Point(3, 3);
@@ -206,8 +207,7 @@
             this.categoryRemoteIOCommunicationParameters,
             this.categorySystemADMSInformation,
             this.categorySaveResult,
-            this.categorySystemLanguage
-            });
+            this.categorySystemLanguage});
             this.vGridControlSystemParameters.Size = new System.Drawing.Size(484, 636);
             this.vGridControlSystemParameters.TabIndex = 4;
             this.vGridControlSystemParameters.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControlSystemParameters_CellValueChanged);
@@ -433,8 +433,7 @@
             this.rowReferenceP1_Z,
             this.rowReferenceP2_X,
             this.rowReferenceP2_Y,
-            this.rowReferenceP2_Z
-            });
+            this.rowReferenceP2_Z});
             this.categoryCalibraitionParameters.Name = "categoryCalibraitionParameters";
             this.categoryCalibraitionParameters.Properties.Caption = "보정 파라미터";
             // 
@@ -490,7 +489,7 @@
             this.rowReference_Y.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowReference_Y.Name = "rowReference_Y";
             this.rowReference_Y.Properties.Caption = "기준Y 좌표";
-            this.rowReference_Y.Properties.Value = 17.08;
+            this.rowReference_Y.Properties.Value = 17.08D;
             // 
             // rowReference_Z
             // 
@@ -499,7 +498,7 @@
             this.rowReference_Z.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowReference_Z.Name = "rowReference_Z";
             this.rowReference_Z.Properties.Caption = "기준Z 좌표";
-            this.rowReference_Z.Properties.Value = 9.99;
+            this.rowReference_Z.Properties.Value = 9.99D;
             // 
             // rowReferenceP1_X
             // 
@@ -517,7 +516,7 @@
             this.rowReferenceP1_Y.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowReferenceP1_Y.Name = "rowReferenceP1_Y";
             this.rowReferenceP1_Y.Properties.Caption = "교정점 P1 Y좌표";
-            this.rowReferenceP1_Y.Properties.Value = 17.017;
+            this.rowReferenceP1_Y.Properties.Value = 17.017D;
             // 
             // rowReferenceP1_Z
             // 
@@ -526,7 +525,7 @@
             this.rowReferenceP1_Z.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowReferenceP1_Z.Name = "rowReferenceP1_Z";
             this.rowReferenceP1_Z.Properties.Caption = "교정점 P1 Z좌표";
-            this.rowReferenceP1_Z.Properties.Value = 9.99;
+            this.rowReferenceP1_Z.Properties.Value = 9.99D;
             // 
             // rowReferenceP2_X
             // 
@@ -544,7 +543,7 @@
             this.rowReferenceP2_Y.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowReferenceP2_Y.Name = "rowReferenceP2_Y";
             this.rowReferenceP2_Y.Properties.Caption = "교정점 P2 Y좌표";
-            this.rowReferenceP2_Y.Properties.Value = 16.955;
+            this.rowReferenceP2_Y.Properties.Value = 16.955D;
             // 
             // rowReferenceP2_Z
             // 
@@ -553,7 +552,7 @@
             this.rowReferenceP2_Z.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowReferenceP2_Z.Name = "rowReferenceP2_Z";
             this.rowReferenceP2_Z.Properties.Caption = "교정점 P2 Z좌표";
-            this.rowReferenceP2_Z.Properties.Value = 10.084;
+            this.rowReferenceP2_Z.Properties.Value = 10.084D;
             // 
             // categoryMotionParameters
             // 
@@ -1025,6 +1024,7 @@
             // 
             this.categorySystemADMSInformation.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.rowSystemADMSUse,
+            this.rowSystemJobWorkUse,
             this.rowSystemADMSIPAddress,
             this.rowSystemADMSPort,
             this.rowSystemADMSUserID,
@@ -1044,6 +1044,15 @@
             this.rowSystemADMSUse.Name = "rowSystemADMSUse";
             this.rowSystemADMSUse.Properties.Caption = "DB 사용";
             this.rowSystemADMSUse.Properties.Value = false;
+            // 
+            // rowSystemJobWorkUse
+            // 
+            this.rowSystemJobWorkUse.Appearance.Options.UseTextOptions = true;
+            this.rowSystemJobWorkUse.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowSystemJobWorkUse.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowSystemJobWorkUse.Name = "rowSystemJobWorkUse";
+            this.rowSystemJobWorkUse.Properties.Caption = "작업지시서DB 사용여부";
+            this.rowSystemJobWorkUse.Properties.Value = false;
             // 
             // rowSystemADMSIPAddress
             // 
@@ -1364,5 +1373,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReference_X;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReference_Y;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReference_Z;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSystemJobWorkUse;
     }
 }

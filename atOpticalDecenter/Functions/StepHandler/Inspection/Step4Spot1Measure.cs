@@ -57,7 +57,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     if (mRobotInformation.mInputData.B0)
                         mStep = WorkingStep.ErrorOccured;
 
-                    if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))
+                    if ((mRobotInformation.mStatus & 0x00000042) == 0x00000042)             // Inpsotion, Servo On Satus
                     {
                         TakePicture();
                         mTimeChecker.SetTime(_DelayTimerCounter);
@@ -81,6 +81,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                             if (mRetryCount >= RETRY_LIMIT)
                             {
                                 mRetryCount = 0;
+                                strstep = "Image Grab Timeout";
+                                ErrorStepString += strstep;
                                 mStep = WorkingStep.ErrorOccured;
                             }
                             else
@@ -95,8 +97,14 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     if (mRobotInformation.mInputData.B0)
                         mStep = WorkingStep.ErrorOccured;
 
-                    LedSpotImageProcess(0, mRobotInformation.PositionX,mRobotInformation.PositionY,mRobotInformation.PositionZ);
-                    mStep = WorkingStep.Idle;
+                    if (LedSpotImageProcess(0, mRobotInformation.PositionX, mRobotInformation.PositionY, mRobotInformation.PositionZ))
+                        mStep = WorkingStep.Idle;
+                    else
+                    {
+                        strstep = "Image Spot Not Detect";
+                        ErrorStepString += strstep;
+                        mStep = WorkingStep.ErrorOccured;
+                    }
                     break;
                 default: break;
             }

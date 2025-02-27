@@ -67,6 +67,7 @@
             this.barButtonItemInitializeStatistics = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemConnectionCamera = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemWorkInfo = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemHomming = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageEquipementFunctions = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonSystemPage = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupFile = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -74,6 +75,7 @@
             this.ribbonPageGroupCamera = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupImageViewer = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupConnection = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupMotionControl = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupInspection = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.openFileDialogRecipeOpen = new System.Windows.Forms.OpenFileDialog();
@@ -168,6 +170,7 @@
             this.pledSpotInspectionInfomation = new CustomPages.LedSpotInspectionInfomation();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.xtraTabPageStatistics = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup8 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -199,6 +202,7 @@
             this.openFileDialogSpot2Image = new System.Windows.Forms.OpenFileDialog();
             this.barButtonItemConnectionPLC = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemConnectionPhotoSensor = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemReset = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBarInspectionProcess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditInspectionResult)).BeginInit();
@@ -309,9 +313,11 @@
             this.barEditItemTotalFailCount,
             this.barButtonItemInitializeStatistics,
             this.barButtonItemConnectionCamera,
-            this.barButtonItemWorkInfo});
+            this.barButtonItemWorkInfo,
+            this.barButtonItemHomming,
+            this.barButtonItemReset});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 36;
+            this.ribbonControl1.MaxItemId = 38;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageEquipementFunctions});
@@ -532,7 +538,7 @@
             // barEditItemInspectionProgress
             // 
             this.barEditItemInspectionProgress.Edit = this.repositoryItemProgressBarInspectionProcess;
-            this.barEditItemInspectionProgress.EditWidth = 200;
+            this.barEditItemInspectionProgress.EditWidth = 120;
             this.barEditItemInspectionProgress.Id = 24;
             this.barEditItemInspectionProgress.Name = "barEditItemInspectionProgress";
             // 
@@ -664,6 +670,15 @@
             this.barButtonItemWorkInfo.Name = "barButtonItemWorkInfo";
             this.barButtonItemWorkInfo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemWorkInfo_ItemClick);
             // 
+            // barButtonItemHomming
+            // 
+            this.barButtonItemHomming.Caption = "원점복귀";
+            this.barButtonItemHomming.Id = 36;
+            this.barButtonItemHomming.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemHomming.ImageOptions.Image")));
+            this.barButtonItemHomming.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemHomming.ImageOptions.LargeImage")));
+            this.barButtonItemHomming.Name = "barButtonItemHomming";
+            this.barButtonItemHomming.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemHomming_ItemClick);
+            // 
             // ribbonPageEquipementFunctions
             // 
             this.ribbonPageEquipementFunctions.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -673,6 +688,7 @@
             this.ribbonPageGroupCamera,
             this.ribbonPageGroupImageViewer,
             this.ribbonPageGroupConnection,
+            this.ribbonPageGroupMotionControl,
             this.ribbonPageGroupInspection});
             this.ribbonPageEquipementFunctions.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPageEquipementFunctions.ImageOptions.Image")));
             this.ribbonPageEquipementFunctions.Name = "ribbonPageEquipementFunctions";
@@ -730,6 +746,13 @@
             this.ribbonPageGroupConnection.Name = "ribbonPageGroupConnection";
             this.ribbonPageGroupConnection.State = DevExpress.XtraBars.Ribbon.RibbonPageGroupState.Expanded;
             this.ribbonPageGroupConnection.Text = "통신 연결";
+            // 
+            // ribbonPageGroupMotionControl
+            // 
+            this.ribbonPageGroupMotionControl.ItemLinks.Add(this.barButtonItemHomming);
+            this.ribbonPageGroupMotionControl.ItemLinks.Add(this.barButtonItemReset);
+            this.ribbonPageGroupMotionControl.Name = "ribbonPageGroupMotionControl";
+            this.ribbonPageGroupMotionControl.Text = "모션 제어";
             // 
             // ribbonPageGroupInspection
             // 
@@ -974,7 +997,8 @@
             this.xtraTabPageImageProcess,
             this.xtraTabPageMotionControl,
             this.xtraTabPageRemoteIO,
-            this.xtraTabPageInspectResult});
+            this.xtraTabPageInspectResult,
+            this.xtraTabPageStatistics});
             // 
             // xtraTabPageCamera
             // 
@@ -1671,6 +1695,12 @@
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
+            // xtraTabPageStatistics
+            // 
+            this.xtraTabPageStatistics.Name = "xtraTabPageStatistics";
+            this.xtraTabPageStatistics.Size = new System.Drawing.Size(353, 386);
+            this.xtraTabPageStatistics.Text = "통계";
+            // 
             // layoutControlGroup4
             // 
             this.layoutControlGroup4.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -1915,6 +1945,15 @@
             this.barButtonItemConnectionPhotoSensor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemConnectionPhotoSensor.ImageOptions.Image")));
             this.barButtonItemConnectionPhotoSensor.Name = "barButtonItemConnectionPhotoSensor";
             this.barButtonItemConnectionPhotoSensor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemConnectAll_ItemClick);
+            // 
+            // barButtonItemReset
+            // 
+            this.barButtonItemReset.Caption = "에러 리셋";
+            this.barButtonItemReset.Id = 37;
+            this.barButtonItemReset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemReset.ImageOptions.Image")));
+            this.barButtonItemReset.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemReset.ImageOptions.LargeImage")));
+            this.barButtonItemReset.Name = "barButtonItemReset";
+            this.barButtonItemReset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemReset_ItemClick);
             // 
             // atOpticalDecenter
             // 
@@ -2181,5 +2220,9 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowInspectSpotCameraDistance;
         private CustomPages.LedSpotInspectionInfomation pledSpotInspectionInfomation;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupMotionControl;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageStatistics;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemHomming;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemReset;
     }
 }

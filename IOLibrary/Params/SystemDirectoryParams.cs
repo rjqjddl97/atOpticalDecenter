@@ -22,6 +22,8 @@ namespace RecipeManager
         static string _strStatisticsFileName = "Statistics.ini";
         static string _strFileSystemFileName = "FileSystem.ini";
         static string _strTackTimeFileName = "TackTimes.ini";
+        static string _strDistanceFileName = "Distance.ini";
+        static string _strAngleFileName = "Angle.ini";
 
         static public string RootFolderPath
         {
@@ -74,6 +76,14 @@ namespace RecipeManager
         static public string TackTimesFileName
         {
             get { return _strTackTimeFileName; }
+        }
+        static public string InspectDistanceFileName
+        {
+            get { return _strDistanceFileName; }
+        }
+        static public string InspectAngleFileName
+        {
+            get { return _strAngleFileName; }
         }
         static public void WriteFileSystem()
         {

@@ -51,7 +51,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     else
                     {
                         ///*
-                        strstep = "P1 위치 이동";
+                        //strstep = "P1 위치 이동";
                         if (mMotionDrvCtrl.IsOpen())
                         {
                             if (Convert.ToBoolean(mRobotInformation.mStatus & 0x00000042))

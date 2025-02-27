@@ -20,8 +20,7 @@ namespace RecipeManager
 
         int _pixelPeakxindex;
         int _pixelPeakyindex;
-        int _pixelPeak;
-
+        int _pixelPeak;        
         public int Label
         {
             set { _label = value; }
@@ -84,6 +83,7 @@ namespace RecipeManager
             set { _pixelPeak = value; }
             get { return _pixelPeak; }
         }
+
         public Blob()
         {
 
@@ -98,7 +98,7 @@ namespace RecipeManager
             _height = height;
             _area = area;
             _centerx = centerx;
-            _centery = centery;
+            _centery = centery;            
         }
         public Blob(int label, int left, int top, int width, int height, int area, float centerx, float centery,int peakindexx,int peakindexy,int peak)
         {

@@ -99,5 +99,54 @@ namespace atOpticalDecenter
                 }
             }
         }
+
+        private void textEditJobInformation_EditValueChanged(object sender, EventArgs e)
+        {
+            string source = string.Empty;
+            source = textEditJobInformation.Text;
+
+            if (source.Length > 7)
+            {
+                if (source.IndexOf("%") == -1)
+                {
+                    if (source.Length > 12)
+                    {
+                        if (source.Length == 13)
+                        {
+                            JobInformation = source;
+                        }
+                        else
+                        {
+                            JobInformation = string.Empty;
+                        }
+                    }
+                }
+                else
+                {
+                    string[] words = source.Split('%');
+                    if (words[1].Length > 12)
+                    {
+                        if (words[1].Length == 13)
+                        {
+                            JobInformation = words[1];
+                        }
+                        else
+                        {
+                            JobInformation = string.Empty;
+                        }
+                    }
+                }
+
+                if (textEditJobInformation.InvokeRequired)
+                {
+                    textEditJobInformation.Invoke(new MethodInvoker(delegate { textEditJobInformation.EditValue = JobInformation; }));
+                }
+                else
+                {
+                    //textEditJobInformation.EditValue = JobInformation;
+                    textEditJobInformation.Text = JobInformation;
+                }
+            }
+        }
     }
 }

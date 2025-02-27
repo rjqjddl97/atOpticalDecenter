@@ -289,6 +289,7 @@ namespace RecipeManager
             }
 
             // ADMS Parameters
+            systemParam._bJobWorkInfomationEnable = Convert.ToBoolean(systemData[SystemParamSections[5]]["JobInfomatoinEnableCheck"]);
             systemParam._admsParams._enableCheck = Convert.ToBoolean(systemData[SystemParamSections[5]]["EnableCheck"]);
             systemParam._admsParams._IpAddress = Convert.ToString(systemData[SystemParamSections[5]]["ConnectIPAddress"]);
             systemParam._admsParams._port = Convert.ToInt32(systemData[SystemParamSections[5]]["ConnectPort"]);
@@ -389,6 +390,7 @@ namespace RecipeManager
             // ADMS Parameters
             systemData.Sections.AddSection(SystemParamSections[5]);
             systemData[SystemParamSections[5]].AddKey("EnableCheck", systemParam._admsParams._enableCheck.ToString());
+            systemData[SystemParamSections[5]].AddKey("JobInfomatoinEnableCheck", systemParam._bJobWorkInfomationEnable.ToString());
             systemData[SystemParamSections[5]].AddKey("ConnectIPAddress", systemParam._admsParams._IpAddress);
             systemData[SystemParamSections[5]].AddKey("ConnectPort", systemParam._admsParams._port.ToString());
             systemData[SystemParamSections[5]].AddKey("UserID", systemParam._admsParams._userID);
