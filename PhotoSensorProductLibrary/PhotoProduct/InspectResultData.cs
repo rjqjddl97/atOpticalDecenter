@@ -27,6 +27,7 @@ namespace PhotoProduct
         public double fPixelResolution = 0;
         public Blob mFirstLedSpot = new Blob();
         public Blob mFinalLedSpot = new Blob();
+        public Blob mLedSpot = new Blob();
         public double[] _ImageHist_H = null;
         public double[] _ImageHist_V = null;
         public double fOpticalEccentricity = 0;             // 

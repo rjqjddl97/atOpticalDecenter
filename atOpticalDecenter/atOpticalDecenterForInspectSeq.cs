@@ -74,6 +74,13 @@ namespace atOpticalDecenter
         {
             mResultData = InspectedData;
         }
+        public void UpdateImageSpotBlob(InspectResultData InspectedData)
+        {
+            _blobs.Clear();
+            _blobs.Add(InspectedData.mLedSpot);            
+            Array.Copy(_ImageHist_W, 0, InspectedData._ImageHist_H, 0, InspectedData._ImageHist_H.Length);
+            Array.Copy(_ImageHist_H, 0, InspectedData._ImageHist_V, 0, InspectedData._ImageHist_V.Length);
+        }
         public void UpdateRobotInfomation(RobotInformation update)
         {
             mRobotInformation.PositionX = update.PositionX;
@@ -135,7 +142,7 @@ namespace atOpticalDecenter
             mResultData.fImageSensorSize_V = (double)_systemParams._cameraParams.ImageSensorVSize;
             mResultData.fLensFocusLength = (double)_systemParams._cameraParams.LensFocusLength;            
             mStepBase = new Functions.StepHandler.Base.StepHandlerBase(_mMotionControlCommManager,_mRemteIOCommManager,_systemParams,_workParams, mResultData,mRobotInformation);
-            //mStepBase.PhotoInspectedDataUpdate += UpdatePhotoInspectedData;
+            mStepBase.ImageDataUpdate += UpdateImageSpotBlob;
             mStepBase.SetImageSavePath(global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath);
             TakePictureEvent += GrabPicture;            
             ImageGrabbed += mStepBase.OnCameraImageGrab;

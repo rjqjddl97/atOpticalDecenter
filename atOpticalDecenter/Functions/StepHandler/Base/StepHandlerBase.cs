@@ -130,7 +130,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public static long _CameraGrabWaitTime = 0;
         public static string _ImageSavePath = string.Empty;
 
-        public event Action<InspectResultData> PhotoInspectedDataUpdate;
+        public event Action<InspectResultData> ImageDataUpdate;
         public InspectResultData mInspectResultUpdate = new InspectResultData();
 
         public void SetJobInfo(string info) => mJobInfo = info;
@@ -205,10 +205,12 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                     mInspectResultData.fMeasureP1Z = posz + ((mFirstLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
                     Array.Copy(_dHist_H,0,mInspectResultData._ImageHist_H,0,_dHist_H.Length);
                     Array.Copy(_dHist_V,0,mInspectResultData._ImageHist_V,0,_dHist_V.Length);
+                    mInspectResultData.mLedSpot = mFirstLedSpot;
                     if (mSystemParam._saveResultLEDMeasurement)
                     {
                         inspectsource.Save(filepath + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + "_P1.bmp");
                     }
+                    ImageDataUpdate?.Invoke(mInspectResultData);
                     return true;
                 }
                 else
@@ -238,10 +240,12 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                     mInspectResultData.CalculateOpticalDecenter();
                     Array.Copy(_dHist_H, mInspectResultData._ImageHist_H, _dHist_H.Length);
                     Array.Copy(_dHist_V, mInspectResultData._ImageHist_V, _dHist_V.Length);
+                    mInspectResultData.mLedSpot = mFinalLedSpot;
                     if (mSystemParam._saveResultLEDMeasurement)
                     {
                         inspectsource.Save(filepath + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + "_P2.bmp");
                     }
+                    ImageDataUpdate?.Invoke(mInspectResultData);
                     return true;
                 }
                 else
@@ -258,8 +262,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         }
         public InspectResultData UpdateInspectdData()
         {
-            mInspectResultUpdate =  mInspectResultData;
-            //PhotoInspectedDataUpdate?.BeginInvoke(mInspectResultData, null,null);
+            mInspectResultUpdate =  mInspectResultData;            
             return mInspectResultUpdate;
         }
         public enum WorkingSection
