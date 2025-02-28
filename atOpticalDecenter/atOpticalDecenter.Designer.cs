@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(atOpticalDecenter));
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemSystemFolderPathSetting = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSystemEditor = new DevExpress.XtraBars.BarButtonItem();
@@ -68,6 +71,7 @@
             this.barButtonItemConnectionCamera = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemWorkInfo = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemHomming = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemReset = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageEquipementFunctions = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonSystemPage = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupFile = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -202,7 +206,10 @@
             this.openFileDialogSpot2Image = new System.Windows.Forms.OpenFileDialog();
             this.barButtonItemConnectionPLC = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemConnectionPhotoSensor = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemReset = new DevExpress.XtraBars.BarButtonItem();
+            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.chartControlInspectionAngle = new DevExpress.XtraCharts.ChartControl();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBarInspectionProcess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditInspectionResult)).BeginInit();
@@ -254,6 +261,7 @@
             this.layoutControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            this.xtraTabPageStatistics.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).BeginInit();
@@ -274,6 +282,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuTemplateCrop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
+            this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControlInspectionAngle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -678,6 +693,15 @@
             this.barButtonItemHomming.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemHomming.ImageOptions.LargeImage")));
             this.barButtonItemHomming.Name = "barButtonItemHomming";
             this.barButtonItemHomming.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemHomming_ItemClick);
+            // 
+            // barButtonItemReset
+            // 
+            this.barButtonItemReset.Caption = "에러 리셋";
+            this.barButtonItemReset.Id = 37;
+            this.barButtonItemReset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemReset.ImageOptions.Image")));
+            this.barButtonItemReset.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemReset.ImageOptions.LargeImage")));
+            this.barButtonItemReset.Name = "barButtonItemReset";
+            this.barButtonItemReset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemReset_ItemClick);
             // 
             // ribbonPageEquipementFunctions
             // 
@@ -1697,6 +1721,7 @@
             // 
             // xtraTabPageStatistics
             // 
+            this.xtraTabPageStatistics.Controls.Add(this.layoutControl2);
             this.xtraTabPageStatistics.Name = "xtraTabPageStatistics";
             this.xtraTabPageStatistics.Size = new System.Drawing.Size(353, 386);
             this.xtraTabPageStatistics.Text = "통계";
@@ -1946,14 +1971,54 @@
             this.barButtonItemConnectionPhotoSensor.Name = "barButtonItemConnectionPhotoSensor";
             this.barButtonItemConnectionPhotoSensor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemConnectAll_ItemClick);
             // 
-            // barButtonItemReset
+            // layoutControl2
             // 
-            this.barButtonItemReset.Caption = "에러 리셋";
-            this.barButtonItemReset.Id = 37;
-            this.barButtonItemReset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemReset.ImageOptions.Image")));
-            this.barButtonItemReset.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemReset.ImageOptions.LargeImage")));
-            this.barButtonItemReset.Name = "barButtonItemReset";
-            this.barButtonItemReset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemReset_ItemClick);
+            this.layoutControl2.Controls.Add(this.chartControlInspectionAngle);
+            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl2.Name = "layoutControl2";
+            this.layoutControl2.OptionsView.UseDefaultDragAndDropRendering = false;
+            this.layoutControl2.Root = this.Root;
+            this.layoutControl2.Size = new System.Drawing.Size(353, 386);
+            this.layoutControl2.TabIndex = 0;
+            this.layoutControl2.Text = "layoutControl2";
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem6});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(353, 386);
+            this.Root.TextVisible = false;
+            // 
+            // chartControlInspectionAngle
+            // 
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControlInspectionAngle.Diagram = xyDiagram1;
+            this.chartControlInspectionAngle.Legend.Name = "Default Legend";
+            this.chartControlInspectionAngle.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
+            this.chartControlInspectionAngle.Location = new System.Drawing.Point(12, 12);
+            this.chartControlInspectionAngle.Name = "chartControlInspectionAngle";
+            series1.Name = "Series 1";
+            this.chartControlInspectionAngle.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series1};
+            this.chartControlInspectionAngle.Size = new System.Drawing.Size(329, 362);
+            this.chartControlInspectionAngle.TabIndex = 4;
+            chartTitle1.Text = "발산 각도[˚]";
+            this.chartControlInspectionAngle.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
+            chartTitle1});
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.chartControlInspectionAngle;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(333, 366);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
             // 
             // atOpticalDecenter
             // 
@@ -2024,6 +2089,7 @@
             this.layoutControl6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            this.xtraTabPageStatistics.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).EndInit();
@@ -2044,6 +2110,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuTemplateCrop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
+            this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControlInspectionAngle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2224,5 +2297,9 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPageStatistics;
         private DevExpress.XtraBars.BarButtonItem barButtonItemHomming;
         private DevExpress.XtraBars.BarButtonItem barButtonItemReset;
+        private DevExpress.XtraLayout.LayoutControl layoutControl2;
+        private DevExpress.XtraCharts.ChartControl chartControlInspectionAngle;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }

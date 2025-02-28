@@ -222,6 +222,8 @@ C:\Work\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\bin\Debug\dll\x
 C:\Work\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\bin\Debug\dll\x86\opencv_ffmpeg400.dll
 C:\Work\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\bin\Debug\dll\x64\OpenCvSharpExtern.dll
 C:\Work\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\bin\Debug\dll\x64\opencv_ffmpeg400_64.dll
+C:\Work\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\bin\Debug\NLog.config
+C:\Work\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\bin\Debug\NLog.xsd
 C:\Work\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\bin\Debug\PhotoProduct.dll
 C:\Work\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\bin\Debug\PhotoProduct.pdb
 C:\Work\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\bin\Debug\ImageLibrary.dll

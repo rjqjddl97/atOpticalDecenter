@@ -205,12 +205,11 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                     mInspectResultData.fMeasureP1Z = posz + ((mFirstLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
                     Array.Copy(_dHist_H,0,mInspectResultData._ImageHist_H,0,_dHist_H.Length);
                     Array.Copy(_dHist_V,0,mInspectResultData._ImageHist_V,0,_dHist_V.Length);
-                    mInspectResultData.mLedSpot = mFirstLedSpot;
+                    LedSpotBlobUpdate(mFirstLedSpot);
                     if (mSystemParam._saveResultLEDMeasurement)
                     {
                         inspectsource.Save(filepath + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + "_P1.bmp");
-                    }
-                    ImageDataUpdate?.Invoke(mInspectResultData);
+                    }                    
                     return true;
                 }
                 else
@@ -238,19 +237,23 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                     mInspectResultData.fMeasureP2Y = posy;
                     mInspectResultData.fMeasureP2Z = posz + ((mFinalLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
                     mInspectResultData.CalculateOpticalDecenter();
-                    Array.Copy(_dHist_H, mInspectResultData._ImageHist_H, _dHist_H.Length);
-                    Array.Copy(_dHist_V, mInspectResultData._ImageHist_V, _dHist_V.Length);
-                    mInspectResultData.mLedSpot = mFinalLedSpot;
+                    Array.Copy(_dHist_H, 0, mInspectResultData._ImageHist_H, 0, _dHist_H.Length);
+                    Array.Copy(_dHist_V, 0, mInspectResultData._ImageHist_V, 0, _dHist_V.Length);
+                    LedSpotBlobUpdate(mFinalLedSpot);
                     if (mSystemParam._saveResultLEDMeasurement)
                     {
                         inspectsource.Save(filepath + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + "_P2.bmp");
-                    }
-                    ImageDataUpdate?.Invoke(mInspectResultData);
+                    }                    
                     return true;
                 }
                 else
                     return false;
             }
+        }
+        protected static void LedSpotBlobUpdate(Blob ledspot)
+        {
+            mInspectResultData.mLedSpot = ledspot;
+            atOpticalDecenter.UpdateEventLedBlobStart(mInspectResultData);
         }
         protected void LedSpotCalcuate()
         {

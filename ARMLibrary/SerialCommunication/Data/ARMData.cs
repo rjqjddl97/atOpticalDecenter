@@ -791,7 +791,7 @@ namespace ARMLibrary.SerialCommunication.Data
             
             return mRemoteIOCommunication.GetMessageForRead(nID,
                 DataProcessor.ModbusRTU.ReadFunctionCodes.ReadCoils,
-                (ushort)OUTPUT_CONTROL_MAP.Output0, (ushort)(Enum.GetValues(typeof(OUTPUT_CONTROL_MAP)).Length / 8));
+                (ushort)OUTPUT_CONTROL_MAP.Output0, (ushort)(ushort)(Enum.GetValues(typeof(OUTPUT_CONTROL_MAP)).Length / 8));
         }
         public byte[] Output1byteCommand(byte nID, OUTPUT_CONTROL_MAP addr, ushort data)
         {
@@ -849,7 +849,7 @@ namespace ARMLibrary.SerialCommunication.Data
             SetRequestedCommand(CommandMassege.MSG_INPUT);
             return mRemoteIOCommunication.GetMessageForRead(nID,
                 DataProcessor.ModbusRTU.ReadFunctionCodes.ReadInputs,
-                (ushort)INPUT_MAP.Input0, (ushort)(Enum.GetValues(typeof(INPUT_MAP)).Length / 8));
+                (ushort)INPUT_MAP.Input0, (ushort)(Enum.GetValues(typeof(INPUT_MAP)).Length / 8));              //(Enum.GetValues(typeof(INPUT_MAP)).Length / 8)
         }
         public void ReceiveSetProductInfo(byte[] data)
         {

@@ -420,16 +420,16 @@ namespace RecipeManager
             statistics.PassCount = Convert.ToInt32(systemData["Inspection Count"]["Pass"]);
             statistics.FailCount = Convert.ToInt32(systemData["Inspection Count"]["Fail"]);
 
-            statistics.Statistics.Add(Convert.ToString(systemData["Statistics"]["Ten"]));
-            statistics.Statistics.Add(Convert.ToString(systemData["Statistics"]["Twenty"]));
-            statistics.Statistics.Add(Convert.ToString(systemData["Statistics"]["Thirty"]));
-            statistics.Statistics.Add(Convert.ToString(systemData["Statistics"]["Forty"]));
-            statistics.Statistics.Add(Convert.ToString(systemData["Statistics"]["Fifty"]));
-            statistics.Statistics.Add(Convert.ToString(systemData["Statistics"]["Sixty"]));
-            statistics.Statistics.Add(Convert.ToString(systemData["Statistics"]["Seventy"]));
-            statistics.Statistics.Add(Convert.ToString(systemData["Statistics"]["Eighty"]));
-            statistics.Statistics.Add(Convert.ToString(systemData["Statistics"]["Ninety"]));
-            statistics.Statistics.Add(Convert.ToString(systemData["Statistics"]["Hundred"]));
+            statistics.Statistics.Add(Convert.ToString(systemData["Angle"]["±1˚"]));
+            statistics.Statistics.Add(Convert.ToString(systemData["Angle"]["±2˚"]));
+            statistics.Statistics.Add(Convert.ToString(systemData["Angle"]["±3˚"]));
+            statistics.Statistics.Add(Convert.ToString(systemData["Angle"]["±4˚"]));
+            statistics.Statistics.Add(Convert.ToString(systemData["Angle"]["±5˚"]));
+            statistics.Statistics.Add(Convert.ToString(systemData["Angle"]["±6˚"]));
+            statistics.Statistics.Add(Convert.ToString(systemData["Angle"]["±7˚"]));
+            statistics.Statistics.Add(Convert.ToString(systemData["Angle"]["±8˚"]));
+            statistics.Statistics.Add(Convert.ToString(systemData["Angle"]["±9˚"]));
+            statistics.Statistics.Add(Convert.ToString(systemData["Angle"]["±10˚"]));
 
             return statistics;
         }
@@ -445,16 +445,16 @@ namespace RecipeManager
             systemData["Inspection Count"].AddKey("Fail", Convert.ToString(statistics.FailCount));
 
             systemData.Sections.AddSection("Statistics");
-            systemData["Statistics"].AddKey("Ten", Convert.ToString(statistics.Statistics[0]));
-            systemData["Statistics"].AddKey("Twenty", Convert.ToString(statistics.Statistics[1]));
-            systemData["Statistics"].AddKey("Thirty", Convert.ToString(statistics.Statistics[2]));
-            systemData["Statistics"].AddKey("Forty", Convert.ToString(statistics.Statistics[3]));
-            systemData["Statistics"].AddKey("Fifty", Convert.ToString(statistics.Statistics[4]));
-            systemData["Statistics"].AddKey("Sixty", Convert.ToString(statistics.Statistics[5]));
-            systemData["Statistics"].AddKey("Seventy", Convert.ToString(statistics.Statistics[6]));
-            systemData["Statistics"].AddKey("Eighty", Convert.ToString(statistics.Statistics[7]));
-            systemData["Statistics"].AddKey("Ninety", Convert.ToString(statistics.Statistics[8]));
-            systemData["Statistics"].AddKey("Hundred", Convert.ToString(statistics.Statistics[9]));
+            systemData["Angle"].AddKey("±1˚", Convert.ToString(statistics.Statistics[0]));
+            systemData["Angle"].AddKey("±2˚", Convert.ToString(statistics.Statistics[1]));
+            systemData["Angle"].AddKey("±3˚", Convert.ToString(statistics.Statistics[2]));
+            systemData["Angle"].AddKey("±4˚", Convert.ToString(statistics.Statistics[3]));
+            systemData["Angle"].AddKey("±5˚", Convert.ToString(statistics.Statistics[4]));
+            systemData["Angle"].AddKey("±6˚", Convert.ToString(statistics.Statistics[5]));
+            systemData["Angle"].AddKey("±7˚", Convert.ToString(statistics.Statistics[6]));
+            systemData["Angle"].AddKey("±8˚", Convert.ToString(statistics.Statistics[7]));
+            systemData["Angle"].AddKey("±9˚", Convert.ToString(statistics.Statistics[8]));
+            systemData["Angle"].AddKey("±10˚", Convert.ToString(statistics.Statistics[9]));
 
             parser.WriteFile(strFilePath, systemData);
         }

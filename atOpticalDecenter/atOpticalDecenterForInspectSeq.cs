@@ -30,7 +30,7 @@ namespace atOpticalDecenter
     {
         private static event Action TakePictureEvent;
         public event Action<Image> ImageGrabbed;        
-        private static event Action LEDSpotBlobProcessEvent;
+        private static event Action<InspectResultData> LEDSpotBlobProcessEvent;
         private static event Action OpticalDistanceAnalysisEvent;
         private Functions.StepHandler.Base.StepHandlerBase mStepBase = null;
         private List<Functions.StepHandler.Base.IStepHandler> mPhotoInspectionList = new List<Functions.StepHandler.Base.IStepHandler>();
@@ -74,12 +74,21 @@ namespace atOpticalDecenter
         {
             mResultData = InspectedData;
         }
+        public static void UpdateEventLedBlobStart(InspectResultData InspectedData)
+        {
+            LEDSpotBlobProcessEvent?.Invoke(InspectedData);
+        }
         public void UpdateImageSpotBlob(InspectResultData InspectedData)
         {
             _blobs.Clear();
             _blobs.Add(InspectedData.mLedSpot);            
-            Array.Copy(_ImageHist_W, 0, InspectedData._ImageHist_H, 0, InspectedData._ImageHist_H.Length);
-            Array.Copy(_ImageHist_H, 0, InspectedData._ImageHist_V, 0, InspectedData._ImageHist_V.Length);
+            Array.Copy(InspectedData._ImageHist_H, 0, _ImageHist_W, 0, InspectedData._ImageHist_H.Length);
+            Array.Copy(InspectedData._ImageHist_V, 0, _ImageHist_H, 0, InspectedData._ImageHist_V.Length);
+            _isAutoInspectMeasurement = true;
+            barButtonItemFitSize.PerformClick();
+            //barCheckItemShowCenterMark.PerformClick();            
+            barCheckItemShowCenterMark.Checked = true;
+            //pictureEditSystemImage.Refresh();
         }
         public void UpdateRobotInfomation(RobotInformation update)
         {
@@ -141,12 +150,11 @@ namespace atOpticalDecenter
             mResultData.fImageSensorSize_H = (double)_systemParams._cameraParams.ImageSensorHSize;
             mResultData.fImageSensorSize_V = (double)_systemParams._cameraParams.ImageSensorVSize;
             mResultData.fLensFocusLength = (double)_systemParams._cameraParams.LensFocusLength;            
-            mStepBase = new Functions.StepHandler.Base.StepHandlerBase(_mMotionControlCommManager,_mRemteIOCommManager,_systemParams,_workParams, mResultData,mRobotInformation);
-            mStepBase.ImageDataUpdate += UpdateImageSpotBlob;
+            mStepBase = new Functions.StepHandler.Base.StepHandlerBase(_mMotionControlCommManager,_mRemteIOCommManager,_systemParams,_workParams, mResultData,mRobotInformation);            
             mStepBase.SetImageSavePath(global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath);
             TakePictureEvent += GrabPicture;            
             ImageGrabbed += mStepBase.OnCameraImageGrab;
-
+            LEDSpotBlobProcessEvent += UpdateImageSpotBlob;
         }
         private void StepBaseSystemParameterUpdate()
         {
@@ -192,6 +200,8 @@ namespace atOpticalDecenter
                         barStaticItemInspectionTime.Caption = string.Format("검사 시간: 00:{0:00}:{1:00}.{2}", ts.Minutes, ts.Seconds, ts.Milliseconds);
                         if (RunningIndex < mPhotoInspectionList.Count)
                             barStaticItemInspectionStatus.Caption = string.Format("진행: ") + ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[RunningIndex]).StepInformation;
+                        barEditItemInspectionResult.EditValue = "Running";
+                        repositoryItemTextEditInspectionResult.Appearance.ForeColor = System.Drawing.Color.Black;
                         switch (mInspectStep)
                         {
                             case InspectionStepType.Idle:
@@ -249,6 +259,7 @@ namespace atOpticalDecenter
                                 barEditItemInspectionResult.EditValue = "Error" + ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[RunningIndex]).StepInformation;
                                 repositoryItemTextEditInspectionResult.Appearance.ForeColor = System.Drawing.Color.Red;
                                 _isInspectError = false;
+                                //_isAutoInspectMeasurement = false;
                                 break;
                             default: break;                                
                         }
@@ -283,8 +294,7 @@ namespace atOpticalDecenter
                                 CurrentStepName = ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[mPhotoInspectionList.Count - 1]).StepInformation,
                                 LastStep = mPhotoInspectionList.Count,
                                 ElapsedTime = mStepBase.GetOptionInspectionElapseTime
-                            });
-                            barEditItemInspectionResult.EditValue = "Stop";
+                            });                            
                             mResultData = mStepBase.UpdateInspectdData();
                         }
                         else if (mInspectStep == InspectionStepType.ErrorOccurred)
@@ -296,9 +306,9 @@ namespace atOpticalDecenter
                             });
                             _isInspectError = false;
                             string strerr = string.Empty;
-                            strerr = "Error : " + ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[RunningIndex]).StepInformation;
-                            barEditItemInspectionResult.EditValue = "Stop";
+                            strerr = "Error : " + ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[RunningIndex]).StepInformation;                            
                             mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), strerr);
+                            AutoStartButtonRelease();
                             MessageBox.Show(strerr, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                             break;
                         }
@@ -318,6 +328,7 @@ namespace atOpticalDecenter
             //mWorkingStep = CorrectionStepType.Idle;
             _isInspecting = false;
             _InspectionWorking = false;
+            //_isAutoInspectMeasurement = false;
             UpdateProcessTime(false);
             barCheckItemInspectionStart.Caption = string.Format("검사 시작");
             barStaticItemInspectionStatus.Caption = string.Format("진행: 검사 완료");
@@ -325,9 +336,10 @@ namespace atOpticalDecenter
             {
                 InpsectResultUpdate();
                 CreateResultFile(mResultData.bTotalResult);
+                UpdateStaticsData();
             }
-            barEditItemInspectionProgress.EditValue = 100;
-            barEditItemInspectionResult.EditValue = "Ready";
+            barEditItemInspectionProgress.EditValue = 100;            
+            AutoStartButtonRelease();
             System.Console.WriteLine("bacground work Photo Inspection run worker completed");
         }
         private void backgroundWorkerInspection_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -336,7 +348,7 @@ namespace atOpticalDecenter
             {
                 WorkingStateInfo mStateInfo = (WorkingStateInfo)e.UserState;                
                 barStaticItemInspectionStatus.Caption = string.Format("진행: ") + mStateInfo.CurrentStepName;
-                barEditItemInspectionResult.EditValue = "Running";
+                
                 if (mStateInfo.WorkingStatus == WorkingStateInfo.WorkingType.Checking)
                 {
                 }
@@ -391,7 +403,8 @@ namespace atOpticalDecenter
             pledSpotInspectionInfomation._InspectOperateMax_Distance = mResultData.fMaxOperateDistance;
             pledSpotInspectionInfomation._InspectOperateMin_Distance = mResultData.fMinOperateDistance;
             pledSpotInspectionInfomation._InspectOpticalResult = mResultData.bTotalResult;
-            xtraTabControlMainSetup.SelectedTabPageIndex = 4;
+
+            xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 4; }));            
 
             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("투광 LED 특성 검사 결과 , Spot1 Size :{0:000.000}mm, Spot2 Size :{1:000.000}mm, " +
                 "이미지 밝기 :{2:000}pixel, 광원 편심 :{3:00.000}mm, 광 발산각 :{4:00.000}˚, 감쇄율 :{5:00.000}, ND필터 예측각도 :{6:000}˚ , 최대거리 ND필터 :{7:000}˚, 검사 결과 : {8}",
