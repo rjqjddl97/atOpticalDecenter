@@ -106,6 +106,7 @@ namespace atOpticalDecenter
 
             if (mRobotInformation.GetStatus(RobotInformation.RobotStatus.OperationReady))
                 _IsHommingFinished = true;
+            ImageUpdateEvents?.Invoke();
         }
         public void UpdateRobotIOInfomation(RobotInformation update)
         {

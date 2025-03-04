@@ -52,6 +52,7 @@ namespace atOpticalDecenter
         DateTime _inspectionStartTime = new DateTime();
         public AiCControlLibrary.SerialCommunication.Control.CommunicationManager _mMotionControlCommManager = null;
         public ARMLibrary.SerialCommunication.Control.CommunicationManager _mRemteIOCommManager = null;
+        public event Action ImageUpdateEvents;
 
         DBControl _JobWorkDbCtrl = new DBControl();
         ADMSEquipmentInfo _admsEquipment = new ADMSEquipmentInfo();
@@ -63,6 +64,13 @@ namespace atOpticalDecenter
         bool _isInspectError = false;
         System.Drawing.Image _sourceImage = null;
         System.Drawing.Image _resultImage = null;
+
+        System.Drawing.Image _BaseXImage = null;
+        System.Drawing.Image _ActuatorXImage = null;
+        System.Drawing.Image _BaseYImage = null;
+        System.Drawing.Image _ActuatorYImage = null;
+        System.Drawing.Image _BaseZImage = null;
+        System.Drawing.Image _ActuatorZImage = null;
 
         bool _isContinuousShot = false;
         bool _isCameraOpen = false;
@@ -266,7 +274,26 @@ namespace atOpticalDecenter
 
                 UpdateConnectStatusForAll();
                 InitialGuiAllEdit();
+                ImageUpdateEvents += UpdateGUI;
 
+                strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "X_Base.bmp");
+                _BaseXImage = System.Drawing.Image.FromFile(strTemp);
+                pictureEditActuatorX.Image = _BaseXImage;
+                FilterActuatorImageXFitSize();
+                strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "X_Actuator.png");
+                _ActuatorXImage = System.Drawing.Image.FromFile(strTemp);
+                strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "Y_Base.bmp");
+                _BaseYImage = System.Drawing.Image.FromFile(strTemp);
+                pictureEditActuatorY.Image = _BaseYImage;                
+                strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "Y_Actuator.png");
+                _ActuatorYImage = System.Drawing.Image.FromFile(strTemp);
+                FilterActuatorImageYFitSize();
+                strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "Z_Base.bmp");
+                _BaseZImage = System.Drawing.Image.FromFile(strTemp);
+                pictureEditActuatorZ.Image = _BaseZImage;
+                FilterActuatorImageZFitSize();
+                strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "Z_Actuator.png");
+                _ActuatorZImage = System.Drawing.Image.FromFile(strTemp);
                 if (!_IsHommingFinished)
                 {
                     if (MessageBox.Show("원점복귀를 진행을 합니다.","원점복귀",MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -316,9 +343,9 @@ namespace atOpticalDecenter
 
             if (_Camera.IsAllocated)
                 _Camera.Close();
-            
+            ImageUpdateEvents -= UpdateGUI;
             //if ()
-            
+
         }
         private void InitializedBackGroundWorkers()
         {
@@ -3232,6 +3259,164 @@ namespace atOpticalDecenter
             ribbonPageGroupImageViewer.Enabled = true;
             ribbonPageGroupConnection.Enabled = true;
             ribbonPageGroupMotionControl.Enabled = true;
+        }
+        private void FilterActuatorImageXFitSize()
+        {
+            if (_BaseXImage != null)
+            {
+                try
+                {
+                    float width = pictureEditActuatorX.ClientSize.Width * 100.0f / _BaseXImage.Width;
+                    float height = (pictureEditActuatorX.ClientSize.Height - pictureEditActuatorX.ClientSize.Height * 0.01f) * 100.0f / _BaseXImage.Height;
+
+                    float i = Math.Min(100.0f, Math.Min(width, height));
+
+                    pictureEditActuatorX.Properties.ZoomPercent = i;
+                    pictureEditActuatorX.HScrollBar.Value = 0;
+                    pictureEditActuatorX.VScrollBar.Value = 0;
+                    pictureEditActuatorX.Refresh();                    
+                    //mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("원본 Actuator 화면 맞춤: {0:0.0}%", pictureEditActuator.Properties.ZoomPercent));
+                }
+                catch (Exception)
+                {
+                    ;
+                }
+            }
+        }
+        private void FilterActuatorImageYFitSize()
+        {
+            if (_BaseYImage != null)
+            {
+                try
+                {
+                    float width = pictureEditActuatorY.ClientSize.Width * 100.0f / _BaseYImage.Width;
+                    float height = (pictureEditActuatorY.ClientSize.Height - pictureEditActuatorY.ClientSize.Height * 0.01f) * 100.0f / _BaseYImage.Height;
+
+                    float i = Math.Min(100.0f, Math.Min(width, height));
+
+                    pictureEditActuatorY.Properties.ZoomPercent = i;
+                    pictureEditActuatorY.HScrollBar.Value = 0;
+                    pictureEditActuatorY.VScrollBar.Value = 0;
+                    pictureEditActuatorY.Refresh();
+                }
+                catch (Exception)
+                {
+                    ;
+                }
+            }
+        }
+        private void FilterActuatorImageZFitSize()
+        {
+            if (_BaseZImage != null)
+            {
+                try
+                {
+                    float width = pictureEditActuatorZ.ClientSize.Width * 100.0f / _BaseZImage.Width;
+                    float height = (pictureEditActuatorZ.ClientSize.Height - pictureEditActuatorZ.ClientSize.Height * 0.01f) * 100.0f / _BaseZImage.Height;
+
+                    float i = Math.Min(100.0f, Math.Min(width, height));
+
+                    pictureEditActuatorZ.Properties.ZoomPercent = i;
+                    pictureEditActuatorZ.HScrollBar.Value = 0;
+                    pictureEditActuatorZ.VScrollBar.Value = 0;
+                    pictureEditActuatorZ.Refresh();
+                }
+                catch (Exception)
+                {
+                    ;
+                }
+            }
+        }
+        public Image ActuatorImageAnimationX(float pos)
+        {
+            Image tempimage = new Bitmap(_BaseXImage);
+            Image tempact = new Bitmap(_ActuatorXImage);
+
+            PointF ImagePos = new PointF(((750 - (tempact.Width / 2)) - (float)((pos - 13.4) * (700F / 773F))), 0);
+            Graphics gp = Graphics.FromImage(tempimage);
+            gp.DrawImage(tempact, ImagePos);
+            gp.Save();
+            gp.Dispose();
+            return tempimage;
+        }
+        public Image ActuatorImageAnimationY(float pos)
+        {
+            Image tempimage = new Bitmap(_BaseYImage);
+            Image tempact = new Bitmap(_ActuatorYImage);
+
+            PointF ImagePos = new PointF(((360 - (tempact.Width / 2)) - (float)((pos - 0) * 195F / 50F)), 0);
+            Graphics gp = Graphics.FromImage(tempimage);
+            gp.DrawImage(tempact, ImagePos);
+            gp.Save();
+            gp.Dispose();
+            return tempimage;
+
+        }
+        public Image ActuatorImageAnimationZ(float pos)
+        {
+            Image tempimage = new Bitmap(_BaseZImage);
+            Image tempact = new Bitmap(_ActuatorZImage);
+
+            PointF ImagePos = new PointF(0, ((440 - (tempact.Height / 2)) + (float)((pos - 0) * (190F / 52F))));
+            Graphics gp = Graphics.FromImage(tempimage);
+            gp.DrawImage(tempact, ImagePos);
+            gp.Save();
+            gp.Dispose();
+            return tempimage;
+        }
+        private void UpdateGUI()
+        {
+            //if (pictureEditActuator.InvokeRequired)
+            //    pictureEditActuator.Invoke(new MethodInvoker(delegate { pictureEditActuator.Image = _sourceImage; ActuatorImageFitSize(); }));
+
+            if (pictureEditActuatorX.InvokeRequired)
+            {
+                pictureEditActuatorX.Invoke(new MethodInvoker(delegate { pictureEditActuatorX.Image = ActuatorImageAnimationX((float)mRobotInformation.PositionX); FilterActuatorImageXFitSize(); }));
+            }
+            if (pictureEditActuatorY.InvokeRequired)
+            {
+                pictureEditActuatorY.Invoke(new MethodInvoker(delegate { pictureEditActuatorY.Image = ActuatorImageAnimationY((float)mRobotInformation.PositionY); FilterActuatorImageYFitSize(); }));
+            }
+            if (pictureEditActuatorZ.InvokeRequired)
+            {
+                pictureEditActuatorZ.Invoke(new MethodInvoker(delegate { pictureEditActuatorZ.Image = ActuatorImageAnimationZ((float)mRobotInformation.PositionZ); FilterActuatorImageZFitSize(); }));
+            }
+        }
+        private void pictureEditActuatorX_Paint(object sender, PaintEventArgs e)
+        {
+            if (pictureEditActuatorX.Image != null)
+            {
+                float fScale = (float)(pictureEditActuatorX.Properties.ZoomPercent / 100.0f);
+                Graphics gp = e.Graphics;
+                string strpos = string.Empty;
+                strpos = "Position X :" + string.Format("{0:000.00}", mRobotInformation.PositionX);
+                //gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorX.Image.Height - 30) * fScale));
+                gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, 10));
+            }
+        }
+
+        private void pictureEditpictureEditActuatorY_Paint(object sender, PaintEventArgs e)
+        {
+            if (pictureEditActuatorY.Image != null)
+            {
+                float fScale = (float)(pictureEditActuatorY.Properties.ZoomPercent / 100.0f);
+                Graphics gp = e.Graphics;
+                string strpos = string.Empty;
+                strpos = "Position Y :" + string.Format("{0:000.00}", mRobotInformation.PositionY);
+                gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorY.Image.Height - 30) * fScale));
+            }
+        }
+
+        private void pictureEditActuatorZ_Paint(object sender, PaintEventArgs e)
+        {
+            if (pictureEditActuatorZ.Image != null)
+            {
+                float fScale = (float)(pictureEditActuatorZ.Properties.ZoomPercent / 100.0f);
+                Graphics gp = e.Graphics;
+                string strpos = string.Empty;
+                strpos = "Position Z :" + string.Format("{0:000.00}", mRobotInformation.PositionZ);
+                gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorZ.Image.Height - 30) * fScale));
+            }
         }
     }
 }
