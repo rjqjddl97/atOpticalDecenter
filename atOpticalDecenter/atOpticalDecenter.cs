@@ -2787,7 +2787,7 @@ namespace atOpticalDecenter
                 }
 
                 RecipeFileIO.WriteInspectionStatisticsFile(string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.StatisticsFileName), _statistics);
-
+                InitializeChartOpticalInspect();
                 mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("검사 통계를 초기화합니다. 총 검사 수:{0:00000}, 불합격:{1:00000}", _statistics.TotalCount, _statistics.FailCount));
             }
             catch (Exception ex)
@@ -2834,6 +2834,7 @@ namespace atOpticalDecenter
 
                     MakeInspectionList();
                     _InspectionWorking = true;
+                    _InspectionResult = false;
                     mInspectStep = InspectionStepType.CheckWaitRobotReady;
 
                     InspectionRecipeParameterSetup();
@@ -2857,6 +2858,7 @@ namespace atOpticalDecenter
                 _isInspecting = false;
                 _InspectionWorking = false;
                 _isInspectError = false;
+                _InspectionResult = false;
                 mInspectStep = InspectionStepType.Idle;
                 _backgroundWorkerOpticalDecenterInspection.CancelAsync();
                 UpdateProcessTime(false);
@@ -2894,6 +2896,7 @@ namespace atOpticalDecenter
 
                 MakeInspectionList();
                 _InspectionWorking = true;
+                _InspectionResult = false;
                 mInspectStep = InspectionStepType.CheckWaitRobotReady;
 
                 InspectionRecipeParameterSetup();                
@@ -2911,6 +2914,7 @@ namespace atOpticalDecenter
                 _isInspecting = false;
                 _InspectionWorking = false;
                 _isInspectError = false;
+                _InspectionResult = false;
                 mInspectStep = InspectionStepType.Idle;
                 _backgroundWorkerOpticalDecenterInspection.CancelAsync();
                 UpdateProcessTime(false);
@@ -3350,7 +3354,6 @@ namespace atOpticalDecenter
             gp.Save();
             gp.Dispose();
             return tempimage;
-
         }
         public Image ActuatorImageAnimationZ(float pos)
         {
@@ -3366,9 +3369,6 @@ namespace atOpticalDecenter
         }
         private void UpdateGUI()
         {
-            //if (pictureEditActuator.InvokeRequired)
-            //    pictureEditActuator.Invoke(new MethodInvoker(delegate { pictureEditActuator.Image = _sourceImage; ActuatorImageFitSize(); }));
-
             if (pictureEditActuatorX.InvokeRequired)
             {
                 pictureEditActuatorX.Invoke(new MethodInvoker(delegate { pictureEditActuatorX.Image = ActuatorImageAnimationX((float)mRobotInformation.PositionX); FilterActuatorImageXFitSize(); }));
@@ -3417,6 +3417,53 @@ namespace atOpticalDecenter
                 strpos = "Position Z :" + string.Format("{0:000.00}", mRobotInformation.PositionZ);
                 gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorZ.Image.Height - 30) * fScale));
             }
+        }
+
+        private void pictureEditDecenterResult_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.InterpolationMode = InterpolationMode.Bicubic;
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            int width = pictureEditDecenterResult.ClientSize.Width;
+            int height = pictureEditDecenterResult.ClientSize.Height;
+            int passCount = 0;
+            int failCount = 0;
+            
+            PointF fptCenter = new PointF(width / 2, height / 2);
+            float fScale = height / 100f;
+            float onePixelResolution = 0.1F;        // 100 pixel per 10 mm
+            float threshold = 5.0F;
+
+            Pen pen = new Pen(Brushes.White, 1f);
+            pen.DashStyle = DashStyle.Dash;
+
+            // 중심선 라인 그리기
+            e.Graphics.DrawLine(pen, new Point(0, height / 2), new Point(width, height / 2));
+            e.Graphics.DrawLine(pen, new Point(width / 2, 0), new Point(width / 2, height));
+            
+            // 중심에서 5mm 원 그리기
+            e.Graphics.DrawEllipse(pen, (fptCenter.X - threshold / onePixelResolution * fScale), (fptCenter.Y - threshold / onePixelResolution * fScale), threshold * 2f / onePixelResolution * fScale, threshold * 2f / onePixelResolution * fScale);
+            if (_InspectionResult)
+            {
+                for (int i = 0; i < _workParams.InspectionPositions.Count; i++)
+                {
+                    if (_workParams.InspectionPositions[i].ePositionType == INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE)
+                    {
+                        PointF fDiff = new PointF((_workParams.InspectionPositions[i].PositionY - (float)mResultData.fDecenterY) * fScale,
+                                                  (_workParams.InspectionPositions[i].PositionZ - (float)mResultData.fDecenterZ) * fScale);
+                        Pen greenPen = new Pen(Brushes.LightGreen, 2f);
+
+                        e.Graphics.DrawLine(greenPen, new PointF(fptCenter.X + fDiff.X - 10, fptCenter.Y + fDiff.Y), new PointF(fptCenter.X + fDiff.X + 10, fptCenter.Y + fDiff.Y));
+                        e.Graphics.DrawLine(greenPen, new PointF(fptCenter.X + fDiff.X, fptCenter.Y + fDiff.Y - 10), new PointF(fptCenter.X + fDiff.X, fptCenter.Y + fDiff.Y + 10));
+                    }
+                }
+            }
+
+            /*
+            e.Graphics.DrawString(string.Format("Pass:{0:00}, Fail:{1:00}", passCount, failCount),
+                new Font(FontFamily.GenericSansSerif, 15f, FontStyle.Underline),
+                Brushes.LightGreen, new PointF(10, 10));
+            */
         }
     }
 }

@@ -36,6 +36,7 @@ namespace atOpticalDecenter
         private List<Functions.StepHandler.Base.IStepHandler> mPhotoInspectionList = new List<Functions.StepHandler.Base.IStepHandler>();
         private InspectionStepType mInspectStep = InspectionStepType.Idle;
         bool _InspectionWorking = false;
+        bool _InspectionResult = false;
         public InspectResultData mResultData = new InspectResultData();
         public RobotInformation mRobotInformation = new RobotInformation();
         
@@ -405,8 +406,8 @@ namespace atOpticalDecenter
             pledSpotInspectionInfomation._InspectOperateMin_Distance = mResultData.fMinOperateDistance;
             pledSpotInspectionInfomation._InspectOpticalResult = mResultData.bTotalResult;
 
-            xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 4; }));            
-
+            xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 4; }));
+            _InspectionResult = true;
             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("투광 LED 특성 검사 결과 , Spot1 Size :{0:000.000}mm, Spot2 Size :{1:000.000}mm, " +
                 "이미지 밝기 :{2:000}pixel, 광원 편심 :{3:00.000}mm, 광 발산각 :{4:00.000}˚, 감쇄율 :{5:00.000}, ND필터 예측각도 :{6:000}˚ , 최대거리 ND필터 :{7:000}˚, 검사 결과 : {8}",
                 mResultData.fOpticalSize[0], mResultData.fOpticalSize[1], mResultData.fOpticalSpotImageBright, mResultData.fOpticalEccentricity, (mResultData.fOpticalEmiterAngle * (180 / Math.PI)),

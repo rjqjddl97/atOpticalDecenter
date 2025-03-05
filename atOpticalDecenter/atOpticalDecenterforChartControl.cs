@@ -81,8 +81,8 @@ namespace atOpticalDecenter
         {
             try
             {
+                chartControlInspectionAngle.Series[0].Points.Clear();
                 chartControlInspectionAngle.Series[0].Name = "Angle Histogram";
-
                 chartControlInspectionAngle.Series[0].Points.Add(new DevExpress.XtraCharts.SeriesPoint("±1˚", Convert.ToInt32(_statistics.Statistics[0])));
                 chartControlInspectionAngle.Series[0].Points.Add(new DevExpress.XtraCharts.SeriesPoint("±2˚", Convert.ToInt32(_statistics.Statistics[1])));
                 chartControlInspectionAngle.Series[0].Points.Add(new DevExpress.XtraCharts.SeriesPoint("±3˚", Convert.ToInt32(_statistics.Statistics[2])));
