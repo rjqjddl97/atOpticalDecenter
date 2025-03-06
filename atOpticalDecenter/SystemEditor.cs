@@ -23,7 +23,184 @@ namespace atOpticalDecenter
         {
             InitializeComponent();
         }
+        public SystemEditor(bool _bKoreaLanguage)
+        {
+            InitializeComponent();
+            if (!_bKoreaLanguage)
+            {
+                categoryCameraParameters.Properties.Caption = "Camera Parameter";                
+                rowCameraFriendlyName.Properties.Caption = "Camera Name";
+                rowCameraHResolution.Properties.Caption = "Horizone Pixel(H)";
+                rowCameraVResolution.Properties.Caption = "Vertical Pixel(V)";
+                rowCameraOnePixelResolution.Properties.Caption = "PixelResolution(mm)";
+                rowCameraFrameRate.Properties.Caption = "Frame Ratio(fps)";
+                rowCameraExposureTime.Properties.Caption = "Exposure Time(us)";
+                rowCameraGain.Properties.Caption = "Gain";
+                rowCameraImageSensorSizeH.Properties.Caption = "Image Sensor Size(H)[mm]";
+                rowCameraImageSensorSizeV.Properties.Caption = "Image Sensor Size(V)[mm]";
+                rowCameraLensFocusLenth.Properties.Caption = "Focus Length[mm]";
 
+                categoryCalibraitionParameters.Properties.Caption = "Calibration Parameter";
+                rowCoordinateSwitch.Properties.Caption = "Use X,Y symmetry";
+                rowImageToSystemX.Properties.Caption = "Image X Coordinate -> Sytem Y Coordiante Polarity";
+                rowImageToSystemZ.Properties.Caption = "Image Y Coordinate -> Sytem Z Coordiante Polarity";
+                rowCoordinateCalibrationActive.Properties.Caption = "Use Coordinate Calibration";
+                rowReference_X.Properties.Caption = "Reference X Position";
+                rowReference_Y.Properties.Caption = "Reference Y Position";
+                rowReference_Z.Properties.Caption = "Reference Z Position";
+                rowReferenceP1_X.Properties.Caption = "Calibration P1 X Position";
+                rowReferenceP1_Y.Properties.Caption = "Calibration P1 Y Position";
+                rowReferenceP1_Z.Properties.Caption = "Calibration P1 Z Position";
+                rowReferenceP2_X.Properties.Caption = "Calibration P2 X Position";
+                rowReferenceP2_Y.Properties.Caption = "Calibration P2 Y Position";
+                rowReferenceP2_Z.Properties.Caption = "Calibration P2 Z Position";
+
+                categoryMotionParameters.Properties.Caption = " Motion Parameter";
+                rowMotionResolutionX.Properties.Caption = "X Axis Resolution[pulse]";
+                rowMotionResolutionY.Properties.Caption = "Y Axis Resolution[pulse]";
+                rowMotionResolutionZ.Properties.Caption = "Z Axis Resolution[pulse]";
+                rowMotionGearRatioX.Properties.Caption = "X Axis Gear Ratio[1:N]";
+                rowMotionGearRatioY.Properties.Caption = "Y Axis Gear Ratio[1:N]";
+                rowMotionGearRatioZ.Properties.Caption = "Z Axis Gear Ratio[1:N]";
+                rowMotionBallLeadX.Properties.Caption = "X Axis BallLead[mm]";
+                rowMotionBallLeadY.Properties.Caption = "Y Axis BallLead[mm，˚]";
+                rowMotionBallLeadZ.Properties.Caption = "Z Axis BallLead[mm，˚]";
+                rowMotionMoveVelocity.Properties.Caption = "Moving Velocity[mm/s]";
+                rowMotionMoveAcceleration.Properties.Caption = "Moving Acceleratoin[mm/s^2]";
+                rowMotionMenaulVelocity.Properties.Caption = "Menual Moving Velocity[mm/s]";
+
+                categoryAiCCommunicationParameters.Properties.Caption = "AiC Communication Parameter";
+                rowAiCCommunicationPortName.Properties.Caption = "ComPort";
+                rowAiCCommunicationBaudRate.Properties.Caption = "Baudrate[bps]";
+                rowAiCCommunicationDatabit.Properties.Caption = "Data Bit";
+                rowAiCCommunicationParity.Properties.Caption = "Parity";
+                rowAiCCommunicationStopbit.Properties.Caption = "Stop Bit";
+                rowAiCCommunicationHandshake.Properties.Caption = "Flow Control";
+                rowAiCCommunicationCounter.Properties.Caption = "Connection Counter";
+                categoryAiCCommunicationIDs.Properties.Caption = "AiC ID Setup";
+
+                categoryRemoteIOCommunicationParameters.Properties.Caption = "Remote IO Communication Parameter";
+                rowRemoteIOCommunicationPortName.Properties.Caption = "ComPort";
+                rowRemoteIOCommunicationBaudRate.Properties.Caption = "Baudrate[bps]";
+                rowRemoteIOCommunicationDatabit.Properties.Caption = "Data Bit";
+                rowRemoteIOCommunicationParity.Properties.Caption = "Parity";
+                rowRemoteIOCommunicationStopbit.Properties.Caption = "Stop Bit";
+                rowRemoteIOCommunicationHandshake.Properties.Caption = "Flow Control";
+                rowRemoteIOCommunicationCount.Properties.Caption = "Connection Counter";
+                categoryRemoteIOCommunicationIDs.Properties.Caption = "Remote IO ID Setup";
+                rowRemoteIOInputProperties1.Caption = "I/O Module1";
+                rowRemoteIOOutputProperties1.Caption = "I/O Module2";
+
+                categorySystemADMSInformation.Properties.Caption = "ADMS Information";
+                rowSystemADMSUse.Properties.Caption = "Use DB";
+                rowSystemJobWorkUse.Properties.Caption = "Use JobOrder DB";
+                rowSystemADMSIPAddress.Properties.Caption = "IP Address";
+                rowSystemADMSPort.Properties.Caption = "Port";
+                rowSystemADMSUserID.Properties.Caption = "User ID";
+                rowSystemADMSPassWD.Properties.Caption = "Password";
+                rowSystemADMSEquipmentID.Properties.Caption = "Equipment ID";
+                rowSystemADMSSchemaName.Properties.Caption = "Schema DB name";
+                rowSystemADMSEquipmentDBName.Properties.Caption = "Equipment DB name";
+                rowSystemADMSProductDBName.Properties.Caption = "Product DB name";
+
+                categorySaveResult.Properties.Caption = "Inspection Result Parameter";
+                rowSaveResultLEDMeasurement.Properties.Caption = "Save Image File";
+                rowSaveResultStatistics.Properties.Caption = "Save Chart Data";
+
+                categorySystemLanguage.Properties.Caption = "System Language";
+                rowSystemUseLanguage.Properties.Caption = "Use Korea Language";
+
+                simpleButtonSystemSaveCancel.Text = "Cancle";
+                simpleButtonSystemFileSave.Text = "Save";
+            }
+            else
+            {
+                categoryCameraParameters.Properties.Caption = "카메라 파라미터";                
+                rowCameraFriendlyName.Properties.Caption = "카메라 이름";
+                rowCameraHResolution.Properties.Caption = "가로 해상도(H)";
+                rowCameraVResolution.Properties.Caption = "세로 해상도(V)";
+                rowCameraOnePixelResolution.Properties.Caption = "한 픽셀 해상도(mm)";
+                rowCameraFrameRate.Properties.Caption = "프레임비(fps)";
+                rowCameraExposureTime.Properties.Caption = "노출 시간(us)";
+                rowCameraGain.Properties.Caption = "게인";
+                rowCameraImageSensorSizeH.Properties.Caption = "카메라 이미지센서 크기(가로)[mm]";
+                rowCameraImageSensorSizeV.Properties.Caption = "카메라 이미지센서 크기(세로)[mm]";
+                rowCameraLensFocusLenth.Properties.Caption = "카메라렌즈 초첨거리[mm]";
+
+                categoryCalibraitionParameters.Properties.Caption = "보정 파라미터";
+                rowCoordinateSwitch.Properties.Caption = "X,Y좌표계 대칭변환유무";
+                rowImageToSystemX.Properties.Caption = "이미지 X 좌표계 -> 시스템 X 좌표계";
+                rowImageToSystemZ.Properties.Caption = "이미지 Y 좌표계 -> 시스템 Z 좌표계";
+                rowCoordinateCalibrationActive.Properties.Caption = "좌표계 보정 활성화유무";
+                rowReference_X.Properties.Caption = "기준X 좌표";
+                rowReference_Y.Properties.Caption = "기준Y 좌표";
+                rowReference_Z.Properties.Caption = "기준Z 좌표";
+                rowReferenceP1_X.Properties.Caption = "교정점 P1 X좌표";
+                rowReferenceP1_Y.Properties.Caption = "교정점 P1 Y좌표";
+                rowReferenceP1_Z.Properties.Caption = "교정점 P1 Z좌표";
+                rowReferenceP2_X.Properties.Caption = "교정점 P2 X좌표";
+                rowReferenceP2_Y.Properties.Caption = "교정점 P2 Y좌표";
+                rowReferenceP2_Z.Properties.Caption = "교정점 P2 Z좌표";
+                
+                categoryMotionParameters.Properties.Caption = " 모션 파라미터";
+                rowMotionResolutionX.Properties.Caption = "X축 1회전 분해능[pulse]";
+                rowMotionResolutionY.Properties.Caption = "Y축 1회전 분해능[pulse]";
+                rowMotionResolutionZ.Properties.Caption = "Z축 1회전 분해능[pulse]";
+                rowMotionGearRatioX.Properties.Caption = "X축 기어비[1:N]";
+                rowMotionGearRatioY.Properties.Caption = "Y축 기어비[1:N]";
+                rowMotionGearRatioZ.Properties.Caption = "Z축 기어비[1:N]";
+                rowMotionBallLeadX.Properties.Caption = "X축 볼리드[mm]";
+                rowMotionBallLeadY.Properties.Caption = "Y출 볼리드[mm，˚]";
+                rowMotionBallLeadZ.Properties.Caption = "Z축 볼리드[mm，˚]";
+                rowMotionMoveVelocity.Properties.Caption = "이동 속도[mm/s]";
+                rowMotionMoveAcceleration.Properties.Caption = "이동 가속도[mm/s^2]";
+                rowMotionMenaulVelocity.Properties.Caption = "수동 이동 속도[mm/s]";
+
+                categoryAiCCommunicationParameters.Properties.Caption = "AiC 모션 통신 설정";
+                rowAiCCommunicationPortName.Properties.Caption = "통신 포트";
+                rowAiCCommunicationBaudRate.Properties.Caption = "통신속도[bps]";
+                rowAiCCommunicationDatabit.Properties.Caption = "데이터 비트";
+                rowAiCCommunicationParity.Properties.Caption = "패리티";
+                rowAiCCommunicationStopbit.Properties.Caption = "정지 비트";
+                rowAiCCommunicationHandshake.Properties.Caption = "흐름 제어";
+                rowAiCCommunicationCounter.Properties.Caption = "연결 대수";
+                categoryAiCCommunicationIDs.Properties.Caption = "AiC 모션 ID 설정";
+
+                categoryRemoteIOCommunicationParameters.Properties.Caption = "Remote IO 통신 설정";
+                rowRemoteIOCommunicationPortName.Properties.Caption = "통신 포트";
+                rowRemoteIOCommunicationBaudRate.Properties.Caption = "통신속도[bps]";
+                rowRemoteIOCommunicationDatabit.Properties.Caption = "데이터 비트";
+                rowRemoteIOCommunicationParity.Properties.Caption = "패리티";
+                rowRemoteIOCommunicationStopbit.Properties.Caption = "정지 비트";
+                rowRemoteIOCommunicationHandshake.Properties.Caption = "흐름 제어";
+                rowRemoteIOCommunicationCount.Properties.Caption = "연결 대수";
+                categoryRemoteIOCommunicationIDs.Properties.Caption = "Remote IO ID설정";
+                rowRemoteIOInputProperties1.Caption = "입출력 모듈1";
+                rowRemoteIOOutputProperties1.Caption = "입출력 모듈2";
+
+                categorySystemADMSInformation.Properties.Caption = "ADMS 정보";
+                rowSystemADMSUse.Properties.Caption = "DB 사용";
+                rowSystemJobWorkUse.Properties.Caption = "작업지시서 DB연계사용";
+                rowSystemADMSIPAddress.Properties.Caption = "IP 주소";
+                rowSystemADMSPort.Properties.Caption = "포트";
+                rowSystemADMSUserID.Properties.Caption = "사용자 ID";
+                rowSystemADMSPassWD.Properties.Caption = "비밀번호";
+                rowSystemADMSEquipmentID.Properties.Caption = "Equipment ID";
+                rowSystemADMSSchemaName.Properties.Caption = "Schema DB 이름";
+                rowSystemADMSEquipmentDBName.Properties.Caption = "Equipment DB 이름";
+                rowSystemADMSProductDBName.Properties.Caption = "Product DB 이름";
+
+                categorySaveResult.Properties.Caption = "결과 저장 옵션";
+                rowSaveResultLEDMeasurement.Properties.Caption = "투광 LED 이미지 저장";
+                rowSaveResultStatistics.Properties.Caption = "통계 데이터 저장";
+
+                categorySystemLanguage.Properties.Caption = "시스템 언어 설정";
+                rowSystemUseLanguage.Properties.Caption = "한국어 사용";
+
+                simpleButtonSystemSaveCancel.Text = "취소하기";
+                simpleButtonSystemFileSave.Text = "저장하기";
+            }
+        }
         private void vGridControlSystemParameters_CellValueChanged(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e)
         {
             SetCellValue(e.Row);
@@ -187,6 +364,8 @@ namespace atOpticalDecenter
             // Save Result
             _systemParameters._saveResultLEDMeasurement = Convert.ToBoolean(rowSaveResultLEDMeasurement.Properties.Value);
             _systemParameters._saveResultStatistics = Convert.ToBoolean(rowSaveResultStatistics.Properties.Value);
+
+            _systemParameters._SystemLanguageKoreaUse = Convert.ToBoolean(rowSystemUseLanguage.Properties.Value);
         }
         private void LoadSystemParameters()
         {
@@ -1380,6 +1559,10 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._SystemLanguageKoreaUse = bvalue;
+                if (!_systemParameters._SystemLanguageKoreaUse)
+                    MessageBox.Show("언어가 변경되었습니다.\r\n프로그램을 재시작이 필요합니다.", "알람", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("System Language changed now.\r\nMust restart program.", "Alarm", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

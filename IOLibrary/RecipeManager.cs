@@ -26,7 +26,7 @@ namespace RecipeManager
         static public string[] SerialParity = new string[] { "None", "Odd", "Even"};
         //static public string[] SerialEncoding = new string[] { "ASCII", "Unicode", "UTF8", "UTF32" };
 
-        static string[] SystemParamSections = new string[] { "Camera Parameters","Calibration Parameters", "Motion Parameters", "AiC Parameters", "RemoteIO Parameters", "AMDS Parameters", "Save Results" };
+        static string[] SystemParamSections = new string[] { "Camera Parameters","Calibration Parameters", "Motion Parameters", "AiC Parameters", "RemoteIO Parameters", "AMDS Parameters", "Save Results", "Language" };
         static string[] WorkParamSections = new string[] { "Recipe Information", "Product Infomation", "LED Inspection", "Inspection Positions" };
 
         static public string[] ProductSeries = new string[] {"BTS","BTF","BJ", "BEN" };        
@@ -303,6 +303,9 @@ namespace RecipeManager
             // SaveResult Parameters
             systemParam._saveResultLEDMeasurement = Convert.ToBoolean(systemData[SystemParamSections[6]]["InspectionImageCheck"]);
             systemParam._saveResultStatistics = Convert.ToBoolean(systemData[SystemParamSections[6]]["SaveStatistics"]);
+
+            // Language Parameters
+            systemParam._SystemLanguageKoreaUse = Convert.ToBoolean(systemData[SystemParamSections[7]]["CheckUseKoreaLanguage"]);
         }
 
         static public void WriteSystemFile(SystemParams systemParam, string strFilePath)
@@ -404,6 +407,9 @@ namespace RecipeManager
             systemData.Sections.AddSection(SystemParamSections[6]);
             systemData[SystemParamSections[6]].AddKey("InspectionImageCheck", systemParam._saveResultLEDMeasurement.ToString());
             systemData[SystemParamSections[6]].AddKey("SaveStatistics", systemParam._saveResultStatistics.ToString());
+
+            // Language Parameters
+            systemData[SystemParamSections[7]].AddKey("CheckUseKoreaLanguage", systemParam._SystemLanguageKoreaUse.ToString());
 
             parser.WriteFile(strFilePath, systemData);
         }

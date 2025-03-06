@@ -30,6 +30,115 @@ namespace atOpticalDecenter
             InitializeComponent();            
             //InitialRecipeParameters();
         }
+        public RecipeEditor(bool _bsystemlanguage)
+        {
+            InitializeComponent();
+            if (!_bsystemlanguage)
+            {
+                barButtonItemNewRecipe.Caption = "New Recipe";
+                barButtonItemRecipeOpen.Caption = "Load";
+                barButtonItemRecipeSave.Caption = "Save";
+                ribbonPage1.Text = "File";
+                ribbonPageGroup1.Text = "Recipe";
+
+                categoryRecipeInformation.Properties.Caption = "Recipe Information";
+                rowRecipeName.Properties.Caption = "Name";
+                rowRecipeCreateTime.Properties.Caption = "Create Time";
+                rowRecipeCreatorName.Properties.Caption = "Creator Name";
+
+                categoryProductInformation.Properties.Caption = "Product Information";
+                rowProductSeries.Properties.Caption = "Series";
+                rowProductModelName.Properties.Caption = "Model Name";
+                rowProductType.Properties.Caption = "Type";
+                rowProductDistance.Properties.Caption = "Product Distance[mm]";
+                rowProductOpMode.Properties.Caption = "Operation Mode";
+                rowProductOutputType.Properties.Caption = "Output Type";
+                rowProductDetectMeterial.Properties.Caption = "DetectMeterial";
+                rowProductDistanceMargin.Properties.Caption = "DistanceMargin[%]";
+
+                categoryLEDInspectionInformation.Properties.Caption = "Spot Inspection Information";
+                rowLEDInspectionUseEnable.Properties.Caption = "Use Short Distance";
+                rowLEDInspectionShortDistance.Properties.Caption = "Short Distance[mm]";
+                rowLedInspectionCameraMoveDistance.Properties.Caption = "Camera Move Distance[mm]";
+                rowLEDInspectionExposureTime.Properties.Caption = "Exposure Time[us]";
+                rowLEDInspectionAcquisitionDelayTime.Properties.Caption = "Acquisition Delay Time[ms]";
+                rowLEDInspectionReferenceThresholdH.Properties.Caption = "Threshold Horizon[0~255]";
+                rowLEDInspectionReferenceThresholdV.Properties.Caption = "Threshold Vertical[0~255]";
+                rowLEDInspectionSpotMinSize.Properties.Caption = "Min Spot Size[mm]";
+                rowLEDInspectionSpotMaxSize.Properties.Caption = "Max Spot Size[mm]";
+                rowLEDInspectionAlignmentDistance.Properties.Caption = "Reference Eccentricity[mm]";
+                rowLEDInspectionDivergenceAngle.Properties.Caption = "Reference Divergence Angle[˚]";
+                rowLEDInspectionWorkAreaLeft.Properties.Caption = "ROI Left[픽셀]";
+                rowLEDInspectionWorkAreaTop.Properties.Caption = "ROI Top[픽셀]";
+                rowLEDInspectionWorkAreaWidth.Properties.Caption = "ROI Width[픽셀]";
+                rowLEDInspectionWorkAreaHeight.Properties.Caption = "ROI Height[픽셀]";
+
+                groupControl2.Text = "Setup Recipe";
+                groupControl1.Text = "Inspection Information";
+
+                simpleButtonInspectionPositionEdit.Text = "Edit";
+                simpleButtonInspectionPositionDelete.Text = "Delete";
+                simpleButtonInspectionPositionRegister.Text = "Register";
+
+                layoutControlItem6.Text = "Pos(X)";
+                layoutControlItem7.Text = "Pos(Y)";
+                layoutControlItem9.Text = "Pos(Z)";
+                layoutControlItem15.Text = "Type";
+            }
+            else
+            {
+                barButtonItemNewRecipe.Caption = "새 레시피";
+                barButtonItemRecipeOpen.Caption = "불러 오기";
+                barButtonItemRecipeSave.Caption = "저장하기";
+                ribbonPage1.Text = "파일";
+                ribbonPageGroup1.Text = "레시피";
+
+                categoryRecipeInformation.Properties.Caption = "레시피 정보";
+                rowRecipeName.Properties.Caption = "레시피 이름";
+                rowRecipeCreateTime.Properties.Caption = "레시피 생성 시간";
+                rowRecipeCreatorName.Properties.Caption = "레시피 생성자 이름";
+
+                categoryProductInformation.Properties.Caption = "검사 제품 정보";
+                rowProductSeries.Properties.Caption = "제품 분류";
+                rowProductModelName.Properties.Caption = "제품 모델명";
+                rowProductType.Properties.Caption = "제품 형태";
+                rowProductDistance.Properties.Caption = "제품 거리[mm]";
+                rowProductOpMode.Properties.Caption = "제품 동작 모드";
+                rowProductOutputType.Properties.Caption = "제품 출력 형태";
+                rowProductDetectMeterial.Properties.Caption = "검출체 종류";
+                rowProductDistanceMargin.Properties.Caption = "제품 거리마진율[%]";
+
+                categoryLEDInspectionInformation.Properties.Caption = "투광 소자 검사 정보";
+                rowLEDInspectionUseEnable.Properties.Caption = "투광 검사 유무";
+                rowLEDInspectionShortDistance.Properties.Caption = "투광 단축검사거리[mm]";
+                rowLedInspectionCameraMoveDistance.Properties.Caption = "카메라 이동거리[mm]";
+                rowLEDInspectionExposureTime.Properties.Caption = "카메라 노출시간[us]";
+                rowLEDInspectionAcquisitionDelayTime.Properties.Caption = "이미지 취득지연 시간[ms]";
+                rowLEDInspectionReferenceThresholdH.Properties.Caption = "수평 인식 임계값[0~255]";
+                rowLEDInspectionReferenceThresholdV.Properties.Caption = "수직 인식 임계값[0~255]";
+                rowLEDInspectionSpotMinSize.Properties.Caption = "광원 최소크기[mm]";
+                rowLEDInspectionSpotMaxSize.Properties.Caption = "광원 최대크기[mm]";
+                rowLEDInspectionAlignmentDistance.Properties.Caption = "편심 합격거리[mm]";
+                rowLEDInspectionDivergenceAngle.Properties.Caption = "발산각 합격각도[˚]";
+                rowLEDInspectionWorkAreaLeft.Properties.Caption = "검사 영역 X점[픽셀]";
+                rowLEDInspectionWorkAreaTop.Properties.Caption = "검사 영역 Y점[픽셀]";
+                rowLEDInspectionWorkAreaWidth.Properties.Caption = "검사 영역 폭[픽셀]";
+                rowLEDInspectionWorkAreaHeight.Properties.Caption = "검사 영역 높이[픽셀]";
+
+
+                groupControl2.Text = "거리검사 레시피 설정";
+                groupControl1.Text = "검사 거리 정보";
+
+                simpleButtonInspectionPositionEdit.Text = "수정";
+                simpleButtonInspectionPositionDelete.Text = "삭제";
+                simpleButtonInspectionPositionRegister.Text = "등록";
+
+                layoutControlItem6.Text = "위치(X)";
+                layoutControlItem7.Text = "위치(Y)";
+                layoutControlItem9.Text = "위치(Z)";
+                layoutControlItem15.Text = "위치형태";
+            }
+        }
         public void SetSystemParam(SystemParams sysParam)
         {
             _systemParam = sysParam;

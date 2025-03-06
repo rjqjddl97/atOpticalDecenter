@@ -20,6 +20,27 @@ namespace atOpticalDecenter
         {
             InitializeComponent();
         }
+        public LoginForm(bool _bSystemLanguage)
+        {
+            InitializeComponent();
+            if (!_bSystemLanguage)
+            {
+                simpleButtonExit.Text = "Exit";
+                simpleButtonLogIn.Text = "Login";
+                layoutControlItem1.Text = "Worker ID";
+                layoutControlItem2.Text = "Worker Name";
+                layoutControlItem3.Text = "Order Number";
+            }
+            else
+            {
+                simpleButtonExit.Text = "종료";
+                simpleButtonLogIn.Text = "로그인";
+                layoutControlItem1.Text = "작업자 사번";
+                layoutControlItem2.Text = "작업자 이름";
+                layoutControlItem3.Text = "작업 지시서";
+            }
+
+        }
         public LoginForm(string strWorkID, string strWorkerName, string strJobInformation)
         {
             InitializeComponent();

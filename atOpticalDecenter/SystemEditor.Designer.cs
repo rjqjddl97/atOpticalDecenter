@@ -120,6 +120,7 @@
             this.rowRemoteIOOutputProperties2 = new DevExpress.XtraVerticalGrid.Rows.MultiEditorRowProperties();
             this.categorySystemADMSInformation = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.rowSystemADMSUse = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowSystemJobWorkUse = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowSystemADMSIPAddress = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowSystemADMSPort = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowSystemADMSUserID = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -139,7 +140,6 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.rowSystemJobWorkUse = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControlSystemParameters)).BeginInit();
@@ -169,11 +169,12 @@
             this.layoutControl1.Controls.Add(this.simpleButtonSystemSaveCancel);
             this.layoutControl1.Controls.Add(this.simpleButtonSystemFileSave);
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(923, 416, 650, 400);
             this.layoutControl1.OptionsView.UseDefaultDragAndDropRendering = false;
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(490, 668);
+            this.layoutControl1.Size = new System.Drawing.Size(419, 668);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -183,7 +184,9 @@
             this.vGridControlSystemParameters.CustomizationFormBounds = new System.Drawing.Rectangle(1643, 643, 243, 271);
             this.vGridControlSystemParameters.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControlSystemParameters.Location = new System.Drawing.Point(3, 3);
+            this.vGridControlSystemParameters.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.vGridControlSystemParameters.Name = "vGridControlSystemParameters";
+            this.vGridControlSystemParameters.RecordWidth = 98;
             this.vGridControlSystemParameters.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBoxAiCCommunicationPortName,
             this.repositoryItemComboBoxAiCCommunicationBaudRate,
@@ -199,6 +202,7 @@
             this.repositoryItemComboBoxRemoteIOCommunicationHandshake,
             this.repositoryItemComboBoxCalibrationImageX,
             this.repositoryItemComboBoxCalibrationImageY});
+            this.vGridControlSystemParameters.RowHeaderWidth = 102;
             this.vGridControlSystemParameters.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.categoryCameraParameters,
             this.categoryCalibraitionParameters,
@@ -208,7 +212,7 @@
             this.categorySystemADMSInformation,
             this.categorySaveResult,
             this.categorySystemLanguage});
-            this.vGridControlSystemParameters.Size = new System.Drawing.Size(484, 636);
+            this.vGridControlSystemParameters.Size = new System.Drawing.Size(413, 636);
             this.vGridControlSystemParameters.TabIndex = 4;
             this.vGridControlSystemParameters.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControlSystemParameters_CellValueChanged);
             this.vGridControlSystemParameters.EditorKeyDown += new System.Windows.Forms.KeyEventHandler(this.vGridControlSystemParameters_EditorKeyDown);
@@ -788,18 +792,20 @@
             // rowAiC1Properties1
             // 
             this.rowAiC1Properties1.Caption = "Motion1";
-            this.rowAiC1Properties1.CellWidth = 25;
+            this.rowAiC1Properties1.CellWidth = 21;
             this.rowAiC1Properties1.FieldName = "ID Name";
             this.rowAiC1Properties1.Name = "rowAiC1Properties1";
             this.rowAiC1Properties1.Value = "X Axis";
+            this.rowAiC1Properties1.Width = 17;
             // 
             // rowAiC1Properties2
             // 
             this.rowAiC1Properties2.Caption = "ID";
-            this.rowAiC1Properties2.CellWidth = 25;
+            this.rowAiC1Properties2.CellWidth = 21;
             this.rowAiC1Properties2.FieldName = "ID Number";
             this.rowAiC1Properties2.Name = "rowAiC1Properties2";
             this.rowAiC1Properties2.Value = 1;
+            this.rowAiC1Properties2.Width = 17;
             // 
             // rowAiCYAxis
             // 
@@ -814,18 +820,20 @@
             // rowAiC2Properties1
             // 
             this.rowAiC2Properties1.Caption = "Motion2";
-            this.rowAiC2Properties1.CellWidth = 25;
+            this.rowAiC2Properties1.CellWidth = 21;
             this.rowAiC2Properties1.FieldName = "ID Name";
             this.rowAiC2Properties1.Name = "rowAiC2Properties1";
             this.rowAiC2Properties1.Value = "Y Axis";
+            this.rowAiC2Properties1.Width = 17;
             // 
             // rowAiC2Properties2
             // 
             this.rowAiC2Properties2.Caption = "ID";
-            this.rowAiC2Properties2.CellWidth = 25;
+            this.rowAiC2Properties2.CellWidth = 21;
             this.rowAiC2Properties2.FieldName = "ID Number";
             this.rowAiC2Properties2.Name = "rowAiC2Properties2";
             this.rowAiC2Properties2.Value = 2;
+            this.rowAiC2Properties2.Width = 17;
             // 
             // rowAiCZAxis
             // 
@@ -840,18 +848,20 @@
             // rowAiC3Properties1
             // 
             this.rowAiC3Properties1.Caption = "Motion3";
-            this.rowAiC3Properties1.CellWidth = 25;
+            this.rowAiC3Properties1.CellWidth = 21;
             this.rowAiC3Properties1.FieldName = "ID Name";
             this.rowAiC3Properties1.Name = "rowAiC3Properties1";
             this.rowAiC3Properties1.Value = "Z Axis";
+            this.rowAiC3Properties1.Width = 17;
             // 
             // rowAiC3Properties2
             // 
             this.rowAiC3Properties2.Caption = "ID";
-            this.rowAiC3Properties2.CellWidth = 25;
+            this.rowAiC3Properties2.CellWidth = 21;
             this.rowAiC3Properties2.FieldName = "ID Number";
             this.rowAiC3Properties2.Name = "rowAiC3Properties2";
             this.rowAiC3Properties2.Value = 3;
+            this.rowAiC3Properties2.Width = 17;
             // 
             // rowAiCLoaderAxis
             // 
@@ -866,18 +876,20 @@
             // rowAiC4Properties1
             // 
             this.rowAiC4Properties1.Caption = "Motion4";
-            this.rowAiC4Properties1.CellWidth = 25;
+            this.rowAiC4Properties1.CellWidth = 21;
             this.rowAiC4Properties1.FieldName = "ID Name";
             this.rowAiC4Properties1.Name = "rowAiC4Properties1";
             this.rowAiC4Properties1.Value = "R Axis";
+            this.rowAiC4Properties1.Width = 17;
             // 
             // rowAiC4Properties2
             // 
             this.rowAiC4Properties2.Caption = "ID";
-            this.rowAiC4Properties2.CellWidth = 25;
+            this.rowAiC4Properties2.CellWidth = 21;
             this.rowAiC4Properties2.FieldName = "ID Number";
             this.rowAiC4Properties2.Name = "rowAiC4Properties2";
             this.rowAiC4Properties2.Value = 4;
+            this.rowAiC4Properties2.Width = 17;
             // 
             // categoryRemoteIOCommunicationParameters
             // 
@@ -985,16 +997,20 @@
             // rowRemoteIOInputProperties1
             // 
             this.rowRemoteIOInputProperties1.Caption = "입출력 모듈1";
+            this.rowRemoteIOInputProperties1.CellWidth = 17;
             this.rowRemoteIOInputProperties1.FieldName = "ID Name";
             this.rowRemoteIOInputProperties1.Name = "rowRemoteIOInputProperties1";
             this.rowRemoteIOInputProperties1.Value = "입출력 모듈1";
+            this.rowRemoteIOInputProperties1.Width = 17;
             // 
             // rowRemoteIOInputProperties2
             // 
             this.rowRemoteIOInputProperties2.Caption = "ID";
+            this.rowRemoteIOInputProperties2.CellWidth = 17;
             this.rowRemoteIOInputProperties2.FieldName = "ID Number";
             this.rowRemoteIOInputProperties2.Name = "rowRemoteIOInputProperties2";
             this.rowRemoteIOInputProperties2.Value = "5";
+            this.rowRemoteIOInputProperties2.Width = 17;
             // 
             // rowRemoteIOOutputIDs
             // 
@@ -1009,16 +1025,20 @@
             // rowRemoteIOOutputProperties1
             // 
             this.rowRemoteIOOutputProperties1.Caption = "입출력 모듈2";
+            this.rowRemoteIOOutputProperties1.CellWidth = 17;
             this.rowRemoteIOOutputProperties1.FieldName = "ID Name";
             this.rowRemoteIOOutputProperties1.Name = "rowRemoteIOOutputProperties1";
             this.rowRemoteIOOutputProperties1.Value = "입출력 모듈2";
+            this.rowRemoteIOOutputProperties1.Width = 17;
             // 
             // rowRemoteIOOutputProperties2
             // 
             this.rowRemoteIOOutputProperties2.Caption = "ID";
+            this.rowRemoteIOOutputProperties2.CellWidth = 17;
             this.rowRemoteIOOutputProperties2.FieldName = "ID Number";
             this.rowRemoteIOOutputProperties2.Name = "rowRemoteIOOutputProperties2";
             this.rowRemoteIOOutputProperties2.Value = "6";
+            this.rowRemoteIOOutputProperties2.Width = 17;
             // 
             // categorySystemADMSInformation
             // 
@@ -1164,9 +1184,10 @@
             this.simpleButtonSystemSaveCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.simpleButtonSystemSaveCancel.ImageOptions.Image = global::atOpticalDecenter.Properties.Resources.Cancel_16x16;
             this.simpleButtonSystemSaveCancel.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.simpleButtonSystemSaveCancel.Location = new System.Drawing.Point(247, 643);
+            this.simpleButtonSystemSaveCancel.Location = new System.Drawing.Point(211, 643);
+            this.simpleButtonSystemSaveCancel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.simpleButtonSystemSaveCancel.Name = "simpleButtonSystemSaveCancel";
-            this.simpleButtonSystemSaveCancel.Size = new System.Drawing.Size(240, 22);
+            this.simpleButtonSystemSaveCancel.Size = new System.Drawing.Size(205, 22);
             this.simpleButtonSystemSaveCancel.StyleController = this.layoutControl1;
             this.simpleButtonSystemSaveCancel.TabIndex = 6;
             this.simpleButtonSystemSaveCancel.Text = "취소하기";
@@ -1177,8 +1198,9 @@
             this.simpleButtonSystemFileSave.ImageOptions.Image = global::atOpticalDecenter.Properties.Resources.exportfile_16x16;
             this.simpleButtonSystemFileSave.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.simpleButtonSystemFileSave.Location = new System.Drawing.Point(3, 643);
+            this.simpleButtonSystemFileSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.simpleButtonSystemFileSave.Name = "simpleButtonSystemFileSave";
-            this.simpleButtonSystemFileSave.Size = new System.Drawing.Size(240, 22);
+            this.simpleButtonSystemFileSave.Size = new System.Drawing.Size(204, 22);
             this.simpleButtonSystemFileSave.StyleController = this.layoutControl1;
             this.simpleButtonSystemFileSave.TabIndex = 5;
             this.simpleButtonSystemFileSave.Text = "저장하기";
@@ -1194,7 +1216,7 @@
             this.layoutControlItem1});
             this.Root.Name = "Root";
             this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
-            this.Root.Size = new System.Drawing.Size(490, 668);
+            this.Root.Size = new System.Drawing.Size(419, 668);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem2
@@ -1202,16 +1224,16 @@
             this.layoutControlItem2.Control = this.simpleButtonSystemFileSave;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 640);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(244, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(208, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.simpleButtonSystemSaveCancel;
-            this.layoutControlItem3.Location = new System.Drawing.Point(244, 640);
+            this.layoutControlItem3.Location = new System.Drawing.Point(208, 640);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(244, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(209, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -1220,16 +1242,17 @@
             this.layoutControlItem1.Control = this.vGridControlSystemParameters;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(488, 640);
+            this.layoutControlItem1.Size = new System.Drawing.Size(417, 640);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // SystemEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 668);
+            this.ClientSize = new System.Drawing.Size(419, 668);
             this.Controls.Add(this.layoutControl1);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "SystemEditor";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -155,7 +155,7 @@ namespace atOpticalDecenter
         }
         private void barButtonItemSystemEditor_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SystemEditor editor = new SystemEditor();
+            SystemEditor editor = new SystemEditor(_systemParams._SystemLanguageKoreaUse);
 
             editor.ShowDialog();
             string strTemp = string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.SystemFileName);
@@ -233,6 +233,9 @@ namespace atOpticalDecenter
                 mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "파일 시스템을 설정 및 로드 시작");
 
                 // System 초기화
+                if (_systemParams != null)
+                    pledSpotInspectionInfomation.ChangeSystemLanguage(_systemParams._SystemLanguageKoreaUse);
+                
                 // Camera 연결
                 if (InitializeCamera())
                 {
@@ -243,6 +246,7 @@ namespace atOpticalDecenter
                 else
                     mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("카메라 초기화 실패"));
 
+                InitailProgramFormLanguage();
                 InitializeAiCModule();
                 InitializeARMRemoteIOModule();                
 
@@ -293,7 +297,7 @@ namespace atOpticalDecenter
                 pictureEditActuatorZ.Image = _BaseZImage;
                 FilterActuatorImageZFitSize();
                 strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "Z_Actuator.png");
-                _ActuatorZImage = System.Drawing.Image.FromFile(strTemp);
+                _ActuatorZImage = System.Drawing.Image.FromFile(strTemp);                
                 if (!_IsHommingFinished)
                 {
                     if (MessageBox.Show("원점복귀를 진행을 합니다.","원점복귀",MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -558,6 +562,9 @@ namespace atOpticalDecenter
         }
         public bool InitializeAiCModule()
         {
+            if (_systemParams != null)
+                MotionControl.ChangeSystemLanguage(_systemParams._SystemLanguageKoreaUse);
+
             MotionControl.SetCommunicateManager(ref _mMotionControlCommManager);
             MotionControl.SetMotionParam(ref _systemParams._motionParams);
             byte[] _id = new byte[3];
@@ -587,6 +594,9 @@ namespace atOpticalDecenter
 
         public bool InitializeARMRemoteIOModule()
         {
+            if (_systemParams != null)
+                RemoteIOControl.ChangeSystemLanguage(_systemParams._SystemLanguageKoreaUse);
+
             RemoteIOControl.SetCommunicateManager(ref _mRemteIOCommManager);
             byte[] _id = new byte[_systemParams._remoteIOParams.ConnectedNumber];
 
@@ -693,8 +703,17 @@ namespace atOpticalDecenter
                 RecipeFileIO.WriteInspectionStatisticsFile(strTemp, _statistics);
             }
 
-            barEditItemTotalInspectionCount.EditValue = string.Format("총 검사 수: {0:00000}", _statistics.TotalCount);
-            barEditItemTotalFailCount.EditValue = string.Format("불합격: {0:00000}", _statistics.FailCount);
+            if (_systemParams._SystemLanguageKoreaUse)
+            {
+                barEditItemTotalInspectionCount.EditValue = string.Format("총 검사 수: {0:00000}", _statistics.TotalCount);
+                barEditItemTotalFailCount.EditValue = string.Format("불합격: {0:00000}", _statistics.FailCount);
+            }
+            else
+            {
+                barEditItemTotalInspectionCount.EditValue = string.Format("Total Count: {0:00000}", _statistics.TotalCount);
+                barEditItemTotalFailCount.EditValue = string.Format("Fail Count: {0:00000}", _statistics.FailCount);
+            }
+
 
             // Variable Init.
             if (_currentStatistics.Statistics.Count == 0)
@@ -866,9 +885,12 @@ namespace atOpticalDecenter
         }
         private void barButtonItemRecipeEditorOpen_ItemClick(object sender, ItemClickEventArgs e)
         {
-            RecipeEditor edit = new RecipeEditor();
-            edit.SetSystemParam(_systemParams);
-            edit.Show(this);
+            if (_systemParams != null)
+            {
+                RecipeEditor edit = new RecipeEditor(_systemParams._SystemLanguageKoreaUse);
+                edit.SetSystemParam(_systemParams);
+                edit.Show(this);
+            }
         }
 
         private void barListItemRecipeOpen_ItemClick(object sender, ItemClickEventArgs e)
@@ -2778,8 +2800,16 @@ namespace atOpticalDecenter
                 _statistics.FailCount = 0;
                 _statistics.PassCount = 0;
 
-                barEditItemTotalInspectionCount.EditValue = string.Format("총 검사 수: {0:00000}", _statistics.TotalCount);
-                barEditItemTotalFailCount.EditValue = string.Format("불합격: {0:00000}", _statistics.FailCount);
+                if (_systemParams._SystemLanguageKoreaUse)
+                {
+                    barEditItemTotalInspectionCount.EditValue = string.Format("총 검사 수: {0:00000}", _statistics.TotalCount);
+                    barEditItemTotalFailCount.EditValue = string.Format("불합격: {0:00000}", _statistics.FailCount);
+                }
+                else
+                {
+                    barEditItemTotalInspectionCount.EditValue = string.Format("Total Count: {0:00000}", _statistics.TotalCount);
+                    barEditItemTotalFailCount.EditValue = string.Format("Fail Count: {0:00000}", _statistics.FailCount);
+                }
 
                 for (int i = 0; i < _statistics.Statistics.Count; ++i)
                 {
@@ -2926,7 +2956,7 @@ namespace atOpticalDecenter
         private void barButtonItemWorkInfo_ItemClick(object sender, ItemClickEventArgs e)
         {
             //LogInForm logInForm = new LogInForm(_admsEquipment.WorkerID, _admsEquipment.WorkerName, _admsEquipment.JobInformation);
-            LoginForm logInForm = new LoginForm();
+            LoginForm logInForm = new LoginForm(_systemParams._SystemLanguageKoreaUse);
             if (logInForm.ShowDialog() == DialogResult.OK)
             {
                 if (_admsEquipment.WorkerID.Equals(logInForm.WorkerID) && _admsEquipment.WorkerName.Equals(logInForm.WorkerName) && _admsEquipment.JobInformation.Equals(logInForm.JobInformation))
@@ -3473,5 +3503,215 @@ namespace atOpticalDecenter
                 Brushes.LightGreen, new PointF(10, 10));
             */
         }
+        private void InitailProgramFormLanguage()
+        {
+            if (!_systemParams._SystemLanguageKoreaUse)
+            {
+                ribbonPageEquipementFunctions.Text = "Function";
+
+                ribbonSystemPage.Text = "Set System";
+                barButtonItemSystemFolderPathSetting.Caption = "Set Path";
+                barButtonItemSystemEditor.Caption = "Set Parameter";
+                barButtonItemWorkInfo.Caption = "Login Information";
+
+                ribbonPageGroupFile.Text = "Recipe";
+                barButtonItemRecipeOpen.Caption = "Load";
+                barButtonItemRecipeEditorOpen.Caption = "Recipe Editor";
+                barListItemRecipeOpen.Caption = "Open";
+
+                barButtonItemImageOpen.Caption = "Open";
+                barButtonItemImageSave.Caption = "Save";
+                barCheckItemImageCrop.Caption = "Image Crop";
+                barButtonItemCameraListRefresh.Caption = "Search Camera";
+                barButtonItemSingleShot.Caption = "Single";
+                barButtonItemContinueousShot.Caption = "Contiueous";
+                barButtonItemCameraStop.Caption = "Stop";
+                barButtonItemImageZoomIn.Caption = "ZoomIn";
+                barButtonItemImageZoomOut.Caption = "ZoomOut";
+                barButtonItemImageOriginSize.Caption = "OriginSize";
+                barButtonItemFitSize.Caption = "FitSize";
+                barCheckItemShowCenterMark.Caption = "CenterMark";
+
+                ribbonPageGroupCamera.Text = "Camera";
+                ribbonPageGroupImageViewer.Text = "ImageView";
+
+                xtraTabPageCamera.Text = "Set Camera";
+                categoryCamera.Properties.Caption = "Camera";
+                rowCameraConnect.Properties.Caption = "Connect";
+                rowCameraName.Properties.Caption = "Camera Name";
+                rowCameraHResolution.Properties.Caption = "Horizon Pixel[pixel]";
+                rowCameraVResolution.Properties.Caption = "Vertical Pixel[pixel]";
+                rowCameraFrame.Properties.Caption = "Frame[fps]";
+                rowCameraExposureTime.Properties.Caption = "Exposure Time[us]";
+                rowCameraGain.Properties.Caption = "Gain";
+                xtraTabPageImageProcess.Text = "Image Process";
+                MenualOpticalInspectButton.Text = "Optical Inspection";
+                categorySpotInpsect.Properties.Caption = "Optical Inspection";
+                rowInspectSpotProductType.Properties.Caption = "Product Type";
+                rowInspectSpotProductDistance.Properties.Caption = "Product Distance[mm]";
+                rowInspectSpotInspectDistance.Properties.Caption = "Inspection Distance[mm]";
+                rowInspectSpotCameraDistance.Properties.Caption = "Camera Moving Distance[mm]";
+                rowInspectSpot1ImagePath.Properties.Caption = "Spot1 Image Path";
+                rowInspectSpot1Image.Properties.Caption = "Spot1 Image";
+                rowInspectSpot2ImagePath.Properties.Caption = "Spot2 Image Path";
+                rowInspectSpot2Image.Properties.Caption = "Spot2 Image";
+                rowInspectSpotThresholdH.Properties.Caption = "Horizon Threshold[0~255]";
+                rowInspectSpotThresholdV.Properties.Caption = "Vertical Threshold[0~255]";
+                rowInspectSpotBlobSizeMin.Properties.Caption = "Min Spot Size";
+                rowInspectSpotBlobSizeMax.Properties.Caption = "Max Spot Size";
+                rowInspectAlignmentDistance.Properties.Caption = "Optical Eccentricity Value[mm]";
+                rowInspectDivergenceAngle.Properties.Caption = "DivergenceAngle Value[˚]";
+                menualPatternMatchingButton.Text = "Pattern Matching";
+                MenualInspectButton.Text = "Optical Inspection";
+                categoryPatternMaching.Properties.Caption = "Pattern Matching";
+                rowTempletePath.Properties.Caption = "Templete Path";
+                rowTempleteImage.Properties.Caption = "Templete Image";
+                rowrThresholdValue.Properties.Caption = "Threshold";
+                rowResultPosition.Properties.Caption = "Result Position";
+                categoryRecipe.Properties.Caption = "Optical Inspection";
+                rowSpotImagePath.Properties.Caption = "Spot Image Path";
+                rowSpotImage.Properties.Caption = "Spot Image";
+                rowThresholdH.Properties.Caption = "Threshold Horizon[0~255]";
+                rowThresholdV.Properties.Caption = "Threshold Vertical[0~255]";
+                rowSpotBlobHSizeMin.Properties.Caption = "Min Spot Size[mm]";
+                rowSpotBlobHSizeMax.Properties.Caption = "Max Spot Size[mm]";
+                rowAlignmentDistance.Properties.Caption = "Optical Eccentricity Value[mm]";
+                rowDivergenceAngle.Properties.Caption = "DivergenceAngle Value[˚]";
+
+                ribbonPageGroupConnection.Text = "Communication";
+                barButtonItemConnectAll.Caption = "Connection All";
+                barButtonItemConnectionAiC.Caption = "AiC";
+                barButtonItemConnectionRemeteIO.Caption = "Remote I/O";
+
+                ribbonPageGroupMotionControl.Text = "Motion Control";
+                barButtonItemHomming.Caption = "Homming";
+                barButtonItemReset.Caption = "Alram Reset";
+
+                ribbonPageGroupInspection.Text = "Inspection And Result";
+                barCheckItemInspectionStart.Caption = "Start";
+                barStaticItemInspectionStatus.Caption = "Status";
+                barStaticItemInspectionTime.Caption = "Time:";
+                barEditItemInspectionResult.EditValue = "Ready";
+                barEditItemTotalInspectionCount.EditValue = "Total Count: 00000";
+                barEditItemTotalFailCount.EditValue = "Fail Count: 00000";
+                barButtonItemInitializeStatistics.Caption = "Initial Chart";
+
+                dockPanelLogView.Text = "Log";
+                gridColumn1.Caption = "Level";
+                gridColumn2.Caption = "Time";
+                gridColumn3.Caption = "Path";
+                gridColumn4.Caption = "Message";
+
+                dockPanelMainSetting.Text = "Setting";
+                xtraTabPageMotionControl.Text = "Motion Control";
+                xtraTabPageRemoteIO.Text = "Remote I/O";
+                xtraTabPageInspectResult.Text = "Inspection Result";
+                xtraTabPageStatistics.Text = "Chart";
+            }
+            else
+            {
+                ribbonPageEquipementFunctions.Text = "기능설정";
+
+                ribbonSystemPage.Text = "시스템 설정";
+                barButtonItemSystemFolderPathSetting.Caption = "경로설정";
+                barButtonItemSystemEditor.Caption = "시스템 설정";
+                barButtonItemWorkInfo.Caption = "로그인 정보";
+
+                ribbonPageGroupFile.Text = "레시피";
+                barButtonItemRecipeOpen.Caption = "불러오기";
+                barButtonItemRecipeEditorOpen.Caption = "레시피 편집기";
+                barListItemRecipeOpen.Caption = "레시피 선택";
+
+                barButtonItemImageOpen.Caption = "불러오기";
+                barButtonItemImageSave.Caption = "저장하기";
+                barCheckItemImageCrop.Caption = "템플릿 자르기";
+                barButtonItemCameraListRefresh.Caption = "카메라검색";
+                barButtonItemSingleShot.Caption = "싱글샷";
+                barButtonItemContinueousShot.Caption = "연속샷";
+                barButtonItemCameraStop.Caption = "정지";
+                barButtonItemImageZoomIn.Caption = "확대";
+                barButtonItemImageZoomOut.Caption = "축소";
+                barButtonItemImageOriginSize.Caption = "원래크기";
+                barButtonItemFitSize.Caption = "화면 맞춤";
+                barCheckItemShowCenterMark.Caption = "중심선 보기";
+
+                ribbonPageGroupCamera.Text = "카메라";
+                ribbonPageGroupImageViewer.Text = "화면보기";
+
+                xtraTabPageCamera.Text = "카메라 설정";
+                categoryCamera.Properties.Caption = "카메라";
+                rowCameraConnect.Properties.Caption = "카메라 연결";
+                rowCameraName.Properties.Caption = "카메라 이름";
+                rowCameraHResolution.Properties.Caption = "카메라 가로해상도[pixel]";
+                rowCameraVResolution.Properties.Caption = "카메라 세로해상도[pixel]";
+                rowCameraFrame.Properties.Caption = "카메라 프레임[fps]";
+                rowCameraExposureTime.Properties.Caption = "카메라 노출시간[us]";
+                rowCameraGain.Properties.Caption = "카메라 게인";
+                xtraTabPageImageProcess.Text = "이미지 처리";
+                MenualOpticalInspectButton.Text = "투광 발산각 계산";
+                categorySpotInpsect.Properties.Caption = "투광 검사";
+                rowInspectSpotProductType.Properties.Caption = "투광 제품 타입";
+                rowInspectSpotProductDistance.Properties.Caption = "제품 정격 거리[mm]";
+                rowInspectSpotInspectDistance.Properties.Caption = "단축 검사 거리[mm]";
+                rowInspectSpotCameraDistance.Properties.Caption = "카메라 이동거리[mm]";
+                rowInspectSpot1ImagePath.Properties.Caption = "광원1 이미지 경로";
+                rowInspectSpot1Image.Properties.Caption = "광원1 이미지";
+                rowInspectSpot2ImagePath.Properties.Caption = "광원2 이미지 경로";
+                rowInspectSpot2Image.Properties.Caption = "광원2 이미지";
+                rowInspectSpotThresholdH.Properties.Caption = "수평 인식 임계값[0~255]";
+                rowInspectSpotThresholdV.Properties.Caption = "수직 인식 임계값[0~255]";
+                rowInspectSpotBlobSizeMin.Properties.Caption = "광원 최소 크기";
+                rowInspectSpotBlobSizeMax.Properties.Caption = "광원 최대 크기";
+                rowInspectAlignmentDistance.Properties.Caption = "편심 합격거리[mm]";
+                rowInspectDivergenceAngle.Properties.Caption = "발산각 합격 각도";
+                menualPatternMatchingButton.Text = "패턴 매칭";
+                MenualInspectButton.Text = "광특성 검사";
+                categoryPatternMaching.Properties.Caption = "패턴 매칭";
+                rowTempletePath.Properties.Caption = "템플릿 경로";
+                rowTempleteImage.Properties.Caption = "템플릿 이미지";
+                rowrThresholdValue.Properties.Caption = "매칭 임계값";
+                rowResultPosition.Properties.Caption = "결과 중심점";
+                categoryRecipe.Properties.Caption = "광 특성 검사";
+                rowSpotImagePath.Properties.Caption = "광원 이미지경로";
+                rowSpotImage.Properties.Caption = "광원 이미지";
+                rowThresholdH.Properties.Caption = "수평 인식 임계값[0~255]";
+                rowThresholdV.Properties.Caption = "수직 인식 임계값[0~255]";
+                rowSpotBlobHSizeMin.Properties.Caption = "광원 최소크기[mm]";
+                rowSpotBlobHSizeMax.Properties.Caption = "광원 최대크기[mm]";
+                rowAlignmentDistance.Properties.Caption = "편심 합격거리[mm]";
+                rowDivergenceAngle.Properties.Caption = "발산각 합격각도[˚]";
+
+                ribbonPageGroupConnection.Text = "통신 연결";
+                barButtonItemConnectAll.Caption = "전체 연결";
+                barButtonItemConnectionAiC.Caption = "AiC";
+                barButtonItemConnectionRemeteIO.Caption = "Remote I/O";
+
+                ribbonPageGroupMotionControl.Text = "모션 제어";
+                barButtonItemHomming.Caption = "원점 복귀";
+                barButtonItemReset.Caption = "알람 리셋";
+
+                ribbonPageGroupInspection.Text = "검사 및 결과";
+                barCheckItemInspectionStart.Caption = "검사 시작";
+                barStaticItemInspectionStatus.Caption = "진행";
+                barStaticItemInspectionTime.Caption = "검사 시간:";
+                barEditItemInspectionResult.EditValue = "Ready";
+                barEditItemTotalInspectionCount.EditValue = "총 검사 수: 00000";
+                barEditItemTotalFailCount.EditValue = "불합격 수: 00000";
+                barButtonItemInitializeStatistics.Caption = "통계 초기화";
+
+                dockPanelLogView.Text = "로그";
+                gridColumn1.Caption = "레벨";
+                gridColumn2.Caption = "시간";
+                gridColumn3.Caption = "위치";
+                gridColumn4.Caption = "메세지";
+
+                dockPanelMainSetting.Text = "주요 설정";
+                xtraTabPageMotionControl.Text = "모션 제어";
+                xtraTabPageRemoteIO.Text = "리모트 I/O";
+                xtraTabPageInspectResult.Text = "검사 결과";
+                xtraTabPageStatistics.Text = "통계";
+            }
+        }
+
     }
 }
