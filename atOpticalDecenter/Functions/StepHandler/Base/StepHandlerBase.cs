@@ -203,6 +203,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                     mInspectResultData.fMeasureP1X = posx;
                     mInspectResultData.fMeasureP1Y = posy + ((mFirstLedSpot.CenterX - (_ImageResolution_H / 2)) * fOnePixelResolution);
                     mInspectResultData.fMeasureP1Z = posz + ((mFirstLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
+                    mInspectResultData.fOpticalCenterPositionX = posx;
+                    mInspectResultData.fOpticalCenterPositionY = posy;
+                    mInspectResultData.fOpticalCenterPositionZ = posz;
                     Array.Copy(_dHist_H,0,mInspectResultData._ImageHist_H,0,_dHist_H.Length);
                     Array.Copy(_dHist_V,0,mInspectResultData._ImageHist_V,0,_dHist_V.Length);
                     LedSpotBlobUpdate(mFirstLedSpot);

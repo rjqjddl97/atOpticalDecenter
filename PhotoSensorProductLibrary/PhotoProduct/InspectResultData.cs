@@ -204,7 +204,8 @@ namespace PhotoProduct
             fDecenterZ = ((-fMeasureP1X / fLineVectorX) * fLineVectorZ) + fMeasureP1Z;
 
 
-            fOpticalEccentricity = Math.Sqrt(Math.Pow((fDecenterY - fMeasureP1Y), 2) + Math.Pow((fDecenterZ - fMeasureP1Z), 2));
+            //fOpticalEccentricity = Math.Sqrt(Math.Pow((fDecenterY - fMeasureP1Y), 2) + Math.Pow((fDecenterZ - fMeasureP1Z), 2));
+            fOpticalEccentricity = Math.Sqrt(Math.Pow((fDecenterY - fOpticalCenterPositionY), 2) + Math.Pow((fDecenterZ - fOpticalCenterPositionZ), 2));
             return true;
         }
         public void CalcOpticalReduceQuantity(int producttype)

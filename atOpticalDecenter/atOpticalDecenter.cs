@@ -3433,6 +3433,8 @@ namespace atOpticalDecenter
             float fScale = height / 100f;
             float onePixelResolution = 0.1F;        // 100 pixel per 10 mm
             float threshold = 5.0F;
+            float foptincalposy = 0.0f;
+            float foptincalposz = 0.0f;
 
             Pen pen = new Pen(Brushes.White, 1f);
             pen.DashStyle = DashStyle.Dash;
@@ -3440,23 +3442,29 @@ namespace atOpticalDecenter
             // 중심선 라인 그리기
             e.Graphics.DrawLine(pen, new Point(0, height / 2), new Point(width, height / 2));
             e.Graphics.DrawLine(pen, new Point(width / 2, 0), new Point(width / 2, height));
-            
+
             // 중심에서 5mm 원 그리기
-            e.Graphics.DrawEllipse(pen, (fptCenter.X - threshold / onePixelResolution * fScale), (fptCenter.Y - threshold / onePixelResolution * fScale), threshold * 2f / onePixelResolution * fScale, threshold * 2f / onePixelResolution * fScale);
+            e.Graphics.DrawEllipse(pen, (fptCenter.X - (threshold / onePixelResolution * fScale)), (fptCenter.Y - (threshold / onePixelResolution * fScale)), threshold * 2f / onePixelResolution * fScale, threshold * 2f / onePixelResolution * fScale);
+            //e.Graphics.DrawEllipse(pen, (fptCenter.X), (fptCenter.Y), threshold * 2f / onePixelResolution * fScale, threshold * 2f / onePixelResolution * fScale);
             if (_InspectionResult)
             {
                 for (int i = 0; i < _workParams.InspectionPositions.Count; i++)
                 {
                     if (_workParams.InspectionPositions[i].ePositionType == INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE)
                     {
-                        PointF fDiff = new PointF((_workParams.InspectionPositions[i].PositionY - (float)mResultData.fDecenterY) * fScale,
-                                                  (_workParams.InspectionPositions[i].PositionZ - (float)mResultData.fDecenterZ) * fScale);
-                        Pen greenPen = new Pen(Brushes.LightGreen, 2f);
+                        PointF fDiff = new PointF( (((float)mResultData.fDecenterY - _workParams.InspectionPositions[i].PositionY)) * fScale / onePixelResolution,
+                                                  (((float)mResultData.fDecenterZ - _workParams.InspectionPositions[i].PositionZ)) * fScale / onePixelResolution);
+                        Pen greenPen = new Pen(Brushes.LightGreen, 2f );
 
                         e.Graphics.DrawLine(greenPen, new PointF(fptCenter.X + fDiff.X - 10, fptCenter.Y + fDiff.Y), new PointF(fptCenter.X + fDiff.X + 10, fptCenter.Y + fDiff.Y));
                         e.Graphics.DrawLine(greenPen, new PointF(fptCenter.X + fDiff.X, fptCenter.Y + fDiff.Y - 10), new PointF(fptCenter.X + fDiff.X, fptCenter.Y + fDiff.Y + 10));
+                        foptincalposy = _workParams.InspectionPositions[i].PositionY;
+                        foptincalposz = _workParams.InspectionPositions[i].PositionZ;
                     }
                 }
+                e.Graphics.DrawString(string.Format("Optical Position Offset: {0:00.000},{1:00.000}", mResultData.fDecenterY - foptincalposy, mResultData.fDecenterZ - foptincalposz),
+                    new Font(FontFamily.GenericSansSerif, 8f, FontStyle.Underline),
+                    Brushes.LightGreen, new PointF(10, height - 20));
             }
 
             /*
