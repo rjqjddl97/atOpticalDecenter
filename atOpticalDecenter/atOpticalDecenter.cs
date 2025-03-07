@@ -57,6 +57,7 @@ namespace atOpticalDecenter
         DBControl _JobWorkDbCtrl = new DBControl();
         ADMSEquipmentInfo _admsEquipment = new ADMSEquipmentInfo();
         ADMSProductInfo _admsProduct = new ADMSProductInfo();
+        BackgroundWorker _bwMotionHome = new BackgroundWorker();
 
         bool _isInspecting = false;
         bool _isInspectionDone = false;
@@ -298,25 +299,8 @@ namespace atOpticalDecenter
                 FilterActuatorImageZFitSize();
                 strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "Z_Actuator.png");
                 _ActuatorZImage = System.Drawing.Image.FromFile(strTemp);                
-                if (!_IsHommingFinished)
-                {
-                    if (MessageBox.Show("원점복귀를 진행을 합니다.","원점복귀",MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        if (_mMotionControlCommManager.IsOpen())
-                        {
-                            byte[] SeData = new byte[8];
-                            for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
-                            {
-                                SeData = _mMotionControlCommManager.mDrvCtrl.HomeStartCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
-                                _mMotionControlCommManager.SendData(SeData);
-                            }
-                            _IsHommingFinished = true;                            
-                        }
-                        else
-                            _IsHommingFinished = false;
-                        mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
-                    }
-                }
+                _bwMotionHome.RunWorkerAsync(mRobotInformation);
+                AutoStartButtonLock();
             }
             catch (Exception ex)
             {
@@ -357,7 +341,9 @@ namespace atOpticalDecenter
             _backgroundWorkerOpticalDecenterInspection.WorkerSupportsCancellation = true;
             _backgroundWorkerOpticalDecenterInspection.DoWork += new DoWorkEventHandler(backgroundWorkerInspection_DoWork);
             _backgroundWorkerOpticalDecenterInspection.ProgressChanged += new ProgressChangedEventHandler(backgroundWorkerInspection_ProgressChanged);
-            _backgroundWorkerOpticalDecenterInspection.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerInspection_RunWorkerCompleted);            
+            _backgroundWorkerOpticalDecenterInspection.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerInspection_RunWorkerCompleted);
+            _bwMotionHome.DoWork += new DoWorkEventHandler(backgroundWorkerMotionHome_DoWork);
+            _bwMotionHome.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerMotionHome_RunWorkerCompleted);
         }
         private void LogUpdated(object obj, LogEventArgs e)
         {
@@ -3244,19 +3230,34 @@ namespace atOpticalDecenter
 
         private void barButtonItemHomming_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (_mMotionControlCommManager.IsOpen())
+            try
             {
-                if (MessageBox.Show("원점복귀를 진행을 합니다.", "원점복귀", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (!_bwMotionHome.IsBusy)
                 {
-                    byte[] SeData = new byte[8];
-                    for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
-                    {
-                        SeData = _mMotionControlCommManager.mDrvCtrl.HomeStartCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
-                        _mMotionControlCommManager.SendData(SeData);
-                    }
-                    _IsHommingFinished = true;
+                    _IsHommingFinished = false;
                     mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
+                    _bwMotionHome.RunWorkerAsync(mRobotInformation);
+                    AutoStartButtonLock();
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "Motion Homing 시작");
+                    //if (_mMotionControlCommManager.IsOpen())
+                    //{
+                    //    if (MessageBox.Show("원점복귀를 진행을 합니다.", "원점복귀", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    //    {
+                    //        byte[] SeData = new byte[8];
+                    //        for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                    //        {
+                    //            SeData = _mMotionControlCommManager.mDrvCtrl.HomeStartCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
+                    //            _mMotionControlCommManager.SendData(SeData);
+                    //        }
+                    //        _IsHommingFinished = true;
+                    //        mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
+                    //    }
+                    //}
                 }
+            }
+            catch (Exception ex)
+            {
+                ;
             }
         }
         private void barButtonItemReset_ItemClick(object sender, ItemClickEventArgs e)
@@ -3270,7 +3271,8 @@ namespace atOpticalDecenter
                     {
                         SeData = _mMotionControlCommManager.mDrvCtrl.AlarmResetCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
                         _mMotionControlCommManager.SendData(SeData);
-                    }                    
+                    }
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "알람 리셋");
                 }
             }
         }
@@ -3282,7 +3284,8 @@ namespace atOpticalDecenter
             ribbonPageGroupCamera.Enabled = false;
             ribbonPageGroupImageViewer.Enabled = false;
             ribbonPageGroupConnection.Enabled = false;
-            ribbonPageGroupMotionControl.Enabled = false;
+            //ribbonPageGroupMotionControl.Enabled = false;
+            xtraTabControlMainSetup.Enabled = false;
         }
         public void AutoStartButtonRelease()
         {
@@ -3292,7 +3295,8 @@ namespace atOpticalDecenter
             ribbonPageGroupCamera.Enabled = true;
             ribbonPageGroupImageViewer.Enabled = true;
             ribbonPageGroupConnection.Enabled = true;
-            ribbonPageGroupMotionControl.Enabled = true;
+            //ribbonPageGroupMotionControl.Enabled = true;
+            xtraTabControlMainSetup.Enabled = true;
         }
         private void FilterActuatorImageXFitSize()
         {

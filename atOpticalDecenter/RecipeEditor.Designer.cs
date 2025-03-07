@@ -561,7 +561,7 @@
             this.rowLEDInspectionWorkAreaLeft.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowLEDInspectionWorkAreaLeft.Name = "rowLEDInspectionWorkAreaLeft";
             this.rowLEDInspectionWorkAreaLeft.Properties.Caption = "검사 영역 X점[픽셀]";
-            this.rowLEDInspectionWorkAreaLeft.Properties.Value = 200;
+            this.rowLEDInspectionWorkAreaLeft.Properties.Value = 1;
             // 
             // rowLEDInspectionWorkAreaTop
             // 
@@ -570,7 +570,7 @@
             this.rowLEDInspectionWorkAreaTop.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowLEDInspectionWorkAreaTop.Name = "rowLEDInspectionWorkAreaTop";
             this.rowLEDInspectionWorkAreaTop.Properties.Caption = "검사 영역 Y점[픽셀]";
-            this.rowLEDInspectionWorkAreaTop.Properties.Value = 300;
+            this.rowLEDInspectionWorkAreaTop.Properties.Value = 1;
             // 
             // rowLEDInspectionWorkAreaWidth
             // 
@@ -579,7 +579,7 @@
             this.rowLEDInspectionWorkAreaWidth.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowLEDInspectionWorkAreaWidth.Name = "rowLEDInspectionWorkAreaWidth";
             this.rowLEDInspectionWorkAreaWidth.Properties.Caption = "검사 영역 폭[픽셀]";
-            this.rowLEDInspectionWorkAreaWidth.Properties.Value = 600;
+            this.rowLEDInspectionWorkAreaWidth.Properties.Value = 1599;
             // 
             // rowLEDInspectionWorkAreaHeight
             // 
@@ -588,7 +588,7 @@
             this.rowLEDInspectionWorkAreaHeight.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowLEDInspectionWorkAreaHeight.Name = "rowLEDInspectionWorkAreaHeight";
             this.rowLEDInspectionWorkAreaHeight.Properties.Caption = "검사 영역 높이[픽셀]";
-            this.rowLEDInspectionWorkAreaHeight.Properties.Value = 600;
+            this.rowLEDInspectionWorkAreaHeight.Properties.Value = 1199;
             // 
             // layoutControl3
             // 

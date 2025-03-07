@@ -68,10 +68,10 @@ namespace atOpticalDecenter
                 rowLEDInspectionSpotMaxSize.Properties.Caption = "Max Spot Size[mm]";
                 rowLEDInspectionAlignmentDistance.Properties.Caption = "Reference Eccentricity[mm]";
                 rowLEDInspectionDivergenceAngle.Properties.Caption = "Reference Divergence Angle[˚]";
-                rowLEDInspectionWorkAreaLeft.Properties.Caption = "ROI Left[픽셀]";
-                rowLEDInspectionWorkAreaTop.Properties.Caption = "ROI Top[픽셀]";
-                rowLEDInspectionWorkAreaWidth.Properties.Caption = "ROI Width[픽셀]";
-                rowLEDInspectionWorkAreaHeight.Properties.Caption = "ROI Height[픽셀]";
+                rowLEDInspectionWorkAreaLeft.Properties.Caption = "ROI Left[Pixel]";
+                rowLEDInspectionWorkAreaTop.Properties.Caption = "ROI Top[Pixel]";
+                rowLEDInspectionWorkAreaWidth.Properties.Caption = "ROI Width[Pixel]";
+                rowLEDInspectionWorkAreaHeight.Properties.Caption = "ROI Height[Pixel]";
 
                 groupControl2.Text = "Setup Recipe";
                 groupControl1.Text = "Inspection Information";

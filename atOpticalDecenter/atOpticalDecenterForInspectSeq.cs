@@ -36,6 +36,7 @@ namespace atOpticalDecenter
         private List<Functions.StepHandler.Base.IStepHandler> mPhotoInspectionList = new List<Functions.StepHandler.Base.IStepHandler>();
         private InspectionStepType mInspectStep = InspectionStepType.Idle;
         bool _InspectionWorking = false;
+        bool _HommingProcess = false;
         bool _InspectionResult = false;
         public InspectResultData mResultData = new InspectResultData();
         public RobotInformation mRobotInformation = new RobotInformation();
@@ -179,6 +180,57 @@ namespace atOpticalDecenter
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step8CalculateResult());
 
             }
+        }
+        private void backgroundWorkerMotionHome_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                RobotInformation info = e.Argument as RobotInformation;
+                if (sender is BackgroundWorker worker)
+                {
+                    if (_mMotionControlCommManager.IsOpen())
+                    {
+                        if (!_IsHommingFinished)
+                        {
+                            if (MessageBox.Show("원점복귀를 진행을 합니다.", "원점복귀", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly) == DialogResult.Yes)
+                            {
+                                byte[] SeData = new byte[8];
+                                for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                                {
+                                    SeData = _mMotionControlCommManager.mDrvCtrl.HomeStartCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
+                                    _mMotionControlCommManager.SendData(SeData);
+                                }
+                                _HommingProcess = true;
+                                //mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
+                            }
+                            Thread.Sleep(3000);
+                            while (_HommingProcess)              // Inpsotion, Servo On Satus
+                            {
+                                Thread.Sleep(500);
+                                if ((info.mStatus & 0x00000042) == 0x00000042)
+                                {
+                                    _HommingProcess = false;
+                                }
+                            }
+                        }
+
+                    }
+                    else
+                        _IsHommingFinished = false;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                mLog.WriteLog(LogLevel.Warn, LogClass.atPhoto.ToString(), string.Format("{0}\r\n{1}", ex.Message, ex.StackTrace));
+            }
+        }
+        private void backgroundWorkerMotionHome_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            _IsHommingFinished = true;
+            mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
+            AutoStartButtonRelease();
+            mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "Motion Homing 종료");
         }
         private void MakeDryRunList()
         {
