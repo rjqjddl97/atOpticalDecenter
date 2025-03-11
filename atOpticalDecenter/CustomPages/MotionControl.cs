@@ -1786,8 +1786,15 @@ namespace CustomPages
                     //if ((_mAiCCommunicationManager.IsOpen()) && (_isRobotEnable))
                     if ( (_mAiCCommunicationManager.IsOpen()) )
                     {
-                        byte[] data = new byte[32];
-
+                        byte[] data = new byte[100];
+                        data = _mAiCCommunicationManager.mDrvCtrl.MoveTargetPositionSendData((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[0], Convert.ToInt32(Convert.ToDouble(textEditTargetPosX.Text) * _MotionParam.MM2PulseRatioX));
+                        _mAiCCommunicationManager.SendData(data);
+                        data = _mAiCCommunicationManager.mDrvCtrl.MoveTargetPositionSendData((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[1], Convert.ToInt32(Convert.ToDouble(textEditTargetPosY.Text) * _MotionParam.MM2PulseRatioY));
+                        _mAiCCommunicationManager.SendData(data);
+                        data = _mAiCCommunicationManager.mDrvCtrl.MoveTargetPositionSendData((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[2], Convert.ToInt32(Convert.ToDouble(textEditTargetPosZ.Text) * _MotionParam.MM2PulseRatioZ));
+                        _mAiCCommunicationManager.SendData(data);
+                        //Thread.Sleep(1000);
+                        Task.Delay(500);
                         data = _mAiCData.MoveAbsoluteCommand(129);
 
                         _mAiCCommunicationManager.SendData(data);
@@ -1859,8 +1866,9 @@ namespace CustomPages
                 {
                     if ((_mAiCCommunicationManager.IsOpen()) && (_isRobotEnable))
                     {
-                        // Send Move Stop Command                        
-                        //_mAiCCommunicationManager.SendCommand(UserCodesysData.Protocol_MSG.MSG_CMD_MOVE_STOP, null);
+                        byte[] data = new byte[8];
+                        data = _mAiCData.MoveStopCommand(129);
+                        _mAiCCommunicationManager.SendData(data);
                     }
                 }
             }
