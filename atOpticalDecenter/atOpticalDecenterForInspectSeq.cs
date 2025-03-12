@@ -178,7 +178,6 @@ namespace atOpticalDecenter
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step6Spot2Measure());
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step7SensorPowerOff());
                 mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step8CalculateResult());
-
             }
         }
         private void backgroundWorkerMotionHome_DoWork(object sender, DoWorkEventArgs e)
@@ -202,6 +201,7 @@ namespace atOpticalDecenter
                                 }
                                 _HommingProcess = true;
                                 //mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
+                                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("원점 복귀 실행을 시작합니다."));
                             }
                             Thread.Sleep(3000);
                             while (_HommingProcess)              // Inpsotion, Servo On Satus
@@ -230,7 +230,7 @@ namespace atOpticalDecenter
             _IsHommingFinished = true;
             mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
             AutoStartButtonRelease();
-            mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "Motion Homing 종료");
+            mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "원점 복귀 실행 종료합니다.");
         }
         private void MakeDryRunList()
         {

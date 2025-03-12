@@ -3423,9 +3423,12 @@ namespace atOpticalDecenter
                 float fScale = (float)(pictureEditActuatorX.Properties.ZoomPercent / 100.0f);
                 Graphics gp = e.Graphics;
                 string strpos = string.Empty;
-                strpos = "Position X :" + string.Format("{0:000.00}", mRobotInformation.PositionX);
-                //gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorX.Image.Height - 30) * fScale));
-                gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, 10));
+                if (_mMotionControlCommManager.IsOpen())
+                {
+                    strpos = "Position X :" + string.Format("{0:000.00}", mRobotInformation.PositionX);
+                    //gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorX.Image.Height - 30) * fScale));
+                    gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, 10));
+                }
             }
         }
 
@@ -3436,8 +3439,11 @@ namespace atOpticalDecenter
                 float fScale = (float)(pictureEditActuatorY.Properties.ZoomPercent / 100.0f);
                 Graphics gp = e.Graphics;
                 string strpos = string.Empty;
-                strpos = "Position Y :" + string.Format("{0:000.00}", mRobotInformation.PositionY);
-                gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorY.Image.Height - 30) * fScale));
+                if (_mMotionControlCommManager.IsOpen())
+                {
+                    strpos = "Position Y :" + string.Format("{0:000.00}", mRobotInformation.PositionY);
+                    gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorY.Image.Height - 30) * fScale));
+                }
             }
         }
 
@@ -3448,8 +3454,11 @@ namespace atOpticalDecenter
                 float fScale = (float)(pictureEditActuatorZ.Properties.ZoomPercent / 100.0f);
                 Graphics gp = e.Graphics;
                 string strpos = string.Empty;
-                strpos = "Position Z :" + string.Format("{0:000.00}", mRobotInformation.PositionZ);
-                gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorZ.Image.Height - 30) * fScale));
+                if (_mMotionControlCommManager.IsOpen())
+                {
+                    strpos = "Position Z :" + string.Format("{0:000.00}", mRobotInformation.PositionZ);
+                    gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorZ.Image.Height - 30) * fScale));
+                }
             }
         }
 
