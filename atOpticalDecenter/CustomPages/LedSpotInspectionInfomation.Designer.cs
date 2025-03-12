@@ -52,6 +52,7 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.rowOpticalEccentricAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
@@ -74,7 +75,7 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsView.UseDefaultDragAndDropRendering = false;
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(327, 254);
+            this.layoutControl1.Size = new System.Drawing.Size(327, 266);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -85,7 +86,7 @@
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsView.UseDefaultDragAndDropRendering = false;
             this.dataLayoutControl1.Root = this.layoutControlGroup2;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(327, 254);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(327, 266);
             this.dataLayoutControl1.TabIndex = 5;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -103,7 +104,7 @@
             this.vGridControl1.RowHeaderWidth = 128;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.categoryImageProcessResult});
-            this.vGridControl1.Size = new System.Drawing.Size(321, 248);
+            this.vGridControl1.Size = new System.Drawing.Size(321, 260);
             this.vGridControl1.TabIndex = 4;
             // 
             // repositoryItemImageComboBoxInspectionResultOnOff
@@ -135,6 +136,7 @@
             this.rowLedSpotBlobInspectVSize,
             this.rowLedSpotImageBright,
             this.rowAlignmentDistance,
+            this.rowOpticalEccentricAngle,
             this.rowDivergenceAngle,
             this.rowNDReduceRatio,
             this.rowNDFilterAngle,
@@ -203,6 +205,12 @@
             this.rowAlignmentDistance.Properties.Caption = "편심 거리[mm]";
             this.rowAlignmentDistance.Properties.ReadOnly = true;
             // 
+            // rowOpticalEccentricAngle
+            // 
+            this.rowOpticalEccentricAngle.Name = "rowOpticalEccentricAngle";
+            this.rowOpticalEccentricAngle.Properties.Caption = "편심각도[˚]";
+            this.rowOpticalEccentricAngle.Properties.ReadOnly = true;
+            // 
             // rowDivergenceAngle
             // 
             this.rowDivergenceAngle.Appearance.Options.UseFont = true;
@@ -260,6 +268,7 @@
             this.rowInspectResult.Appearance.Options.UseTextOptions = true;
             this.rowInspectResult.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.rowInspectResult.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowInspectResult.Height = 18;
             this.rowInspectResult.Name = "rowInspectResult";
             this.rowInspectResult.OptionsRow.AllowFocus = false;
             this.rowInspectResult.Properties.AllowEdit = false;
@@ -276,7 +285,7 @@
             this.layoutControlItem1});
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
-            this.layoutControlGroup2.Size = new System.Drawing.Size(327, 254);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(327, 266);
             this.layoutControlGroup2.TextVisible = false;
             // 
             // layoutControlItem1
@@ -284,7 +293,7 @@
             this.layoutControlItem1.Control = this.vGridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(325, 252);
+            this.layoutControlItem1.Size = new System.Drawing.Size(325, 264);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -296,7 +305,7 @@
             this.layoutControlItem2});
             this.Root.Name = "Root";
             this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.Root.Size = new System.Drawing.Size(327, 254);
+            this.Root.Size = new System.Drawing.Size(327, 266);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem2
@@ -305,7 +314,7 @@
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlItem2.Size = new System.Drawing.Size(327, 254);
+            this.layoutControlItem2.Size = new System.Drawing.Size(327, 266);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -318,7 +327,7 @@
             this.Controls.Add(this.layoutControl1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "LedSpotInspectionInfomation";
-            this.Size = new System.Drawing.Size(327, 254);
+            this.Size = new System.Drawing.Size(327, 266);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
@@ -357,5 +366,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowNDFilterAngle;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBoxInspectionResultOnOff;
         private System.Windows.Forms.ImageList imageListOnOff;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowOpticalEccentricAngle;
     }
 }

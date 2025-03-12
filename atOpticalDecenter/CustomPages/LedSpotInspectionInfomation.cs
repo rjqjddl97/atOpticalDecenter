@@ -19,6 +19,7 @@ namespace CustomPages
         public string _InspectProductSeries { get { return rowProductSeries.Properties.Value.ToString(); } set { rowProductSeries.Properties.Value = value; } }
         public double _InspectLedBlobBright { get { return Convert.ToDouble(rowLedSpotImageBright.Properties.Value); } set { rowLedSpotImageBright.Properties.Value = value; } }
         public double _InspectLedOpticalEccentricity { get { return Convert.ToDouble(rowAlignmentDistance.Properties.Value); } set { rowAlignmentDistance.Properties.Value = value; } }
+        public double _InspectLedOpticalEccentricAngle { get { return Convert.ToDouble(rowOpticalEccentricAngle.Properties.Value); } set { rowOpticalEccentricAngle.Properties.Value = value; } }
         public double _InspectLedOpticalEmiterAngle { get { return Convert.ToDouble(rowDivergenceAngle.Properties.Value); } set { rowDivergenceAngle.Properties.Value = value; } }
         public double _InspectLedODFilterReduce { get { return Convert.ToDouble(rowNDReduceRatio.Properties.Value); } set { rowNDReduceRatio.Properties.Value = value; } }
         public double _InspectLedND_FilterAngle { get { return Convert.ToDouble(rowNDFilterAngle.Properties.Value); } set { rowNDFilterAngle.Properties.Value = value; } }
@@ -39,7 +40,8 @@ namespace CustomPages
                 rowLedSpotBlobInspectHSize.Properties.Caption = "Spot 1 Size[mm]";
                 rowLedSpotBlobInspectVSize.Properties.Caption = "Spot 2 Size[mm]";
                 rowLedSpotImageBright.Properties.Caption = "Spot Image Bright[˚]";
-                rowAlignmentDistance.Properties.Caption = "Spot Eccentricity[mm]";
+                rowAlignmentDistance.Properties.Caption = "Spot Eccentric Distance[mm]";
+                rowOpticalEccentricAngle.Properties.Caption = "Spot Eccentric Angle[˚]";
                 rowDivergenceAngle.Properties.Caption = "Divergence Angle[˚]";
                 rowNDReduceRatio.Properties.Caption = "ND Filter Reduction Ratio";
                 rowNDFilterAngle.Properties.Caption = "ND 필터 Estimate Angle";
@@ -56,6 +58,7 @@ namespace CustomPages
                 rowLedSpotBlobInspectVSize.Properties.Caption = "Spot 2 크기[mm]";
                 rowLedSpotImageBright.Properties.Caption = "광원 이미지 밝기";
                 rowAlignmentDistance.Properties.Caption = "편심 거리[mm]";
+                rowOpticalEccentricAngle.Properties.Caption = "편심 각도[˚]";
                 rowDivergenceAngle.Properties.Caption = "광원 발산 각도[˚]";
                 rowNDReduceRatio.Properties.Caption = "ND 필터감쇄율";
                 rowNDFilterAngle.Properties.Caption = "ND 필터 예측각도";

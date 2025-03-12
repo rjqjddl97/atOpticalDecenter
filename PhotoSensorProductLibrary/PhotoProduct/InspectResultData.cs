@@ -30,7 +30,8 @@ namespace PhotoProduct
         public Blob mLedSpot = new Blob();
         public double[] _ImageHist_H = null;
         public double[] _ImageHist_V = null;
-        public double fOpticalEccentricity = 0;             // 
+        public double fOpticalEccentricity = 0;             // 편심거리
+        public double fOpticalEccentricAngle = 0;           // 편심각.
         public double fOpticalEmiterAngle = 0;              // 투광 발산각
         public double fND_FilterAngle = 0;                  // ND 필터 각도
         public double fImageSensorSize_H = 0;
@@ -52,6 +53,16 @@ namespace PhotoProduct
         public double fOpticalCenterPositionX = 0;
         public double fOpticalCenterPositionY = 0;
         public double fOpticalCenterPositionZ = 0;
+
+        public double fMeasureOpticaCenterP1X = 0;
+        public double fMeasureOpticaCenterP1Y = 0;
+        public double fMeasureOpticaCenterP1Z = 0;
+
+        public double fMeasureOpticaCenterP2X = 0;
+        public double fMeasureOpticaCenterP2Y = 0;
+        public double fMeasureOpticaCenterP2Z = 0;
+
+        public double fMeasureDecenter = 0;
 
         public double fMeasureP1X = 0;
         public double fMeasureP1Y = 0;
@@ -176,7 +187,8 @@ namespace PhotoProduct
         {
             // 0: 미러반사형, 1: 한정거리반사, 2: 확산반사, 3: BGS반사, 4: 협시계반사, 5: 투광, 6: 수광
             //fOpticalEmiterAngle = Math.Atan(((fOpticalSize[1] - fOpticalSize[0]) / 2f) / WorkDistance) * 2f * RADIAN_TO_DEGREE;      // 발산각 계산.
-            fOpticalEmiterAngle = Math.Atan(((fOpticalSize[1] - fOpticalSize[0]) / 2f) / WorkDistance) * 2f;      // 발산각 계산.
+            fOpticalEmiterAngle = Math.Atan(((fOpticalSize[1] - fOpticalSize[0]) / 2f) / WorkDistance) * 2f;      // 발산각 계산.            
+            fOpticalEccentricAngle = (Math.Atan(fMeasureDecenter / WorkDistance)) * RADIAN_TO_DEGREE;
             CalcOpticalReduceQuantity(iProductType);
             if (iProductType == 6)
             {
@@ -206,6 +218,7 @@ namespace PhotoProduct
 
             //fOpticalEccentricity = Math.Sqrt(Math.Pow((fDecenterY - fMeasureP1Y), 2) + Math.Pow((fDecenterZ - fMeasureP1Z), 2));
             fOpticalEccentricity = Math.Sqrt(Math.Pow((fDecenterY - fOpticalCenterPositionY), 2) + Math.Pow((fDecenterZ - fOpticalCenterPositionZ), 2));
+            fMeasureDecenter = Math.Sqrt(Math.Pow((fMeasureOpticaCenterP2Y - fMeasureOpticaCenterP1Y), 2) + Math.Pow((fMeasureOpticaCenterP2Z - fMeasureOpticaCenterP1Z), 2));
             return true;
         }
         public void CalcOpticalReduceQuantity(int producttype)

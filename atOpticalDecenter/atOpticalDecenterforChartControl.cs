@@ -118,8 +118,9 @@ namespace atOpticalDecenter
             }
             barEditItemTotalInspectionCount.EditValue = string.Format("총 검사 수:{0:00000}", _statistics.TotalCount);
             barEditItemTotalFailCount.EditValue = string.Format("불합격 수:{0:00000}", _statistics.FailCount);
-            string strStatistics = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, SystemDirectoryParams.StatisticsFileName);            
-            UpdateChartInspectionAngle((float)(mResultData.fOpticalEmiterAngle * (180 / Math.PI)));
+            string strStatistics = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, SystemDirectoryParams.StatisticsFileName);
+            //            UpdateChartInspectionAngle((float)(mResultData.fOpticalEmiterAngle * (180 / Math.PI)));
+            UpdateChartInspectionAngle((float)(mResultData.fOpticalEccentricAngle));
             RecipeFileIO.WriteInspectionStatisticsFile(strStatistics, _statistics);
         }
     }

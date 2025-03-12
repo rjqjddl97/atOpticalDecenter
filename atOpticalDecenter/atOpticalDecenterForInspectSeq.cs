@@ -452,6 +452,7 @@ namespace atOpticalDecenter
             pledSpotInspectionInfomation._InspectLedBlobBright = mResultData.fOpticalSpotImageBright;
             pledSpotInspectionInfomation._InspectLedOpticalEccentricity = mResultData.fOpticalEccentricity;
             pledSpotInspectionInfomation._InspectLedOpticalEmiterAngle = mResultData.fOpticalEmiterAngle * (180 / Math.PI);
+            pledSpotInspectionInfomation._InspectLedOpticalEccentricAngle = mResultData.fOpticalEccentricAngle;
             pledSpotInspectionInfomation._InspectLedODFilterReduce = mResultData.fODFilterReduce;
             pledSpotInspectionInfomation._InspectLedND_FilterAngle = mResultData.fND_FilterAngle;
             pledSpotInspectionInfomation._InspectOperateMax_Distance = mResultData.fMaxOperateDistance;
@@ -461,8 +462,8 @@ namespace atOpticalDecenter
             xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 4; }));
             _InspectionResult = true;
             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("투광 LED 특성 검사 결과 , Spot1 Size :{0:000.000}mm, Spot2 Size :{1:000.000}mm, " +
-                "이미지 밝기 :{2:000}pixel, 광원 편심 :{3:00.000}mm, 광 발산각 :{4:00.000}˚, 감쇄율 :{5:00.000}, ND필터 예측각도 :{6:000}˚ , 최대거리 ND필터 :{7:000}˚, 검사 결과 : {8}",
-                mResultData.fOpticalSize[0], mResultData.fOpticalSize[1], mResultData.fOpticalSpotImageBright, mResultData.fOpticalEccentricity, (mResultData.fOpticalEmiterAngle * (180 / Math.PI)),
+                "이미지 밝기 :{2:000}pixel, 광원 편심 :{3:00.000}mm, 광원 편심각 :{4:00.000}˚, 광 발산각 :{5:00.000}˚, 감쇄율 :{6:00.000}, ND필터 예측각도 :{7:000}˚ , 최대거리 ND필터 :{8:000}˚, 검사 결과 : {9}",
+                mResultData.fOpticalSize[0], mResultData.fOpticalSize[1], mResultData.fOpticalSpotImageBright, mResultData.fOpticalEccentricity, mResultData.fOpticalEccentricAngle, mResultData.fOpticalEccentricity, (mResultData.fOpticalEmiterAngle * (180 / Math.PI)),
                 mResultData.fODFilterReduce, mResultData.fND_FilterAngle, mResultData.fMaxOperateDistance, (mResultData.bTotalResult ? "Pass" : "Fail")));
         }
         public void CreateResultFile(bool IsPass)
@@ -493,7 +494,7 @@ namespace atOpticalDecenter
                     if (!Directory.Exists(strFilePath))
                     {
                         Directory.CreateDirectory(strFilePath);
-                        strTemp = string.Format("WorkTime, RecipeName,Product Model, Operating Distance,Camera ExposureTime(us),Spot1 Size(mm),Spot2 Size(mm),Image Bright(pixel),Eccentricity Distane(mm),Divergence Angle,Reduction rate, ND Filter Angle, Min Distance ND Angle, Max Distance ND Angle, Inspect Result");
+                        strTemp = string.Format("WorkTime, RecipeName,Product Model, Operating Distance,Camera ExposureTime(us),Spot1 Size(mm),Spot2 Size(mm),Image Bright(pixel),Eccentricity Distane(mm),Eccentric Angle,Divergence Angle,Reduction rate, ND Filter Angle, Min Distance ND Angle, Max Distance ND Angle, Inspect Result");
                         using (StreamWriter sw = new StreamWriter(strResultFile, true))
                         {
                             sw.WriteLine(strTemp);
@@ -503,7 +504,7 @@ namespace atOpticalDecenter
 
                     using (StreamWriter sw = new StreamWriter(strResultFile, true))
                     {
-                        strTemp = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14}",
+                        strTemp = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15}",
                             _inspectionStartTime.TimeOfDay.ToString(),
                             _workParams.RecipeName,
                             _workParams._ProductModelName,
@@ -512,7 +513,8 @@ namespace atOpticalDecenter
                             mResultData.fOpticalSize[0],
                             mResultData.fOpticalSize[1],
                             mResultData.fOpticalSpotImageBright,
-                            mResultData.fOpticalEccentricity,
+                            mResultData.fOpticalEccentricity,                            
+                            mResultData.fOpticalEccentricAngle,
                             mResultData.fOpticalEmiterAngle * (180 / Math.PI),
                             mResultData.fODFilterReduce,
                             mResultData.fND_FilterAngle,
