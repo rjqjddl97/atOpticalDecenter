@@ -461,7 +461,7 @@
             this.rowLEDInspectionUseEnable.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.rowLEDInspectionUseEnable.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowLEDInspectionUseEnable.Name = "rowLEDInspectionUseEnable";
-            this.rowLEDInspectionUseEnable.Properties.Caption = "투광 검사 유무";
+            this.rowLEDInspectionUseEnable.Properties.Caption = "투광 단축 검사 유무";
             this.rowLEDInspectionUseEnable.Properties.Value = false;
             // 
             // rowLEDInspectionShortDistance

@@ -3403,17 +3403,20 @@ namespace atOpticalDecenter
         }
         private void UpdateGUI()
         {
-            if (pictureEditActuatorX.InvokeRequired)
+            if (_mMotionControlCommManager.IsOpen())
             {
-                pictureEditActuatorX.Invoke(new MethodInvoker(delegate { pictureEditActuatorX.Image = ActuatorImageAnimationX((float)mRobotInformation.PositionX); FilterActuatorImageXFitSize(); }));
-            }
-            if (pictureEditActuatorY.InvokeRequired)
-            {
-                pictureEditActuatorY.Invoke(new MethodInvoker(delegate { pictureEditActuatorY.Image = ActuatorImageAnimationY((float)mRobotInformation.PositionY); FilterActuatorImageYFitSize(); }));
-            }
-            if (pictureEditActuatorZ.InvokeRequired)
-            {
-                pictureEditActuatorZ.Invoke(new MethodInvoker(delegate { pictureEditActuatorZ.Image = ActuatorImageAnimationZ((float)mRobotInformation.PositionZ); FilterActuatorImageZFitSize(); }));
+                if (pictureEditActuatorX.InvokeRequired)
+                {
+                    pictureEditActuatorX.Invoke(new MethodInvoker(delegate { pictureEditActuatorX.Image = ActuatorImageAnimationX((float)mRobotInformation.PositionX); FilterActuatorImageXFitSize(); }));
+                }
+                if (pictureEditActuatorY.InvokeRequired)
+                {
+                    pictureEditActuatorY.Invoke(new MethodInvoker(delegate { pictureEditActuatorY.Image = ActuatorImageAnimationY((float)mRobotInformation.PositionY); FilterActuatorImageYFitSize(); }));
+                }
+                if (pictureEditActuatorZ.InvokeRequired)
+                {
+                    pictureEditActuatorZ.Invoke(new MethodInvoker(delegate { pictureEditActuatorZ.Image = ActuatorImageAnimationZ((float)mRobotInformation.PositionZ); FilterActuatorImageZFitSize(); }));
+                }
             }
         }
         private void pictureEditActuatorX_Paint(object sender, PaintEventArgs e)

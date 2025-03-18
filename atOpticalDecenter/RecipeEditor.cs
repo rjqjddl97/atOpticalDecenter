@@ -109,8 +109,8 @@ namespace atOpticalDecenter
                 rowProductDistanceMargin.Properties.Caption = "제품 거리마진율[%]";
 
                 categoryLEDInspectionInformation.Properties.Caption = "투광 소자 검사 정보";
-                rowLEDInspectionUseEnable.Properties.Caption = "투광 검사 유무";
-                rowLEDInspectionShortDistance.Properties.Caption = "투광 단축검사거리[mm]";
+                rowLEDInspectionUseEnable.Properties.Caption = "투광 단축 검사 유무";
+                rowLEDInspectionShortDistance.Properties.Caption = "투광 단축 검사거리[mm]";
                 rowLedInspectionCameraMoveDistance.Properties.Caption = "카메라 이동거리[mm]";
                 rowLEDInspectionExposureTime.Properties.Caption = "카메라 노출시간[us]";
                 rowLEDInspectionAcquisitionDelayTime.Properties.Caption = "이미지 취득지연 시간[ms]";
@@ -209,6 +209,11 @@ namespace atOpticalDecenter
             _workParam._LedInspectionWorkAreaWidth = Convert.ToInt32(rowLEDInspectionWorkAreaWidth.Properties.Value);
             _workParam._LedInspectionWorkAreaHeight = Convert.ToInt32(rowLEDInspectionWorkAreaHeight.Properties.Value);
             gridControlInspectionPosition.DataSource = _workParam.InspectionPositions;
+
+            if (_workParam._LEDInspectionUseEnable)
+                rowLEDInspectionShortDistance.Enabled = true;
+            else
+                rowLEDInspectionShortDistance.Enabled = false;
         }
         private void barButtonItemNewRecipe_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -1034,6 +1039,13 @@ namespace atOpticalDecenter
                 bool check = Convert.ToBoolean(rowLEDInspectionUseEnable.Properties.Value);
                 _workParam._LEDInspectionUseEnable = check;
 
+                if (check)
+                {
+                    rowLEDInspectionShortDistance.Enabled = true;
+                }
+                else
+                    rowLEDInspectionShortDistance.Enabled = false;
+
                 barButtonItemRecipeSave.Enabled = true;
                 //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("투광 검사 유무가 변경되었습니다.{0}", _workParam._LEDInspectionUseEnable));
             }
@@ -1785,7 +1797,7 @@ namespace atOpticalDecenter
             float fResult;
 
             if (float.TryParse(textEditInspectionPositionX.Text, out fResult))
-            {
+            {                
                 if (fResult >= 15 && fResult <= 780)
                     inspectionPos.PositionX = fResult;
                 else
@@ -1794,7 +1806,7 @@ namespace atOpticalDecenter
                         inspectionPos.PositionX = 15;
                     if (fResult > 780)
                         inspectionPos.PositionX = 780;
-                }
+                }                
             }
             else
             {
@@ -1867,28 +1879,71 @@ namespace atOpticalDecenter
             else if (comboBoxEditInspectionPositionType.SelectedIndex == 2)
                 inspectionPos.ePositionType = INSPECTION_POSITION_MODE.POSITION_MIN_ORIGIN_DISTANCE_MODE;
             else
+            {
                 inspectionPos.ePositionType = INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE;
+                if (_workParam._LEDInspectionUseEnable)
+                {
+                    inspectionPos.PositionX = _workParam._LEDInspectionShortDistance;                    
+                }
+            }
 
-            string strMessage = string.Format("Index:{0}, Type:{1}, X:{2}, Y:{3}, Z:{4} 값을 등록하시겠습니까?",
-                gridViewInspectionPositions.RowCount + 1,
-                inspectionPos.ePositionType,
-                inspectionPos.PositionX,
-                inspectionPos.PositionY,
-                inspectionPos.PositionZ);
+            if ((inspectionPos.ePositionType == INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE) || (inspectionPos.ePositionType == INSPECTION_POSITION_MODE.POSITION_BASE_MODE))
+            {
+                if (_workParam.InspectionPositions.FindIndex(item => item.ePositionType.Equals(INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE)) == -1)
+                {
+                    string strMessage = string.Format("Index:{0}, Type:{1}, X:{2}, Y:{3}, Z:{4} 값을 등록하시겠습니까?",
+                        gridViewInspectionPositions.RowCount + 1,
+                        inspectionPos.ePositionType,
+                        inspectionPos.PositionX,
+                        inspectionPos.PositionY,
+                        inspectionPos.PositionZ);
 
-            if (MessageBox.Show(strMessage, "등록", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
-                return;
+                    if (MessageBox.Show(strMessage, "등록", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                        return;
 
-            inspectionPos.Index = gridViewInspectionPositions.RowCount + 1;
-            _workParam.InspectionPositions.Add(inspectionPos);
+                    inspectionPos.Index = gridViewInspectionPositions.RowCount + 1;
+                    _workParam.InspectionPositions.Add(inspectionPos);
 
-            gridViewInspectionPositions.FocusedRowHandle = _workParam.InspectionPositions.Count - 1;
-            _gridRowIndex = _workParam.InspectionPositions.Count - 1;
+                    gridViewInspectionPositions.FocusedRowHandle = _workParam.InspectionPositions.Count - 1;
+                    _gridRowIndex = _workParam.InspectionPositions.Count - 1;
 
-            gridViewInspectionPositions.RefreshData();
+                    gridViewInspectionPositions.RefreshData();
 
-            barButtonItemRecipeSave.Enabled = true;
+                    barButtonItemRecipeSave.Enabled = true;
+                    return;
+                }
+                else if (_workParam.InspectionPositions.FindIndex(item => item.ePositionType.Equals(INSPECTION_POSITION_MODE.POSITION_BASE_MODE)) == -1)
+                {
+                    string strMessage = string.Format("Index:{0}, Type:{1}, X:{2}, Y:{3}, Z:{4} 값을 등록하시겠습니까?",
+                        gridViewInspectionPositions.RowCount + 1,
+                        inspectionPos.ePositionType,
+                        inspectionPos.PositionX,
+                        inspectionPos.PositionY,
+                        inspectionPos.PositionZ);
 
+                    if (MessageBox.Show(strMessage, "등록", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                        return;
+
+                    inspectionPos.Index = gridViewInspectionPositions.RowCount + 1;
+                    _workParam.InspectionPositions.Add(inspectionPos);
+
+                    gridViewInspectionPositions.FocusedRowHandle = _workParam.InspectionPositions.Count - 1;
+                    _gridRowIndex = _workParam.InspectionPositions.Count - 1;
+
+                    gridViewInspectionPositions.RefreshData();
+
+                    barButtonItemRecipeSave.Enabled = true;
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("동일 위치 타입이 있습니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("지원하지 않은 위치 형식입니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(),
             //    string.Format("X:{0}, Y:{1}, 검사모드:{2}를 등록", inspectionPos.X, inspectionPos.Y, inspectionPos.eInspectionMode.ToString()));
         }
@@ -2010,24 +2065,45 @@ namespace atOpticalDecenter
             else if (comboBoxEditInspectionPositionType.SelectedIndex == 2)
                 inspectionPos.ePositionType = INSPECTION_POSITION_MODE.POSITION_MIN_ORIGIN_DISTANCE_MODE;
             else
+            {
                 inspectionPos.ePositionType = INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE;
+                if (_workParam._LEDInspectionUseEnable)
+                {
+                    inspectionPos.PositionX = _workParam._LEDInspectionShortDistance;                    
+                }
+            }
+            if ((inspectionPos.ePositionType == INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE) || (inspectionPos.ePositionType == INSPECTION_POSITION_MODE.POSITION_BASE_MODE))
+            {
+                int postypeindex = _workParam.InspectionPositions.FindIndex(item => item.ePositionType.Equals(INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE));
+                if (rowIndex == postypeindex)
+                {
+                    string strMessage = string.Format("Index:{0}, Type:{1}, X:{2}, Y1:{3}, Z:{4} 값을 수정하시겠습니까?",
+                        inspectionPos.Index,
+                        inspectionPos.ePositionType,
+                        inspectionPos.PositionX,
+                        inspectionPos.PositionY,
+                        inspectionPos.PositionZ);
 
-            string strMessage = string.Format("Index:{0}, Type:{1}, X:{2}, Y1:{3}, Z:{4} 값을 수정하시겠습니까?",
-                inspectionPos.Index,
-                inspectionPos.ePositionType,
-                inspectionPos.PositionX,
-                inspectionPos.PositionY,
-                inspectionPos.PositionZ);
+                    if (MessageBox.Show(strMessage, "수정", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                        return;
 
-            if (MessageBox.Show(strMessage, "수정", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
-                return;
+                    _workParam.InspectionPositions[rowIndex] = inspectionPos;
 
-            _workParam.InspectionPositions[rowIndex] = inspectionPos;
+                    gridViewInspectionPositions.RefreshData();
+                    pictureEditInspectImage.Refresh();
 
-            gridViewInspectionPositions.RefreshData();
-            pictureEditInspectImage.Refresh();
+                    barButtonItemRecipeSave.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("동일 위치 형식입니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
-            barButtonItemRecipeSave.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("지원하지 않은 위치 형식입니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(),
             //    string.Format("X:{0}, Y:{1}, 검사모드:{2}를 수정", inspectionPos.X, inspectionPos.Y, inspectionPos.eInspectionMode.ToString()));
