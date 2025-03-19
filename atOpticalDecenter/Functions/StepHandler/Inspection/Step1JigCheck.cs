@@ -43,6 +43,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                             mStep = WorkingStep.ErrorOccured;
                         if (mRemoteIOCtrl.IsOpen())
                         {
+                            mInspectResultData.InspectParameterInitial(mWorkParam._ProductDistance, mWorkParam._LEDInspectionShortDistance, _ImageResolution_H, _ImageResolution_V, fOnePixelResolution);
                             mStep = WorkingStep.JigCheck;
                         }
                     }

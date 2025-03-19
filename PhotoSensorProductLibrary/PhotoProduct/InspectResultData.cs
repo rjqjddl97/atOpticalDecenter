@@ -198,7 +198,15 @@ namespace PhotoProduct
             else
             {
                 fODFilterReduce = -Math.Log10(fOpticalReducttionQuantity[0] / fOpticalReducttionQuantity[1]);
-                fND_FilterAngle = FindODFilterAngle(fODFilterReduce, iProductType) + ND_FILTER_ZERO_ANNGLE;
+                if (fODFilterReduce <= 0)
+                {
+                    fND_FilterAngle = 0;
+                    fODFilterReduce = 0;
+                }
+                else
+                {
+                    fND_FilterAngle = FindODFilterAngle(fODFilterReduce, iProductType) + ND_FILTER_ZERO_ANNGLE;
+                }
             }
         }
         public bool CalculateOpticalDecenter()
@@ -272,13 +280,16 @@ namespace PhotoProduct
         {
             // 0: 미러반사형, 1: 한정거리반사, 2: 확산반사, 3: BGS반사, 4: 협시계반사, 5: 투광, 6: 수광
             int i,index = 0;
-/*
-            if ((prodtype == 0) || (prodtype == 1) || (prodtype == 2) || (prodtype == 3) || (prodtype == 4))
-            {
-                OpticalReduce = OpticalReduce / 2f;
-            }
-*/
+            /*
+                        if ((prodtype == 0) || (prodtype == 1) || (prodtype == 2) || (prodtype == 3) || (prodtype == 4))
+                        {
+                            OpticalReduce = OpticalReduce / 2f;
+                        }
+            */
             //OpticalReduce = OpticalReduce / 2f;
+            if (OpticalReduce <= 0)
+                return 0;
+
             for (i = 0; i < ND_FILTER_RANGE; i++)
             {
                 if (OpticalReduce < OD_Define[i])
