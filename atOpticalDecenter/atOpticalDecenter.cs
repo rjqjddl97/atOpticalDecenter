@@ -126,58 +126,72 @@ namespace atOpticalDecenter
         }
         private void barButtonItemSystemFolderPathSetting_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SystemDirectorySetting system = new SystemDirectorySetting();
-
-            if (system.ShowDialog(this) == DialogResult.OK)
+            try
             {
-                if (MessageBox.Show("시스템 폴더 경로를 변경하시겠습니까?", "시스템 폴더 경로 변경", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                SystemDirectorySetting system = new SystemDirectorySetting();
+
+                if (system.ShowDialog(this) == DialogResult.OK)
                 {
-                    // 변경된 경로로 로그파일 저장
-                    //_log.SetLogPath(system.LogFolderPath);
+                    if (MessageBox.Show("시스템 폴더 경로를 변경하시겠습니까?", "시스템 폴더 경로 변경", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        // 변경된 경로로 로그파일 저장
+                        //_log.SetLogPath(system.LogFolderPath);
 
-                    SystemDirectoryParams.RootFolderPath = system.RootFolderPath;
-                    SystemDirectoryParams.LogFolderPath = system.LogFolderPath;
-                    SystemDirectoryParams.RecipeFolderPath = system.RecipeFolderPath;
-                    SystemDirectoryParams.ResultFolderPath = system.ResultFolderPath;
-                    SystemDirectoryParams.SystemFolderPath = system.SystemFolderPath;
-                    SystemDirectoryParams.ImageFolderPath = system.ImageFolderPath;
+                        SystemDirectoryParams.RootFolderPath = system.RootFolderPath;
+                        SystemDirectoryParams.LogFolderPath = system.LogFolderPath;
+                        SystemDirectoryParams.RecipeFolderPath = system.RecipeFolderPath;
+                        SystemDirectoryParams.ResultFolderPath = system.ResultFolderPath;
+                        SystemDirectoryParams.SystemFolderPath = system.SystemFolderPath;
+                        SystemDirectoryParams.ImageFolderPath = system.ImageFolderPath;
 
-                    global::atOpticalDecenter.Properties.Settings.Default.strRootFolderPath = SystemDirectoryParams.RootFolderPath;
-                    global::atOpticalDecenter.Properties.Settings.Default.strLogFolderPath = SystemDirectoryParams.LogFolderPath;
-                    global::atOpticalDecenter.Properties.Settings.Default.strRecipeFolderPath = SystemDirectoryParams.RecipeFolderPath;
-                    global::atOpticalDecenter.Properties.Settings.Default.strResultFolderPath = SystemDirectoryParams.ResultFolderPath;
-                    global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath = SystemDirectoryParams.SystemFolderPath;
-                    global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath = SystemDirectoryParams.ImageFolderPath;
-                    global::atOpticalDecenter.Properties.Settings.Default.Save();
+                        global::atOpticalDecenter.Properties.Settings.Default.strRootFolderPath = SystemDirectoryParams.RootFolderPath;
+                        global::atOpticalDecenter.Properties.Settings.Default.strLogFolderPath = SystemDirectoryParams.LogFolderPath;
+                        global::atOpticalDecenter.Properties.Settings.Default.strRecipeFolderPath = SystemDirectoryParams.RecipeFolderPath;
+                        global::atOpticalDecenter.Properties.Settings.Default.strResultFolderPath = SystemDirectoryParams.ResultFolderPath;
+                        global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath = SystemDirectoryParams.SystemFolderPath;
+                        global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath = SystemDirectoryParams.ImageFolderPath;
+                        global::atOpticalDecenter.Properties.Settings.Default.Save();
 
-                    SystemDirectoryParams.CreateSystemDirectory();
+                        SystemDirectoryParams.CreateSystemDirectory();
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("시스템 파라미터 폴더 위치 설정이 실행되지 않았습니다."));
             }
         }
         private void barButtonItemSystemEditor_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SystemEditor editor = new SystemEditor(_systemParams._SystemLanguageKoreaUse);
-
-            editor.ShowDialog();
-            string strTemp = string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.SystemFileName);
-
-            if (File.Exists(strTemp))
+            try
             {
-                // System 파일 열기
-                RecipeFileIO.ReadSystemFile(_systemParams, strTemp);
-                _ImageHist_W = new double[_systemParams._cameraParams.HResolution];
-                _ImageHist_H = new double[_systemParams._cameraParams.VResolution];
-                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("시스템 파일 읽기 성공:{0}", strTemp));
+                SystemEditor editor = new SystemEditor(_systemParams._SystemLanguageKoreaUse);
+
+                editor.ShowDialog();
+                string strTemp = string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.SystemFileName);
+
+                if (File.Exists(strTemp))
+                {
+                    // System 파일 열기
+                    RecipeFileIO.ReadSystemFile(_systemParams, strTemp);
+                    _ImageHist_W = new double[_systemParams._cameraParams.HResolution];
+                    _ImageHist_H = new double[_systemParams._cameraParams.VResolution];
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("시스템 파일 읽기 성공:{0}", strTemp));
+                }
+                else
+                {
+                    _ImageHist_W = null;
+                    _ImageHist_H = null;
+                    // Default File 생성
+                    mLog.WriteLog(LogLevel.Fatal, LogClass.atPhoto.ToString(), string.Format("시스템 파라미터를 읽을 수 없습니다.{0}", strTemp));
+                    mLog.WriteLog(LogLevel.Fatal, LogClass.atPhoto.ToString(), string.Format("메뉴-시스템 편집기를 이용하여, 시스템 파일을 생성하십시오."));
+                }
+                StepBaseSystemParameterUpdate();
             }
-            else
+            catch (Exception)
             {
-                _ImageHist_W = null;
-                _ImageHist_H = null;
-                // Default File 생성
-                mLog.WriteLog(LogLevel.Fatal, LogClass.atPhoto.ToString(), string.Format("시스템 파라미터를 읽을 수 없습니다.{0}", strTemp));
-                mLog.WriteLog(LogLevel.Fatal, LogClass.atPhoto.ToString(), string.Format("메뉴-시스템 편집기를 이용하여, 시스템 파일을 생성하십시오."));
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("시스템 파라미터 편집 명령이 실행되지 않았습니다."));
             }
-            StepBaseSystemParameterUpdate();
         }
         private void atOpticalDecenter_Load(object sender, EventArgs e)
         {
@@ -280,25 +294,19 @@ namespace atOpticalDecenter
                 UpdateConnectStatusForAll();
                 InitialGuiAllEdit();
                 ImageUpdateEvents += UpdateGUI;
-
-                strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "X_Base.bmp");
-                _BaseXImage = System.Drawing.Image.FromFile(strTemp);
+                                
+                _BaseXImage = Properties.Resources.X_Base;
                 pictureEditActuatorX.Image = _BaseXImage;
-                FilterActuatorImageXFitSize();
-                strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "X_Actuator.png");
-                _ActuatorXImage = System.Drawing.Image.FromFile(strTemp);
-                strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "Y_Base.bmp");
-                _BaseYImage = System.Drawing.Image.FromFile(strTemp);
-                pictureEditActuatorY.Image = _BaseYImage;                
-                strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "Y_Actuator.png");
-                _ActuatorYImage = System.Drawing.Image.FromFile(strTemp);
-                FilterActuatorImageYFitSize();
-                strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "Z_Base.bmp");
-                _BaseZImage = System.Drawing.Image.FromFile(strTemp);
-                pictureEditActuatorZ.Image = _BaseZImage;
-                FilterActuatorImageZFitSize();
-                strTemp = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, "Z_Actuator.png");
-                _ActuatorZImage = System.Drawing.Image.FromFile(strTemp);                
+                FilterActuatorImageXFitSize();                
+                _ActuatorXImage = Properties.Resources.X_Actuator;                
+                _BaseYImage = Properties.Resources.Y_Base;
+                pictureEditActuatorY.Image = _BaseYImage;                                
+                _ActuatorYImage = Properties.Resources.Y_Actuator;
+                FilterActuatorImageYFitSize();                
+                //_BaseZImage = Properties.Resources.Y_Actuator;
+                //pictureEditActuatorZ.Image = _BaseZImage;
+                //FilterActuatorImageZFitSize();                
+                _ActuatorZImage = Properties.Resources.Z_Actuator;                
                 _bwMotionHome.RunWorkerAsync(mRobotInformation);
                 AutoStartButtonLock();
             }
@@ -310,11 +318,18 @@ namespace atOpticalDecenter
 
         public void InitialGuiAllEdit()
         {
-            for (int i = 0; i < RecipeFileIO.ProductType.Length; ++i)
+            try
             {
-                repositoryItemSpotProductType.Items.Add(RecipeFileIO.ProductType[i]);
+                for (int i = 0; i < RecipeFileIO.ProductType.Length; ++i)
+                {
+                    repositoryItemSpotProductType.Items.Add(RecipeFileIO.ProductType[i]);
+                }
+                rowInspectSpotProductType.Properties.Value = repositoryItemSpotProductType.Items[0].ToString();
             }
-            rowInspectSpotProductType.Properties.Value = repositoryItemSpotProductType.Items[0].ToString();
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("GUI 초기화 명령이 실행되지 않았습니다."));
+            }
         }
         private void atOpticalDecenter_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -337,13 +352,20 @@ namespace atOpticalDecenter
         }
         private void InitializedBackGroundWorkers()
         {
-            _backgroundWorkerOpticalDecenterInspection.WorkerReportsProgress = true;
-            _backgroundWorkerOpticalDecenterInspection.WorkerSupportsCancellation = true;
-            _backgroundWorkerOpticalDecenterInspection.DoWork += new DoWorkEventHandler(backgroundWorkerInspection_DoWork);
-            _backgroundWorkerOpticalDecenterInspection.ProgressChanged += new ProgressChangedEventHandler(backgroundWorkerInspection_ProgressChanged);
-            _backgroundWorkerOpticalDecenterInspection.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerInspection_RunWorkerCompleted);
-            _bwMotionHome.DoWork += new DoWorkEventHandler(backgroundWorkerMotionHome_DoWork);
-            _bwMotionHome.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerMotionHome_RunWorkerCompleted);
+            try
+            {
+                _backgroundWorkerOpticalDecenterInspection.WorkerReportsProgress = true;
+                _backgroundWorkerOpticalDecenterInspection.WorkerSupportsCancellation = true;
+                _backgroundWorkerOpticalDecenterInspection.DoWork += new DoWorkEventHandler(backgroundWorkerInspection_DoWork);
+                _backgroundWorkerOpticalDecenterInspection.ProgressChanged += new ProgressChangedEventHandler(backgroundWorkerInspection_ProgressChanged);
+                _backgroundWorkerOpticalDecenterInspection.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerInspection_RunWorkerCompleted);
+                _bwMotionHome.DoWork += new DoWorkEventHandler(backgroundWorkerMotionHome_DoWork);
+                _bwMotionHome.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerMotionHome_RunWorkerCompleted);
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("백그라운드 실행 함수 초기화가 설정되지 않았습니다."));
+            }
         }
         private void LogUpdated(object obj, LogEventArgs e)
         {
@@ -548,195 +570,277 @@ namespace atOpticalDecenter
         }
         public bool InitializeAiCModule()
         {
-            if (_systemParams != null)
-                MotionControl.ChangeSystemLanguage(_systemParams._SystemLanguageKoreaUse);
-
-            MotionControl.SetCommunicateManager(ref _mMotionControlCommManager);
-            MotionControl.SetMotionParam(ref _systemParams._motionParams);
-            byte[] _id = new byte[3];
-            for (int i = 0; i < 3; i++)
+            try
             {
-                if (i == 0)
+                if (_systemParams != null)
+                    MotionControl.ChangeSystemLanguage(_systemParams._SystemLanguageKoreaUse);
+
+                MotionControl.SetCommunicateManager(ref _mMotionControlCommManager);
+                MotionControl.SetMotionParam(ref _systemParams._motionParams);
+                byte[] _id = new byte[3];
+                for (int i = 0; i < 3; i++)
                 {
-                    MotionControl._fdefineStepValue[i] = (double)0.1;
-                    MotionControl._fdefineVelValue[i] = (double)10;
+                    if (i == 0)
+                    {
+                        MotionControl._fdefineStepValue[i] = (double)0.1;
+                        MotionControl._fdefineVelValue[i] = (double)10;
+                    }
+                    else if (i == 1)
+                    {
+                        MotionControl._fdefineStepValue[i] = (double)1;
+                        MotionControl._fdefineVelValue[i] = (double)50;
+                    }
+                    else
+                    {
+                        MotionControl._fdefineStepValue[i] = (double)10;
+                        MotionControl._fdefineVelValue[i] = (double)100;
+                    }
+                    _id[i] = (byte)_systemParams._AiCParams.IDs[i]._idNumber;
                 }
-                else if (i == 1)
-                {
-                    MotionControl._fdefineStepValue[i] = (double)1;
-                    MotionControl._fdefineVelValue[i] = (double)50;
-                }
-                else
-                {
-                    MotionControl._fdefineStepValue[i] = (double)10;
-                    MotionControl._fdefineVelValue[i] = (double)100;
-                }
-                _id[i] = (byte)_systemParams._AiCParams.IDs[i]._idNumber;
+                MotionControl.SetCommunicationData(3, _id);
+                AiCModuleConnect(); // connect command
+                return true;
             }
-            MotionControl.SetCommunicationData(3, _id);
-            AiCModuleConnect(); // connect command
-            return true;
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("AiC 모듈 초기화 명령이 실행되지 않았습니다."));
+                return false;
+            }
         }
 
         public bool InitializeARMRemoteIOModule()
         {
-            if (_systemParams != null)
-                RemoteIOControl.ChangeSystemLanguage(_systemParams._SystemLanguageKoreaUse);
-
-            RemoteIOControl.SetCommunicateManager(ref _mRemteIOCommManager);
-            byte[] _id = new byte[_systemParams._remoteIOParams.ConnectedNumber];
-
-            for (int i = 0; i < _systemParams._remoteIOParams.ConnectedNumber; i++)
+            try
             {
-                _id[i] = (byte)_systemParams._remoteIOParams.IDs[i]._idNumber;
+                if (_systemParams != null)
+                    RemoteIOControl.ChangeSystemLanguage(_systemParams._SystemLanguageKoreaUse);
+
+                RemoteIOControl.SetCommunicateManager(ref _mRemteIOCommManager);
+                byte[] _id = new byte[_systemParams._remoteIOParams.ConnectedNumber];
+
+                for (int i = 0; i < _systemParams._remoteIOParams.ConnectedNumber; i++)
+                {
+                    _id[i] = (byte)_systemParams._remoteIOParams.IDs[i]._idNumber;
+                }
+                RemoteIOControl.SetCommunicationData(_systemParams._remoteIOParams.ConnectedNumber, _id);
+                ARMRemoteIOModuleConnect();// connect command
+                return true;
             }
-            RemoteIOControl.SetCommunicationData(_systemParams._remoteIOParams.ConnectedNumber, _id);
-            ARMRemoteIOModuleConnect();// connect command
-            return true;
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("Remote I/O 모듈 초기화 명령이 실행되지 않았습니다."));
+                return false;
+            }
         }
         private bool AiCModuleConnect(string sComport = null)
         {
-            if (!_mMotionControlCommManager.IsOpen())
+            try
             {
-                AiCControlLibrary.SerialCommunication.Control.SerialPortSetData setPort = new AiCControlLibrary.SerialCommunication.Control.SerialPortSetData();
-                setPort.PortName = _systemParams._AiCParams.SerialParameters.PortName;
-                setPort.BaudRate = (int)_systemParams._AiCParams.SerialParameters.BaudRates;
-                setPort.DataBits = (int)_systemParams._AiCParams.SerialParameters.DataBits;
-                setPort.StopBits = System.IO.Ports.StopBits.One; //(StopBits)_systemParams._AiCParams.SerialParameters.StopBits;
-                setPort.Parity = System.IO.Ports.Parity.None;
-
-                MotionControl.ConnectionOpen(setPort);
-
-                if (_mMotionControlCommManager.IsOpen())
+                if (_mMotionControlCommManager != null)
                 {
-                    MotionControl.RobotInfomationUpdatedEvent += UpdateRobotInfomation;
-                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 성공."));
+                    if (!_mMotionControlCommManager.IsOpen())
+                    {
+                        AiCControlLibrary.SerialCommunication.Control.SerialPortSetData setPort = new AiCControlLibrary.SerialCommunication.Control.SerialPortSetData();
+                        setPort.PortName = _systemParams._AiCParams.SerialParameters.PortName;
+                        setPort.BaudRate = (int)_systemParams._AiCParams.SerialParameters.BaudRates;
+                        setPort.DataBits = (int)_systemParams._AiCParams.SerialParameters.DataBits;
+                        setPort.StopBits = System.IO.Ports.StopBits.One; //(StopBits)_systemParams._AiCParams.SerialParameters.StopBits;
+                        setPort.Parity = System.IO.Ports.Parity.None;
+
+                        MotionControl.ConnectionOpen(setPort);
+
+                        if (_mMotionControlCommManager.IsOpen())
+                        {
+                            MotionControl.RobotInfomationUpdatedEvent += UpdateRobotInfomation;
+                            mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 성공."));
+                        }
+                        else
+                            mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 실패."));
+                    }
+                    else
+                    {
+                        MotionControl.ConnectionClosed();
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 해제 성공."));
+                    }
+                    return _mMotionControlCommManager.IsOpen();
                 }
                 else
-                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 실패."));
+                    return false;
             }
-            else
+            catch (Exception)
             {
-                MotionControl.ConnectionClosed();
-                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 해제 성공."));
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("AiC 모듈 접속 해제 명령이 실행되지 않았습니다."));
+                return false;
             }
-            return _mMotionControlCommManager.IsOpen();
         }
         private bool AiCModuleDisConnect()
         {
-            if (_mMotionControlCommManager.IsOpen())
+            try
             {
-                MotionControl.ConnectionClosed();
-                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 해제 성공."));
+                if (_mMotionControlCommManager != null)
+                {
+                    if (_mMotionControlCommManager.IsOpen())
+                    {
+                        MotionControl.ConnectionClosed();
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 해제 성공."));
+                    }
+                    return _mMotionControlCommManager.IsOpen();
+                }
+                else
+                    return false;
             }
-            return _mMotionControlCommManager.IsOpen();
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("AiC 모듈 접속 해제 명령이 실행되지 않았습니다."));
+                return false;
+            }
         }
         private bool ARMRemoteIOModuleConnect(string sComport = null)
         {
-            if (!_mRemteIOCommManager.IsOpen())
+            try
             {
-                ARMLibrary.SerialCommunication.Control.SerialPortSetData setPort = new ARMLibrary.SerialCommunication.Control.SerialPortSetData();
-                setPort.PortName = _systemParams._remoteIOParams.SerialParameters.PortName;
-                setPort.BaudRate = (int)_systemParams._remoteIOParams.SerialParameters.BaudRates;
-                setPort.DataBits = (int)_systemParams._remoteIOParams.SerialParameters.DataBits;
-                setPort.StopBits = System.IO.Ports.StopBits.One;
-                setPort.Parity = System.IO.Ports.Parity.None;
-
-                RemoteIOControl.ConnectionOpen(setPort);
-
-                if (_mRemteIOCommManager.IsOpen())
+                if (_mRemteIOCommManager != null)
                 {
-                    RemoteIOControl.RobotInfomationUpdatedEvent += UpdateRobotIOInfomation;
-                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("ARM 통신 연결 성공."));
+                    if (!_mRemteIOCommManager.IsOpen())
+                    {
+                        ARMLibrary.SerialCommunication.Control.SerialPortSetData setPort = new ARMLibrary.SerialCommunication.Control.SerialPortSetData();
+                        setPort.PortName = _systemParams._remoteIOParams.SerialParameters.PortName;
+                        setPort.BaudRate = (int)_systemParams._remoteIOParams.SerialParameters.BaudRates;
+                        setPort.DataBits = (int)_systemParams._remoteIOParams.SerialParameters.DataBits;
+                        setPort.StopBits = System.IO.Ports.StopBits.One;
+                        setPort.Parity = System.IO.Ports.Parity.None;
+
+                        RemoteIOControl.ConnectionOpen(setPort);
+
+                        if (_mRemteIOCommManager.IsOpen())
+                        {
+                            RemoteIOControl.RobotInfomationUpdatedEvent += UpdateRobotIOInfomation;
+                            mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("ARM 통신 연결 성공."));
+                        }
+                        else
+                            mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("ARM 통신 연결 실패."));
+                    }
+                    else
+                    {
+                        RemoteIOControl.ConnectionClosed();
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("ARM 통신 연결 해제 성공."));
+                    }
+                    return _mRemteIOCommManager.IsOpen();
                 }
                 else
-                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("ARM 통신 연결 실패."));
+                    return false;
             }
-            else
-            {                
-                RemoteIOControl.ConnectionClosed();
-                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("ARM 통신 연결 해제 성공."));
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("Remote I/O 모듈 접속 명령이 실행되지 않았습니다."));
+                return false;
             }
-            return _mRemteIOCommManager.IsOpen();            
         }
         private bool ARMRemoteIOModuleDisconnet()
         {
-            if (_mRemteIOCommManager.IsOpen())
-            {                
-                _mRemteIOCommManager.Disconnect();
+            try
+            {
+                if (_mRemteIOCommManager != null)
+                {
+                    if (_mRemteIOCommManager.IsOpen())
+                    {
+                        _mRemteIOCommManager.Disconnect();
+                    }
+                    return _mRemteIOCommManager.IsOpen();
+                }
+                else
+                    return false;
             }
-            return _mRemteIOCommManager.IsOpen();            
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("Remote I/O 모듈 접속 해제 명령이 실행되지 않았습니다."));
+                return false;
+            }
         }    
         private void InitializeStatistics()
         {
-            string strTemp = string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.StatisticsFileName);
+            try
+            {
+                string strTemp = string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.StatisticsFileName);
 
-            if (File.Exists(strTemp))
-            {
-                _statistics = RecipeFileIO.ReadInspectionStatisticsFile(strTemp, MAX_STATISTICS);
-            }
-            else
-            {
-                for (int i = 0; i < MAX_STATISTICS; ++i)
+                if (File.Exists(strTemp))
                 {
-                    _statistics.Statistics.Add("0");
+                    _statistics = RecipeFileIO.ReadInspectionStatisticsFile(strTemp, MAX_STATISTICS);
+                }
+                else
+                {
+                    for (int i = 0; i < MAX_STATISTICS; ++i)
+                    {
+                        _statistics.Statistics.Add("0");
+                    }
+
+                    _statistics.TotalCount = 0;
+                    _statistics.PassCount = 0;
+                    _statistics.FailCount = 0;
+
+                    RecipeFileIO.WriteInspectionStatisticsFile(strTemp, _statistics);
                 }
 
-                _statistics.TotalCount = 0;
-                _statistics.PassCount = 0;
-                _statistics.FailCount = 0;
+                if (_systemParams._SystemLanguageKoreaUse)
+                {
+                    barEditItemTotalInspectionCount.EditValue = string.Format("총 검사 수: {0:00000}", _statistics.TotalCount);
+                    barEditItemTotalFailCount.EditValue = string.Format("불합격: {0:00000}", _statistics.FailCount);
+                }
+                else
+                {
+                    barEditItemTotalInspectionCount.EditValue = string.Format("Total Count: {0:00000}", _statistics.TotalCount);
+                    barEditItemTotalFailCount.EditValue = string.Format("Fail Count: {0:00000}", _statistics.FailCount);
+                }
 
-                RecipeFileIO.WriteInspectionStatisticsFile(strTemp, _statistics);
+
+                // Variable Init.
+                if (_currentStatistics.Statistics.Count == 0)
+                {
+                    for (int i = 0; i < MAX_STATISTICS; ++i)
+                        _currentStatistics.Statistics.Add(0);
+                }
             }
-
-            if (_systemParams._SystemLanguageKoreaUse)
+            catch (Exception)
             {
-                barEditItemTotalInspectionCount.EditValue = string.Format("총 검사 수: {0:00000}", _statistics.TotalCount);
-                barEditItemTotalFailCount.EditValue = string.Format("불합격: {0:00000}", _statistics.FailCount);
-            }
-            else
-            {
-                barEditItemTotalInspectionCount.EditValue = string.Format("Total Count: {0:00000}", _statistics.TotalCount);
-                barEditItemTotalFailCount.EditValue = string.Format("Fail Count: {0:00000}", _statistics.FailCount);
-            }
-
-
-            // Variable Init.
-            if (_currentStatistics.Statistics.Count == 0)
-            {
-                for (int i = 0; i < MAX_STATISTICS; ++i)
-                    _currentStatistics.Statistics.Add(0);
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("통계 자료 초기화 명령이 실행되지 않았습니다."));
             }
         }
         private void InitializeTackTimes()
         {
-            string strFilePath = string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.TackTimesFileName);
-
-            if (Directory.Exists(SystemDirectoryParams.RecipeFolderPath))
+            try
             {
-                string[] recipes = null;
-                recipes = Directory.GetDirectories(SystemDirectoryParams.RecipeFolderPath);
+                string strFilePath = string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.TackTimesFileName);
 
-                if (recipes != null)
+                if (Directory.Exists(SystemDirectoryParams.RecipeFolderPath))
                 {
-                    for (int i = 0; i < recipes.Length; ++i)
+                    string[] recipes = null;
+                    recipes = Directory.GetDirectories(SystemDirectoryParams.RecipeFolderPath);
+
+                    if (recipes != null)
                     {
-                        string[] strTemp = recipes[i].Split('\\');
+                        for (int i = 0; i < recipes.Length; ++i)
+                        {
+                            string[] strTemp = recipes[i].Split('\\');
 
-                        string strRecipeName = strTemp[strTemp.Length - 1];
+                            string strRecipeName = strTemp[strTemp.Length - 1];
 
-                        _dicTackTimes.Add(strRecipeName, new TackParams(0, 0));
+                            _dicTackTimes.Add(strRecipeName, new TackParams(0, 0));
+                        }
                     }
                 }
-            }
 
-            if (File.Exists(strFilePath))
-            {
-                _dicTackTimes = RecipeFileIO.ReadTackTimeFile(strFilePath);
+                if (File.Exists(strFilePath))
+                {
+                    _dicTackTimes = RecipeFileIO.ReadTackTimeFile(strFilePath);
+                }
+                else
+                {
+                    RecipeFileIO.WriteTackTimeFile(strFilePath, _dicTackTimes);
+                }
             }
-            else
+            catch (Exception)
             {
-                RecipeFileIO.WriteTackTimeFile(strFilePath, _dicTackTimes);
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 시간 초기화가 실행되지 않았습니다."));
             }
         }
         private void UpdateProcessTime(bool IsLogWrite)
@@ -887,24 +991,31 @@ namespace atOpticalDecenter
         }
         private void InitializeRecipe()
         {
-            if (Directory.Exists(SystemDirectoryParams.RecipeFolderPath))
+            try
             {
-                string[] recipes = null;
-                recipes = Directory.GetDirectories(SystemDirectoryParams.RecipeFolderPath);
-
-                for (int i = 0; i < recipes.Length; ++i)
+                if (Directory.Exists(SystemDirectoryParams.RecipeFolderPath))
                 {
-                    string[] strTemp = recipes[i].Split('\\');
+                    string[] recipes = null;
+                    recipes = Directory.GetDirectories(SystemDirectoryParams.RecipeFolderPath);
 
-                    string strRecipeName = strTemp[strTemp.Length - 1];
-
-                    if (!_dicTackTimes.ContainsKey(strRecipeName))
+                    for (int i = 0; i < recipes.Length; ++i)
                     {
-                        _dicTackTimes.Add(strRecipeName, new TackParams(0, 0));
-                    }
+                        string[] strTemp = recipes[i].Split('\\');
 
-                    barListItemRecipeOpen.Strings.Add(strRecipeName);
+                        string strRecipeName = strTemp[strTemp.Length - 1];
+
+                        if (!_dicTackTimes.ContainsKey(strRecipeName))
+                        {
+                            _dicTackTimes.Add(strRecipeName, new TackParams(0, 0));
+                        }
+
+                        barListItemRecipeOpen.Strings.Add(strRecipeName);
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("레시피 초기화 실행되지 않았습니다."));
             }
         }
 
@@ -1273,94 +1384,108 @@ namespace atOpticalDecenter
 
         private void vGridControl1_CellValueChanging(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e)
         {
-            if (e.Row.Name == "rowCameraConnect")
+            try
             {
-                if (e.CellIndex == 0)
+                if (e.Row.Name == "rowCameraConnect")
                 {
-                    bool IsCameraOpen = Convert.ToBoolean(e.Value);
-                    if (_isContinuousShot)
-                        _Camera.Stop();
-                    if (IsCameraOpen)
+                    if (e.CellIndex == 0)
                     {
-                        if (!_Camera.IsAllocated)
+                        bool IsCameraOpen = Convert.ToBoolean(e.Value);
+                        if (_isContinuousShot)
+                            _Camera.Stop();
+                        if (IsCameraOpen)
                         {
-                            string strCameraName = Convert.ToString(rowCameraName.Properties.Value);
-                            if (!string.IsNullOrEmpty(strCameraName))
+                            if (!_Camera.IsAllocated)
                             {
-                                if (_Camera.Open(strCameraName))
+                                string strCameraName = Convert.ToString(rowCameraName.Properties.Value);
+                                if (!string.IsNullOrEmpty(strCameraName))
                                 {
-                                    rowCameraName.Properties.Value = strCameraName;
-                                    rowCameraConnect.Properties.Value = e.Value;
-                                    _isCameraOpen = true;
+                                    if (_Camera.Open(strCameraName))
+                                    {
+                                        rowCameraName.Properties.Value = strCameraName;
+                                        rowCameraConnect.Properties.Value = e.Value;
+                                        _isCameraOpen = true;
+                                    }
+                                    else
+                                    {
+                                        repositoryItemToggleSwitchCameraConnection.ValueOn = true;
+                                        repositoryItemToggleSwitchCameraConnection.ValueOff = false;
+                                        _isCameraOpen = false;
+                                        mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("카메라 연결 실패:{0}", strCameraName));
+                                    }
                                 }
                                 else
                                 {
+                                    _isCameraOpen = false;
                                     repositoryItemToggleSwitchCameraConnection.ValueOn = true;
                                     repositoryItemToggleSwitchCameraConnection.ValueOff = false;
-                                    _isCameraOpen = false;
-                                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("카메라 연결 실패:{0}", strCameraName));
+                                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("카메라 이름이 없습니다:{0}", strCameraName));
                                 }
                             }
                             else
                             {
+                                _Camera.Close();
                                 _isCameraOpen = false;
                                 repositoryItemToggleSwitchCameraConnection.ValueOn = true;
                                 repositoryItemToggleSwitchCameraConnection.ValueOff = false;
-                                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("카메라 이름이 없습니다:{0}", strCameraName));
+                                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 연결이 끊겼습니다."));
                             }
                         }
                         else
                         {
                             _Camera.Close();
                             _isCameraOpen = false;
-                            repositoryItemToggleSwitchCameraConnection.ValueOn = true;
-                            repositoryItemToggleSwitchCameraConnection.ValueOff = false;
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 연결이 끊겼습니다."));
                         }
+                        UpdateConnectStatusForAll();
                     }
-                    else
-                    {
-                        _Camera.Close();
-                        _isCameraOpen = false;
-                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 연결이 끊겼습니다."));
-                    }
-                    UpdateConnectStatusForAll();
                 }
+            }
+            catch (Exception)
+            {
+                ;
             }
         }
 
         private void vGridControl1_CellValueChanged(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e)
         {
-            if (_Camera.IsAllocated)
+            try
             {
-                if (e.Row.Name == "rowCameraFrame")
+                if (_Camera.IsAllocated)
                 {
-                    double oldValue = _Camera.FrameRate.Value;
-                    CameraParameters cameraParam = new CameraParameters();
-                    cameraParam.Value = Convert.ToInt32(rowCameraFrame.Properties.Value);
-                    _Camera.FrameRate = cameraParam;
-                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 프레임 비(fps) 변경 전:{0}, 변경 후:{1}", (int)oldValue, (int)cameraParam.Value));
-                }
-                else if (e.Row.Name == "rowCameraExposureTime")
-                {
-                    double oldValue = _Camera.ExposureTime.Value;
-                    CameraParameters cameraParam = new CameraParameters();
-                    int ExposerRange = Convert.ToInt32(e.Value);
-                    if ((ExposerRange >= 50) && (ExposerRange <= 10000000))
+                    if (e.Row.Name == "rowCameraFrame")
                     {
-                        cameraParam.Value = Convert.ToInt32(rowCameraExposureTime.Properties.Value);
-                        _Camera.ExposureTime = cameraParam;
-                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 노출 시간 변경 전:{0}, 변경 후:{1}", (int)oldValue, (int)cameraParam.Value));
+                        double oldValue = _Camera.FrameRate.Value;
+                        CameraParameters cameraParam = new CameraParameters();
+                        cameraParam.Value = Convert.ToInt32(rowCameraFrame.Properties.Value);
+                        _Camera.FrameRate = cameraParam;
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 프레임 비(fps) 변경 전:{0}, 변경 후:{1}", (int)oldValue, (int)cameraParam.Value));
+                    }
+                    else if (e.Row.Name == "rowCameraExposureTime")
+                    {
+                        double oldValue = _Camera.ExposureTime.Value;
+                        CameraParameters cameraParam = new CameraParameters();
+                        int ExposerRange = Convert.ToInt32(e.Value);
+                        if ((ExposerRange >= 50) && (ExposerRange <= 10000000))
+                        {
+                            cameraParam.Value = Convert.ToInt32(rowCameraExposureTime.Properties.Value);
+                            _Camera.ExposureTime = cameraParam;
+                            mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 노출 시간 변경 전:{0}, 변경 후:{1}", (int)oldValue, (int)cameraParam.Value));
+                        }
+                    }
+                    else if (e.Row.Name == "rowCameraGain")
+                    {
+                        double oldValue = _Camera.Gain.Value;
+                        CameraParameters cameraParam = new CameraParameters();
+                        cameraParam.Value = Convert.ToInt32(rowCameraGain.Properties.Value);
+                        _Camera.Gain = cameraParam;
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 게인 변경 전:{0}, 변경 후:{1}", (int)oldValue, (int)cameraParam.Value));
                     }
                 }
-                else if (e.Row.Name == "rowCameraGain")
-                {
-                    double oldValue = _Camera.Gain.Value;
-                    CameraParameters cameraParam = new CameraParameters();
-                    cameraParam.Value = Convert.ToInt32(rowCameraGain.Properties.Value);
-                    _Camera.Gain = cameraParam;
-                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 게인 변경 전:{0}, 변경 후:{1}", (int)oldValue, (int)cameraParam.Value));
-                }
+            }
+            catch (Exception)
+            {
+                ;
             }
         }
 
@@ -1380,7 +1505,7 @@ namespace atOpticalDecenter
                 }
                 catch (Exception)
                 {
-
+                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("싱글 샷 명령이 실행되지 않았습니다."));
                 }
             }
         }
@@ -1396,9 +1521,9 @@ namespace atOpticalDecenter
                     _frameCount = 0;
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "연속 샷 시작");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-
+                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("연속 샷 명령이 실행되지 않았습니다."));
                 }
             }
         }
@@ -1413,9 +1538,9 @@ namespace atOpticalDecenter
                     _isContinuousShot = false;
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "연속 샷 정지");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-
+                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("연속 샷 정지 명령이 실행되지 않았습니다."));
                 }
             }
         }
@@ -2242,6 +2367,7 @@ namespace atOpticalDecenter
             }
             catch (Exception ex)
             {
+                ;
             }
         }
 
@@ -2252,50 +2378,72 @@ namespace atOpticalDecenter
                 pictureEditSystemImage.HScrollBar.Value = Convert.ToInt32(_fHScrollPos);
                 pictureEditSystemImage.VScrollBar.Value = Convert.ToInt32(_fVScrollPos);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+                ;
             }
         }
 
         private void barButtonItemImageZoomIn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (pictureEditSystemImage.Image != null)
+            try
             {
-                if (pictureEditSystemImage.Properties.ZoomPercent < 1600)
+                if (pictureEditSystemImage.Image != null)
                 {
-                    pictureEditSystemImage.Properties.ZoomPercent *= 2;
+                    if (pictureEditSystemImage.Properties.ZoomPercent < 1600)
+                    {
+                        pictureEditSystemImage.Properties.ZoomPercent *= 2;
 
-                    _isImageFitSize = false;
+                        _isImageFitSize = false;
 
-                    //_log.WriteLog(LogLevel.Info, LogClass.atSFL.ToString(), string.Format("확대: {0:0.0}%", pictureEditImage.Properties.ZoomPercent));
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("확대: {0:0.0}%", pictureEditSystemImage.Properties.ZoomPercent));
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("이미지 화면 확대 명령이 실행되지 않았습니다."));
             }
         }
 
         private void barButtonItemImageZoomOut_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (pictureEditSystemImage.Image != null)
+            try
             {
-                if (pictureEditSystemImage.Properties.ZoomPercent >= 12.5)
+                if (pictureEditSystemImage.Image != null)
                 {
-                    pictureEditSystemImage.Properties.ZoomPercent /= 2;
+                    if (pictureEditSystemImage.Properties.ZoomPercent >= 12.5)
+                    {
+                        pictureEditSystemImage.Properties.ZoomPercent /= 2;
 
-                    _isImageFitSize = false;
+                        _isImageFitSize = false;
 
-                    //_log.WriteLog(LogLevel.Info, LogClass.atSFL.ToString(), string.Format("축소: {0:0.0}%", pictureEditImage.Properties.ZoomPercent));
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("축소: {0:0.0}%", pictureEditSystemImage.Properties.ZoomPercent));
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("이미지 화면 축소 명령이 실행되지 않았습니다."));
             }
         }
 
         private void barButtonItemImageOriginSize_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (pictureEditSystemImage.Image != null)
+            try
             {
-                _isImageFitSize = false;
+                if (pictureEditSystemImage.Image != null)
+                {
+                    _isImageFitSize = false;
 
-                pictureEditSystemImage.Properties.ZoomPercent = 100;
+                    pictureEditSystemImage.Properties.ZoomPercent = 100;
 
-                //_log.WriteLog(LogLevel.Info, LogClass.atSFL.ToString(), string.Format("원래 크기: {0:0.0}%", pictureEditImage.Properties.ZoomPercent));
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("원래 크기: {0:0.0}%", pictureEditSystemImage.Properties.ZoomPercent));
+                }
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("이미지 원래 크기 맞춤 명령이 실행되지 않았습니다."));
             }
         }
 
@@ -2319,7 +2467,7 @@ namespace atOpticalDecenter
                 }
                 catch (Exception)
                 {
-                    ;
+                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("이미지 화면 맞춤 명령이 실행되지 않았습니다."));
                 }
             }
         }
@@ -2332,7 +2480,7 @@ namespace atOpticalDecenter
             }
             catch (Exception ex)
             {
-
+                ;
             }
         }
 
@@ -2440,7 +2588,7 @@ namespace atOpticalDecenter
             }
             catch (Exception ex)
             {
-                ;
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("Led Spot 이미지 로드가 실행되지 않았습니다."));
             }
         }
 
@@ -2461,7 +2609,7 @@ namespace atOpticalDecenter
             }
             catch (Exception ex)
             {
-                ;
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 이미지 로드가 실행되지 않았습니다."));
             }
         }
 
@@ -2601,54 +2749,6 @@ namespace atOpticalDecenter
         }
         public Bitmap ConverterColorToGray(Bitmap colorBitmap)
         {
-            //int Width = colorBitmap.Width;
-            //int Height = colorBitmap.Height;
-
-            //BitmapData cBd = colorBitmap.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.ReadOnly, colorBitmap.PixelFormat);
-
-            //int cStride = cBd.Stride;
-            //int cOffset = cStride - ((Width * Bitmap.GetPixelFormatSize(colorBitmap.PixelFormat)) / 8);
-
-            //Bitmap grayBitmap = new Bitmap(colorBitmap.Width,colorBitmap.Height,PixelFormat.Format8bppIndexed);
-            //BitmapData gBd = grayBitmap.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.ReadWrite, PixelFormat.Format8bppIndexed);
-
-            //int gStride = gBd.Stride;
-            //int gOffset = gStride - (Width * Bitmap.GetPixelFormatSize(grayBitmap.PixelFormat) / 8);
-
-            //System.Drawing.Imaging.ColorPalette palette;
-            //palette = grayBitmap.Palette;
-            //for (int i = 0; i < 256; i++)
-            //{
-            //    Color tmp = Color.FromArgb(255, i, i, i);
-            //    palette.Entries[i] = Color.FromArgb(255, i, i, i);
-            //}
-            //grayBitmap.Palette = palette;
-
-            //unsafe
-            //{
-            //    byte* cPtr = (byte*)cBd.Scan0.ToPointer();
-            //    byte* gPtr = (byte*)gBd.Scan0.ToPointer();
-
-            //    for (int y = 0; y < Height; y++)
-            //    {
-            //        for (int x = 0; x < Width; x++)
-            //        {
-            //            //byte a = cPtr[0];
-            //            byte b = cPtr[0];
-            //            byte g = cPtr[1];
-            //            byte r = cPtr[2];
-
-            //            gPtr[0] = (byte)((r + g + b) / 3);
-            //            cPtr += 3;
-            //            gPtr += 1;
-            //        }
-            //        cPtr += cOffset;
-            //        gPtr += gOffset;
-            //    }
-            //    colorBitmap.UnlockBits(cBd);
-            //    grayBitmap.UnlockBits(gBd);
-            //}
-            //return grayBitmap;
             int w = colorBitmap.Width,
                 h = colorBitmap.Height,
                 r, ic, oc, bmpStride, outputStride, bytesPerPixel;
@@ -2819,26 +2919,97 @@ namespace atOpticalDecenter
 
         private void barCheckItemInspectionStart_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (_isInspecting == false)
+            try
             {
-                CheckTackTime.Reset();
-                barCheckItemInspectionStart.Caption = string.Format("검사 중지");
-                _isInspecting = true;
-                _isInspectError = false;
-                // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
-                //
-
-                if (_isContinuousShot)
+                if (_isInspecting == false)
                 {
-                    _Camera.Stop();
-                    _isContinuousShot = false;
-                    barButtonItemSingleShot.Enabled = true;
-                    barButtonItemContinueousShot.Enabled = true;
+                    CheckTackTime.Reset();
+                    barCheckItemInspectionStart.Caption = string.Format("검사 중지");
+                    _isInspecting = true;
+                    _isInspectError = false;
+                    // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
+                    //
+
+                    if (_isContinuousShot)
+                    {
+                        _Camera.Stop();
+                        _isContinuousShot = false;
+                        barButtonItemSingleShot.Enabled = true;
+                        barButtonItemContinueousShot.Enabled = true;
+                    }
+                    barCheckItemShowCenterMark.Enabled = true;
+
+                    if (mRobotInformation.GetStatus(RobotInformation.RobotStatus.OperationReady))
+                    {
+                        mStepBase.SetJobInfo(mLogin.JobInformation);
+                        mStepBase.SetProductSeries((PhotoProduct.Enums.ProductSeries)_workParams._ProductSeries);
+                        mStepBase.SetProductType((PhotoProduct.Enums.ProductType)_workParams._ProductType);
+                        mStepBase.SetProductName(_workParams._ProductModelName);
+                        mStepBase.SetOutputType((PhotoProduct.Enums.OutputType)_workParams._ProductOutputType);
+                        mStepBase.SetOPMode((PhotoProduct.Enums.OperatingMode)_workParams._ProductOperatingMdoe);
+                        mStepBase.SetDetectMertrial((PhotoProduct.Enums.DetectMeterial)_workParams._ProductDetectMerterial);
+                        mStepBase.ClearTimeForFullSequence();
+
+                        MakeInspectionList();
+                        _InspectionWorking = true;
+                        _InspectionResult = false;
+                        mInspectStep = InspectionStepType.CheckWaitRobotReady;
+
+                        InspectionRecipeParameterSetup();
+
+                        CheckTackTime.Start();
+                        _backgroundWorkerOpticalDecenterInspection.RunWorkerAsync();
+                        AutoStartButtonLock();
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 실행");
+                    }
+                    else
+                    {
+                        barCheckItemInspectionStart.Caption = string.Format("검사 시작");
+                        _isInspecting = false;
+                        MessageBox.Show("모션 원점복귀를 실행하세요", "검사 중지");
+                    }
+
                 }
-                barCheckItemShowCenterMark.Enabled = true;
-
-                if (mRobotInformation.GetStatus(RobotInformation.RobotStatus.OperationReady))
+                else
                 {
+                    barCheckItemInspectionStart.Caption = string.Format("검사 시작");
+                    _isInspecting = false;
+                    _InspectionWorking = false;
+                    _isInspectError = false;
+                    _InspectionResult = false;
+                    mInspectStep = InspectionStepType.Idle;
+                    _backgroundWorkerOpticalDecenterInspection.CancelAsync();
+                    UpdateProcessTime(false);
+                    barEditItemInspectionResult.EditValue = "Ready";
+                    AutoStartButtonRelease();
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 강제 종료");
+                }
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("포토 센서 검사 실행/정지 버튼 실행 오류"));
+            }
+        }
+        public void InspectionSequenceStart()
+        {
+            try
+            {
+                if (_isInspecting == false)
+                {
+                    CheckTackTime.Reset();
+                    _isInspecting = true;
+                    _isInspectError = false;
+                    // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
+                    //
+                    if (_isContinuousShot)
+                    {
+                        _Camera.Stop();
+                        _isContinuousShot = false;
+                        barButtonItemSingleShot.Enabled = true;
+                        barButtonItemContinueousShot.Enabled = true;
+                    }
+                    barCheckItemShowCenterMark.Enabled = true;
+
                     mStepBase.SetJobInfo(mLogin.JobInformation);
                     mStepBase.SetProductSeries((PhotoProduct.Enums.ProductSeries)_workParams._ProductSeries);
                     mStepBase.SetProductType((PhotoProduct.Enums.ProductType)_workParams._ProductType);
@@ -2854,166 +3025,130 @@ namespace atOpticalDecenter
                     mInspectStep = InspectionStepType.CheckWaitRobotReady;
 
                     InspectionRecipeParameterSetup();
-
                     CheckTackTime.Start();
                     _backgroundWorkerOpticalDecenterInspection.RunWorkerAsync();
+                    barCheckItemInspectionStart.Caption = string.Format("검사 중지");
                     AutoStartButtonLock();
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 실행");
                 }
-                else
-                {
-                    barCheckItemInspectionStart.Caption = string.Format("검사 시작");
-                    _isInspecting = false;
-                    MessageBox.Show("모션 원점복귀를 실행하세요","검사 중지");
-                }
-
             }
-            else
+            catch (Exception)
             {
-                barCheckItemInspectionStart.Caption = string.Format("검사 시작");
-                _isInspecting = false;
-                _InspectionWorking = false;
-                _isInspectError = false;
-                _InspectionResult = false;
-                mInspectStep = InspectionStepType.Idle;
-                _backgroundWorkerOpticalDecenterInspection.CancelAsync();
-                UpdateProcessTime(false);
-                barEditItemInspectionResult.EditValue = "Ready";
-                AutoStartButtonRelease();
-                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 강제 종료");
-            }
-        }
-        public void InspectionSequenceStart()
-        {
-            if (_isInspecting == false)
-            {
-                CheckTackTime.Reset();                
-                _isInspecting = true;
-                _isInspectError = false;
-                // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
-                //
-                if (_isContinuousShot)
-                {
-                    _Camera.Stop();
-                    _isContinuousShot = false;
-                    barButtonItemSingleShot.Enabled = true;
-                    barButtonItemContinueousShot.Enabled = true;
-                }
-                barCheckItemShowCenterMark.Enabled = true;
-
-                mStepBase.SetJobInfo(mLogin.JobInformation);
-                mStepBase.SetProductSeries((PhotoProduct.Enums.ProductSeries)_workParams._ProductSeries);
-                mStepBase.SetProductType((PhotoProduct.Enums.ProductType)_workParams._ProductType);
-                mStepBase.SetProductName(_workParams._ProductModelName);
-                mStepBase.SetOutputType((PhotoProduct.Enums.OutputType)_workParams._ProductOutputType);
-                mStepBase.SetOPMode((PhotoProduct.Enums.OperatingMode)_workParams._ProductOperatingMdoe);
-                mStepBase.SetDetectMertrial((PhotoProduct.Enums.DetectMeterial)_workParams._ProductDetectMerterial);
-                mStepBase.ClearTimeForFullSequence();
-
-                MakeInspectionList();
-                _InspectionWorking = true;
-                _InspectionResult = false;
-                mInspectStep = InspectionStepType.CheckWaitRobotReady;
-
-                InspectionRecipeParameterSetup();                
-                CheckTackTime.Start();
-                _backgroundWorkerOpticalDecenterInspection.RunWorkerAsync();
-                barCheckItemInspectionStart.Caption = string.Format("검사 중지");
-                AutoStartButtonLock();
-                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 실행");
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 시퀀스 시작 명령 오류"));
             }
         }
         public void InspectionSequenceStop()
         {
-            if (_isInspecting)
-            {                
-                _isInspecting = false;
-                _InspectionWorking = false;
-                _isInspectError = false;
-                _InspectionResult = false;
-                mInspectStep = InspectionStepType.Idle;
-                _backgroundWorkerOpticalDecenterInspection.CancelAsync();
-                UpdateProcessTime(false);
-                barCheckItemInspectionStart.Caption = string.Format("검사 시작");                
-                AutoStartButtonRelease();
-                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 강제 종료");
+            try
+            {
+                if (_isInspecting)
+                {
+                    _isInspecting = false;
+                    _InspectionWorking = false;
+                    _isInspectError = false;
+                    _InspectionResult = false;
+                    mInspectStep = InspectionStepType.Idle;
+                    _backgroundWorkerOpticalDecenterInspection.CancelAsync();
+                    UpdateProcessTime(false);
+                    barCheckItemInspectionStart.Caption = string.Format("검사 시작");
+                    AutoStartButtonRelease();
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 강제 종료");
+                }
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 시컨스 정지 명령어 오류"));
             }
         }
         private void barButtonItemWorkInfo_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //LogInForm logInForm = new LogInForm(_admsEquipment.WorkerID, _admsEquipment.WorkerName, _admsEquipment.JobInformation);
-            LoginForm logInForm = new LoginForm(_systemParams._SystemLanguageKoreaUse);
-            if (logInForm.ShowDialog() == DialogResult.OK)
+            try
             {
-                if (_admsEquipment.WorkerID.Equals(logInForm.WorkerID) && _admsEquipment.WorkerName.Equals(logInForm.WorkerName) && _admsEquipment.JobInformation.Equals(logInForm.JobInformation))
+                //LogInForm logInForm = new LogInForm(_admsEquipment.WorkerID, _admsEquipment.WorkerName, _admsEquipment.JobInformation);
+                LoginForm logInForm = new LoginForm(_systemParams._SystemLanguageKoreaUse);
+                if (logInForm.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show("같은 로그인 정보입니다.", "변경", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    string strLog = string.Format("로그인 정보가 변경되었습니다.\n\n작업자 사번: {0} → {1}\n작업자 이름: {2} → {3}\n작업지시서: {4} → {5}\n\n변경하시겠습니까?",
-                        _admsEquipment.WorkerID, logInForm.WorkerID, _admsEquipment.WorkerName, logInForm.WorkerName, _admsEquipment.JobInformation, logInForm.JobInformation);
-
-                    if (MessageBox.Show(strLog, "변경", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                    if (_admsEquipment.WorkerID.Equals(logInForm.WorkerID) && _admsEquipment.WorkerName.Equals(logInForm.WorkerName) && _admsEquipment.JobInformation.Equals(logInForm.JobInformation))
                     {
-                        //if (_admsEquipment.JobInformation != logInForm.JobInformation)
-                        //{
-                        //    _admsEquipment.Time = DateTime.Now;
-                        //    _admsEquipment.Event = ADMSEquipmentEvent.JOB;
-                        //    _admsEquipment.EventSubState = ADMSEquipmentEventSubState.CHANGE;
-                        //    _admsEquipment.JobInformation = logInForm.JobInformation;
-                        //    _admsEquipment.Description = "작업지시서를 변경합니다.";
+                        MessageBox.Show("같은 로그인 정보입니다.", "변경", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        string strLog = string.Format("로그인 정보가 변경되었습니다.\n\n작업자 사번: {0} → {1}\n작업자 이름: {2} → {3}\n작업지시서: {4} → {5}\n\n변경하시겠습니까?",
+                            _admsEquipment.WorkerID, logInForm.WorkerID, _admsEquipment.WorkerName, logInForm.WorkerName, _admsEquipment.JobInformation, logInForm.JobInformation);
 
-                        //    if (_systemParams._admsParams._enableCheck)
-                        //    {
-                        //        ;// DB 상태 업데이트 구문 추가 필요!!
-                        //    }
-                        //}
-
-                        _admsEquipment.WorkerID = logInForm.WorkerID;
-                        _admsEquipment.WorkerName = logInForm.WorkerName;
-                        _admsEquipment.JobInformation = logInForm.JobInformation;
-
-                        if (_systemParams._bJobWorkInfomationEnable)
+                        if (MessageBox.Show(strLog, "변경", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                         {
+                            //if (_admsEquipment.JobInformation != logInForm.JobInformation)
+                            //{
+                            //    _admsEquipment.Time = DateTime.Now;
+                            //    _admsEquipment.Event = ADMSEquipmentEvent.JOB;
+                            //    _admsEquipment.EventSubState = ADMSEquipmentEventSubState.CHANGE;
+                            //    _admsEquipment.JobInformation = logInForm.JobInformation;
+                            //    _admsEquipment.Description = "작업지시서를 변경합니다.";
 
-                            if (_JobWorkDbCtrl.SearchDBforKeyword("work_ord_no", string.Format("{0}", logInForm.JobInformation), true))
+                            //    if (_systemParams._admsParams._enableCheck)
+                            //    {
+                            //        ;// DB 상태 업데이트 구문 추가 필요!!
+                            //    }
+                            //}
+
+                            _admsEquipment.WorkerID = logInForm.WorkerID;
+                            _admsEquipment.WorkerName = logInForm.WorkerName;
+                            _admsEquipment.JobInformation = logInForm.JobInformation;
+
+                            if (_systemParams._bJobWorkInfomationEnable)
                             {
-                                string recpename = string.Empty;
 
-                                recpename = GetRecipeNameToDB();
+                                if (_JobWorkDbCtrl.SearchDBforKeyword("work_ord_no", string.Format("{0}", logInForm.JobInformation), true))
+                                {
+                                    string recpename = string.Empty;
 
-                                if (recpename != "")
-                                    RecipeOpen(recpename);
+                                    recpename = GetRecipeNameToDB();
 
-                                MessageBox.Show("작업지시서를 확인 후 레시피를 선택 했습니다.", "DB확인", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                    if (recpename != "")
+                                        RecipeOpen(recpename);
+
+                                    MessageBox.Show("작업지시서를 확인 후 레시피를 선택 했습니다.", "DB확인", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                }
+                                else
+                                    MessageBox.Show("작업지시서를 없습니다.", "DB 미확인", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                             }
                             else
-                                MessageBox.Show("작업지시서를 없습니다.", "DB 미확인", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                        }
-                        else
-                        {
-                            barListItemRecipeOpen.Enabled = true;
+                            {
+                                barListItemRecipeOpen.Enabled = true;
+                            }
                         }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("로그인 정보가 변경되지 않았습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("로그인 정보가 변경되지 않았습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("작업자 정보 입력 오류"));
             }
         }        
         public void InspectionRecipeParameterSetup()
         {
-            // Camera exposure time change
-            double oldValue = _Camera.ExposureTime.Value;
-            CameraParameters cameraParam = new CameraParameters();
-            int ExposerRange = _workParams._LEDInspectionExposureTime;
-            if ((ExposerRange >= 50) && (ExposerRange <= 10000000))
+            try
             {
-                cameraParam.Value = Convert.ToInt32(_workParams._LEDInspectionExposureTime);
-                _Camera.ExposureTime = cameraParam;
-                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 노출 시간 변경 전:{0}, 변경 후:{1}", (int)oldValue, (int)cameraParam.Value));
+                // Camera exposure time change
+                double oldValue = _Camera.ExposureTime.Value;
+                CameraParameters cameraParam = new CameraParameters();
+                int ExposerRange = _workParams._LEDInspectionExposureTime;
+                if ((ExposerRange >= 50) && (ExposerRange <= 10000000))
+                {
+                    cameraParam.Value = Convert.ToInt32(_workParams._LEDInspectionExposureTime);
+                    _Camera.ExposureTime = cameraParam;
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 노출 시간 변경 전:{0}, 변경 후:{1}", (int)oldValue, (int)cameraParam.Value));
+                }
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 실행전 카메라 노출 설정 오류"));
             }
         }
 
@@ -3113,7 +3248,7 @@ namespace atOpticalDecenter
 
                     Spot2BlobImage = System.Drawing.Image.FromFile(openFileDialogSpot2Image.FileName);
                     vGridControl5.Refresh();
-                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("LED Spot1 Image 로드완료:{0}", openFileDialogSpot2Image.FileName));
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("LED Spot2 Image 로드완료:{0}", openFileDialogSpot2Image.FileName));
                 }
                 if (Spot2BlobImage != null)
                 {
@@ -3124,7 +3259,7 @@ namespace atOpticalDecenter
             }
             catch (Exception ex)
             {
-                ;
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("Led2 이미지 로드 오류")); ;
             }
         }
 
@@ -3151,7 +3286,7 @@ namespace atOpticalDecenter
             }
             catch (Exception ex)
             {
-                ;
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("Led1 이미지 로드 오류")); 
             }
         }
         public void MenualInpsectResultUpdate()
@@ -3193,39 +3328,47 @@ namespace atOpticalDecenter
         }
         public string GetRecipeNameToDB()
         {
-            string retStr = string.Empty;
-            string strsource = string.Empty;
-            int strindex = 0, splitindex = 0;
-            if (_JobWorkDbCtrl._rOrderDataList.Count == 1)
+            try
             {
-                for (int i = 0; i < _JobWorkDbCtrl._rOrderDataList.Count; i++)
+                string retStr = string.Empty;
+                string strsource = string.Empty;
+                int strindex = 0, splitindex = 0;
+                if (_JobWorkDbCtrl._rOrderDataList.Count == 1)
                 {
-                    if (_JobWorkDbCtrl._rOrderDataList[i].StatusType == 3)
+                    for (int i = 0; i < _JobWorkDbCtrl._rOrderDataList.Count; i++)
                     {
-                        strsource = _JobWorkDbCtrl._rOrderDataList[i].ItemName;
-                        retStr = strsource;
-                        //byte[] strbytes = new byte[strsource.Length];                        
-                        //strbytes = Encoding.UTF8.GetBytes(strsource);
-                        //for (int j = 0; j < strsource.Length; j++)
-                        //{
-                        //    if (strbytes[j] == '-')
-                        //        strindex++;
-                        //    if (strindex > 1)
-                        //    {
-                        //        splitindex = j;
-                        //        break;
-                        //    }                            
-                        //}
-                        //if (splitindex <= strsource.Length)
-                        //    retStr = strsource.Substring(0, splitindex);
-                        ////retStr = Encoding.UTF8.GetString(strbytes);
+                        if (_JobWorkDbCtrl._rOrderDataList[i].StatusType == 3)
+                        {
+                            strsource = _JobWorkDbCtrl._rOrderDataList[i].ItemName;
+                            retStr = strsource;
+                            //byte[] strbytes = new byte[strsource.Length];                        
+                            //strbytes = Encoding.UTF8.GetBytes(strsource);
+                            //for (int j = 0; j < strsource.Length; j++)
+                            //{
+                            //    if (strbytes[j] == '-')
+                            //        strindex++;
+                            //    if (strindex > 1)
+                            //    {
+                            //        splitindex = j;
+                            //        break;
+                            //    }                            
+                            //}
+                            //if (splitindex <= strsource.Length)
+                            //    retStr = strsource.Substring(0, splitindex);
+                            ////retStr = Encoding.UTF8.GetString(strbytes);
 
+                        }
                     }
+                    return retStr;
                 }
-                return retStr;
+                else
+                    return retStr;
             }
-            else
-                return retStr;
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("DB내 작업 지시서 제품 모델 레시피 파일 검색 오류"));
+                return string.Empty;
+            }
         }
 
         private void barButtonItemHomming_ItemClick(object sender, ItemClickEventArgs e)
@@ -3257,23 +3400,30 @@ namespace atOpticalDecenter
             }
             catch (Exception ex)
             {
-                ;
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("원점 복귀 버튼 싫생 오류"));
             }
         }
         private void barButtonItemReset_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (_mMotionControlCommManager.IsOpen())
+            try
             {
-                if (MessageBox.Show("알람 리셋을 진행을 합니다.", "알람 리셋", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (_mMotionControlCommManager.IsOpen())
                 {
-                    byte[] SeData = new byte[8];
-                    for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                    if (MessageBox.Show("알람 리셋을 진행을 합니다.", "알람 리셋", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        SeData = _mMotionControlCommManager.mDrvCtrl.AlarmResetCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
-                        _mMotionControlCommManager.SendData(SeData);
+                        byte[] SeData = new byte[8];
+                        for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                        {
+                            SeData = _mMotionControlCommManager.mDrvCtrl.AlarmResetCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
+                            _mMotionControlCommManager.SendData(SeData);
+                        }
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "알람 리셋");
                     }
-                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "알람 리셋");
                 }
+            }
+            catch
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("드라이버 알람 리셋 버튼 싫생 오류"));
             }
         }
         public void AutoStartButtonLock()
@@ -3317,7 +3467,7 @@ namespace atOpticalDecenter
                 }
                 catch (Exception)
                 {
-                    ;
+                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("이미지 최적화 사이즈 변환 오류"));
                 }
             }
         }
@@ -3339,395 +3489,400 @@ namespace atOpticalDecenter
                 }
                 catch (Exception)
                 {
-                    ;
-                }
-            }
-        }
-        private void FilterActuatorImageZFitSize()
-        {
-            if (_BaseZImage != null)
-            {
-                try
-                {
-                    float width = pictureEditActuatorZ.ClientSize.Width * 100.0f / _BaseZImage.Width;
-                    float height = (pictureEditActuatorZ.ClientSize.Height - pictureEditActuatorZ.ClientSize.Height * 0.01f) * 100.0f / _BaseZImage.Height;
-
-                    float i = Math.Min(100.0f, Math.Min(width, height));
-
-                    pictureEditActuatorZ.Properties.ZoomPercent = i;
-                    pictureEditActuatorZ.HScrollBar.Value = 0;
-                    pictureEditActuatorZ.VScrollBar.Value = 0;
-                    pictureEditActuatorZ.Refresh();
-                }
-                catch (Exception)
-                {
-                    ;
+                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("이미지 최적화 사이즈 변환 오류"));
                 }
             }
         }
         public Image ActuatorImageAnimationX(float pos)
         {
-            Image tempimage = new Bitmap(_BaseXImage);
-            Image tempact = new Bitmap(_ActuatorXImage);
+            try
+            {
+                Image tempimage = new Bitmap(_BaseXImage);
+                Image tempact = new Bitmap(_ActuatorXImage);
 
-            PointF ImagePos = new PointF(((750 - (tempact.Width / 2)) - (float)((pos - 13.4) * (700F / 773F))), 0);
-            Graphics gp = Graphics.FromImage(tempimage);
-            gp.DrawImage(tempact, ImagePos);
-            gp.Save();
-            gp.Dispose();
-            return tempimage;
+                PointF ImagePos = new PointF(((750 - (tempact.Width / 2)) - (float)((pos - 13.4) * (700F / 773F))), 0);
+                Graphics gp = Graphics.FromImage(tempimage);
+                gp.DrawImage(tempact, ImagePos);
+                gp.Save();
+                gp.Dispose();
+                return tempimage;
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("액추에이터 X 이미지 변환 오류"));
+                return null;
+            }
         }
-        public Image ActuatorImageAnimationY(float pos)
+        public Image ActuatorImageAnimationY(float posy, float posz)
         {
-            Image tempimage = new Bitmap(_BaseYImage);
-            Image tempact = new Bitmap(_ActuatorYImage);
+            try
+            {
+                Image tempimage = new Bitmap(_BaseYImage);
+                Image tempact = new Bitmap(_ActuatorYImage);
+                Image tempzact = new Bitmap(_ActuatorZImage);
 
-            PointF ImagePos = new PointF(((360 - (tempact.Width / 2)) - (float)((pos - 0) * 195F / 50F)), 0);
-            Graphics gp = Graphics.FromImage(tempimage);
-            gp.DrawImage(tempact, ImagePos);
-            gp.Save();
-            gp.Dispose();
-            return tempimage;
-        }
-        public Image ActuatorImageAnimationZ(float pos)
-        {
-            Image tempimage = new Bitmap(_BaseZImage);
-            Image tempact = new Bitmap(_ActuatorZImage);
+                PointF ImagePos = new PointF(0, ((440 - (tempzact.Height / 2)) + (float)((posz - 0) * (190F / 52F))));
+                Graphics gp = Graphics.FromImage(tempact);
+                gp.DrawImage(tempzact, ImagePos);
 
-            PointF ImagePos = new PointF(0, ((440 - (tempact.Height / 2)) + (float)((pos - 0) * (190F / 52F))));
-            Graphics gp = Graphics.FromImage(tempimage);
-            gp.DrawImage(tempact, ImagePos);
-            gp.Save();
-            gp.Dispose();
-            return tempimage;
+                ImagePos = new PointF(((360 - (tempact.Width / 2)) - (float)((posy - 0) * 195F / 50F)), 0);
+                gp = Graphics.FromImage(tempimage);
+                gp.DrawImage(tempact, ImagePos);
+                gp.Save();
+                gp.Dispose();
+                return tempimage;
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("액추에이터 Y,Z 이미지 변환 오류"));
+                return null;
+            }
         }
         private void UpdateGUI()
         {
-            if (_mMotionControlCommManager.IsOpen())
+            try
             {
-                if (pictureEditActuatorX.InvokeRequired)
+                if (_mMotionControlCommManager.IsOpen())
                 {
-                    pictureEditActuatorX.Invoke(new MethodInvoker(delegate { pictureEditActuatorX.Image = ActuatorImageAnimationX((float)mRobotInformation.PositionX); FilterActuatorImageXFitSize(); }));
+                    if (pictureEditActuatorX.InvokeRequired)
+                    {
+                        pictureEditActuatorX.Invoke(new MethodInvoker(delegate { pictureEditActuatorX.Image = ActuatorImageAnimationX((float)mRobotInformation.PositionX); FilterActuatorImageXFitSize(); }));
+                    }
+                    if (pictureEditActuatorY.InvokeRequired)
+                    {
+                        pictureEditActuatorY.Invoke(new MethodInvoker(delegate { pictureEditActuatorY.Image = ActuatorImageAnimationY((float)mRobotInformation.PositionY, (float)mRobotInformation.PositionZ); FilterActuatorImageYFitSize(); }));
+                    }
                 }
-                if (pictureEditActuatorY.InvokeRequired)
-                {
-                    pictureEditActuatorY.Invoke(new MethodInvoker(delegate { pictureEditActuatorY.Image = ActuatorImageAnimationY((float)mRobotInformation.PositionY); FilterActuatorImageYFitSize(); }));
-                }
-                if (pictureEditActuatorZ.InvokeRequired)
-                {
-                    pictureEditActuatorZ.Invoke(new MethodInvoker(delegate { pictureEditActuatorZ.Image = ActuatorImageAnimationZ((float)mRobotInformation.PositionZ); FilterActuatorImageZFitSize(); }));
-                }
+            }
+            catch (Exception)
+            {
+                ;
             }
         }
         private void pictureEditActuatorX_Paint(object sender, PaintEventArgs e)
         {
-            if (pictureEditActuatorX.Image != null)
+            try
             {
-                float fScale = (float)(pictureEditActuatorX.Properties.ZoomPercent / 100.0f);
-                Graphics gp = e.Graphics;
-                string strpos = string.Empty;
-                if (_mMotionControlCommManager.IsOpen())
+                if (pictureEditActuatorX.Image != null)
                 {
-                    strpos = "Position X :" + string.Format("{0:000.00}", mRobotInformation.PositionX);
-                    //gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorX.Image.Height - 30) * fScale));
-                    gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, 10));
+                    float fScale = (float)(pictureEditActuatorX.Properties.ZoomPercent / 100.0f);
+                    Graphics gp = e.Graphics;
+                    string strpos = string.Empty;
+                    if (_mMotionControlCommManager.IsOpen())
+                    {
+                        strpos = "Position X :" + string.Format("{0:000.00}", mRobotInformation.PositionX);
+                        //gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorX.Image.Height - 30) * fScale));
+                        gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, 10));
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("액추에이터 X 표시 오류"));
             }
         }
 
         private void pictureEditpictureEditActuatorY_Paint(object sender, PaintEventArgs e)
         {
-            if (pictureEditActuatorY.Image != null)
+            try
             {
-                float fScale = (float)(pictureEditActuatorY.Properties.ZoomPercent / 100.0f);
-                Graphics gp = e.Graphics;
-                string strpos = string.Empty;
-                if (_mMotionControlCommManager.IsOpen())
+                if (pictureEditActuatorY.Image != null)
                 {
-                    strpos = "Position Y :" + string.Format("{0:000.00}", mRobotInformation.PositionY);
-                    gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorY.Image.Height - 30) * fScale));
+                    float fScale = (float)(pictureEditActuatorY.Properties.ZoomPercent / 100.0f);
+                    Graphics gp = e.Graphics;
+                    string strpos = string.Empty;
+                    if (_mMotionControlCommManager.IsOpen())
+                    {
+                        strpos = "Position Y :" + string.Format("{0:000.00}", mRobotInformation.PositionY);
+                        gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorY.Image.Height - 60) * fScale));
+                        strpos = "Position Z :" + string.Format("{0:000.00}", mRobotInformation.PositionZ);
+                        gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorY.Image.Height - 30) * fScale));
+                    }
                 }
             }
-        }
-
-        private void pictureEditActuatorZ_Paint(object sender, PaintEventArgs e)
-        {
-            if (pictureEditActuatorZ.Image != null)
+            catch(Exception)
             {
-                float fScale = (float)(pictureEditActuatorZ.Properties.ZoomPercent / 100.0f);
-                Graphics gp = e.Graphics;
-                string strpos = string.Empty;
-                if (_mMotionControlCommManager.IsOpen())
-                {
-                    strpos = "Position Z :" + string.Format("{0:000.00}", mRobotInformation.PositionZ);
-                    gp.DrawString(strpos, new Font("Arial", 10, FontStyle.Bold), new SolidBrush(Color.Black), new PointF(0, (pictureEditActuatorZ.Image.Height - 30) * fScale));
-                }
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("액추에이터 Y,Z 표시 오류"));
             }
         }
 
         private void pictureEditDecenterResult_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.InterpolationMode = InterpolationMode.Bicubic;
-            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
-            int width = pictureEditDecenterResult.ClientSize.Width;
-            int height = pictureEditDecenterResult.ClientSize.Height;
-            int passCount = 0;
-            int failCount = 0;
-            
-            PointF fptCenter = new PointF(width / 2, height / 2);
-            float fScale = height / 100f;
-            float onePixelResolution = 0.1F;        // 100 pixel per 10 mm
-            float threshold = 5.0F;
-            float foptincalposy = 0.0f;
-            float foptincalposz = 0.0f;
-
-            Pen pen = new Pen(Brushes.White, 1f);
-            pen.DashStyle = DashStyle.Dash;
-
-            // 중심선 라인 그리기
-            e.Graphics.DrawLine(pen, new Point(0, height / 2), new Point(width, height / 2));
-            e.Graphics.DrawLine(pen, new Point(width / 2, 0), new Point(width / 2, height));
-
-            // 중심에서 5mm 원 그리기
-            e.Graphics.DrawEllipse(pen, (fptCenter.X - (threshold / onePixelResolution * fScale)), (fptCenter.Y - (threshold / onePixelResolution * fScale)), threshold * 2f / onePixelResolution * fScale, threshold * 2f / onePixelResolution * fScale);
-            //e.Graphics.DrawEllipse(pen, (fptCenter.X), (fptCenter.Y), threshold * 2f / onePixelResolution * fScale, threshold * 2f / onePixelResolution * fScale);
-            if (_InspectionResult)
+            try
             {
-                for (int i = 0; i < _workParams.InspectionPositions.Count; i++)
+                e.Graphics.InterpolationMode = InterpolationMode.Bicubic;
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+                int width = pictureEditDecenterResult.ClientSize.Width;
+                int height = pictureEditDecenterResult.ClientSize.Height;
+                int passCount = 0;
+                int failCount = 0;
+
+                PointF fptCenter = new PointF(width / 2, height / 2);
+                float fScale = height / 100f;
+                float onePixelResolution = 0.1F;        // 100 pixel per 10 mm
+                float threshold = 5.0F;
+                float foptincalposy = 0.0f;
+                float foptincalposz = 0.0f;
+
+                Pen pen = new Pen(Brushes.White, 1f);
+                pen.DashStyle = DashStyle.Dash;
+
+                // 중심선 라인 그리기
+                e.Graphics.DrawLine(pen, new Point(0, height / 2), new Point(width, height / 2));
+                e.Graphics.DrawLine(pen, new Point(width / 2, 0), new Point(width / 2, height));
+
+                // 중심에서 5mm 원 그리기
+                e.Graphics.DrawEllipse(pen, (fptCenter.X - (threshold / onePixelResolution * fScale)), (fptCenter.Y - (threshold / onePixelResolution * fScale)), threshold * 2f / onePixelResolution * fScale, threshold * 2f / onePixelResolution * fScale);
+                //e.Graphics.DrawEllipse(pen, (fptCenter.X), (fptCenter.Y), threshold * 2f / onePixelResolution * fScale, threshold * 2f / onePixelResolution * fScale);
+                if (_InspectionResult)
                 {
-                    if (_workParams.InspectionPositions[i].ePositionType == INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE)
+                    for (int i = 0; i < _workParams.InspectionPositions.Count; i++)
                     {
-                        PointF fDiff = new PointF( (((float)mResultData.fDecenterY - _workParams.InspectionPositions[i].PositionY)) * fScale / onePixelResolution,
-                                                  (((float)mResultData.fDecenterZ - _workParams.InspectionPositions[i].PositionZ)) * fScale / onePixelResolution);
-                        Pen greenPen = new Pen(Brushes.LightGreen, 2f );
+                        if (_workParams.InspectionPositions[i].ePositionType == INSPECTION_POSITION_MODE.POSITION_OPTICAL_SPOT_MODE)
+                        {
+                            PointF fDiff = new PointF((((float)mResultData.fDecenterY - _workParams.InspectionPositions[i].PositionY)) * fScale / onePixelResolution,
+                                                      (((float)mResultData.fDecenterZ - _workParams.InspectionPositions[i].PositionZ)) * fScale / onePixelResolution);
+                            Pen greenPen = new Pen(Brushes.LightGreen, 2f);
 
-                        e.Graphics.DrawLine(greenPen, new PointF(fptCenter.X + fDiff.X - 10, fptCenter.Y + fDiff.Y), new PointF(fptCenter.X + fDiff.X + 10, fptCenter.Y + fDiff.Y));
-                        e.Graphics.DrawLine(greenPen, new PointF(fptCenter.X + fDiff.X, fptCenter.Y + fDiff.Y - 10), new PointF(fptCenter.X + fDiff.X, fptCenter.Y + fDiff.Y + 10));
-                        foptincalposy = _workParams.InspectionPositions[i].PositionY;
-                        foptincalposz = _workParams.InspectionPositions[i].PositionZ;
+                            e.Graphics.DrawLine(greenPen, new PointF(fptCenter.X + fDiff.X - 10, fptCenter.Y + fDiff.Y), new PointF(fptCenter.X + fDiff.X + 10, fptCenter.Y + fDiff.Y));
+                            e.Graphics.DrawLine(greenPen, new PointF(fptCenter.X + fDiff.X, fptCenter.Y + fDiff.Y - 10), new PointF(fptCenter.X + fDiff.X, fptCenter.Y + fDiff.Y + 10));
+                            foptincalposy = _workParams.InspectionPositions[i].PositionY;
+                            foptincalposz = _workParams.InspectionPositions[i].PositionZ;
+                        }
                     }
+                    e.Graphics.DrawString(string.Format("Optical Position Offset: {0:00.000},{1:00.000}", mResultData.fDecenterY - foptincalposy, mResultData.fDecenterZ - foptincalposz),
+                        new Font(FontFamily.GenericSansSerif, 8f, FontStyle.Underline),
+                        Brushes.LightGreen, new PointF(10, height - 20));
                 }
-                e.Graphics.DrawString(string.Format("Optical Position Offset: {0:00.000},{1:00.000}", mResultData.fDecenterY - foptincalposy, mResultData.fDecenterZ - foptincalposz),
-                    new Font(FontFamily.GenericSansSerif, 8f, FontStyle.Underline),
-                    Brushes.LightGreen, new PointF(10, height - 20));
-            }
 
-            /*
-            e.Graphics.DrawString(string.Format("Pass:{0:00}, Fail:{1:00}", passCount, failCount),
-                new Font(FontFamily.GenericSansSerif, 15f, FontStyle.Underline),
-                Brushes.LightGreen, new PointF(10, 10));
-            */
+                /*
+                e.Graphics.DrawString(string.Format("Pass:{0:00}, Fail:{1:00}", passCount, failCount),
+                    new Font(FontFamily.GenericSansSerif, 15f, FontStyle.Underline),
+                    Brushes.LightGreen, new PointF(10, 10));
+                */
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("편심 결과 표시 오류"));
+            } 
         }
         private void InitailProgramFormLanguage()
         {
-            if (!_systemParams._SystemLanguageKoreaUse)
+            try
             {
-                ribbonPageEquipementFunctions.Text = "Function";
+                if (!_systemParams._SystemLanguageKoreaUse)
+                {
+                    ribbonPageEquipementFunctions.Text = "Function";
 
-                ribbonSystemPage.Text = "Set System";
-                barButtonItemSystemFolderPathSetting.Caption = "Set Path";
-                barButtonItemSystemEditor.Caption = "Set Parameter";
-                barButtonItemWorkInfo.Caption = "Login Information";
+                    ribbonSystemPage.Text = "Set System";
+                    barButtonItemSystemFolderPathSetting.Caption = "Set Path";
+                    barButtonItemSystemEditor.Caption = "Set Parameter";
+                    barButtonItemWorkInfo.Caption = "Login Information";
 
-                ribbonPageGroupFile.Text = "Recipe";
-                barButtonItemRecipeOpen.Caption = "Load";
-                barButtonItemRecipeEditorOpen.Caption = "Recipe Editor";
-                barListItemRecipeOpen.Caption = "Open";
+                    ribbonPageGroupFile.Text = "Recipe";
+                    barButtonItemRecipeOpen.Caption = "Load";
+                    barButtonItemRecipeEditorOpen.Caption = "Recipe Editor";
+                    barListItemRecipeOpen.Caption = "Open";
 
-                barButtonItemImageOpen.Caption = "Open";
-                barButtonItemImageSave.Caption = "Save";
-                barCheckItemImageCrop.Caption = "Image Crop";
-                barButtonItemCameraListRefresh.Caption = "Search Camera";
-                barButtonItemSingleShot.Caption = "Single";
-                barButtonItemContinueousShot.Caption = "Contiueous";
-                barButtonItemCameraStop.Caption = "Stop";
-                barButtonItemImageZoomIn.Caption = "ZoomIn";
-                barButtonItemImageZoomOut.Caption = "ZoomOut";
-                barButtonItemImageOriginSize.Caption = "OriginSize";
-                barButtonItemFitSize.Caption = "FitSize";
-                barCheckItemShowCenterMark.Caption = "CenterMark";
+                    barButtonItemImageOpen.Caption = "Open";
+                    barButtonItemImageSave.Caption = "Save";
+                    barCheckItemImageCrop.Caption = "Image Crop";
+                    barButtonItemCameraListRefresh.Caption = "Search Camera";
+                    barButtonItemSingleShot.Caption = "Single";
+                    barButtonItemContinueousShot.Caption = "Contiueous";
+                    barButtonItemCameraStop.Caption = "Stop";
+                    barButtonItemImageZoomIn.Caption = "ZoomIn";
+                    barButtonItemImageZoomOut.Caption = "ZoomOut";
+                    barButtonItemImageOriginSize.Caption = "OriginSize";
+                    barButtonItemFitSize.Caption = "FitSize";
+                    barCheckItemShowCenterMark.Caption = "CenterMark";
 
-                ribbonPageGroupCamera.Text = "Camera";
-                ribbonPageGroupImageViewer.Text = "ImageView";
+                    ribbonPageGroupCamera.Text = "Camera";
+                    ribbonPageGroupImageViewer.Text = "ImageView";
 
-                xtraTabPageCamera.Text = "Set Camera";
-                categoryCamera.Properties.Caption = "Camera";
-                rowCameraConnect.Properties.Caption = "Connect";
-                rowCameraName.Properties.Caption = "Camera Name";
-                rowCameraHResolution.Properties.Caption = "Horizon Pixel[pixel]";
-                rowCameraVResolution.Properties.Caption = "Vertical Pixel[pixel]";
-                rowCameraFrame.Properties.Caption = "Frame[fps]";
-                rowCameraExposureTime.Properties.Caption = "Exposure Time[us]";
-                rowCameraGain.Properties.Caption = "Gain";
-                xtraTabPageImageProcess.Text = "Image Process";
-                MenualOpticalInspectButton.Text = "Optical Inspection";
-                categorySpotInpsect.Properties.Caption = "Optical Inspection";
-                rowInspectSpotProductType.Properties.Caption = "Product Type";
-                rowInspectSpotProductDistance.Properties.Caption = "Product Distance[mm]";
-                rowInspectSpotInspectDistance.Properties.Caption = "Inspection Distance[mm]";
-                rowInspectSpotCameraDistance.Properties.Caption = "Camera Moving Distance[mm]";
-                rowInspectSpot1ImagePath.Properties.Caption = "Spot1 Image Path";
-                rowInspectSpot1Image.Properties.Caption = "Spot1 Image";
-                rowInspectSpot2ImagePath.Properties.Caption = "Spot2 Image Path";
-                rowInspectSpot2Image.Properties.Caption = "Spot2 Image";
-                rowInspectSpotThresholdH.Properties.Caption = "Horizon Threshold[0~255]";
-                rowInspectSpotThresholdV.Properties.Caption = "Vertical Threshold[0~255]";
-                rowInspectSpotBlobSizeMin.Properties.Caption = "Min Spot Size";
-                rowInspectSpotBlobSizeMax.Properties.Caption = "Max Spot Size";
-                rowInspectAlignmentDistance.Properties.Caption = "Optical Eccentricity Value[mm]";
-                rowInspectDivergenceAngle.Properties.Caption = "DivergenceAngle Value[˚]";
-                menualPatternMatchingButton.Text = "Pattern Matching";
-                MenualInspectButton.Text = "Optical Inspection";
-                categoryPatternMaching.Properties.Caption = "Pattern Matching";
-                rowTempletePath.Properties.Caption = "Templete Path";
-                rowTempleteImage.Properties.Caption = "Templete Image";
-                rowrThresholdValue.Properties.Caption = "Threshold";
-                rowResultPosition.Properties.Caption = "Result Position";
-                categoryRecipe.Properties.Caption = "Optical Inspection";
-                rowSpotImagePath.Properties.Caption = "Spot Image Path";
-                rowSpotImage.Properties.Caption = "Spot Image";
-                rowThresholdH.Properties.Caption = "Threshold Horizon[0~255]";
-                rowThresholdV.Properties.Caption = "Threshold Vertical[0~255]";
-                rowSpotBlobHSizeMin.Properties.Caption = "Min Spot Size[mm]";
-                rowSpotBlobHSizeMax.Properties.Caption = "Max Spot Size[mm]";
-                rowAlignmentDistance.Properties.Caption = "Optical Eccentricity Value[mm]";
-                rowDivergenceAngle.Properties.Caption = "DivergenceAngle Value[˚]";
+                    xtraTabPageCamera.Text = "Set Camera";
+                    categoryCamera.Properties.Caption = "Camera";
+                    rowCameraConnect.Properties.Caption = "Connect";
+                    rowCameraName.Properties.Caption = "Camera Name";
+                    rowCameraHResolution.Properties.Caption = "Horizon Pixel[pixel]";
+                    rowCameraVResolution.Properties.Caption = "Vertical Pixel[pixel]";
+                    rowCameraFrame.Properties.Caption = "Frame[fps]";
+                    rowCameraExposureTime.Properties.Caption = "Exposure Time[us]";
+                    rowCameraGain.Properties.Caption = "Gain";
+                    xtraTabPageImageProcess.Text = "Image Process";
+                    MenualOpticalInspectButton.Text = "Optical Inspection";
+                    categorySpotInpsect.Properties.Caption = "Optical Inspection";
+                    rowInspectSpotProductType.Properties.Caption = "Product Type";
+                    rowInspectSpotProductDistance.Properties.Caption = "Product Distance[mm]";
+                    rowInspectSpotInspectDistance.Properties.Caption = "Inspection Distance[mm]";
+                    rowInspectSpotCameraDistance.Properties.Caption = "Camera Moving Distance[mm]";
+                    rowInspectSpot1ImagePath.Properties.Caption = "Spot1 Image Path";
+                    rowInspectSpot1Image.Properties.Caption = "Spot1 Image";
+                    rowInspectSpot2ImagePath.Properties.Caption = "Spot2 Image Path";
+                    rowInspectSpot2Image.Properties.Caption = "Spot2 Image";
+                    rowInspectSpotThresholdH.Properties.Caption = "Horizon Threshold[0~255]";
+                    rowInspectSpotThresholdV.Properties.Caption = "Vertical Threshold[0~255]";
+                    rowInspectSpotBlobSizeMin.Properties.Caption = "Min Spot Size";
+                    rowInspectSpotBlobSizeMax.Properties.Caption = "Max Spot Size";
+                    rowInspectAlignmentDistance.Properties.Caption = "Optical Eccentricity Value[mm]";
+                    rowInspectDivergenceAngle.Properties.Caption = "DivergenceAngle Value[˚]";
+                    menualPatternMatchingButton.Text = "Pattern Matching";
+                    MenualInspectButton.Text = "Optical Inspection";
+                    categoryPatternMaching.Properties.Caption = "Pattern Matching";
+                    rowTempletePath.Properties.Caption = "Templete Path";
+                    rowTempleteImage.Properties.Caption = "Templete Image";
+                    rowrThresholdValue.Properties.Caption = "Threshold";
+                    rowResultPosition.Properties.Caption = "Result Position";
+                    categoryRecipe.Properties.Caption = "Optical Inspection";
+                    rowSpotImagePath.Properties.Caption = "Spot Image Path";
+                    rowSpotImage.Properties.Caption = "Spot Image";
+                    rowThresholdH.Properties.Caption = "Threshold Horizon[0~255]";
+                    rowThresholdV.Properties.Caption = "Threshold Vertical[0~255]";
+                    rowSpotBlobHSizeMin.Properties.Caption = "Min Spot Size[mm]";
+                    rowSpotBlobHSizeMax.Properties.Caption = "Max Spot Size[mm]";
+                    rowAlignmentDistance.Properties.Caption = "Optical Eccentricity Value[mm]";
+                    rowDivergenceAngle.Properties.Caption = "DivergenceAngle Value[˚]";
 
-                ribbonPageGroupConnection.Text = "Communication";
-                barButtonItemConnectAll.Caption = "Connection All";
-                barButtonItemConnectionAiC.Caption = "AiC";
-                barButtonItemConnectionRemeteIO.Caption = "Remote I/O";
+                    ribbonPageGroupConnection.Text = "Communication";
+                    barButtonItemConnectAll.Caption = "Connection All";
+                    barButtonItemConnectionAiC.Caption = "AiC";
+                    barButtonItemConnectionRemeteIO.Caption = "Remote I/O";
 
-                ribbonPageGroupMotionControl.Text = "Motion Control";
-                barButtonItemHomming.Caption = "Homming";
-                barButtonItemReset.Caption = "Alram Reset";
+                    ribbonPageGroupMotionControl.Text = "Motion Control";
+                    barButtonItemHomming.Caption = "Homming";
+                    barButtonItemReset.Caption = "Alram Reset";
 
-                ribbonPageGroupInspection.Text = "Inspection And Result";
-                barCheckItemInspectionStart.Caption = "Start";
-                barStaticItemInspectionStatus.Caption = "Status";
-                barStaticItemInspectionTime.Caption = "Time:";
-                barEditItemInspectionResult.EditValue = "Ready";
-                barEditItemTotalInspectionCount.EditValue = "Total Count: 00000";
-                barEditItemTotalFailCount.EditValue = "Fail Count: 00000";
-                barButtonItemInitializeStatistics.Caption = "Initial Chart";
+                    ribbonPageGroupInspection.Text = "Inspection And Result";
+                    barCheckItemInspectionStart.Caption = "Start";
+                    barStaticItemInspectionStatus.Caption = "Status";
+                    barStaticItemInspectionTime.Caption = "Time:";
+                    barEditItemInspectionResult.EditValue = "Ready";
+                    barEditItemTotalInspectionCount.EditValue = "Total Count: 00000";
+                    barEditItemTotalFailCount.EditValue = "Fail Count: 00000";
+                    barButtonItemInitializeStatistics.Caption = "Initial Chart";
 
-                dockPanelLogView.Text = "Log";
-                gridColumn1.Caption = "Level";
-                gridColumn2.Caption = "Time";
-                gridColumn3.Caption = "Path";
-                gridColumn4.Caption = "Message";
+                    dockPanelLogView.Text = "Log";
+                    gridColumn1.Caption = "Level";
+                    gridColumn2.Caption = "Time";
+                    gridColumn3.Caption = "Path";
+                    gridColumn4.Caption = "Message";
 
-                dockPanelMainSetting.Text = "Setting";
-                xtraTabPageMotionControl.Text = "Motion Control";
-                xtraTabPageRemoteIO.Text = "Remote I/O";
-                xtraTabPageInspectResult.Text = "Inspection Result";
-                xtraTabPageStatistics.Text = "Chart";
+                    dockPanelMainSetting.Text = "Setting";
+                    xtraTabPageMotionControl.Text = "Motion Control";
+                    xtraTabPageRemoteIO.Text = "Remote I/O";
+                    xtraTabPageInspectResult.Text = "Inspection Result";
+                    xtraTabPageStatistics.Text = "Chart";
+                }
+                else
+                {
+                    ribbonPageEquipementFunctions.Text = "기능설정";
+
+                    ribbonSystemPage.Text = "시스템 설정";
+                    barButtonItemSystemFolderPathSetting.Caption = "경로설정";
+                    barButtonItemSystemEditor.Caption = "시스템 설정";
+                    barButtonItemWorkInfo.Caption = "로그인 정보";
+
+                    ribbonPageGroupFile.Text = "레시피";
+                    barButtonItemRecipeOpen.Caption = "불러오기";
+                    barButtonItemRecipeEditorOpen.Caption = "레시피 편집기";
+                    barListItemRecipeOpen.Caption = "레시피 선택";
+
+                    barButtonItemImageOpen.Caption = "불러오기";
+                    barButtonItemImageSave.Caption = "저장하기";
+                    barCheckItemImageCrop.Caption = "템플릿 자르기";
+                    barButtonItemCameraListRefresh.Caption = "카메라검색";
+                    barButtonItemSingleShot.Caption = "싱글샷";
+                    barButtonItemContinueousShot.Caption = "연속샷";
+                    barButtonItemCameraStop.Caption = "정지";
+                    barButtonItemImageZoomIn.Caption = "확대";
+                    barButtonItemImageZoomOut.Caption = "축소";
+                    barButtonItemImageOriginSize.Caption = "원래크기";
+                    barButtonItemFitSize.Caption = "화면 맞춤";
+                    barCheckItemShowCenterMark.Caption = "중심선 보기";
+
+                    ribbonPageGroupCamera.Text = "카메라";
+                    ribbonPageGroupImageViewer.Text = "화면보기";
+
+                    xtraTabPageCamera.Text = "카메라 설정";
+                    categoryCamera.Properties.Caption = "카메라";
+                    rowCameraConnect.Properties.Caption = "카메라 연결";
+                    rowCameraName.Properties.Caption = "카메라 이름";
+                    rowCameraHResolution.Properties.Caption = "카메라 가로해상도[pixel]";
+                    rowCameraVResolution.Properties.Caption = "카메라 세로해상도[pixel]";
+                    rowCameraFrame.Properties.Caption = "카메라 프레임[fps]";
+                    rowCameraExposureTime.Properties.Caption = "카메라 노출시간[us]";
+                    rowCameraGain.Properties.Caption = "카메라 게인";
+                    xtraTabPageImageProcess.Text = "이미지 처리";
+                    MenualOpticalInspectButton.Text = "투광 발산각 계산";
+                    categorySpotInpsect.Properties.Caption = "투광 검사";
+                    rowInspectSpotProductType.Properties.Caption = "투광 제품 타입";
+                    rowInspectSpotProductDistance.Properties.Caption = "제품 정격 거리[mm]";
+                    rowInspectSpotInspectDistance.Properties.Caption = "단축 검사 거리[mm]";
+                    rowInspectSpotCameraDistance.Properties.Caption = "카메라 이동거리[mm]";
+                    rowInspectSpot1ImagePath.Properties.Caption = "광원1 이미지 경로";
+                    rowInspectSpot1Image.Properties.Caption = "광원1 이미지";
+                    rowInspectSpot2ImagePath.Properties.Caption = "광원2 이미지 경로";
+                    rowInspectSpot2Image.Properties.Caption = "광원2 이미지";
+                    rowInspectSpotThresholdH.Properties.Caption = "수평 인식 임계값[0~255]";
+                    rowInspectSpotThresholdV.Properties.Caption = "수직 인식 임계값[0~255]";
+                    rowInspectSpotBlobSizeMin.Properties.Caption = "광원 최소 크기";
+                    rowInspectSpotBlobSizeMax.Properties.Caption = "광원 최대 크기";
+                    rowInspectAlignmentDistance.Properties.Caption = "편심 합격거리[mm]";
+                    rowInspectDivergenceAngle.Properties.Caption = "발산각 합격 각도";
+                    menualPatternMatchingButton.Text = "패턴 매칭";
+                    MenualInspectButton.Text = "광특성 검사";
+                    categoryPatternMaching.Properties.Caption = "패턴 매칭";
+                    rowTempletePath.Properties.Caption = "템플릿 경로";
+                    rowTempleteImage.Properties.Caption = "템플릿 이미지";
+                    rowrThresholdValue.Properties.Caption = "매칭 임계값";
+                    rowResultPosition.Properties.Caption = "결과 중심점";
+                    categoryRecipe.Properties.Caption = "광 특성 검사";
+                    rowSpotImagePath.Properties.Caption = "광원 이미지경로";
+                    rowSpotImage.Properties.Caption = "광원 이미지";
+                    rowThresholdH.Properties.Caption = "수평 인식 임계값[0~255]";
+                    rowThresholdV.Properties.Caption = "수직 인식 임계값[0~255]";
+                    rowSpotBlobHSizeMin.Properties.Caption = "광원 최소크기[mm]";
+                    rowSpotBlobHSizeMax.Properties.Caption = "광원 최대크기[mm]";
+                    rowAlignmentDistance.Properties.Caption = "편심 합격거리[mm]";
+                    rowDivergenceAngle.Properties.Caption = "발산각 합격각도[˚]";
+
+                    ribbonPageGroupConnection.Text = "통신 연결";
+                    barButtonItemConnectAll.Caption = "전체 연결";
+                    barButtonItemConnectionAiC.Caption = "AiC";
+                    barButtonItemConnectionRemeteIO.Caption = "Remote I/O";
+
+                    ribbonPageGroupMotionControl.Text = "모션 제어";
+                    barButtonItemHomming.Caption = "원점 복귀";
+                    barButtonItemReset.Caption = "알람 리셋";
+
+                    ribbonPageGroupInspection.Text = "검사 및 결과";
+                    barCheckItemInspectionStart.Caption = "검사 시작";
+                    barStaticItemInspectionStatus.Caption = "진행";
+                    barStaticItemInspectionTime.Caption = "검사 시간:";
+                    barEditItemInspectionResult.EditValue = "Ready";
+                    barEditItemTotalInspectionCount.EditValue = "총 검사 수: 00000";
+                    barEditItemTotalFailCount.EditValue = "불합격 수: 00000";
+                    barButtonItemInitializeStatistics.Caption = "통계 초기화";
+
+                    dockPanelLogView.Text = "로그";
+                    gridColumn1.Caption = "레벨";
+                    gridColumn2.Caption = "시간";
+                    gridColumn3.Caption = "위치";
+                    gridColumn4.Caption = "메세지";
+
+                    dockPanelMainSetting.Text = "주요 설정";
+                    xtraTabPageMotionControl.Text = "모션 제어";
+                    xtraTabPageRemoteIO.Text = "리모트 I/O";
+                    xtraTabPageInspectResult.Text = "검사 결과";
+                    xtraTabPageStatistics.Text = "통계";
+                }
+                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("시스템 사용언어 설정 완료"));
             }
-            else
+            catch (Exception)
             {
-                ribbonPageEquipementFunctions.Text = "기능설정";
-
-                ribbonSystemPage.Text = "시스템 설정";
-                barButtonItemSystemFolderPathSetting.Caption = "경로설정";
-                barButtonItemSystemEditor.Caption = "시스템 설정";
-                barButtonItemWorkInfo.Caption = "로그인 정보";
-
-                ribbonPageGroupFile.Text = "레시피";
-                barButtonItemRecipeOpen.Caption = "불러오기";
-                barButtonItemRecipeEditorOpen.Caption = "레시피 편집기";
-                barListItemRecipeOpen.Caption = "레시피 선택";
-
-                barButtonItemImageOpen.Caption = "불러오기";
-                barButtonItemImageSave.Caption = "저장하기";
-                barCheckItemImageCrop.Caption = "템플릿 자르기";
-                barButtonItemCameraListRefresh.Caption = "카메라검색";
-                barButtonItemSingleShot.Caption = "싱글샷";
-                barButtonItemContinueousShot.Caption = "연속샷";
-                barButtonItemCameraStop.Caption = "정지";
-                barButtonItemImageZoomIn.Caption = "확대";
-                barButtonItemImageZoomOut.Caption = "축소";
-                barButtonItemImageOriginSize.Caption = "원래크기";
-                barButtonItemFitSize.Caption = "화면 맞춤";
-                barCheckItemShowCenterMark.Caption = "중심선 보기";
-
-                ribbonPageGroupCamera.Text = "카메라";
-                ribbonPageGroupImageViewer.Text = "화면보기";
-
-                xtraTabPageCamera.Text = "카메라 설정";
-                categoryCamera.Properties.Caption = "카메라";
-                rowCameraConnect.Properties.Caption = "카메라 연결";
-                rowCameraName.Properties.Caption = "카메라 이름";
-                rowCameraHResolution.Properties.Caption = "카메라 가로해상도[pixel]";
-                rowCameraVResolution.Properties.Caption = "카메라 세로해상도[pixel]";
-                rowCameraFrame.Properties.Caption = "카메라 프레임[fps]";
-                rowCameraExposureTime.Properties.Caption = "카메라 노출시간[us]";
-                rowCameraGain.Properties.Caption = "카메라 게인";
-                xtraTabPageImageProcess.Text = "이미지 처리";
-                MenualOpticalInspectButton.Text = "투광 발산각 계산";
-                categorySpotInpsect.Properties.Caption = "투광 검사";
-                rowInspectSpotProductType.Properties.Caption = "투광 제품 타입";
-                rowInspectSpotProductDistance.Properties.Caption = "제품 정격 거리[mm]";
-                rowInspectSpotInspectDistance.Properties.Caption = "단축 검사 거리[mm]";
-                rowInspectSpotCameraDistance.Properties.Caption = "카메라 이동거리[mm]";
-                rowInspectSpot1ImagePath.Properties.Caption = "광원1 이미지 경로";
-                rowInspectSpot1Image.Properties.Caption = "광원1 이미지";
-                rowInspectSpot2ImagePath.Properties.Caption = "광원2 이미지 경로";
-                rowInspectSpot2Image.Properties.Caption = "광원2 이미지";
-                rowInspectSpotThresholdH.Properties.Caption = "수평 인식 임계값[0~255]";
-                rowInspectSpotThresholdV.Properties.Caption = "수직 인식 임계값[0~255]";
-                rowInspectSpotBlobSizeMin.Properties.Caption = "광원 최소 크기";
-                rowInspectSpotBlobSizeMax.Properties.Caption = "광원 최대 크기";
-                rowInspectAlignmentDistance.Properties.Caption = "편심 합격거리[mm]";
-                rowInspectDivergenceAngle.Properties.Caption = "발산각 합격 각도";
-                menualPatternMatchingButton.Text = "패턴 매칭";
-                MenualInspectButton.Text = "광특성 검사";
-                categoryPatternMaching.Properties.Caption = "패턴 매칭";
-                rowTempletePath.Properties.Caption = "템플릿 경로";
-                rowTempleteImage.Properties.Caption = "템플릿 이미지";
-                rowrThresholdValue.Properties.Caption = "매칭 임계값";
-                rowResultPosition.Properties.Caption = "결과 중심점";
-                categoryRecipe.Properties.Caption = "광 특성 검사";
-                rowSpotImagePath.Properties.Caption = "광원 이미지경로";
-                rowSpotImage.Properties.Caption = "광원 이미지";
-                rowThresholdH.Properties.Caption = "수평 인식 임계값[0~255]";
-                rowThresholdV.Properties.Caption = "수직 인식 임계값[0~255]";
-                rowSpotBlobHSizeMin.Properties.Caption = "광원 최소크기[mm]";
-                rowSpotBlobHSizeMax.Properties.Caption = "광원 최대크기[mm]";
-                rowAlignmentDistance.Properties.Caption = "편심 합격거리[mm]";
-                rowDivergenceAngle.Properties.Caption = "발산각 합격각도[˚]";
-
-                ribbonPageGroupConnection.Text = "통신 연결";
-                barButtonItemConnectAll.Caption = "전체 연결";
-                barButtonItemConnectionAiC.Caption = "AiC";
-                barButtonItemConnectionRemeteIO.Caption = "Remote I/O";
-
-                ribbonPageGroupMotionControl.Text = "모션 제어";
-                barButtonItemHomming.Caption = "원점 복귀";
-                barButtonItemReset.Caption = "알람 리셋";
-
-                ribbonPageGroupInspection.Text = "검사 및 결과";
-                barCheckItemInspectionStart.Caption = "검사 시작";
-                barStaticItemInspectionStatus.Caption = "진행";
-                barStaticItemInspectionTime.Caption = "검사 시간:";
-                barEditItemInspectionResult.EditValue = "Ready";
-                barEditItemTotalInspectionCount.EditValue = "총 검사 수: 00000";
-                barEditItemTotalFailCount.EditValue = "불합격 수: 00000";
-                barButtonItemInitializeStatistics.Caption = "통계 초기화";
-
-                dockPanelLogView.Text = "로그";
-                gridColumn1.Caption = "레벨";
-                gridColumn2.Caption = "시간";
-                gridColumn3.Caption = "위치";
-                gridColumn4.Caption = "메세지";
-
-                dockPanelMainSetting.Text = "주요 설정";
-                xtraTabPageMotionControl.Text = "모션 제어";
-                xtraTabPageRemoteIO.Text = "리모트 I/O";
-                xtraTabPageInspectResult.Text = "검사 결과";
-                xtraTabPageStatistics.Text = "통계";
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("시스템 사용언어 설정 오류"));
             }
         }
-
     }
 }

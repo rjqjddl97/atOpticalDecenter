@@ -1,0 +1,11 @@
+C:\Work\atOpticalDecenter\LogLibrary\bin\x64\Release\NLog.config
+C:\Work\atOpticalDecenter\LogLibrary\bin\x64\Release\NLog.xsd
+C:\Work\atOpticalDecenter\LogLibrary\bin\x64\Release\LogLibrary.dll
+C:\Work\atOpticalDecenter\LogLibrary\bin\x64\Release\LogLibrary.pdb
+C:\Work\atOpticalDecenter\LogLibrary\bin\x64\Release\NLog.dll
+C:\Work\atOpticalDecenter\LogLibrary\bin\x64\Release\NLog.xml
+C:\Work\atOpticalDecenter\LogLibrary\obj\x64\Release\LogLibrary.csproj.CoreCompileInputs.cache
+C:\Work\atOpticalDecenter\LogLibrary\obj\x64\Release\LogLibrary.csproj.CopyComplete
+C:\Work\atOpticalDecenter\LogLibrary\obj\x64\Release\LogLibrary.dll
+C:\Work\atOpticalDecenter\LogLibrary\obj\x64\Release\LogLibrary.pdb
+C:\Work\atOpticalDecenter\LogLibrary\obj\x64\Release\LogLibrary.csprojAssemblyReference.cache

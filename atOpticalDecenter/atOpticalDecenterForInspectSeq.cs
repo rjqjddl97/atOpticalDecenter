@@ -74,7 +74,14 @@ namespace atOpticalDecenter
         }
         public void UpdatePhotoInspectedData(InspectResultData InspectedData)
         {
-            mResultData = InspectedData;
+            try
+            {
+                mResultData = InspectedData;
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 결과 업데이트 명령이 실행되지 않았습니다."));
+            }
         }
         public static void UpdateEventLedBlobStart(InspectResultData InspectedData)
         {
@@ -82,102 +89,144 @@ namespace atOpticalDecenter
         }
         public void UpdateImageSpotBlob(InspectResultData InspectedData)
         {
-            _blobs.Clear();
-            _blobs.Add(InspectedData.mLedSpot);            
-            Array.Copy(InspectedData._ImageHist_H, 0, _ImageHist_W, 0, InspectedData._ImageHist_H.Length);
-            Array.Copy(InspectedData._ImageHist_V, 0, _ImageHist_H, 0, InspectedData._ImageHist_V.Length);
-            _isAutoInspectMeasurement = true;
-            barButtonItemFitSize.PerformClick();
-            //barCheckItemShowCenterMark.PerformClick();            
-            barCheckItemShowCenterMark.Checked = true;
-            //pictureEditSystemImage.Refresh();
+            try
+            {
+                _blobs.Clear();
+                _blobs.Add(InspectedData.mLedSpot);
+                Array.Copy(InspectedData._ImageHist_H, 0, _ImageHist_W, 0, InspectedData._ImageHist_H.Length);
+                Array.Copy(InspectedData._ImageHist_V, 0, _ImageHist_H, 0, InspectedData._ImageHist_V.Length);
+                _isAutoInspectMeasurement = true;
+                barButtonItemFitSize.PerformClick();
+                //barCheckItemShowCenterMark.PerformClick();            
+                barCheckItemShowCenterMark.Checked = true;
+                //pictureEditSystemImage.Refresh();
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("LED 검사 이미지 업데이트 명령이 실행되지 않았습니다."));
+            }
         }
         public void UpdateRobotInfomation(RobotInformation update)
         {
-            mRobotInformation.PositionX = update.PositionX;
-            mRobotInformation.PositionY = update.PositionY;
-            mRobotInformation.PositionZ = update.PositionZ;
-            mRobotInformation.mStatus = update.mStatus;
-            mRobotInformation.mError = update.mError;
+            try
+            {
+                mRobotInformation.PositionX = update.PositionX;
+                mRobotInformation.PositionY = update.PositionY;
+                mRobotInformation.PositionZ = update.PositionZ;
+                mRobotInformation.mStatus = update.mStatus;
+                mRobotInformation.mError = update.mError;
 
-            if (_IsHommingFinished)
-                mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
+                if (_IsHommingFinished)
+                    mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
 
-            if (mStepBase != null)
-                mStepBase.UpdateRobotInfomation(mRobotInformation);
+                if (mStepBase != null)
+                    mStepBase.UpdateRobotInfomation(mRobotInformation);
 
-            if (mRobotInformation.GetStatus(RobotInformation.RobotStatus.OperationReady))
-                _IsHommingFinished = true;
-            ImageUpdateEvents?.Invoke();
+                if (mRobotInformation.GetStatus(RobotInformation.RobotStatus.OperationReady))
+                    _IsHommingFinished = true;
+                ImageUpdateEvents?.Invoke();
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("모션 정보 업데이트 명령이 실행되지 않았습니다."));
+            }
         }
         public void UpdateRobotIOInfomation(RobotInformation update)
         {
-            mRobotInformation.mInputData = update.mInputData;
-            mRobotInformation.mOutputData = update.mOutputData;
-
-            if (!mRobotInformation.mInputData.B0)
+            try
             {
-                if (mRobotInformation.mInputData.B1)
+                mRobotInformation.mInputData = update.mInputData;
+                mRobotInformation.mOutputData = update.mOutputData;
+
+                if (!mRobotInformation.mInputData.B0)
                 {
-                    if (_IsReciepLoad)
+                    if (mRobotInformation.mInputData.B1)
                     {
-                        InspectionSequenceStart();
-                    }
-                }
-                if (mRobotInformation.mInputData.B2)
-                {
-                    if ( (mRobotInformation.mError !=0) || (mRobotInformation.GetStatus(RobotInformation.RobotStatus.EmergencyStop)) )
-                    {
-                        //InspectionSequenceStop();
-                        byte[] SeData = new byte[8];
-                        for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                        if (_IsReciepLoad)
                         {
-                            SeData = _mMotionControlCommManager.mDrvCtrl.AlarmResetCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
-                            _mMotionControlCommManager.SendData(SeData);
+                            InspectionSequenceStart();
+                        }
+                    }
+                    if (mRobotInformation.mInputData.B2)
+                    {
+                        if ((mRobotInformation.mError != 0) || (mRobotInformation.GetStatus(RobotInformation.RobotStatus.EmergencyStop)))
+                        {
+                            //InspectionSequenceStop();
+                            byte[] SeData = new byte[8];
+                            for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                            {
+                                SeData = _mMotionControlCommManager.mDrvCtrl.AlarmResetCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
+                                _mMotionControlCommManager.SendData(SeData);
+                            }
                         }
                     }
                 }
+                else
+                {
+                    InspectionSequenceStop();
+                    _IsHommingFinished = false;
+                }
+                if (mStepBase != null)
+                    mStepBase.UpdateRobotIOInfomation(mRobotInformation);
             }
-            else
+            catch (Exception)
             {
-                InspectionSequenceStop();
-                _IsHommingFinished = false;
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("I/O 정보 업데이트 명령이 실행되지 않았습니다."));
             }
-            if (mStepBase != null)
-                mStepBase.UpdateRobotIOInfomation(mRobotInformation);
         }
         
         private void InitStepBase()
         {
-            mResultData.ImageResolution = (double)_systemParams._cameraParams.OnePixelResolution;
-            mResultData.fImageSensorSize_H = (double)_systemParams._cameraParams.ImageSensorHSize;
-            mResultData.fImageSensorSize_V = (double)_systemParams._cameraParams.ImageSensorVSize;
-            mResultData.fLensFocusLength = (double)_systemParams._cameraParams.LensFocusLength;            
-            mStepBase = new Functions.StepHandler.Base.StepHandlerBase(_mMotionControlCommManager,_mRemteIOCommManager,_systemParams,_workParams, mResultData,mRobotInformation);            
-            mStepBase.SetImageSavePath(global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath);
-            TakePictureEvent += GrabPicture;            
-            ImageGrabbed += mStepBase.OnCameraImageGrab;
-            LEDSpotBlobProcessEvent += UpdateImageSpotBlob;
+            try
+            {
+                mResultData.ImageResolution = (double)_systemParams._cameraParams.OnePixelResolution;
+                mResultData.fImageSensorSize_H = (double)_systemParams._cameraParams.ImageSensorHSize;
+                mResultData.fImageSensorSize_V = (double)_systemParams._cameraParams.ImageSensorVSize;
+                mResultData.fLensFocusLength = (double)_systemParams._cameraParams.LensFocusLength;
+                mStepBase = new Functions.StepHandler.Base.StepHandlerBase(_mMotionControlCommManager, _mRemteIOCommManager, _systemParams, _workParams, mResultData, mRobotInformation);
+                mStepBase.SetImageSavePath(global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath);
+                TakePictureEvent += GrabPicture;
+                ImageGrabbed += mStepBase.OnCameraImageGrab;
+                LEDSpotBlobProcessEvent += UpdateImageSpotBlob;
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 시퀀스 함수 초기화 명령이 실행되지 않았습니다."));
+            }
         }
         private void StepBaseSystemParameterUpdate()
         {
-            if (mStepBase != null)
-                mStepBase.StepHandlerBaseSystemParamUpdate(_systemParams);
+            try
+            {
+                if (mStepBase != null)
+                    mStepBase.StepHandlerBaseSystemParamUpdate(_systemParams);
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 시퀀스 함수내 시스템 파라미터 초기화 명령이 실행되지 않았습니다."));
+            }
         }
         private void MakeInspectionList()
         {
-            mPhotoInspectionList.Clear();
-
-            if ((_workParams._ProductType == 0) || (_workParams._ProductType == 1) || (_workParams._ProductType == 2) || (_workParams._ProductType == 3) || (_workParams._ProductType == 4) || (_workParams._ProductType == 5))       // 0: 미러반사형, 1: 한정거리반사, 2: 확산반사, 3: BGS반사, 4: 협시계반사, 5: 투광, 6: 수광
+            try
             {
-                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step1JigCheck());
-                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step2SensorPowerOn());
-                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step3MovePostion1());
-                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step4Spot1Measure());
-                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step5MovePosition2());
-                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step6Spot2Measure());
-                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step7SensorPowerOff());
-                mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step8CalculateResult());
+                mPhotoInspectionList.Clear();
+
+                if ((_workParams._ProductType == 0) || (_workParams._ProductType == 1) || (_workParams._ProductType == 2) || (_workParams._ProductType == 3) || (_workParams._ProductType == 4) || (_workParams._ProductType == 5))       // 0: 미러반사형, 1: 한정거리반사, 2: 확산반사, 3: BGS반사, 4: 협시계반사, 5: 투광, 6: 수광
+                {
+                    mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step1JigCheck());
+                    mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step2SensorPowerOn());
+                    mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step3MovePostion1());
+                    mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step4Spot1Measure());
+                    mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step5MovePosition2());
+                    mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step6Spot2Measure());
+                    mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step7SensorPowerOff());
+                    mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step8CalculateResult());
+                }
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 시퀀스 단계 생성 명령이 실행되지 않았습니다."));
             }
         }
         private void backgroundWorkerMotionHome_DoWork(object sender, DoWorkEventArgs e)
@@ -227,10 +276,17 @@ namespace atOpticalDecenter
         }
         private void backgroundWorkerMotionHome_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            _IsHommingFinished = true;
-            mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
-            AutoStartButtonRelease();
-            mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "원점 복귀 실행 종료합니다.");
+            try
+            {
+                _IsHommingFinished = true;
+                mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
+                AutoStartButtonRelease();
+                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "원점 복귀 실행 종료합니다.");
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("원점 복귀 명령 완료가 실행되지 않았습니다."));
+            }
         }
         private void MakeDryRunList()
         {
@@ -379,22 +435,28 @@ namespace atOpticalDecenter
         }
         private void backgroundWorkerInspection_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //mWorkingStep = CorrectionStepType.Idle;
-            _isInspecting = false;
-            _InspectionWorking = false;
-            //_isAutoInspectMeasurement = false;
-            UpdateProcessTime(false);
-            barCheckItemInspectionStart.Caption = string.Format("검사 시작");
-            barStaticItemInspectionStatus.Caption = string.Format("진행: 검사 완료");
-            if (!_isInspectError)
+            try
             {
-                InpsectResultUpdate();
-                CreateResultFile(mResultData.bTotalResult);
-                UpdateStaticsData();
+                _isInspecting = false;
+                _InspectionWorking = false;
+                //_isAutoInspectMeasurement = false;
+                UpdateProcessTime(false);
+                barCheckItemInspectionStart.Caption = string.Format("검사 시작");
+                barStaticItemInspectionStatus.Caption = string.Format("진행: 검사 완료");
+                if (!_isInspectError)
+                {
+                    InpsectResultUpdate();
+                    CreateResultFile(mResultData.bTotalResult);
+                    UpdateStaticsData();
+                }
+                barEditItemInspectionProgress.EditValue = 100;
+                AutoStartButtonRelease();
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("포토센서 검사 시퀀스가 완료 되었습니다."));
             }
-            barEditItemInspectionProgress.EditValue = 100;            
-            AutoStartButtonRelease();
-            System.Console.WriteLine("bacground work Photo Inspection run worker completed");
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 시퀀스 완료 명령이 실행되지 않았습니다."));
+            }
         }
         private void backgroundWorkerInspection_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
@@ -426,45 +488,52 @@ namespace atOpticalDecenter
         }
         public void InpsectResultUpdate()
         {
-            string series = string.Empty;
-            if (_workParams._ProductSeries == 0)                     // 0: BTS, 1: BTF, 2: BJ, 3: BEN
+            try
             {
-                series = "BTS Series";
-            }
-            else if (_workParams._ProductSeries == 1)
-            {
-                series = "BTF Series";
-            }
-            else if (_workParams._ProductSeries == 2)
-            {
-                series = "BJ Series";
-            }
-            else if (_workParams._ProductSeries == 3)
-            {
-                series = "BEN Series";
-            }
-            else
-                series = "BTS Series";
-            pledSpotInspectionInfomation._InspectProductSeries = series;
-            pledSpotInspectionInfomation._InspectProductModelName = _workParams._ProductModelName;
-            pledSpotInspectionInfomation._InspectLedBlobHsize = mResultData.fOpticalSize[0];
-            pledSpotInspectionInfomation._InspectLedBlobVsize = mResultData.fOpticalSize[1];
-            pledSpotInspectionInfomation._InspectLedBlobBright = mResultData.fOpticalSpotImageBright;
-            pledSpotInspectionInfomation._InspectLedOpticalEccentricity = mResultData.fOpticalEccentricity;
-            pledSpotInspectionInfomation._InspectLedOpticalEmiterAngle = mResultData.fOpticalEmiterAngle * (180 / Math.PI);
-            pledSpotInspectionInfomation._InspectLedOpticalEccentricAngle = mResultData.fOpticalEccentricAngle;
-            pledSpotInspectionInfomation._InspectLedODFilterReduce = mResultData.fODFilterReduce;
-            pledSpotInspectionInfomation._InspectLedND_FilterAngle = mResultData.fND_FilterAngle;
-            pledSpotInspectionInfomation._InspectOperateMax_Distance = mResultData.fMaxOperateDistance;
-            pledSpotInspectionInfomation._InspectOperateMin_Distance = mResultData.fMinOperateDistance;
-            pledSpotInspectionInfomation._InspectOpticalResult = mResultData.bTotalResult;
+                string series = string.Empty;
+                if (_workParams._ProductSeries == 0)                     // 0: BTS, 1: BTF, 2: BJ, 3: BEN
+                {
+                    series = "BTS Series";
+                }
+                else if (_workParams._ProductSeries == 1)
+                {
+                    series = "BTF Series";
+                }
+                else if (_workParams._ProductSeries == 2)
+                {
+                    series = "BJ Series";
+                }
+                else if (_workParams._ProductSeries == 3)
+                {
+                    series = "BEN Series";
+                }
+                else
+                    series = "BTS Series";
+                pledSpotInspectionInfomation._InspectProductSeries = series;
+                pledSpotInspectionInfomation._InspectProductModelName = _workParams._ProductModelName;
+                pledSpotInspectionInfomation._InspectLedBlobHsize = mResultData.fOpticalSize[0];
+                pledSpotInspectionInfomation._InspectLedBlobVsize = mResultData.fOpticalSize[1];
+                pledSpotInspectionInfomation._InspectLedBlobBright = mResultData.fOpticalSpotImageBright;
+                pledSpotInspectionInfomation._InspectLedOpticalEccentricity = mResultData.fOpticalEccentricity;
+                pledSpotInspectionInfomation._InspectLedOpticalEmiterAngle = mResultData.fOpticalEmiterAngle * (180 / Math.PI);
+                pledSpotInspectionInfomation._InspectLedOpticalEccentricAngle = mResultData.fOpticalEccentricAngle;
+                pledSpotInspectionInfomation._InspectLedODFilterReduce = mResultData.fODFilterReduce;
+                pledSpotInspectionInfomation._InspectLedND_FilterAngle = mResultData.fND_FilterAngle;
+                pledSpotInspectionInfomation._InspectOperateMax_Distance = mResultData.fMaxOperateDistance;
+                pledSpotInspectionInfomation._InspectOperateMin_Distance = mResultData.fMinOperateDistance;
+                pledSpotInspectionInfomation._InspectOpticalResult = mResultData.bTotalResult;
 
-            xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 4; }));
-            _InspectionResult = true;
-            mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("투광 LED 특성 검사 결과 , Spot1 Size :{0:000.000}mm, Spot2 Size :{1:000.000}mm, " +
-                "이미지 밝기 :{2:000}pixel, 광원 편심 :{3:00.000}mm, 광원 편심각 :{4:00.000}˚, 광 발산각 :{5:00.000}˚, 감쇄율 :{6:00.000}, ND필터 예측각도 :{7:000}˚ , 최대거리 ND필터 :{8:000}˚, 검사 결과 : {9}",
-                mResultData.fOpticalSize[0], mResultData.fOpticalSize[1], mResultData.fOpticalSpotImageBright, mResultData.fOpticalEccentricity, mResultData.fOpticalEccentricAngle, mResultData.fOpticalEccentricity, (mResultData.fOpticalEmiterAngle * (180 / Math.PI)),
-                mResultData.fODFilterReduce, mResultData.fND_FilterAngle, mResultData.fMaxOperateDistance, (mResultData.bTotalResult ? "Pass" : "Fail")));
+                xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 4; }));
+                _InspectionResult = true;
+                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("투광 LED 특성 검사 결과 , Spot1 Size :{0:000.000}mm, Spot2 Size :{1:000.000}mm, " +
+                    "이미지 밝기 :{2:000}pixel, 광원 편심 :{3:00.000}mm, 광원 편심각 :{4:00.000}˚, 광 발산각 :{5:00.000}˚, 감쇄율 :{6:00.000}, ND필터 예측각도 :{7:000}˚ , 최대거리 ND필터 :{8:000}˚, 검사 결과 : {9}",
+                    mResultData.fOpticalSize[0], mResultData.fOpticalSize[1], mResultData.fOpticalSpotImageBright, mResultData.fOpticalEccentricity, mResultData.fOpticalEccentricAngle, mResultData.fOpticalEccentricity, (mResultData.fOpticalEmiterAngle * (180 / Math.PI)),
+                    mResultData.fODFilterReduce, mResultData.fND_FilterAngle, mResultData.fMaxOperateDistance, (mResultData.bTotalResult ? "Pass" : "Fail")));
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 결과 업데이트 명령이 실행되지 않았습니다."));
+            }
         }
         public void CreateResultFile(bool IsPass)
         {

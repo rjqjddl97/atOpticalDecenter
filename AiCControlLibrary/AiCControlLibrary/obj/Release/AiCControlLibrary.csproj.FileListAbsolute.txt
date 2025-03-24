@@ -1,0 +1,5 @@
+C:\Work\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\bin\Release\AiCControlLibrary.dll
+C:\Work\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\bin\Release\AiCControlLibrary.pdb
+C:\Work\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\obj\Release\AiCControlLibrary.csproj.CoreCompileInputs.cache
+C:\Work\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\obj\Release\AiCControlLibrary.dll
+C:\Work\atOpticalDecenter\AiCControlLibrary\AiCControlLibrary\obj\Release\AiCControlLibrary.pdb

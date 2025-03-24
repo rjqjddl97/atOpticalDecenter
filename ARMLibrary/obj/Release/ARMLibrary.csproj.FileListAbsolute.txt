@@ -1,0 +1,5 @@
+C:\Work\atOpticalDecenter\ARMLibrary\bin\Release\ARMLibrary.dll
+C:\Work\atOpticalDecenter\ARMLibrary\bin\Release\ARMLibrary.pdb
+C:\Work\atOpticalDecenter\ARMLibrary\obj\Release\ARMLibrary.csproj.CoreCompileInputs.cache
+C:\Work\atOpticalDecenter\ARMLibrary\obj\Release\ARMLibrary.dll
+C:\Work\atOpticalDecenter\ARMLibrary\obj\Release\ARMLibrary.pdb

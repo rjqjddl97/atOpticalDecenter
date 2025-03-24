@@ -47,35 +47,42 @@ namespace atOpticalDecenter
         }
         private void UpdateChartInspectionAngle(float angle)
         {
-            int index = 0;
-            if ((angle >= -1f) && (angle <= 1f))
-                index = 0;
-            else if ((angle >= -2f) && (angle <= 2f))
-                index = 1;
-            else if ((angle >= -3f) && (angle <= 3f))
-                index = 2;
-            else if ((angle >= -4f) && (angle <= 4f))
-                index = 3;
-            else if ((angle >= -5f) && (angle <= 5f))
-                index = 4;
-            else if ((angle >= -6f) && (angle <= 6f))
-                index = 5;
-            else if ((angle >= -7f) && (angle <= 7f))
-                index = 6;
-            else if ((angle >= -8f) && (angle <= 8f))
-                index = 7;
-            else if ((angle >= -9f) && (angle <= 9f))
-                index = 8;
-            else
-                index = 9;
+            try
+            {
+                int index = 0;
+                if ((angle >= -1f) && (angle <= 1f))
+                    index = 0;
+                else if ((angle >= -2f) && (angle <= 2f))
+                    index = 1;
+                else if ((angle >= -3f) && (angle <= 3f))
+                    index = 2;
+                else if ((angle >= -4f) && (angle <= 4f))
+                    index = 3;
+                else if ((angle >= -5f) && (angle <= 5f))
+                    index = 4;
+                else if ((angle >= -6f) && (angle <= 6f))
+                    index = 5;
+                else if ((angle >= -7f) && (angle <= 7f))
+                    index = 6;
+                else if ((angle >= -8f) && (angle <= 8f))
+                    index = 7;
+                else if ((angle >= -9f) && (angle <= 9f))
+                    index = 8;
+                else
+                    index = 9;
 
-            int count = Convert.ToInt32(_statistics.Statistics[index]) + 1;
-            _statistics.Statistics[index] = count;
+                int count = Convert.ToInt32(_statistics.Statistics[index]) + 1;
+                _statistics.Statistics[index] = count;
 
-            double[] data = new double[1];
-            data[0] = count;
+                double[] data = new double[1];
+                data[0] = count;
 
-            chartControlInspectionAngle.Series[0].Points[index].Values = data;
+                chartControlInspectionAngle.Series[0].Points[index].Values = data;
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 결과 범위각도 업데이트가 실행되지 않았습니다."));
+            }
         }
         private void InitializeChartAngle()
         {
@@ -103,25 +110,32 @@ namespace atOpticalDecenter
         }
         private void UpdateStaticsData()
         {
-            _statistics.TotalCount++;
-            if (mResultData.bTotalResult == true)
+            try
             {
-                _statistics.PassCount++;
-                barEditItemInspectionResult.EditValue = "PASS";
-                repositoryItemTextEditInspectionResult.Appearance.ForeColor = System.Drawing.Color.LimeGreen;
+                _statistics.TotalCount++;
+                if (mResultData.bTotalResult == true)
+                {
+                    _statistics.PassCount++;
+                    barEditItemInspectionResult.EditValue = "PASS";
+                    repositoryItemTextEditInspectionResult.Appearance.ForeColor = System.Drawing.Color.LimeGreen;
+                }
+                else
+                {
+                    _statistics.FailCount++;
+                    barEditItemInspectionResult.EditValue = "FAIL";
+                    repositoryItemTextEditInspectionResult.Appearance.ForeColor = System.Drawing.Color.Red;
+                }
+                barEditItemTotalInspectionCount.EditValue = string.Format("총 검사 수:{0:00000}", _statistics.TotalCount);
+                barEditItemTotalFailCount.EditValue = string.Format("불합격 수:{0:00000}", _statistics.FailCount);
+                string strStatistics = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, SystemDirectoryParams.StatisticsFileName);
+                //            UpdateChartInspectionAngle((float)(mResultData.fOpticalEmiterAngle * (180 / Math.PI)));
+                UpdateChartInspectionAngle((float)(mResultData.fOpticalEccentricAngle));
+                RecipeFileIO.WriteInspectionStatisticsFile(strStatistics, _statistics);
             }
-            else
+            catch (Exception)
             {
-                _statistics.FailCount++;
-                barEditItemInspectionResult.EditValue = "FAIL";
-                repositoryItemTextEditInspectionResult.Appearance.ForeColor = System.Drawing.Color.Red;
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("통계 데이터 업데이트 명령이 실행되지 않았습니다."));
             }
-            barEditItemTotalInspectionCount.EditValue = string.Format("총 검사 수:{0:00000}", _statistics.TotalCount);
-            barEditItemTotalFailCount.EditValue = string.Format("불합격 수:{0:00000}", _statistics.FailCount);
-            string strStatistics = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, SystemDirectoryParams.StatisticsFileName);
-            //            UpdateChartInspectionAngle((float)(mResultData.fOpticalEmiterAngle * (180 / Math.PI)));
-            UpdateChartInspectionAngle((float)(mResultData.fOpticalEccentricAngle));
-            RecipeFileIO.WriteInspectionStatisticsFile(strStatistics, _statistics);
         }
     }
 }
