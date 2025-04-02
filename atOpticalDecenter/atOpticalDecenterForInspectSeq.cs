@@ -368,7 +368,7 @@ namespace atOpticalDecenter
                                 _InspectionWorking = false;
                                 barEditItemInspectionResult.EditValue = "Error" + ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[RunningIndex]).StepInformation;
                                 repositoryItemTextEditInspectionResult.Appearance.ForeColor = System.Drawing.Color.Red;
-                                _isInspectError = false;
+                                _isInspectError = true;
                                 //_isAutoInspectMeasurement = false;
                                 break;
                             default: break;                                
@@ -414,11 +414,11 @@ namespace atOpticalDecenter
                                 WorkingStatus = WorkingStateInfo.WorkingType.Error,
                                 CurrentStep = RunningIndex,
                             });
-                            _isInspectError = false;
+                            _isInspectError = true;
                             string strerr = string.Empty;
                             strerr = "Error : " + ((Functions.StepHandler.Base.StepHandlerBase)mPhotoInspectionList[RunningIndex]).StepInformation;                            
                             mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), strerr);
-                            AutoStartButtonRelease();
+                            barEditItemInspectionResult.EditValue = "Error";
                             MessageBox.Show(strerr, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                             break;
                         }
@@ -547,16 +547,17 @@ namespace atOpticalDecenter
                         SystemDirectoryParams.ResultFolderPath,
                         _inspectionStartTime.Year, _inspectionStartTime.Month, _inspectionStartTime.Day);
 
-                    if (IsPass)
-                    {
-                        //strFilePath += string.Format(@"\Pass\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
-                        strFilePath += string.Format(@"\Pass\{0}", _workParams.RecipeName);
-                    }
-                    else
-                    {
-                        //strFilePath += string.Format(@"\Fail\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
-                        strFilePath += string.Format(@"\Fail\{0}", _workParams.RecipeName);
-                    }
+                    //if (IsPass)
+                    //{
+                    //    //strFilePath += string.Format(@"\Pass\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
+                    //    strFilePath += string.Format(@"\Pass\{0}", _workParams.RecipeName);
+                    //}
+                    //else
+                    //{
+                    //    //strFilePath += string.Format(@"\Fail\{0}_{1:00}{2:00}{3:00}", _workParams.RecipeName, _inspectionStartTime.Hour, _inspectionStartTime.Minute, _inspectionStartTime.Second);
+                    //    strFilePath += string.Format(@"\Fail\{0}", _workParams.RecipeName);
+                    //}
+                    strFilePath += string.Format(@"\{0}", _workParams.RecipeName);
                     string strResultFile = strFilePath + @"\Result.csv";
                     string strTemp = string.Empty;
 

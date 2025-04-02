@@ -119,7 +119,7 @@ namespace atOpticalDecenter
                 rowLEDInspectionSpotMinSize.Properties.Caption = "광원 최소크기[mm]";
                 rowLEDInspectionSpotMaxSize.Properties.Caption = "광원 최대크기[mm]";
                 rowLEDInspectionAlignmentDistance.Properties.Caption = "편심 합격거리[mm]";
-                rowLEDInspectionDivergenceAngle.Properties.Caption = "발산각 합격각도[˚]";
+                rowLEDInspectionDivergenceAngle.Properties.Caption = "편심각 합격각도[˚]";
                 rowLEDInspectionWorkAreaLeft.Properties.Caption = "검사 영역 X점[픽셀]";
                 rowLEDInspectionWorkAreaTop.Properties.Caption = "검사 영역 Y점[픽셀]";
                 rowLEDInspectionWorkAreaWidth.Properties.Caption = "검사 영역 폭[픽셀]";
@@ -1148,7 +1148,7 @@ namespace atOpticalDecenter
             }
             else if (e.Row == rowLEDInspectionAlignmentDistance)
             {
-                fValue = Convert.ToInt32(rowLEDInspectionAlignmentDistance.Properties.Value);
+                fValue = Convert.ToSingle(rowLEDInspectionAlignmentDistance.Properties.Value);
 
                 if (fValue <= 0 || fValue > 50)
                 {
@@ -1165,7 +1165,7 @@ namespace atOpticalDecenter
             }
             else if (e.Row == rowLEDInspectionDivergenceAngle)
             {
-                fValue = Convert.ToInt32(rowLEDInspectionDivergenceAngle.Properties.Value);
+                fValue = Convert.ToSingle(rowLEDInspectionDivergenceAngle.Properties.Value);
 
                 if (fValue <= 0 || fValue > 20)
                 {

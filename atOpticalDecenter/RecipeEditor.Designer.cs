@@ -77,6 +77,7 @@
             this.rowLEDInspectionWorkAreaWidth = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowLEDInspectionWorkAreaHeight = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -117,7 +118,6 @@
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxProductSeries)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxProductType)).BeginInit();
@@ -129,6 +129,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEditRecipeCreateTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEditRecipeCreateTime.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
@@ -163,7 +164,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -553,7 +553,7 @@
             this.rowLEDInspectionDivergenceAngle.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.rowLEDInspectionDivergenceAngle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowLEDInspectionDivergenceAngle.Name = "rowLEDInspectionDivergenceAngle";
-            this.rowLEDInspectionDivergenceAngle.Properties.Caption = "발산각 합격각도[˚]";
+            this.rowLEDInspectionDivergenceAngle.Properties.Caption = "편심각 합격각도[˚]";
             this.rowLEDInspectionDivergenceAngle.Properties.Value = 5;
             // 
             // rowLEDInspectionWorkAreaLeft
@@ -599,6 +599,13 @@
             this.layoutControl3.Root = this.layoutControlGroup6;
             this.layoutControl3.Size = new System.Drawing.Size(180, 120);
             this.layoutControl3.TabIndex = 0;
+            // 
+            // layoutControlGroup6
+            // 
+            this.layoutControlGroup6.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup6.GroupBordersVisible = false;
+            this.layoutControlGroup6.Name = "layoutControlGroup6";
+            this.layoutControlGroup6.Size = new System.Drawing.Size(180, 120);
             // 
             // layoutControlGroup3
             // 
@@ -1077,13 +1084,6 @@
             this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem17.TextVisible = false;
             // 
-            // layoutControlGroup6
-            // 
-            this.layoutControlGroup6.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup6.GroupBordersVisible = false;
-            this.layoutControlGroup6.Name = "layoutControlGroup6";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(180, 120);
-            // 
             // RecipeEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1115,6 +1115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEditRecipeCreateTime.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEditRecipeCreateTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
@@ -1149,7 +1150,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
