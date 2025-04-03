@@ -449,6 +449,13 @@ namespace CustomPages
             textEditSendPacketData.Enabled = false;
             SendPacketDataButton.Enabled = false;
             memoEditCommunicationLogmessage.Enabled = false;
+            radioGroupMenualMode.SelectedIndex = 0;
+            radioGroupMenualValueMode.SelectedIndex = 0;
+            textEditUserDefineValue.Enabled = false;
+            JogControlPannelEnable();
+            CoordinateControlPanelDisable();
+
+            radioGroupCalibration.Enabled = false;
             UpdateTimer.Interval = 100;
             UpdateTimer.Elapsed += new ElapsedEventHandler(UpdateMotionData);
         }

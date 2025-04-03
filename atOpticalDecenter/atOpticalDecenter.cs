@@ -87,8 +87,9 @@ namespace atOpticalDecenter
         bool _isSetROICheck = false;
         bool _IsLogin = false;
         bool _IsReciepLoad = false;
-        bool _IsHommingFinished = false;
-        
+        bool _IsHommingFinished = false;        
+        bool _IsDrvErr = false;
+
         int _frameCount = 0;
         bool IsCameraOpen = false;
         float _fHScrollPos = 0f;
@@ -309,6 +310,7 @@ namespace atOpticalDecenter
                 _ActuatorZImage = Properties.Resources.Z_Actuator;                
                 _bwMotionHome.RunWorkerAsync(mRobotInformation);
                 AutoStartButtonLock();
+                timerCurrentTime.Start();
             }
             catch (Exception ex)
             {
@@ -347,6 +349,7 @@ namespace atOpticalDecenter
             if (_Camera.IsAllocated)
                 _Camera.Close();
             ImageUpdateEvents -= UpdateGUI;
+            timerCurrentTime.Stop();
             //if ()
 
         }
@@ -660,6 +663,7 @@ namespace atOpticalDecenter
                     else
                     {
                         MotionControl.ConnectionClosed();
+                        MotionControl.RobotInfomationUpdatedEvent -= UpdateRobotInfomation;
                         mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("AiC 통신 연결 해제 성공."));
                     }
                     return _mMotionControlCommManager.IsOpen();
@@ -723,6 +727,7 @@ namespace atOpticalDecenter
                     else
                     {
                         RemoteIOControl.ConnectionClosed();
+                        RemoteIOControl.RobotInfomationUpdatedEvent -= UpdateRobotIOInfomation;
                         mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("ARM 통신 연결 해제 성공."));
                     }
                     return _mRemteIOCommManager.IsOpen();
@@ -2929,7 +2934,7 @@ namespace atOpticalDecenter
                     _isInspectError = false;
                     // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
                     //
-
+                    xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 3; }));
                     if (_isContinuousShot)
                     {
                         _Camera.Stop();
@@ -3001,6 +3006,7 @@ namespace atOpticalDecenter
                     _isInspectError = false;
                     // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
                     //
+                    xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 3; }));
                     if (_isContinuousShot)
                     {
                         _Camera.Stop();
@@ -3010,26 +3016,29 @@ namespace atOpticalDecenter
                     }
                     barCheckItemShowCenterMark.Enabled = true;
 
-                    mStepBase.SetJobInfo(mLogin.JobInformation);
-                    mStepBase.SetProductSeries((PhotoProduct.Enums.ProductSeries)_workParams._ProductSeries);
-                    mStepBase.SetProductType((PhotoProduct.Enums.ProductType)_workParams._ProductType);
-                    mStepBase.SetProductName(_workParams._ProductModelName);
-                    mStepBase.SetOutputType((PhotoProduct.Enums.OutputType)_workParams._ProductOutputType);
-                    mStepBase.SetOPMode((PhotoProduct.Enums.OperatingMode)_workParams._ProductOperatingMdoe);
-                    mStepBase.SetDetectMertrial((PhotoProduct.Enums.DetectMeterial)_workParams._ProductDetectMerterial);
-                    mStepBase.ClearTimeForFullSequence();
+                    if (mRobotInformation.GetStatus(RobotInformation.RobotStatus.OperationReady))
+                    {
+                        mStepBase.SetJobInfo(mLogin.JobInformation);
+                        mStepBase.SetProductSeries((PhotoProduct.Enums.ProductSeries)_workParams._ProductSeries);
+                        mStepBase.SetProductType((PhotoProduct.Enums.ProductType)_workParams._ProductType);
+                        mStepBase.SetProductName(_workParams._ProductModelName);
+                        mStepBase.SetOutputType((PhotoProduct.Enums.OutputType)_workParams._ProductOutputType);
+                        mStepBase.SetOPMode((PhotoProduct.Enums.OperatingMode)_workParams._ProductOperatingMdoe);
+                        mStepBase.SetDetectMertrial((PhotoProduct.Enums.DetectMeterial)_workParams._ProductDetectMerterial);
+                        mStepBase.ClearTimeForFullSequence();
 
-                    MakeInspectionList();
-                    _InspectionWorking = true;
-                    _InspectionResult = false;
-                    mInspectStep = InspectionStepType.CheckWaitRobotReady;
+                        MakeInspectionList();
+                        _InspectionWorking = true;
+                        _InspectionResult = false;
+                        mInspectStep = InspectionStepType.CheckWaitRobotReady;
 
-                    InspectionRecipeParameterSetup();
-                    CheckTackTime.Start();
-                    _backgroundWorkerOpticalDecenterInspection.RunWorkerAsync();
-                    barCheckItemInspectionStart.Caption = string.Format("검사 중지");
-                    AutoStartButtonLock();
-                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 실행");
+                        InspectionRecipeParameterSetup();
+                        CheckTackTime.Start();
+                        _backgroundWorkerOpticalDecenterInspection.RunWorkerAsync();
+                        barCheckItemInspectionStart.Caption = string.Format("검사 중지");
+                        AutoStartButtonLock();
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "포토 센서 검사 실행");
+                    }
                 }
             }
             catch (Exception)
@@ -3773,6 +3782,9 @@ namespace atOpticalDecenter
                     xtraTabPageRemoteIO.Text = "Remote I/O";
                     xtraTabPageInspectResult.Text = "Inspection Result";
                     xtraTabPageStatistics.Text = "Chart";
+
+                    barStaticItemMotionStatus.Caption = "Motion Status :";
+                    barButtonItemMoveStop.Caption = "Motion Stop";
                 }
                 else
                 {
@@ -3876,12 +3888,73 @@ namespace atOpticalDecenter
                     xtraTabPageRemoteIO.Text = "리모트 I/O";
                     xtraTabPageInspectResult.Text = "검사 결과";
                     xtraTabPageStatistics.Text = "통계";
+
+                    barStaticItemMotionStatus.Caption = "모션 상태 :";
+                    barButtonItemMoveStop.Caption = "모션 정지";
                 }
                 mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("시스템 사용언어 설정 완료"));
             }
             catch (Exception)
             {
                 mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("시스템 사용언어 설정 오류"));
+            }
+        }
+
+        private void timerCurrentTime_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                barStaticItemCurrentTime.Caption = DateTime.Now.ToString();
+                if (mRobotInformation != null)
+                {
+                    if (_IsDrvErr)
+                    {
+                        barStaticItemMotionStatus.Caption = "모션 상태 : AiC드라이버 알람 또는 에러상태, 알람 리셋 필요!!";
+                        barStaticItemMotionStatus.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else
+                    {
+                        barStaticItemMotionStatus.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Black;
+
+                        if (!_IsHommingFinished)
+                            barStaticItemMotionStatus.Caption = "모션 상태 : AiC드라이버 원점 복귀 필요!";
+                        else
+                        {
+                            if ((mRobotInformation.mStatus & 0x00000042) != 0x00000042)
+                                barStaticItemMotionStatus.Caption = "모션 상태 : 이동중";
+                            else
+                                barStaticItemMotionStatus.Caption = "모션 상태 : 정지";
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), "시스템 시간 이벤트가 동작을 하지 못햇습니다.");
+            }
+        }
+
+        private void barButtonItemMoveStop_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                if (_mMotionControlCommManager.IsOpen())
+                {
+                    if (MessageBox.Show("모션 정지을 진행을 합니다.", "모션 정지", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        byte[] SeData = new byte[8];
+                        for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                        {
+                            SeData = _mMotionControlCommManager.mDrvCtrl.MoveStopCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
+                            _mMotionControlCommManager.SendData(SeData);
+                        }
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "모션 정지 명령을 실행하였습니다.");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), "모션 정지 명령을 하지 못햇습니다.");
             }
         }
     }

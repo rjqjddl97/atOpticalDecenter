@@ -338,7 +338,7 @@
             this.xtraTabControlRemoteIO.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Left;
             this.xtraTabControlRemoteIO.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControlRemoteIO.Name = "xtraTabControlRemoteIO";
-            this.xtraTabControlRemoteIO.SelectedTabPage = this.xtraTabPageConnect;
+            this.xtraTabControlRemoteIO.SelectedTabPage = this.xtraTabPageControl;
             this.xtraTabControlRemoteIO.Size = new System.Drawing.Size(551, 597);
             this.xtraTabControlRemoteIO.TabIndex = 0;
             this.xtraTabControlRemoteIO.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {

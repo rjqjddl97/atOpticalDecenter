@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(atOpticalDecenter));
-            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.ChartTitle chartTitle2 = new DevExpress.XtraCharts.ChartTitle();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemSystemFolderPathSetting = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSystemEditor = new DevExpress.XtraBars.BarButtonItem();
@@ -72,6 +71,9 @@
             this.barButtonItemWorkInfo = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemHomming = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemReset = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItemCurrentTime = new DevExpress.XtraBars.BarStaticItem();
+            this.barStaticItemMotionStatus = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItemMoveStop = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageEquipementFunctions = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonSystemPage = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupFile = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -83,9 +85,9 @@
             this.ribbonPageGroupInspection = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.openFileDialogRecipeOpen = new System.Windows.Forms.OpenFileDialog();
-            this.xtraFolderBrowserDialogRecipeOpen = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
+            this.xtraFolderBrowserDialogRecipeOpen = new DevExpress.XtraEditors.XtraFolderBrowserDialog();
             this.folderBrowserDialogRecipeOpen = new System.Windows.Forms.FolderBrowserDialog();
-            this.dockManagerMainForm = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.dockManagerMainForm = new DevExpress.XtraBars.Docking.DockManager();
             this.dockPanelLogView = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.layoutControl8 = new DevExpress.XtraLayout.LayoutControl();
@@ -194,7 +196,7 @@
             this.pictureEditActuatorY = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEditActuatorX = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEditSystemImage = new DevExpress.XtraEditors.PictureEdit();
-            this.contextMenuStripImageROI = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStripImageROI = new System.Windows.Forms.ContextMenuStrip();
             this.toolStripMenuItemSetTempleteArea = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemSetROI = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemClearWorkROI = new System.Windows.Forms.ToolStripMenuItem();
@@ -206,16 +208,17 @@
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.openFileDialogPatternImage = new System.Windows.Forms.OpenFileDialog();
-            this.popupMenuTemplateCrop = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popupMenuTemplateCrop = new DevExpress.XtraBars.PopupMenu();
             this.saveFileDialogImage = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialogImageFileOpen = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogInspectLedImage = new System.Windows.Forms.OpenFileDialog();
-            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.openFileDialogSpot1Image = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSpot2Image = new System.Windows.Forms.OpenFileDialog();
             this.barButtonItemConnectionPLC = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemConnectionPhotoSensor = new DevExpress.XtraBars.BarButtonItem();
+            this.timerCurrentTime = new System.Windows.Forms.Timer();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBarInspectionProcess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditInspectionResult)).BeginInit();
@@ -273,8 +276,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControlInspectionAngle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
@@ -342,10 +345,13 @@
             this.barButtonItemConnectionCamera,
             this.barButtonItemWorkInfo,
             this.barButtonItemHomming,
-            this.barButtonItemReset});
+            this.barButtonItemReset,
+            this.barStaticItemCurrentTime,
+            this.barStaticItemMotionStatus,
+            this.barButtonItemMoveStop});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.ribbonControl1.MaxItemId = 38;
+            this.ribbonControl1.MaxItemId = 41;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageEquipementFunctions});
@@ -716,6 +722,28 @@
             this.barButtonItemReset.Name = "barButtonItemReset";
             this.barButtonItemReset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemReset_ItemClick);
             // 
+            // barStaticItemCurrentTime
+            // 
+            this.barStaticItemCurrentTime.Caption = "00:00:00";
+            this.barStaticItemCurrentTime.Id = 38;
+            this.barStaticItemCurrentTime.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItemCurrentTime.ImageOptions.Image")));
+            this.barStaticItemCurrentTime.Name = "barStaticItemCurrentTime";
+            // 
+            // barStaticItemMotionStatus
+            // 
+            this.barStaticItemMotionStatus.Caption = "Motion Status : ";
+            this.barStaticItemMotionStatus.Id = 39;
+            this.barStaticItemMotionStatus.Name = "barStaticItemMotionStatus";
+            // 
+            // barButtonItemMoveStop
+            // 
+            this.barButtonItemMoveStop.Caption = "모션 정지";
+            this.barButtonItemMoveStop.Id = 40;
+            this.barButtonItemMoveStop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMoveStop.ImageOptions.Image")));
+            this.barButtonItemMoveStop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemMoveStop.ImageOptions.LargeImage")));
+            this.barButtonItemMoveStop.Name = "barButtonItemMoveStop";
+            this.barButtonItemMoveStop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMoveStop_ItemClick);
+            // 
             // ribbonPageEquipementFunctions
             // 
             this.ribbonPageEquipementFunctions.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -788,6 +816,7 @@
             // 
             this.ribbonPageGroupMotionControl.ItemLinks.Add(this.barButtonItemHomming);
             this.ribbonPageGroupMotionControl.ItemLinks.Add(this.barButtonItemReset);
+            this.ribbonPageGroupMotionControl.ItemLinks.Add(this.barButtonItemMoveStop);
             this.ribbonPageGroupMotionControl.Name = "ribbonPageGroupMotionControl";
             this.ribbonPageGroupMotionControl.Text = "모션 제어";
             // 
@@ -807,6 +836,8 @@
             // 
             // ribbonStatusBar
             // 
+            this.ribbonStatusBar.ItemLinks.Add(this.barStaticItemCurrentTime);
+            this.ribbonStatusBar.ItemLinks.Add(this.barStaticItemMotionStatus);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 736);
             this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
@@ -1011,11 +1042,11 @@
             this.dockPanelMainSetting.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.dockPanelMainSetting.FloatSize = new System.Drawing.Size(230, 200);
             this.dockPanelMainSetting.ID = new System.Guid("59daad9a-b7f8-4f04-b0b7-0bf76a0e7344");
-            this.dockPanelMainSetting.Location = new System.Drawing.Point(725, 149);
+            this.dockPanelMainSetting.Location = new System.Drawing.Point(709, 149);
             this.dockPanelMainSetting.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.dockPanelMainSetting.Name = "dockPanelMainSetting";
-            this.dockPanelMainSetting.OriginalSize = new System.Drawing.Size(289, 200);
-            this.dockPanelMainSetting.Size = new System.Drawing.Size(289, 442);
+            this.dockPanelMainSetting.OriginalSize = new System.Drawing.Size(305, 200);
+            this.dockPanelMainSetting.Size = new System.Drawing.Size(305, 442);
             this.dockPanelMainSetting.Text = "주요 설정";
             // 
             // controlContainer1
@@ -1024,7 +1055,7 @@
             this.controlContainer1.Location = new System.Drawing.Point(5, 23);
             this.controlContainer1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.controlContainer1.Name = "controlContainer1";
-            this.controlContainer1.Size = new System.Drawing.Size(280, 415);
+            this.controlContainer1.Size = new System.Drawing.Size(296, 415);
             this.controlContainer1.TabIndex = 0;
             // 
             // xtraTabControlMainSetup
@@ -1035,7 +1066,7 @@
             this.xtraTabControlMainSetup.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.xtraTabControlMainSetup.Name = "xtraTabControlMainSetup";
             this.xtraTabControlMainSetup.SelectedTabPage = this.xtraTabPageCamera;
-            this.xtraTabControlMainSetup.Size = new System.Drawing.Size(280, 415);
+            this.xtraTabControlMainSetup.Size = new System.Drawing.Size(296, 415);
             this.xtraTabControlMainSetup.TabIndex = 0;
             this.xtraTabControlMainSetup.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageCamera,
@@ -1050,13 +1081,13 @@
             this.xtraTabPageCamera.Controls.Add(this.vGridControl1);
             this.xtraTabPageCamera.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.xtraTabPageCamera.Name = "xtraTabPageCamera";
-            this.xtraTabPageCamera.Size = new System.Drawing.Size(274, 386);
+            this.xtraTabPageCamera.Size = new System.Drawing.Size(290, 386);
             this.xtraTabPageCamera.Text = "카메라 설정";
             // 
             // vGridControl1
             // 
             this.vGridControl1.BandsInterval = 1;
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -1070,7 +1101,7 @@
             this.vGridControl1.RowHeaderWidth = 129;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.categoryCamera});
-            this.vGridControl1.Size = new System.Drawing.Size(274, 386);
+            this.vGridControl1.Size = new System.Drawing.Size(290, 386);
             this.vGridControl1.TabIndex = 0;
             this.vGridControl1.CellValueChanging += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControl1_CellValueChanging);
             this.vGridControl1.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControl1_CellValueChanged);
@@ -1656,7 +1687,7 @@
             this.xtraTabPageMotionControl.Controls.Add(this.MotionControl);
             this.xtraTabPageMotionControl.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.xtraTabPageMotionControl.Name = "xtraTabPageMotionControl";
-            this.xtraTabPageMotionControl.Size = new System.Drawing.Size(274, 386);
+            this.xtraTabPageMotionControl.Size = new System.Drawing.Size(290, 386);
             this.xtraTabPageMotionControl.Text = "모션 제어";
             // 
             // MotionControl
@@ -1665,7 +1696,7 @@
             this.MotionControl.Location = new System.Drawing.Point(0, 0);
             this.MotionControl.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.MotionControl.Name = "MotionControl";
-            this.MotionControl.Size = new System.Drawing.Size(274, 386);
+            this.MotionControl.Size = new System.Drawing.Size(290, 386);
             this.MotionControl.TabIndex = 0;
             // 
             // xtraTabPageRemoteIO
@@ -1673,7 +1704,7 @@
             this.xtraTabPageRemoteIO.Controls.Add(this.RemoteIOControl);
             this.xtraTabPageRemoteIO.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.xtraTabPageRemoteIO.Name = "xtraTabPageRemoteIO";
-            this.xtraTabPageRemoteIO.Size = new System.Drawing.Size(274, 386);
+            this.xtraTabPageRemoteIO.Size = new System.Drawing.Size(290, 386);
             this.xtraTabPageRemoteIO.Text = "I/O 제어";
             // 
             // RemoteIOControl
@@ -1682,7 +1713,7 @@
             this.RemoteIOControl.Location = new System.Drawing.Point(0, 0);
             this.RemoteIOControl.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.RemoteIOControl.Name = "RemoteIOControl";
-            this.RemoteIOControl.Size = new System.Drawing.Size(274, 386);
+            this.RemoteIOControl.Size = new System.Drawing.Size(290, 386);
             this.RemoteIOControl.TabIndex = 0;
             // 
             // xtraTabPageInspectResult
@@ -1794,22 +1825,22 @@
             // 
             // chartControlInspectionAngle
             // 
-            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartControlInspectionAngle.Diagram = xyDiagram2;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControlInspectionAngle.Diagram = xyDiagram1;
             this.chartControlInspectionAngle.Legend.Name = "Default Legend";
             this.chartControlInspectionAngle.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
             this.chartControlInspectionAngle.Location = new System.Drawing.Point(12, 12);
             this.chartControlInspectionAngle.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.chartControlInspectionAngle.Name = "chartControlInspectionAngle";
-            series2.Name = "Series 1";
+            series1.Name = "Series 1";
             this.chartControlInspectionAngle.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series2};
+        series1};
             this.chartControlInspectionAngle.Size = new System.Drawing.Size(250, 362);
             this.chartControlInspectionAngle.TabIndex = 4;
-            chartTitle2.Text = "발산 각도[˚]";
+            chartTitle1.Text = "발산 각도[˚]";
             this.chartControlInspectionAngle.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle2});
+            chartTitle1});
             // 
             // Root
             // 
@@ -1905,7 +1936,7 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(914, 252, 650, 400);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(725, 442);
+            this.layoutControl1.Size = new System.Drawing.Size(709, 442);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -1919,7 +1950,7 @@
             this.layoutControlMain.Name = "layoutControlMain";
             this.layoutControlMain.OptionsView.UseDefaultDragAndDropRendering = false;
             this.layoutControlMain.Root = this.layoutControlGroupMainPannel;
-            this.layoutControlMain.Size = new System.Drawing.Size(719, 436);
+            this.layoutControlMain.Size = new System.Drawing.Size(703, 436);
             this.layoutControlMain.TabIndex = 4;
             this.layoutControlMain.Text = "layoutControl2";
             // 
@@ -1930,7 +1961,7 @@
             this.pictureEditActuatorY.MenuManager = this.ribbonControl1;
             this.pictureEditActuatorY.Name = "pictureEditActuatorY";
             this.pictureEditActuatorY.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEditActuatorY.Size = new System.Drawing.Size(259, 184);
+            this.pictureEditActuatorY.Size = new System.Drawing.Size(244, 184);
             this.pictureEditActuatorY.StyleController = this.layoutControlMain;
             this.pictureEditActuatorY.TabIndex = 6;
             this.pictureEditActuatorY.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureEditpictureEditActuatorY_Paint);
@@ -1942,14 +1973,14 @@
             this.pictureEditActuatorX.MenuManager = this.ribbonControl1;
             this.pictureEditActuatorX.Name = "pictureEditActuatorX";
             this.pictureEditActuatorX.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEditActuatorX.Size = new System.Drawing.Size(259, 242);
+            this.pictureEditActuatorX.Size = new System.Drawing.Size(244, 242);
             this.pictureEditActuatorX.StyleController = this.layoutControlMain;
             this.pictureEditActuatorX.TabIndex = 5;
             this.pictureEditActuatorX.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureEditActuatorX_Paint);
             // 
             // pictureEditSystemImage
             // 
-            this.pictureEditSystemImage.Location = new System.Drawing.Point(266, 3);
+            this.pictureEditSystemImage.Location = new System.Drawing.Point(251, 3);
             this.pictureEditSystemImage.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.pictureEditSystemImage.Name = "pictureEditSystemImage";
             this.pictureEditSystemImage.Properties.ContextMenuStrip = this.contextMenuStripImageROI;
@@ -1958,7 +1989,7 @@
             this.pictureEditSystemImage.Properties.ShowMenu = false;
             this.pictureEditSystemImage.Properties.ShowScrollBars = true;
             this.pictureEditSystemImage.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.False;
-            this.pictureEditSystemImage.Size = new System.Drawing.Size(450, 430);
+            this.pictureEditSystemImage.Size = new System.Drawing.Size(449, 430);
             this.pictureEditSystemImage.StyleController = this.layoutControlMain;
             this.pictureEditSystemImage.TabIndex = 4;
             this.pictureEditSystemImage.ImageChanged += new System.EventHandler(this.pictureEditSystemImage_ImageChanged);
@@ -2014,15 +2045,15 @@
             this.layoutControlItem16});
             this.layoutControlGroupMainPannel.Name = "layoutControlGroupMainPannel";
             this.layoutControlGroupMainPannel.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
-            this.layoutControlGroupMainPannel.Size = new System.Drawing.Size(719, 436);
+            this.layoutControlGroupMainPannel.Size = new System.Drawing.Size(703, 436);
             this.layoutControlGroupMainPannel.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.pictureEditSystemImage;
-            this.layoutControlItem2.Location = new System.Drawing.Point(263, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(248, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(454, 434);
+            this.layoutControlItem2.Size = new System.Drawing.Size(453, 434);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -2031,7 +2062,7 @@
             this.layoutControlItem12.Control = this.pictureEditActuatorX;
             this.layoutControlItem12.Location = new System.Drawing.Point(0, 188);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(263, 246);
+            this.layoutControlItem12.Size = new System.Drawing.Size(248, 246);
             this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem12.TextVisible = false;
             // 
@@ -2040,7 +2071,7 @@
             this.layoutControlItem16.Control = this.pictureEditActuatorY;
             this.layoutControlItem16.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(263, 188);
+            this.layoutControlItem16.Size = new System.Drawing.Size(248, 188);
             this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem16.TextVisible = false;
             // 
@@ -2052,7 +2083,7 @@
             this.layoutControlItem1});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(725, 442);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(709, 442);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -2060,7 +2091,7 @@
             this.layoutControlItem1.Control = this.layoutControlMain;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(723, 440);
+            this.layoutControlItem1.Size = new System.Drawing.Size(707, 440);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -2123,6 +2154,11 @@
             this.barButtonItemConnectionPhotoSensor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemConnectionPhotoSensor.ImageOptions.Image")));
             this.barButtonItemConnectionPhotoSensor.Name = "barButtonItemConnectionPhotoSensor";
             this.barButtonItemConnectionPhotoSensor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemConnectAll_ItemClick);
+            // 
+            // timerCurrentTime
+            // 
+            this.timerCurrentTime.Interval = 1000;
+            this.timerCurrentTime.Tick += new System.EventHandler(this.timerCurrentTime_Tick);
             // 
             // atOpticalDecenter
             // 
@@ -2200,8 +2236,8 @@
             this.xtraTabPageStatistics.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControlInspectionAngle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
@@ -2419,5 +2455,9 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
         private DevExpress.XtraEditors.PictureEdit pictureEditDecenterResult;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
+        private System.Windows.Forms.Timer timerCurrentTime;
+        private DevExpress.XtraBars.BarStaticItem barStaticItemCurrentTime;
+        private DevExpress.XtraBars.BarStaticItem barStaticItemMotionStatus;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemMoveStop;
     }
 }

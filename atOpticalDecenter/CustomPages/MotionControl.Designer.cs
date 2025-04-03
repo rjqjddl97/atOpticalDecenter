@@ -29,6 +29,98 @@
         private void InitializeComponent()
         {
             this.xtraTabControlMotion = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPageControl = new DevExpress.XtraTab.XtraTabPage();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControl5 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.groupControlPCLControl = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControl6 = new DevExpress.XtraLayout.LayoutControl();
+            this.checkButtonHighValue = new DevExpress.XtraEditors.CheckButton();
+            this.textEditUserDefineValue = new DevExpress.XtraEditors.TextEdit();
+            this.checkButtonMiddleValue = new DevExpress.XtraEditors.CheckButton();
+            this.radioGroupCalibration = new DevExpress.XtraEditors.RadioGroup();
+            this.checkButtonLowValue = new DevExpress.XtraEditors.CheckButton();
+            this.CheckButtonXPlusControlCommand = new DevExpress.XtraEditors.CheckButton();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.radioGroupMenualValueMode = new DevExpress.XtraEditors.RadioGroup();
+            this.CheckButtonXStopControlCommand = new DevExpress.XtraEditors.CheckButton();
+            this.CheckButtonYPlusControlCommand = new DevExpress.XtraEditors.CheckButton();
+            this.CheckButtonXMinusControlCommand = new DevExpress.XtraEditors.CheckButton();
+            this.CheckButtonZPlusControlCommand = new DevExpress.XtraEditors.CheckButton();
+            this.CheckButtonYStopControlCommand = new DevExpress.XtraEditors.CheckButton();
+            this.checkEditCalibration = new DevExpress.XtraEditors.CheckEdit();
+            this.CheckButtonYMinusControlCommand = new DevExpress.XtraEditors.CheckButton();
+            this.CheckButtonZStopControlCommand = new DevExpress.XtraEditors.CheckButton();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.textEditTargetAcceleration = new DevExpress.XtraEditors.TextEdit();
+            this.CheckButtonZMinusControlCommand = new DevExpress.XtraEditors.CheckButton();
+            this.textEditTargetVelocity = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.textEditTargetPosZ = new DevExpress.XtraEditors.TextEdit();
+            this.textEditTargetPosY = new DevExpress.XtraEditors.TextEdit();
+            this.textEditTargetPosX = new DevExpress.XtraEditors.TextEdit();
+            this.SendCmdHommingButton = new DevExpress.XtraEditors.SimpleButton();
+            this.SendCommandMoveStopButton = new DevExpress.XtraEditors.SimpleButton();
+            this.ErrorResetButton = new DevExpress.XtraEditors.SimpleButton();
+            this.EmergencyStopButton = new DevExpress.XtraEditors.SimpleButton();
+            this.RobotEnableButton = new DevExpress.XtraEditors.SimpleButton();
+            this.SendCmdPositionButton = new DevExpress.XtraEditors.SimpleButton();
+            this.radioGroupMenualControlMode = new DevExpress.XtraEditors.RadioGroup();
+            this.radioGroupMenualMode = new DevExpress.XtraEditors.RadioGroup();
+            this.checkButtonMenualMode = new DevExpress.XtraEditors.CheckButton();
+            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem61 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem153 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem154 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem155 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem33 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem118 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem34 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem36 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem156 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem49 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem50 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem41 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem42 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem43 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem44 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem40 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem37 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem38 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem39 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem32 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.textBoxUserDefineValue = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem29 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem30 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem31 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
+            this.groupControlPresentPosition = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControl7 = new DevExpress.XtraLayout.LayoutControl();
+            this.textEditPresentPosZ = new DevExpress.XtraEditors.TextEdit();
+            this.textEditPresentPosY = new DevExpress.XtraEditors.TextEdit();
+            this.textEditPresentPosX = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlGroup8 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem62 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem63 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem64 = new DevExpress.XtraLayout.LayoutControlItem();
             this.xtraTabControlConnect = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.simpleButtonReqMotionStatus = new DevExpress.XtraEditors.SimpleButton();
@@ -56,101 +148,6 @@
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.xtraTabPageControl = new DevExpress.XtraTab.XtraTabPage();
-            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControl5 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.groupControlPCLControl = new DevExpress.XtraEditors.GroupControl();
-            this.layoutControl6 = new DevExpress.XtraLayout.LayoutControl();
-            this.radioGroupCalibration = new DevExpress.XtraEditors.RadioGroup();
-            this.checkEditCalibration = new DevExpress.XtraEditors.CheckEdit();
-            this.textEditTargetAcceleration = new DevExpress.XtraEditors.TextEdit();
-            this.textEditTargetVelocity = new DevExpress.XtraEditors.TextEdit();
-            this.textEditTargetPosZ = new DevExpress.XtraEditors.TextEdit();
-            this.textEditTargetPosY = new DevExpress.XtraEditors.TextEdit();
-            this.textEditTargetPosX = new DevExpress.XtraEditors.TextEdit();
-            this.SendCmdHommingButton = new DevExpress.XtraEditors.SimpleButton();
-            this.SendCommandMoveStopButton = new DevExpress.XtraEditors.SimpleButton();
-            this.ErrorResetButton = new DevExpress.XtraEditors.SimpleButton();
-            this.EmergencyStopButton = new DevExpress.XtraEditors.SimpleButton();
-            this.RobotEnableButton = new DevExpress.XtraEditors.SimpleButton();
-            this.SendCmdPositionButton = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControl8 = new DevExpress.XtraLayout.LayoutControl();
-            this.textEditUserDefineValue = new DevExpress.XtraEditors.TextEdit();
-            this.CheckButtonZPlusControlCommand = new DevExpress.XtraEditors.CheckButton();
-            this.CheckButtonZStopControlCommand = new DevExpress.XtraEditors.CheckButton();
-            this.CheckButtonZMinusControlCommand = new DevExpress.XtraEditors.CheckButton();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.CheckButtonYPlusControlCommand = new DevExpress.XtraEditors.CheckButton();
-            this.CheckButtonYStopControlCommand = new DevExpress.XtraEditors.CheckButton();
-            this.CheckButtonYMinusControlCommand = new DevExpress.XtraEditors.CheckButton();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.CheckButtonXPlusControlCommand = new DevExpress.XtraEditors.CheckButton();
-            this.CheckButtonXStopControlCommand = new DevExpress.XtraEditors.CheckButton();
-            this.CheckButtonXMinusControlCommand = new DevExpress.XtraEditors.CheckButton();
-            this.checkButtonHighValue = new DevExpress.XtraEditors.CheckButton();
-            this.checkButtonMiddleValue = new DevExpress.XtraEditors.CheckButton();
-            this.radioGroupMenualValueMode = new DevExpress.XtraEditors.RadioGroup();
-            this.checkButtonLowValue = new DevExpress.XtraEditors.CheckButton();
-            this.layoutControlGroup9 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem32 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem29 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem30 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem31 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem37 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem40 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem38 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem39 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem41 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem42 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem43 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem44 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem49 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem50 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem51 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem52 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textBoxUserDefineValue = new DevExpress.XtraLayout.LayoutControlItem();
-            this.radioGroupMenualControlMode = new DevExpress.XtraEditors.RadioGroup();
-            this.radioGroupMenualMode = new DevExpress.XtraEditors.RadioGroup();
-            this.checkButtonMenualMode = new DevExpress.XtraEditors.CheckButton();
-            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem35 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem61 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem153 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem154 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem155 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem33 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem118 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem34 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem36 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem156 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
-            this.groupControlPresentPosition = new DevExpress.XtraEditors.GroupControl();
-            this.layoutControl7 = new DevExpress.XtraLayout.LayoutControl();
-            this.textEditPresentPosZ = new DevExpress.XtraEditors.TextEdit();
-            this.textEditPresentPosY = new DevExpress.XtraEditors.TextEdit();
-            this.textEditPresentPosX = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlGroup8 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem62 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem63 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem64 = new DevExpress.XtraLayout.LayoutControlItem();
             this.xtraTabPageInfoStatus = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl18 = new DevExpress.XtraLayout.LayoutControl();
             this.xtraTabControlAiCStatus = new DevExpress.XtraTab.XtraTabControl();
@@ -605,6 +602,83 @@
             this.layoutControlItem23 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlMotion)).BeginInit();
             this.xtraTabControlMotion.SuspendLayout();
+            this.xtraTabPageControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl5)).BeginInit();
+            this.layoutControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlPCLControl)).BeginInit();
+            this.groupControlPCLControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).BeginInit();
+            this.layoutControl6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditUserDefineValue.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroupCalibration.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualValueMode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditCalibration.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetAcceleration.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetVelocity.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosZ.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosY.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosX.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualControlMode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualMode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem61)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem153)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem154)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem155)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem118)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem34)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem36)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem156)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem49)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem50)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem41)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem42)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem43)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem44)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem40)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem37)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem38)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem39)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxUserDefineValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).BeginInit();
+            this.layoutControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlPresentPosition)).BeginInit();
+            this.groupControlPresentPosition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl7)).BeginInit();
+            this.layoutControl7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditPresentPosZ.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditPresentPosY.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditPresentPosX.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem62)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem63)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem64)).BeginInit();
             this.xtraTabControlConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
@@ -629,87 +703,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
-            this.xtraTabPageControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
-            this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl5)).BeginInit();
-            this.layoutControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControlPCLControl)).BeginInit();
-            this.groupControlPCLControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).BeginInit();
-            this.layoutControl6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupCalibration.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditCalibration.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetAcceleration.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetVelocity.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosZ.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosY.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosX.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl8)).BeginInit();
-            this.layoutControl8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditUserDefineValue.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualValueMode.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem37)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem40)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem38)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem39)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem41)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem42)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem43)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem44)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem49)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem50)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem51)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem52)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxUserDefineValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualControlMode.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualMode.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem35)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem61)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem153)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem154)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem155)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem118)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem34)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem36)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem156)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).BeginInit();
-            this.layoutControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControlPresentPosition)).BeginInit();
-            this.groupControlPresentPosition.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl7)).BeginInit();
-            this.layoutControl7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditPresentPosZ.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditPresentPosY.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditPresentPosX.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem62)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem63)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem64)).BeginInit();
             this.xtraTabPageInfoStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl18)).BeginInit();
             this.layoutControl18.SuspendLayout();
@@ -1014,13 +1007,1068 @@
             this.xtraTabControlMotion.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControlMotion.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.xtraTabControlMotion.Name = "xtraTabControlMotion";
-            this.xtraTabControlMotion.SelectedTabPage = this.xtraTabControlConnect;
+            this.xtraTabControlMotion.SelectedTabPage = this.xtraTabPageControl;
             this.xtraTabControlMotion.Size = new System.Drawing.Size(551, 597);
             this.xtraTabControlMotion.TabIndex = 0;
             this.xtraTabControlMotion.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabControlConnect,
             this.xtraTabPageControl,
             this.xtraTabPageInfoStatus});
+            // 
+            // xtraTabPageControl
+            // 
+            this.xtraTabPageControl.Controls.Add(this.layoutControl1);
+            this.xtraTabPageControl.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.xtraTabPageControl.Name = "xtraTabPageControl";
+            this.xtraTabPageControl.Size = new System.Drawing.Size(521, 591);
+            this.xtraTabPageControl.Text = "제어";
+            // 
+            // layoutControl1
+            // 
+            this.layoutControl1.Controls.Add(this.layoutControl5);
+            this.layoutControl1.Controls.Add(this.layoutControl4);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsView.UseDefaultDragAndDropRendering = false;
+            this.layoutControl1.Root = this.layoutControlGroup2;
+            this.layoutControl1.Size = new System.Drawing.Size(521, 591);
+            this.layoutControl1.TabIndex = 1;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
+            // layoutControl5
+            // 
+            this.layoutControl5.Controls.Add(this.layoutControl3);
+            this.layoutControl5.Controls.Add(this.groupControlPCLControl);
+            this.layoutControl5.Location = new System.Drawing.Point(12, 104);
+            this.layoutControl5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl5.Name = "layoutControl5";
+            this.layoutControl5.OptionsView.UseDefaultDragAndDropRendering = false;
+            this.layoutControl5.Root = this.layoutControlGroup5;
+            this.layoutControl5.Size = new System.Drawing.Size(497, 475);
+            this.layoutControl5.TabIndex = 5;
+            this.layoutControl5.Text = "layoutControl5";
+            // 
+            // layoutControl3
+            // 
+            this.layoutControl3.AutoScroll = false;
+            this.layoutControl3.Location = new System.Drawing.Point(3, 324);
+            this.layoutControl3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl3.Name = "layoutControl3";
+            this.layoutControl3.Root = this.Root;
+            this.layoutControl3.Size = new System.Drawing.Size(491, 146);
+            this.layoutControl3.TabIndex = 5;
+            this.layoutControl3.Text = "layoutControl3";
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Name = "Root";
+            this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
+            this.Root.Size = new System.Drawing.Size(491, 146);
+            this.Root.TextVisible = false;
+            // 
+            // groupControlPCLControl
+            // 
+            this.groupControlPCLControl.Controls.Add(this.layoutControl6);
+            this.groupControlPCLControl.Location = new System.Drawing.Point(5, 7);
+            this.groupControlPCLControl.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.groupControlPCLControl.Name = "groupControlPCLControl";
+            this.groupControlPCLControl.Size = new System.Drawing.Size(487, 315);
+            this.groupControlPCLControl.TabIndex = 4;
+            this.groupControlPCLControl.Text = "모션 위치 제어";
+            // 
+            // layoutControl6
+            // 
+            this.layoutControl6.Controls.Add(this.checkButtonHighValue);
+            this.layoutControl6.Controls.Add(this.textEditUserDefineValue);
+            this.layoutControl6.Controls.Add(this.checkButtonMiddleValue);
+            this.layoutControl6.Controls.Add(this.radioGroupCalibration);
+            this.layoutControl6.Controls.Add(this.checkButtonLowValue);
+            this.layoutControl6.Controls.Add(this.CheckButtonXPlusControlCommand);
+            this.layoutControl6.Controls.Add(this.labelControl1);
+            this.layoutControl6.Controls.Add(this.radioGroupMenualValueMode);
+            this.layoutControl6.Controls.Add(this.CheckButtonXStopControlCommand);
+            this.layoutControl6.Controls.Add(this.CheckButtonYPlusControlCommand);
+            this.layoutControl6.Controls.Add(this.CheckButtonXMinusControlCommand);
+            this.layoutControl6.Controls.Add(this.CheckButtonZPlusControlCommand);
+            this.layoutControl6.Controls.Add(this.CheckButtonYStopControlCommand);
+            this.layoutControl6.Controls.Add(this.checkEditCalibration);
+            this.layoutControl6.Controls.Add(this.CheckButtonYMinusControlCommand);
+            this.layoutControl6.Controls.Add(this.CheckButtonZStopControlCommand);
+            this.layoutControl6.Controls.Add(this.labelControl2);
+            this.layoutControl6.Controls.Add(this.textEditTargetAcceleration);
+            this.layoutControl6.Controls.Add(this.CheckButtonZMinusControlCommand);
+            this.layoutControl6.Controls.Add(this.textEditTargetVelocity);
+            this.layoutControl6.Controls.Add(this.labelControl4);
+            this.layoutControl6.Controls.Add(this.textEditTargetPosZ);
+            this.layoutControl6.Controls.Add(this.textEditTargetPosY);
+            this.layoutControl6.Controls.Add(this.textEditTargetPosX);
+            this.layoutControl6.Controls.Add(this.SendCmdHommingButton);
+            this.layoutControl6.Controls.Add(this.SendCommandMoveStopButton);
+            this.layoutControl6.Controls.Add(this.ErrorResetButton);
+            this.layoutControl6.Controls.Add(this.EmergencyStopButton);
+            this.layoutControl6.Controls.Add(this.RobotEnableButton);
+            this.layoutControl6.Controls.Add(this.SendCmdPositionButton);
+            this.layoutControl6.Controls.Add(this.radioGroupMenualControlMode);
+            this.layoutControl6.Controls.Add(this.radioGroupMenualMode);
+            this.layoutControl6.Controls.Add(this.checkButtonMenualMode);
+            this.layoutControl6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl6.Location = new System.Drawing.Point(2, 21);
+            this.layoutControl6.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl6.Name = "layoutControl6";
+            this.layoutControl6.OptionsView.UseDefaultDragAndDropRendering = false;
+            this.layoutControl6.Root = this.layoutControlGroup7;
+            this.layoutControl6.Size = new System.Drawing.Size(483, 292);
+            this.layoutControl6.TabIndex = 0;
+            this.layoutControl6.Text = "layoutControl6";
+            // 
+            // checkButtonHighValue
+            // 
+            this.checkButtonHighValue.Location = new System.Drawing.Point(389, 85);
+            this.checkButtonHighValue.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.checkButtonHighValue.Name = "checkButtonHighValue";
+            this.checkButtonHighValue.Size = new System.Drawing.Size(90, 22);
+            this.checkButtonHighValue.StyleController = this.layoutControl6;
+            this.checkButtonHighValue.TabIndex = 16;
+            this.checkButtonHighValue.Text = "큰값";
+            this.checkButtonHighValue.CheckedChanged += new System.EventHandler(this.checkButtonHighValue_CheckedChanged);
+            this.checkButtonHighValue.Click += new System.EventHandler(this.checkButtonHighValue_Click);
+            // 
+            // textEditUserDefineValue
+            // 
+            this.textEditUserDefineValue.Location = new System.Drawing.Point(241, 111);
+            this.textEditUserDefineValue.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditUserDefineValue.Name = "textEditUserDefineValue";
+            this.textEditUserDefineValue.Properties.Appearance.Options.UseTextOptions = true;
+            this.textEditUserDefineValue.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.textEditUserDefineValue.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.textEditUserDefineValue.Size = new System.Drawing.Size(238, 20);
+            this.textEditUserDefineValue.StyleController = this.layoutControl6;
+            this.textEditUserDefineValue.TabIndex = 46;
+            this.textEditUserDefineValue.EditValueChanged += new System.EventHandler(this.textEditUserDefineValue_EditValueChanged);
+            // 
+            // checkButtonMiddleValue
+            // 
+            this.checkButtonMiddleValue.Location = new System.Drawing.Point(280, 85);
+            this.checkButtonMiddleValue.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.checkButtonMiddleValue.Name = "checkButtonMiddleValue";
+            this.checkButtonMiddleValue.Size = new System.Drawing.Size(105, 22);
+            this.checkButtonMiddleValue.StyleController = this.layoutControl6;
+            this.checkButtonMiddleValue.TabIndex = 15;
+            this.checkButtonMiddleValue.Text = "중간값";
+            this.checkButtonMiddleValue.CheckedChanged += new System.EventHandler(this.checkButtonMiddleValue_CheckedChanged);
+            this.checkButtonMiddleValue.Click += new System.EventHandler(this.checkButtonMiddleValue_Click);
+            // 
+            // radioGroupCalibration
+            // 
+            this.radioGroupCalibration.Location = new System.Drawing.Point(186, 213);
+            this.radioGroupCalibration.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.radioGroupCalibration.Name = "radioGroupCalibration";
+            this.radioGroupCalibration.Properties.Columns = 2;
+            this.radioGroupCalibration.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "투광부 보정")});
+            this.radioGroupCalibration.Size = new System.Drawing.Size(293, 25);
+            this.radioGroupCalibration.StyleController = this.layoutControl6;
+            this.radioGroupCalibration.TabIndex = 38;
+            // 
+            // checkButtonLowValue
+            // 
+            this.checkButtonLowValue.Location = new System.Drawing.Point(174, 85);
+            this.checkButtonLowValue.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.checkButtonLowValue.Name = "checkButtonLowValue";
+            this.checkButtonLowValue.Size = new System.Drawing.Size(102, 22);
+            this.checkButtonLowValue.StyleController = this.layoutControl6;
+            this.checkButtonLowValue.TabIndex = 14;
+            this.checkButtonLowValue.Text = "작은값";
+            this.checkButtonLowValue.CheckedChanged += new System.EventHandler(this.checkButtonLowValue_CheckedChanged);
+            this.checkButtonLowValue.Click += new System.EventHandler(this.checkButtonLowValue_Click);
+            // 
+            // CheckButtonXPlusControlCommand
+            // 
+            this.CheckButtonXPlusControlCommand.Location = new System.Drawing.Point(333, 135);
+            this.CheckButtonXPlusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CheckButtonXPlusControlCommand.Name = "CheckButtonXPlusControlCommand";
+            this.CheckButtonXPlusControlCommand.Size = new System.Drawing.Size(146, 22);
+            this.CheckButtonXPlusControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonXPlusControlCommand.TabIndex = 24;
+            this.CheckButtonXPlusControlCommand.Text = "》(+)";
+            this.CheckButtonXPlusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
+            this.CheckButtonXPlusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Options.UseTextOptions = true;
+            this.labelControl1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.labelControl1.Location = new System.Drawing.Point(4, 135);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(29, 14);
+            this.labelControl1.StyleController = this.layoutControl6;
+            this.labelControl1.TabIndex = 25;
+            this.labelControl1.Text = "X   축";
+            // 
+            // radioGroupMenualValueMode
+            // 
+            this.radioGroupMenualValueMode.Location = new System.Drawing.Point(4, 85);
+            this.radioGroupMenualValueMode.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.radioGroupMenualValueMode.Name = "radioGroupMenualValueMode";
+            this.radioGroupMenualValueMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "기본값 모드"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "사용자 모드")});
+            this.radioGroupMenualValueMode.Size = new System.Drawing.Size(166, 46);
+            this.radioGroupMenualValueMode.StyleController = this.layoutControl6;
+            this.radioGroupMenualValueMode.TabIndex = 1;
+            this.radioGroupMenualValueMode.SelectedIndexChanged += new System.EventHandler(this.radioGroupMenualValueMode_SelectedIndexChanged);
+            // 
+            // CheckButtonXStopControlCommand
+            // 
+            this.CheckButtonXStopControlCommand.Location = new System.Drawing.Point(186, 135);
+            this.CheckButtonXStopControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CheckButtonXStopControlCommand.Name = "CheckButtonXStopControlCommand";
+            this.CheckButtonXStopControlCommand.Size = new System.Drawing.Size(143, 22);
+            this.CheckButtonXStopControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonXStopControlCommand.TabIndex = 23;
+            this.CheckButtonXStopControlCommand.Text = "■(정지)";
+            this.CheckButtonXStopControlCommand.CheckedChanged += new System.EventHandler(this.ButtonStopControlCommand_CheckedChanged);
+            this.CheckButtonXStopControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // CheckButtonYPlusControlCommand
+            // 
+            this.CheckButtonYPlusControlCommand.Location = new System.Drawing.Point(333, 161);
+            this.CheckButtonYPlusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CheckButtonYPlusControlCommand.Name = "CheckButtonYPlusControlCommand";
+            this.CheckButtonYPlusControlCommand.Size = new System.Drawing.Size(146, 22);
+            this.CheckButtonYPlusControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonYPlusControlCommand.TabIndex = 29;
+            this.CheckButtonYPlusControlCommand.Text = "》(+)";
+            this.CheckButtonYPlusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
+            this.CheckButtonYPlusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // CheckButtonXMinusControlCommand
+            // 
+            this.CheckButtonXMinusControlCommand.Location = new System.Drawing.Point(37, 135);
+            this.CheckButtonXMinusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CheckButtonXMinusControlCommand.Name = "CheckButtonXMinusControlCommand";
+            this.CheckButtonXMinusControlCommand.Size = new System.Drawing.Size(145, 22);
+            this.CheckButtonXMinusControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonXMinusControlCommand.TabIndex = 22;
+            this.CheckButtonXMinusControlCommand.Text = "(-)《";
+            this.CheckButtonXMinusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
+            this.CheckButtonXMinusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // CheckButtonZPlusControlCommand
+            // 
+            this.CheckButtonZPlusControlCommand.Location = new System.Drawing.Point(333, 187);
+            this.CheckButtonZPlusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CheckButtonZPlusControlCommand.Name = "CheckButtonZPlusControlCommand";
+            this.CheckButtonZPlusControlCommand.Size = new System.Drawing.Size(146, 22);
+            this.CheckButtonZPlusControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonZPlusControlCommand.TabIndex = 37;
+            this.CheckButtonZPlusControlCommand.Text = "》(+)";
+            this.CheckButtonZPlusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
+            this.CheckButtonZPlusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // CheckButtonYStopControlCommand
+            // 
+            this.CheckButtonYStopControlCommand.Location = new System.Drawing.Point(186, 161);
+            this.CheckButtonYStopControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CheckButtonYStopControlCommand.Name = "CheckButtonYStopControlCommand";
+            this.CheckButtonYStopControlCommand.Size = new System.Drawing.Size(143, 22);
+            this.CheckButtonYStopControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonYStopControlCommand.TabIndex = 28;
+            this.CheckButtonYStopControlCommand.Text = "■(정지)";
+            this.CheckButtonYStopControlCommand.CheckedChanged += new System.EventHandler(this.ButtonStopControlCommand_CheckedChanged);
+            this.CheckButtonYStopControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // checkEditCalibration
+            // 
+            this.checkEditCalibration.Location = new System.Drawing.Point(4, 213);
+            this.checkEditCalibration.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.checkEditCalibration.Name = "checkEditCalibration";
+            this.checkEditCalibration.Properties.Caption = "위치보정 활성화";
+            this.checkEditCalibration.Size = new System.Drawing.Size(178, 19);
+            this.checkEditCalibration.StyleController = this.layoutControl6;
+            this.checkEditCalibration.TabIndex = 37;
+            // 
+            // CheckButtonYMinusControlCommand
+            // 
+            this.CheckButtonYMinusControlCommand.Location = new System.Drawing.Point(38, 161);
+            this.CheckButtonYMinusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CheckButtonYMinusControlCommand.Name = "CheckButtonYMinusControlCommand";
+            this.CheckButtonYMinusControlCommand.Size = new System.Drawing.Size(144, 22);
+            this.CheckButtonYMinusControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonYMinusControlCommand.TabIndex = 27;
+            this.CheckButtonYMinusControlCommand.Text = "(-)《";
+            this.CheckButtonYMinusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
+            this.CheckButtonYMinusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // CheckButtonZStopControlCommand
+            // 
+            this.CheckButtonZStopControlCommand.Location = new System.Drawing.Point(186, 187);
+            this.CheckButtonZStopControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CheckButtonZStopControlCommand.Name = "CheckButtonZStopControlCommand";
+            this.CheckButtonZStopControlCommand.Size = new System.Drawing.Size(143, 22);
+            this.CheckButtonZStopControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonZStopControlCommand.TabIndex = 36;
+            this.CheckButtonZStopControlCommand.Text = "■(정지)";
+            this.CheckButtonZStopControlCommand.CheckedChanged += new System.EventHandler(this.ButtonStopControlCommand_CheckedChanged);
+            this.CheckButtonZStopControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Options.UseTextOptions = true;
+            this.labelControl2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.labelControl2.Location = new System.Drawing.Point(4, 161);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(30, 14);
+            this.labelControl2.StyleController = this.layoutControl6;
+            this.labelControl2.TabIndex = 26;
+            this.labelControl2.Text = "Y   축";
+            // 
+            // textEditTargetAcceleration
+            // 
+            this.textEditTargetAcceleration.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditTargetAcceleration.Location = new System.Drawing.Point(232, 266);
+            this.textEditTargetAcceleration.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.textEditTargetAcceleration.Name = "textEditTargetAcceleration";
+            this.textEditTargetAcceleration.Properties.Appearance.Options.UseTextOptions = true;
+            this.textEditTargetAcceleration.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.textEditTargetAcceleration.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.textEditTargetAcceleration.Properties.Mask.EditMask = "n3";
+            this.textEditTargetAcceleration.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEditTargetAcceleration.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.textEditTargetAcceleration.Size = new System.Drawing.Size(86, 20);
+            this.textEditTargetAcceleration.StyleController = this.layoutControl6;
+            this.textEditTargetAcceleration.TabIndex = 36;
+            // 
+            // CheckButtonZMinusControlCommand
+            // 
+            this.CheckButtonZMinusControlCommand.Location = new System.Drawing.Point(37, 187);
+            this.CheckButtonZMinusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CheckButtonZMinusControlCommand.Name = "CheckButtonZMinusControlCommand";
+            this.CheckButtonZMinusControlCommand.Size = new System.Drawing.Size(145, 22);
+            this.CheckButtonZMinusControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonZMinusControlCommand.TabIndex = 35;
+            this.CheckButtonZMinusControlCommand.Text = "(-)《";
+            this.CheckButtonZMinusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
+            this.CheckButtonZMinusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // textEditTargetVelocity
+            // 
+            this.textEditTargetVelocity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEditTargetVelocity.Location = new System.Drawing.Point(71, 266);
+            this.textEditTargetVelocity.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.textEditTargetVelocity.Name = "textEditTargetVelocity";
+            this.textEditTargetVelocity.Properties.Appearance.Options.UseTextOptions = true;
+            this.textEditTargetVelocity.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.textEditTargetVelocity.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.textEditTargetVelocity.Properties.Mask.EditMask = "n3";
+            this.textEditTargetVelocity.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEditTargetVelocity.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.textEditTargetVelocity.Size = new System.Drawing.Size(90, 20);
+            this.textEditTargetVelocity.StyleController = this.layoutControl6;
+            this.textEditTargetVelocity.TabIndex = 35;
+            this.textEditTargetVelocity.EditValueChanged += new System.EventHandler(this.textEditTargetVelocity_EditValueChanged);
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Options.UseTextOptions = true;
+            this.labelControl4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.labelControl4.Location = new System.Drawing.Point(4, 187);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(29, 14);
+            this.labelControl4.StyleController = this.layoutControl6;
+            this.labelControl4.TabIndex = 34;
+            this.labelControl4.Text = "Z   축";
+            // 
+            // textEditTargetPosZ
+            // 
+            this.textEditTargetPosZ.Location = new System.Drawing.Point(389, 242);
+            this.textEditTargetPosZ.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditTargetPosZ.Name = "textEditTargetPosZ";
+            this.textEditTargetPosZ.Properties.Appearance.Options.UseTextOptions = true;
+            this.textEditTargetPosZ.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.textEditTargetPosZ.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.textEditTargetPosZ.Properties.Mask.EditMask = "n3";
+            this.textEditTargetPosZ.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEditTargetPosZ.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.textEditTargetPosZ.Size = new System.Drawing.Size(90, 20);
+            this.textEditTargetPosZ.StyleController = this.layoutControl6;
+            this.textEditTargetPosZ.TabIndex = 31;
+            this.textEditTargetPosZ.EditValueChanged += new System.EventHandler(this.textEditTargetPosZ_EditValueChanged);
+            // 
+            // textEditTargetPosY
+            // 
+            this.textEditTargetPosY.Location = new System.Drawing.Point(232, 242);
+            this.textEditTargetPosY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditTargetPosY.Name = "textEditTargetPosY";
+            this.textEditTargetPosY.Properties.Appearance.Options.UseTextOptions = true;
+            this.textEditTargetPosY.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.textEditTargetPosY.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.textEditTargetPosY.Properties.Mask.EditMask = "n3";
+            this.textEditTargetPosY.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEditTargetPosY.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.textEditTargetPosY.Size = new System.Drawing.Size(86, 20);
+            this.textEditTargetPosY.StyleController = this.layoutControl6;
+            this.textEditTargetPosY.TabIndex = 30;
+            this.textEditTargetPosY.EditValueChanged += new System.EventHandler(this.textEditTargetPosY_EditValueChanged);
+            // 
+            // textEditTargetPosX
+            // 
+            this.textEditTargetPosX.Location = new System.Drawing.Point(71, 242);
+            this.textEditTargetPosX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditTargetPosX.Name = "textEditTargetPosX";
+            this.textEditTargetPosX.Properties.Appearance.Options.UseTextOptions = true;
+            this.textEditTargetPosX.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.textEditTargetPosX.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.textEditTargetPosX.Properties.Mask.EditMask = "n3";
+            this.textEditTargetPosX.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEditTargetPosX.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.textEditTargetPosX.Size = new System.Drawing.Size(90, 20);
+            this.textEditTargetPosX.StyleController = this.layoutControl6;
+            this.textEditTargetPosX.TabIndex = 29;
+            this.textEditTargetPosX.EditValueChanged += new System.EventHandler(this.textEditTargetPosX_EditValueChanged);
+            // 
+            // SendCmdHommingButton
+            // 
+            this.SendCmdHommingButton.Location = new System.Drawing.Point(124, 4);
+            this.SendCmdHommingButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.SendCmdHommingButton.Name = "SendCmdHommingButton";
+            this.SendCmdHommingButton.Size = new System.Drawing.Size(116, 22);
+            this.SendCmdHommingButton.StyleController = this.layoutControl6;
+            this.SendCmdHommingButton.TabIndex = 28;
+            this.SendCmdHommingButton.Text = "원점 복귀";
+            this.SendCmdHommingButton.Click += new System.EventHandler(this.SendCmdHommingButton_Click);
+            // 
+            // SendCommandMoveStopButton
+            // 
+            this.SendCommandMoveStopButton.Location = new System.Drawing.Point(401, 266);
+            this.SendCommandMoveStopButton.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.SendCommandMoveStopButton.Name = "SendCommandMoveStopButton";
+            this.SendCommandMoveStopButton.Size = new System.Drawing.Size(78, 22);
+            this.SendCommandMoveStopButton.StyleController = this.layoutControl6;
+            this.SendCommandMoveStopButton.TabIndex = 27;
+            this.SendCommandMoveStopButton.Text = "정지 하기";
+            this.SendCommandMoveStopButton.Click += new System.EventHandler(this.SendCommandMoveStopButton_Click);
+            // 
+            // ErrorResetButton
+            // 
+            this.ErrorResetButton.Location = new System.Drawing.Point(363, 4);
+            this.ErrorResetButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.ErrorResetButton.Name = "ErrorResetButton";
+            this.ErrorResetButton.Size = new System.Drawing.Size(116, 22);
+            this.ErrorResetButton.StyleController = this.layoutControl6;
+            this.ErrorResetButton.TabIndex = 26;
+            this.ErrorResetButton.Text = "오류 복구";
+            this.ErrorResetButton.Click += new System.EventHandler(this.ErrorResetButton_Click);
+            // 
+            // EmergencyStopButton
+            // 
+            this.EmergencyStopButton.Location = new System.Drawing.Point(244, 4);
+            this.EmergencyStopButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.EmergencyStopButton.Name = "EmergencyStopButton";
+            this.EmergencyStopButton.Size = new System.Drawing.Size(115, 22);
+            this.EmergencyStopButton.StyleController = this.layoutControl6;
+            this.EmergencyStopButton.TabIndex = 25;
+            this.EmergencyStopButton.Text = "응급 정지";
+            this.EmergencyStopButton.Click += new System.EventHandler(this.EmergencyStopButton_Click);
+            // 
+            // RobotEnableButton
+            // 
+            this.RobotEnableButton.Location = new System.Drawing.Point(4, 4);
+            this.RobotEnableButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.RobotEnableButton.Name = "RobotEnableButton";
+            this.RobotEnableButton.Size = new System.Drawing.Size(116, 22);
+            this.RobotEnableButton.StyleController = this.layoutControl6;
+            this.RobotEnableButton.TabIndex = 24;
+            this.RobotEnableButton.Text = "모션제어 활성화";
+            this.RobotEnableButton.Click += new System.EventHandler(this.RobotEnableButton_Click);
+            // 
+            // SendCmdPositionButton
+            // 
+            this.SendCmdPositionButton.Location = new System.Drawing.Point(322, 266);
+            this.SendCmdPositionButton.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.SendCmdPositionButton.Name = "SendCmdPositionButton";
+            this.SendCmdPositionButton.Size = new System.Drawing.Size(75, 22);
+            this.SendCmdPositionButton.StyleController = this.layoutControl6;
+            this.SendCmdPositionButton.TabIndex = 22;
+            this.SendCmdPositionButton.Text = "이동 하기";
+            this.SendCmdPositionButton.Click += new System.EventHandler(this.SendCmdPositionButton_Click);
+            // 
+            // radioGroupMenualControlMode
+            // 
+            this.radioGroupMenualControlMode.Location = new System.Drawing.Point(174, 56);
+            this.radioGroupMenualControlMode.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.radioGroupMenualControlMode.Name = "radioGroupMenualControlMode";
+            this.radioGroupMenualControlMode.Properties.Columns = 3;
+            this.radioGroupMenualControlMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "조그 제어"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "상대 위치 제어"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "절대 위치 제어")});
+            this.radioGroupMenualControlMode.Size = new System.Drawing.Size(305, 25);
+            this.radioGroupMenualControlMode.StyleController = this.layoutControl6;
+            this.radioGroupMenualControlMode.TabIndex = 13;
+            this.radioGroupMenualControlMode.SelectedIndexChanged += new System.EventHandler(this.radioGroupMenualControlMode_SelectedIndexChanged);
+            // 
+            // radioGroupMenualMode
+            // 
+            this.radioGroupMenualMode.Location = new System.Drawing.Point(4, 56);
+            this.radioGroupMenualMode.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.radioGroupMenualMode.Name = "radioGroupMenualMode";
+            this.radioGroupMenualMode.Properties.Columns = 2;
+            this.radioGroupMenualMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "조그 모드"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "좌표 모드")});
+            this.radioGroupMenualMode.Size = new System.Drawing.Size(166, 25);
+            this.radioGroupMenualMode.StyleController = this.layoutControl6;
+            this.radioGroupMenualMode.TabIndex = 12;
+            this.radioGroupMenualMode.SelectedIndexChanged += new System.EventHandler(this.radioGroupMenualMode_SelectedIndexChanged);
+            // 
+            // checkButtonMenualMode
+            // 
+            this.checkButtonMenualMode.Location = new System.Drawing.Point(4, 30);
+            this.checkButtonMenualMode.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.checkButtonMenualMode.Name = "checkButtonMenualMode";
+            this.checkButtonMenualMode.Size = new System.Drawing.Size(475, 22);
+            this.checkButtonMenualMode.StyleController = this.layoutControl6;
+            this.checkButtonMenualMode.TabIndex = 11;
+            this.checkButtonMenualMode.Text = "수동 모드";
+            // 
+            // layoutControlGroup7
+            // 
+            this.layoutControlGroup7.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup7.GroupBordersVisible = false;
+            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem27,
+            this.layoutControlItem26,
+            this.layoutControlItem28,
+            this.layoutControlItem61,
+            this.layoutControlItem153,
+            this.layoutControlItem154,
+            this.layoutControlItem155,
+            this.layoutControlItem1,
+            this.layoutControlItem33,
+            this.layoutControlItem19,
+            this.layoutControlItem20,
+            this.layoutControlItem118,
+            this.layoutControlItem24,
+            this.layoutControlItem34,
+            this.layoutControlItem36,
+            this.layoutControlItem156,
+            this.layoutControlItem21,
+            this.layoutControlItem22,
+            this.layoutControlItem49,
+            this.layoutControlItem50,
+            this.layoutControlItem41,
+            this.layoutControlItem42,
+            this.layoutControlItem43,
+            this.layoutControlItem44,
+            this.layoutControlItem40,
+            this.layoutControlItem37,
+            this.layoutControlItem38,
+            this.layoutControlItem39,
+            this.layoutControlItem32,
+            this.textBoxUserDefineValue,
+            this.layoutControlItem29,
+            this.layoutControlItem30,
+            this.layoutControlItem31});
+            this.layoutControlGroup7.Name = "layoutControlGroup7";
+            this.layoutControlGroup7.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
+            this.layoutControlGroup7.Size = new System.Drawing.Size(483, 292);
+            this.layoutControlGroup7.TextVisible = false;
+            // 
+            // layoutControlItem27
+            // 
+            this.layoutControlItem27.Control = this.checkButtonMenualMode;
+            this.layoutControlItem27.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem27.Name = "layoutControlItem27";
+            this.layoutControlItem27.Size = new System.Drawing.Size(479, 26);
+            this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem27.TextVisible = false;
+            // 
+            // layoutControlItem26
+            // 
+            this.layoutControlItem26.Control = this.radioGroupMenualMode;
+            this.layoutControlItem26.Location = new System.Drawing.Point(0, 52);
+            this.layoutControlItem26.Name = "layoutControlItem26";
+            this.layoutControlItem26.Size = new System.Drawing.Size(170, 29);
+            this.layoutControlItem26.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem26.TextVisible = false;
+            // 
+            // layoutControlItem28
+            // 
+            this.layoutControlItem28.Control = this.radioGroupMenualControlMode;
+            this.layoutControlItem28.Location = new System.Drawing.Point(170, 52);
+            this.layoutControlItem28.Name = "layoutControlItem28";
+            this.layoutControlItem28.Size = new System.Drawing.Size(309, 29);
+            this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem28.TextVisible = false;
+            // 
+            // layoutControlItem61
+            // 
+            this.layoutControlItem61.Control = this.SendCmdPositionButton;
+            this.layoutControlItem61.Location = new System.Drawing.Point(318, 262);
+            this.layoutControlItem61.Name = "layoutControlItem61";
+            this.layoutControlItem61.Size = new System.Drawing.Size(79, 26);
+            this.layoutControlItem61.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem61.TextVisible = false;
+            // 
+            // layoutControlItem153
+            // 
+            this.layoutControlItem153.Control = this.RobotEnableButton;
+            this.layoutControlItem153.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem153.Name = "layoutControlItem153";
+            this.layoutControlItem153.Size = new System.Drawing.Size(120, 26);
+            this.layoutControlItem153.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem153.TextVisible = false;
+            // 
+            // layoutControlItem154
+            // 
+            this.layoutControlItem154.Control = this.EmergencyStopButton;
+            this.layoutControlItem154.Location = new System.Drawing.Point(240, 0);
+            this.layoutControlItem154.Name = "layoutControlItem154";
+            this.layoutControlItem154.Size = new System.Drawing.Size(119, 26);
+            this.layoutControlItem154.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem154.TextVisible = false;
+            // 
+            // layoutControlItem155
+            // 
+            this.layoutControlItem155.Control = this.ErrorResetButton;
+            this.layoutControlItem155.Location = new System.Drawing.Point(359, 0);
+            this.layoutControlItem155.Name = "layoutControlItem155";
+            this.layoutControlItem155.Size = new System.Drawing.Size(120, 26);
+            this.layoutControlItem155.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem155.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.SendCommandMoveStopButton;
+            this.layoutControlItem1.Location = new System.Drawing.Point(397, 262);
+            this.layoutControlItem1.Name = "layoutControlItem7";
+            this.layoutControlItem1.Size = new System.Drawing.Size(82, 26);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // layoutControlItem33
+            // 
+            this.layoutControlItem33.Control = this.SendCmdHommingButton;
+            this.layoutControlItem33.Location = new System.Drawing.Point(120, 0);
+            this.layoutControlItem33.Name = "layoutControlItem33";
+            this.layoutControlItem33.Size = new System.Drawing.Size(120, 26);
+            this.layoutControlItem33.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem33.TextVisible = false;
+            // 
+            // layoutControlItem19
+            // 
+            this.layoutControlItem19.Control = this.textEditTargetPosX;
+            this.layoutControlItem19.Location = new System.Drawing.Point(0, 238);
+            this.layoutControlItem19.Name = "layoutControlItem19";
+            this.layoutControlItem19.Size = new System.Drawing.Size(161, 24);
+            this.layoutControlItem19.Text = "목표 위치(X)";
+            this.layoutControlItem19.TextSize = new System.Drawing.Size(64, 14);
+            // 
+            // layoutControlItem20
+            // 
+            this.layoutControlItem20.Control = this.textEditTargetPosY;
+            this.layoutControlItem20.Location = new System.Drawing.Point(161, 238);
+            this.layoutControlItem20.Name = "layoutControlItem20";
+            this.layoutControlItem20.Size = new System.Drawing.Size(157, 24);
+            this.layoutControlItem20.Text = "목표 위치(Y)";
+            this.layoutControlItem20.TextSize = new System.Drawing.Size(64, 14);
+            // 
+            // layoutControlItem118
+            // 
+            this.layoutControlItem118.Control = this.textEditTargetPosZ;
+            this.layoutControlItem118.Location = new System.Drawing.Point(318, 238);
+            this.layoutControlItem118.Name = "layoutControlItem118";
+            this.layoutControlItem118.Size = new System.Drawing.Size(161, 24);
+            this.layoutControlItem118.Text = "목표 위치(Z)";
+            this.layoutControlItem118.TextSize = new System.Drawing.Size(64, 14);
+            // 
+            // layoutControlItem24
+            // 
+            this.layoutControlItem24.Control = this.textEditTargetVelocity;
+            this.layoutControlItem24.Location = new System.Drawing.Point(0, 262);
+            this.layoutControlItem24.Name = "layoutControlItem24";
+            this.layoutControlItem24.Size = new System.Drawing.Size(161, 26);
+            this.layoutControlItem24.Text = "목표 속도";
+            this.layoutControlItem24.TextSize = new System.Drawing.Size(64, 14);
+            // 
+            // layoutControlItem34
+            // 
+            this.layoutControlItem34.Control = this.textEditTargetAcceleration;
+            this.layoutControlItem34.Location = new System.Drawing.Point(161, 262);
+            this.layoutControlItem34.Name = "layoutControlItem34";
+            this.layoutControlItem34.Size = new System.Drawing.Size(157, 26);
+            this.layoutControlItem34.Text = "목표 가속도";
+            this.layoutControlItem34.TextSize = new System.Drawing.Size(64, 14);
+            // 
+            // layoutControlItem36
+            // 
+            this.layoutControlItem36.Control = this.checkEditCalibration;
+            this.layoutControlItem36.Location = new System.Drawing.Point(0, 209);
+            this.layoutControlItem36.Name = "layoutControlItem36";
+            this.layoutControlItem36.Size = new System.Drawing.Size(182, 29);
+            this.layoutControlItem36.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem36.TextVisible = false;
+            // 
+            // layoutControlItem156
+            // 
+            this.layoutControlItem156.Control = this.radioGroupCalibration;
+            this.layoutControlItem156.Location = new System.Drawing.Point(182, 209);
+            this.layoutControlItem156.Name = "layoutControlItem156";
+            this.layoutControlItem156.Size = new System.Drawing.Size(297, 29);
+            this.layoutControlItem156.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem156.TextVisible = false;
+            // 
+            // layoutControlItem21
+            // 
+            this.layoutControlItem21.Control = this.labelControl4;
+            this.layoutControlItem21.Location = new System.Drawing.Point(0, 183);
+            this.layoutControlItem21.Name = "layoutControlItem21";
+            this.layoutControlItem21.Size = new System.Drawing.Size(33, 26);
+            this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem21.TextVisible = false;
+            // 
+            // layoutControlItem22
+            // 
+            this.layoutControlItem22.Control = this.CheckButtonZMinusControlCommand;
+            this.layoutControlItem22.Location = new System.Drawing.Point(33, 183);
+            this.layoutControlItem22.Name = "layoutControlItem22";
+            this.layoutControlItem22.Size = new System.Drawing.Size(149, 26);
+            this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem22.TextVisible = false;
+            // 
+            // layoutControlItem49
+            // 
+            this.layoutControlItem49.Control = this.CheckButtonZStopControlCommand;
+            this.layoutControlItem49.Location = new System.Drawing.Point(182, 183);
+            this.layoutControlItem49.Name = "layoutControlItem49";
+            this.layoutControlItem49.Size = new System.Drawing.Size(147, 26);
+            this.layoutControlItem49.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem49.TextVisible = false;
+            // 
+            // layoutControlItem50
+            // 
+            this.layoutControlItem50.Control = this.CheckButtonZPlusControlCommand;
+            this.layoutControlItem50.Location = new System.Drawing.Point(329, 183);
+            this.layoutControlItem50.Name = "layoutControlItem50";
+            this.layoutControlItem50.Size = new System.Drawing.Size(150, 26);
+            this.layoutControlItem50.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem50.TextVisible = false;
+            // 
+            // layoutControlItem41
+            // 
+            this.layoutControlItem41.Control = this.labelControl2;
+            this.layoutControlItem41.Location = new System.Drawing.Point(0, 157);
+            this.layoutControlItem41.Name = "layoutControlItem41";
+            this.layoutControlItem41.Size = new System.Drawing.Size(34, 26);
+            this.layoutControlItem41.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem41.TextVisible = false;
+            // 
+            // layoutControlItem42
+            // 
+            this.layoutControlItem42.Control = this.CheckButtonYMinusControlCommand;
+            this.layoutControlItem42.Location = new System.Drawing.Point(34, 157);
+            this.layoutControlItem42.Name = "layoutControlItem42";
+            this.layoutControlItem42.Size = new System.Drawing.Size(148, 26);
+            this.layoutControlItem42.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem42.TextVisible = false;
+            // 
+            // layoutControlItem43
+            // 
+            this.layoutControlItem43.Control = this.CheckButtonYStopControlCommand;
+            this.layoutControlItem43.Location = new System.Drawing.Point(182, 157);
+            this.layoutControlItem43.Name = "layoutControlItem43";
+            this.layoutControlItem43.Size = new System.Drawing.Size(147, 26);
+            this.layoutControlItem43.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem43.TextVisible = false;
+            // 
+            // layoutControlItem44
+            // 
+            this.layoutControlItem44.Control = this.CheckButtonYPlusControlCommand;
+            this.layoutControlItem44.Location = new System.Drawing.Point(329, 157);
+            this.layoutControlItem44.Name = "layoutControlItem44";
+            this.layoutControlItem44.Size = new System.Drawing.Size(150, 26);
+            this.layoutControlItem44.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem44.TextVisible = false;
+            // 
+            // layoutControlItem40
+            // 
+            this.layoutControlItem40.Control = this.labelControl1;
+            this.layoutControlItem40.Location = new System.Drawing.Point(0, 131);
+            this.layoutControlItem40.Name = "layoutControlItem40";
+            this.layoutControlItem40.Size = new System.Drawing.Size(33, 26);
+            this.layoutControlItem40.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem40.TextVisible = false;
+            // 
+            // layoutControlItem37
+            // 
+            this.layoutControlItem37.Control = this.CheckButtonXMinusControlCommand;
+            this.layoutControlItem37.Location = new System.Drawing.Point(33, 131);
+            this.layoutControlItem37.Name = "layoutControlItem37";
+            this.layoutControlItem37.Size = new System.Drawing.Size(149, 26);
+            this.layoutControlItem37.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem37.TextVisible = false;
+            // 
+            // layoutControlItem38
+            // 
+            this.layoutControlItem38.Control = this.CheckButtonXStopControlCommand;
+            this.layoutControlItem38.Location = new System.Drawing.Point(182, 131);
+            this.layoutControlItem38.Name = "layoutControlItem38";
+            this.layoutControlItem38.Size = new System.Drawing.Size(147, 26);
+            this.layoutControlItem38.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem38.TextVisible = false;
+            // 
+            // layoutControlItem39
+            // 
+            this.layoutControlItem39.Control = this.CheckButtonXPlusControlCommand;
+            this.layoutControlItem39.Location = new System.Drawing.Point(329, 131);
+            this.layoutControlItem39.Name = "layoutControlItem39";
+            this.layoutControlItem39.Size = new System.Drawing.Size(150, 26);
+            this.layoutControlItem39.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem39.TextVisible = false;
+            // 
+            // layoutControlItem32
+            // 
+            this.layoutControlItem32.Control = this.radioGroupMenualValueMode;
+            this.layoutControlItem32.Location = new System.Drawing.Point(0, 81);
+            this.layoutControlItem32.Name = "layoutControlItem32";
+            this.layoutControlItem32.Size = new System.Drawing.Size(170, 50);
+            this.layoutControlItem32.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem32.TextVisible = false;
+            // 
+            // textBoxUserDefineValue
+            // 
+            this.textBoxUserDefineValue.Control = this.textEditUserDefineValue;
+            this.textBoxUserDefineValue.Location = new System.Drawing.Point(170, 107);
+            this.textBoxUserDefineValue.Name = "textBoxUserDefineValue";
+            this.textBoxUserDefineValue.Size = new System.Drawing.Size(309, 24);
+            this.textBoxUserDefineValue.Text = "사용자 정의값";
+            this.textBoxUserDefineValue.TextSize = new System.Drawing.Size(64, 14);
+            // 
+            // layoutControlItem29
+            // 
+            this.layoutControlItem29.Control = this.checkButtonLowValue;
+            this.layoutControlItem29.Location = new System.Drawing.Point(170, 81);
+            this.layoutControlItem29.Name = "layoutControlItem29";
+            this.layoutControlItem29.Size = new System.Drawing.Size(106, 26);
+            this.layoutControlItem29.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem29.TextVisible = false;
+            // 
+            // layoutControlItem30
+            // 
+            this.layoutControlItem30.Control = this.checkButtonMiddleValue;
+            this.layoutControlItem30.Location = new System.Drawing.Point(276, 81);
+            this.layoutControlItem30.Name = "layoutControlItem30";
+            this.layoutControlItem30.Size = new System.Drawing.Size(109, 26);
+            this.layoutControlItem30.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem30.TextVisible = false;
+            // 
+            // layoutControlItem31
+            // 
+            this.layoutControlItem31.Control = this.checkButtonHighValue;
+            this.layoutControlItem31.Location = new System.Drawing.Point(385, 81);
+            this.layoutControlItem31.Name = "layoutControlItem31";
+            this.layoutControlItem31.Size = new System.Drawing.Size(94, 26);
+            this.layoutControlItem31.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem31.TextVisible = false;
+            // 
+            // layoutControlGroup5
+            // 
+            this.layoutControlGroup5.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup5.GroupBordersVisible = false;
+            this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem18,
+            this.layoutControlItem16});
+            this.layoutControlGroup5.Name = "layoutControlGroup5";
+            this.layoutControlGroup5.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 5, 5);
+            this.layoutControlGroup5.Size = new System.Drawing.Size(497, 475);
+            this.layoutControlGroup5.TextVisible = false;
+            // 
+            // layoutControlItem18
+            // 
+            this.layoutControlItem18.Control = this.groupControlPCLControl;
+            this.layoutControlItem18.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem18.Name = "layoutControlItem18";
+            this.layoutControlItem18.Size = new System.Drawing.Size(491, 319);
+            this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem18.TextVisible = false;
+            // 
+            // layoutControlItem16
+            // 
+            this.layoutControlItem16.Control = this.layoutControl3;
+            this.layoutControlItem16.Location = new System.Drawing.Point(0, 319);
+            this.layoutControlItem16.Name = "layoutControlItem16";
+            this.layoutControlItem16.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
+            this.layoutControlItem16.Size = new System.Drawing.Size(491, 146);
+            this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem16.TextVisible = false;
+            // 
+            // layoutControl4
+            // 
+            this.layoutControl4.Controls.Add(this.groupControlPresentPosition);
+            this.layoutControl4.Location = new System.Drawing.Point(12, 12);
+            this.layoutControl4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl4.Name = "layoutControl4";
+            this.layoutControl4.OptionsView.UseDefaultDragAndDropRendering = false;
+            this.layoutControl4.Root = this.layoutControlGroup4;
+            this.layoutControl4.Size = new System.Drawing.Size(497, 88);
+            this.layoutControl4.TabIndex = 4;
+            this.layoutControl4.Text = "layoutControl4";
+            // 
+            // groupControlPresentPosition
+            // 
+            this.groupControlPresentPosition.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupControlPresentPosition.Controls.Add(this.layoutControl7);
+            this.groupControlPresentPosition.Location = new System.Drawing.Point(5, 7);
+            this.groupControlPresentPosition.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.groupControlPresentPosition.Name = "groupControlPresentPosition";
+            this.groupControlPresentPosition.Size = new System.Drawing.Size(487, 74);
+            this.groupControlPresentPosition.TabIndex = 5;
+            this.groupControlPresentPosition.Text = "모션 현재 위치";
+            // 
+            // layoutControl7
+            // 
+            this.layoutControl7.Controls.Add(this.textEditPresentPosZ);
+            this.layoutControl7.Controls.Add(this.textEditPresentPosY);
+            this.layoutControl7.Controls.Add(this.textEditPresentPosX);
+            this.layoutControl7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl7.Location = new System.Drawing.Point(2, 21);
+            this.layoutControl7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl7.Name = "layoutControl7";
+            this.layoutControl7.OptionsView.UseDefaultDragAndDropRendering = false;
+            this.layoutControl7.Root = this.layoutControlGroup8;
+            this.layoutControl7.Size = new System.Drawing.Size(483, 51);
+            this.layoutControl7.TabIndex = 0;
+            this.layoutControl7.Text = "layoutControl7";
+            // 
+            // textEditPresentPosZ
+            // 
+            this.textEditPresentPosZ.Location = new System.Drawing.Point(383, 12);
+            this.textEditPresentPosZ.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditPresentPosZ.Name = "textEditPresentPosZ";
+            this.textEditPresentPosZ.Properties.ReadOnly = true;
+            this.textEditPresentPosZ.Size = new System.Drawing.Size(88, 20);
+            this.textEditPresentPosZ.StyleController = this.layoutControl7;
+            this.textEditPresentPosZ.TabIndex = 12;
+            // 
+            // textEditPresentPosY
+            // 
+            this.textEditPresentPosY.Location = new System.Drawing.Point(231, 12);
+            this.textEditPresentPosY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditPresentPosY.Name = "textEditPresentPosY";
+            this.textEditPresentPosY.Properties.ReadOnly = true;
+            this.textEditPresentPosY.Size = new System.Drawing.Size(83, 20);
+            this.textEditPresentPosY.StyleController = this.layoutControl7;
+            this.textEditPresentPosY.TabIndex = 11;
+            // 
+            // textEditPresentPosX
+            // 
+            this.textEditPresentPosX.Location = new System.Drawing.Point(77, 12);
+            this.textEditPresentPosX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditPresentPosX.Name = "textEditPresentPosX";
+            this.textEditPresentPosX.Properties.ReadOnly = true;
+            this.textEditPresentPosX.Size = new System.Drawing.Size(85, 20);
+            this.textEditPresentPosX.StyleController = this.layoutControl7;
+            this.textEditPresentPosX.TabIndex = 10;
+            // 
+            // layoutControlGroup8
+            // 
+            this.layoutControlGroup8.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup8.GroupBordersVisible = false;
+            this.layoutControlGroup8.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem13,
+            this.layoutControlItem14,
+            this.layoutControlItem15});
+            this.layoutControlGroup8.Name = "layoutControlGroup7";
+            this.layoutControlGroup8.Size = new System.Drawing.Size(483, 51);
+            this.layoutControlGroup8.TextVisible = false;
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.Control = this.textEditPresentPosX;
+            this.layoutControlItem13.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem13.Name = "layoutControlItem12";
+            this.layoutControlItem13.Size = new System.Drawing.Size(154, 31);
+            this.layoutControlItem13.Text = "현재 위치(X)";
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(62, 14);
+            // 
+            // layoutControlItem14
+            // 
+            this.layoutControlItem14.Control = this.textEditPresentPosY;
+            this.layoutControlItem14.Location = new System.Drawing.Point(154, 0);
+            this.layoutControlItem14.Name = "layoutControlItem13";
+            this.layoutControlItem14.Size = new System.Drawing.Size(152, 31);
+            this.layoutControlItem14.Text = "현재 위치(Y)";
+            this.layoutControlItem14.TextSize = new System.Drawing.Size(62, 14);
+            // 
+            // layoutControlItem15
+            // 
+            this.layoutControlItem15.Control = this.textEditPresentPosZ;
+            this.layoutControlItem15.Location = new System.Drawing.Point(306, 0);
+            this.layoutControlItem15.Name = "layoutControlItem14";
+            this.layoutControlItem15.Size = new System.Drawing.Size(157, 31);
+            this.layoutControlItem15.Text = "현재 위치(Z)";
+            this.layoutControlItem15.TextSize = new System.Drawing.Size(62, 14);
+            // 
+            // layoutControlGroup4
+            // 
+            this.layoutControlGroup4.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup4.GroupBordersVisible = false;
+            this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem62});
+            this.layoutControlGroup4.Name = "Root";
+            this.layoutControlGroup4.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 5, 5);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(497, 88);
+            this.layoutControlGroup4.TextVisible = false;
+            // 
+            // layoutControlItem62
+            // 
+            this.layoutControlItem62.Control = this.groupControlPresentPosition;
+            this.layoutControlItem62.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem62.Name = "layoutControlItem25";
+            this.layoutControlItem62.Size = new System.Drawing.Size(491, 78);
+            this.layoutControlItem62.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem62.TextVisible = false;
+            // 
+            // layoutControlGroup2
+            // 
+            this.layoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup2.GroupBordersVisible = false;
+            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem63,
+            this.layoutControlItem64});
+            this.layoutControlGroup2.Name = "layoutControlGroup1";
+            this.layoutControlGroup2.Size = new System.Drawing.Size(521, 591);
+            this.layoutControlGroup2.TextVisible = false;
+            // 
+            // layoutControlItem63
+            // 
+            this.layoutControlItem63.Control = this.layoutControl4;
+            this.layoutControlItem63.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem63.Name = "layoutControlItem10";
+            this.layoutControlItem63.Size = new System.Drawing.Size(501, 92);
+            this.layoutControlItem63.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem63.TextVisible = false;
+            // 
+            // layoutControlItem64
+            // 
+            this.layoutControlItem64.Control = this.layoutControl5;
+            this.layoutControlItem64.Location = new System.Drawing.Point(0, 92);
+            this.layoutControlItem64.Name = "layoutControlItem11";
+            this.layoutControlItem64.Size = new System.Drawing.Size(501, 479);
+            this.layoutControlItem64.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem64.TextVisible = false;
             // 
             // xtraTabControlConnect
             // 
@@ -1338,1098 +2386,6 @@
             this.layoutControlItem17.Size = new System.Drawing.Size(499, 26);
             this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem17.TextVisible = false;
-            // 
-            // xtraTabPageControl
-            // 
-            this.xtraTabPageControl.Controls.Add(this.layoutControl1);
-            this.xtraTabPageControl.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.xtraTabPageControl.Name = "xtraTabPageControl";
-            this.xtraTabPageControl.Size = new System.Drawing.Size(521, 591);
-            this.xtraTabPageControl.Text = "제어";
-            // 
-            // layoutControl1
-            // 
-            this.layoutControl1.Controls.Add(this.layoutControl5);
-            this.layoutControl1.Controls.Add(this.layoutControl4);
-            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsView.UseDefaultDragAndDropRendering = false;
-            this.layoutControl1.Root = this.layoutControlGroup2;
-            this.layoutControl1.Size = new System.Drawing.Size(521, 591);
-            this.layoutControl1.TabIndex = 1;
-            this.layoutControl1.Text = "layoutControl1";
-            // 
-            // layoutControl5
-            // 
-            this.layoutControl5.Controls.Add(this.layoutControl3);
-            this.layoutControl5.Controls.Add(this.groupControlPCLControl);
-            this.layoutControl5.Location = new System.Drawing.Point(12, 96);
-            this.layoutControl5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.layoutControl5.Name = "layoutControl5";
-            this.layoutControl5.OptionsView.UseDefaultDragAndDropRendering = false;
-            this.layoutControl5.Root = this.layoutControlGroup5;
-            this.layoutControl5.Size = new System.Drawing.Size(497, 483);
-            this.layoutControl5.TabIndex = 5;
-            this.layoutControl5.Text = "layoutControl5";
-            // 
-            // layoutControl3
-            // 
-            this.layoutControl3.AutoScroll = false;
-            this.layoutControl3.Location = new System.Drawing.Point(3, 341);
-            this.layoutControl3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.layoutControl3.Name = "layoutControl3";
-            this.layoutControl3.Root = this.Root;
-            this.layoutControl3.Size = new System.Drawing.Size(491, 137);
-            this.layoutControl3.TabIndex = 5;
-            this.layoutControl3.Text = "layoutControl3";
-            // 
-            // Root
-            // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Name = "Root";
-            this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
-            this.Root.Size = new System.Drawing.Size(491, 137);
-            this.Root.TextVisible = false;
-            // 
-            // groupControlPCLControl
-            // 
-            this.groupControlPCLControl.Controls.Add(this.layoutControl6);
-            this.groupControlPCLControl.Location = new System.Drawing.Point(5, 7);
-            this.groupControlPCLControl.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.groupControlPCLControl.Name = "groupControlPCLControl";
-            this.groupControlPCLControl.Size = new System.Drawing.Size(487, 332);
-            this.groupControlPCLControl.TabIndex = 4;
-            this.groupControlPCLControl.Text = "모션 위치 제어";
-            // 
-            // layoutControl6
-            // 
-            this.layoutControl6.Controls.Add(this.radioGroupCalibration);
-            this.layoutControl6.Controls.Add(this.checkEditCalibration);
-            this.layoutControl6.Controls.Add(this.textEditTargetAcceleration);
-            this.layoutControl6.Controls.Add(this.textEditTargetVelocity);
-            this.layoutControl6.Controls.Add(this.textEditTargetPosZ);
-            this.layoutControl6.Controls.Add(this.textEditTargetPosY);
-            this.layoutControl6.Controls.Add(this.textEditTargetPosX);
-            this.layoutControl6.Controls.Add(this.SendCmdHommingButton);
-            this.layoutControl6.Controls.Add(this.SendCommandMoveStopButton);
-            this.layoutControl6.Controls.Add(this.ErrorResetButton);
-            this.layoutControl6.Controls.Add(this.EmergencyStopButton);
-            this.layoutControl6.Controls.Add(this.RobotEnableButton);
-            this.layoutControl6.Controls.Add(this.SendCmdPositionButton);
-            this.layoutControl6.Controls.Add(this.layoutControl8);
-            this.layoutControl6.Controls.Add(this.radioGroupMenualControlMode);
-            this.layoutControl6.Controls.Add(this.radioGroupMenualMode);
-            this.layoutControl6.Controls.Add(this.checkButtonMenualMode);
-            this.layoutControl6.Location = new System.Drawing.Point(0, 26);
-            this.layoutControl6.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.layoutControl6.Name = "layoutControl6";
-            this.layoutControl6.OptionsView.UseDefaultDragAndDropRendering = false;
-            this.layoutControl6.Root = this.layoutControlGroup7;
-            this.layoutControl6.Size = new System.Drawing.Size(475, 299);
-            this.layoutControl6.TabIndex = 0;
-            this.layoutControl6.Text = "layoutControl6";
-            // 
-            // radioGroupCalibration
-            // 
-            this.radioGroupCalibration.Location = new System.Drawing.Point(183, 220);
-            this.radioGroupCalibration.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.radioGroupCalibration.Name = "radioGroupCalibration";
-            this.radioGroupCalibration.Properties.Columns = 2;
-            this.radioGroupCalibration.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "투광부 보정")});
-            this.radioGroupCalibration.Size = new System.Drawing.Size(288, 25);
-            this.radioGroupCalibration.StyleController = this.layoutControl6;
-            this.radioGroupCalibration.TabIndex = 38;
-            // 
-            // checkEditCalibration
-            // 
-            this.checkEditCalibration.Location = new System.Drawing.Point(4, 220);
-            this.checkEditCalibration.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.checkEditCalibration.Name = "checkEditCalibration";
-            this.checkEditCalibration.Properties.Caption = "위치보정 활성화";
-            this.checkEditCalibration.Size = new System.Drawing.Size(175, 19);
-            this.checkEditCalibration.StyleController = this.layoutControl6;
-            this.checkEditCalibration.TabIndex = 37;
-            // 
-            // textEditTargetAcceleration
-            // 
-            this.textEditTargetAcceleration.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEditTargetAcceleration.Location = new System.Drawing.Point(227, 273);
-            this.textEditTargetAcceleration.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.textEditTargetAcceleration.Name = "textEditTargetAcceleration";
-            this.textEditTargetAcceleration.Properties.Appearance.Options.UseTextOptions = true;
-            this.textEditTargetAcceleration.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.textEditTargetAcceleration.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.textEditTargetAcceleration.Properties.Mask.EditMask = "n3";
-            this.textEditTargetAcceleration.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEditTargetAcceleration.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.textEditTargetAcceleration.Size = new System.Drawing.Size(86, 20);
-            this.textEditTargetAcceleration.StyleController = this.layoutControl6;
-            this.textEditTargetAcceleration.TabIndex = 36;
-            // 
-            // textEditTargetVelocity
-            // 
-            this.textEditTargetVelocity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEditTargetVelocity.Location = new System.Drawing.Point(69, 273);
-            this.textEditTargetVelocity.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.textEditTargetVelocity.Name = "textEditTargetVelocity";
-            this.textEditTargetVelocity.Properties.Appearance.Options.UseTextOptions = true;
-            this.textEditTargetVelocity.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.textEditTargetVelocity.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.textEditTargetVelocity.Properties.Mask.EditMask = "n3";
-            this.textEditTargetVelocity.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEditTargetVelocity.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.textEditTargetVelocity.Size = new System.Drawing.Size(89, 20);
-            this.textEditTargetVelocity.StyleController = this.layoutControl6;
-            this.textEditTargetVelocity.TabIndex = 35;
-            this.textEditTargetVelocity.EditValueChanged += new System.EventHandler(this.textEditTargetVelocity_EditValueChanged);
-            // 
-            // textEditTargetPosZ
-            // 
-            this.textEditTargetPosZ.Location = new System.Drawing.Point(382, 249);
-            this.textEditTargetPosZ.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.textEditTargetPosZ.Name = "textEditTargetPosZ";
-            this.textEditTargetPosZ.Properties.Appearance.Options.UseTextOptions = true;
-            this.textEditTargetPosZ.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.textEditTargetPosZ.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.textEditTargetPosZ.Properties.Mask.EditMask = "n3";
-            this.textEditTargetPosZ.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEditTargetPosZ.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.textEditTargetPosZ.Size = new System.Drawing.Size(89, 20);
-            this.textEditTargetPosZ.StyleController = this.layoutControl6;
-            this.textEditTargetPosZ.TabIndex = 31;
-            this.textEditTargetPosZ.EditValueChanged += new System.EventHandler(this.textEditTargetPosZ_EditValueChanged);
-            // 
-            // textEditTargetPosY
-            // 
-            this.textEditTargetPosY.Location = new System.Drawing.Point(227, 249);
-            this.textEditTargetPosY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.textEditTargetPosY.Name = "textEditTargetPosY";
-            this.textEditTargetPosY.Properties.Appearance.Options.UseTextOptions = true;
-            this.textEditTargetPosY.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.textEditTargetPosY.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.textEditTargetPosY.Properties.Mask.EditMask = "n3";
-            this.textEditTargetPosY.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEditTargetPosY.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.textEditTargetPosY.Size = new System.Drawing.Size(86, 20);
-            this.textEditTargetPosY.StyleController = this.layoutControl6;
-            this.textEditTargetPosY.TabIndex = 30;
-            this.textEditTargetPosY.EditValueChanged += new System.EventHandler(this.textEditTargetPosY_EditValueChanged);
-            // 
-            // textEditTargetPosX
-            // 
-            this.textEditTargetPosX.Location = new System.Drawing.Point(69, 249);
-            this.textEditTargetPosX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.textEditTargetPosX.Name = "textEditTargetPosX";
-            this.textEditTargetPosX.Properties.Appearance.Options.UseTextOptions = true;
-            this.textEditTargetPosX.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.textEditTargetPosX.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.textEditTargetPosX.Properties.Mask.EditMask = "n3";
-            this.textEditTargetPosX.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEditTargetPosX.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.textEditTargetPosX.Size = new System.Drawing.Size(89, 20);
-            this.textEditTargetPosX.StyleController = this.layoutControl6;
-            this.textEditTargetPosX.TabIndex = 29;
-            this.textEditTargetPosX.EditValueChanged += new System.EventHandler(this.textEditTargetPosX_EditValueChanged);
-            // 
-            // SendCmdHommingButton
-            // 
-            this.SendCmdHommingButton.Location = new System.Drawing.Point(122, 4);
-            this.SendCmdHommingButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.SendCmdHommingButton.Name = "SendCmdHommingButton";
-            this.SendCmdHommingButton.Size = new System.Drawing.Size(114, 22);
-            this.SendCmdHommingButton.StyleController = this.layoutControl6;
-            this.SendCmdHommingButton.TabIndex = 28;
-            this.SendCmdHommingButton.Text = "원점 복귀";
-            this.SendCmdHommingButton.Click += new System.EventHandler(this.SendCmdHommingButton_Click);
-            // 
-            // SendCommandMoveStopButton
-            // 
-            this.SendCommandMoveStopButton.Location = new System.Drawing.Point(395, 273);
-            this.SendCommandMoveStopButton.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.SendCommandMoveStopButton.Name = "SendCommandMoveStopButton";
-            this.SendCommandMoveStopButton.Size = new System.Drawing.Size(76, 22);
-            this.SendCommandMoveStopButton.StyleController = this.layoutControl6;
-            this.SendCommandMoveStopButton.TabIndex = 27;
-            this.SendCommandMoveStopButton.Text = "정지 하기";
-            this.SendCommandMoveStopButton.Click += new System.EventHandler(this.SendCommandMoveStopButton_Click);
-            // 
-            // ErrorResetButton
-            // 
-            this.ErrorResetButton.Location = new System.Drawing.Point(357, 4);
-            this.ErrorResetButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.ErrorResetButton.Name = "ErrorResetButton";
-            this.ErrorResetButton.Size = new System.Drawing.Size(114, 22);
-            this.ErrorResetButton.StyleController = this.layoutControl6;
-            this.ErrorResetButton.TabIndex = 26;
-            this.ErrorResetButton.Text = "오류 복구";
-            this.ErrorResetButton.Click += new System.EventHandler(this.ErrorResetButton_Click);
-            // 
-            // EmergencyStopButton
-            // 
-            this.EmergencyStopButton.Location = new System.Drawing.Point(240, 4);
-            this.EmergencyStopButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.EmergencyStopButton.Name = "EmergencyStopButton";
-            this.EmergencyStopButton.Size = new System.Drawing.Size(113, 22);
-            this.EmergencyStopButton.StyleController = this.layoutControl6;
-            this.EmergencyStopButton.TabIndex = 25;
-            this.EmergencyStopButton.Text = "응급 정지";
-            this.EmergencyStopButton.Click += new System.EventHandler(this.EmergencyStopButton_Click);
-            // 
-            // RobotEnableButton
-            // 
-            this.RobotEnableButton.Location = new System.Drawing.Point(4, 4);
-            this.RobotEnableButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.RobotEnableButton.Name = "RobotEnableButton";
-            this.RobotEnableButton.Size = new System.Drawing.Size(114, 22);
-            this.RobotEnableButton.StyleController = this.layoutControl6;
-            this.RobotEnableButton.TabIndex = 24;
-            this.RobotEnableButton.Text = "모션제어 활성화";
-            this.RobotEnableButton.Click += new System.EventHandler(this.RobotEnableButton_Click);
-            // 
-            // SendCmdPositionButton
-            // 
-            this.SendCmdPositionButton.Location = new System.Drawing.Point(317, 273);
-            this.SendCmdPositionButton.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.SendCmdPositionButton.Name = "SendCmdPositionButton";
-            this.SendCmdPositionButton.Size = new System.Drawing.Size(74, 22);
-            this.SendCmdPositionButton.StyleController = this.layoutControl6;
-            this.SendCmdPositionButton.TabIndex = 22;
-            this.SendCmdPositionButton.Text = "이동 하기";
-            this.SendCmdPositionButton.Click += new System.EventHandler(this.SendCmdPositionButton_Click);
-            // 
-            // layoutControl8
-            // 
-            this.layoutControl8.Controls.Add(this.textEditUserDefineValue);
-            this.layoutControl8.Controls.Add(this.CheckButtonZPlusControlCommand);
-            this.layoutControl8.Controls.Add(this.CheckButtonZStopControlCommand);
-            this.layoutControl8.Controls.Add(this.CheckButtonZMinusControlCommand);
-            this.layoutControl8.Controls.Add(this.labelControl4);
-            this.layoutControl8.Controls.Add(this.CheckButtonYPlusControlCommand);
-            this.layoutControl8.Controls.Add(this.CheckButtonYStopControlCommand);
-            this.layoutControl8.Controls.Add(this.CheckButtonYMinusControlCommand);
-            this.layoutControl8.Controls.Add(this.labelControl2);
-            this.layoutControl8.Controls.Add(this.labelControl1);
-            this.layoutControl8.Controls.Add(this.CheckButtonXPlusControlCommand);
-            this.layoutControl8.Controls.Add(this.CheckButtonXStopControlCommand);
-            this.layoutControl8.Controls.Add(this.CheckButtonXMinusControlCommand);
-            this.layoutControl8.Controls.Add(this.checkButtonHighValue);
-            this.layoutControl8.Controls.Add(this.checkButtonMiddleValue);
-            this.layoutControl8.Controls.Add(this.radioGroupMenualValueMode);
-            this.layoutControl8.Controls.Add(this.checkButtonLowValue);
-            this.layoutControl8.Location = new System.Drawing.Point(4, 85);
-            this.layoutControl8.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.layoutControl8.Name = "layoutControl8";
-            this.layoutControl8.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(914, 163, 650, 400);
-            this.layoutControl8.OptionsView.UseDefaultDragAndDropRendering = false;
-            this.layoutControl8.Root = this.layoutControlGroup9;
-            this.layoutControl8.Size = new System.Drawing.Size(467, 131);
-            this.layoutControl8.TabIndex = 19;
-            this.layoutControl8.Text = "layoutControl8";
-            // 
-            // textEditUserDefineValue
-            // 
-            this.textEditUserDefineValue.Location = new System.Drawing.Point(229, 29);
-            this.textEditUserDefineValue.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.textEditUserDefineValue.Name = "textEditUserDefineValue";
-            this.textEditUserDefineValue.Properties.Appearance.Options.UseTextOptions = true;
-            this.textEditUserDefineValue.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.textEditUserDefineValue.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.textEditUserDefineValue.Size = new System.Drawing.Size(235, 20);
-            this.textEditUserDefineValue.StyleController = this.layoutControl8;
-            this.textEditUserDefineValue.TabIndex = 46;
-            this.textEditUserDefineValue.EditValueChanged += new System.EventHandler(this.textEditUserDefineValue_EditValueChanged);
-            // 
-            // CheckButtonZPlusControlCommand
-            // 
-            this.CheckButtonZPlusControlCommand.Location = new System.Drawing.Point(325, 105);
-            this.CheckButtonZPlusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonZPlusControlCommand.Name = "CheckButtonZPlusControlCommand";
-            this.CheckButtonZPlusControlCommand.Size = new System.Drawing.Size(139, 22);
-            this.CheckButtonZPlusControlCommand.StyleController = this.layoutControl8;
-            this.CheckButtonZPlusControlCommand.TabIndex = 37;
-            this.CheckButtonZPlusControlCommand.Text = "》(+)";
-            this.CheckButtonZPlusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
-            this.CheckButtonZPlusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // CheckButtonZStopControlCommand
-            // 
-            this.CheckButtonZStopControlCommand.Location = new System.Drawing.Point(181, 105);
-            this.CheckButtonZStopControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonZStopControlCommand.Name = "CheckButtonZStopControlCommand";
-            this.CheckButtonZStopControlCommand.Size = new System.Drawing.Size(140, 22);
-            this.CheckButtonZStopControlCommand.StyleController = this.layoutControl8;
-            this.CheckButtonZStopControlCommand.TabIndex = 36;
-            this.CheckButtonZStopControlCommand.Text = "■(정지)";
-            this.CheckButtonZStopControlCommand.CheckedChanged += new System.EventHandler(this.ButtonStopControlCommand_CheckedChanged);
-            this.CheckButtonZStopControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // CheckButtonZMinusControlCommand
-            // 
-            this.CheckButtonZMinusControlCommand.Location = new System.Drawing.Point(36, 105);
-            this.CheckButtonZMinusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonZMinusControlCommand.Name = "CheckButtonZMinusControlCommand";
-            this.CheckButtonZMinusControlCommand.Size = new System.Drawing.Size(141, 22);
-            this.CheckButtonZMinusControlCommand.StyleController = this.layoutControl8;
-            this.CheckButtonZMinusControlCommand.TabIndex = 35;
-            this.CheckButtonZMinusControlCommand.Text = "(-)《";
-            this.CheckButtonZMinusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
-            this.CheckButtonZMinusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Appearance.Options.UseTextOptions = true;
-            this.labelControl4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl4.Location = new System.Drawing.Point(3, 105);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(29, 14);
-            this.labelControl4.StyleController = this.layoutControl8;
-            this.labelControl4.TabIndex = 34;
-            this.labelControl4.Text = "Z   축";
-            // 
-            // CheckButtonYPlusControlCommand
-            // 
-            this.CheckButtonYPlusControlCommand.Location = new System.Drawing.Point(325, 79);
-            this.CheckButtonYPlusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonYPlusControlCommand.Name = "CheckButtonYPlusControlCommand";
-            this.CheckButtonYPlusControlCommand.Size = new System.Drawing.Size(139, 22);
-            this.CheckButtonYPlusControlCommand.StyleController = this.layoutControl8;
-            this.CheckButtonYPlusControlCommand.TabIndex = 29;
-            this.CheckButtonYPlusControlCommand.Text = "》(+)";
-            this.CheckButtonYPlusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
-            this.CheckButtonYPlusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // CheckButtonYStopControlCommand
-            // 
-            this.CheckButtonYStopControlCommand.Location = new System.Drawing.Point(181, 79);
-            this.CheckButtonYStopControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonYStopControlCommand.Name = "CheckButtonYStopControlCommand";
-            this.CheckButtonYStopControlCommand.Size = new System.Drawing.Size(140, 22);
-            this.CheckButtonYStopControlCommand.StyleController = this.layoutControl8;
-            this.CheckButtonYStopControlCommand.TabIndex = 28;
-            this.CheckButtonYStopControlCommand.Text = "■(정지)";
-            this.CheckButtonYStopControlCommand.CheckedChanged += new System.EventHandler(this.ButtonStopControlCommand_CheckedChanged);
-            this.CheckButtonYStopControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // CheckButtonYMinusControlCommand
-            // 
-            this.CheckButtonYMinusControlCommand.Location = new System.Drawing.Point(37, 79);
-            this.CheckButtonYMinusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonYMinusControlCommand.Name = "CheckButtonYMinusControlCommand";
-            this.CheckButtonYMinusControlCommand.Size = new System.Drawing.Size(140, 22);
-            this.CheckButtonYMinusControlCommand.StyleController = this.layoutControl8;
-            this.CheckButtonYMinusControlCommand.TabIndex = 27;
-            this.CheckButtonYMinusControlCommand.Text = "(-)《";
-            this.CheckButtonYMinusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
-            this.CheckButtonYMinusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Options.UseTextOptions = true;
-            this.labelControl2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl2.Location = new System.Drawing.Point(3, 79);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(30, 14);
-            this.labelControl2.StyleController = this.layoutControl8;
-            this.labelControl2.TabIndex = 26;
-            this.labelControl2.Text = "Y   축";
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Options.UseTextOptions = true;
-            this.labelControl1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl1.Location = new System.Drawing.Point(3, 53);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(29, 14);
-            this.labelControl1.StyleController = this.layoutControl8;
-            this.labelControl1.TabIndex = 25;
-            this.labelControl1.Text = "X   축";
-            // 
-            // CheckButtonXPlusControlCommand
-            // 
-            this.CheckButtonXPlusControlCommand.Location = new System.Drawing.Point(325, 53);
-            this.CheckButtonXPlusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonXPlusControlCommand.Name = "CheckButtonXPlusControlCommand";
-            this.CheckButtonXPlusControlCommand.Size = new System.Drawing.Size(139, 22);
-            this.CheckButtonXPlusControlCommand.StyleController = this.layoutControl8;
-            this.CheckButtonXPlusControlCommand.TabIndex = 24;
-            this.CheckButtonXPlusControlCommand.Text = "》(+)";
-            this.CheckButtonXPlusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
-            this.CheckButtonXPlusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // CheckButtonXStopControlCommand
-            // 
-            this.CheckButtonXStopControlCommand.Location = new System.Drawing.Point(181, 53);
-            this.CheckButtonXStopControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonXStopControlCommand.Name = "CheckButtonXStopControlCommand";
-            this.CheckButtonXStopControlCommand.Size = new System.Drawing.Size(140, 22);
-            this.CheckButtonXStopControlCommand.StyleController = this.layoutControl8;
-            this.CheckButtonXStopControlCommand.TabIndex = 23;
-            this.CheckButtonXStopControlCommand.Text = "■(정지)";
-            this.CheckButtonXStopControlCommand.CheckedChanged += new System.EventHandler(this.ButtonStopControlCommand_CheckedChanged);
-            this.CheckButtonXStopControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // CheckButtonXMinusControlCommand
-            // 
-            this.CheckButtonXMinusControlCommand.Location = new System.Drawing.Point(36, 53);
-            this.CheckButtonXMinusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonXMinusControlCommand.Name = "CheckButtonXMinusControlCommand";
-            this.CheckButtonXMinusControlCommand.Size = new System.Drawing.Size(141, 22);
-            this.CheckButtonXMinusControlCommand.StyleController = this.layoutControl8;
-            this.CheckButtonXMinusControlCommand.TabIndex = 22;
-            this.CheckButtonXMinusControlCommand.Text = "(-)《";
-            this.CheckButtonXMinusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
-            this.CheckButtonXMinusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // checkButtonHighValue
-            // 
-            this.checkButtonHighValue.Location = new System.Drawing.Point(347, 3);
-            this.checkButtonHighValue.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.checkButtonHighValue.Name = "checkButtonHighValue";
-            this.checkButtonHighValue.Size = new System.Drawing.Size(117, 22);
-            this.checkButtonHighValue.StyleController = this.layoutControl8;
-            this.checkButtonHighValue.TabIndex = 16;
-            this.checkButtonHighValue.Text = "큰값";
-            this.checkButtonHighValue.CheckedChanged += new System.EventHandler(this.checkButtonHighValue_CheckedChanged);
-            this.checkButtonHighValue.Click += new System.EventHandler(this.checkButtonHighValue_Click);
-            // 
-            // checkButtonMiddleValue
-            // 
-            this.checkButtonMiddleValue.Location = new System.Drawing.Point(223, 3);
-            this.checkButtonMiddleValue.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.checkButtonMiddleValue.Name = "checkButtonMiddleValue";
-            this.checkButtonMiddleValue.Size = new System.Drawing.Size(120, 22);
-            this.checkButtonMiddleValue.StyleController = this.layoutControl8;
-            this.checkButtonMiddleValue.TabIndex = 15;
-            this.checkButtonMiddleValue.Text = "중간값";
-            this.checkButtonMiddleValue.CheckedChanged += new System.EventHandler(this.checkButtonMiddleValue_CheckedChanged);
-            this.checkButtonMiddleValue.Click += new System.EventHandler(this.checkButtonMiddleValue_Click);
-            // 
-            // radioGroupMenualValueMode
-            // 
-            this.radioGroupMenualValueMode.Location = new System.Drawing.Point(3, 3);
-            this.radioGroupMenualValueMode.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.radioGroupMenualValueMode.Name = "radioGroupMenualValueMode";
-            this.radioGroupMenualValueMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "기본값 모드"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "사용자 모드")});
-            this.radioGroupMenualValueMode.Size = new System.Drawing.Size(97, 46);
-            this.radioGroupMenualValueMode.StyleController = this.layoutControl8;
-            this.radioGroupMenualValueMode.TabIndex = 1;
-            this.radioGroupMenualValueMode.SelectedIndexChanged += new System.EventHandler(this.radioGroupMenualValueMode_SelectedIndexChanged);
-            // 
-            // checkButtonLowValue
-            // 
-            this.checkButtonLowValue.Location = new System.Drawing.Point(104, 3);
-            this.checkButtonLowValue.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.checkButtonLowValue.Name = "checkButtonLowValue";
-            this.checkButtonLowValue.Size = new System.Drawing.Size(115, 22);
-            this.checkButtonLowValue.StyleController = this.layoutControl8;
-            this.checkButtonLowValue.TabIndex = 14;
-            this.checkButtonLowValue.Text = "작은값";
-            this.checkButtonLowValue.CheckedChanged += new System.EventHandler(this.checkButtonLowValue_CheckedChanged);
-            this.checkButtonLowValue.Click += new System.EventHandler(this.checkButtonLowValue_Click);
-            // 
-            // layoutControlGroup9
-            // 
-            this.layoutControlGroup9.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup9.GroupBordersVisible = false;
-            this.layoutControlGroup9.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem32,
-            this.layoutControlItem29,
-            this.layoutControlItem30,
-            this.layoutControlItem31,
-            this.layoutControlItem37,
-            this.layoutControlItem40,
-            this.layoutControlItem38,
-            this.layoutControlItem39,
-            this.layoutControlItem41,
-            this.layoutControlItem42,
-            this.layoutControlItem43,
-            this.layoutControlItem44,
-            this.layoutControlItem49,
-            this.layoutControlItem50,
-            this.layoutControlItem51,
-            this.layoutControlItem52,
-            this.textBoxUserDefineValue});
-            this.layoutControlGroup9.Name = "Root";
-            this.layoutControlGroup9.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
-            this.layoutControlGroup9.Size = new System.Drawing.Size(467, 131);
-            this.layoutControlGroup9.TextVisible = false;
-            // 
-            // layoutControlItem32
-            // 
-            this.layoutControlItem32.Control = this.radioGroupMenualValueMode;
-            this.layoutControlItem32.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem32.Name = "layoutControlItem32";
-            this.layoutControlItem32.Size = new System.Drawing.Size(101, 50);
-            this.layoutControlItem32.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem32.TextVisible = false;
-            // 
-            // layoutControlItem29
-            // 
-            this.layoutControlItem29.Control = this.checkButtonLowValue;
-            this.layoutControlItem29.Location = new System.Drawing.Point(101, 0);
-            this.layoutControlItem29.Name = "layoutControlItem29";
-            this.layoutControlItem29.Size = new System.Drawing.Size(119, 26);
-            this.layoutControlItem29.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem29.TextVisible = false;
-            // 
-            // layoutControlItem30
-            // 
-            this.layoutControlItem30.Control = this.checkButtonMiddleValue;
-            this.layoutControlItem30.Location = new System.Drawing.Point(220, 0);
-            this.layoutControlItem30.Name = "layoutControlItem30";
-            this.layoutControlItem30.Size = new System.Drawing.Size(124, 26);
-            this.layoutControlItem30.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem30.TextVisible = false;
-            // 
-            // layoutControlItem31
-            // 
-            this.layoutControlItem31.Control = this.checkButtonHighValue;
-            this.layoutControlItem31.Location = new System.Drawing.Point(344, 0);
-            this.layoutControlItem31.Name = "layoutControlItem31";
-            this.layoutControlItem31.Size = new System.Drawing.Size(121, 26);
-            this.layoutControlItem31.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem31.TextVisible = false;
-            // 
-            // layoutControlItem37
-            // 
-            this.layoutControlItem37.Control = this.CheckButtonXMinusControlCommand;
-            this.layoutControlItem37.Location = new System.Drawing.Point(33, 50);
-            this.layoutControlItem37.Name = "layoutControlItem37";
-            this.layoutControlItem37.Size = new System.Drawing.Size(145, 26);
-            this.layoutControlItem37.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem37.TextVisible = false;
-            // 
-            // layoutControlItem40
-            // 
-            this.layoutControlItem40.Control = this.labelControl1;
-            this.layoutControlItem40.ControlAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.layoutControlItem40.Location = new System.Drawing.Point(0, 50);
-            this.layoutControlItem40.Name = "layoutControlItem40";
-            this.layoutControlItem40.Size = new System.Drawing.Size(33, 26);
-            this.layoutControlItem40.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem40.TextVisible = false;
-            // 
-            // layoutControlItem38
-            // 
-            this.layoutControlItem38.Control = this.CheckButtonXStopControlCommand;
-            this.layoutControlItem38.Location = new System.Drawing.Point(178, 50);
-            this.layoutControlItem38.Name = "layoutControlItem38";
-            this.layoutControlItem38.Size = new System.Drawing.Size(144, 26);
-            this.layoutControlItem38.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem38.TextVisible = false;
-            // 
-            // layoutControlItem39
-            // 
-            this.layoutControlItem39.Control = this.CheckButtonXPlusControlCommand;
-            this.layoutControlItem39.Location = new System.Drawing.Point(322, 50);
-            this.layoutControlItem39.Name = "layoutControlItem39";
-            this.layoutControlItem39.Size = new System.Drawing.Size(143, 26);
-            this.layoutControlItem39.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem39.TextVisible = false;
-            // 
-            // layoutControlItem41
-            // 
-            this.layoutControlItem41.Control = this.labelControl2;
-            this.layoutControlItem41.Location = new System.Drawing.Point(0, 76);
-            this.layoutControlItem41.Name = "layoutControlItem41";
-            this.layoutControlItem41.Size = new System.Drawing.Size(34, 26);
-            this.layoutControlItem41.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem41.TextVisible = false;
-            // 
-            // layoutControlItem42
-            // 
-            this.layoutControlItem42.Control = this.CheckButtonYMinusControlCommand;
-            this.layoutControlItem42.Location = new System.Drawing.Point(34, 76);
-            this.layoutControlItem42.Name = "layoutControlItem42";
-            this.layoutControlItem42.Size = new System.Drawing.Size(144, 26);
-            this.layoutControlItem42.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem42.TextVisible = false;
-            // 
-            // layoutControlItem43
-            // 
-            this.layoutControlItem43.Control = this.CheckButtonYStopControlCommand;
-            this.layoutControlItem43.Location = new System.Drawing.Point(178, 76);
-            this.layoutControlItem43.Name = "layoutControlItem43";
-            this.layoutControlItem43.Size = new System.Drawing.Size(144, 26);
-            this.layoutControlItem43.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem43.TextVisible = false;
-            // 
-            // layoutControlItem44
-            // 
-            this.layoutControlItem44.Control = this.CheckButtonYPlusControlCommand;
-            this.layoutControlItem44.Location = new System.Drawing.Point(322, 76);
-            this.layoutControlItem44.Name = "layoutControlItem44";
-            this.layoutControlItem44.Size = new System.Drawing.Size(143, 26);
-            this.layoutControlItem44.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem44.TextVisible = false;
-            // 
-            // layoutControlItem49
-            // 
-            this.layoutControlItem49.Control = this.labelControl4;
-            this.layoutControlItem49.Location = new System.Drawing.Point(0, 102);
-            this.layoutControlItem49.Name = "layoutControlItem49";
-            this.layoutControlItem49.Size = new System.Drawing.Size(33, 27);
-            this.layoutControlItem49.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem49.TextVisible = false;
-            // 
-            // layoutControlItem50
-            // 
-            this.layoutControlItem50.Control = this.CheckButtonZMinusControlCommand;
-            this.layoutControlItem50.Location = new System.Drawing.Point(33, 102);
-            this.layoutControlItem50.Name = "layoutControlItem50";
-            this.layoutControlItem50.Size = new System.Drawing.Size(145, 27);
-            this.layoutControlItem50.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem50.TextVisible = false;
-            // 
-            // layoutControlItem51
-            // 
-            this.layoutControlItem51.Control = this.CheckButtonZStopControlCommand;
-            this.layoutControlItem51.Location = new System.Drawing.Point(178, 102);
-            this.layoutControlItem51.Name = "layoutControlItem51";
-            this.layoutControlItem51.Size = new System.Drawing.Size(144, 27);
-            this.layoutControlItem51.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem51.TextVisible = false;
-            // 
-            // layoutControlItem52
-            // 
-            this.layoutControlItem52.Control = this.CheckButtonZPlusControlCommand;
-            this.layoutControlItem52.Location = new System.Drawing.Point(322, 102);
-            this.layoutControlItem52.Name = "layoutControlItem52";
-            this.layoutControlItem52.Size = new System.Drawing.Size(143, 27);
-            this.layoutControlItem52.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem52.TextVisible = false;
-            // 
-            // textBoxUserDefineValue
-            // 
-            this.textBoxUserDefineValue.Control = this.textEditUserDefineValue;
-            this.textBoxUserDefineValue.Location = new System.Drawing.Point(101, 26);
-            this.textBoxUserDefineValue.Name = "textBoxUserDefineValue";
-            this.textBoxUserDefineValue.Size = new System.Drawing.Size(364, 24);
-            this.textBoxUserDefineValue.Text = "사용자 정의값";
-            this.textBoxUserDefineValue.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.textBoxUserDefineValue.TextLocation = DevExpress.Utils.Locations.Left;
-            this.textBoxUserDefineValue.TextSize = new System.Drawing.Size(120, 20);
-            this.textBoxUserDefineValue.TextToControlDistance = 5;
-            // 
-            // radioGroupMenualControlMode
-            // 
-            this.radioGroupMenualControlMode.Location = new System.Drawing.Point(171, 56);
-            this.radioGroupMenualControlMode.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.radioGroupMenualControlMode.Name = "radioGroupMenualControlMode";
-            this.radioGroupMenualControlMode.Properties.Columns = 3;
-            this.radioGroupMenualControlMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "조그 제어"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "상대 위치 제어"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "절대 위치 제어")});
-            this.radioGroupMenualControlMode.Size = new System.Drawing.Size(300, 25);
-            this.radioGroupMenualControlMode.StyleController = this.layoutControl6;
-            this.radioGroupMenualControlMode.TabIndex = 13;
-            this.radioGroupMenualControlMode.SelectedIndexChanged += new System.EventHandler(this.radioGroupMenualControlMode_SelectedIndexChanged);
-            // 
-            // radioGroupMenualMode
-            // 
-            this.radioGroupMenualMode.Location = new System.Drawing.Point(4, 56);
-            this.radioGroupMenualMode.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.radioGroupMenualMode.Name = "radioGroupMenualMode";
-            this.radioGroupMenualMode.Properties.Columns = 2;
-            this.radioGroupMenualMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "조그 모드"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "좌표 모드")});
-            this.radioGroupMenualMode.Size = new System.Drawing.Size(163, 25);
-            this.radioGroupMenualMode.StyleController = this.layoutControl6;
-            this.radioGroupMenualMode.TabIndex = 12;
-            this.radioGroupMenualMode.SelectedIndexChanged += new System.EventHandler(this.radioGroupMenualMode_SelectedIndexChanged);
-            // 
-            // checkButtonMenualMode
-            // 
-            this.checkButtonMenualMode.Location = new System.Drawing.Point(4, 30);
-            this.checkButtonMenualMode.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.checkButtonMenualMode.Name = "checkButtonMenualMode";
-            this.checkButtonMenualMode.Size = new System.Drawing.Size(467, 22);
-            this.checkButtonMenualMode.StyleController = this.layoutControl6;
-            this.checkButtonMenualMode.TabIndex = 11;
-            this.checkButtonMenualMode.Text = "수동 모드";
-            // 
-            // layoutControlGroup7
-            // 
-            this.layoutControlGroup7.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup7.GroupBordersVisible = false;
-            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem27,
-            this.layoutControlItem26,
-            this.layoutControlItem28,
-            this.layoutControlItem35,
-            this.layoutControlItem61,
-            this.layoutControlItem153,
-            this.layoutControlItem154,
-            this.layoutControlItem155,
-            this.layoutControlItem1,
-            this.layoutControlItem33,
-            this.layoutControlItem19,
-            this.layoutControlItem20,
-            this.layoutControlItem118,
-            this.layoutControlItem24,
-            this.layoutControlItem34,
-            this.layoutControlItem36,
-            this.layoutControlItem156});
-            this.layoutControlGroup7.Name = "layoutControlGroup7";
-            this.layoutControlGroup7.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
-            this.layoutControlGroup7.Size = new System.Drawing.Size(475, 299);
-            this.layoutControlGroup7.TextVisible = false;
-            // 
-            // layoutControlItem27
-            // 
-            this.layoutControlItem27.Control = this.checkButtonMenualMode;
-            this.layoutControlItem27.Location = new System.Drawing.Point(0, 26);
-            this.layoutControlItem27.Name = "layoutControlItem27";
-            this.layoutControlItem27.Size = new System.Drawing.Size(471, 26);
-            this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem27.TextVisible = false;
-            // 
-            // layoutControlItem26
-            // 
-            this.layoutControlItem26.Control = this.radioGroupMenualMode;
-            this.layoutControlItem26.Location = new System.Drawing.Point(0, 52);
-            this.layoutControlItem26.Name = "layoutControlItem26";
-            this.layoutControlItem26.Size = new System.Drawing.Size(167, 29);
-            this.layoutControlItem26.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem26.TextVisible = false;
-            // 
-            // layoutControlItem28
-            // 
-            this.layoutControlItem28.Control = this.radioGroupMenualControlMode;
-            this.layoutControlItem28.Location = new System.Drawing.Point(167, 52);
-            this.layoutControlItem28.Name = "layoutControlItem28";
-            this.layoutControlItem28.Size = new System.Drawing.Size(304, 29);
-            this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem28.TextVisible = false;
-            // 
-            // layoutControlItem35
-            // 
-            this.layoutControlItem35.Control = this.layoutControl8;
-            this.layoutControlItem35.Location = new System.Drawing.Point(0, 81);
-            this.layoutControlItem35.MinSize = new System.Drawing.Size(50, 29);
-            this.layoutControlItem35.Name = "layoutControlItem35";
-            this.layoutControlItem35.Size = new System.Drawing.Size(471, 135);
-            this.layoutControlItem35.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem35.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem35.TextVisible = false;
-            // 
-            // layoutControlItem61
-            // 
-            this.layoutControlItem61.Control = this.SendCmdPositionButton;
-            this.layoutControlItem61.Location = new System.Drawing.Point(313, 269);
-            this.layoutControlItem61.Name = "layoutControlItem61";
-            this.layoutControlItem61.Size = new System.Drawing.Size(78, 26);
-            this.layoutControlItem61.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem61.TextVisible = false;
-            // 
-            // layoutControlItem153
-            // 
-            this.layoutControlItem153.Control = this.RobotEnableButton;
-            this.layoutControlItem153.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem153.Name = "layoutControlItem153";
-            this.layoutControlItem153.Size = new System.Drawing.Size(118, 26);
-            this.layoutControlItem153.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem153.TextVisible = false;
-            // 
-            // layoutControlItem154
-            // 
-            this.layoutControlItem154.Control = this.EmergencyStopButton;
-            this.layoutControlItem154.Location = new System.Drawing.Point(236, 0);
-            this.layoutControlItem154.Name = "layoutControlItem154";
-            this.layoutControlItem154.Size = new System.Drawing.Size(117, 26);
-            this.layoutControlItem154.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem154.TextVisible = false;
-            // 
-            // layoutControlItem155
-            // 
-            this.layoutControlItem155.Control = this.ErrorResetButton;
-            this.layoutControlItem155.Location = new System.Drawing.Point(353, 0);
-            this.layoutControlItem155.Name = "layoutControlItem155";
-            this.layoutControlItem155.Size = new System.Drawing.Size(118, 26);
-            this.layoutControlItem155.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem155.TextVisible = false;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.SendCommandMoveStopButton;
-            this.layoutControlItem1.Location = new System.Drawing.Point(391, 269);
-            this.layoutControlItem1.Name = "layoutControlItem7";
-            this.layoutControlItem1.Size = new System.Drawing.Size(80, 26);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
-            // 
-            // layoutControlItem33
-            // 
-            this.layoutControlItem33.Control = this.SendCmdHommingButton;
-            this.layoutControlItem33.Location = new System.Drawing.Point(118, 0);
-            this.layoutControlItem33.Name = "layoutControlItem33";
-            this.layoutControlItem33.Size = new System.Drawing.Size(118, 26);
-            this.layoutControlItem33.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem33.TextVisible = false;
-            // 
-            // layoutControlItem19
-            // 
-            this.layoutControlItem19.Control = this.textEditTargetPosX;
-            this.layoutControlItem19.Location = new System.Drawing.Point(0, 245);
-            this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(158, 24);
-            this.layoutControlItem19.Text = "목표 위치(X)";
-            this.layoutControlItem19.TextSize = new System.Drawing.Size(62, 14);
-            // 
-            // layoutControlItem20
-            // 
-            this.layoutControlItem20.Control = this.textEditTargetPosY;
-            this.layoutControlItem20.Location = new System.Drawing.Point(158, 245);
-            this.layoutControlItem20.Name = "layoutControlItem20";
-            this.layoutControlItem20.Size = new System.Drawing.Size(155, 24);
-            this.layoutControlItem20.Text = "목표 위치(Y)";
-            this.layoutControlItem20.TextSize = new System.Drawing.Size(62, 14);
-            // 
-            // layoutControlItem118
-            // 
-            this.layoutControlItem118.Control = this.textEditTargetPosZ;
-            this.layoutControlItem118.Location = new System.Drawing.Point(313, 245);
-            this.layoutControlItem118.Name = "layoutControlItem118";
-            this.layoutControlItem118.Size = new System.Drawing.Size(158, 24);
-            this.layoutControlItem118.Text = "목표 위치(Z)";
-            this.layoutControlItem118.TextSize = new System.Drawing.Size(62, 14);
-            // 
-            // layoutControlItem24
-            // 
-            this.layoutControlItem24.Control = this.textEditTargetVelocity;
-            this.layoutControlItem24.Location = new System.Drawing.Point(0, 269);
-            this.layoutControlItem24.Name = "layoutControlItem24";
-            this.layoutControlItem24.Size = new System.Drawing.Size(158, 26);
-            this.layoutControlItem24.Text = "목표 속도";
-            this.layoutControlItem24.TextSize = new System.Drawing.Size(62, 14);
-            // 
-            // layoutControlItem34
-            // 
-            this.layoutControlItem34.Control = this.textEditTargetAcceleration;
-            this.layoutControlItem34.Location = new System.Drawing.Point(158, 269);
-            this.layoutControlItem34.Name = "layoutControlItem34";
-            this.layoutControlItem34.Size = new System.Drawing.Size(155, 26);
-            this.layoutControlItem34.Text = "목표 가속도";
-            this.layoutControlItem34.TextSize = new System.Drawing.Size(62, 14);
-            // 
-            // layoutControlItem36
-            // 
-            this.layoutControlItem36.Control = this.checkEditCalibration;
-            this.layoutControlItem36.Location = new System.Drawing.Point(0, 216);
-            this.layoutControlItem36.Name = "layoutControlItem36";
-            this.layoutControlItem36.Size = new System.Drawing.Size(179, 29);
-            this.layoutControlItem36.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem36.TextVisible = false;
-            // 
-            // layoutControlItem156
-            // 
-            this.layoutControlItem156.Control = this.radioGroupCalibration;
-            this.layoutControlItem156.Location = new System.Drawing.Point(179, 216);
-            this.layoutControlItem156.Name = "layoutControlItem156";
-            this.layoutControlItem156.Size = new System.Drawing.Size(292, 29);
-            this.layoutControlItem156.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem156.TextVisible = false;
-            // 
-            // layoutControlGroup5
-            // 
-            this.layoutControlGroup5.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup5.GroupBordersVisible = false;
-            this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem18,
-            this.layoutControlItem16});
-            this.layoutControlGroup5.Name = "layoutControlGroup5";
-            this.layoutControlGroup5.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 5, 5);
-            this.layoutControlGroup5.Size = new System.Drawing.Size(497, 483);
-            this.layoutControlGroup5.TextVisible = false;
-            // 
-            // layoutControlItem18
-            // 
-            this.layoutControlItem18.Control = this.groupControlPCLControl;
-            this.layoutControlItem18.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(491, 336);
-            this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem18.TextVisible = false;
-            // 
-            // layoutControlItem16
-            // 
-            this.layoutControlItem16.Control = this.layoutControl3;
-            this.layoutControlItem16.Location = new System.Drawing.Point(0, 336);
-            this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlItem16.Size = new System.Drawing.Size(491, 137);
-            this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem16.TextVisible = false;
-            // 
-            // layoutControl4
-            // 
-            this.layoutControl4.Controls.Add(this.groupControlPresentPosition);
-            this.layoutControl4.Location = new System.Drawing.Point(12, 12);
-            this.layoutControl4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.layoutControl4.Name = "layoutControl4";
-            this.layoutControl4.OptionsView.UseDefaultDragAndDropRendering = false;
-            this.layoutControl4.Root = this.layoutControlGroup4;
-            this.layoutControl4.Size = new System.Drawing.Size(497, 80);
-            this.layoutControl4.TabIndex = 4;
-            this.layoutControl4.Text = "layoutControl4";
-            // 
-            // groupControlPresentPosition
-            // 
-            this.groupControlPresentPosition.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupControlPresentPosition.Controls.Add(this.layoutControl7);
-            this.groupControlPresentPosition.Location = new System.Drawing.Point(5, 7);
-            this.groupControlPresentPosition.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.groupControlPresentPosition.Name = "groupControlPresentPosition";
-            this.groupControlPresentPosition.Size = new System.Drawing.Size(487, 66);
-            this.groupControlPresentPosition.TabIndex = 5;
-            this.groupControlPresentPosition.Text = "모션 현재 위치";
-            // 
-            // layoutControl7
-            // 
-            this.layoutControl7.Controls.Add(this.textEditPresentPosZ);
-            this.layoutControl7.Controls.Add(this.textEditPresentPosY);
-            this.layoutControl7.Controls.Add(this.textEditPresentPosX);
-            this.layoutControl7.Location = new System.Drawing.Point(0, 26);
-            this.layoutControl7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.layoutControl7.Name = "layoutControl7";
-            this.layoutControl7.OptionsView.UseDefaultDragAndDropRendering = false;
-            this.layoutControl7.Root = this.layoutControlGroup8;
-            this.layoutControl7.Size = new System.Drawing.Size(475, 44);
-            this.layoutControl7.TabIndex = 0;
-            this.layoutControl7.Text = "layoutControl7";
-            // 
-            // textEditPresentPosZ
-            // 
-            this.textEditPresentPosZ.Location = new System.Drawing.Point(378, 12);
-            this.textEditPresentPosZ.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.textEditPresentPosZ.Name = "textEditPresentPosZ";
-            this.textEditPresentPosZ.Properties.ReadOnly = true;
-            this.textEditPresentPosZ.Size = new System.Drawing.Size(85, 20);
-            this.textEditPresentPosZ.StyleController = this.layoutControl7;
-            this.textEditPresentPosZ.TabIndex = 12;
-            // 
-            // textEditPresentPosY
-            // 
-            this.textEditPresentPosY.Location = new System.Drawing.Point(228, 12);
-            this.textEditPresentPosY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.textEditPresentPosY.Name = "textEditPresentPosY";
-            this.textEditPresentPosY.Properties.ReadOnly = true;
-            this.textEditPresentPosY.Size = new System.Drawing.Size(81, 20);
-            this.textEditPresentPosY.StyleController = this.layoutControl7;
-            this.textEditPresentPosY.TabIndex = 11;
-            // 
-            // textEditPresentPosX
-            // 
-            this.textEditPresentPosX.Location = new System.Drawing.Point(77, 12);
-            this.textEditPresentPosX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.textEditPresentPosX.Name = "textEditPresentPosX";
-            this.textEditPresentPosX.Properties.ReadOnly = true;
-            this.textEditPresentPosX.Size = new System.Drawing.Size(82, 20);
-            this.textEditPresentPosX.StyleController = this.layoutControl7;
-            this.textEditPresentPosX.TabIndex = 10;
-            // 
-            // layoutControlGroup8
-            // 
-            this.layoutControlGroup8.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup8.GroupBordersVisible = false;
-            this.layoutControlGroup8.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem13,
-            this.layoutControlItem14,
-            this.layoutControlItem15});
-            this.layoutControlGroup8.Name = "layoutControlGroup7";
-            this.layoutControlGroup8.Size = new System.Drawing.Size(475, 44);
-            this.layoutControlGroup8.TextVisible = false;
-            // 
-            // layoutControlItem13
-            // 
-            this.layoutControlItem13.Control = this.textEditPresentPosX;
-            this.layoutControlItem13.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem13.Name = "layoutControlItem12";
-            this.layoutControlItem13.Size = new System.Drawing.Size(151, 24);
-            this.layoutControlItem13.Text = "현재 위치(X)";
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(62, 14);
-            // 
-            // layoutControlItem14
-            // 
-            this.layoutControlItem14.Control = this.textEditPresentPosY;
-            this.layoutControlItem14.Location = new System.Drawing.Point(151, 0);
-            this.layoutControlItem14.Name = "layoutControlItem13";
-            this.layoutControlItem14.Size = new System.Drawing.Size(150, 24);
-            this.layoutControlItem14.Text = "현재 위치(Y)";
-            this.layoutControlItem14.TextSize = new System.Drawing.Size(62, 14);
-            // 
-            // layoutControlItem15
-            // 
-            this.layoutControlItem15.Control = this.textEditPresentPosZ;
-            this.layoutControlItem15.Location = new System.Drawing.Point(301, 0);
-            this.layoutControlItem15.Name = "layoutControlItem14";
-            this.layoutControlItem15.Size = new System.Drawing.Size(154, 24);
-            this.layoutControlItem15.Text = "현재 위치(Z)";
-            this.layoutControlItem15.TextSize = new System.Drawing.Size(62, 14);
-            // 
-            // layoutControlGroup4
-            // 
-            this.layoutControlGroup4.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup4.GroupBordersVisible = false;
-            this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem62});
-            this.layoutControlGroup4.Name = "Root";
-            this.layoutControlGroup4.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 5, 5);
-            this.layoutControlGroup4.Size = new System.Drawing.Size(497, 80);
-            this.layoutControlGroup4.TextVisible = false;
-            // 
-            // layoutControlItem62
-            // 
-            this.layoutControlItem62.Control = this.groupControlPresentPosition;
-            this.layoutControlItem62.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem62.Name = "layoutControlItem25";
-            this.layoutControlItem62.Size = new System.Drawing.Size(491, 70);
-            this.layoutControlItem62.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem62.TextVisible = false;
-            // 
-            // layoutControlGroup2
-            // 
-            this.layoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup2.GroupBordersVisible = false;
-            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem63,
-            this.layoutControlItem64});
-            this.layoutControlGroup2.Name = "layoutControlGroup1";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(521, 591);
-            this.layoutControlGroup2.TextVisible = false;
-            // 
-            // layoutControlItem63
-            // 
-            this.layoutControlItem63.Control = this.layoutControl4;
-            this.layoutControlItem63.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem63.Name = "layoutControlItem10";
-            this.layoutControlItem63.Size = new System.Drawing.Size(501, 84);
-            this.layoutControlItem63.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem63.TextVisible = false;
-            // 
-            // layoutControlItem64
-            // 
-            this.layoutControlItem64.Control = this.layoutControl5;
-            this.layoutControlItem64.Location = new System.Drawing.Point(0, 84);
-            this.layoutControlItem64.Name = "layoutControlItem11";
-            this.layoutControlItem64.Size = new System.Drawing.Size(501, 487);
-            this.layoutControlItem64.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem64.TextVisible = false;
             // 
             // xtraTabPageInfoStatus
             // 
@@ -8218,6 +8174,83 @@
             this.Size = new System.Drawing.Size(551, 597);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlMotion)).EndInit();
             this.xtraTabControlMotion.ResumeLayout(false);
+            this.xtraTabPageControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl5)).EndInit();
+            this.layoutControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlPCLControl)).EndInit();
+            this.groupControlPCLControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).EndInit();
+            this.layoutControl6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEditUserDefineValue.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroupCalibration.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualValueMode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditCalibration.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetAcceleration.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetVelocity.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosZ.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosY.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosX.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualControlMode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualMode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem61)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem153)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem154)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem155)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem118)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem34)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem36)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem156)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem49)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem50)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem41)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem42)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem43)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem44)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem40)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem37)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem38)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem39)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxUserDefineValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).EndInit();
+            this.layoutControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlPresentPosition)).EndInit();
+            this.groupControlPresentPosition.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl7)).EndInit();
+            this.layoutControl7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEditPresentPosZ.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditPresentPosY.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditPresentPosX.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem62)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem63)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem64)).EndInit();
             this.xtraTabControlConnect.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
@@ -8242,87 +8275,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
-            this.xtraTabPageControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
-            this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl5)).EndInit();
-            this.layoutControl5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControlPCLControl)).EndInit();
-            this.groupControlPCLControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).EndInit();
-            this.layoutControl6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupCalibration.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditCalibration.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetAcceleration.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetVelocity.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosZ.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosY.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosX.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl8)).EndInit();
-            this.layoutControl8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.textEditUserDefineValue.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualValueMode.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem37)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem40)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem38)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem39)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem41)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem42)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem43)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem44)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem49)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem50)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem51)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem52)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxUserDefineValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualControlMode.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualMode.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem35)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem61)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem153)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem154)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem155)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem118)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem34)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem36)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem156)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).EndInit();
-            this.layoutControl4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControlPresentPosition)).EndInit();
-            this.groupControlPresentPosition.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl7)).EndInit();
-            this.layoutControl7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.textEditPresentPosZ.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditPresentPosY.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditPresentPosX.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem62)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem63)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem64)).EndInit();
             this.xtraTabPageInfoStatus.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl18)).EndInit();
             this.layoutControl18.ResumeLayout(false);
@@ -8668,7 +8620,6 @@
         private DevExpress.XtraEditors.SimpleButton EmergencyStopButton;
         private DevExpress.XtraEditors.SimpleButton RobotEnableButton;
         private DevExpress.XtraEditors.SimpleButton SendCmdPositionButton;
-        private DevExpress.XtraLayout.LayoutControl layoutControl8;
         private DevExpress.XtraEditors.TextEdit textEditUserDefineValue;
         private DevExpress.XtraEditors.CheckButton CheckButtonZPlusControlCommand;
         private DevExpress.XtraEditors.CheckButton CheckButtonZStopControlCommand;
@@ -8686,24 +8637,6 @@
         private DevExpress.XtraEditors.CheckButton checkButtonMiddleValue;
         private DevExpress.XtraEditors.RadioGroup radioGroupMenualValueMode;
         private DevExpress.XtraEditors.CheckButton checkButtonLowValue;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup9;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem32;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem29;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem30;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem31;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem37;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem40;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem38;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem39;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem41;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem42;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem43;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem44;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem49;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem50;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem51;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem52;
-        private DevExpress.XtraLayout.LayoutControlItem textBoxUserDefineValue;
         private DevExpress.XtraEditors.RadioGroup radioGroupMenualControlMode;
         private DevExpress.XtraEditors.RadioGroup radioGroupMenualMode;
         private DevExpress.XtraEditors.CheckButton checkButtonMenualMode;
@@ -8711,7 +8644,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem27;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem26;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem28;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem35;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem61;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem153;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem154;
@@ -9199,5 +9131,22 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem316;
         private DevExpress.XtraEditors.SimpleButton simpleButtonReqMotionStatus;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem22;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem49;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem50;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem41;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem42;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem43;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem44;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem40;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem37;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem38;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem39;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem32;
+        private DevExpress.XtraLayout.LayoutControlItem textBoxUserDefineValue;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem29;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem30;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem31;
     }
 }

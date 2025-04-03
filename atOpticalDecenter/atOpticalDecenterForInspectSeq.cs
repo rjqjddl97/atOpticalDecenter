@@ -100,6 +100,7 @@ namespace atOpticalDecenter
                 //barCheckItemShowCenterMark.PerformClick();            
                 barCheckItemShowCenterMark.Checked = true;
                 //pictureEditSystemImage.Refresh();
+                pictureEditSystemImage.Invalidate();
             }
             catch (Exception)
             {
@@ -124,6 +125,15 @@ namespace atOpticalDecenter
 
                 if (mRobotInformation.GetStatus(RobotInformation.RobotStatus.OperationReady))
                     _IsHommingFinished = true;
+
+                if (mRobotInformation.GetStatus(RobotInformation.RobotStatus.Error))
+                {
+                    _IsDrvErr = true;
+                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), "모션 드라이버에 알람 또는 에러가 발생했습니다.");
+                }
+                else
+                    _IsDrvErr = false;
+
                 ImageUpdateEvents?.Invoke();
             }
             catch (Exception)
@@ -140,18 +150,22 @@ namespace atOpticalDecenter
 
                 if (!mRobotInformation.mInputData.B0)
                 {
-                    if (mRobotInformation.mInputData.B1)
+                    if ((mRobotInformation.mError != 0) && (_IsDrvErr != true))
                     {
-                        if (_IsReciepLoad)
+                        if (mRobotInformation.mInputData.B1)
                         {
-                            InspectionSequenceStart();
+                            if (_IsReciepLoad)
+                            {
+                                InspectionSequenceStart();
+                            }
                         }
                     }
+                    
                     if (mRobotInformation.mInputData.B2)
                     {
-                        if ((mRobotInformation.mError != 0) || (mRobotInformation.GetStatus(RobotInformation.RobotStatus.EmergencyStop)))
+                        if ((mRobotInformation.mError != 0) || (_IsDrvErr == true))
                         {
-                            //InspectionSequenceStop();
+                            InspectionSequenceStop();
                             byte[] SeData = new byte[8];
                             for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
                             {
@@ -509,6 +523,7 @@ namespace atOpticalDecenter
                 }
                 else
                     series = "BTS Series";
+
                 pledSpotInspectionInfomation._InspectProductSeries = series;
                 pledSpotInspectionInfomation._InspectProductModelName = _workParams._ProductModelName;
                 pledSpotInspectionInfomation._InspectLedBlobHsize = mResultData.fOpticalSize[0];
@@ -574,7 +589,7 @@ namespace atOpticalDecenter
 
                     using (StreamWriter sw = new StreamWriter(strResultFile, true))
                     {
-                        strTemp = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15}",
+                        strTemp = string.Format("{0},{1},{2},{3:0.000},{4:0.000},{5:0.000},{6:0.000},{7},{8:0.000},{9:0.000},{10:0.000},{11:0.000},{12:0.000},{13:0.000},{14:0.000},{15}",
                             _inspectionStartTime.TimeOfDay.ToString(),
                             _workParams.RecipeName,
                             _workParams._ProductModelName,
