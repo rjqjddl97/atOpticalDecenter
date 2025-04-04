@@ -36,9 +36,3 @@ C:\Work\atOpticalDecenter\ARMLibrary\bin\Debug\ARMLibrary.pdb
 C:\Work\atOpticalDecenter\ARMLibrary\obj\Debug\ARMLibrary.csproj.CoreCompileInputs.cache
 C:\Work\atOpticalDecenter\ARMLibrary\obj\Debug\ARMLibrary.dll
 C:\Work\atOpticalDecenter\ARMLibrary\obj\Debug\ARMLibrary.pdb
-D:\Work\Visual_C++\Project\atOpticalDecenter\ARMLibrary\bin\Debug\ARMLibrary.dll
-D:\Work\Visual_C++\Project\atOpticalDecenter\ARMLibrary\bin\Debug\ARMLibrary.pdb
-D:\Work\Visual_C++\Project\atOpticalDecenter\ARMLibrary\obj\Debug\ARMLibrary.csprojAssemblyReference.cache
-D:\Work\Visual_C++\Project\atOpticalDecenter\ARMLibrary\obj\Debug\ARMLibrary.csproj.CoreCompileInputs.cache
-D:\Work\Visual_C++\Project\atOpticalDecenter\ARMLibrary\obj\Debug\ARMLibrary.dll
-D:\Work\Visual_C++\Project\atOpticalDecenter\ARMLibrary\obj\Debug\ARMLibrary.pdb
