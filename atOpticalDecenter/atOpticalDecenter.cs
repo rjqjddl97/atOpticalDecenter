@@ -3390,26 +3390,16 @@ namespace atOpticalDecenter
                     mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
                     _bwMotionHome.RunWorkerAsync(mRobotInformation);
                     AutoStartButtonLock();
-                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "Motion Homing 시작");
-                    //if (_mMotionControlCommManager.IsOpen())
-                    //{
-                    //    if (MessageBox.Show("원점복귀를 진행을 합니다.", "원점복귀", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    //    {
-                    //        byte[] SeData = new byte[8];
-                    //        for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
-                    //        {
-                    //            SeData = _mMotionControlCommManager.mDrvCtrl.HomeStartCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
-                    //            _mMotionControlCommManager.SendData(SeData);
-                    //        }
-                    //        _IsHommingFinished = true;
-                    //        mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
-                    //    }
-                    //}
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "모션 원점 복귀 명령을 실행 하였습니다.");
+                }
+                else
+                {
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "모션 원점 복귀중으로 명령을 생략합니다.");
                 }
             }
             catch (Exception ex)
             {
-                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("원점 복귀 버튼 싫생 오류"));
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("모션 원점 복귀 명령을 실행 하지 못하였습니다."));
             }
         }
         private void barButtonItemReset_ItemClick(object sender, ItemClickEventArgs e)
@@ -3455,7 +3445,10 @@ namespace atOpticalDecenter
             ribbonPageGroupImageViewer.Enabled = true;
             ribbonPageGroupConnection.Enabled = true;
             //ribbonPageGroupMotionControl.Enabled = true;
-            xtraTabControlMainSetup.Enabled = true;
+            xtraTabControlMainSetup.Enabled = true;            
+            MotionControl.Enabled = true;
+            RemoteIOControl.Enabled = true;
+            pledSpotInspectionInfomation.Enabled = true;
         }
         private void FilterActuatorImageXFitSize()
         {
@@ -3938,6 +3931,15 @@ namespace atOpticalDecenter
         {
             try
             {
+                if (_bwMotionHome.IsBusy)
+                {
+                    _bwMotionHome.CancelAsync();
+                    _IsHommingFinished = false;                    
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "모션 원점복귀 명령을 취소하였습니다.");
+                }
+
+                AutoStartButtonRelease();
+
                 if (_mMotionControlCommManager.IsOpen())
                 {
                     if (MessageBox.Show("모션 정지을 진행을 합니다.", "모션 정지", MessageBoxButtons.YesNo) == DialogResult.Yes)

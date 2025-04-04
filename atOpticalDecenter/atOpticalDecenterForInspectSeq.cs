@@ -150,7 +150,7 @@ namespace atOpticalDecenter
 
                 if (!mRobotInformation.mInputData.B0)
                 {
-                    if ((mRobotInformation.mError != 0) && (_IsDrvErr != true))
+                    if (_IsDrvErr == false)
                     {
                         if (mRobotInformation.mInputData.B1)
                         {
