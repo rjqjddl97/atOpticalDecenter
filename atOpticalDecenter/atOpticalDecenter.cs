@@ -62,7 +62,7 @@ namespace atOpticalDecenter
         bool _isInspecting = false;
         bool _isInspectionDone = false;
         bool _isInsepctionResult = false;
-        bool _isInspectError = false;
+        bool _isInspectError = false;        
         System.Drawing.Image _sourceImage = null;
         System.Drawing.Image _resultImage = null;
 
@@ -89,6 +89,7 @@ namespace atOpticalDecenter
         bool _IsReciepLoad = false;
         bool _IsHommingFinished = false;        
         bool _IsDrvErr = false;
+        bool _IsHommingCancle = false;
 
         int _frameCount = 0;
         bool IsCameraOpen = false;
@@ -3933,8 +3934,10 @@ namespace atOpticalDecenter
             {
                 if (_bwMotionHome.IsBusy)
                 {
-                    _bwMotionHome.CancelAsync();
-                    _IsHommingFinished = false;                    
+                    _IsHommingFinished = false;
+                    _HommingProcess = false;
+                    _IsHommingCancle = true;
+                    _bwMotionHome.CancelAsync();                       
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "모션 원점복귀 명령을 취소하였습니다.");
                 }
 

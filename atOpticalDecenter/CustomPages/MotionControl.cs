@@ -1019,7 +1019,8 @@ namespace CustomPages
                         else
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.EmergencyStop, false);
 
-                        if ((_mAiCData.AlarmError1[0].Bit16 != 0) || (_mAiCData.AlarmError1[1].Bit16 != 0) || (_mAiCData.AlarmError1[2].Bit16 != 0))
+                        if ((_mAiCData.AlarmError1[0].Bit16 != 0) || (_mAiCData.AlarmError1[1].Bit16 != 0) || (_mAiCData.AlarmError1[2].Bit16 != 0) ||
+                            (_mAiCData.AlarmError2[0].Bit16 != 0) || (_mAiCData.AlarmError2[1].Bit16 != 0) || (_mAiCData.AlarmError2[2].Bit16 != 0))
                             _mRobotInfomation.SetError(RecipeManager.RobotInformation.ErrorStatus.DrvError, true);
                         else
                             _mRobotInfomation.SetError(RecipeManager.RobotInformation.ErrorStatus.DrvError, false);
@@ -2458,10 +2459,11 @@ namespace CustomPages
             if (_mAiCCommunicationManager.IsOpen())
             {
                 byte[] data = new byte[100];
-                double vel = Convert.ToDouble(textEditTargetVelocity.Text);
+                double vel = 0;
 
                 for (int i = 0; i < _mAiCData.DeviceIDCount; i++)
                 {
+                    vel = Convert.ToDouble(textEditTargetVelocity.Text);
                     switch (i)
                     {
                         case 0:

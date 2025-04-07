@@ -53,10 +53,11 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                             {
                                 byte[] data = new byte[100];
 
-                                double vel = (double)mSystemParam._motionParams.MoveVelocity;
+                                double vel = (double)10;
 
                                 for (int i = 0; i < mMotionDrvCtrl.mDrvCtrl.DeviceIDCount; i++)
                                 {
+                                    vel = (double)mSystemParam._motionParams.MoveVelocity;
                                     if (i == 0)
                                     {
                                         data = mMotionDrvCtrl.mDrvCtrl.SetMoveTargetVelocity((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[i], Convert.ToInt32(vel * mSystemParam._motionParams.MM2PulseRatioX));

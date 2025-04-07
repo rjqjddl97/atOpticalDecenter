@@ -230,7 +230,7 @@ namespace atOpticalDecenter
                 {
                     mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step1JigCheck());
                     mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step2SensorPowerOn());
-                    mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step3MovePostion1());
+                    mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step3MovePosition1());
                     mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step4Spot1Measure());
                     mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step5MovePosition2());
                     mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step6Spot2Measure());
@@ -250,6 +250,7 @@ namespace atOpticalDecenter
                 RobotInformation info = e.Argument as RobotInformation;
                 if (sender is BackgroundWorker worker)
                 {
+                    _IsHommingCancle = false;
                     if (_mMotionControlCommManager.IsOpen())
                     {
                         if (!_IsHommingFinished)
@@ -266,13 +267,17 @@ namespace atOpticalDecenter
                                 //mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
                                 mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("원점 복귀 실행을 시작합니다."));
                             }
-                            Thread.Sleep(3000);
+                            else
+                                _IsHommingCancle = true;
+                            
                             while (_HommingProcess)              // Inpsotion, Servo On Satus
                             {
                                 Thread.Sleep(500);
                                 if ((info.mStatus & 0x00000042) == 0x00000042)
                                 {
                                     _HommingProcess = false;
+                                    _IsHommingFinished = true;
+                                    mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
                                 }
                             }
                         }
@@ -292,10 +297,25 @@ namespace atOpticalDecenter
         {
             try
             {
-                _IsHommingFinished = true;
-                mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
                 AutoStartButtonRelease();
-                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "원점 복귀 실행 종료합니다.");
+                if (_IsHommingCancle)
+                {
+                    if (_mMotionControlCommManager.IsOpen())
+                    {
+                        byte[] SeData = new byte[8];
+                        for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                        {
+                            SeData = _mMotionControlCommManager.mDrvCtrl.MoveStopCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
+                            _mMotionControlCommManager.SendData(SeData);
+                        }
+                    }
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "원점 복귀 실행을 취소합니다.");
+                    _IsHommingCancle = false;
+                }
+                else
+                {
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "원점 복귀 실행을 종료합니다.");
+                }
             }
             catch (Exception)
             {
