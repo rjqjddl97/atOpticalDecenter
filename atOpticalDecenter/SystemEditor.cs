@@ -11,14 +11,14 @@ using System.Timers;
 using DevExpress.XtraEditors;
 using System.IO;
 using RecipeManager;
-
+using LogLibrary;
 
 namespace atOpticalDecenter
 {
     public partial class SystemEditor : DevExpress.XtraEditors.XtraForm
     {
         SystemParams _systemParameters = new SystemParams();
-
+        public Log _log = new Log();
         public SystemEditor()
         {
             InitializeComponent();
@@ -211,6 +211,7 @@ namespace atOpticalDecenter
 
             InitializeSystemParameters();
             LoadSystemParameters();
+            _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("System 설정 로드 완료"));
         }
         private void InitializeSystemParameters()
         {
@@ -383,7 +384,7 @@ namespace atOpticalDecenter
 
                 RecipeFileIO.WriteSystemFile(_systemParameters, strSystemFilePath);
             }
-
+            _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("System 설정 로드 완료"));
             UpdateSystemControls();
         }
         private void UpdateSystemControls()
@@ -520,6 +521,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._cameraParams.FriendlyName = strTemp;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("카메라 이름이 {0}로 변경되었습니다.", _systemParameters._cameraParams.FriendlyName));
             }
             else if (currentRow == rowCameraHResolution)
             {
@@ -535,6 +537,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._cameraParams.HResolution = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("카메라 가로 해상도가 {0}로 변경되었습니다.", _systemParameters._cameraParams.HResolution.ToString()));
             }
             else if (currentRow == rowCameraVResolution)
             {
@@ -550,6 +553,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._cameraParams.VResolution = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("카메라 세로 해상도가 {0}로 변경되었습니다.", _systemParameters._cameraParams.VResolution.ToString()));
             }
             else if (currentRow == rowCameraOnePixelResolution)
             {
@@ -565,6 +569,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._cameraParams.OnePixelResolution = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("카메라 픽셀 해상도가 {0}로 변경되었습니다.", _systemParameters._cameraParams.OnePixelResolution.ToString()));
             }
             else if (currentRow == rowCameraExposureTime)
             {
@@ -580,6 +585,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._cameraParams.ExposureTime = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("카메라 노출시간이 {0}로 변경되었습니다.", _systemParameters._cameraParams.ExposureTime.ToString()));
             }
             else if (currentRow == rowCameraFrameRate)
             {
@@ -595,6 +601,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._cameraParams.FrameRate = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("카메라 프레임이 {0}로 변경되었습니다.", _systemParameters._cameraParams.FrameRate.ToString()));
             }
             else if (currentRow == rowCameraGain)
             {
@@ -610,6 +617,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._cameraParams.Gain = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("카메라 게인이 {0}로 변경되었습니다.", _systemParameters._cameraParams.Gain.ToString()));
             }
             else if (currentRow == rowCameraImageSensorSizeH)
             {
@@ -623,6 +631,7 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._cameraParams.ImageSensorHSize = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("카메라 센서의 가로 크기가 {0}로 변경되었습니다.", _systemParameters._cameraParams.ImageSensorHSize.ToString()));
             }
             else if (currentRow == rowCameraImageSensorSizeV)
             {
@@ -636,6 +645,7 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._cameraParams.ImageSensorVSize = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("카메라 센서의 세로 크기가 {0}로 변경되었습니다.", _systemParameters._cameraParams.ImageSensorVSize.ToString()));
             }
             else if (currentRow == rowCameraLensFocusLenth)
             {
@@ -649,6 +659,7 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._cameraParams.LensFocusLength = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("렌즈 초점거리가 {0}로 변경되었습니다.", _systemParameters._cameraParams.LensFocusLength.ToString()));
             }
             else if (currentRow == rowCoordinateSwitch)
             {
@@ -670,6 +681,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._calibrationParams._imagetoSystemXcoordi = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("이미지 X 좌표계 -> X 실좌표계 극성값이 {0}로 변경되었습니다.", _systemParameters._calibrationParams._imagetoSystemXcoordi.ToString()));
             }
             else if (currentRow == rowImageToSystemZ)
             {
@@ -684,7 +696,8 @@ namespace atOpticalDecenter
                 }
 
                 simpleButtonSystemFileSave.Enabled = true;
-                _systemParameters._calibrationParams._imagetoSystemXcoordi = fValue;
+                _systemParameters._calibrationParams._imagetoSystemYcoordi = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("이미지 Y 좌표계 -> Z 실좌표계 극성값이 {0}로 변경되었습니다.", _systemParameters._calibrationParams._imagetoSystemYcoordi.ToString()));
             }
             else if (currentRow == rowCoordinateCalibrationActive)
             {
@@ -697,59 +710,68 @@ namespace atOpticalDecenter
                 dfValue = Convert.ToDouble(rowReference_X.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._calibrationParams._Position_Reference_X = dfValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("X축 이동 기준값이 {0}로 변경되었습니다.", _systemParameters._calibrationParams._Position_Reference_X.ToString()));
             }
             else if (currentRow == rowReference_Y)
             {
                 dfValue = Convert.ToDouble(rowReference_Y.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._calibrationParams._Position_Reference_Y = dfValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Y축 이동 기준값이 {0}로 변경되었습니다.", _systemParameters._calibrationParams._Position_Reference_Y.ToString()));
             }
             else if (currentRow == rowReference_Z)
             {
                 dfValue = Convert.ToDouble(rowReference_Z.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._calibrationParams._Position_Reference_Z = dfValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Z축 이동 기준값이 {0}로 변경되었습니다.", _systemParameters._calibrationParams._Position_Reference_Z.ToString()));
             }
             else if (currentRow == rowReferenceP1_X)
             {
                 dfValue = Convert.ToDouble(rowReferenceP1_X.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._calibrationParams._Position_1_X = dfValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("교정점 P1 X축 기준값이 {0}로 변경되었습니다.", _systemParameters._calibrationParams._Position_1_X.ToString()));
             }
             else if (currentRow == rowReferenceP1_Y)
             {
                 dfValue = Convert.ToDouble(rowReferenceP1_Y.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._calibrationParams._Position_1_Y = dfValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("교정점 P1 Y축 기준값이 {0}로 변경되었습니다.", _systemParameters._calibrationParams._Position_1_Y.ToString()));
             }
             else if (currentRow == rowReferenceP1_Z)
             {
                 dfValue = Convert.ToDouble(rowReferenceP1_Z.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._calibrationParams._Position_1_Z = dfValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("교정점 P1 Z축 기준값이 {0}로 변경되었습니다.", _systemParameters._calibrationParams._Position_1_Z.ToString()));
             }
             else if (currentRow == rowReferenceP2_X)
             {
                 dfValue = Convert.ToDouble(rowReferenceP2_X.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._calibrationParams._Position_2_X = dfValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("교정점 P2 X축 기준값이 {0}로 변경되었습니다.", _systemParameters._calibrationParams._Position_2_X.ToString()));
             }
             else if (currentRow == rowReferenceP2_Y)
             {
                 dfValue = Convert.ToDouble(rowReferenceP2_Y.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._calibrationParams._Position_2_Y = dfValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("교정점 P2 Y축 기준값이 {0}로 변경되었습니다.", _systemParameters._calibrationParams._Position_2_Y.ToString()));
             }
             else if (currentRow == rowReferenceP2_Z)
             {
                 dfValue = Convert.ToDouble(rowReferenceP2_Z.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._calibrationParams._Position_2_Z = dfValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("교정점 P2 Z축 기준값이 {0}로 변경되었습니다.", _systemParameters._calibrationParams._Position_2_Z.ToString()));
             } 
             else if (currentRow == rowMotionMoveVelocity)
             {
                 fValue = Convert.ToSingle(rowMotionMoveVelocity.Properties.Value);
-                if (fValue == 0)
+                if (fValue <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\n이동 속도 값은 0보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionMoveVelocity.Properties.Value = _systemParameters._motionParams.MoveVelocity;
@@ -758,11 +780,12 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._motionParams.MoveVelocity = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("이동 속도 값이 {0}로 변경되었습니다.", _systemParameters._motionParams.MoveVelocity.ToString()));
             }
             else if (currentRow == rowMotionMenaulVelocity)
             {
                 fValue = Convert.ToSingle(rowMotionMenaulVelocity.Properties.Value);
-                if (fValue == 0)
+                if (fValue <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\n수동 이동 속도 값은 0보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionMenaulVelocity.Properties.Value = _systemParameters._motionParams.MenualMoveVelocity;
@@ -771,11 +794,12 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._motionParams.MenualMoveVelocity = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("수동이동 속도 값이 {0}로 변경되었습니다.", _systemParameters._motionParams.MenualMoveVelocity.ToString()));
             }
             else if (currentRow == rowMotionMoveAcceleration)
             {
                 fValue = Convert.ToSingle(rowMotionMoveAcceleration.Properties.Value);
-                if (fValue == 0)
+                if (fValue <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\n이동 가속도 값은 0보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionMoveAcceleration.Properties.Value = _systemParameters._motionParams.MoveAcceleration;
@@ -784,11 +808,12 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._motionParams.MoveAcceleration = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("이동 가속도 값이 {0}로 변경되었습니다.", _systemParameters._motionParams.MoveAcceleration.ToString()));
             }
             else if (currentRow == rowMotionResolutionX)
             {
                 value =Convert.ToInt32(rowMotionGearRatioX.Properties.Value);
-                if (value == 0)
+                if (value <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nX축 분해능 값은 0보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionResolutionX.Properties.Value = _systemParameters._motionParams.OneTurnResolutionX;
@@ -797,11 +822,12 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._motionParams.OneTurnResolutionX = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("X축 분해능 값이 {0}로 변경되었습니다.", _systemParameters._motionParams.OneTurnResolutionX.ToString()));
             }
             else if (currentRow == rowMotionResolutionX)
             {
                 value = Convert.ToInt32(rowMotionGearRatioY.Properties.Value);
-                if (value == 0)
+                if (value <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nY축 분해능 값은 0보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionResolutionY.Properties.Value = _systemParameters._motionParams.OneTurnResolutionY;
@@ -810,11 +836,12 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._motionParams.OneTurnResolutionY = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Y축 분해능 값이 {0}로 변경되었습니다.", _systemParameters._motionParams.OneTurnResolutionY.ToString()));
             }
             else if (currentRow == rowMotionResolutionZ)
             {
                 value = Convert.ToInt32(rowMotionGearRatioZ.Properties.Value);
-                if (value == 0)
+                if (value <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nZ축 분해능 값은 0보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionResolutionZ.Properties.Value = _systemParameters._motionParams.OneTurnResolutionZ;
@@ -823,11 +850,12 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._motionParams.OneTurnResolutionZ = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Z축 분해능 값이 {0}로 변경되었습니다.", _systemParameters._motionParams.OneTurnResolutionZ.ToString()));
             }
             else if (currentRow == rowMotionGearRatioX)
             {
                 fValue = Convert.ToSingle(rowMotionGearRatioX.Properties.Value);
-                if (fValue == 0)
+                if (fValue <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nX축 기어비 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionGearRatioX.Properties.Value = _systemParameters._motionParams.GearRatioX;
@@ -836,11 +864,12 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._motionParams.GearRatioX = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("X축 기어비 값이 {0}로 변경되었습니다.", _systemParameters._motionParams.GearRatioX.ToString()));
             }
             else if (currentRow == rowMotionGearRatioY)
             {
                 fValue = Convert.ToSingle(rowMotionGearRatioY.Properties.Value);
-                if (fValue == 0)
+                if (fValue <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nY축 기어비 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionGearRatioY.Properties.Value = _systemParameters._motionParams.GearRatioY;
@@ -849,11 +878,12 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._motionParams.GearRatioY = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Y축 기어비 값이 {0}로 변경되었습니다.", _systemParameters._motionParams.GearRatioY.ToString()));
             }
             else if (currentRow == rowMotionGearRatioZ)
             {
                 fValue = Convert.ToSingle(rowMotionGearRatioZ.Properties.Value);
-                if (fValue == 0)
+                if (fValue <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nZ축 기어비 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionGearRatioZ.Properties.Value = _systemParameters._motionParams.GearRatioZ;
@@ -862,11 +892,12 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._motionParams.GearRatioZ = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Z축 기어비 값이 {0}로 변경되었습니다.", _systemParameters._motionParams.GearRatioZ.ToString()));
             }
             else if (currentRow == rowMotionBallLeadX)
             {
                 fValue = Convert.ToSingle(rowMotionBallLeadX.Properties.Value);
-                if (fValue == 0)
+                if (fValue <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nX축 Ball Lead 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionBallLeadX.Properties.Value = _systemParameters._motionParams.BallLeadX;
@@ -875,11 +906,12 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._motionParams.BallLeadX = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("X축 볼리드 값이 {0}로 변경되었습니다.", _systemParameters._motionParams.BallLeadX.ToString()));
             }
             else if (currentRow == rowMotionBallLeadY)
             {
                 fValue = Convert.ToSingle(rowMotionBallLeadY.Properties.Value);
-                if (fValue == 0)
+                if (fValue <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nY축 Ball Lead 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionBallLeadY.Properties.Value = _systemParameters._motionParams.BallLeadY;
@@ -888,11 +920,12 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._motionParams.BallLeadY = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Y축 볼리드 값이 {0}로 변경되었습니다.", _systemParameters._motionParams.BallLeadY.ToString()));
             }
             else if (currentRow == rowMotionBallLeadZ)
             {
                 fValue = Convert.ToSingle(rowMotionGearRatioZ.Properties.Value);
-                if (fValue == 0)
+                if (fValue <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nZ축 Ball Lead 값은 1보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowMotionBallLeadZ.Properties.Value = _systemParameters._motionParams.BallLeadZ;
@@ -901,6 +934,7 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._motionParams.BallLeadZ = fValue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Z축 볼리드 값이 {0}로 변경되었습니다.", _systemParameters._motionParams.BallLeadZ.ToString()));
             }
             else if (currentRow == rowAiCCommunicationBaudRate)
             {
@@ -926,6 +960,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._AiCParams.SerialParameters.BaudRates = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("AiC 통신 속도를 {0}로 변경되었습니다.", _systemParameters._AiCParams.SerialParameters.BaudRates.ToString()));
             }
             else if (currentRow == rowAiCCommunicationStopbit)
             {
@@ -953,6 +988,7 @@ namespace atOpticalDecenter
                 simpleButtonSystemFileSave.Enabled = true;
                 //_systemParameters._panelmeterParams.SerialParameters.StopBits = value;
                 _systemParameters._AiCParams.SerialParameters.StopBits = (StopBits)Enum.Parse(typeof(StopBits), strTemp);
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("AiC 통신 정지 비트를 {0}로 변경되었습니다.", _systemParameters._AiCParams.SerialParameters.StopBits.ToString()));
             }
             else if (currentRow == rowAiCCommunicationDatabit)
             {
@@ -978,6 +1014,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._AiCParams.SerialParameters.DataBits = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("AiC 통신 데이터 비트를 {0}로 변경되었습니다.", _systemParameters._AiCParams.SerialParameters.DataBits.ToString()));
             }
             else if (currentRow == rowAiCCommunicationHandshake)
             {
@@ -1005,6 +1042,7 @@ namespace atOpticalDecenter
                 simpleButtonSystemFileSave.Enabled = true;
                 //_systemParameters._panelmeterParams.SerialParameters.Handshake = strTemp;
                 _systemParameters._AiCParams.SerialParameters.Handshake = (Handshake)Enum.Parse(typeof(Handshake), strTemp);
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("AiC 통신 흐름 제어를 {0}로 변경되었습니다.", _systemParameters._AiCParams.SerialParameters.Handshake.ToString()));
             }
             else if (currentRow == rowAiCCommunicationParity)
             {
@@ -1032,6 +1070,7 @@ namespace atOpticalDecenter
                 simpleButtonSystemFileSave.Enabled = true;
                 //_systemParameters._panelmeterParams.SerialParameters.Parity = strTemp;
                 _systemParameters._AiCParams.SerialParameters.Parity = (Parity)Enum.Parse(typeof(Parity), strTemp);
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("AiC 통신 parity를 {0}로 변경되었습니다.", _systemParameters._AiCParams.SerialParameters.Parity.ToString()));
             }
             else if (currentRow == rowAiCCommunicationPortName)
             {
@@ -1057,6 +1096,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._AiCParams.SerialParameters.PortName = strTemp;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("AiC 통신 포트를 {0}로 변경되었습니다.", _systemParameters._AiCParams.SerialParameters.PortName));
             }
             else if (currentRow == rowAiCCommunicationCounter)
             {
@@ -1072,6 +1112,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._AiCParams.ConnectedNumber = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("AiC 통신 연결 대수를 {0}로 변경되었습니다.", _systemParameters._AiCParams.ConnectedNumber.ToString()));
                 //*/
             }
             else if (currentRow == rowAiCXAxis)
@@ -1096,7 +1137,8 @@ namespace atOpticalDecenter
                 {
                     simpleButtonSystemFileSave.Enabled = true;
                     _systemParameters._AiCParams.IDs[0] = tempIDs;
-                }             
+                }
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("AiC X축 ID를 {0}로 변경되었습니다.", _systemParameters._AiCParams.IDs[0].ToString()));
             }
             else if (currentRow == rowAiCYAxis)
             {
@@ -1121,6 +1163,7 @@ namespace atOpticalDecenter
                     simpleButtonSystemFileSave.Enabled = true;
                     _systemParameters._AiCParams.IDs[1] = tempIDs;
                 }
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("AiC Y축 ID를 {0}로 변경되었습니다.", _systemParameters._AiCParams.IDs[1].ToString()));
             }
             else if (currentRow == rowAiCZAxis)
             {
@@ -1145,6 +1188,7 @@ namespace atOpticalDecenter
                     simpleButtonSystemFileSave.Enabled = true;
                     _systemParameters._AiCParams.IDs[2] = tempIDs;
                 }
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("AiC Z축 ID를 {0}로 변경되었습니다.", _systemParameters._AiCParams.IDs[2].ToString()));
             }
             else if (currentRow == rowAiCLoaderAxis)
             {
@@ -1169,6 +1213,7 @@ namespace atOpticalDecenter
                     simpleButtonSystemFileSave.Enabled = true;
                     _systemParameters._AiCParams.IDs[3] = tempIDs;
                 }
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("AiC R축 ID를 {0}로 변경되었습니다.", _systemParameters._AiCParams.IDs[3].ToString()));
             }
             else if (currentRow == rowRemoteIOCommunicationStopbit)
             {
@@ -1196,6 +1241,7 @@ namespace atOpticalDecenter
                 simpleButtonSystemFileSave.Enabled = true;
                 //_systemParameters._photoParams.SerialParameters.StopBits = value;
                 _systemParameters._remoteIOParams.SerialParameters.StopBits = (StopBits)Enum.Parse(typeof(StopBits), strTemp);
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("RemoteIO 통신 정지 비트를 {0}로 변경되었습니다.", _systemParameters._remoteIOParams.SerialParameters.StopBits.ToString()));
             }
             else if (currentRow == rowRemoteIOCommunicationBaudRate)
             {
@@ -1221,6 +1267,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._remoteIOParams.SerialParameters.BaudRates = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("RemoteIO 통신 속도를 {0}로 변경되었습니다.", _systemParameters._remoteIOParams.SerialParameters.BaudRates.ToString()));
             }
             else if (currentRow == rowRemoteIOCommunicationDatabit)
             {
@@ -1246,6 +1293,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._remoteIOParams.SerialParameters.DataBits = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("RemoteIO 통신 데이터 비트를 {0}로 변경되었습니다.", _systemParameters._remoteIOParams.SerialParameters.DataBits.ToString()));
             }
             else if (currentRow == rowRemoteIOCommunicationHandshake)
             {
@@ -1273,6 +1321,7 @@ namespace atOpticalDecenter
                 simpleButtonSystemFileSave.Enabled = true;
                 //_systemParameters._photoParams.SerialParameters.Handshake = strTemp;
                 _systemParameters._remoteIOParams.SerialParameters.Handshake = (Handshake)Enum.Parse(typeof(Handshake), strTemp);
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("RemoteIO 통신 흐름제어를 {0}로 변경되었습니다.", _systemParameters._remoteIOParams.SerialParameters.Handshake.ToString()));
             }
             else if (currentRow == rowRemoteIOCommunicationParity)
             {
@@ -1299,7 +1348,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._remoteIOParams.SerialParameters.Parity = (Parity)Enum.Parse(typeof(Parity), strTemp);
-                //_systemParameters._photoParams.SerialParameters.Parity = strTemp;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("RemoteIO 통신 Parity를 {0}로 변경되었습니다.", _systemParameters._remoteIOParams.SerialParameters.Parity.ToString()));
             }
             else if (currentRow == rowRemoteIOCommunicationPortName)
             {
@@ -1325,6 +1374,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._remoteIOParams.SerialParameters.PortName = strTemp;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("RemoteIO 통신 포트를 {0}로 변경되었습니다.", _systemParameters._remoteIOParams.SerialParameters.PortName));
             }
             else if (currentRow == rowRemoteIOCommunicationStopbit)
             {
@@ -1350,7 +1400,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._remoteIOParams.SerialParameters.StopBits = (StopBits)Enum.Parse(typeof(StopBits), strTemp);
-                //_systemParameters._photoParams.SerialParameters.StopBits = strTemp;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("RemoteIO 통신 정지 비트를 {0}로 변경되었습니다.", _systemParameters._remoteIOParams.SerialParameters.StopBits.ToString()));
             }
             else if (currentRow == rowRemoteIOCommunicationCount)
             {
@@ -1365,7 +1415,8 @@ namespace atOpticalDecenter
                 }
 
                 simpleButtonSystemFileSave.Enabled = true;
-                _systemParameters._remoteIOParams.ConnectedNumber = value;                
+                _systemParameters._remoteIOParams.ConnectedNumber = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("RemoteIO 통신 연결 대수를 {0}로 변경되었습니다.", _systemParameters._remoteIOParams.ConnectedNumber.ToString()));
                 //*/
             }
             else if (currentRow == rowRemoteIOInputIDs)
@@ -1391,7 +1442,8 @@ namespace atOpticalDecenter
                 {
                     simpleButtonSystemFileSave.Enabled = true;
                     _systemParameters._remoteIOParams.IDs[0] = tempIDs;
-                }                
+                }
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("RemoteIO 모듈 1 ID를 {0}로 변경되었습니다.", _systemParameters._remoteIOParams.IDs[0].ToString()));
                 //*/
             }
             else if (currentRow == rowRemoteIOOutputIDs)
@@ -1417,7 +1469,8 @@ namespace atOpticalDecenter
                 {
                     simpleButtonSystemFileSave.Enabled = true;
                     _systemParameters._remoteIOParams.IDs[1] = tempIDs;
-                }           
+                }
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("RemoteIO 모듈 2 ID를 {0}로 변경되었습니다.", _systemParameters._remoteIOParams.IDs[1].ToString()));
                 //*/
             }
             else if (currentRow == rowSystemADMSUse)
@@ -1425,12 +1478,14 @@ namespace atOpticalDecenter
                 bool check = Convert.ToBoolean(rowSystemADMSUse.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._admsParams._enableCheck = check;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("ADMS 사용여부가 {0}로 변경되었습니다.", _systemParameters._admsParams._enableCheck.ToString()));
             }
             else if (currentRow == rowSystemJobWorkUse)
             {
                 bool check = Convert.ToBoolean(rowSystemJobWorkUse.Properties.Value);
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._bJobWorkInfomationEnable = check;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("작업지시서 DB 사용여부가 {0}로 변경되었습니다.", _systemParameters._bJobWorkInfomationEnable.ToString()));
             }
             else if (currentRow == rowSystemADMSIPAddress)
             {
@@ -1444,11 +1499,12 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._admsParams._IpAddress = strTemp;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("ADMS IP 주소가 {0}로 변경되었습니다.", _systemParameters._admsParams._IpAddress));
             }
             else if (currentRow == rowSystemADMSPort)
             {
                 value = Convert.ToInt32(rowSystemADMSPort.Properties.Value);
-                if (value == 0)
+                if (value <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nDB 포트를 입력하세요", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowSystemADMSPort.Properties.Value = _systemParameters._admsParams._port;
@@ -1457,6 +1513,7 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._admsParams._port = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("ADMS DB 포트가 {0}로 변경되었습니다.", _systemParameters._admsParams._port.ToString()));
             }
             else if (currentRow == rowSystemADMSUserID)
             {
@@ -1470,6 +1527,7 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._admsParams._userID = strTemp;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("ADMS DB User ID가 {0}로 변경되었습니다.", _systemParameters._admsParams._userID));
             }
             else if (currentRow == rowSystemADMSPassWD)
             {
@@ -1483,11 +1541,12 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._admsParams._password = strTemp;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("ADMS DB User 비밀번호가 {0}로 변경되었습니다.", _systemParameters._admsParams._password));
             }
             else if (currentRow == rowSystemADMSEquipmentID)
             {
                 value = Convert.ToInt32(rowSystemADMSEquipmentID.Properties.Value);
-                if (value == 0)
+                if (value <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nEquipmentID를 입력하세요", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowSystemADMSEquipmentID.Properties.Value = _systemParameters._admsParams._eqpmentID;
@@ -1496,6 +1555,7 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._admsParams._eqpmentID = value;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("ADMS DB eqpmentID가 {0}로 변경되었습니다.", _systemParameters._admsParams._eqpmentID.ToString()));
             }
             else if (currentRow == rowSystemADMSEquipmentDBName)
             {
@@ -1509,6 +1569,7 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._admsParams._equipmentname = strTemp;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("ADMS DB eqpment name이 {0}로 변경되었습니다.", _systemParameters._admsParams._equipmentname));
             }
             else if (currentRow == rowSystemADMSSchemaName)
             {
@@ -1522,6 +1583,7 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._admsParams._dbschemaname = strTemp;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("ADMS DB schema name이 {0}로 변경되었습니다.", _systemParameters._admsParams._dbschemaname));
             }
             else if (currentRow == rowSystemADMSProductDBName)
             {
@@ -1535,6 +1597,7 @@ namespace atOpticalDecenter
                 }
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._admsParams._productname = strTemp;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("ADMS DB product name이 {0}로 변경되었습니다.", _systemParameters._admsParams._productname));
             }
             else if (currentRow == rowSaveResultLEDMeasurement)
             {
@@ -1543,6 +1606,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._saveResultLEDMeasurement = bvalue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("검사 결과 데이터 저장 유무를 {0}로 변경되었습니다.", _systemParameters._saveResultLEDMeasurement.ToString()));
             }
             else if (currentRow == rowSaveResultStatistics)
             {
@@ -1551,6 +1615,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._saveResultStatistics = bvalue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("통계 데이터 저장 유무를 {0}로 변경되었습니다.", _systemParameters._saveResultStatistics.ToString()));
             }
             else if (currentRow == rowSystemUseLanguage)
             {
@@ -1559,6 +1624,7 @@ namespace atOpticalDecenter
 
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._SystemLanguageKoreaUse = bvalue;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("한국어 언어 사용 유무를 {0}로 변경되었습니다.", _systemParameters._SystemLanguageKoreaUse.ToString()));
                 if (!_systemParameters._SystemLanguageKoreaUse)
                     MessageBox.Show("언어가 변경되었습니다.\r\n프로그램을 재시작이 필요합니다.", "알람", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
@@ -1581,8 +1647,7 @@ namespace atOpticalDecenter
 
                     // Recipe File
                     RecipeFileIO.WriteSystemFile(_systemParameters, strSavePath);
-                    //Task.Delay(1000);
-                    //LoadSystemParameters();
+                    _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("시스템 파라미터가 저장되었습니다."));                    
                 }
                 catch (Exception ex)
                 {

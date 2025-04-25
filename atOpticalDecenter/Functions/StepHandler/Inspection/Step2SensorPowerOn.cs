@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using atOpticalDecenter.Functions.StepHandler.Base;
 using RecipeManager;
+using LogLibrary;
 
 namespace atOpticalDecenter.Functions.StepHandler.Inspection
 {
@@ -48,6 +49,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         {
                             _DelayTimerCounter = SENSOR_POWER_STABLE_TIME;
                             mStep = WorkingStep.SensorPowerOn;
+                            _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("제품 전원 On 제어 시작"));
                         }
                     }
                     break;
@@ -61,7 +63,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
 
                     mTimeChecker.SetTime(_DelayTimerCounter);
                     mStep = WorkingStep.WaitSignalCommandTime;
-
+                    _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("제품 전원 On 제어 신호 전송"));
 
                     break;
                 case WorkingStep.WaitSignalCommandTime:
@@ -71,6 +73,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     if (mTimeChecker.IsTimeOver())
                     {
                         mStep = WorkingStep.Idle;
+                        _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("제품 전원 On 제어 완료"));
                     }
                     break;
                 default: break;

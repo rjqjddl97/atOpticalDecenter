@@ -13,8 +13,11 @@ namespace LogLibrary
         Image,
         NetWork,
         PhotoSensor,
-        PanelMeta,
+        MotionControl,
+        RemoteIO,
         RecipeEditor,
+        SystemEditor,
+        InspectStep,
         Camera,
         Modbus
     }

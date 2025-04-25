@@ -14,6 +14,7 @@ using PhotoProduct;
 using RecipeManager;
 using AiCControlLibrary;
 using ARMLibrary;
+using LogLibrary;
 
 namespace atOpticalDecenter.Functions.StepHandler.Base
 {
@@ -39,8 +40,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public const int D_PLC_BUTTON_CONTROL = 3000;
         public const int D_PLC_WAIT_INIT_INSPECTION = 2000 + D_MARGIN;
         public const int D_PLC_MOTION_COMMAND_TIMEOUT = 60000;
-        public const int D_MOTION_COMMAND_RESPONSE_WAIT_TIME = 1000;
-        public const int D_PLC_MOTION_READYSIGNAL_WAIT_TIME = 1000;
+        public const int D_MOTION_COMMAND_RESPONSE_WAIT_TIME = 500;
+        public const int D_PLC_MOTION_READYSIGNAL_WAIT_TIME = 500;
         public const int D_MICRO_MOTION_VELOCITY_LIMIT = 50;
 
         public const int D_PERIPHERAL_SETTING_TIME = 2500;
@@ -54,7 +55,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public const int PLC_OUTPUT_SIGNAL_WAIT_TIME = 1000;        
                
         public const int REVERSE_VOLTAGE_WAIT_TIME = 2000;        
-        public const int SENSOR_POWER_STABLE_TIME = 1000;
+        public const int SENSOR_POWER_STABLE_TIME = 500;
         public const int SENSOR_OVERCURRENT_STABLE_TIME = 1000;
         public const int SENSOR_RESPONSE_WAIT_TIMEOUT = 500;
 
@@ -64,7 +65,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public const int DARK_ON_LOAD_CURRENT = 1;
         public const double LOAD_VOLTAGE_MARGIN = 2;
         public const double LOAD_CURRENT_MARGIN = 2;
-        public const double SHORT_DISTANCE_INSPECTION_REFERENCE = 600.0;
+        public const double SHORT_DISTANCE_INSPECTION_REFERENCE = 500.0;
         public const double SHORT_DISTANCE_MOVE_CAMERA_OFFSET = 150.0;
         public const double ND_FILTER_MINMAX_READY_OFFSET = 30;
 
@@ -72,7 +73,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
 
         public static AiCControlLibrary.SerialCommunication.Control.CommunicationManager mMotionDrvCtrl { get; private set; } = null;
         public static ARMLibrary.SerialCommunication.Control.CommunicationManager mRemoteIOCtrl { get; private set; } = null;
-
+        public static Log _log = new Log();
         //public static AiCControlLibrary.SerialCommunication.Data
 
         //public static CodesysCommunication.Control.CommunicationManager mCodesysPLC { get; private set; } = null;
@@ -154,7 +155,10 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public double[] _dHist_V = null;
 
         protected TimeChecker mTimeChecker = new TimeChecker();
-
+        public void LogInital(Log mlog)
+        {
+            _log = mlog;
+        }
         protected static void TakePicture()
         {
             mSourceImage = null;
@@ -258,7 +262,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                 }
                 else
                     return false;
-            }
+            }            
         }
         protected static void LedSpotBlobUpdate(Blob ledspot)
         {

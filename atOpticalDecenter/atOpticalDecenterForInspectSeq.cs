@@ -148,38 +148,6 @@ namespace atOpticalDecenter
                 mRobotInformation.mInputData = update.mInputData;
                 mRobotInformation.mOutputData = update.mOutputData;
 
-                if (!mRobotInformation.mInputData.B0)
-                {
-                    if (_IsDrvErr == false)
-                    {
-                        if (mRobotInformation.mInputData.B1)
-                        {
-                            if (_IsReciepLoad)
-                            {
-                                InspectionSequenceStart();
-                            }
-                        }
-                    }
-                    
-                    if (mRobotInformation.mInputData.B2)
-                    {
-                        if ((mRobotInformation.mError != 0) || (_IsDrvErr == true))
-                        {
-                            InspectionSequenceStop();
-                            byte[] SeData = new byte[8];
-                            for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
-                            {
-                                SeData = _mMotionControlCommManager.mDrvCtrl.AlarmResetCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
-                                _mMotionControlCommManager.SendData(SeData);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    InspectionSequenceStop();
-                    _IsHommingFinished = false;
-                }
                 if (mStepBase != null)
                     mStepBase.UpdateRobotIOInfomation(mRobotInformation);
             }
@@ -193,15 +161,20 @@ namespace atOpticalDecenter
         {
             try
             {
-                mResultData.ImageResolution = (double)_systemParams._cameraParams.OnePixelResolution;
-                mResultData.fImageSensorSize_H = (double)_systemParams._cameraParams.ImageSensorHSize;
-                mResultData.fImageSensorSize_V = (double)_systemParams._cameraParams.ImageSensorVSize;
-                mResultData.fLensFocusLength = (double)_systemParams._cameraParams.LensFocusLength;
-                mStepBase = new Functions.StepHandler.Base.StepHandlerBase(_mMotionControlCommManager, _mRemteIOCommManager, _systemParams, _workParams, mResultData, mRobotInformation);
-                mStepBase.SetImageSavePath(global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath);
-                TakePictureEvent += GrabPicture;
-                ImageGrabbed += mStepBase.OnCameraImageGrab;
-                LEDSpotBlobProcessEvent += UpdateImageSpotBlob;
+                if ((_mMotionControlCommManager != null) && (_mRemteIOCommManager != null) && (_systemParams != null) && (_workParams != null) && (mRobotInformation != null))
+                {
+                    mResultData.ImageResolution = (double)_systemParams._cameraParams.OnePixelResolution;
+                    mResultData.fImageSensorSize_H = (double)_systemParams._cameraParams.ImageSensorHSize;
+                    mResultData.fImageSensorSize_V = (double)_systemParams._cameraParams.ImageSensorVSize;
+                    mResultData.fLensFocusLength = (double)_systemParams._cameraParams.LensFocusLength;
+                    mStepBase = new Functions.StepHandler.Base.StepHandlerBase(_mMotionControlCommManager, _mRemteIOCommManager, _systemParams, _workParams, mResultData, mRobotInformation);
+                    mStepBase.SetImageSavePath(global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath);
+                    TakePictureEvent += GrabPicture;
+                    ImageGrabbed += mStepBase.OnCameraImageGrab;
+                    LEDSpotBlobProcessEvent += UpdateImageSpotBlob;
+                    mStepBase.LogInital(mLog);
+                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 시퀀스 함수 초기화 명령이 실행되었습니다."));
+                }
             }
             catch (Exception)
             {
@@ -213,7 +186,10 @@ namespace atOpticalDecenter
             try
             {
                 if (mStepBase != null)
+                {
                     mStepBase.StepHandlerBaseSystemParamUpdate(_systemParams);
+                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 시퀀스 함수내 시스템 파라미터 초기화 명령이 실행되었습니다."));
+                }
             }
             catch (Exception)
             {
@@ -236,6 +212,7 @@ namespace atOpticalDecenter
                     mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step6Spot2Measure());
                     mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step7SensorPowerOff());
                     mPhotoInspectionList.Add(new Functions.StepHandler.Inspection.Step8CalculateResult());
+                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("검사 시퀀스 단계 생성 명령이 실행되었습니다."));
                 }
             }
             catch (Exception)
@@ -394,8 +371,7 @@ namespace atOpticalDecenter
                                 }
                                 break;
                             case InspectionStepType.FinishedInspection:
-                                mInspectStep = InspectionStepType.Idle;
-                                
+                                mInspectStep = InspectionStepType.Idle;                                
                                 _InspectionWorking = false;
                                 break;
                             case InspectionStepType.ErrorOccurred:
@@ -472,17 +448,17 @@ namespace atOpticalDecenter
             try
             {
                 _isInspecting = false;
-                _InspectionWorking = false;
-                //_isAutoInspectMeasurement = false;
+                _InspectionWorking = false;                
                 UpdateProcessTime(false);
                 barCheckItemInspectionStart.Caption = string.Format("검사 시작");
                 barStaticItemInspectionStatus.Caption = string.Format("진행: 검사 완료");
-                if (!_isInspectError)
+                if ((!_isInspectError) && (!_isInspectCancel))
                 {
                     InpsectResultUpdate();
                     CreateResultFile(mResultData.bTotalResult);
                     UpdateStaticsData();
                 }
+                _isInspectCancel = false;
                 barEditItemInspectionProgress.EditValue = 100;
                 AutoStartButtonRelease();
                 mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("포토센서 검사 시퀀스가 완료 되었습니다."));

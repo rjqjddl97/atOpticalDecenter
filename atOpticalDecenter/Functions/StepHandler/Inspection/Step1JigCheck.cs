@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using atOpticalDecenter.Functions.StepHandler.Base;
 using RecipeManager;
+using LogLibrary;
 
 namespace atOpticalDecenter.Functions.StepHandler.Inspection
 {
@@ -45,6 +46,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         {
                             mInspectResultData.InspectParameterInitial(mWorkParam._ProductDistance, mWorkParam._LEDInspectionShortDistance, _ImageResolution_H, _ImageResolution_V, fOnePixelResolution);
                             mStep = WorkingStep.JigCheck;
+                            _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("Jig 점검 및 검사 설정 초기화"));
                         }
                     }
                     break;
@@ -56,12 +58,14 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     if (mRobotInformation.mInputData.B3)                    // Jig Input Ch0 ~ Ch7 Select. 
                     {
                         mStep = WorkingStep.Idle;
+                        _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("Jig 확인 완료"));
                     }
                     else
                     {
                         strstep = "Jig Not Contact or Noting";
                         ErrorStepString += strstep;
                         mStep = WorkingStep.ErrorOccured;
+                        _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("Jig 확인 실패"));
                     }
                     break;
 

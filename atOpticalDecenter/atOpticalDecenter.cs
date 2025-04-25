@@ -62,7 +62,8 @@ namespace atOpticalDecenter
         bool _isInspecting = false;
         bool _isInspectionDone = false;
         bool _isInsepctionResult = false;
-        bool _isInspectError = false;        
+        bool _isInspectError = false;
+        bool _isInspectCancel = false;
         System.Drawing.Image _sourceImage = null;
         System.Drawing.Image _resultImage = null;
 
@@ -168,7 +169,7 @@ namespace atOpticalDecenter
             try
             {
                 SystemEditor editor = new SystemEditor(_systemParams._SystemLanguageKoreaUse);
-
+                editor._log.WriteLogViewer += LogUpdated;
                 editor.ShowDialog();
                 string strTemp = string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.SystemFileName);
 
@@ -202,6 +203,8 @@ namespace atOpticalDecenter
             {
                 //_log.WriteLogViewer += new Log.EventWriteLogViewer(OnWriteLogViewer);
                 mLog.WriteLogViewer += LogUpdated;//new Log.EventWriteLogViewer(LogUpdated);
+                MotionControl._log.WriteLogViewer += LogUpdated;
+                RemoteIOControl._log.WriteLogViewer += LogUpdated;
                 gridControl1.DataSource = mLogList;
                 //gridControlBlobs.DataSource = _workParams.Blobs;
                 //gridControlResult.DataSource = _workParams.InspectionPositions;                
@@ -351,8 +354,7 @@ namespace atOpticalDecenter
                 _Camera.Close();
             ImageUpdateEvents -= UpdateGUI;
             timerCurrentTime.Stop();
-            //if ()
-
+            mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "프로그램 종료.");
         }
         private void InitializedBackGroundWorkers()
         {
@@ -364,7 +366,7 @@ namespace atOpticalDecenter
                 _backgroundWorkerOpticalDecenterInspection.ProgressChanged += new ProgressChangedEventHandler(backgroundWorkerInspection_ProgressChanged);
                 _backgroundWorkerOpticalDecenterInspection.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerInspection_RunWorkerCompleted);
                 _bwMotionHome.DoWork += new DoWorkEventHandler(backgroundWorkerMotionHome_DoWork);
-                _bwMotionHome.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerMotionHome_RunWorkerCompleted);
+                _bwMotionHome.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerMotionHome_RunWorkerCompleted);                
             }
             catch (Exception)
             {
@@ -869,7 +871,7 @@ namespace atOpticalDecenter
             }
 
             if (_isContinuousShot)
-                _frameCount = 0;
+                _frameCount = 0;            
         }
 
         private void OnCameraImageGrabEnd(object sender, EventArgs e)
@@ -878,7 +880,7 @@ namespace atOpticalDecenter
             {
                 BeginInvoke(new EventHandler<EventArgs>(OnCameraImageGrabEnd), sender, e);
                 return;
-            }
+            }            
         }
 
         private void OnCameraConnectionLost(object sender, EventArgs e)
@@ -985,6 +987,7 @@ namespace atOpticalDecenter
             {
                 RecipeEditor edit = new RecipeEditor(_systemParams._SystemLanguageKoreaUse);
                 edit.SetSystemParam(_systemParams);
+                edit._log.WriteLogViewer += LogUpdated;
                 edit.Show(this);
             }
         }
@@ -2933,6 +2936,7 @@ namespace atOpticalDecenter
                     barCheckItemInspectionStart.Caption = string.Format("검사 중지");
                     _isInspecting = true;
                     _isInspectError = false;
+                    _isInspectCancel = false;
                     // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
                     //
                     xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 3; }));
@@ -2983,6 +2987,7 @@ namespace atOpticalDecenter
                     _InspectionWorking = false;
                     _isInspectError = false;
                     _InspectionResult = false;
+                    _isInspectCancel = true;
                     mInspectStep = InspectionStepType.Idle;
                     _backgroundWorkerOpticalDecenterInspection.CancelAsync();
                     UpdateProcessTime(false);
@@ -3005,6 +3010,7 @@ namespace atOpticalDecenter
                     CheckTackTime.Reset();
                     _isInspecting = true;
                     _isInspectError = false;
+                    _isInspectCancel = false;
                     // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
                     //
                     xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 3; }));
@@ -3057,6 +3063,7 @@ namespace atOpticalDecenter
                     _InspectionWorking = false;
                     _isInspectError = false;
                     _InspectionResult = false;
+                    _isInspectCancel = true;
                     mInspectStep = InspectionStepType.Idle;
                     _backgroundWorkerOpticalDecenterInspection.CancelAsync();
                     UpdateProcessTime(false);
@@ -3566,7 +3573,7 @@ namespace atOpticalDecenter
         {
             try
             {
-                if (pictureEditActuatorX.Image != null)
+                if (_mMotionControlCommManager.IsOpen() && (_mMotionControlCommManager != null) && (pictureEditActuatorX.Image != null))
                 {
                     float fScale = (float)(pictureEditActuatorX.Properties.ZoomPercent / 100.0f);
                     Graphics gp = e.Graphics;
@@ -3589,7 +3596,7 @@ namespace atOpticalDecenter
         {
             try
             {
-                if (pictureEditActuatorY.Image != null)
+                if (_mMotionControlCommManager.IsOpen() && (_mMotionControlCommManager != null) && (pictureEditActuatorY.Image != null))
                 {
                     float fScale = (float)(pictureEditActuatorY.Properties.ZoomPercent / 100.0f);
                     Graphics gp = e.Graphics;
@@ -3919,6 +3926,38 @@ namespace atOpticalDecenter
                             else
                                 barStaticItemMotionStatus.Caption = "모션 상태 : 정지";
                         }
+                    }
+                    if (!mRobotInformation.mInputData.B0)
+                    {
+                        if (_IsDrvErr == false)
+                        {
+                            if (mRobotInformation.mInputData.B1)
+                            {
+                                if (_IsReciepLoad)
+                                {
+                                    InspectionSequenceStart();
+                                }
+                            }
+                        }
+
+                        if (mRobotInformation.mInputData.B2)
+                        {
+                            if ((mRobotInformation.mError != 0) || (_IsDrvErr == true))
+                            {
+                                InspectionSequenceStop();
+                                byte[] SeData = new byte[8];
+                                for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                                {
+                                    SeData = _mMotionControlCommManager.mDrvCtrl.AlarmResetCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
+                                    _mMotionControlCommManager.SendData(SeData);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        InspectionSequenceStop();
+                        _IsHommingFinished = false;
                     }
                 }
             }

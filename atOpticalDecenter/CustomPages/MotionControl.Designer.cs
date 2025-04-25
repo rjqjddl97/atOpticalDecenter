@@ -32,32 +32,28 @@
             this.xtraTabPageControl = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.layoutControl5 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.groupControlPCLControl = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl6 = new DevExpress.XtraLayout.LayoutControl();
             this.checkButtonHighValue = new DevExpress.XtraEditors.CheckButton();
-            this.textEditUserDefineValue = new DevExpress.XtraEditors.TextEdit();
+            this.textEditTargetAcceleration = new DevExpress.XtraEditors.TextEdit();
             this.checkButtonMiddleValue = new DevExpress.XtraEditors.CheckButton();
-            this.radioGroupCalibration = new DevExpress.XtraEditors.RadioGroup();
-            this.checkButtonLowValue = new DevExpress.XtraEditors.CheckButton();
-            this.CheckButtonXPlusControlCommand = new DevExpress.XtraEditors.CheckButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.checkButtonLowValue = new DevExpress.XtraEditors.CheckButton();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.textEditUserDefineValue = new DevExpress.XtraEditors.TextEdit();
             this.radioGroupMenualValueMode = new DevExpress.XtraEditors.RadioGroup();
-            this.CheckButtonXStopControlCommand = new DevExpress.XtraEditors.CheckButton();
+            this.CheckButtonXPlusControlCommand = new DevExpress.XtraEditors.CheckButton();
             this.CheckButtonYPlusControlCommand = new DevExpress.XtraEditors.CheckButton();
-            this.CheckButtonXMinusControlCommand = new DevExpress.XtraEditors.CheckButton();
+            this.CheckButtonXStopControlCommand = new DevExpress.XtraEditors.CheckButton();
             this.CheckButtonZPlusControlCommand = new DevExpress.XtraEditors.CheckButton();
+            this.CheckButtonXMinusControlCommand = new DevExpress.XtraEditors.CheckButton();
             this.CheckButtonYStopControlCommand = new DevExpress.XtraEditors.CheckButton();
-            this.checkEditCalibration = new DevExpress.XtraEditors.CheckEdit();
+            this.textEditTargetVelocity = new DevExpress.XtraEditors.TextEdit();
             this.CheckButtonYMinusControlCommand = new DevExpress.XtraEditors.CheckButton();
             this.CheckButtonZStopControlCommand = new DevExpress.XtraEditors.CheckButton();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.textEditTargetAcceleration = new DevExpress.XtraEditors.TextEdit();
-            this.CheckButtonZMinusControlCommand = new DevExpress.XtraEditors.CheckButton();
-            this.textEditTargetVelocity = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.textEditTargetPosZ = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.CheckButtonZMinusControlCommand = new DevExpress.XtraEditors.CheckButton();
             this.textEditTargetPosY = new DevExpress.XtraEditors.TextEdit();
             this.textEditTargetPosX = new DevExpress.XtraEditors.TextEdit();
             this.SendCmdHommingButton = new DevExpress.XtraEditors.SimpleButton();
@@ -84,28 +80,28 @@
             this.layoutControlItem118 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem34 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem36 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem156 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem49 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem50 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem41 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem36 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem42 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem43 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem44 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem40 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem41 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem37 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem38 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem39 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem40 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem32 = new DevExpress.XtraLayout.LayoutControlItem();
             this.textBoxUserDefineValue = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem29 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem30 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem31 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControl8 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup9 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem35 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
             this.groupControlPresentPosition = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl7 = new DevExpress.XtraLayout.LayoutControl();
@@ -250,10 +246,10 @@
             this.labelControlAlarm1_7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControlAlarm1_6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControlAlarm1_5 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControlAlarm1_4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControlAlarm1_3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControlAlarm1_2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControlAlarm1_1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlAlarm1_4 = new DevExpress.XtraEditors.LabelControl();
             this.layoutControlGroup22 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem57 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem58 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -607,17 +603,13 @@
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl5)).BeginInit();
             this.layoutControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlPCLControl)).BeginInit();
             this.groupControlPCLControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).BeginInit();
             this.layoutControl6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditUserDefineValue.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupCalibration.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualValueMode.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditCalibration.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTargetAcceleration.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditUserDefineValue.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualValueMode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTargetVelocity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosZ.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosY.Properties)).BeginInit();
@@ -639,28 +631,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem118)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem34)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem36)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem156)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem49)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem50)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem41)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem36)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem42)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem43)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem44)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem40)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem37)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem38)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem39)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem40)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxUserDefineValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem35)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).BeginInit();
             this.layoutControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlPresentPosition)).BeginInit();
@@ -1005,7 +997,7 @@
             this.xtraTabControlMotion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControlMotion.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Left;
             this.xtraTabControlMotion.Location = new System.Drawing.Point(0, 0);
-            this.xtraTabControlMotion.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.xtraTabControlMotion.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.xtraTabControlMotion.Name = "xtraTabControlMotion";
             this.xtraTabControlMotion.SelectedTabPage = this.xtraTabPageControl;
             this.xtraTabControlMotion.Size = new System.Drawing.Size(551, 597);
@@ -1018,7 +1010,7 @@
             // xtraTabPageControl
             // 
             this.xtraTabPageControl.Controls.Add(this.layoutControl1);
-            this.xtraTabPageControl.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.xtraTabPageControl.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.xtraTabPageControl.Name = "xtraTabPageControl";
             this.xtraTabPageControl.Size = new System.Drawing.Size(521, 591);
             this.xtraTabPageControl.Text = "제어";
@@ -1029,7 +1021,7 @@
             this.layoutControl1.Controls.Add(this.layoutControl4);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsView.UseDefaultDragAndDropRendering = false;
             this.layoutControl1.Root = this.layoutControlGroup2;
@@ -1039,71 +1031,49 @@
             // 
             // layoutControl5
             // 
-            this.layoutControl5.Controls.Add(this.layoutControl3);
             this.layoutControl5.Controls.Add(this.groupControlPCLControl);
-            this.layoutControl5.Location = new System.Drawing.Point(12, 104);
-            this.layoutControl5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl5.Controls.Add(this.layoutControl8);
+            this.layoutControl5.Location = new System.Drawing.Point(12, 98);
+            this.layoutControl5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl5.Name = "layoutControl5";
             this.layoutControl5.OptionsView.UseDefaultDragAndDropRendering = false;
             this.layoutControl5.Root = this.layoutControlGroup5;
-            this.layoutControl5.Size = new System.Drawing.Size(497, 475);
+            this.layoutControl5.Size = new System.Drawing.Size(502, 481);
             this.layoutControl5.TabIndex = 5;
             this.layoutControl5.Text = "layoutControl5";
-            // 
-            // layoutControl3
-            // 
-            this.layoutControl3.AutoScroll = false;
-            this.layoutControl3.Location = new System.Drawing.Point(3, 324);
-            this.layoutControl3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.layoutControl3.Name = "layoutControl3";
-            this.layoutControl3.Root = this.Root;
-            this.layoutControl3.Size = new System.Drawing.Size(491, 146);
-            this.layoutControl3.TabIndex = 5;
-            this.layoutControl3.Text = "layoutControl3";
-            // 
-            // Root
-            // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Name = "Root";
-            this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
-            this.Root.Size = new System.Drawing.Size(491, 146);
-            this.Root.TextVisible = false;
             // 
             // groupControlPCLControl
             // 
             this.groupControlPCLControl.Controls.Add(this.layoutControl6);
             this.groupControlPCLControl.Location = new System.Drawing.Point(5, 7);
-            this.groupControlPCLControl.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.groupControlPCLControl.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.groupControlPCLControl.Name = "groupControlPCLControl";
-            this.groupControlPCLControl.Size = new System.Drawing.Size(487, 315);
+            this.groupControlPCLControl.Size = new System.Drawing.Size(492, 286);
             this.groupControlPCLControl.TabIndex = 4;
             this.groupControlPCLControl.Text = "모션 위치 제어";
             // 
             // layoutControl6
             // 
             this.layoutControl6.Controls.Add(this.checkButtonHighValue);
-            this.layoutControl6.Controls.Add(this.textEditUserDefineValue);
+            this.layoutControl6.Controls.Add(this.textEditTargetAcceleration);
             this.layoutControl6.Controls.Add(this.checkButtonMiddleValue);
-            this.layoutControl6.Controls.Add(this.radioGroupCalibration);
-            this.layoutControl6.Controls.Add(this.checkButtonLowValue);
-            this.layoutControl6.Controls.Add(this.CheckButtonXPlusControlCommand);
             this.layoutControl6.Controls.Add(this.labelControl1);
+            this.layoutControl6.Controls.Add(this.checkButtonLowValue);
+            this.layoutControl6.Controls.Add(this.labelControl2);
+            this.layoutControl6.Controls.Add(this.textEditUserDefineValue);
             this.layoutControl6.Controls.Add(this.radioGroupMenualValueMode);
-            this.layoutControl6.Controls.Add(this.CheckButtonXStopControlCommand);
+            this.layoutControl6.Controls.Add(this.CheckButtonXPlusControlCommand);
             this.layoutControl6.Controls.Add(this.CheckButtonYPlusControlCommand);
-            this.layoutControl6.Controls.Add(this.CheckButtonXMinusControlCommand);
+            this.layoutControl6.Controls.Add(this.CheckButtonXStopControlCommand);
             this.layoutControl6.Controls.Add(this.CheckButtonZPlusControlCommand);
+            this.layoutControl6.Controls.Add(this.CheckButtonXMinusControlCommand);
             this.layoutControl6.Controls.Add(this.CheckButtonYStopControlCommand);
-            this.layoutControl6.Controls.Add(this.checkEditCalibration);
+            this.layoutControl6.Controls.Add(this.textEditTargetVelocity);
             this.layoutControl6.Controls.Add(this.CheckButtonYMinusControlCommand);
             this.layoutControl6.Controls.Add(this.CheckButtonZStopControlCommand);
-            this.layoutControl6.Controls.Add(this.labelControl2);
-            this.layoutControl6.Controls.Add(this.textEditTargetAcceleration);
-            this.layoutControl6.Controls.Add(this.CheckButtonZMinusControlCommand);
-            this.layoutControl6.Controls.Add(this.textEditTargetVelocity);
-            this.layoutControl6.Controls.Add(this.labelControl4);
             this.layoutControl6.Controls.Add(this.textEditTargetPosZ);
+            this.layoutControl6.Controls.Add(this.labelControl4);
+            this.layoutControl6.Controls.Add(this.CheckButtonZMinusControlCommand);
             this.layoutControl6.Controls.Add(this.textEditTargetPosY);
             this.layoutControl6.Controls.Add(this.textEditTargetPosX);
             this.layoutControl6.Controls.Add(this.SendCmdHommingButton);
@@ -1117,224 +1087,32 @@
             this.layoutControl6.Controls.Add(this.checkButtonMenualMode);
             this.layoutControl6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl6.Location = new System.Drawing.Point(2, 21);
-            this.layoutControl6.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl6.Name = "layoutControl6";
             this.layoutControl6.OptionsView.UseDefaultDragAndDropRendering = false;
             this.layoutControl6.Root = this.layoutControlGroup7;
-            this.layoutControl6.Size = new System.Drawing.Size(483, 292);
+            this.layoutControl6.Size = new System.Drawing.Size(488, 263);
             this.layoutControl6.TabIndex = 0;
             this.layoutControl6.Text = "layoutControl6";
             // 
             // checkButtonHighValue
             // 
-            this.checkButtonHighValue.Location = new System.Drawing.Point(389, 85);
-            this.checkButtonHighValue.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.checkButtonHighValue.Location = new System.Drawing.Point(383, 85);
+            this.checkButtonHighValue.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.checkButtonHighValue.Name = "checkButtonHighValue";
-            this.checkButtonHighValue.Size = new System.Drawing.Size(90, 22);
+            this.checkButtonHighValue.Size = new System.Drawing.Size(101, 22);
             this.checkButtonHighValue.StyleController = this.layoutControl6;
             this.checkButtonHighValue.TabIndex = 16;
             this.checkButtonHighValue.Text = "큰값";
             this.checkButtonHighValue.CheckedChanged += new System.EventHandler(this.checkButtonHighValue_CheckedChanged);
             this.checkButtonHighValue.Click += new System.EventHandler(this.checkButtonHighValue_Click);
             // 
-            // textEditUserDefineValue
-            // 
-            this.textEditUserDefineValue.Location = new System.Drawing.Point(241, 111);
-            this.textEditUserDefineValue.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.textEditUserDefineValue.Name = "textEditUserDefineValue";
-            this.textEditUserDefineValue.Properties.Appearance.Options.UseTextOptions = true;
-            this.textEditUserDefineValue.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.textEditUserDefineValue.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.textEditUserDefineValue.Size = new System.Drawing.Size(238, 20);
-            this.textEditUserDefineValue.StyleController = this.layoutControl6;
-            this.textEditUserDefineValue.TabIndex = 46;
-            this.textEditUserDefineValue.EditValueChanged += new System.EventHandler(this.textEditUserDefineValue_EditValueChanged);
-            // 
-            // checkButtonMiddleValue
-            // 
-            this.checkButtonMiddleValue.Location = new System.Drawing.Point(280, 85);
-            this.checkButtonMiddleValue.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.checkButtonMiddleValue.Name = "checkButtonMiddleValue";
-            this.checkButtonMiddleValue.Size = new System.Drawing.Size(105, 22);
-            this.checkButtonMiddleValue.StyleController = this.layoutControl6;
-            this.checkButtonMiddleValue.TabIndex = 15;
-            this.checkButtonMiddleValue.Text = "중간값";
-            this.checkButtonMiddleValue.CheckedChanged += new System.EventHandler(this.checkButtonMiddleValue_CheckedChanged);
-            this.checkButtonMiddleValue.Click += new System.EventHandler(this.checkButtonMiddleValue_Click);
-            // 
-            // radioGroupCalibration
-            // 
-            this.radioGroupCalibration.Location = new System.Drawing.Point(186, 213);
-            this.radioGroupCalibration.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.radioGroupCalibration.Name = "radioGroupCalibration";
-            this.radioGroupCalibration.Properties.Columns = 2;
-            this.radioGroupCalibration.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "투광부 보정")});
-            this.radioGroupCalibration.Size = new System.Drawing.Size(293, 25);
-            this.radioGroupCalibration.StyleController = this.layoutControl6;
-            this.radioGroupCalibration.TabIndex = 38;
-            // 
-            // checkButtonLowValue
-            // 
-            this.checkButtonLowValue.Location = new System.Drawing.Point(174, 85);
-            this.checkButtonLowValue.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.checkButtonLowValue.Name = "checkButtonLowValue";
-            this.checkButtonLowValue.Size = new System.Drawing.Size(102, 22);
-            this.checkButtonLowValue.StyleController = this.layoutControl6;
-            this.checkButtonLowValue.TabIndex = 14;
-            this.checkButtonLowValue.Text = "작은값";
-            this.checkButtonLowValue.CheckedChanged += new System.EventHandler(this.checkButtonLowValue_CheckedChanged);
-            this.checkButtonLowValue.Click += new System.EventHandler(this.checkButtonLowValue_Click);
-            // 
-            // CheckButtonXPlusControlCommand
-            // 
-            this.CheckButtonXPlusControlCommand.Location = new System.Drawing.Point(333, 135);
-            this.CheckButtonXPlusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonXPlusControlCommand.Name = "CheckButtonXPlusControlCommand";
-            this.CheckButtonXPlusControlCommand.Size = new System.Drawing.Size(146, 22);
-            this.CheckButtonXPlusControlCommand.StyleController = this.layoutControl6;
-            this.CheckButtonXPlusControlCommand.TabIndex = 24;
-            this.CheckButtonXPlusControlCommand.Text = "》(+)";
-            this.CheckButtonXPlusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
-            this.CheckButtonXPlusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Options.UseTextOptions = true;
-            this.labelControl1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl1.Location = new System.Drawing.Point(4, 135);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(29, 14);
-            this.labelControl1.StyleController = this.layoutControl6;
-            this.labelControl1.TabIndex = 25;
-            this.labelControl1.Text = "X   축";
-            // 
-            // radioGroupMenualValueMode
-            // 
-            this.radioGroupMenualValueMode.Location = new System.Drawing.Point(4, 85);
-            this.radioGroupMenualValueMode.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.radioGroupMenualValueMode.Name = "radioGroupMenualValueMode";
-            this.radioGroupMenualValueMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "기본값 모드"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "사용자 모드")});
-            this.radioGroupMenualValueMode.Size = new System.Drawing.Size(166, 46);
-            this.radioGroupMenualValueMode.StyleController = this.layoutControl6;
-            this.radioGroupMenualValueMode.TabIndex = 1;
-            this.radioGroupMenualValueMode.SelectedIndexChanged += new System.EventHandler(this.radioGroupMenualValueMode_SelectedIndexChanged);
-            // 
-            // CheckButtonXStopControlCommand
-            // 
-            this.CheckButtonXStopControlCommand.Location = new System.Drawing.Point(186, 135);
-            this.CheckButtonXStopControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonXStopControlCommand.Name = "CheckButtonXStopControlCommand";
-            this.CheckButtonXStopControlCommand.Size = new System.Drawing.Size(143, 22);
-            this.CheckButtonXStopControlCommand.StyleController = this.layoutControl6;
-            this.CheckButtonXStopControlCommand.TabIndex = 23;
-            this.CheckButtonXStopControlCommand.Text = "■(정지)";
-            this.CheckButtonXStopControlCommand.CheckedChanged += new System.EventHandler(this.ButtonStopControlCommand_CheckedChanged);
-            this.CheckButtonXStopControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // CheckButtonYPlusControlCommand
-            // 
-            this.CheckButtonYPlusControlCommand.Location = new System.Drawing.Point(333, 161);
-            this.CheckButtonYPlusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonYPlusControlCommand.Name = "CheckButtonYPlusControlCommand";
-            this.CheckButtonYPlusControlCommand.Size = new System.Drawing.Size(146, 22);
-            this.CheckButtonYPlusControlCommand.StyleController = this.layoutControl6;
-            this.CheckButtonYPlusControlCommand.TabIndex = 29;
-            this.CheckButtonYPlusControlCommand.Text = "》(+)";
-            this.CheckButtonYPlusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
-            this.CheckButtonYPlusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // CheckButtonXMinusControlCommand
-            // 
-            this.CheckButtonXMinusControlCommand.Location = new System.Drawing.Point(37, 135);
-            this.CheckButtonXMinusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonXMinusControlCommand.Name = "CheckButtonXMinusControlCommand";
-            this.CheckButtonXMinusControlCommand.Size = new System.Drawing.Size(145, 22);
-            this.CheckButtonXMinusControlCommand.StyleController = this.layoutControl6;
-            this.CheckButtonXMinusControlCommand.TabIndex = 22;
-            this.CheckButtonXMinusControlCommand.Text = "(-)《";
-            this.CheckButtonXMinusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
-            this.CheckButtonXMinusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // CheckButtonZPlusControlCommand
-            // 
-            this.CheckButtonZPlusControlCommand.Location = new System.Drawing.Point(333, 187);
-            this.CheckButtonZPlusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonZPlusControlCommand.Name = "CheckButtonZPlusControlCommand";
-            this.CheckButtonZPlusControlCommand.Size = new System.Drawing.Size(146, 22);
-            this.CheckButtonZPlusControlCommand.StyleController = this.layoutControl6;
-            this.CheckButtonZPlusControlCommand.TabIndex = 37;
-            this.CheckButtonZPlusControlCommand.Text = "》(+)";
-            this.CheckButtonZPlusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
-            this.CheckButtonZPlusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // CheckButtonYStopControlCommand
-            // 
-            this.CheckButtonYStopControlCommand.Location = new System.Drawing.Point(186, 161);
-            this.CheckButtonYStopControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonYStopControlCommand.Name = "CheckButtonYStopControlCommand";
-            this.CheckButtonYStopControlCommand.Size = new System.Drawing.Size(143, 22);
-            this.CheckButtonYStopControlCommand.StyleController = this.layoutControl6;
-            this.CheckButtonYStopControlCommand.TabIndex = 28;
-            this.CheckButtonYStopControlCommand.Text = "■(정지)";
-            this.CheckButtonYStopControlCommand.CheckedChanged += new System.EventHandler(this.ButtonStopControlCommand_CheckedChanged);
-            this.CheckButtonYStopControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // checkEditCalibration
-            // 
-            this.checkEditCalibration.Location = new System.Drawing.Point(4, 213);
-            this.checkEditCalibration.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.checkEditCalibration.Name = "checkEditCalibration";
-            this.checkEditCalibration.Properties.Caption = "위치보정 활성화";
-            this.checkEditCalibration.Size = new System.Drawing.Size(178, 19);
-            this.checkEditCalibration.StyleController = this.layoutControl6;
-            this.checkEditCalibration.TabIndex = 37;
-            // 
-            // CheckButtonYMinusControlCommand
-            // 
-            this.CheckButtonYMinusControlCommand.Location = new System.Drawing.Point(38, 161);
-            this.CheckButtonYMinusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonYMinusControlCommand.Name = "CheckButtonYMinusControlCommand";
-            this.CheckButtonYMinusControlCommand.Size = new System.Drawing.Size(144, 22);
-            this.CheckButtonYMinusControlCommand.StyleController = this.layoutControl6;
-            this.CheckButtonYMinusControlCommand.TabIndex = 27;
-            this.CheckButtonYMinusControlCommand.Text = "(-)《";
-            this.CheckButtonYMinusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
-            this.CheckButtonYMinusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // CheckButtonZStopControlCommand
-            // 
-            this.CheckButtonZStopControlCommand.Location = new System.Drawing.Point(186, 187);
-            this.CheckButtonZStopControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonZStopControlCommand.Name = "CheckButtonZStopControlCommand";
-            this.CheckButtonZStopControlCommand.Size = new System.Drawing.Size(143, 22);
-            this.CheckButtonZStopControlCommand.StyleController = this.layoutControl6;
-            this.CheckButtonZStopControlCommand.TabIndex = 36;
-            this.CheckButtonZStopControlCommand.Text = "■(정지)";
-            this.CheckButtonZStopControlCommand.CheckedChanged += new System.EventHandler(this.ButtonStopControlCommand_CheckedChanged);
-            this.CheckButtonZStopControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Options.UseTextOptions = true;
-            this.labelControl2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl2.Location = new System.Drawing.Point(4, 161);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(30, 14);
-            this.labelControl2.StyleController = this.layoutControl6;
-            this.labelControl2.TabIndex = 26;
-            this.labelControl2.Text = "Y   축";
-            // 
             // textEditTargetAcceleration
             // 
             this.textEditTargetAcceleration.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEditTargetAcceleration.Location = new System.Drawing.Point(232, 266);
+            this.textEditTargetAcceleration.Location = new System.Drawing.Point(232, 237);
             this.textEditTargetAcceleration.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.textEditTargetAcceleration.Name = "textEditTargetAcceleration";
             this.textEditTargetAcceleration.Properties.Appearance.Options.UseTextOptions = true;
@@ -1343,28 +1121,163 @@
             this.textEditTargetAcceleration.Properties.Mask.EditMask = "n3";
             this.textEditTargetAcceleration.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEditTargetAcceleration.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.textEditTargetAcceleration.Size = new System.Drawing.Size(86, 20);
+            this.textEditTargetAcceleration.Size = new System.Drawing.Size(90, 20);
             this.textEditTargetAcceleration.StyleController = this.layoutControl6;
             this.textEditTargetAcceleration.TabIndex = 36;
             // 
-            // CheckButtonZMinusControlCommand
+            // checkButtonMiddleValue
             // 
-            this.CheckButtonZMinusControlCommand.Location = new System.Drawing.Point(37, 187);
-            this.CheckButtonZMinusControlCommand.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CheckButtonZMinusControlCommand.Name = "CheckButtonZMinusControlCommand";
-            this.CheckButtonZMinusControlCommand.Size = new System.Drawing.Size(145, 22);
-            this.CheckButtonZMinusControlCommand.StyleController = this.layoutControl6;
-            this.CheckButtonZMinusControlCommand.TabIndex = 35;
-            this.CheckButtonZMinusControlCommand.Text = "(-)《";
-            this.CheckButtonZMinusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
-            this.CheckButtonZMinusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            this.checkButtonMiddleValue.Location = new System.Drawing.Point(278, 85);
+            this.checkButtonMiddleValue.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.checkButtonMiddleValue.Name = "checkButtonMiddleValue";
+            this.checkButtonMiddleValue.Size = new System.Drawing.Size(101, 22);
+            this.checkButtonMiddleValue.StyleController = this.layoutControl6;
+            this.checkButtonMiddleValue.TabIndex = 15;
+            this.checkButtonMiddleValue.Text = "중간값";
+            this.checkButtonMiddleValue.CheckedChanged += new System.EventHandler(this.checkButtonMiddleValue_CheckedChanged);
+            this.checkButtonMiddleValue.Click += new System.EventHandler(this.checkButtonMiddleValue_Click);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Options.UseTextOptions = true;
+            this.labelControl1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.labelControl1.Location = new System.Drawing.Point(4, 135);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(29, 14);
+            this.labelControl1.StyleController = this.layoutControl6;
+            this.labelControl1.TabIndex = 25;
+            this.labelControl1.Text = "X   축";
+            // 
+            // checkButtonLowValue
+            // 
+            this.checkButtonLowValue.Location = new System.Drawing.Point(165, 85);
+            this.checkButtonLowValue.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.checkButtonLowValue.Name = "checkButtonLowValue";
+            this.checkButtonLowValue.Size = new System.Drawing.Size(109, 22);
+            this.checkButtonLowValue.StyleController = this.layoutControl6;
+            this.checkButtonLowValue.TabIndex = 14;
+            this.checkButtonLowValue.Text = "작은값";
+            this.checkButtonLowValue.CheckedChanged += new System.EventHandler(this.checkButtonLowValue_CheckedChanged);
+            this.checkButtonLowValue.Click += new System.EventHandler(this.checkButtonLowValue_Click);
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Options.UseTextOptions = true;
+            this.labelControl2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.labelControl2.Location = new System.Drawing.Point(4, 161);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(30, 14);
+            this.labelControl2.StyleController = this.layoutControl6;
+            this.labelControl2.TabIndex = 26;
+            this.labelControl2.Text = "Y   축";
+            // 
+            // textEditUserDefineValue
+            // 
+            this.textEditUserDefineValue.EditValue = "";
+            this.textEditUserDefineValue.Location = new System.Drawing.Point(232, 111);
+            this.textEditUserDefineValue.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.textEditUserDefineValue.Name = "textEditUserDefineValue";
+            this.textEditUserDefineValue.Properties.Appearance.Options.UseTextOptions = true;
+            this.textEditUserDefineValue.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.textEditUserDefineValue.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.textEditUserDefineValue.Size = new System.Drawing.Size(252, 20);
+            this.textEditUserDefineValue.StyleController = this.layoutControl6;
+            this.textEditUserDefineValue.TabIndex = 46;
+            this.textEditUserDefineValue.EditValueChanged += new System.EventHandler(this.textEditUserDefineValue_EditValueChanged);
+            // 
+            // radioGroupMenualValueMode
+            // 
+            this.radioGroupMenualValueMode.Location = new System.Drawing.Point(4, 85);
+            this.radioGroupMenualValueMode.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.radioGroupMenualValueMode.Name = "radioGroupMenualValueMode";
+            this.radioGroupMenualValueMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "기본값 모드"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "사용자 모드")});
+            this.radioGroupMenualValueMode.Size = new System.Drawing.Size(157, 46);
+            this.radioGroupMenualValueMode.StyleController = this.layoutControl6;
+            this.radioGroupMenualValueMode.TabIndex = 1;
+            this.radioGroupMenualValueMode.SelectedIndexChanged += new System.EventHandler(this.radioGroupMenualValueMode_SelectedIndexChanged);
+            // 
+            // CheckButtonXPlusControlCommand
+            // 
+            this.CheckButtonXPlusControlCommand.Location = new System.Drawing.Point(339, 135);
+            this.CheckButtonXPlusControlCommand.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.CheckButtonXPlusControlCommand.Name = "CheckButtonXPlusControlCommand";
+            this.CheckButtonXPlusControlCommand.Size = new System.Drawing.Size(145, 22);
+            this.CheckButtonXPlusControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonXPlusControlCommand.TabIndex = 24;
+            this.CheckButtonXPlusControlCommand.Text = "》(+)";
+            this.CheckButtonXPlusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
+            this.CheckButtonXPlusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // CheckButtonYPlusControlCommand
+            // 
+            this.CheckButtonYPlusControlCommand.Location = new System.Drawing.Point(339, 161);
+            this.CheckButtonYPlusControlCommand.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.CheckButtonYPlusControlCommand.Name = "CheckButtonYPlusControlCommand";
+            this.CheckButtonYPlusControlCommand.Size = new System.Drawing.Size(145, 22);
+            this.CheckButtonYPlusControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonYPlusControlCommand.TabIndex = 29;
+            this.CheckButtonYPlusControlCommand.Text = "》(+)";
+            this.CheckButtonYPlusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
+            this.CheckButtonYPlusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // CheckButtonXStopControlCommand
+            // 
+            this.CheckButtonXStopControlCommand.Location = new System.Drawing.Point(192, 135);
+            this.CheckButtonXStopControlCommand.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.CheckButtonXStopControlCommand.Name = "CheckButtonXStopControlCommand";
+            this.CheckButtonXStopControlCommand.Size = new System.Drawing.Size(143, 22);
+            this.CheckButtonXStopControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonXStopControlCommand.TabIndex = 23;
+            this.CheckButtonXStopControlCommand.Text = "■(정지)";
+            this.CheckButtonXStopControlCommand.CheckedChanged += new System.EventHandler(this.ButtonStopControlCommand_CheckedChanged);
+            this.CheckButtonXStopControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // CheckButtonZPlusControlCommand
+            // 
+            this.CheckButtonZPlusControlCommand.Location = new System.Drawing.Point(339, 187);
+            this.CheckButtonZPlusControlCommand.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.CheckButtonZPlusControlCommand.Name = "CheckButtonZPlusControlCommand";
+            this.CheckButtonZPlusControlCommand.Size = new System.Drawing.Size(145, 22);
+            this.CheckButtonZPlusControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonZPlusControlCommand.TabIndex = 37;
+            this.CheckButtonZPlusControlCommand.Text = "》(+)";
+            this.CheckButtonZPlusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
+            this.CheckButtonZPlusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // CheckButtonXMinusControlCommand
+            // 
+            this.CheckButtonXMinusControlCommand.Location = new System.Drawing.Point(37, 135);
+            this.CheckButtonXMinusControlCommand.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.CheckButtonXMinusControlCommand.Name = "CheckButtonXMinusControlCommand";
+            this.CheckButtonXMinusControlCommand.Size = new System.Drawing.Size(151, 22);
+            this.CheckButtonXMinusControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonXMinusControlCommand.TabIndex = 22;
+            this.CheckButtonXMinusControlCommand.Text = "(-)《";
+            this.CheckButtonXMinusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
+            this.CheckButtonXMinusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // CheckButtonYStopControlCommand
+            // 
+            this.CheckButtonYStopControlCommand.Location = new System.Drawing.Point(192, 161);
+            this.CheckButtonYStopControlCommand.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.CheckButtonYStopControlCommand.Name = "CheckButtonYStopControlCommand";
+            this.CheckButtonYStopControlCommand.Size = new System.Drawing.Size(143, 22);
+            this.CheckButtonYStopControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonYStopControlCommand.TabIndex = 28;
+            this.CheckButtonYStopControlCommand.Text = "■(정지)";
+            this.CheckButtonYStopControlCommand.CheckedChanged += new System.EventHandler(this.ButtonStopControlCommand_CheckedChanged);
+            this.CheckButtonYStopControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
             // 
             // textEditTargetVelocity
             // 
             this.textEditTargetVelocity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEditTargetVelocity.Location = new System.Drawing.Point(71, 266);
+            this.textEditTargetVelocity.Location = new System.Drawing.Point(71, 237);
             this.textEditTargetVelocity.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.textEditTargetVelocity.Name = "textEditTargetVelocity";
             this.textEditTargetVelocity.Properties.Appearance.Options.UseTextOptions = true;
@@ -1378,22 +1291,34 @@
             this.textEditTargetVelocity.TabIndex = 35;
             this.textEditTargetVelocity.EditValueChanged += new System.EventHandler(this.textEditTargetVelocity_EditValueChanged);
             // 
-            // labelControl4
+            // CheckButtonYMinusControlCommand
             // 
-            this.labelControl4.Appearance.Options.UseTextOptions = true;
-            this.labelControl4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl4.Location = new System.Drawing.Point(4, 187);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(29, 14);
-            this.labelControl4.StyleController = this.layoutControl6;
-            this.labelControl4.TabIndex = 34;
-            this.labelControl4.Text = "Z   축";
+            this.CheckButtonYMinusControlCommand.Location = new System.Drawing.Point(38, 161);
+            this.CheckButtonYMinusControlCommand.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.CheckButtonYMinusControlCommand.Name = "CheckButtonYMinusControlCommand";
+            this.CheckButtonYMinusControlCommand.Size = new System.Drawing.Size(150, 22);
+            this.CheckButtonYMinusControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonYMinusControlCommand.TabIndex = 27;
+            this.CheckButtonYMinusControlCommand.Text = "(-)《";
+            this.CheckButtonYMinusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
+            this.CheckButtonYMinusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
+            // CheckButtonZStopControlCommand
+            // 
+            this.CheckButtonZStopControlCommand.Location = new System.Drawing.Point(192, 187);
+            this.CheckButtonZStopControlCommand.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.CheckButtonZStopControlCommand.Name = "CheckButtonZStopControlCommand";
+            this.CheckButtonZStopControlCommand.Size = new System.Drawing.Size(143, 22);
+            this.CheckButtonZStopControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonZStopControlCommand.TabIndex = 36;
+            this.CheckButtonZStopControlCommand.Text = "■(정지)";
+            this.CheckButtonZStopControlCommand.CheckedChanged += new System.EventHandler(this.ButtonStopControlCommand_CheckedChanged);
+            this.CheckButtonZStopControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
             // 
             // textEditTargetPosZ
             // 
-            this.textEditTargetPosZ.Location = new System.Drawing.Point(389, 242);
-            this.textEditTargetPosZ.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditTargetPosZ.Location = new System.Drawing.Point(393, 213);
+            this.textEditTargetPosZ.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditTargetPosZ.Name = "textEditTargetPosZ";
             this.textEditTargetPosZ.Properties.Appearance.Options.UseTextOptions = true;
             this.textEditTargetPosZ.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -1401,15 +1326,39 @@
             this.textEditTargetPosZ.Properties.Mask.EditMask = "n3";
             this.textEditTargetPosZ.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEditTargetPosZ.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.textEditTargetPosZ.Size = new System.Drawing.Size(90, 20);
+            this.textEditTargetPosZ.Size = new System.Drawing.Size(91, 20);
             this.textEditTargetPosZ.StyleController = this.layoutControl6;
             this.textEditTargetPosZ.TabIndex = 31;
             this.textEditTargetPosZ.EditValueChanged += new System.EventHandler(this.textEditTargetPosZ_EditValueChanged);
             // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Options.UseTextOptions = true;
+            this.labelControl4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.labelControl4.Location = new System.Drawing.Point(4, 187);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(29, 14);
+            this.labelControl4.StyleController = this.layoutControl6;
+            this.labelControl4.TabIndex = 34;
+            this.labelControl4.Text = "Z   축";
+            // 
+            // CheckButtonZMinusControlCommand
+            // 
+            this.CheckButtonZMinusControlCommand.Location = new System.Drawing.Point(37, 187);
+            this.CheckButtonZMinusControlCommand.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.CheckButtonZMinusControlCommand.Name = "CheckButtonZMinusControlCommand";
+            this.CheckButtonZMinusControlCommand.Size = new System.Drawing.Size(151, 22);
+            this.CheckButtonZMinusControlCommand.StyleController = this.layoutControl6;
+            this.CheckButtonZMinusControlCommand.TabIndex = 35;
+            this.CheckButtonZMinusControlCommand.Text = "(-)《";
+            this.CheckButtonZMinusControlCommand.CheckedChanged += new System.EventHandler(this.CheckButtonStateControlCommand_CheckedChanged);
+            this.CheckButtonZMinusControlCommand.Click += new System.EventHandler(this.checkButtonJogMove_Click);
+            // 
             // textEditTargetPosY
             // 
-            this.textEditTargetPosY.Location = new System.Drawing.Point(232, 242);
-            this.textEditTargetPosY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditTargetPosY.Location = new System.Drawing.Point(232, 213);
+            this.textEditTargetPosY.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditTargetPosY.Name = "textEditTargetPosY";
             this.textEditTargetPosY.Properties.Appearance.Options.UseTextOptions = true;
             this.textEditTargetPosY.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -1417,15 +1366,15 @@
             this.textEditTargetPosY.Properties.Mask.EditMask = "n3";
             this.textEditTargetPosY.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEditTargetPosY.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.textEditTargetPosY.Size = new System.Drawing.Size(86, 20);
+            this.textEditTargetPosY.Size = new System.Drawing.Size(90, 20);
             this.textEditTargetPosY.StyleController = this.layoutControl6;
             this.textEditTargetPosY.TabIndex = 30;
             this.textEditTargetPosY.EditValueChanged += new System.EventHandler(this.textEditTargetPosY_EditValueChanged);
             // 
             // textEditTargetPosX
             // 
-            this.textEditTargetPosX.Location = new System.Drawing.Point(71, 242);
-            this.textEditTargetPosX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditTargetPosX.Location = new System.Drawing.Point(71, 213);
+            this.textEditTargetPosX.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditTargetPosX.Name = "textEditTargetPosX";
             this.textEditTargetPosX.Properties.Appearance.Options.UseTextOptions = true;
             this.textEditTargetPosX.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -1440,10 +1389,10 @@
             // 
             // SendCmdHommingButton
             // 
-            this.SendCmdHommingButton.Location = new System.Drawing.Point(124, 4);
-            this.SendCmdHommingButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.SendCmdHommingButton.Location = new System.Drawing.Point(125, 4);
+            this.SendCmdHommingButton.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.SendCmdHommingButton.Name = "SendCmdHommingButton";
-            this.SendCmdHommingButton.Size = new System.Drawing.Size(116, 22);
+            this.SendCmdHommingButton.Size = new System.Drawing.Size(117, 22);
             this.SendCmdHommingButton.StyleController = this.layoutControl6;
             this.SendCmdHommingButton.TabIndex = 28;
             this.SendCmdHommingButton.Text = "원점 복귀";
@@ -1451,10 +1400,10 @@
             // 
             // SendCommandMoveStopButton
             // 
-            this.SendCommandMoveStopButton.Location = new System.Drawing.Point(401, 266);
+            this.SendCommandMoveStopButton.Location = new System.Drawing.Point(405, 237);
             this.SendCommandMoveStopButton.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.SendCommandMoveStopButton.Name = "SendCommandMoveStopButton";
-            this.SendCommandMoveStopButton.Size = new System.Drawing.Size(78, 22);
+            this.SendCommandMoveStopButton.Size = new System.Drawing.Size(79, 22);
             this.SendCommandMoveStopButton.StyleController = this.layoutControl6;
             this.SendCommandMoveStopButton.TabIndex = 27;
             this.SendCommandMoveStopButton.Text = "정지 하기";
@@ -1462,10 +1411,10 @@
             // 
             // ErrorResetButton
             // 
-            this.ErrorResetButton.Location = new System.Drawing.Point(363, 4);
-            this.ErrorResetButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.ErrorResetButton.Location = new System.Drawing.Point(366, 4);
+            this.ErrorResetButton.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.ErrorResetButton.Name = "ErrorResetButton";
-            this.ErrorResetButton.Size = new System.Drawing.Size(116, 22);
+            this.ErrorResetButton.Size = new System.Drawing.Size(118, 22);
             this.ErrorResetButton.StyleController = this.layoutControl6;
             this.ErrorResetButton.TabIndex = 26;
             this.ErrorResetButton.Text = "오류 복구";
@@ -1473,10 +1422,10 @@
             // 
             // EmergencyStopButton
             // 
-            this.EmergencyStopButton.Location = new System.Drawing.Point(244, 4);
-            this.EmergencyStopButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.EmergencyStopButton.Location = new System.Drawing.Point(246, 4);
+            this.EmergencyStopButton.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.EmergencyStopButton.Name = "EmergencyStopButton";
-            this.EmergencyStopButton.Size = new System.Drawing.Size(115, 22);
+            this.EmergencyStopButton.Size = new System.Drawing.Size(116, 22);
             this.EmergencyStopButton.StyleController = this.layoutControl6;
             this.EmergencyStopButton.TabIndex = 25;
             this.EmergencyStopButton.Text = "응급 정지";
@@ -1485,9 +1434,9 @@
             // RobotEnableButton
             // 
             this.RobotEnableButton.Location = new System.Drawing.Point(4, 4);
-            this.RobotEnableButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.RobotEnableButton.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.RobotEnableButton.Name = "RobotEnableButton";
-            this.RobotEnableButton.Size = new System.Drawing.Size(116, 22);
+            this.RobotEnableButton.Size = new System.Drawing.Size(117, 22);
             this.RobotEnableButton.StyleController = this.layoutControl6;
             this.RobotEnableButton.TabIndex = 24;
             this.RobotEnableButton.Text = "모션제어 활성화";
@@ -1495,7 +1444,7 @@
             // 
             // SendCmdPositionButton
             // 
-            this.SendCmdPositionButton.Location = new System.Drawing.Point(322, 266);
+            this.SendCmdPositionButton.Location = new System.Drawing.Point(326, 237);
             this.SendCmdPositionButton.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.SendCmdPositionButton.Name = "SendCmdPositionButton";
             this.SendCmdPositionButton.Size = new System.Drawing.Size(75, 22);
@@ -1506,15 +1455,15 @@
             // 
             // radioGroupMenualControlMode
             // 
-            this.radioGroupMenualControlMode.Location = new System.Drawing.Point(174, 56);
-            this.radioGroupMenualControlMode.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.radioGroupMenualControlMode.Location = new System.Drawing.Point(165, 56);
+            this.radioGroupMenualControlMode.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.radioGroupMenualControlMode.Name = "radioGroupMenualControlMode";
             this.radioGroupMenualControlMode.Properties.Columns = 3;
             this.radioGroupMenualControlMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "조그 제어"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "상대 위치 제어"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "절대 위치 제어")});
-            this.radioGroupMenualControlMode.Size = new System.Drawing.Size(305, 25);
+            this.radioGroupMenualControlMode.Size = new System.Drawing.Size(319, 25);
             this.radioGroupMenualControlMode.StyleController = this.layoutControl6;
             this.radioGroupMenualControlMode.TabIndex = 13;
             this.radioGroupMenualControlMode.SelectedIndexChanged += new System.EventHandler(this.radioGroupMenualControlMode_SelectedIndexChanged);
@@ -1522,13 +1471,13 @@
             // radioGroupMenualMode
             // 
             this.radioGroupMenualMode.Location = new System.Drawing.Point(4, 56);
-            this.radioGroupMenualMode.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.radioGroupMenualMode.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.radioGroupMenualMode.Name = "radioGroupMenualMode";
             this.radioGroupMenualMode.Properties.Columns = 2;
             this.radioGroupMenualMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "조그 모드"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "좌표 모드")});
-            this.radioGroupMenualMode.Size = new System.Drawing.Size(166, 25);
+            this.radioGroupMenualMode.Size = new System.Drawing.Size(157, 25);
             this.radioGroupMenualMode.StyleController = this.layoutControl6;
             this.radioGroupMenualMode.TabIndex = 12;
             this.radioGroupMenualMode.SelectedIndexChanged += new System.EventHandler(this.radioGroupMenualMode_SelectedIndexChanged);
@@ -1536,9 +1485,9 @@
             // checkButtonMenualMode
             // 
             this.checkButtonMenualMode.Location = new System.Drawing.Point(4, 30);
-            this.checkButtonMenualMode.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.checkButtonMenualMode.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.checkButtonMenualMode.Name = "checkButtonMenualMode";
-            this.checkButtonMenualMode.Size = new System.Drawing.Size(475, 22);
+            this.checkButtonMenualMode.Size = new System.Drawing.Size(480, 22);
             this.checkButtonMenualMode.StyleController = this.layoutControl6;
             this.checkButtonMenualMode.TabIndex = 11;
             this.checkButtonMenualMode.Text = "수동 모드";
@@ -1562,20 +1511,18 @@
             this.layoutControlItem118,
             this.layoutControlItem24,
             this.layoutControlItem34,
-            this.layoutControlItem36,
-            this.layoutControlItem156,
+            this.layoutControlItem16,
             this.layoutControlItem21,
             this.layoutControlItem22,
-            this.layoutControlItem49,
-            this.layoutControlItem50,
-            this.layoutControlItem41,
+            this.layoutControlItem36,
             this.layoutControlItem42,
             this.layoutControlItem43,
             this.layoutControlItem44,
-            this.layoutControlItem40,
+            this.layoutControlItem41,
             this.layoutControlItem37,
             this.layoutControlItem38,
             this.layoutControlItem39,
+            this.layoutControlItem40,
             this.layoutControlItem32,
             this.textBoxUserDefineValue,
             this.layoutControlItem29,
@@ -1583,7 +1530,7 @@
             this.layoutControlItem31});
             this.layoutControlGroup7.Name = "layoutControlGroup7";
             this.layoutControlGroup7.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
-            this.layoutControlGroup7.Size = new System.Drawing.Size(483, 292);
+            this.layoutControlGroup7.Size = new System.Drawing.Size(488, 263);
             this.layoutControlGroup7.TextVisible = false;
             // 
             // layoutControlItem27
@@ -1591,7 +1538,7 @@
             this.layoutControlItem27.Control = this.checkButtonMenualMode;
             this.layoutControlItem27.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem27.Name = "layoutControlItem27";
-            this.layoutControlItem27.Size = new System.Drawing.Size(479, 26);
+            this.layoutControlItem27.Size = new System.Drawing.Size(484, 26);
             this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem27.TextVisible = false;
             // 
@@ -1600,23 +1547,23 @@
             this.layoutControlItem26.Control = this.radioGroupMenualMode;
             this.layoutControlItem26.Location = new System.Drawing.Point(0, 52);
             this.layoutControlItem26.Name = "layoutControlItem26";
-            this.layoutControlItem26.Size = new System.Drawing.Size(170, 29);
+            this.layoutControlItem26.Size = new System.Drawing.Size(161, 29);
             this.layoutControlItem26.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem26.TextVisible = false;
             // 
             // layoutControlItem28
             // 
             this.layoutControlItem28.Control = this.radioGroupMenualControlMode;
-            this.layoutControlItem28.Location = new System.Drawing.Point(170, 52);
+            this.layoutControlItem28.Location = new System.Drawing.Point(161, 52);
             this.layoutControlItem28.Name = "layoutControlItem28";
-            this.layoutControlItem28.Size = new System.Drawing.Size(309, 29);
+            this.layoutControlItem28.Size = new System.Drawing.Size(323, 29);
             this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem28.TextVisible = false;
             // 
             // layoutControlItem61
             // 
             this.layoutControlItem61.Control = this.SendCmdPositionButton;
-            this.layoutControlItem61.Location = new System.Drawing.Point(318, 262);
+            this.layoutControlItem61.Location = new System.Drawing.Point(322, 233);
             this.layoutControlItem61.Name = "layoutControlItem61";
             this.layoutControlItem61.Size = new System.Drawing.Size(79, 26);
             this.layoutControlItem61.TextSize = new System.Drawing.Size(0, 0);
@@ -1627,50 +1574,50 @@
             this.layoutControlItem153.Control = this.RobotEnableButton;
             this.layoutControlItem153.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem153.Name = "layoutControlItem153";
-            this.layoutControlItem153.Size = new System.Drawing.Size(120, 26);
+            this.layoutControlItem153.Size = new System.Drawing.Size(121, 26);
             this.layoutControlItem153.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem153.TextVisible = false;
             // 
             // layoutControlItem154
             // 
             this.layoutControlItem154.Control = this.EmergencyStopButton;
-            this.layoutControlItem154.Location = new System.Drawing.Point(240, 0);
+            this.layoutControlItem154.Location = new System.Drawing.Point(242, 0);
             this.layoutControlItem154.Name = "layoutControlItem154";
-            this.layoutControlItem154.Size = new System.Drawing.Size(119, 26);
+            this.layoutControlItem154.Size = new System.Drawing.Size(120, 26);
             this.layoutControlItem154.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem154.TextVisible = false;
             // 
             // layoutControlItem155
             // 
             this.layoutControlItem155.Control = this.ErrorResetButton;
-            this.layoutControlItem155.Location = new System.Drawing.Point(359, 0);
+            this.layoutControlItem155.Location = new System.Drawing.Point(362, 0);
             this.layoutControlItem155.Name = "layoutControlItem155";
-            this.layoutControlItem155.Size = new System.Drawing.Size(120, 26);
+            this.layoutControlItem155.Size = new System.Drawing.Size(122, 26);
             this.layoutControlItem155.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem155.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.SendCommandMoveStopButton;
-            this.layoutControlItem1.Location = new System.Drawing.Point(397, 262);
+            this.layoutControlItem1.Location = new System.Drawing.Point(401, 233);
             this.layoutControlItem1.Name = "layoutControlItem7";
-            this.layoutControlItem1.Size = new System.Drawing.Size(82, 26);
+            this.layoutControlItem1.Size = new System.Drawing.Size(83, 26);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem33
             // 
             this.layoutControlItem33.Control = this.SendCmdHommingButton;
-            this.layoutControlItem33.Location = new System.Drawing.Point(120, 0);
+            this.layoutControlItem33.Location = new System.Drawing.Point(121, 0);
             this.layoutControlItem33.Name = "layoutControlItem33";
-            this.layoutControlItem33.Size = new System.Drawing.Size(120, 26);
+            this.layoutControlItem33.Size = new System.Drawing.Size(121, 26);
             this.layoutControlItem33.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem33.TextVisible = false;
             // 
             // layoutControlItem19
             // 
             this.layoutControlItem19.Control = this.textEditTargetPosX;
-            this.layoutControlItem19.Location = new System.Drawing.Point(0, 238);
+            this.layoutControlItem19.Location = new System.Drawing.Point(0, 209);
             this.layoutControlItem19.Name = "layoutControlItem19";
             this.layoutControlItem19.Size = new System.Drawing.Size(161, 24);
             this.layoutControlItem19.Text = "목표 위치(X)";
@@ -1679,25 +1626,25 @@
             // layoutControlItem20
             // 
             this.layoutControlItem20.Control = this.textEditTargetPosY;
-            this.layoutControlItem20.Location = new System.Drawing.Point(161, 238);
+            this.layoutControlItem20.Location = new System.Drawing.Point(161, 209);
             this.layoutControlItem20.Name = "layoutControlItem20";
-            this.layoutControlItem20.Size = new System.Drawing.Size(157, 24);
+            this.layoutControlItem20.Size = new System.Drawing.Size(161, 24);
             this.layoutControlItem20.Text = "목표 위치(Y)";
             this.layoutControlItem20.TextSize = new System.Drawing.Size(64, 14);
             // 
             // layoutControlItem118
             // 
             this.layoutControlItem118.Control = this.textEditTargetPosZ;
-            this.layoutControlItem118.Location = new System.Drawing.Point(318, 238);
+            this.layoutControlItem118.Location = new System.Drawing.Point(322, 209);
             this.layoutControlItem118.Name = "layoutControlItem118";
-            this.layoutControlItem118.Size = new System.Drawing.Size(161, 24);
+            this.layoutControlItem118.Size = new System.Drawing.Size(162, 24);
             this.layoutControlItem118.Text = "목표 위치(Z)";
             this.layoutControlItem118.TextSize = new System.Drawing.Size(64, 14);
             // 
             // layoutControlItem24
             // 
             this.layoutControlItem24.Control = this.textEditTargetVelocity;
-            this.layoutControlItem24.Location = new System.Drawing.Point(0, 262);
+            this.layoutControlItem24.Location = new System.Drawing.Point(0, 233);
             this.layoutControlItem24.Name = "layoutControlItem24";
             this.layoutControlItem24.Size = new System.Drawing.Size(161, 26);
             this.layoutControlItem24.Text = "목표 속도";
@@ -1706,29 +1653,20 @@
             // layoutControlItem34
             // 
             this.layoutControlItem34.Control = this.textEditTargetAcceleration;
-            this.layoutControlItem34.Location = new System.Drawing.Point(161, 262);
+            this.layoutControlItem34.Location = new System.Drawing.Point(161, 233);
             this.layoutControlItem34.Name = "layoutControlItem34";
-            this.layoutControlItem34.Size = new System.Drawing.Size(157, 26);
+            this.layoutControlItem34.Size = new System.Drawing.Size(161, 26);
             this.layoutControlItem34.Text = "목표 가속도";
             this.layoutControlItem34.TextSize = new System.Drawing.Size(64, 14);
             // 
-            // layoutControlItem36
+            // layoutControlItem16
             // 
-            this.layoutControlItem36.Control = this.checkEditCalibration;
-            this.layoutControlItem36.Location = new System.Drawing.Point(0, 209);
-            this.layoutControlItem36.Name = "layoutControlItem36";
-            this.layoutControlItem36.Size = new System.Drawing.Size(182, 29);
-            this.layoutControlItem36.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem36.TextVisible = false;
-            // 
-            // layoutControlItem156
-            // 
-            this.layoutControlItem156.Control = this.radioGroupCalibration;
-            this.layoutControlItem156.Location = new System.Drawing.Point(182, 209);
-            this.layoutControlItem156.Name = "layoutControlItem156";
-            this.layoutControlItem156.Size = new System.Drawing.Size(297, 29);
-            this.layoutControlItem156.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem156.TextVisible = false;
+            this.layoutControlItem16.Control = this.CheckButtonZMinusControlCommand;
+            this.layoutControlItem16.Location = new System.Drawing.Point(33, 183);
+            this.layoutControlItem16.Name = "layoutControlItem16";
+            this.layoutControlItem16.Size = new System.Drawing.Size(155, 26);
+            this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem16.TextVisible = false;
             // 
             // layoutControlItem21
             // 
@@ -1741,30 +1679,48 @@
             // 
             // layoutControlItem22
             // 
-            this.layoutControlItem22.Control = this.CheckButtonZMinusControlCommand;
-            this.layoutControlItem22.Location = new System.Drawing.Point(33, 183);
+            this.layoutControlItem22.Control = this.CheckButtonZStopControlCommand;
+            this.layoutControlItem22.Location = new System.Drawing.Point(188, 183);
             this.layoutControlItem22.Name = "layoutControlItem22";
-            this.layoutControlItem22.Size = new System.Drawing.Size(149, 26);
+            this.layoutControlItem22.Size = new System.Drawing.Size(147, 26);
             this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem22.TextVisible = false;
             // 
-            // layoutControlItem49
+            // layoutControlItem36
             // 
-            this.layoutControlItem49.Control = this.CheckButtonZStopControlCommand;
-            this.layoutControlItem49.Location = new System.Drawing.Point(182, 183);
-            this.layoutControlItem49.Name = "layoutControlItem49";
-            this.layoutControlItem49.Size = new System.Drawing.Size(147, 26);
-            this.layoutControlItem49.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem49.TextVisible = false;
+            this.layoutControlItem36.Control = this.CheckButtonZPlusControlCommand;
+            this.layoutControlItem36.Location = new System.Drawing.Point(335, 183);
+            this.layoutControlItem36.Name = "layoutControlItem36";
+            this.layoutControlItem36.Size = new System.Drawing.Size(149, 26);
+            this.layoutControlItem36.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem36.TextVisible = false;
             // 
-            // layoutControlItem50
+            // layoutControlItem42
             // 
-            this.layoutControlItem50.Control = this.CheckButtonZPlusControlCommand;
-            this.layoutControlItem50.Location = new System.Drawing.Point(329, 183);
-            this.layoutControlItem50.Name = "layoutControlItem50";
-            this.layoutControlItem50.Size = new System.Drawing.Size(150, 26);
-            this.layoutControlItem50.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem50.TextVisible = false;
+            this.layoutControlItem42.Control = this.CheckButtonYMinusControlCommand;
+            this.layoutControlItem42.Location = new System.Drawing.Point(34, 157);
+            this.layoutControlItem42.Name = "layoutControlItem42";
+            this.layoutControlItem42.Size = new System.Drawing.Size(154, 26);
+            this.layoutControlItem42.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem42.TextVisible = false;
+            // 
+            // layoutControlItem43
+            // 
+            this.layoutControlItem43.Control = this.CheckButtonYStopControlCommand;
+            this.layoutControlItem43.Location = new System.Drawing.Point(188, 157);
+            this.layoutControlItem43.Name = "layoutControlItem43";
+            this.layoutControlItem43.Size = new System.Drawing.Size(147, 26);
+            this.layoutControlItem43.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem43.TextVisible = false;
+            // 
+            // layoutControlItem44
+            // 
+            this.layoutControlItem44.Control = this.CheckButtonYPlusControlCommand;
+            this.layoutControlItem44.Location = new System.Drawing.Point(335, 157);
+            this.layoutControlItem44.Name = "layoutControlItem44";
+            this.layoutControlItem44.Size = new System.Drawing.Size(149, 26);
+            this.layoutControlItem44.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem44.TextVisible = false;
             // 
             // layoutControlItem41
             // 
@@ -1775,32 +1731,32 @@
             this.layoutControlItem41.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem41.TextVisible = false;
             // 
-            // layoutControlItem42
+            // layoutControlItem37
             // 
-            this.layoutControlItem42.Control = this.CheckButtonYMinusControlCommand;
-            this.layoutControlItem42.Location = new System.Drawing.Point(34, 157);
-            this.layoutControlItem42.Name = "layoutControlItem42";
-            this.layoutControlItem42.Size = new System.Drawing.Size(148, 26);
-            this.layoutControlItem42.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem42.TextVisible = false;
+            this.layoutControlItem37.Control = this.CheckButtonXMinusControlCommand;
+            this.layoutControlItem37.Location = new System.Drawing.Point(33, 131);
+            this.layoutControlItem37.Name = "layoutControlItem37";
+            this.layoutControlItem37.Size = new System.Drawing.Size(155, 26);
+            this.layoutControlItem37.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem37.TextVisible = false;
             // 
-            // layoutControlItem43
+            // layoutControlItem38
             // 
-            this.layoutControlItem43.Control = this.CheckButtonYStopControlCommand;
-            this.layoutControlItem43.Location = new System.Drawing.Point(182, 157);
-            this.layoutControlItem43.Name = "layoutControlItem43";
-            this.layoutControlItem43.Size = new System.Drawing.Size(147, 26);
-            this.layoutControlItem43.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem43.TextVisible = false;
+            this.layoutControlItem38.Control = this.CheckButtonXStopControlCommand;
+            this.layoutControlItem38.Location = new System.Drawing.Point(188, 131);
+            this.layoutControlItem38.Name = "layoutControlItem38";
+            this.layoutControlItem38.Size = new System.Drawing.Size(147, 26);
+            this.layoutControlItem38.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem38.TextVisible = false;
             // 
-            // layoutControlItem44
+            // layoutControlItem39
             // 
-            this.layoutControlItem44.Control = this.CheckButtonYPlusControlCommand;
-            this.layoutControlItem44.Location = new System.Drawing.Point(329, 157);
-            this.layoutControlItem44.Name = "layoutControlItem44";
-            this.layoutControlItem44.Size = new System.Drawing.Size(150, 26);
-            this.layoutControlItem44.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem44.TextVisible = false;
+            this.layoutControlItem39.Control = this.CheckButtonXPlusControlCommand;
+            this.layoutControlItem39.Location = new System.Drawing.Point(335, 131);
+            this.layoutControlItem39.Name = "layoutControlItem39";
+            this.layoutControlItem39.Size = new System.Drawing.Size(149, 26);
+            this.layoutControlItem39.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem39.TextVisible = false;
             // 
             // layoutControlItem40
             // 
@@ -1811,77 +1767,71 @@
             this.layoutControlItem40.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem40.TextVisible = false;
             // 
-            // layoutControlItem37
-            // 
-            this.layoutControlItem37.Control = this.CheckButtonXMinusControlCommand;
-            this.layoutControlItem37.Location = new System.Drawing.Point(33, 131);
-            this.layoutControlItem37.Name = "layoutControlItem37";
-            this.layoutControlItem37.Size = new System.Drawing.Size(149, 26);
-            this.layoutControlItem37.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem37.TextVisible = false;
-            // 
-            // layoutControlItem38
-            // 
-            this.layoutControlItem38.Control = this.CheckButtonXStopControlCommand;
-            this.layoutControlItem38.Location = new System.Drawing.Point(182, 131);
-            this.layoutControlItem38.Name = "layoutControlItem38";
-            this.layoutControlItem38.Size = new System.Drawing.Size(147, 26);
-            this.layoutControlItem38.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem38.TextVisible = false;
-            // 
-            // layoutControlItem39
-            // 
-            this.layoutControlItem39.Control = this.CheckButtonXPlusControlCommand;
-            this.layoutControlItem39.Location = new System.Drawing.Point(329, 131);
-            this.layoutControlItem39.Name = "layoutControlItem39";
-            this.layoutControlItem39.Size = new System.Drawing.Size(150, 26);
-            this.layoutControlItem39.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem39.TextVisible = false;
-            // 
             // layoutControlItem32
             // 
             this.layoutControlItem32.Control = this.radioGroupMenualValueMode;
             this.layoutControlItem32.Location = new System.Drawing.Point(0, 81);
             this.layoutControlItem32.Name = "layoutControlItem32";
-            this.layoutControlItem32.Size = new System.Drawing.Size(170, 50);
+            this.layoutControlItem32.Size = new System.Drawing.Size(161, 50);
             this.layoutControlItem32.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem32.TextVisible = false;
             // 
             // textBoxUserDefineValue
             // 
             this.textBoxUserDefineValue.Control = this.textEditUserDefineValue;
-            this.textBoxUserDefineValue.Location = new System.Drawing.Point(170, 107);
+            this.textBoxUserDefineValue.Location = new System.Drawing.Point(161, 107);
             this.textBoxUserDefineValue.Name = "textBoxUserDefineValue";
-            this.textBoxUserDefineValue.Size = new System.Drawing.Size(309, 24);
+            this.textBoxUserDefineValue.Size = new System.Drawing.Size(323, 24);
             this.textBoxUserDefineValue.Text = "사용자 정의값";
             this.textBoxUserDefineValue.TextSize = new System.Drawing.Size(64, 14);
             // 
             // layoutControlItem29
             // 
             this.layoutControlItem29.Control = this.checkButtonLowValue;
-            this.layoutControlItem29.Location = new System.Drawing.Point(170, 81);
+            this.layoutControlItem29.Location = new System.Drawing.Point(161, 81);
             this.layoutControlItem29.Name = "layoutControlItem29";
-            this.layoutControlItem29.Size = new System.Drawing.Size(106, 26);
+            this.layoutControlItem29.Size = new System.Drawing.Size(113, 26);
             this.layoutControlItem29.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem29.TextVisible = false;
             // 
             // layoutControlItem30
             // 
             this.layoutControlItem30.Control = this.checkButtonMiddleValue;
-            this.layoutControlItem30.Location = new System.Drawing.Point(276, 81);
+            this.layoutControlItem30.Location = new System.Drawing.Point(274, 81);
             this.layoutControlItem30.Name = "layoutControlItem30";
-            this.layoutControlItem30.Size = new System.Drawing.Size(109, 26);
+            this.layoutControlItem30.Size = new System.Drawing.Size(105, 26);
             this.layoutControlItem30.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem30.TextVisible = false;
             // 
             // layoutControlItem31
             // 
             this.layoutControlItem31.Control = this.checkButtonHighValue;
-            this.layoutControlItem31.Location = new System.Drawing.Point(385, 81);
+            this.layoutControlItem31.Location = new System.Drawing.Point(379, 81);
             this.layoutControlItem31.Name = "layoutControlItem31";
-            this.layoutControlItem31.Size = new System.Drawing.Size(94, 26);
+            this.layoutControlItem31.Size = new System.Drawing.Size(105, 26);
             this.layoutControlItem31.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem31.TextVisible = false;
+            // 
+            // layoutControl8
+            // 
+            this.layoutControl8.Location = new System.Drawing.Point(5, 297);
+            this.layoutControl8.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.layoutControl8.Name = "layoutControl8";
+            this.layoutControl8.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(914, 163, 650, 400);
+            this.layoutControl8.OptionsView.UseDefaultDragAndDropRendering = false;
+            this.layoutControl8.Root = this.layoutControlGroup9;
+            this.layoutControl8.Size = new System.Drawing.Size(492, 177);
+            this.layoutControl8.TabIndex = 19;
+            this.layoutControl8.Text = "layoutControl8";
+            // 
+            // layoutControlGroup9
+            // 
+            this.layoutControlGroup9.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup9.GroupBordersVisible = false;
+            this.layoutControlGroup9.Name = "Root";
+            this.layoutControlGroup9.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
+            this.layoutControlGroup9.Size = new System.Drawing.Size(492, 177);
+            this.layoutControlGroup9.TextVisible = false;
             // 
             // layoutControlGroup5
             // 
@@ -1889,10 +1839,10 @@
             this.layoutControlGroup5.GroupBordersVisible = false;
             this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem18,
-            this.layoutControlItem16});
+            this.layoutControlItem35});
             this.layoutControlGroup5.Name = "layoutControlGroup5";
             this.layoutControlGroup5.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 5, 5);
-            this.layoutControlGroup5.Size = new System.Drawing.Size(497, 475);
+            this.layoutControlGroup5.Size = new System.Drawing.Size(502, 481);
             this.layoutControlGroup5.TextVisible = false;
             // 
             // layoutControlItem18
@@ -1900,29 +1850,28 @@
             this.layoutControlItem18.Control = this.groupControlPCLControl;
             this.layoutControlItem18.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(491, 319);
+            this.layoutControlItem18.Size = new System.Drawing.Size(496, 290);
             this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem18.TextVisible = false;
             // 
-            // layoutControlItem16
+            // layoutControlItem35
             // 
-            this.layoutControlItem16.Control = this.layoutControl3;
-            this.layoutControlItem16.Location = new System.Drawing.Point(0, 319);
-            this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlItem16.Size = new System.Drawing.Size(491, 146);
-            this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem16.TextVisible = false;
+            this.layoutControlItem35.Control = this.layoutControl8;
+            this.layoutControlItem35.Location = new System.Drawing.Point(0, 290);
+            this.layoutControlItem35.Name = "layoutControlItem35";
+            this.layoutControlItem35.Size = new System.Drawing.Size(496, 181);
+            this.layoutControlItem35.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem35.TextVisible = false;
             // 
             // layoutControl4
             // 
             this.layoutControl4.Controls.Add(this.groupControlPresentPosition);
-            this.layoutControl4.Location = new System.Drawing.Point(12, 12);
-            this.layoutControl4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl4.Location = new System.Drawing.Point(12, 7);
+            this.layoutControl4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl4.Name = "layoutControl4";
             this.layoutControl4.OptionsView.UseDefaultDragAndDropRendering = false;
             this.layoutControl4.Root = this.layoutControlGroup4;
-            this.layoutControl4.Size = new System.Drawing.Size(497, 88);
+            this.layoutControl4.Size = new System.Drawing.Size(502, 87);
             this.layoutControl4.TabIndex = 4;
             this.layoutControl4.Text = "layoutControl4";
             // 
@@ -1931,9 +1880,9 @@
             this.groupControlPresentPosition.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupControlPresentPosition.Controls.Add(this.layoutControl7);
             this.groupControlPresentPosition.Location = new System.Drawing.Point(5, 7);
-            this.groupControlPresentPosition.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.groupControlPresentPosition.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.groupControlPresentPosition.Name = "groupControlPresentPosition";
-            this.groupControlPresentPosition.Size = new System.Drawing.Size(487, 74);
+            this.groupControlPresentPosition.Size = new System.Drawing.Size(492, 73);
             this.groupControlPresentPosition.TabIndex = 5;
             this.groupControlPresentPosition.Text = "모션 현재 위치";
             // 
@@ -1944,38 +1893,38 @@
             this.layoutControl7.Controls.Add(this.textEditPresentPosX);
             this.layoutControl7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl7.Location = new System.Drawing.Point(2, 21);
-            this.layoutControl7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl7.Name = "layoutControl7";
             this.layoutControl7.OptionsView.UseDefaultDragAndDropRendering = false;
             this.layoutControl7.Root = this.layoutControlGroup8;
-            this.layoutControl7.Size = new System.Drawing.Size(483, 51);
+            this.layoutControl7.Size = new System.Drawing.Size(488, 50);
             this.layoutControl7.TabIndex = 0;
             this.layoutControl7.Text = "layoutControl7";
             // 
             // textEditPresentPosZ
             // 
-            this.textEditPresentPosZ.Location = new System.Drawing.Point(383, 12);
-            this.textEditPresentPosZ.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditPresentPosZ.Location = new System.Drawing.Point(384, 12);
+            this.textEditPresentPosZ.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditPresentPosZ.Name = "textEditPresentPosZ";
             this.textEditPresentPosZ.Properties.ReadOnly = true;
-            this.textEditPresentPosZ.Size = new System.Drawing.Size(88, 20);
+            this.textEditPresentPosZ.Size = new System.Drawing.Size(92, 20);
             this.textEditPresentPosZ.StyleController = this.layoutControl7;
             this.textEditPresentPosZ.TabIndex = 12;
             // 
             // textEditPresentPosY
             // 
             this.textEditPresentPosY.Location = new System.Drawing.Point(231, 12);
-            this.textEditPresentPosY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditPresentPosY.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditPresentPosY.Name = "textEditPresentPosY";
             this.textEditPresentPosY.Properties.ReadOnly = true;
-            this.textEditPresentPosY.Size = new System.Drawing.Size(83, 20);
+            this.textEditPresentPosY.Size = new System.Drawing.Size(84, 20);
             this.textEditPresentPosY.StyleController = this.layoutControl7;
             this.textEditPresentPosY.TabIndex = 11;
             // 
             // textEditPresentPosX
             // 
             this.textEditPresentPosX.Location = new System.Drawing.Point(77, 12);
-            this.textEditPresentPosX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditPresentPosX.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditPresentPosX.Name = "textEditPresentPosX";
             this.textEditPresentPosX.Properties.ReadOnly = true;
             this.textEditPresentPosX.Size = new System.Drawing.Size(85, 20);
@@ -1991,7 +1940,7 @@
             this.layoutControlItem14,
             this.layoutControlItem15});
             this.layoutControlGroup8.Name = "layoutControlGroup7";
-            this.layoutControlGroup8.Size = new System.Drawing.Size(483, 51);
+            this.layoutControlGroup8.Size = new System.Drawing.Size(488, 50);
             this.layoutControlGroup8.TextVisible = false;
             // 
             // layoutControlItem13
@@ -1999,7 +1948,7 @@
             this.layoutControlItem13.Control = this.textEditPresentPosX;
             this.layoutControlItem13.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem13.Name = "layoutControlItem12";
-            this.layoutControlItem13.Size = new System.Drawing.Size(154, 31);
+            this.layoutControlItem13.Size = new System.Drawing.Size(154, 30);
             this.layoutControlItem13.Text = "현재 위치(X)";
             this.layoutControlItem13.TextSize = new System.Drawing.Size(62, 14);
             // 
@@ -2008,16 +1957,16 @@
             this.layoutControlItem14.Control = this.textEditPresentPosY;
             this.layoutControlItem14.Location = new System.Drawing.Point(154, 0);
             this.layoutControlItem14.Name = "layoutControlItem13";
-            this.layoutControlItem14.Size = new System.Drawing.Size(152, 31);
+            this.layoutControlItem14.Size = new System.Drawing.Size(153, 30);
             this.layoutControlItem14.Text = "현재 위치(Y)";
             this.layoutControlItem14.TextSize = new System.Drawing.Size(62, 14);
             // 
             // layoutControlItem15
             // 
             this.layoutControlItem15.Control = this.textEditPresentPosZ;
-            this.layoutControlItem15.Location = new System.Drawing.Point(306, 0);
+            this.layoutControlItem15.Location = new System.Drawing.Point(307, 0);
             this.layoutControlItem15.Name = "layoutControlItem14";
-            this.layoutControlItem15.Size = new System.Drawing.Size(157, 31);
+            this.layoutControlItem15.Size = new System.Drawing.Size(161, 30);
             this.layoutControlItem15.Text = "현재 위치(Z)";
             this.layoutControlItem15.TextSize = new System.Drawing.Size(62, 14);
             // 
@@ -2029,7 +1978,7 @@
             this.layoutControlItem62});
             this.layoutControlGroup4.Name = "Root";
             this.layoutControlGroup4.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 5, 5);
-            this.layoutControlGroup4.Size = new System.Drawing.Size(497, 88);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(502, 87);
             this.layoutControlGroup4.TextVisible = false;
             // 
             // layoutControlItem62
@@ -2037,7 +1986,7 @@
             this.layoutControlItem62.Control = this.groupControlPresentPosition;
             this.layoutControlItem62.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem62.Name = "layoutControlItem25";
-            this.layoutControlItem62.Size = new System.Drawing.Size(491, 78);
+            this.layoutControlItem62.Size = new System.Drawing.Size(496, 77);
             this.layoutControlItem62.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem62.TextVisible = false;
             // 
@@ -2049,6 +1998,7 @@
             this.layoutControlItem63,
             this.layoutControlItem64});
             this.layoutControlGroup2.Name = "layoutControlGroup1";
+            this.layoutControlGroup2.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 5, 5, 10);
             this.layoutControlGroup2.Size = new System.Drawing.Size(521, 591);
             this.layoutControlGroup2.TextVisible = false;
             // 
@@ -2057,23 +2007,23 @@
             this.layoutControlItem63.Control = this.layoutControl4;
             this.layoutControlItem63.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem63.Name = "layoutControlItem10";
-            this.layoutControlItem63.Size = new System.Drawing.Size(501, 92);
+            this.layoutControlItem63.Size = new System.Drawing.Size(506, 91);
             this.layoutControlItem63.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem63.TextVisible = false;
             // 
             // layoutControlItem64
             // 
             this.layoutControlItem64.Control = this.layoutControl5;
-            this.layoutControlItem64.Location = new System.Drawing.Point(0, 92);
+            this.layoutControlItem64.Location = new System.Drawing.Point(0, 91);
             this.layoutControlItem64.Name = "layoutControlItem11";
-            this.layoutControlItem64.Size = new System.Drawing.Size(501, 479);
+            this.layoutControlItem64.Size = new System.Drawing.Size(506, 485);
             this.layoutControlItem64.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem64.TextVisible = false;
             // 
             // xtraTabControlConnect
             // 
             this.xtraTabControlConnect.Controls.Add(this.layoutControl2);
-            this.xtraTabControlConnect.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.xtraTabControlConnect.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.xtraTabControlConnect.Name = "xtraTabControlConnect";
             this.xtraTabControlConnect.Size = new System.Drawing.Size(521, 591);
             this.xtraTabControlConnect.Text = "연결";
@@ -2094,7 +2044,7 @@
             this.layoutControl2.Controls.Add(this.comboBoxEditComPort);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.OptionsView.UseDefaultDragAndDropRendering = false;
             this.layoutControl2.Root = this.layoutControlGroup1;
@@ -2105,6 +2055,7 @@
             // simpleButtonReqMotionStatus
             // 
             this.simpleButtonReqMotionStatus.Location = new System.Drawing.Point(13, 150);
+            this.simpleButtonReqMotionStatus.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.simpleButtonReqMotionStatus.Name = "simpleButtonReqMotionStatus";
             this.simpleButtonReqMotionStatus.Size = new System.Drawing.Size(495, 22);
             this.simpleButtonReqMotionStatus.StyleController = this.layoutControl2;
@@ -2115,7 +2066,7 @@
             // memoEditCommunicationLogmessage
             // 
             this.memoEditCommunicationLogmessage.Location = new System.Drawing.Point(77, 176);
-            this.memoEditCommunicationLogmessage.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.memoEditCommunicationLogmessage.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.memoEditCommunicationLogmessage.Name = "memoEditCommunicationLogmessage";
             this.memoEditCommunicationLogmessage.Size = new System.Drawing.Size(431, 402);
             this.memoEditCommunicationLogmessage.StyleController = this.layoutControl2;
@@ -2124,7 +2075,7 @@
             // SendPacketDataButton
             // 
             this.SendPacketDataButton.Location = new System.Drawing.Point(374, 120);
-            this.SendPacketDataButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.SendPacketDataButton.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.SendPacketDataButton.Name = "SendPacketDataButton";
             this.SendPacketDataButton.Size = new System.Drawing.Size(134, 26);
             this.SendPacketDataButton.StyleController = this.layoutControl2;
@@ -2134,7 +2085,7 @@
             // textEditSendPacketData
             // 
             this.textEditSendPacketData.Location = new System.Drawing.Point(77, 120);
-            this.textEditSendPacketData.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditSendPacketData.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditSendPacketData.Name = "textEditSendPacketData";
             this.textEditSendPacketData.Size = new System.Drawing.Size(293, 20);
             this.textEditSendPacketData.StyleController = this.layoutControl2;
@@ -2143,7 +2094,7 @@
             // DisconnectButton
             // 
             this.DisconnectButton.Location = new System.Drawing.Point(262, 94);
-            this.DisconnectButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.DisconnectButton.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.DisconnectButton.Name = "DisconnectButton";
             this.DisconnectButton.Size = new System.Drawing.Size(246, 22);
             this.DisconnectButton.StyleController = this.layoutControl2;
@@ -2154,7 +2105,7 @@
             // ConnectButton
             // 
             this.ConnectButton.Location = new System.Drawing.Point(13, 94);
-            this.ConnectButton.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.ConnectButton.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.ConnectButton.Name = "ConnectButton";
             this.ConnectButton.Size = new System.Drawing.Size(245, 22);
             this.ConnectButton.StyleController = this.layoutControl2;
@@ -2165,7 +2116,7 @@
             // comboBoxEditFlowControl
             // 
             this.comboBoxEditFlowControl.Location = new System.Drawing.Point(317, 67);
-            this.comboBoxEditFlowControl.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.comboBoxEditFlowControl.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.comboBoxEditFlowControl.Name = "comboBoxEditFlowControl";
             this.comboBoxEditFlowControl.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -2176,7 +2127,7 @@
             // comboBoxEditStopbit
             // 
             this.comboBoxEditStopbit.Location = new System.Drawing.Point(77, 67);
-            this.comboBoxEditStopbit.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.comboBoxEditStopbit.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.comboBoxEditStopbit.Name = "comboBoxEditStopbit";
             this.comboBoxEditStopbit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -2187,7 +2138,7 @@
             // comboBoxEditParity
             // 
             this.comboBoxEditParity.Location = new System.Drawing.Point(317, 40);
-            this.comboBoxEditParity.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.comboBoxEditParity.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.comboBoxEditParity.Name = "comboBoxEditParity";
             this.comboBoxEditParity.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -2198,7 +2149,7 @@
             // comboBoxEditDataBit
             // 
             this.comboBoxEditDataBit.Location = new System.Drawing.Point(77, 40);
-            this.comboBoxEditDataBit.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.comboBoxEditDataBit.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.comboBoxEditDataBit.Name = "comboBoxEditDataBit";
             this.comboBoxEditDataBit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -2209,7 +2160,7 @@
             // comboBoxEditBaudRate
             // 
             this.comboBoxEditBaudRate.Location = new System.Drawing.Point(317, 13);
-            this.comboBoxEditBaudRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.comboBoxEditBaudRate.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.comboBoxEditBaudRate.Name = "comboBoxEditBaudRate";
             this.comboBoxEditBaudRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -2220,7 +2171,7 @@
             // comboBoxEditComPort
             // 
             this.comboBoxEditComPort.Location = new System.Drawing.Point(77, 13);
-            this.comboBoxEditComPort.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.comboBoxEditComPort.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.comboBoxEditComPort.Name = "comboBoxEditComPort";
             this.comboBoxEditComPort.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -2390,7 +2341,7 @@
             // xtraTabPageInfoStatus
             // 
             this.xtraTabPageInfoStatus.Controls.Add(this.layoutControl18);
-            this.xtraTabPageInfoStatus.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.xtraTabPageInfoStatus.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.xtraTabPageInfoStatus.Name = "xtraTabPageInfoStatus";
             this.xtraTabPageInfoStatus.Size = new System.Drawing.Size(521, 591);
             this.xtraTabPageInfoStatus.Text = "상태 정보";
@@ -2400,7 +2351,7 @@
             this.layoutControl18.Controls.Add(this.xtraTabControlAiCStatus);
             this.layoutControl18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl18.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl18.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl18.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl18.Name = "layoutControl18";
             this.layoutControl18.Root = this.layoutControlGroup10;
             this.layoutControl18.Size = new System.Drawing.Size(521, 591);
@@ -2411,7 +2362,7 @@
             // 
             this.xtraTabControlAiCStatus.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.xtraTabControlAiCStatus.Location = new System.Drawing.Point(12, 12);
-            this.xtraTabControlAiCStatus.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.xtraTabControlAiCStatus.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.xtraTabControlAiCStatus.Name = "xtraTabControlAiCStatus";
             this.xtraTabControlAiCStatus.SelectedTabPage = this.xtraTabPageAiC1;
             this.xtraTabControlAiCStatus.Size = new System.Drawing.Size(497, 567);
@@ -2424,7 +2375,7 @@
             // xtraTabPageAiC1
             // 
             this.xtraTabPageAiC1.Controls.Add(this.layoutControl19);
-            this.xtraTabPageAiC1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.xtraTabPageAiC1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.xtraTabPageAiC1.Name = "xtraTabPageAiC1";
             this.xtraTabPageAiC1.Size = new System.Drawing.Size(489, 536);
             this.xtraTabPageAiC1.Text = "Axis 1";
@@ -2436,7 +2387,7 @@
             this.layoutControl19.Controls.Add(this.groupControlMotion);
             this.layoutControl19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl19.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl19.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl19.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl19.Name = "layoutControl19";
             this.layoutControl19.Root = this.layoutControlGroup11;
             this.layoutControl19.Size = new System.Drawing.Size(489, 536);
@@ -2447,7 +2398,7 @@
             // 
             this.groupControl7.Controls.Add(this.layoutControl24);
             this.groupControl7.Location = new System.Drawing.Point(12, 331);
-            this.groupControl7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.groupControl7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.groupControl7.Name = "groupControl7";
             this.groupControl7.Size = new System.Drawing.Size(465, 193);
             this.groupControl7.TabIndex = 16;
@@ -2493,7 +2444,7 @@
             this.layoutControl24.Controls.Add(this.labelControlStatus1_1);
             this.layoutControl24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl24.Location = new System.Drawing.Point(2, 21);
-            this.layoutControl24.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl24.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl24.Name = "layoutControl24";
             this.layoutControl24.Root = this.layoutControlGroup23;
             this.layoutControl24.Size = new System.Drawing.Size(461, 170);
@@ -2503,7 +2454,7 @@
             // labelControlOutput1_8
             // 
             this.labelControlOutput1_8.Location = new System.Drawing.Point(344, 150);
-            this.labelControlOutput1_8.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput1_8.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput1_8.Name = "labelControlOutput1_8";
             this.labelControlOutput1_8.Size = new System.Drawing.Size(111, 14);
             this.labelControlOutput1_8.StyleController = this.layoutControl24;
@@ -2512,7 +2463,7 @@
             // labelControlOutput1_7
             // 
             this.labelControlOutput1_7.Location = new System.Drawing.Point(231, 150);
-            this.labelControlOutput1_7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput1_7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput1_7.Name = "labelControlOutput1_7";
             this.labelControlOutput1_7.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput1_7.StyleController = this.layoutControl24;
@@ -2521,7 +2472,7 @@
             // labelControlOutput1_6
             // 
             this.labelControlOutput1_6.Location = new System.Drawing.Point(118, 150);
-            this.labelControlOutput1_6.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput1_6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput1_6.Name = "labelControlOutput1_6";
             this.labelControlOutput1_6.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput1_6.StyleController = this.layoutControl24;
@@ -2533,7 +2484,7 @@
             this.labelControlOutput1_5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput1_5.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput1_5.Location = new System.Drawing.Point(5, 150);
-            this.labelControlOutput1_5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput1_5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput1_5.Name = "labelControlOutput1_5";
             this.labelControlOutput1_5.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput1_5.StyleController = this.layoutControl24;
@@ -2546,7 +2497,7 @@
             this.labelControlOutput1_4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput1_4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput1_4.Location = new System.Drawing.Point(344, 132);
-            this.labelControlOutput1_4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput1_4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput1_4.Name = "labelControlOutput1_4";
             this.labelControlOutput1_4.Size = new System.Drawing.Size(111, 14);
             this.labelControlOutput1_4.StyleController = this.layoutControl24;
@@ -2559,7 +2510,7 @@
             this.labelControlOutput1_3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput1_3.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput1_3.Location = new System.Drawing.Point(231, 132);
-            this.labelControlOutput1_3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput1_3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput1_3.Name = "labelControlOutput1_3";
             this.labelControlOutput1_3.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput1_3.StyleController = this.layoutControl24;
@@ -2572,7 +2523,7 @@
             this.labelControlOutput1_2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput1_2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput1_2.Location = new System.Drawing.Point(118, 132);
-            this.labelControlOutput1_2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput1_2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput1_2.Name = "labelControlOutput1_2";
             this.labelControlOutput1_2.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput1_2.StyleController = this.layoutControl24;
@@ -2585,7 +2536,7 @@
             this.labelControlOutput1_1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput1_1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput1_1.Location = new System.Drawing.Point(5, 132);
-            this.labelControlOutput1_1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput1_1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput1_1.Name = "labelControlOutput1_1";
             this.labelControlOutput1_1.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput1_1.StyleController = this.layoutControl24;
@@ -2598,7 +2549,7 @@
             this.labelControlStatus1_28.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_28.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_28.Location = new System.Drawing.Point(344, 114);
-            this.labelControlStatus1_28.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_28.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_28.Name = "labelControlStatus1_28";
             this.labelControlStatus1_28.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus1_28.StyleController = this.layoutControl24;
@@ -2611,7 +2562,7 @@
             this.labelControlStatus1_27.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_27.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_27.Location = new System.Drawing.Point(231, 114);
-            this.labelControlStatus1_27.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_27.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_27.Name = "labelControlStatus1_27";
             this.labelControlStatus1_27.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_27.StyleController = this.layoutControl24;
@@ -2624,7 +2575,7 @@
             this.labelControlStatus1_26.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_26.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_26.Location = new System.Drawing.Point(118, 114);
-            this.labelControlStatus1_26.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_26.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_26.Name = "labelControlStatus1_26";
             this.labelControlStatus1_26.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_26.StyleController = this.layoutControl24;
@@ -2637,7 +2588,7 @@
             this.labelControlStatus1_25.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_25.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_25.Location = new System.Drawing.Point(5, 114);
-            this.labelControlStatus1_25.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_25.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_25.Name = "labelControlStatus1_25";
             this.labelControlStatus1_25.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_25.StyleController = this.layoutControl24;
@@ -2650,7 +2601,7 @@
             this.labelControlStatus1_24.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_24.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_24.Location = new System.Drawing.Point(344, 96);
-            this.labelControlStatus1_24.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_24.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_24.Name = "labelControlStatus1_24";
             this.labelControlStatus1_24.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus1_24.StyleController = this.layoutControl24;
@@ -2663,7 +2614,7 @@
             this.labelControlStatus1_23.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_23.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_23.Location = new System.Drawing.Point(231, 96);
-            this.labelControlStatus1_23.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_23.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_23.Name = "labelControlStatus1_23";
             this.labelControlStatus1_23.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_23.StyleController = this.layoutControl24;
@@ -2676,7 +2627,7 @@
             this.labelControlStatus1_22.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_22.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_22.Location = new System.Drawing.Point(118, 96);
-            this.labelControlStatus1_22.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_22.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_22.Name = "labelControlStatus1_22";
             this.labelControlStatus1_22.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_22.StyleController = this.layoutControl24;
@@ -2689,7 +2640,7 @@
             this.labelControlStatus1_21.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_21.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_21.Location = new System.Drawing.Point(5, 96);
-            this.labelControlStatus1_21.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_21.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_21.Name = "labelControlStatus1_21";
             this.labelControlStatus1_21.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_21.StyleController = this.layoutControl24;
@@ -2702,7 +2653,7 @@
             this.labelControlStatus1_20.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_20.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_20.Location = new System.Drawing.Point(344, 78);
-            this.labelControlStatus1_20.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_20.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_20.Name = "labelControlStatus1_20";
             this.labelControlStatus1_20.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus1_20.StyleController = this.layoutControl24;
@@ -2715,7 +2666,7 @@
             this.labelControlStatus1_19.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_19.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_19.Location = new System.Drawing.Point(231, 78);
-            this.labelControlStatus1_19.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_19.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_19.Name = "labelControlStatus1_19";
             this.labelControlStatus1_19.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_19.StyleController = this.layoutControl24;
@@ -2728,7 +2679,7 @@
             this.labelControlStatus1_18.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_18.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_18.Location = new System.Drawing.Point(118, 78);
-            this.labelControlStatus1_18.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_18.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_18.Name = "labelControlStatus1_18";
             this.labelControlStatus1_18.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_18.StyleController = this.layoutControl24;
@@ -2741,7 +2692,7 @@
             this.labelControlStatus1_17.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_17.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_17.Location = new System.Drawing.Point(5, 78);
-            this.labelControlStatus1_17.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_17.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_17.Name = "labelControlStatus1_17";
             this.labelControlStatus1_17.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_17.StyleController = this.layoutControl24;
@@ -2754,7 +2705,7 @@
             this.labelControlStatus1_16.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_16.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_16.Location = new System.Drawing.Point(344, 60);
-            this.labelControlStatus1_16.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_16.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_16.Name = "labelControlStatus1_16";
             this.labelControlStatus1_16.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus1_16.StyleController = this.layoutControl24;
@@ -2767,7 +2718,7 @@
             this.labelControlStatus1_15.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_15.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_15.Location = new System.Drawing.Point(231, 60);
-            this.labelControlStatus1_15.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_15.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_15.Name = "labelControlStatus1_15";
             this.labelControlStatus1_15.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_15.StyleController = this.layoutControl24;
@@ -2780,7 +2731,7 @@
             this.labelControlStatus1_14.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_14.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_14.Location = new System.Drawing.Point(118, 60);
-            this.labelControlStatus1_14.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_14.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_14.Name = "labelControlStatus1_14";
             this.labelControlStatus1_14.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_14.StyleController = this.layoutControl24;
@@ -2793,7 +2744,7 @@
             this.labelControlStatus1_13.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_13.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_13.Location = new System.Drawing.Point(5, 60);
-            this.labelControlStatus1_13.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_13.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_13.Name = "labelControlStatus1_13";
             this.labelControlStatus1_13.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_13.StyleController = this.layoutControl24;
@@ -2806,7 +2757,7 @@
             this.labelControlStatus1_12.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_12.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_12.Location = new System.Drawing.Point(344, 42);
-            this.labelControlStatus1_12.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_12.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_12.Name = "labelControlStatus1_12";
             this.labelControlStatus1_12.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus1_12.StyleController = this.layoutControl24;
@@ -2819,7 +2770,7 @@
             this.labelControlStatus1_11.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_11.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_11.Location = new System.Drawing.Point(231, 42);
-            this.labelControlStatus1_11.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_11.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_11.Name = "labelControlStatus1_11";
             this.labelControlStatus1_11.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_11.StyleController = this.layoutControl24;
@@ -2832,7 +2783,7 @@
             this.labelControlStatus1_10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_10.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_10.Location = new System.Drawing.Point(118, 42);
-            this.labelControlStatus1_10.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_10.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_10.Name = "labelControlStatus1_10";
             this.labelControlStatus1_10.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_10.StyleController = this.layoutControl24;
@@ -2845,7 +2796,7 @@
             this.labelControlStatus1_9.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_9.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_9.Location = new System.Drawing.Point(5, 42);
-            this.labelControlStatus1_9.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_9.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_9.Name = "labelControlStatus1_9";
             this.labelControlStatus1_9.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_9.StyleController = this.layoutControl24;
@@ -2858,7 +2809,7 @@
             this.labelControlStatus1_8.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_8.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_8.Location = new System.Drawing.Point(344, 24);
-            this.labelControlStatus1_8.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_8.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_8.Name = "labelControlStatus1_8";
             this.labelControlStatus1_8.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus1_8.StyleController = this.layoutControl24;
@@ -2871,7 +2822,7 @@
             this.labelControlStatus1_7.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_7.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_7.Location = new System.Drawing.Point(231, 24);
-            this.labelControlStatus1_7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_7.Name = "labelControlStatus1_7";
             this.labelControlStatus1_7.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_7.StyleController = this.layoutControl24;
@@ -2884,7 +2835,7 @@
             this.labelControlStatus1_6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_6.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_6.Location = new System.Drawing.Point(118, 24);
-            this.labelControlStatus1_6.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_6.Name = "labelControlStatus1_6";
             this.labelControlStatus1_6.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_6.StyleController = this.layoutControl24;
@@ -2897,7 +2848,7 @@
             this.labelControlStatus1_5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_5.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_5.Location = new System.Drawing.Point(5, 24);
-            this.labelControlStatus1_5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_5.Name = "labelControlStatus1_5";
             this.labelControlStatus1_5.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_5.StyleController = this.layoutControl24;
@@ -2910,7 +2861,7 @@
             this.labelControlStatus1_4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_4.Location = new System.Drawing.Point(344, 6);
-            this.labelControlStatus1_4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_4.Name = "labelControlStatus1_4";
             this.labelControlStatus1_4.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus1_4.StyleController = this.layoutControl24;
@@ -2923,7 +2874,7 @@
             this.labelControlStatus1_3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_3.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_3.Location = new System.Drawing.Point(231, 6);
-            this.labelControlStatus1_3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_3.Name = "labelControlStatus1_3";
             this.labelControlStatus1_3.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_3.StyleController = this.layoutControl24;
@@ -2936,7 +2887,7 @@
             this.labelControlStatus1_2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_2.Location = new System.Drawing.Point(118, 6);
-            this.labelControlStatus1_2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_2.Name = "labelControlStatus1_2";
             this.labelControlStatus1_2.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_2.StyleController = this.layoutControl24;
@@ -2949,12 +2900,12 @@
             this.labelControlStatus1_1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus1_1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus1_1.Location = new System.Drawing.Point(5, 6);
-            this.labelControlStatus1_1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus1_1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus1_1.Name = "labelControlStatus1_1";
             this.labelControlStatus1_1.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus1_1.StyleController = this.layoutControl24;
             this.labelControlStatus1_1.TabIndex = 4;
-            this.labelControlStatus1_1.Text = "드라이브 시작";
+            this.labelControlStatus1_1.Text = "Drive Start";
             // 
             // layoutControlGroup23
             // 
@@ -3438,7 +3389,7 @@
             // 
             this.groupControlAlarm.Controls.Add(this.layoutControl23);
             this.groupControlAlarm.Location = new System.Drawing.Point(12, 145);
-            this.groupControlAlarm.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.groupControlAlarm.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.groupControlAlarm.Name = "groupControlAlarm";
             this.groupControlAlarm.Size = new System.Drawing.Size(465, 182);
             this.groupControlAlarm.TabIndex = 5;
@@ -3466,13 +3417,13 @@
             this.layoutControl23.Controls.Add(this.labelControlAlarm1_7);
             this.layoutControl23.Controls.Add(this.labelControlAlarm1_6);
             this.layoutControl23.Controls.Add(this.labelControlAlarm1_5);
-            this.layoutControl23.Controls.Add(this.labelControlAlarm1_4);
             this.layoutControl23.Controls.Add(this.labelControlAlarm1_3);
             this.layoutControl23.Controls.Add(this.labelControlAlarm1_2);
             this.layoutControl23.Controls.Add(this.labelControlAlarm1_1);
+            this.layoutControl23.Controls.Add(this.labelControlAlarm1_4);
             this.layoutControl23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl23.Location = new System.Drawing.Point(2, 21);
-            this.layoutControl23.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.layoutControl23.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
             this.layoutControl23.Name = "layoutControl23";
             this.layoutControl23.Root = this.layoutControlGroup22;
             this.layoutControl23.Size = new System.Drawing.Size(461, 159);
@@ -3485,7 +3436,7 @@
             this.labelControlAlarm1_24.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_24.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_24.Location = new System.Drawing.Point(344, 130);
-            this.labelControlAlarm1_24.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_24.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_24.Name = "labelControlAlarm1_24";
             this.labelControlAlarm1_24.Size = new System.Drawing.Size(111, 23);
             this.labelControlAlarm1_24.StyleController = this.layoutControl23;
@@ -3497,7 +3448,7 @@
             this.labelControlAlarm1_23.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_23.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_23.Location = new System.Drawing.Point(231, 130);
-            this.labelControlAlarm1_23.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_23.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_23.Name = "labelControlAlarm1_23";
             this.labelControlAlarm1_23.Size = new System.Drawing.Size(109, 23);
             this.labelControlAlarm1_23.StyleController = this.layoutControl23;
@@ -3510,7 +3461,7 @@
             this.labelControlAlarm1_22.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_22.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_22.Location = new System.Drawing.Point(118, 130);
-            this.labelControlAlarm1_22.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_22.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_22.Name = "labelControlAlarm1_22";
             this.labelControlAlarm1_22.Size = new System.Drawing.Size(109, 23);
             this.labelControlAlarm1_22.StyleController = this.layoutControl23;
@@ -3523,7 +3474,7 @@
             this.labelControlAlarm1_21.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_21.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_21.Location = new System.Drawing.Point(5, 130);
-            this.labelControlAlarm1_21.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_21.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_21.Name = "labelControlAlarm1_21";
             this.labelControlAlarm1_21.Size = new System.Drawing.Size(109, 23);
             this.labelControlAlarm1_21.StyleController = this.layoutControl23;
@@ -3536,7 +3487,7 @@
             this.labelControlAlarm1_20.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_20.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_20.Location = new System.Drawing.Point(344, 105);
-            this.labelControlAlarm1_20.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_20.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_20.Name = "labelControlAlarm1_20";
             this.labelControlAlarm1_20.Size = new System.Drawing.Size(111, 21);
             this.labelControlAlarm1_20.StyleController = this.layoutControl23;
@@ -3549,7 +3500,7 @@
             this.labelControlAlarm1_19.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_19.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_19.Location = new System.Drawing.Point(231, 105);
-            this.labelControlAlarm1_19.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_19.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_19.Name = "labelControlAlarm1_19";
             this.labelControlAlarm1_19.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm1_19.StyleController = this.layoutControl23;
@@ -3562,7 +3513,7 @@
             this.labelControlAlarm1_18.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_18.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_18.Location = new System.Drawing.Point(118, 105);
-            this.labelControlAlarm1_18.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_18.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_18.Name = "labelControlAlarm1_18";
             this.labelControlAlarm1_18.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm1_18.StyleController = this.layoutControl23;
@@ -3575,7 +3526,7 @@
             this.labelControlAlarm1_17.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_17.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_17.Location = new System.Drawing.Point(5, 105);
-            this.labelControlAlarm1_17.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_17.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_17.Name = "labelControlAlarm1_17";
             this.labelControlAlarm1_17.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm1_17.StyleController = this.layoutControl23;
@@ -3588,7 +3539,7 @@
             this.labelControlAlarm1_16.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_16.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_16.Location = new System.Drawing.Point(344, 81);
-            this.labelControlAlarm1_16.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_16.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_16.Name = "labelControlAlarm1_16";
             this.labelControlAlarm1_16.Size = new System.Drawing.Size(111, 20);
             this.labelControlAlarm1_16.StyleController = this.layoutControl23;
@@ -3601,7 +3552,7 @@
             this.labelControlAlarm1_15.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_15.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_15.Location = new System.Drawing.Point(231, 81);
-            this.labelControlAlarm1_15.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_15.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_15.Name = "labelControlAlarm1_15";
             this.labelControlAlarm1_15.Size = new System.Drawing.Size(109, 20);
             this.labelControlAlarm1_15.StyleController = this.layoutControl23;
@@ -3614,7 +3565,7 @@
             this.labelControlAlarm1_14.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_14.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_14.Location = new System.Drawing.Point(118, 81);
-            this.labelControlAlarm1_14.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_14.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_14.Name = "labelControlAlarm1_14";
             this.labelControlAlarm1_14.Size = new System.Drawing.Size(109, 20);
             this.labelControlAlarm1_14.StyleController = this.layoutControl23;
@@ -3627,7 +3578,7 @@
             this.labelControlAlarm1_13.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_13.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_13.Location = new System.Drawing.Point(5, 81);
-            this.labelControlAlarm1_13.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_13.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_13.Name = "labelControlAlarm1_13";
             this.labelControlAlarm1_13.Size = new System.Drawing.Size(109, 20);
             this.labelControlAlarm1_13.StyleController = this.layoutControl23;
@@ -3640,7 +3591,7 @@
             this.labelControlAlarm1_12.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_12.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_12.Location = new System.Drawing.Point(344, 56);
-            this.labelControlAlarm1_12.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_12.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_12.Name = "labelControlAlarm1_12";
             this.labelControlAlarm1_12.Size = new System.Drawing.Size(111, 21);
             this.labelControlAlarm1_12.StyleController = this.layoutControl23;
@@ -3653,7 +3604,7 @@
             this.labelControlAlarm1_11.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_11.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_11.Location = new System.Drawing.Point(231, 56);
-            this.labelControlAlarm1_11.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_11.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_11.Name = "labelControlAlarm1_11";
             this.labelControlAlarm1_11.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm1_11.StyleController = this.layoutControl23;
@@ -3666,7 +3617,7 @@
             this.labelControlAlarm1_10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_10.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_10.Location = new System.Drawing.Point(118, 56);
-            this.labelControlAlarm1_10.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_10.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_10.Name = "labelControlAlarm1_10";
             this.labelControlAlarm1_10.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm1_10.StyleController = this.layoutControl23;
@@ -3679,7 +3630,7 @@
             this.labelControlAlarm1_9.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_9.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_9.Location = new System.Drawing.Point(5, 56);
-            this.labelControlAlarm1_9.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_9.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_9.Name = "labelControlAlarm1_9";
             this.labelControlAlarm1_9.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm1_9.StyleController = this.layoutControl23;
@@ -3692,7 +3643,7 @@
             this.labelControlAlarm1_8.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_8.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_8.Location = new System.Drawing.Point(344, 31);
-            this.labelControlAlarm1_8.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_8.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_8.Name = "labelControlAlarm1_8";
             this.labelControlAlarm1_8.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm1_8.StyleController = this.layoutControl23;
@@ -3705,7 +3656,7 @@
             this.labelControlAlarm1_7.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_7.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_7.Location = new System.Drawing.Point(231, 31);
-            this.labelControlAlarm1_7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_7.Name = "labelControlAlarm1_7";
             this.labelControlAlarm1_7.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm1_7.StyleController = this.layoutControl23;
@@ -3718,7 +3669,7 @@
             this.labelControlAlarm1_6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_6.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_6.Location = new System.Drawing.Point(118, 31);
-            this.labelControlAlarm1_6.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_6.Name = "labelControlAlarm1_6";
             this.labelControlAlarm1_6.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm1_6.StyleController = this.layoutControl23;
@@ -3731,25 +3682,12 @@
             this.labelControlAlarm1_5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_5.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_5.Location = new System.Drawing.Point(5, 31);
-            this.labelControlAlarm1_5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_5.Name = "labelControlAlarm1_5";
             this.labelControlAlarm1_5.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm1_5.StyleController = this.layoutControl23;
             this.labelControlAlarm1_5.TabIndex = 8;
             this.labelControlAlarm1_5.Text = "과열";
-            // 
-            // labelControlAlarm1_4
-            // 
-            this.labelControlAlarm1_4.Appearance.Options.UseTextOptions = true;
-            this.labelControlAlarm1_4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControlAlarm1_4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControlAlarm1_4.Location = new System.Drawing.Point(344, 6);
-            this.labelControlAlarm1_4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.labelControlAlarm1_4.Name = "labelControlAlarm1_4";
-            this.labelControlAlarm1_4.Size = new System.Drawing.Size(111, 21);
-            this.labelControlAlarm1_4.StyleController = this.layoutControl23;
-            this.labelControlAlarm1_4.TabIndex = 7;
-            this.labelControlAlarm1_4.Text = "과부하";
             // 
             // labelControlAlarm1_3
             // 
@@ -3757,7 +3695,7 @@
             this.labelControlAlarm1_3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_3.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_3.Location = new System.Drawing.Point(231, 6);
-            this.labelControlAlarm1_3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_3.Name = "labelControlAlarm1_3";
             this.labelControlAlarm1_3.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm1_3.StyleController = this.layoutControl23;
@@ -3770,7 +3708,7 @@
             this.labelControlAlarm1_2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_2.Location = new System.Drawing.Point(118, 6);
-            this.labelControlAlarm1_2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_2.Name = "labelControlAlarm1_2";
             this.labelControlAlarm1_2.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm1_2.StyleController = this.layoutControl23;
@@ -3783,12 +3721,25 @@
             this.labelControlAlarm1_1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm1_1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm1_1.Location = new System.Drawing.Point(5, 6);
-            this.labelControlAlarm1_1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm1_1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm1_1.Name = "labelControlAlarm1_1";
             this.labelControlAlarm1_1.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm1_1.StyleController = this.layoutControl23;
             this.labelControlAlarm1_1.TabIndex = 4;
             this.labelControlAlarm1_1.Text = "과전류";
+            // 
+            // labelControlAlarm1_4
+            // 
+            this.labelControlAlarm1_4.Appearance.Options.UseTextOptions = true;
+            this.labelControlAlarm1_4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControlAlarm1_4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.labelControlAlarm1_4.Location = new System.Drawing.Point(344, 6);
+            this.labelControlAlarm1_4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.labelControlAlarm1_4.Name = "labelControlAlarm1_4";
+            this.labelControlAlarm1_4.Size = new System.Drawing.Size(111, 21);
+            this.labelControlAlarm1_4.StyleController = this.layoutControl23;
+            this.labelControlAlarm1_4.TabIndex = 7;
+            this.labelControlAlarm1_4.Text = "과부하";
             // 
             // layoutControlGroup22
             // 
@@ -4116,7 +4067,7 @@
             // 
             this.groupControlMotion.Controls.Add(this.layoutControl22);
             this.groupControlMotion.Location = new System.Drawing.Point(12, 12);
-            this.groupControlMotion.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.groupControlMotion.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.groupControlMotion.Name = "groupControlMotion";
             this.groupControlMotion.Size = new System.Drawing.Size(465, 129);
             this.groupControlMotion.TabIndex = 4;
@@ -4133,7 +4084,7 @@
             this.layoutControl22.Controls.Add(this.textEditTargetPos1);
             this.layoutControl22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl22.Location = new System.Drawing.Point(2, 21);
-            this.layoutControl22.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl22.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl22.Name = "layoutControl22";
             this.layoutControl22.Root = this.layoutControlGroup21;
             this.layoutControl22.Size = new System.Drawing.Size(461, 106);
@@ -4143,7 +4094,7 @@
             // textEditOpMode1
             // 
             this.textEditOpMode1.Location = new System.Drawing.Point(83, 6);
-            this.textEditOpMode1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditOpMode1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditOpMode1.Name = "textEditOpMode1";
             this.textEditOpMode1.Properties.ReadOnly = true;
             this.textEditOpMode1.Size = new System.Drawing.Size(373, 20);
@@ -4153,7 +4104,7 @@
             // textEditProgramStep1
             // 
             this.textEditProgramStep1.Location = new System.Drawing.Point(310, 78);
-            this.textEditProgramStep1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditProgramStep1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditProgramStep1.Name = "textEditProgramStep1";
             this.textEditProgramStep1.Properties.ReadOnly = true;
             this.textEditProgramStep1.Size = new System.Drawing.Size(146, 20);
@@ -4163,7 +4114,7 @@
             // textEditMotorRPM1
             // 
             this.textEditMotorRPM1.Location = new System.Drawing.Point(83, 78);
-            this.textEditMotorRPM1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditMotorRPM1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditMotorRPM1.Name = "textEditMotorRPM1";
             this.textEditMotorRPM1.Properties.ReadOnly = true;
             this.textEditMotorRPM1.Size = new System.Drawing.Size(145, 20);
@@ -4173,7 +4124,7 @@
             // textEditPresentVel1
             // 
             this.textEditPresentVel1.Location = new System.Drawing.Point(310, 54);
-            this.textEditPresentVel1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditPresentVel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditPresentVel1.Name = "textEditPresentVel1";
             this.textEditPresentVel1.Properties.ReadOnly = true;
             this.textEditPresentVel1.Size = new System.Drawing.Size(146, 20);
@@ -4183,7 +4134,7 @@
             // textEditTargetVel1
             // 
             this.textEditTargetVel1.Location = new System.Drawing.Point(83, 54);
-            this.textEditTargetVel1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditTargetVel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditTargetVel1.Name = "textEditTargetVel1";
             this.textEditTargetVel1.Properties.ReadOnly = true;
             this.textEditTargetVel1.Size = new System.Drawing.Size(145, 20);
@@ -4193,7 +4144,7 @@
             // textEditPresentPos1
             // 
             this.textEditPresentPos1.Location = new System.Drawing.Point(310, 30);
-            this.textEditPresentPos1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditPresentPos1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditPresentPos1.Name = "textEditPresentPos1";
             this.textEditPresentPos1.Properties.ReadOnly = true;
             this.textEditPresentPos1.Size = new System.Drawing.Size(146, 20);
@@ -4203,7 +4154,7 @@
             // textEditTargetPos1
             // 
             this.textEditTargetPos1.Location = new System.Drawing.Point(83, 30);
-            this.textEditTargetPos1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditTargetPos1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditTargetPos1.Name = "textEditTargetPos1";
             this.textEditTargetPos1.Properties.ReadOnly = true;
             this.textEditTargetPos1.Size = new System.Drawing.Size(145, 20);
@@ -4332,7 +4283,7 @@
             // xtraTabPageAiC2
             // 
             this.xtraTabPageAiC2.Controls.Add(this.layoutControl20);
-            this.xtraTabPageAiC2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.xtraTabPageAiC2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.xtraTabPageAiC2.Name = "xtraTabPageAiC2";
             this.xtraTabPageAiC2.Size = new System.Drawing.Size(489, 536);
             this.xtraTabPageAiC2.Text = "Axis 2";
@@ -4344,7 +4295,7 @@
             this.layoutControl20.Controls.Add(this.groupControl9);
             this.layoutControl20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl20.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl20.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl20.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl20.Name = "layoutControl20";
             this.layoutControl20.Root = this.layoutControlGroup19;
             this.layoutControl20.Size = new System.Drawing.Size(489, 536);
@@ -4355,7 +4306,7 @@
             // 
             this.groupControl10.Controls.Add(this.layoutControl27);
             this.groupControl10.Location = new System.Drawing.Point(12, 331);
-            this.groupControl10.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.groupControl10.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.groupControl10.Name = "groupControl10";
             this.groupControl10.Size = new System.Drawing.Size(465, 193);
             this.groupControl10.TabIndex = 17;
@@ -4401,7 +4352,7 @@
             this.layoutControl27.Controls.Add(this.labelControlStatus2_1);
             this.layoutControl27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl27.Location = new System.Drawing.Point(2, 21);
-            this.layoutControl27.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl27.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl27.Name = "layoutControl27";
             this.layoutControl27.Root = this.layoutControlGroup26;
             this.layoutControl27.Size = new System.Drawing.Size(461, 170);
@@ -4411,7 +4362,7 @@
             // labelControlOutput2_8
             // 
             this.labelControlOutput2_8.Location = new System.Drawing.Point(344, 150);
-            this.labelControlOutput2_8.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput2_8.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput2_8.Name = "labelControlOutput2_8";
             this.labelControlOutput2_8.Size = new System.Drawing.Size(111, 14);
             this.labelControlOutput2_8.StyleController = this.layoutControl27;
@@ -4420,7 +4371,7 @@
             // labelControlOutput2_7
             // 
             this.labelControlOutput2_7.Location = new System.Drawing.Point(231, 150);
-            this.labelControlOutput2_7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput2_7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput2_7.Name = "labelControlOutput2_7";
             this.labelControlOutput2_7.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput2_7.StyleController = this.layoutControl27;
@@ -4429,7 +4380,7 @@
             // labelControlOutput2_6
             // 
             this.labelControlOutput2_6.Location = new System.Drawing.Point(118, 150);
-            this.labelControlOutput2_6.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput2_6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput2_6.Name = "labelControlOutput2_6";
             this.labelControlOutput2_6.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput2_6.StyleController = this.layoutControl27;
@@ -4441,7 +4392,7 @@
             this.labelControlOutput2_5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput2_5.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput2_5.Location = new System.Drawing.Point(5, 150);
-            this.labelControlOutput2_5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput2_5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput2_5.Name = "labelControlOutput2_5";
             this.labelControlOutput2_5.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput2_5.StyleController = this.layoutControl27;
@@ -4454,7 +4405,7 @@
             this.labelControlOutput2_4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput2_4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput2_4.Location = new System.Drawing.Point(344, 132);
-            this.labelControlOutput2_4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput2_4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput2_4.Name = "labelControlOutput2_4";
             this.labelControlOutput2_4.Size = new System.Drawing.Size(111, 14);
             this.labelControlOutput2_4.StyleController = this.layoutControl27;
@@ -4467,7 +4418,7 @@
             this.labelControlOutput2_3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput2_3.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput2_3.Location = new System.Drawing.Point(231, 132);
-            this.labelControlOutput2_3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput2_3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput2_3.Name = "labelControlOutput2_3";
             this.labelControlOutput2_3.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput2_3.StyleController = this.layoutControl27;
@@ -4480,7 +4431,7 @@
             this.labelControlOutput2_2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput2_2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput2_2.Location = new System.Drawing.Point(118, 132);
-            this.labelControlOutput2_2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput2_2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput2_2.Name = "labelControlOutput2_2";
             this.labelControlOutput2_2.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput2_2.StyleController = this.layoutControl27;
@@ -4493,7 +4444,7 @@
             this.labelControlOutput2_1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput2_1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput2_1.Location = new System.Drawing.Point(5, 132);
-            this.labelControlOutput2_1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput2_1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput2_1.Name = "labelControlOutput2_1";
             this.labelControlOutput2_1.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput2_1.StyleController = this.layoutControl27;
@@ -4506,7 +4457,7 @@
             this.labelControlStatus2_28.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_28.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_28.Location = new System.Drawing.Point(344, 114);
-            this.labelControlStatus2_28.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_28.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_28.Name = "labelControlStatus2_28";
             this.labelControlStatus2_28.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus2_28.StyleController = this.layoutControl27;
@@ -4519,7 +4470,7 @@
             this.labelControlStatus2_27.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_27.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_27.Location = new System.Drawing.Point(231, 114);
-            this.labelControlStatus2_27.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_27.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_27.Name = "labelControlStatus2_27";
             this.labelControlStatus2_27.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_27.StyleController = this.layoutControl27;
@@ -4532,7 +4483,7 @@
             this.labelControlStatus2_26.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_26.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_26.Location = new System.Drawing.Point(118, 114);
-            this.labelControlStatus2_26.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_26.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_26.Name = "labelControlStatus2_26";
             this.labelControlStatus2_26.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_26.StyleController = this.layoutControl27;
@@ -4545,7 +4496,7 @@
             this.labelControlStatus2_25.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_25.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_25.Location = new System.Drawing.Point(5, 114);
-            this.labelControlStatus2_25.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_25.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_25.Name = "labelControlStatus2_25";
             this.labelControlStatus2_25.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_25.StyleController = this.layoutControl27;
@@ -4558,7 +4509,7 @@
             this.labelControlStatus2_24.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_24.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_24.Location = new System.Drawing.Point(344, 96);
-            this.labelControlStatus2_24.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_24.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_24.Name = "labelControlStatus2_24";
             this.labelControlStatus2_24.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus2_24.StyleController = this.layoutControl27;
@@ -4571,7 +4522,7 @@
             this.labelControlStatus2_23.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_23.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_23.Location = new System.Drawing.Point(231, 96);
-            this.labelControlStatus2_23.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_23.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_23.Name = "labelControlStatus2_23";
             this.labelControlStatus2_23.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_23.StyleController = this.layoutControl27;
@@ -4584,7 +4535,7 @@
             this.labelControlStatus2_22.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_22.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_22.Location = new System.Drawing.Point(118, 96);
-            this.labelControlStatus2_22.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_22.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_22.Name = "labelControlStatus2_22";
             this.labelControlStatus2_22.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_22.StyleController = this.layoutControl27;
@@ -4597,7 +4548,7 @@
             this.labelControlStatus2_21.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_21.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_21.Location = new System.Drawing.Point(5, 96);
-            this.labelControlStatus2_21.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_21.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_21.Name = "labelControlStatus2_21";
             this.labelControlStatus2_21.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_21.StyleController = this.layoutControl27;
@@ -4610,7 +4561,7 @@
             this.labelControlStatus2_20.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_20.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_20.Location = new System.Drawing.Point(344, 78);
-            this.labelControlStatus2_20.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_20.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_20.Name = "labelControlStatus2_20";
             this.labelControlStatus2_20.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus2_20.StyleController = this.layoutControl27;
@@ -4623,7 +4574,7 @@
             this.labelControlStatus2_19.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_19.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_19.Location = new System.Drawing.Point(231, 78);
-            this.labelControlStatus2_19.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_19.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_19.Name = "labelControlStatus2_19";
             this.labelControlStatus2_19.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_19.StyleController = this.layoutControl27;
@@ -4636,7 +4587,7 @@
             this.labelControlStatus2_18.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_18.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_18.Location = new System.Drawing.Point(118, 78);
-            this.labelControlStatus2_18.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_18.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_18.Name = "labelControlStatus2_18";
             this.labelControlStatus2_18.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_18.StyleController = this.layoutControl27;
@@ -4649,7 +4600,7 @@
             this.labelControlStatus2_17.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_17.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_17.Location = new System.Drawing.Point(5, 78);
-            this.labelControlStatus2_17.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_17.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_17.Name = "labelControlStatus2_17";
             this.labelControlStatus2_17.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_17.StyleController = this.layoutControl27;
@@ -4662,7 +4613,7 @@
             this.labelControlStatus2_16.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_16.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_16.Location = new System.Drawing.Point(344, 60);
-            this.labelControlStatus2_16.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_16.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_16.Name = "labelControlStatus2_16";
             this.labelControlStatus2_16.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus2_16.StyleController = this.layoutControl27;
@@ -4675,7 +4626,7 @@
             this.labelControlStatus2_15.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_15.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_15.Location = new System.Drawing.Point(231, 60);
-            this.labelControlStatus2_15.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_15.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_15.Name = "labelControlStatus2_15";
             this.labelControlStatus2_15.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_15.StyleController = this.layoutControl27;
@@ -4688,7 +4639,7 @@
             this.labelControlStatus2_14.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_14.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_14.Location = new System.Drawing.Point(118, 60);
-            this.labelControlStatus2_14.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_14.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_14.Name = "labelControlStatus2_14";
             this.labelControlStatus2_14.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_14.StyleController = this.layoutControl27;
@@ -4701,7 +4652,7 @@
             this.labelControlStatus2_13.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_13.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_13.Location = new System.Drawing.Point(5, 60);
-            this.labelControlStatus2_13.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_13.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_13.Name = "labelControlStatus2_13";
             this.labelControlStatus2_13.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_13.StyleController = this.layoutControl27;
@@ -4714,7 +4665,7 @@
             this.labelControlStatus2_12.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_12.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_12.Location = new System.Drawing.Point(344, 42);
-            this.labelControlStatus2_12.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_12.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_12.Name = "labelControlStatus2_12";
             this.labelControlStatus2_12.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus2_12.StyleController = this.layoutControl27;
@@ -4727,7 +4678,7 @@
             this.labelControlStatus2_11.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_11.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_11.Location = new System.Drawing.Point(231, 42);
-            this.labelControlStatus2_11.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_11.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_11.Name = "labelControlStatus2_11";
             this.labelControlStatus2_11.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_11.StyleController = this.layoutControl27;
@@ -4740,7 +4691,7 @@
             this.labelControlStatus2_10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_10.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_10.Location = new System.Drawing.Point(118, 42);
-            this.labelControlStatus2_10.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_10.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_10.Name = "labelControlStatus2_10";
             this.labelControlStatus2_10.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_10.StyleController = this.layoutControl27;
@@ -4753,7 +4704,7 @@
             this.labelControlStatus2_9.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_9.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_9.Location = new System.Drawing.Point(5, 42);
-            this.labelControlStatus2_9.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_9.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_9.Name = "labelControlStatus2_9";
             this.labelControlStatus2_9.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_9.StyleController = this.layoutControl27;
@@ -4766,7 +4717,7 @@
             this.labelControlStatus2_8.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_8.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_8.Location = new System.Drawing.Point(344, 24);
-            this.labelControlStatus2_8.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_8.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_8.Name = "labelControlStatus2_8";
             this.labelControlStatus2_8.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus2_8.StyleController = this.layoutControl27;
@@ -4779,7 +4730,7 @@
             this.labelControlStatus2_7.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_7.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_7.Location = new System.Drawing.Point(231, 24);
-            this.labelControlStatus2_7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_7.Name = "labelControlStatus2_7";
             this.labelControlStatus2_7.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_7.StyleController = this.layoutControl27;
@@ -4792,7 +4743,7 @@
             this.labelControlStatus2_6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_6.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_6.Location = new System.Drawing.Point(118, 24);
-            this.labelControlStatus2_6.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_6.Name = "labelControlStatus2_6";
             this.labelControlStatus2_6.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_6.StyleController = this.layoutControl27;
@@ -4805,7 +4756,7 @@
             this.labelControlStatus2_5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_5.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_5.Location = new System.Drawing.Point(5, 24);
-            this.labelControlStatus2_5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_5.Name = "labelControlStatus2_5";
             this.labelControlStatus2_5.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_5.StyleController = this.layoutControl27;
@@ -4818,7 +4769,7 @@
             this.labelControlStatus2_4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_4.Location = new System.Drawing.Point(344, 6);
-            this.labelControlStatus2_4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_4.Name = "labelControlStatus2_4";
             this.labelControlStatus2_4.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus2_4.StyleController = this.layoutControl27;
@@ -4831,7 +4782,7 @@
             this.labelControlStatus2_3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_3.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_3.Location = new System.Drawing.Point(231, 6);
-            this.labelControlStatus2_3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_3.Name = "labelControlStatus2_3";
             this.labelControlStatus2_3.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_3.StyleController = this.layoutControl27;
@@ -4844,7 +4795,7 @@
             this.labelControlStatus2_2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_2.Location = new System.Drawing.Point(118, 6);
-            this.labelControlStatus2_2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_2.Name = "labelControlStatus2_2";
             this.labelControlStatus2_2.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_2.StyleController = this.layoutControl27;
@@ -4857,12 +4808,12 @@
             this.labelControlStatus2_1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus2_1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus2_1.Location = new System.Drawing.Point(5, 6);
-            this.labelControlStatus2_1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus2_1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus2_1.Name = "labelControlStatus2_1";
             this.labelControlStatus2_1.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus2_1.StyleController = this.layoutControl27;
             this.labelControlStatus2_1.TabIndex = 4;
-            this.labelControlStatus2_1.Text = "드라이브 시작";
+            this.labelControlStatus2_1.Text = "Drive Start";
             // 
             // layoutControlGroup26
             // 
@@ -5346,7 +5297,7 @@
             // 
             this.groupControl8.Controls.Add(this.layoutControl25);
             this.groupControl8.Location = new System.Drawing.Point(12, 12);
-            this.groupControl8.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.groupControl8.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.groupControl8.Name = "groupControl8";
             this.groupControl8.Size = new System.Drawing.Size(465, 131);
             this.groupControl8.TabIndex = 5;
@@ -5363,7 +5314,7 @@
             this.layoutControl25.Controls.Add(this.textEditTargetPos2);
             this.layoutControl25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl25.Location = new System.Drawing.Point(2, 21);
-            this.layoutControl25.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl25.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl25.Name = "layoutControl25";
             this.layoutControl25.Root = this.layoutControlGroup24;
             this.layoutControl25.Size = new System.Drawing.Size(461, 108);
@@ -5373,7 +5324,7 @@
             // textEditOpMode2
             // 
             this.textEditOpMode2.Location = new System.Drawing.Point(83, 6);
-            this.textEditOpMode2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditOpMode2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditOpMode2.Name = "textEditOpMode2";
             this.textEditOpMode2.Properties.ReadOnly = true;
             this.textEditOpMode2.Size = new System.Drawing.Size(373, 20);
@@ -5383,7 +5334,7 @@
             // textEditProgramStep2
             // 
             this.textEditProgramStep2.Location = new System.Drawing.Point(310, 78);
-            this.textEditProgramStep2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditProgramStep2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditProgramStep2.Name = "textEditProgramStep2";
             this.textEditProgramStep2.Properties.ReadOnly = true;
             this.textEditProgramStep2.Size = new System.Drawing.Size(146, 20);
@@ -5393,7 +5344,7 @@
             // textEditMotorRPM2
             // 
             this.textEditMotorRPM2.Location = new System.Drawing.Point(83, 78);
-            this.textEditMotorRPM2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditMotorRPM2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditMotorRPM2.Name = "textEditMotorRPM2";
             this.textEditMotorRPM2.Properties.ReadOnly = true;
             this.textEditMotorRPM2.Size = new System.Drawing.Size(145, 20);
@@ -5403,7 +5354,7 @@
             // textEditPresentVel2
             // 
             this.textEditPresentVel2.Location = new System.Drawing.Point(310, 54);
-            this.textEditPresentVel2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditPresentVel2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditPresentVel2.Name = "textEditPresentVel2";
             this.textEditPresentVel2.Properties.ReadOnly = true;
             this.textEditPresentVel2.Size = new System.Drawing.Size(146, 20);
@@ -5413,7 +5364,7 @@
             // textEditTargetVel2
             // 
             this.textEditTargetVel2.Location = new System.Drawing.Point(83, 54);
-            this.textEditTargetVel2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditTargetVel2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditTargetVel2.Name = "textEditTargetVel2";
             this.textEditTargetVel2.Properties.ReadOnly = true;
             this.textEditTargetVel2.Size = new System.Drawing.Size(145, 20);
@@ -5423,7 +5374,7 @@
             // textEditPresentPos2
             // 
             this.textEditPresentPos2.Location = new System.Drawing.Point(310, 30);
-            this.textEditPresentPos2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditPresentPos2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditPresentPos2.Name = "textEditPresentPos2";
             this.textEditPresentPos2.Properties.ReadOnly = true;
             this.textEditPresentPos2.Size = new System.Drawing.Size(146, 20);
@@ -5433,7 +5384,7 @@
             // textEditTargetPos2
             // 
             this.textEditTargetPos2.Location = new System.Drawing.Point(83, 30);
-            this.textEditTargetPos2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditTargetPos2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditTargetPos2.Name = "textEditTargetPos2";
             this.textEditTargetPos2.Properties.ReadOnly = true;
             this.textEditTargetPos2.Size = new System.Drawing.Size(145, 20);
@@ -5524,7 +5475,7 @@
             // 
             this.groupControl9.Controls.Add(this.layoutControl26);
             this.groupControl9.Location = new System.Drawing.Point(12, 147);
-            this.groupControl9.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.groupControl9.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.groupControl9.Name = "groupControl9";
             this.groupControl9.Size = new System.Drawing.Size(465, 180);
             this.groupControl9.TabIndex = 6;
@@ -5558,7 +5509,7 @@
             this.layoutControl26.Controls.Add(this.labelControlAlarm2_1);
             this.layoutControl26.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl26.Location = new System.Drawing.Point(2, 21);
-            this.layoutControl26.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.layoutControl26.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
             this.layoutControl26.Name = "layoutControl26";
             this.layoutControl26.Root = this.layoutControlGroup25;
             this.layoutControl26.Size = new System.Drawing.Size(461, 157);
@@ -5571,7 +5522,7 @@
             this.labelControlAlarm2_24.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_24.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_24.Location = new System.Drawing.Point(344, 129);
-            this.labelControlAlarm2_24.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_24.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_24.Name = "labelControlAlarm2_24";
             this.labelControlAlarm2_24.Size = new System.Drawing.Size(111, 22);
             this.labelControlAlarm2_24.StyleController = this.layoutControl26;
@@ -5583,7 +5534,7 @@
             this.labelControlAlarm2_23.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_23.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_23.Location = new System.Drawing.Point(231, 129);
-            this.labelControlAlarm2_23.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_23.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_23.Name = "labelControlAlarm2_23";
             this.labelControlAlarm2_23.Size = new System.Drawing.Size(109, 22);
             this.labelControlAlarm2_23.StyleController = this.layoutControl26;
@@ -5596,7 +5547,7 @@
             this.labelControlAlarm2_22.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_22.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_22.Location = new System.Drawing.Point(118, 129);
-            this.labelControlAlarm2_22.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_22.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_22.Name = "labelControlAlarm2_22";
             this.labelControlAlarm2_22.Size = new System.Drawing.Size(109, 22);
             this.labelControlAlarm2_22.StyleController = this.layoutControl26;
@@ -5609,7 +5560,7 @@
             this.labelControlAlarm2_21.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_21.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_21.Location = new System.Drawing.Point(5, 129);
-            this.labelControlAlarm2_21.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_21.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_21.Name = "labelControlAlarm2_21";
             this.labelControlAlarm2_21.Size = new System.Drawing.Size(109, 22);
             this.labelControlAlarm2_21.StyleController = this.layoutControl26;
@@ -5622,7 +5573,7 @@
             this.labelControlAlarm2_20.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_20.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_20.Location = new System.Drawing.Point(344, 105);
-            this.labelControlAlarm2_20.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_20.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_20.Name = "labelControlAlarm2_20";
             this.labelControlAlarm2_20.Size = new System.Drawing.Size(111, 20);
             this.labelControlAlarm2_20.StyleController = this.layoutControl26;
@@ -5635,7 +5586,7 @@
             this.labelControlAlarm2_19.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_19.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_19.Location = new System.Drawing.Point(231, 105);
-            this.labelControlAlarm2_19.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_19.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_19.Name = "labelControlAlarm2_19";
             this.labelControlAlarm2_19.Size = new System.Drawing.Size(109, 20);
             this.labelControlAlarm2_19.StyleController = this.layoutControl26;
@@ -5648,7 +5599,7 @@
             this.labelControlAlarm2_18.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_18.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_18.Location = new System.Drawing.Point(118, 105);
-            this.labelControlAlarm2_18.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_18.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_18.Name = "labelControlAlarm2_18";
             this.labelControlAlarm2_18.Size = new System.Drawing.Size(109, 20);
             this.labelControlAlarm2_18.StyleController = this.layoutControl26;
@@ -5661,7 +5612,7 @@
             this.labelControlAlarm2_17.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_17.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_17.Location = new System.Drawing.Point(5, 105);
-            this.labelControlAlarm2_17.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_17.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_17.Name = "labelControlAlarm2_17";
             this.labelControlAlarm2_17.Size = new System.Drawing.Size(109, 20);
             this.labelControlAlarm2_17.StyleController = this.layoutControl26;
@@ -5674,7 +5625,7 @@
             this.labelControlAlarm2_16.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_16.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_16.Location = new System.Drawing.Point(344, 80);
-            this.labelControlAlarm2_16.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_16.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_16.Name = "labelControlAlarm2_16";
             this.labelControlAlarm2_16.Size = new System.Drawing.Size(111, 21);
             this.labelControlAlarm2_16.StyleController = this.layoutControl26;
@@ -5687,7 +5638,7 @@
             this.labelControlAlarm2_15.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_15.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_15.Location = new System.Drawing.Point(231, 80);
-            this.labelControlAlarm2_15.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_15.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_15.Name = "labelControlAlarm2_15";
             this.labelControlAlarm2_15.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm2_15.StyleController = this.layoutControl26;
@@ -5700,7 +5651,7 @@
             this.labelControlAlarm2_14.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_14.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_14.Location = new System.Drawing.Point(118, 80);
-            this.labelControlAlarm2_14.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_14.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_14.Name = "labelControlAlarm2_14";
             this.labelControlAlarm2_14.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm2_14.StyleController = this.layoutControl26;
@@ -5713,7 +5664,7 @@
             this.labelControlAlarm2_13.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_13.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_13.Location = new System.Drawing.Point(5, 80);
-            this.labelControlAlarm2_13.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_13.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_13.Name = "labelControlAlarm2_13";
             this.labelControlAlarm2_13.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm2_13.StyleController = this.layoutControl26;
@@ -5726,7 +5677,7 @@
             this.labelControlAlarm2_12.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_12.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_12.Location = new System.Drawing.Point(344, 56);
-            this.labelControlAlarm2_12.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_12.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_12.Name = "labelControlAlarm2_12";
             this.labelControlAlarm2_12.Size = new System.Drawing.Size(111, 20);
             this.labelControlAlarm2_12.StyleController = this.layoutControl26;
@@ -5739,7 +5690,7 @@
             this.labelControlAlarm2_11.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_11.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_11.Location = new System.Drawing.Point(231, 56);
-            this.labelControlAlarm2_11.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_11.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_11.Name = "labelControlAlarm2_11";
             this.labelControlAlarm2_11.Size = new System.Drawing.Size(109, 20);
             this.labelControlAlarm2_11.StyleController = this.layoutControl26;
@@ -5752,7 +5703,7 @@
             this.labelControlAlarm2_10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_10.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_10.Location = new System.Drawing.Point(118, 56);
-            this.labelControlAlarm2_10.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_10.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_10.Name = "labelControlAlarm2_10";
             this.labelControlAlarm2_10.Size = new System.Drawing.Size(109, 20);
             this.labelControlAlarm2_10.StyleController = this.layoutControl26;
@@ -5765,7 +5716,7 @@
             this.labelControlAlarm2_9.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_9.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_9.Location = new System.Drawing.Point(5, 56);
-            this.labelControlAlarm2_9.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_9.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_9.Name = "labelControlAlarm2_9";
             this.labelControlAlarm2_9.Size = new System.Drawing.Size(109, 20);
             this.labelControlAlarm2_9.StyleController = this.layoutControl26;
@@ -5778,7 +5729,7 @@
             this.labelControlAlarm2_8.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_8.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_8.Location = new System.Drawing.Point(344, 31);
-            this.labelControlAlarm2_8.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_8.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_8.Name = "labelControlAlarm2_8";
             this.labelControlAlarm2_8.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm2_8.StyleController = this.layoutControl26;
@@ -5791,7 +5742,7 @@
             this.labelControlAlarm2_7.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_7.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_7.Location = new System.Drawing.Point(231, 31);
-            this.labelControlAlarm2_7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_7.Name = "labelControlAlarm2_7";
             this.labelControlAlarm2_7.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm2_7.StyleController = this.layoutControl26;
@@ -5804,7 +5755,7 @@
             this.labelControlAlarm2_6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_6.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_6.Location = new System.Drawing.Point(118, 31);
-            this.labelControlAlarm2_6.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_6.Name = "labelControlAlarm2_6";
             this.labelControlAlarm2_6.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm2_6.StyleController = this.layoutControl26;
@@ -5817,7 +5768,7 @@
             this.labelControlAlarm2_5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_5.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_5.Location = new System.Drawing.Point(5, 31);
-            this.labelControlAlarm2_5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_5.Name = "labelControlAlarm2_5";
             this.labelControlAlarm2_5.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm2_5.StyleController = this.layoutControl26;
@@ -5830,7 +5781,7 @@
             this.labelControlAlarm2_4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_4.Location = new System.Drawing.Point(344, 6);
-            this.labelControlAlarm2_4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_4.Name = "labelControlAlarm2_4";
             this.labelControlAlarm2_4.Size = new System.Drawing.Size(111, 21);
             this.labelControlAlarm2_4.StyleController = this.layoutControl26;
@@ -5843,7 +5794,7 @@
             this.labelControlAlarm2_3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_3.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_3.Location = new System.Drawing.Point(231, 6);
-            this.labelControlAlarm2_3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_3.Name = "labelControlAlarm2_3";
             this.labelControlAlarm2_3.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm2_3.StyleController = this.layoutControl26;
@@ -5856,7 +5807,7 @@
             this.labelControlAlarm2_2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_2.Location = new System.Drawing.Point(118, 6);
-            this.labelControlAlarm2_2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_2.Name = "labelControlAlarm2_2";
             this.labelControlAlarm2_2.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm2_2.StyleController = this.layoutControl26;
@@ -5869,7 +5820,7 @@
             this.labelControlAlarm2_1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm2_1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm2_1.Location = new System.Drawing.Point(5, 6);
-            this.labelControlAlarm2_1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm2_1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm2_1.Name = "labelControlAlarm2_1";
             this.labelControlAlarm2_1.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm2_1.StyleController = this.layoutControl26;
@@ -6240,7 +6191,7 @@
             // xtraTabPageAiC3
             // 
             this.xtraTabPageAiC3.Controls.Add(this.layoutControl21);
-            this.xtraTabPageAiC3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.xtraTabPageAiC3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.xtraTabPageAiC3.Name = "xtraTabPageAiC3";
             this.xtraTabPageAiC3.Size = new System.Drawing.Size(489, 536);
             this.xtraTabPageAiC3.Text = "Axis 3";
@@ -6252,7 +6203,7 @@
             this.layoutControl21.Controls.Add(this.groupControl11);
             this.layoutControl21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl21.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl21.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl21.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl21.Name = "layoutControl21";
             this.layoutControl21.Root = this.layoutControlGroup20;
             this.layoutControl21.Size = new System.Drawing.Size(489, 536);
@@ -6263,7 +6214,7 @@
             // 
             this.groupControl12.Controls.Add(this.layoutControl29);
             this.groupControl12.Location = new System.Drawing.Point(12, 143);
-            this.groupControl12.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.groupControl12.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.groupControl12.Name = "groupControl12";
             this.groupControl12.Size = new System.Drawing.Size(465, 180);
             this.groupControl12.TabIndex = 7;
@@ -6297,7 +6248,7 @@
             this.layoutControl29.Controls.Add(this.labelControlAlarm3_1);
             this.layoutControl29.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl29.Location = new System.Drawing.Point(2, 21);
-            this.layoutControl29.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.layoutControl29.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
             this.layoutControl29.Name = "layoutControl29";
             this.layoutControl29.Root = this.layoutControlGroup28;
             this.layoutControl29.Size = new System.Drawing.Size(461, 157);
@@ -6310,7 +6261,7 @@
             this.labelControlAlarm3_24.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_24.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_24.Location = new System.Drawing.Point(344, 130);
-            this.labelControlAlarm3_24.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_24.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_24.Name = "labelControlAlarm3_24";
             this.labelControlAlarm3_24.Size = new System.Drawing.Size(111, 21);
             this.labelControlAlarm3_24.StyleController = this.layoutControl29;
@@ -6322,7 +6273,7 @@
             this.labelControlAlarm3_23.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_23.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_23.Location = new System.Drawing.Point(231, 130);
-            this.labelControlAlarm3_23.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_23.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_23.Name = "labelControlAlarm3_23";
             this.labelControlAlarm3_23.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_23.StyleController = this.layoutControl29;
@@ -6335,7 +6286,7 @@
             this.labelControlAlarm3_22.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_22.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_22.Location = new System.Drawing.Point(118, 130);
-            this.labelControlAlarm3_22.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_22.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_22.Name = "labelControlAlarm3_22";
             this.labelControlAlarm3_22.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_22.StyleController = this.layoutControl29;
@@ -6348,7 +6299,7 @@
             this.labelControlAlarm3_21.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_21.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_21.Location = new System.Drawing.Point(5, 130);
-            this.labelControlAlarm3_21.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_21.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_21.Name = "labelControlAlarm3_21";
             this.labelControlAlarm3_21.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_21.StyleController = this.layoutControl29;
@@ -6361,7 +6312,7 @@
             this.labelControlAlarm3_20.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_20.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_20.Location = new System.Drawing.Point(344, 106);
-            this.labelControlAlarm3_20.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_20.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_20.Name = "labelControlAlarm3_20";
             this.labelControlAlarm3_20.Size = new System.Drawing.Size(111, 20);
             this.labelControlAlarm3_20.StyleController = this.layoutControl29;
@@ -6374,7 +6325,7 @@
             this.labelControlAlarm3_19.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_19.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_19.Location = new System.Drawing.Point(231, 106);
-            this.labelControlAlarm3_19.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_19.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_19.Name = "labelControlAlarm3_19";
             this.labelControlAlarm3_19.Size = new System.Drawing.Size(109, 20);
             this.labelControlAlarm3_19.StyleController = this.layoutControl29;
@@ -6387,7 +6338,7 @@
             this.labelControlAlarm3_18.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_18.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_18.Location = new System.Drawing.Point(118, 106);
-            this.labelControlAlarm3_18.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_18.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_18.Name = "labelControlAlarm3_18";
             this.labelControlAlarm3_18.Size = new System.Drawing.Size(109, 20);
             this.labelControlAlarm3_18.StyleController = this.layoutControl29;
@@ -6400,7 +6351,7 @@
             this.labelControlAlarm3_17.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_17.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_17.Location = new System.Drawing.Point(5, 106);
-            this.labelControlAlarm3_17.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_17.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_17.Name = "labelControlAlarm3_17";
             this.labelControlAlarm3_17.Size = new System.Drawing.Size(109, 20);
             this.labelControlAlarm3_17.StyleController = this.layoutControl29;
@@ -6413,7 +6364,7 @@
             this.labelControlAlarm3_16.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_16.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_16.Location = new System.Drawing.Point(344, 81);
-            this.labelControlAlarm3_16.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_16.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_16.Name = "labelControlAlarm3_16";
             this.labelControlAlarm3_16.Size = new System.Drawing.Size(111, 21);
             this.labelControlAlarm3_16.StyleController = this.layoutControl29;
@@ -6426,7 +6377,7 @@
             this.labelControlAlarm3_15.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_15.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_15.Location = new System.Drawing.Point(231, 81);
-            this.labelControlAlarm3_15.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_15.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_15.Name = "labelControlAlarm3_15";
             this.labelControlAlarm3_15.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_15.StyleController = this.layoutControl29;
@@ -6439,7 +6390,7 @@
             this.labelControlAlarm3_14.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_14.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_14.Location = new System.Drawing.Point(118, 81);
-            this.labelControlAlarm3_14.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_14.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_14.Name = "labelControlAlarm3_14";
             this.labelControlAlarm3_14.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_14.StyleController = this.layoutControl29;
@@ -6452,7 +6403,7 @@
             this.labelControlAlarm3_13.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_13.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_13.Location = new System.Drawing.Point(5, 81);
-            this.labelControlAlarm3_13.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_13.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_13.Name = "labelControlAlarm3_13";
             this.labelControlAlarm3_13.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_13.StyleController = this.layoutControl29;
@@ -6465,7 +6416,7 @@
             this.labelControlAlarm3_12.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_12.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_12.Location = new System.Drawing.Point(344, 56);
-            this.labelControlAlarm3_12.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_12.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_12.Name = "labelControlAlarm3_12";
             this.labelControlAlarm3_12.Size = new System.Drawing.Size(111, 21);
             this.labelControlAlarm3_12.StyleController = this.layoutControl29;
@@ -6478,7 +6429,7 @@
             this.labelControlAlarm3_11.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_11.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_11.Location = new System.Drawing.Point(231, 56);
-            this.labelControlAlarm3_11.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_11.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_11.Name = "labelControlAlarm3_11";
             this.labelControlAlarm3_11.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_11.StyleController = this.layoutControl29;
@@ -6491,7 +6442,7 @@
             this.labelControlAlarm3_10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_10.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_10.Location = new System.Drawing.Point(118, 56);
-            this.labelControlAlarm3_10.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_10.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_10.Name = "labelControlAlarm3_10";
             this.labelControlAlarm3_10.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_10.StyleController = this.layoutControl29;
@@ -6504,7 +6455,7 @@
             this.labelControlAlarm3_9.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_9.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_9.Location = new System.Drawing.Point(5, 56);
-            this.labelControlAlarm3_9.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_9.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_9.Name = "labelControlAlarm3_9";
             this.labelControlAlarm3_9.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_9.StyleController = this.layoutControl29;
@@ -6517,7 +6468,7 @@
             this.labelControlAlarm3_8.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_8.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_8.Location = new System.Drawing.Point(344, 31);
-            this.labelControlAlarm3_8.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_8.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_8.Name = "labelControlAlarm3_8";
             this.labelControlAlarm3_8.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_8.StyleController = this.layoutControl29;
@@ -6530,7 +6481,7 @@
             this.labelControlAlarm3_7.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_7.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_7.Location = new System.Drawing.Point(231, 31);
-            this.labelControlAlarm3_7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_7.Name = "labelControlAlarm3_7";
             this.labelControlAlarm3_7.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_7.StyleController = this.layoutControl29;
@@ -6543,7 +6494,7 @@
             this.labelControlAlarm3_6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_6.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_6.Location = new System.Drawing.Point(118, 31);
-            this.labelControlAlarm3_6.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_6.Name = "labelControlAlarm3_6";
             this.labelControlAlarm3_6.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_6.StyleController = this.layoutControl29;
@@ -6556,7 +6507,7 @@
             this.labelControlAlarm3_5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_5.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_5.Location = new System.Drawing.Point(5, 31);
-            this.labelControlAlarm3_5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_5.Name = "labelControlAlarm3_5";
             this.labelControlAlarm3_5.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_5.StyleController = this.layoutControl29;
@@ -6569,7 +6520,7 @@
             this.labelControlAlarm3_4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_4.Location = new System.Drawing.Point(344, 6);
-            this.labelControlAlarm3_4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_4.Name = "labelControlAlarm3_4";
             this.labelControlAlarm3_4.Size = new System.Drawing.Size(111, 21);
             this.labelControlAlarm3_4.StyleController = this.layoutControl29;
@@ -6582,7 +6533,7 @@
             this.labelControlAlarm3_3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_3.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_3.Location = new System.Drawing.Point(231, 6);
-            this.labelControlAlarm3_3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_3.Name = "labelControlAlarm3_3";
             this.labelControlAlarm3_3.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_3.StyleController = this.layoutControl29;
@@ -6595,7 +6546,7 @@
             this.labelControlAlarm3_2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_2.Location = new System.Drawing.Point(118, 6);
-            this.labelControlAlarm3_2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_2.Name = "labelControlAlarm3_2";
             this.labelControlAlarm3_2.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_2.StyleController = this.layoutControl29;
@@ -6608,7 +6559,7 @@
             this.labelControlAlarm3_1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlAlarm3_1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlAlarm3_1.Location = new System.Drawing.Point(5, 6);
-            this.labelControlAlarm3_1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlAlarm3_1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlAlarm3_1.Name = "labelControlAlarm3_1";
             this.labelControlAlarm3_1.Size = new System.Drawing.Size(109, 21);
             this.labelControlAlarm3_1.StyleController = this.layoutControl29;
@@ -6941,7 +6892,7 @@
             // 
             this.groupControl13.Controls.Add(this.layoutControl30);
             this.groupControl13.Location = new System.Drawing.Point(12, 327);
-            this.groupControl13.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.groupControl13.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.groupControl13.Name = "groupControl13";
             this.groupControl13.Size = new System.Drawing.Size(465, 197);
             this.groupControl13.TabIndex = 18;
@@ -6987,7 +6938,7 @@
             this.layoutControl30.Controls.Add(this.labelControlStatus3_1);
             this.layoutControl30.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl30.Location = new System.Drawing.Point(2, 21);
-            this.layoutControl30.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl30.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl30.Name = "layoutControl30";
             this.layoutControl30.Root = this.layoutControlGroup29;
             this.layoutControl30.Size = new System.Drawing.Size(461, 174);
@@ -6997,7 +6948,7 @@
             // labelControlOutput3_8
             // 
             this.labelControlOutput3_8.Location = new System.Drawing.Point(344, 154);
-            this.labelControlOutput3_8.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput3_8.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput3_8.Name = "labelControlOutput3_8";
             this.labelControlOutput3_8.Size = new System.Drawing.Size(111, 14);
             this.labelControlOutput3_8.StyleController = this.layoutControl30;
@@ -7006,7 +6957,7 @@
             // labelControlOutput3_7
             // 
             this.labelControlOutput3_7.Location = new System.Drawing.Point(231, 154);
-            this.labelControlOutput3_7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput3_7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput3_7.Name = "labelControlOutput3_7";
             this.labelControlOutput3_7.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput3_7.StyleController = this.layoutControl30;
@@ -7015,7 +6966,7 @@
             // labelControlOutput3_6
             // 
             this.labelControlOutput3_6.Location = new System.Drawing.Point(118, 154);
-            this.labelControlOutput3_6.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput3_6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput3_6.Name = "labelControlOutput3_6";
             this.labelControlOutput3_6.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput3_6.StyleController = this.layoutControl30;
@@ -7027,7 +6978,7 @@
             this.labelControlOutput3_5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput3_5.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput3_5.Location = new System.Drawing.Point(5, 154);
-            this.labelControlOutput3_5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput3_5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput3_5.Name = "labelControlOutput3_5";
             this.labelControlOutput3_5.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput3_5.StyleController = this.layoutControl30;
@@ -7040,7 +6991,7 @@
             this.labelControlOutput3_4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput3_4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput3_4.Location = new System.Drawing.Point(344, 136);
-            this.labelControlOutput3_4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput3_4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput3_4.Name = "labelControlOutput3_4";
             this.labelControlOutput3_4.Size = new System.Drawing.Size(111, 14);
             this.labelControlOutput3_4.StyleController = this.layoutControl30;
@@ -7053,7 +7004,7 @@
             this.labelControlOutput3_3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput3_3.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput3_3.Location = new System.Drawing.Point(231, 136);
-            this.labelControlOutput3_3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput3_3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput3_3.Name = "labelControlOutput3_3";
             this.labelControlOutput3_3.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput3_3.StyleController = this.layoutControl30;
@@ -7066,7 +7017,7 @@
             this.labelControlOutput3_2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput3_2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput3_2.Location = new System.Drawing.Point(118, 136);
-            this.labelControlOutput3_2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput3_2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput3_2.Name = "labelControlOutput3_2";
             this.labelControlOutput3_2.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput3_2.StyleController = this.layoutControl30;
@@ -7079,7 +7030,7 @@
             this.labelControlOutput3_1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlOutput3_1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlOutput3_1.Location = new System.Drawing.Point(5, 136);
-            this.labelControlOutput3_1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlOutput3_1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlOutput3_1.Name = "labelControlOutput3_1";
             this.labelControlOutput3_1.Size = new System.Drawing.Size(109, 14);
             this.labelControlOutput3_1.StyleController = this.layoutControl30;
@@ -7092,7 +7043,7 @@
             this.labelControlStatus3_28.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_28.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_28.Location = new System.Drawing.Point(344, 117);
-            this.labelControlStatus3_28.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_28.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_28.Name = "labelControlStatus3_28";
             this.labelControlStatus3_28.Size = new System.Drawing.Size(111, 15);
             this.labelControlStatus3_28.StyleController = this.layoutControl30;
@@ -7105,7 +7056,7 @@
             this.labelControlStatus3_27.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_27.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_27.Location = new System.Drawing.Point(231, 117);
-            this.labelControlStatus3_27.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_27.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_27.Name = "labelControlStatus3_27";
             this.labelControlStatus3_27.Size = new System.Drawing.Size(109, 15);
             this.labelControlStatus3_27.StyleController = this.layoutControl30;
@@ -7118,7 +7069,7 @@
             this.labelControlStatus3_26.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_26.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_26.Location = new System.Drawing.Point(118, 117);
-            this.labelControlStatus3_26.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_26.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_26.Name = "labelControlStatus3_26";
             this.labelControlStatus3_26.Size = new System.Drawing.Size(109, 15);
             this.labelControlStatus3_26.StyleController = this.layoutControl30;
@@ -7131,7 +7082,7 @@
             this.labelControlStatus3_25.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_25.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_25.Location = new System.Drawing.Point(5, 117);
-            this.labelControlStatus3_25.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_25.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_25.Name = "labelControlStatus3_25";
             this.labelControlStatus3_25.Size = new System.Drawing.Size(109, 15);
             this.labelControlStatus3_25.StyleController = this.layoutControl30;
@@ -7144,7 +7095,7 @@
             this.labelControlStatus3_24.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_24.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_24.Location = new System.Drawing.Point(344, 99);
-            this.labelControlStatus3_24.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_24.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_24.Name = "labelControlStatus3_24";
             this.labelControlStatus3_24.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus3_24.StyleController = this.layoutControl30;
@@ -7157,7 +7108,7 @@
             this.labelControlStatus3_23.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_23.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_23.Location = new System.Drawing.Point(231, 99);
-            this.labelControlStatus3_23.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_23.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_23.Name = "labelControlStatus3_23";
             this.labelControlStatus3_23.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus3_23.StyleController = this.layoutControl30;
@@ -7170,7 +7121,7 @@
             this.labelControlStatus3_22.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_22.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_22.Location = new System.Drawing.Point(118, 99);
-            this.labelControlStatus3_22.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_22.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_22.Name = "labelControlStatus3_22";
             this.labelControlStatus3_22.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus3_22.StyleController = this.layoutControl30;
@@ -7183,7 +7134,7 @@
             this.labelControlStatus3_21.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_21.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_21.Location = new System.Drawing.Point(5, 99);
-            this.labelControlStatus3_21.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_21.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_21.Name = "labelControlStatus3_21";
             this.labelControlStatus3_21.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus3_21.StyleController = this.layoutControl30;
@@ -7196,7 +7147,7 @@
             this.labelControlStatus3_20.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_20.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_20.Location = new System.Drawing.Point(344, 80);
-            this.labelControlStatus3_20.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_20.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_20.Name = "labelControlStatus3_20";
             this.labelControlStatus3_20.Size = new System.Drawing.Size(111, 15);
             this.labelControlStatus3_20.StyleController = this.layoutControl30;
@@ -7209,7 +7160,7 @@
             this.labelControlStatus3_19.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_19.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_19.Location = new System.Drawing.Point(231, 80);
-            this.labelControlStatus3_19.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_19.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_19.Name = "labelControlStatus3_19";
             this.labelControlStatus3_19.Size = new System.Drawing.Size(109, 15);
             this.labelControlStatus3_19.StyleController = this.layoutControl30;
@@ -7222,7 +7173,7 @@
             this.labelControlStatus3_18.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_18.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_18.Location = new System.Drawing.Point(118, 80);
-            this.labelControlStatus3_18.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_18.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_18.Name = "labelControlStatus3_18";
             this.labelControlStatus3_18.Size = new System.Drawing.Size(109, 15);
             this.labelControlStatus3_18.StyleController = this.layoutControl30;
@@ -7235,7 +7186,7 @@
             this.labelControlStatus3_17.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_17.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_17.Location = new System.Drawing.Point(5, 80);
-            this.labelControlStatus3_17.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_17.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_17.Name = "labelControlStatus3_17";
             this.labelControlStatus3_17.Size = new System.Drawing.Size(109, 15);
             this.labelControlStatus3_17.StyleController = this.layoutControl30;
@@ -7248,7 +7199,7 @@
             this.labelControlStatus3_16.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_16.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_16.Location = new System.Drawing.Point(344, 62);
-            this.labelControlStatus3_16.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_16.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_16.Name = "labelControlStatus3_16";
             this.labelControlStatus3_16.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus3_16.StyleController = this.layoutControl30;
@@ -7261,7 +7212,7 @@
             this.labelControlStatus3_15.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_15.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_15.Location = new System.Drawing.Point(231, 62);
-            this.labelControlStatus3_15.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_15.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_15.Name = "labelControlStatus3_15";
             this.labelControlStatus3_15.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus3_15.StyleController = this.layoutControl30;
@@ -7274,7 +7225,7 @@
             this.labelControlStatus3_14.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_14.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_14.Location = new System.Drawing.Point(118, 62);
-            this.labelControlStatus3_14.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_14.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_14.Name = "labelControlStatus3_14";
             this.labelControlStatus3_14.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus3_14.StyleController = this.layoutControl30;
@@ -7287,7 +7238,7 @@
             this.labelControlStatus3_13.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_13.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_13.Location = new System.Drawing.Point(5, 62);
-            this.labelControlStatus3_13.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_13.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_13.Name = "labelControlStatus3_13";
             this.labelControlStatus3_13.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus3_13.StyleController = this.layoutControl30;
@@ -7300,7 +7251,7 @@
             this.labelControlStatus3_12.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_12.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_12.Location = new System.Drawing.Point(344, 43);
-            this.labelControlStatus3_12.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_12.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_12.Name = "labelControlStatus3_12";
             this.labelControlStatus3_12.Size = new System.Drawing.Size(111, 15);
             this.labelControlStatus3_12.StyleController = this.layoutControl30;
@@ -7313,7 +7264,7 @@
             this.labelControlStatus3_11.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_11.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_11.Location = new System.Drawing.Point(231, 43);
-            this.labelControlStatus3_11.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_11.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_11.Name = "labelControlStatus3_11";
             this.labelControlStatus3_11.Size = new System.Drawing.Size(109, 15);
             this.labelControlStatus3_11.StyleController = this.layoutControl30;
@@ -7326,7 +7277,7 @@
             this.labelControlStatus3_10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_10.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_10.Location = new System.Drawing.Point(118, 43);
-            this.labelControlStatus3_10.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_10.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_10.Name = "labelControlStatus3_10";
             this.labelControlStatus3_10.Size = new System.Drawing.Size(109, 15);
             this.labelControlStatus3_10.StyleController = this.layoutControl30;
@@ -7339,7 +7290,7 @@
             this.labelControlStatus3_9.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_9.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_9.Location = new System.Drawing.Point(5, 43);
-            this.labelControlStatus3_9.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_9.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_9.Name = "labelControlStatus3_9";
             this.labelControlStatus3_9.Size = new System.Drawing.Size(109, 15);
             this.labelControlStatus3_9.StyleController = this.layoutControl30;
@@ -7352,7 +7303,7 @@
             this.labelControlStatus3_8.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_8.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_8.Location = new System.Drawing.Point(344, 25);
-            this.labelControlStatus3_8.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_8.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_8.Name = "labelControlStatus3_8";
             this.labelControlStatus3_8.Size = new System.Drawing.Size(111, 14);
             this.labelControlStatus3_8.StyleController = this.layoutControl30;
@@ -7365,7 +7316,7 @@
             this.labelControlStatus3_7.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_7.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_7.Location = new System.Drawing.Point(231, 25);
-            this.labelControlStatus3_7.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_7.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_7.Name = "labelControlStatus3_7";
             this.labelControlStatus3_7.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus3_7.StyleController = this.layoutControl30;
@@ -7378,7 +7329,7 @@
             this.labelControlStatus3_6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_6.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_6.Location = new System.Drawing.Point(118, 25);
-            this.labelControlStatus3_6.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_6.Name = "labelControlStatus3_6";
             this.labelControlStatus3_6.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus3_6.StyleController = this.layoutControl30;
@@ -7391,7 +7342,7 @@
             this.labelControlStatus3_5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_5.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_5.Location = new System.Drawing.Point(5, 25);
-            this.labelControlStatus3_5.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_5.Name = "labelControlStatus3_5";
             this.labelControlStatus3_5.Size = new System.Drawing.Size(109, 14);
             this.labelControlStatus3_5.StyleController = this.layoutControl30;
@@ -7404,7 +7355,7 @@
             this.labelControlStatus3_4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_4.Location = new System.Drawing.Point(344, 6);
-            this.labelControlStatus3_4.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_4.Name = "labelControlStatus3_4";
             this.labelControlStatus3_4.Size = new System.Drawing.Size(111, 15);
             this.labelControlStatus3_4.StyleController = this.layoutControl30;
@@ -7417,7 +7368,7 @@
             this.labelControlStatus3_3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_3.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_3.Location = new System.Drawing.Point(231, 6);
-            this.labelControlStatus3_3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_3.Name = "labelControlStatus3_3";
             this.labelControlStatus3_3.Size = new System.Drawing.Size(109, 15);
             this.labelControlStatus3_3.StyleController = this.layoutControl30;
@@ -7430,7 +7381,7 @@
             this.labelControlStatus3_2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_2.Location = new System.Drawing.Point(118, 6);
-            this.labelControlStatus3_2.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_2.Name = "labelControlStatus3_2";
             this.labelControlStatus3_2.Size = new System.Drawing.Size(109, 15);
             this.labelControlStatus3_2.StyleController = this.layoutControl30;
@@ -7443,12 +7394,12 @@
             this.labelControlStatus3_1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControlStatus3_1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControlStatus3_1.Location = new System.Drawing.Point(5, 6);
-            this.labelControlStatus3_1.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.labelControlStatus3_1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.labelControlStatus3_1.Name = "labelControlStatus3_1";
             this.labelControlStatus3_1.Size = new System.Drawing.Size(109, 15);
             this.labelControlStatus3_1.StyleController = this.layoutControl30;
             this.labelControlStatus3_1.TabIndex = 4;
-            this.labelControlStatus3_1.Text = "드라이브 시작";
+            this.labelControlStatus3_1.Text = "Drive Start";
             // 
             // layoutControlGroup29
             // 
@@ -7932,7 +7883,7 @@
             // 
             this.groupControl11.Controls.Add(this.layoutControl28);
             this.groupControl11.Location = new System.Drawing.Point(12, 12);
-            this.groupControl11.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.groupControl11.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.groupControl11.Name = "groupControl11";
             this.groupControl11.Size = new System.Drawing.Size(465, 127);
             this.groupControl11.TabIndex = 6;
@@ -7949,7 +7900,7 @@
             this.layoutControl28.Controls.Add(this.textEditTargetPos3);
             this.layoutControl28.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl28.Location = new System.Drawing.Point(2, 21);
-            this.layoutControl28.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.layoutControl28.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.layoutControl28.Name = "layoutControl28";
             this.layoutControl28.Root = this.layoutControlGroup27;
             this.layoutControl28.Size = new System.Drawing.Size(461, 104);
@@ -7959,7 +7910,7 @@
             // textEditOpMode3
             // 
             this.textEditOpMode3.Location = new System.Drawing.Point(83, 6);
-            this.textEditOpMode3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditOpMode3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditOpMode3.Name = "textEditOpMode3";
             this.textEditOpMode3.Properties.ReadOnly = true;
             this.textEditOpMode3.Size = new System.Drawing.Size(373, 20);
@@ -7969,7 +7920,7 @@
             // textEditProgramStep3
             // 
             this.textEditProgramStep3.Location = new System.Drawing.Point(310, 78);
-            this.textEditProgramStep3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditProgramStep3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditProgramStep3.Name = "textEditProgramStep3";
             this.textEditProgramStep3.Properties.ReadOnly = true;
             this.textEditProgramStep3.Size = new System.Drawing.Size(146, 20);
@@ -7979,7 +7930,7 @@
             // textEditMotorRPM3
             // 
             this.textEditMotorRPM3.Location = new System.Drawing.Point(83, 78);
-            this.textEditMotorRPM3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditMotorRPM3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditMotorRPM3.Name = "textEditMotorRPM3";
             this.textEditMotorRPM3.Properties.ReadOnly = true;
             this.textEditMotorRPM3.Size = new System.Drawing.Size(145, 20);
@@ -7989,7 +7940,7 @@
             // textEditPresentVel3
             // 
             this.textEditPresentVel3.Location = new System.Drawing.Point(310, 54);
-            this.textEditPresentVel3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditPresentVel3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditPresentVel3.Name = "textEditPresentVel3";
             this.textEditPresentVel3.Properties.ReadOnly = true;
             this.textEditPresentVel3.Size = new System.Drawing.Size(146, 20);
@@ -7999,7 +7950,7 @@
             // textEditTargetVel3
             // 
             this.textEditTargetVel3.Location = new System.Drawing.Point(83, 54);
-            this.textEditTargetVel3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditTargetVel3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditTargetVel3.Name = "textEditTargetVel3";
             this.textEditTargetVel3.Properties.ReadOnly = true;
             this.textEditTargetVel3.Size = new System.Drawing.Size(145, 20);
@@ -8009,7 +7960,7 @@
             // textEditPresentPos3
             // 
             this.textEditPresentPos3.Location = new System.Drawing.Point(310, 30);
-            this.textEditPresentPos3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditPresentPos3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditPresentPos3.Name = "textEditPresentPos3";
             this.textEditPresentPos3.Properties.ReadOnly = true;
             this.textEditPresentPos3.Size = new System.Drawing.Size(146, 20);
@@ -8019,7 +7970,7 @@
             // textEditTargetPos3
             // 
             this.textEditTargetPos3.Location = new System.Drawing.Point(83, 30);
-            this.textEditTargetPos3.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.textEditTargetPos3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.textEditTargetPos3.Name = "textEditTargetPos3";
             this.textEditTargetPos3.Properties.ReadOnly = true;
             this.textEditTargetPos3.Size = new System.Drawing.Size(145, 20);
@@ -8169,7 +8120,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.xtraTabControlMotion);
-            this.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.Name = "MotionControl";
             this.Size = new System.Drawing.Size(551, 597);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlMotion)).EndInit();
@@ -8179,17 +8130,13 @@
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl5)).EndInit();
             this.layoutControl5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlPCLControl)).EndInit();
             this.groupControlPCLControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).EndInit();
             this.layoutControl6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.textEditUserDefineValue.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupCalibration.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualValueMode.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditCalibration.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTargetAcceleration.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditUserDefineValue.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroupMenualValueMode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTargetVelocity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosZ.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTargetPosY.Properties)).EndInit();
@@ -8211,28 +8158,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem118)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem34)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem36)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem156)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem49)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem50)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem41)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem36)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem42)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem43)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem44)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem40)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem41)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem37)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem38)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem39)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem40)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxUserDefineValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem29)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem35)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).EndInit();
             this.layoutControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControlPresentPosition)).EndInit();
@@ -8607,8 +8554,6 @@
         private DevExpress.XtraLayout.LayoutControl layoutControl5;
         private DevExpress.XtraEditors.GroupControl groupControlPCLControl;
         private DevExpress.XtraLayout.LayoutControl layoutControl6;
-        private DevExpress.XtraEditors.RadioGroup radioGroupCalibration;
-        private DevExpress.XtraEditors.CheckEdit checkEditCalibration;
         private DevExpress.XtraEditors.TextEdit textEditTargetAcceleration;
         private DevExpress.XtraEditors.TextEdit textEditTargetVelocity;
         private DevExpress.XtraEditors.TextEdit textEditTargetPosZ;
@@ -8655,8 +8600,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem118;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem24;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem34;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem36;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem156;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
         private DevExpress.XtraLayout.LayoutControl layoutControl4;
@@ -8674,9 +8617,6 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem63;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem64;
-        private DevExpress.XtraLayout.LayoutControl layoutControl3;
-        private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageInfoStatus;
         private DevExpress.XtraLayout.LayoutControl layoutControl18;
         private DevExpress.XtraTab.XtraTabControl xtraTabControlAiCStatus;
@@ -8737,7 +8677,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem57;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem58;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem59;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem60;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem157;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem158;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem159;
@@ -9131,22 +9070,26 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem316;
         private DevExpress.XtraEditors.SimpleButton simpleButtonReqMotionStatus;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem60;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem22;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem49;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem50;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem41;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem36;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem42;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem43;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem44;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem40;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem41;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem37;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem38;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem39;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem40;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem32;
         private DevExpress.XtraLayout.LayoutControlItem textBoxUserDefineValue;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem29;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem30;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem31;
+        private DevExpress.XtraLayout.LayoutControl layoutControl8;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup9;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem35;
     }
 }

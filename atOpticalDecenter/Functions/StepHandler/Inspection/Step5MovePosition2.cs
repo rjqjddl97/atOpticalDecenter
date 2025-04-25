@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using atOpticalDecenter.Functions.StepHandler.Base;
 using RecipeManager;
+using LogLibrary;
 
 namespace atOpticalDecenter.Functions.StepHandler.Inspection
 {
@@ -79,6 +80,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                                 _DelayTimerCounter = D_MOTION_COMMAND_RESPONSE_WAIT_TIME;
                                 mTimeChecker.SetTime(_DelayTimerCounter);
                                 mStep = WorkingStep.WaitDelayTimeVelocityCommand;
+                                _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("2번째 검사 위치 이동 속도 명령 전송"));
                             }
                         }
                     }
@@ -126,6 +128,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                             }
                             mTimeChecker.SetTime(_DelayTimerCounter);
                             mStep = WorkingStep.WaitDelaySetPositionCommand;
+                            _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("2번째 검사 위치 명령 전송"));
                         }
                         else
                             mStep = WorkingStep.ErrorOccured;
@@ -169,6 +172,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     if ((mRobotInformation.mStatus & 0x00000042) == 0x00000042)             // Inpsotion, Servo On Satus
                     {
                         mStep = WorkingStep.Idle;
+                        _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("2번째 검사 위치 X:{0},Y:{1},Z:{2} 이동 완료",mRobotInformation.PositionX, mRobotInformation.PositionY, mRobotInformation.PositionZ));
                     }
                     break;
                 default: break;

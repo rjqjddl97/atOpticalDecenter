@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using atOpticalDecenter.Functions.StepHandler.Base;
 using RecipeManager;
+using LogLibrary;
 
 namespace atOpticalDecenter.Functions.StepHandler.Inspection
 {
@@ -50,6 +51,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                             _DelayTimerCounter = mWorkParam._LEDInspectionAcquisitionDelaytime;
                             IsGrabbed = false;
                             mStep = WorkingStep.CaptureImage;
+                            _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("2번째 광원 크기 측정 검사 시작"));
                         }
                     }
                     break;
@@ -62,6 +64,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         TakePicture();
                         mTimeChecker.SetTime(_DelayTimerCounter);
                         mStep = WorkingStep.WaitStableCaptureTime;
+                        _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("2번째 광원 찰영 명령 전송"));
                     }
                     break;
                 case WorkingStep.WaitStableCaptureTime:
@@ -82,11 +85,13 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                             {
                                 mRetryCount = 0;
                                 mStep = WorkingStep.ErrorOccured;
+                                _log.WriteLog(LogLevel.Error, LogClass.InspectStep.ToString(), string.Format("2번째 광원 찰영 재시도 회수 초과"));
                             }
                             else
                             {
                                 iGrapCount = 0;
                                 mStep = WorkingStep.CaptureImage;
+                                _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("2번째 광원 찰영 {0} 재시도", mRetryCount.ToString()));
                             }
                         }
                     }
@@ -96,12 +101,16 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         mStep = WorkingStep.ErrorOccured;
 
                     if (LedSpotImageProcess(1, mRobotInformation.PositionX, mRobotInformation.PositionY, mRobotInformation.PositionZ))
+                    {
                         mStep = WorkingStep.Idle;
+                        _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("2번째 광원 크기 계산 완료"));
+                    }
                     else
                     {
                         strstep = "Image Spot Not Detect";
                         ErrorStepString += strstep;
                         mStep = WorkingStep.ErrorOccured;
+                        _log.WriteLog(LogLevel.Error, LogClass.InspectStep.ToString(), string.Format("2번째 광원 크기 계산 실패"));
                     }
 
                     break;

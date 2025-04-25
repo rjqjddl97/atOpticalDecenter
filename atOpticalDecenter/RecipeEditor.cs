@@ -18,7 +18,7 @@ namespace atOpticalDecenter
     {
         WorkParams _workParam = new WorkParams();
         SystemParams _systemParam = new SystemParams();
-        private Log _log = new Log();
+        public Log _log = new Log();
 
         int _gridRowIndex = -1;
         bool IsLoaded = false;
@@ -300,8 +300,7 @@ namespace atOpticalDecenter
 
                     this.Text = string.Format("{0} - {1}.rcp", _strOldTitle, _workParam._ProductModelName);
 
-
-                    //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 파일 읽기:{0}", strRecipeFilePath));
+                    _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 파일 읽기:{0}", strRecipeFilePath));
                 }
             }
         }
@@ -327,7 +326,7 @@ namespace atOpticalDecenter
 
                     this.Text = string.Format("{0} - {1}.rcp", _strOldTitle, _workParam._ProductModelName);
 
-                    //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 파일을 저장합니다.{0}", strRecipeSaveFileName));
+                    _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 파일을 저장합니다.{0}", strRecipeSaveFileName));
                 }
                 catch (Exception ex)
                 {
@@ -812,7 +811,7 @@ namespace atOpticalDecenter
 
                 barButtonItemRecipeSave.Enabled = true;
 
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 이름이 변경되었습니다.{0}", _workParam.RecipeName));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 이름이 {0}로 변경되었습니다.", _workParam.RecipeName));
             }
             else if (e.Row == rowRecipeCreateTime)
             {
@@ -822,7 +821,7 @@ namespace atOpticalDecenter
 
                 barButtonItemRecipeSave.Enabled = true;
 
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 저장 시간이 변경되었습니다.{0}", _workParam.RecipeCreateTime));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 저장 시간이 {0}로 변경되었습니다.", _workParam.RecipeCreateTime));
             }
             else if (e.Row == rowRecipeCreatorName)
             {
@@ -841,7 +840,7 @@ namespace atOpticalDecenter
 
                 barButtonItemRecipeSave.Enabled = true;
 
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 생성자가 변경되었습니다.{0}", _workParam.RecipeCreatorName));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 생성자가 {0}로 변경되었습니다.", _workParam.RecipeCreatorName));
             }
             else if (e.Row == rowProductSeries)
             {
@@ -869,7 +868,7 @@ namespace atOpticalDecenter
                 _workParam._ProductSeries = (int)Enum.Parse(typeof(ModelSeries), strTemp);
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("PCB 이름이 변경되었습니다.{0}", _workParam.PCBName));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format(" 제품 시리즈 이름이 {0}로 변경되었습니다.", _workParam._ProductSeries.ToString()));
             }
             else if (e.Row == rowProductModelName)
             {
@@ -886,7 +885,7 @@ namespace atOpticalDecenter
                 _workParam._ProductModelName = strTemp;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("제품 모델 이름이 변경되었습니다.{0}", _workParam._ProductModelName));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("제품 모델 이름이 {0}로 변경되었습니다.", _workParam._ProductModelName));
             }
             else if (e.Row == rowProductType)
             {
@@ -914,7 +913,7 @@ namespace atOpticalDecenter
                 _workParam._ProductType = (int)Enum.Parse(typeof(ModelType), strTemp);
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("모델 유형이 변경되었습니다.{0}", _workParam._ProductType));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("모델 유형이 {0}로 변경되었습니다.", _workParam._ProductType.ToString()));
             }
             else if (e.Row == rowProductDistance)
             {
@@ -931,7 +930,7 @@ namespace atOpticalDecenter
                 _workParam._ProductDistance = fValue;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("모델 유형이 변경되었습니다.{0}", _workParam._ProductDistance));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("제품 거리가 {0}로 변경되었습니다.", _workParam._ProductDistance));
             }
             else if (e.Row == rowProductOpMode)
             {
@@ -959,7 +958,7 @@ namespace atOpticalDecenter
                 _workParam._ProductOperatingMdoe = (int)Enum.Parse(typeof(OperationMode), strTemp);
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("모델 유형이 변경되었습니다.{0}", _workParam._ProductOperatingMdoe));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("제품 동작모드가 {0}로 변경되었습니다.", _workParam._ProductOperatingMdoe.ToString()));
             }
             else if (e.Row == rowProductOutputType)
             {
@@ -987,7 +986,7 @@ namespace atOpticalDecenter
                 _workParam._ProductOutputType = (int)Enum.Parse(typeof(OutPutType), strTemp);
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("모델 유형이 변경되었습니다.{0}", _workParam._ProductOutputType));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("제품 출력 유형이 {0}로 변경되었습니다.", _workParam._ProductOutputType.ToString()));
             }
             else if (e.Row == rowProductDetectMeterial)
             {
@@ -1015,7 +1014,7 @@ namespace atOpticalDecenter
                 _workParam._ProductDetectMerterial = (int)Enum.Parse(typeof(DetectMeterial), strTemp);
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("모델 유형이 변경되었습니다.{0}", _workParam._ProductDetectMerterial));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("제품인식 검출체가 {0}로 변경되었습니다.", _workParam._ProductDetectMerterial.ToString()));
             }
             else if (e.Row == rowProductDistanceMargin)
             {
@@ -1032,7 +1031,7 @@ namespace atOpticalDecenter
                 _workParam._ProductDistanceMargin = fValue;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("거리 마진값이 변경되었습니다.{0}", _workParam._ProductDistanceMargin));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("거리 마진값이 {0}로 변경되었습니다.", _workParam._ProductDistanceMargin));
             }
             else if (e.Row == rowLEDInspectionUseEnable)
             {
@@ -1048,7 +1047,7 @@ namespace atOpticalDecenter
                     rowLEDInspectionShortDistance.Enabled = false;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("투광 검사 유무가 변경되었습니다.{0}", _workParam._LEDInspectionUseEnable));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("단축 거리 검사 유무가 {0}로 변경되었습니다.", _workParam._LEDInspectionUseEnable.ToString()));
             }
             else if (e.Row == rowLEDInspectionShortDistance)
             {
@@ -1064,6 +1063,7 @@ namespace atOpticalDecenter
                 }
                 _workParam._LEDInspectionShortDistance = fValue;
                 barButtonItemRecipeSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("단축거리가 {0}로 설정이 변경되었습니다.", _workParam._LEDInspectionShortDistance));
             }
             else if (e.Row == rowLedInspectionCameraMoveDistance)
             {
@@ -1079,6 +1079,7 @@ namespace atOpticalDecenter
                 }
                 _workParam._LEDInspectionCameraDistance = fValue;
                 barButtonItemRecipeSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("카메라 이동거리가 {0}로 변경되었습니다.", _workParam._LEDInspectionCameraDistance));
             }
             else if (e.Row == rowLEDInspectionExposureTime)
             {
@@ -1095,7 +1096,7 @@ namespace atOpticalDecenter
                 _workParam._LEDInspectionExposureTime = value;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("카메라 노출 시간이 변경되었습니다.{0}", _workParam._LEDInspectionExposureTime));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("카메라 노출 시간이 {0}로 변경되었습니다.", _workParam._LEDInspectionExposureTime));
             }
             else if (e.Row == rowLEDInspectionAcquisitionDelayTime)
             {
@@ -1112,7 +1113,7 @@ namespace atOpticalDecenter
                 _workParam._LEDInspectionAcquisitionDelaytime = value;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("이미지 취득 대기 시간이 변경되었습니다.{0}", _workParam._LEDInspectionAcquisitionDelaytime));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("이미지 취득 대기 시간이 {0}로 변경되었습니다.", _workParam._LEDInspectionAcquisitionDelaytime));
             }
             else if (e.Row == rowLEDInspectionReferenceThresholdH)
             {
@@ -1128,7 +1129,7 @@ namespace atOpticalDecenter
 
                 _workParam._LEDInspectionReferenceThresholdH = value;
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("이미지 취득 대기 시간이 변경되었습니다.{0}", _workParam._LEDInspectionAcquisitionDelaytime));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("이미지 처리 수평 임계값이  {0}로 변경되었습니다.", _workParam._LEDInspectionReferenceThresholdH));
             }
             else if (e.Row == rowLEDInspectionReferenceThresholdV)
             {
@@ -1144,7 +1145,7 @@ namespace atOpticalDecenter
 
                 _workParam._LEDInspectionReferenceThresholdV = value;
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("이미지 취득 대기 시간이 변경되었습니다.{0}", _workParam._LEDInspectionAcquisitionDelaytime));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("이미지 처리 수직 임계값이 {0}로 변경되었습니다.", _workParam._LEDInspectionReferenceThresholdV));
             }
             else if (e.Row == rowLEDInspectionAlignmentDistance)
             {
@@ -1161,7 +1162,7 @@ namespace atOpticalDecenter
                 _workParam._LEDInspectionAlignmentDistance = fValue;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("편심 합격 기준 거리가 변경되었습니다.{0}", _workParam._LEDInspectionAlignmentDistance));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("편심 합격 기준 거리가 {0}로 변경되었습니다.", _workParam._LEDInspectionAlignmentDistance));
             }
             else if (e.Row == rowLEDInspectionDivergenceAngle)
             {
@@ -1169,7 +1170,7 @@ namespace atOpticalDecenter
 
                 if (fValue <= 0 || fValue > 20)
                 {
-                    MessageBox.Show(string.Format("발산각 합격 각도를 잘못 입력되었습니다.{0}", strTemp), "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format("편심각 합격 각도를 잘못 입력되었습니다.{0}", strTemp), "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowLEDInspectionDivergenceAngle.Properties.Value = _workParam._LEDInspectionDivergenceAngle;
                     vGridControlInspectionParam.Refresh();
                     return;
@@ -1178,7 +1179,7 @@ namespace atOpticalDecenter
                 _workParam._LEDInspectionDivergenceAngle = fValue;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("발산각 합격 기준 각도가 변경되었습니다.{0}", _workParam._LEDInspectionDivergenceAngle));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("편심각 합격 기준 각도가 {0}로 변경되었습니다.", _workParam._LEDInspectionDivergenceAngle));
             }
             else if (e.Row == rowLEDInspectionSpotMinSize)
             {
@@ -1186,7 +1187,7 @@ namespace atOpticalDecenter
 
                 if (fValue <= 0 || fValue > 250)
                 {
-                    MessageBox.Show(string.Format("투광 소자 수평 최소크기를 잘못 입력되었습니다.{0}", strTemp), "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format("투광 소자 최소크기를 잘못 입력되었습니다.{0}", strTemp), "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     rowLEDInspectionSpotMinSize.Properties.Value = _workParam._LEDInspectionSpotMinSize;
                     vGridControlInspectionParam.Refresh();
                     return;
@@ -1195,7 +1196,7 @@ namespace atOpticalDecenter
                 _workParam._LEDInspectionSpotMinSize = fValue;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("투광 소자 수평 최소크기 기준이 변경되었습니다.{0}", _workParam._LEDInspectionSpotHorizonMinSize));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("투광 소자 최소크기 기준이 {0}로 변경되었습니다.", _workParam._LEDInspectionSpotMinSize));
             }
             else if (e.Row == rowLEDInspectionSpotMaxSize)
             {
@@ -1212,7 +1213,7 @@ namespace atOpticalDecenter
                 _workParam._LEDInspectionSpotMaxSize = fValue;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("투광 소자 수평 최대 크기 기준이 변경되었습니다.{0}", _workParam._LEDInspectionSpotHorizonMaxSize));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("투광 소자 최대 크기 기준이 {0}로 변경되었습니다.", _workParam._LEDInspectionSpotMaxSize));
             }            
             else if (e.Row == rowLEDInspectionWorkAreaLeft)
             {
@@ -1229,7 +1230,7 @@ namespace atOpticalDecenter
                 _workParam._LEDInspectionWorkAreaLeft = value;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("작업 영역 왼쪽 시작점이 변경되었습니다.{0}", _workParam._LEDInspectionWorkAreaLeft));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("작업 영역 왼쪽 시작점이 {0}로 변경되었습니다.", _workParam._LEDInspectionWorkAreaLeft));
             }
             else if (e.Row == rowLEDInspectionWorkAreaTop)
             {
@@ -1246,7 +1247,7 @@ namespace atOpticalDecenter
                 _workParam._LEDInspectionWorkAreaTop = value;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("작업 영역 위쪽 시작점이 변경되었습니다.{0}", _workParam._LEDInspectionWorkAreaTop));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("작업 영역 위쪽 시작점이 {0}로 변경되었습니다.", _workParam._LEDInspectionWorkAreaTop));
             }
             else if (e.Row == rowLEDInspectionWorkAreaWidth)
             {
@@ -1263,7 +1264,7 @@ namespace atOpticalDecenter
                 _workParam._LedInspectionWorkAreaWidth = value;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("작업 영역 폭이 변경되었습니다.{0}", _workParam._LedInspectionWorkAreaWidth));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("작업 영역 폭이 {0}로 변경되었습니다.", _workParam._LedInspectionWorkAreaWidth));
             }
             else if (e.Row == rowLEDInspectionWorkAreaHeight)
             {
@@ -1280,7 +1281,7 @@ namespace atOpticalDecenter
                 _workParam._LedInspectionWorkAreaHeight = value;
 
                 barButtonItemRecipeSave.Enabled = true;
-                //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("작업 영역 높이가 변경되었습니다.{0}", _workParam._LedInspectionWorkAreaHeight));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("작업 영역 높이가 {0}로 변경되었습니다.{0}", _workParam._LedInspectionWorkAreaHeight));
             }
         }
         private void UpdateRecipeControls()
@@ -1329,13 +1330,13 @@ namespace atOpticalDecenter
         {
             // 최대 크기로 Loading
             this.WindowState = FormWindowState.Maximized;
-            //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 편집기를 최대화합니다."));
+            _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 편집기를 최대화합니다."));
 
             InitialRecipeParameters();
-            //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("검사 파라미터를 초기화합니다."));
+            _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("검사 파라미터를 초기화합니다."));
 
             IsLoaded = true;
-            //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 편집기 로딩 성공"));
+            _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("레시피 편집기 로딩 성공"));
 
             // 초기 Save 버튼은 Disable 상태, 편집 후, Enable 상태로 변경
             barButtonItemRecipeSave.Enabled = false;
@@ -1973,8 +1974,8 @@ namespace atOpticalDecenter
             {
                 MessageBox.Show("지원하지 않은 위치 형식입니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(),
-            //    string.Format("X:{0}, Y:{1}, 검사모드:{2}를 등록", inspectionPos.X, inspectionPos.Y, inspectionPos.eInspectionMode.ToString()));
+            _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(),
+                string.Format("Type:{0} X:{1}, Y:{2}, Z:{3} 검사모드:{2}를 등록", inspectionPos.ePositionType.ToString(), inspectionPos.PositionX, inspectionPos.PositionY, inspectionPos.PositionZ));
         }
         private void simpleButtonInspectionPositionDelete_Click(object sender, EventArgs e)
         {
@@ -1993,8 +1994,8 @@ namespace atOpticalDecenter
             if (MessageBox.Show(strMessage, "삭제", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                 return;
 
-            //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(),
-            //    string.Format("X:{0}, Y:{1}, 검사모드:{2}를 삭제", _workParam.InspectionPositions[rowIndex].X, _workParam.InspectionPositions[rowIndex].Y, _workParam.InspectionPositions[rowIndex].eInspectionMode.ToString()));
+            _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(),
+                string.Format("Type:{0} X:{1}, Y:{2}, Z:{3} 검사모드:{2}를 삭제", _workParam.InspectionPositions[rowIndex].ePositionType.ToString(), _workParam.InspectionPositions[rowIndex].PositionX, _workParam.InspectionPositions[rowIndex].PositionY, _workParam.InspectionPositions[rowIndex].PositionZ));
 
             if (rowIndex < _workParam.InspectionPositions.Count)
             {
@@ -2177,8 +2178,8 @@ namespace atOpticalDecenter
                 MessageBox.Show("지원하지 않은 위치 형식입니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            //_log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(),
-            //    string.Format("X:{0}, Y:{1}, 검사모드:{2}를 수정", inspectionPos.X, inspectionPos.Y, inspectionPos.eInspectionMode.ToString()));
+            _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(),
+                string.Format("Type:{0} X:{1}, Y:{2}, Z:{3} 검사모드:{2}를 수정", inspectionPos.ePositionType.ToString(), inspectionPos.PositionX, inspectionPos.PositionY, inspectionPos.PositionZ));
         }
 
         private void simpleButtonReplaceDown_Click(object sender, EventArgs e)
@@ -2203,6 +2204,7 @@ namespace atOpticalDecenter
             pictureEditInspectImage.Refresh();
 
             barButtonItemRecipeSave.Enabled = true;
+            _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("위치 정보를 한행을 내립니다."));
         }
 
         private void simpleButtonReplaceUp_Click(object sender, EventArgs e)
@@ -2228,6 +2230,7 @@ namespace atOpticalDecenter
             pictureEditInspectImage.Refresh();
 
             barButtonItemRecipeSave.Enabled = true;
+            _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("위치 정보를 한행을 올림니다."));
         }
 
         private void gridViewInspectionPositions_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)

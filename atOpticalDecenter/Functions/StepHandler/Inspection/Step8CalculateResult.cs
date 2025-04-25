@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using atOpticalDecenter.Functions.StepHandler.Base;
 using RecipeManager;
+using LogLibrary;
 
 namespace atOpticalDecenter.Functions.StepHandler.Inspection
 {
@@ -48,6 +49,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
 
                         _DelayTimerCounter = D_MOTION_COMMAND_RESPONSE_WAIT_TIME;
                         mStep = WorkingStep.CalculateDecenter;
+                        _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("광편심 검사 결과 계산 시작"));
                     }
                     break;
                 case WorkingStep.CalculateDecenter:
@@ -100,6 +102,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         mMotionDrvCtrl.SendData(data);
                         mTimeChecker.SetTime(_DelayTimerCounter);
                         mStep = WorkingStep.WaitDelayTimeCommand;
+                        _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("대기 위치로 이동 명령 전송"));
                     }
                     break;
                 case WorkingStep.WaitDelayTimeCommand:
@@ -118,6 +121,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                     if ((mRobotInformation.mStatus & 0x00000042) == 0x00000042)             // Inpsotion, Servo On Satus
                     {
                         mStep = WorkingStep.Idle;
+                        _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("광편심 검사 작업 완료"));
                     }
                     break;
 

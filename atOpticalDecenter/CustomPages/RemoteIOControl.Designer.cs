@@ -29,31 +29,6 @@
         private void InitializeComponent()
         {
             this.xtraTabControlRemoteIO = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPageConnect = new DevExpress.XtraTab.XtraTabPage();
-            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
-            this.memoEditCommunicationLogmessage = new DevExpress.XtraEditors.MemoEdit();
-            this.SendPacketDataButton = new DevExpress.XtraEditors.SimpleButton();
-            this.textEditSendPacketData = new DevExpress.XtraEditors.TextEdit();
-            this.DisconnectButton = new DevExpress.XtraEditors.SimpleButton();
-            this.ConnectButton = new DevExpress.XtraEditors.SimpleButton();
-            this.comboBoxEditFlowControl = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEditStopbit = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEditParity = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEditDataBit = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEditBaudRate = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEditComPort = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.xtraTabPageControl = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
@@ -200,6 +175,31 @@
             this.layoutControlItem117 = new DevExpress.XtraLayout.LayoutControlItem();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.xtraTabPageConnect = new DevExpress.XtraTab.XtraTabPage();
+            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.memoEditCommunicationLogmessage = new DevExpress.XtraEditors.MemoEdit();
+            this.SendPacketDataButton = new DevExpress.XtraEditors.SimpleButton();
+            this.textEditSendPacketData = new DevExpress.XtraEditors.TextEdit();
+            this.DisconnectButton = new DevExpress.XtraEditors.SimpleButton();
+            this.ConnectButton = new DevExpress.XtraEditors.SimpleButton();
+            this.comboBoxEditFlowControl = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEditStopbit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEditParity = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEditDataBit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEditBaudRate = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEditComPort = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.labelControlDIn20111 = new DevExpress.XtraEditors.LabelControl();
             this.labelControlDIn17111 = new DevExpress.XtraEditors.LabelControl();
             this.labelControlDIn193 = new DevExpress.XtraEditors.LabelControl();
@@ -217,29 +217,6 @@
             this.labelControlDIn203 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlRemoteIO)).BeginInit();
             this.xtraTabControlRemoteIO.SuspendLayout();
-            this.xtraTabPageConnect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
-            this.layoutControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEditCommunicationLogmessage.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditSendPacketData.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditFlowControl.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditStopbit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditParity.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditDataBit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditBaudRate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditComPort.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             this.xtraTabPageControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -330,6 +307,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem117)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            this.xtraTabPageConnect.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
+            this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEditCommunicationLogmessage.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditSendPacketData.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditFlowControl.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditStopbit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditParity.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditDataBit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditBaudRate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditComPort.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControlRemoteIO
@@ -344,289 +344,6 @@
             this.xtraTabControlRemoteIO.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageConnect,
             this.xtraTabPageControl});
-            // 
-            // xtraTabPageConnect
-            // 
-            this.xtraTabPageConnect.Controls.Add(this.layoutControl2);
-            this.xtraTabPageConnect.Name = "xtraTabPageConnect";
-            this.xtraTabPageConnect.Size = new System.Drawing.Size(521, 591);
-            this.xtraTabPageConnect.Text = "연결";
-            // 
-            // layoutControl2
-            // 
-            this.layoutControl2.Controls.Add(this.memoEditCommunicationLogmessage);
-            this.layoutControl2.Controls.Add(this.SendPacketDataButton);
-            this.layoutControl2.Controls.Add(this.textEditSendPacketData);
-            this.layoutControl2.Controls.Add(this.DisconnectButton);
-            this.layoutControl2.Controls.Add(this.ConnectButton);
-            this.layoutControl2.Controls.Add(this.comboBoxEditFlowControl);
-            this.layoutControl2.Controls.Add(this.comboBoxEditStopbit);
-            this.layoutControl2.Controls.Add(this.comboBoxEditParity);
-            this.layoutControl2.Controls.Add(this.comboBoxEditDataBit);
-            this.layoutControl2.Controls.Add(this.comboBoxEditBaudRate);
-            this.layoutControl2.Controls.Add(this.comboBoxEditComPort);
-            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl2.Name = "layoutControl2";
-            this.layoutControl2.OptionsView.UseDefaultDragAndDropRendering = false;
-            this.layoutControl2.Root = this.layoutControlGroup1;
-            this.layoutControl2.Size = new System.Drawing.Size(521, 591);
-            this.layoutControl2.TabIndex = 6;
-            this.layoutControl2.Text = "layoutControl2";
-            // 
-            // memoEditCommunicationLogmessage
-            // 
-            this.memoEditCommunicationLogmessage.Location = new System.Drawing.Point(78, 150);
-            this.memoEditCommunicationLogmessage.Name = "memoEditCommunicationLogmessage";
-            this.memoEditCommunicationLogmessage.Size = new System.Drawing.Size(430, 428);
-            this.memoEditCommunicationLogmessage.StyleController = this.layoutControl2;
-            this.memoEditCommunicationLogmessage.TabIndex = 14;
-            // 
-            // SendPacketDataButton
-            // 
-            this.SendPacketDataButton.Location = new System.Drawing.Point(374, 120);
-            this.SendPacketDataButton.Name = "SendPacketDataButton";
-            this.SendPacketDataButton.Size = new System.Drawing.Size(134, 26);
-            this.SendPacketDataButton.StyleController = this.layoutControl2;
-            this.SendPacketDataButton.TabIndex = 13;
-            this.SendPacketDataButton.Text = "전송 하기";
-            // 
-            // textEditSendPacketData
-            // 
-            this.textEditSendPacketData.Location = new System.Drawing.Point(78, 120);
-            this.textEditSendPacketData.Name = "textEditSendPacketData";
-            this.textEditSendPacketData.Size = new System.Drawing.Size(292, 20);
-            this.textEditSendPacketData.StyleController = this.layoutControl2;
-            this.textEditSendPacketData.TabIndex = 12;
-            // 
-            // DisconnectButton
-            // 
-            this.DisconnectButton.Location = new System.Drawing.Point(262, 94);
-            this.DisconnectButton.Name = "DisconnectButton";
-            this.DisconnectButton.Size = new System.Drawing.Size(246, 22);
-            this.DisconnectButton.StyleController = this.layoutControl2;
-            this.DisconnectButton.TabIndex = 11;
-            this.DisconnectButton.Text = "연결 해제";
-            this.DisconnectButton.Click += new System.EventHandler(this.DisconnectButton_Click);
-            // 
-            // ConnectButton
-            // 
-            this.ConnectButton.Location = new System.Drawing.Point(13, 94);
-            this.ConnectButton.Name = "ConnectButton";
-            this.ConnectButton.Size = new System.Drawing.Size(245, 22);
-            this.ConnectButton.StyleController = this.layoutControl2;
-            this.ConnectButton.TabIndex = 10;
-            this.ConnectButton.Text = "연결";
-            this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
-            // 
-            // comboBoxEditFlowControl
-            // 
-            this.comboBoxEditFlowControl.Location = new System.Drawing.Point(317, 67);
-            this.comboBoxEditFlowControl.Name = "comboBoxEditFlowControl";
-            this.comboBoxEditFlowControl.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEditFlowControl.Size = new System.Drawing.Size(191, 20);
-            this.comboBoxEditFlowControl.StyleController = this.layoutControl2;
-            this.comboBoxEditFlowControl.TabIndex = 9;
-            // 
-            // comboBoxEditStopbit
-            // 
-            this.comboBoxEditStopbit.Location = new System.Drawing.Point(78, 67);
-            this.comboBoxEditStopbit.Name = "comboBoxEditStopbit";
-            this.comboBoxEditStopbit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEditStopbit.Size = new System.Drawing.Size(180, 20);
-            this.comboBoxEditStopbit.StyleController = this.layoutControl2;
-            this.comboBoxEditStopbit.TabIndex = 8;
-            // 
-            // comboBoxEditParity
-            // 
-            this.comboBoxEditParity.Location = new System.Drawing.Point(317, 40);
-            this.comboBoxEditParity.Name = "comboBoxEditParity";
-            this.comboBoxEditParity.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEditParity.Size = new System.Drawing.Size(191, 20);
-            this.comboBoxEditParity.StyleController = this.layoutControl2;
-            this.comboBoxEditParity.TabIndex = 7;
-            // 
-            // comboBoxEditDataBit
-            // 
-            this.comboBoxEditDataBit.Location = new System.Drawing.Point(78, 40);
-            this.comboBoxEditDataBit.Name = "comboBoxEditDataBit";
-            this.comboBoxEditDataBit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEditDataBit.Size = new System.Drawing.Size(180, 20);
-            this.comboBoxEditDataBit.StyleController = this.layoutControl2;
-            this.comboBoxEditDataBit.TabIndex = 6;
-            // 
-            // comboBoxEditBaudRate
-            // 
-            this.comboBoxEditBaudRate.Location = new System.Drawing.Point(317, 13);
-            this.comboBoxEditBaudRate.Name = "comboBoxEditBaudRate";
-            this.comboBoxEditBaudRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEditBaudRate.Size = new System.Drawing.Size(191, 20);
-            this.comboBoxEditBaudRate.StyleController = this.layoutControl2;
-            this.comboBoxEditBaudRate.TabIndex = 5;
-            // 
-            // comboBoxEditComPort
-            // 
-            this.comboBoxEditComPort.Location = new System.Drawing.Point(78, 13);
-            this.comboBoxEditComPort.Name = "comboBoxEditComPort";
-            this.comboBoxEditComPort.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEditComPort.Properties.Items.AddRange(new object[] {
-            "COM1",
-            "COM2",
-            "COM3",
-            "COM4",
-            "COM5",
-            "COM6",
-            "COM7",
-            "COM8",
-            "COM9",
-            "COM10"});
-            this.comboBoxEditComPort.Size = new System.Drawing.Size(180, 20);
-            this.comboBoxEditComPort.StyleController = this.layoutControl2;
-            this.comboBoxEditComPort.TabIndex = 4;
-            // 
-            // layoutControlGroup1
-            // 
-            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem2,
-            this.layoutControlItem3,
-            this.layoutControlItem5,
-            this.layoutControlItem6,
-            this.layoutControlItem7,
-            this.layoutControlItem9,
-            this.layoutControlItem10,
-            this.layoutControlItem4,
-            this.layoutControlItem8,
-            this.layoutControlItem11,
-            this.layoutControlItem12});
-            this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(521, 591);
-            this.layoutControlGroup1.TextVisible = false;
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.comboBoxEditComPort;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(249, 27);
-            this.layoutControlItem2.Text = "통신 포트";
-            this.layoutControlItem2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 23);
-            this.layoutControlItem2.TextToControlDistance = 5;
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.comboBoxEditBaudRate;
-            this.layoutControlItem3.Location = new System.Drawing.Point(249, 0);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(250, 27);
-            this.layoutControlItem3.Text = "통신 속도";
-            this.layoutControlItem3.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(50, 23);
-            this.layoutControlItem3.TextToControlDistance = 5;
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.comboBoxEditParity;
-            this.layoutControlItem5.Location = new System.Drawing.Point(249, 27);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(250, 27);
-            this.layoutControlItem5.Text = "패리티";
-            this.layoutControlItem5.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(50, 23);
-            this.layoutControlItem5.TextToControlDistance = 5;
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.comboBoxEditStopbit;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 54);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(249, 27);
-            this.layoutControlItem6.Text = "정지 비트";
-            this.layoutControlItem6.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(60, 23);
-            this.layoutControlItem6.TextToControlDistance = 5;
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.comboBoxEditFlowControl;
-            this.layoutControlItem7.Location = new System.Drawing.Point(249, 54);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(250, 27);
-            this.layoutControlItem7.Text = "흐름 제어";
-            this.layoutControlItem7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(50, 16);
-            this.layoutControlItem7.TextToControlDistance = 5;
-            // 
-            // layoutControlItem9
-            // 
-            this.layoutControlItem9.Control = this.DisconnectButton;
-            this.layoutControlItem9.Location = new System.Drawing.Point(249, 81);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(250, 26);
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem9.TextVisible = false;
-            // 
-            // layoutControlItem10
-            // 
-            this.layoutControlItem10.Control = this.textEditSendPacketData;
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 107);
-            this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(361, 30);
-            this.layoutControlItem10.Text = "전송 메시지";
-            this.layoutControlItem10.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(60, 23);
-            this.layoutControlItem10.TextToControlDistance = 5;
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.comboBoxEditDataBit;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 27);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(249, 27);
-            this.layoutControlItem4.Text = "데이터 비트";
-            this.layoutControlItem4.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(60, 23);
-            this.layoutControlItem4.TextToControlDistance = 5;
-            // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.Control = this.ConnectButton;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 81);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(249, 26);
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem8.TextVisible = false;
-            // 
-            // layoutControlItem11
-            // 
-            this.layoutControlItem11.Control = this.SendPacketDataButton;
-            this.layoutControlItem11.Location = new System.Drawing.Point(361, 107);
-            this.layoutControlItem11.MaxSize = new System.Drawing.Size(0, 30);
-            this.layoutControlItem11.MinSize = new System.Drawing.Size(91, 30);
-            this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(138, 30);
-            this.layoutControlItem11.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem11.TextVisible = false;
-            // 
-            // layoutControlItem12
-            // 
-            this.layoutControlItem12.Control = this.memoEditCommunicationLogmessage;
-            this.layoutControlItem12.Location = new System.Drawing.Point(0, 137);
-            this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(499, 432);
-            this.layoutControlItem12.Text = "통신 내역";
-            this.layoutControlItem12.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(60, 23);
-            this.layoutControlItem12.TextToControlDistance = 5;
             // 
             // xtraTabPageControl
             // 
@@ -2541,6 +2258,289 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
+            // xtraTabPageConnect
+            // 
+            this.xtraTabPageConnect.Controls.Add(this.layoutControl2);
+            this.xtraTabPageConnect.Name = "xtraTabPageConnect";
+            this.xtraTabPageConnect.Size = new System.Drawing.Size(521, 591);
+            this.xtraTabPageConnect.Text = "연결";
+            // 
+            // layoutControl2
+            // 
+            this.layoutControl2.Controls.Add(this.memoEditCommunicationLogmessage);
+            this.layoutControl2.Controls.Add(this.SendPacketDataButton);
+            this.layoutControl2.Controls.Add(this.textEditSendPacketData);
+            this.layoutControl2.Controls.Add(this.DisconnectButton);
+            this.layoutControl2.Controls.Add(this.ConnectButton);
+            this.layoutControl2.Controls.Add(this.comboBoxEditFlowControl);
+            this.layoutControl2.Controls.Add(this.comboBoxEditStopbit);
+            this.layoutControl2.Controls.Add(this.comboBoxEditParity);
+            this.layoutControl2.Controls.Add(this.comboBoxEditDataBit);
+            this.layoutControl2.Controls.Add(this.comboBoxEditBaudRate);
+            this.layoutControl2.Controls.Add(this.comboBoxEditComPort);
+            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl2.Name = "layoutControl2";
+            this.layoutControl2.OptionsView.UseDefaultDragAndDropRendering = false;
+            this.layoutControl2.Root = this.layoutControlGroup1;
+            this.layoutControl2.Size = new System.Drawing.Size(521, 591);
+            this.layoutControl2.TabIndex = 6;
+            this.layoutControl2.Text = "layoutControl2";
+            // 
+            // memoEditCommunicationLogmessage
+            // 
+            this.memoEditCommunicationLogmessage.Location = new System.Drawing.Point(78, 150);
+            this.memoEditCommunicationLogmessage.Name = "memoEditCommunicationLogmessage";
+            this.memoEditCommunicationLogmessage.Size = new System.Drawing.Size(430, 428);
+            this.memoEditCommunicationLogmessage.StyleController = this.layoutControl2;
+            this.memoEditCommunicationLogmessage.TabIndex = 14;
+            // 
+            // SendPacketDataButton
+            // 
+            this.SendPacketDataButton.Location = new System.Drawing.Point(374, 120);
+            this.SendPacketDataButton.Name = "SendPacketDataButton";
+            this.SendPacketDataButton.Size = new System.Drawing.Size(134, 26);
+            this.SendPacketDataButton.StyleController = this.layoutControl2;
+            this.SendPacketDataButton.TabIndex = 13;
+            this.SendPacketDataButton.Text = "전송 하기";
+            // 
+            // textEditSendPacketData
+            // 
+            this.textEditSendPacketData.Location = new System.Drawing.Point(78, 120);
+            this.textEditSendPacketData.Name = "textEditSendPacketData";
+            this.textEditSendPacketData.Size = new System.Drawing.Size(292, 20);
+            this.textEditSendPacketData.StyleController = this.layoutControl2;
+            this.textEditSendPacketData.TabIndex = 12;
+            // 
+            // DisconnectButton
+            // 
+            this.DisconnectButton.Location = new System.Drawing.Point(262, 94);
+            this.DisconnectButton.Name = "DisconnectButton";
+            this.DisconnectButton.Size = new System.Drawing.Size(246, 22);
+            this.DisconnectButton.StyleController = this.layoutControl2;
+            this.DisconnectButton.TabIndex = 11;
+            this.DisconnectButton.Text = "연결 해제";
+            this.DisconnectButton.Click += new System.EventHandler(this.DisconnectButton_Click);
+            // 
+            // ConnectButton
+            // 
+            this.ConnectButton.Location = new System.Drawing.Point(13, 94);
+            this.ConnectButton.Name = "ConnectButton";
+            this.ConnectButton.Size = new System.Drawing.Size(245, 22);
+            this.ConnectButton.StyleController = this.layoutControl2;
+            this.ConnectButton.TabIndex = 10;
+            this.ConnectButton.Text = "연결";
+            this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
+            // 
+            // comboBoxEditFlowControl
+            // 
+            this.comboBoxEditFlowControl.Location = new System.Drawing.Point(317, 67);
+            this.comboBoxEditFlowControl.Name = "comboBoxEditFlowControl";
+            this.comboBoxEditFlowControl.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEditFlowControl.Size = new System.Drawing.Size(191, 20);
+            this.comboBoxEditFlowControl.StyleController = this.layoutControl2;
+            this.comboBoxEditFlowControl.TabIndex = 9;
+            // 
+            // comboBoxEditStopbit
+            // 
+            this.comboBoxEditStopbit.Location = new System.Drawing.Point(78, 67);
+            this.comboBoxEditStopbit.Name = "comboBoxEditStopbit";
+            this.comboBoxEditStopbit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEditStopbit.Size = new System.Drawing.Size(180, 20);
+            this.comboBoxEditStopbit.StyleController = this.layoutControl2;
+            this.comboBoxEditStopbit.TabIndex = 8;
+            // 
+            // comboBoxEditParity
+            // 
+            this.comboBoxEditParity.Location = new System.Drawing.Point(317, 40);
+            this.comboBoxEditParity.Name = "comboBoxEditParity";
+            this.comboBoxEditParity.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEditParity.Size = new System.Drawing.Size(191, 20);
+            this.comboBoxEditParity.StyleController = this.layoutControl2;
+            this.comboBoxEditParity.TabIndex = 7;
+            // 
+            // comboBoxEditDataBit
+            // 
+            this.comboBoxEditDataBit.Location = new System.Drawing.Point(78, 40);
+            this.comboBoxEditDataBit.Name = "comboBoxEditDataBit";
+            this.comboBoxEditDataBit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEditDataBit.Size = new System.Drawing.Size(180, 20);
+            this.comboBoxEditDataBit.StyleController = this.layoutControl2;
+            this.comboBoxEditDataBit.TabIndex = 6;
+            // 
+            // comboBoxEditBaudRate
+            // 
+            this.comboBoxEditBaudRate.Location = new System.Drawing.Point(317, 13);
+            this.comboBoxEditBaudRate.Name = "comboBoxEditBaudRate";
+            this.comboBoxEditBaudRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEditBaudRate.Size = new System.Drawing.Size(191, 20);
+            this.comboBoxEditBaudRate.StyleController = this.layoutControl2;
+            this.comboBoxEditBaudRate.TabIndex = 5;
+            // 
+            // comboBoxEditComPort
+            // 
+            this.comboBoxEditComPort.Location = new System.Drawing.Point(78, 13);
+            this.comboBoxEditComPort.Name = "comboBoxEditComPort";
+            this.comboBoxEditComPort.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEditComPort.Properties.Items.AddRange(new object[] {
+            "COM1",
+            "COM2",
+            "COM3",
+            "COM4",
+            "COM5",
+            "COM6",
+            "COM7",
+            "COM8",
+            "COM9",
+            "COM10"});
+            this.comboBoxEditComPort.Size = new System.Drawing.Size(180, 20);
+            this.comboBoxEditComPort.StyleController = this.layoutControl2;
+            this.comboBoxEditComPort.TabIndex = 4;
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem2,
+            this.layoutControlItem3,
+            this.layoutControlItem5,
+            this.layoutControlItem6,
+            this.layoutControlItem7,
+            this.layoutControlItem9,
+            this.layoutControlItem10,
+            this.layoutControlItem4,
+            this.layoutControlItem8,
+            this.layoutControlItem11,
+            this.layoutControlItem12});
+            this.layoutControlGroup1.Name = "Root";
+            this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(521, 591);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.comboBoxEditComPort;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(249, 27);
+            this.layoutControlItem2.Text = "통신 포트";
+            this.layoutControlItem2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 23);
+            this.layoutControlItem2.TextToControlDistance = 5;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.comboBoxEditBaudRate;
+            this.layoutControlItem3.Location = new System.Drawing.Point(249, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(250, 27);
+            this.layoutControlItem3.Text = "통신 속도";
+            this.layoutControlItem3.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(50, 23);
+            this.layoutControlItem3.TextToControlDistance = 5;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.comboBoxEditParity;
+            this.layoutControlItem5.Location = new System.Drawing.Point(249, 27);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(250, 27);
+            this.layoutControlItem5.Text = "패리티";
+            this.layoutControlItem5.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(50, 23);
+            this.layoutControlItem5.TextToControlDistance = 5;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.comboBoxEditStopbit;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 54);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(249, 27);
+            this.layoutControlItem6.Text = "정지 비트";
+            this.layoutControlItem6.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(60, 23);
+            this.layoutControlItem6.TextToControlDistance = 5;
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.comboBoxEditFlowControl;
+            this.layoutControlItem7.Location = new System.Drawing.Point(249, 54);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(250, 27);
+            this.layoutControlItem7.Text = "흐름 제어";
+            this.layoutControlItem7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(50, 16);
+            this.layoutControlItem7.TextToControlDistance = 5;
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.DisconnectButton;
+            this.layoutControlItem9.Location = new System.Drawing.Point(249, 81);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(250, 26);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem9.TextVisible = false;
+            // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.Control = this.textEditSendPacketData;
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 107);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(361, 30);
+            this.layoutControlItem10.Text = "전송 메시지";
+            this.layoutControlItem10.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(60, 23);
+            this.layoutControlItem10.TextToControlDistance = 5;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.comboBoxEditDataBit;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 27);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(249, 27);
+            this.layoutControlItem4.Text = "데이터 비트";
+            this.layoutControlItem4.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(60, 23);
+            this.layoutControlItem4.TextToControlDistance = 5;
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.ConnectButton;
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 81);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(249, 26);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
+            // 
+            // layoutControlItem11
+            // 
+            this.layoutControlItem11.Control = this.SendPacketDataButton;
+            this.layoutControlItem11.Location = new System.Drawing.Point(361, 107);
+            this.layoutControlItem11.MaxSize = new System.Drawing.Size(0, 30);
+            this.layoutControlItem11.MinSize = new System.Drawing.Size(91, 30);
+            this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Size = new System.Drawing.Size(138, 30);
+            this.layoutControlItem11.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem11.TextVisible = false;
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.Control = this.memoEditCommunicationLogmessage;
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 137);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Size = new System.Drawing.Size(499, 432);
+            this.layoutControlItem12.Text = "통신 내역";
+            this.layoutControlItem12.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(60, 23);
+            this.layoutControlItem12.TextToControlDistance = 5;
+            // 
             // labelControlDIn20111
             // 
             this.labelControlDIn20111.Appearance.Options.UseTextOptions = true;
@@ -2715,29 +2715,6 @@
             this.Size = new System.Drawing.Size(551, 597);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlRemoteIO)).EndInit();
             this.xtraTabControlRemoteIO.ResumeLayout(false);
-            this.xtraTabPageConnect.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
-            this.layoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.memoEditCommunicationLogmessage.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditSendPacketData.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditFlowControl.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditStopbit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditParity.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditDataBit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditBaudRate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditComPort.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             this.xtraTabPageControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -2828,6 +2805,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem117)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            this.xtraTabPageConnect.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
+            this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEditCommunicationLogmessage.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditSendPacketData.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditFlowControl.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditStopbit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditParity.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditDataBit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditBaudRate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditComPort.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             this.ResumeLayout(false);
 
         }
