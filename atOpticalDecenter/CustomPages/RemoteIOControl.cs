@@ -17,17 +17,16 @@ using System.IO.Ports;
 using System.Timers;
 using RecipeManager;
 using LogLibrary;
-
 namespace CustomPages
 {
     public partial class RemoteIOControl : DevExpress.XtraEditors.XtraUserControl
     {
         private CommunicationManager _mARMCommunicationManager = null;
-        private ARMData _mARMData;
-        public Log _log = new Log();
+        private ARMData _mARMData;        
 
         RecipeManager.RobotInformation _mRobotInfomation = new RecipeManager.RobotInformation();
         public event Action<RecipeManager.RobotInformation> RobotInfomationUpdatedEvent;
+        public event Action<string> LogWriteEvent;
 
         public bool IsOpenStatus = false;
         public string _SerialPortName = "COM5";
@@ -42,7 +41,7 @@ namespace CustomPages
         {
             InitializeComponent();
             initialSystemDefineValue();
-            _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 초기화 완료."));
+            LogWriteEvent?.Invoke(string.Format("원격IO 초기화 완료."));
         }
         public void ChangeSystemLanguage(bool _bsystemlanguage)
         {
@@ -279,7 +278,7 @@ namespace CustomPages
                 case 8: ret = "COM9"; break;
                 default: ret = "COM1"; break;
             }
-            _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 통신 포트 {0} 설정.",ret));
+            LogWriteEvent?.Invoke(string.Format("원격IO 통신 포트 {0} 설정.",ret));
             return ret;
         }
         public int SelectBaudrate(int Select)
@@ -296,7 +295,7 @@ namespace CustomPages
                 case 6: ret = 115200; break;
                 default: ret = 9600; break;
             }
-            _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 통신 속도 {0} 설정.", ret));
+            LogWriteEvent?.Invoke(string.Format("원격IO 통신 속도 {0} 설정.", ret));
             return ret;
         }
         public int SelectDataBit(int Select)
@@ -308,7 +307,7 @@ namespace CustomPages
                 case 1: ret = 8; break;
                 default: ret = 8; break;
             }
-            _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 통신 데이터비트 {0} 설정.", ret));
+            LogWriteEvent?.Invoke(string.Format("원격IO 통신 데이터비트 {0} 설정.", ret));
             return ret;
         }
         public System.IO.Ports.StopBits SelectStopBit(int Select)
@@ -320,7 +319,7 @@ namespace CustomPages
                 case 1: ret = System.IO.Ports.StopBits.Two; break;
                 default: ret = System.IO.Ports.StopBits.One; break;
             }
-            _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 통신 정지비트 {0} 설정.", ret));
+            LogWriteEvent?.Invoke(string.Format("원격IO 통신 정지비트 {0} 설정.", ret));
             return ret;
         }
         public System.IO.Ports.Parity SelectParity(int Select)
@@ -333,7 +332,7 @@ namespace CustomPages
                 case 2: ret = System.IO.Ports.Parity.Even; break;        // Even
                 default: ret = System.IO.Ports.Parity.None; break;
             }
-            _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 통신 Parity {0} 설정.", ret));
+            LogWriteEvent?.Invoke(string.Format("원격IO 통신 Parity {0} 설정.", ret));
             return ret;
         }
         private void OutputControl_Click(object sender, EventArgs e)
@@ -357,12 +356,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 0)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력1 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력1 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력1 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력1 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output0, maskdata);
                                 _mARMCommunicationManager.SendData(data);                                
@@ -373,12 +372,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 1)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력2 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력2 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력2 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력2 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output1, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -390,12 +389,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 2)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력3 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력3 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력3 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력3 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output2, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -407,12 +406,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 3)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력4 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력4 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력4 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력4 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output3, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -424,12 +423,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 4)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력5 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력5 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력5 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력5 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output4, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -441,12 +440,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 5)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력6 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력6 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력6 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력6 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output5, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -458,12 +457,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 6)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력7 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력7 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력7 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력7 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output6, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -475,12 +474,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 7)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력8 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력8 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력8 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력8 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output7, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -492,12 +491,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 8)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력9 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력9 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력9 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력9 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output8, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -509,12 +508,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 9)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력10 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력10 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력10 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력10 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output9, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -526,12 +525,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 10)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력11 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력11 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력11 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력11 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output10, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -543,12 +542,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 11)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력12 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력12 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력12 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력12 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output11, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -560,12 +559,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 12)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력13 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력13 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력13 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력13 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output12, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -577,12 +576,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 13)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력14 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력14 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력14 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력14 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output13, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -594,12 +593,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 14)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력15 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력15 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력15 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력15 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output14, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -611,12 +610,12 @@ namespace CustomPages
                                 if (Convert.ToBoolean(OutputData & (1 << 15)))
                                 {
                                     maskdata = 0;               // Output Off;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력16 Off."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력16 Off."));
                                 }
                                 else
                                 {
                                     maskdata = 0xff00;          // Output On;
-                                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격IO 출력16 On."));
+                                    LogWriteEvent?.Invoke(string.Format("원격IO 출력16 On."));
                                 }
                                 data = _mARMData.Output1byteCommand(_mARMCommunicationManager.mRemoteIOCtrl.DrvID[0], ARMData.OUTPUT_CONTROL_MAP.Output15, maskdata);
                                 _mARMCommunicationManager.SendData(data);
@@ -656,7 +655,7 @@ namespace CustomPages
                     ConnectButton.Enabled = false;
                     _mARMCommunicationManager.ReceiveDataUpdateEvent += UpdateReceiveData;
                     UpdateTimer.Start();
-                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격 I/O 통신({0})이 연결 되었습니다", setPort.PortName));
+                    LogWriteEvent?.Invoke(string.Format("원격 I/O 통신({0})이 연결 되었습니다", setPort.PortName));
                 }
             }
         }
@@ -675,7 +674,7 @@ namespace CustomPages
                     ConnectButton.Enabled = false;                    
                     _mARMCommunicationManager.ReceiveDataUpdateEvent += UpdateReceiveData;
                     UpdateTimer.Start();
-                    _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격 I/O 통신({0})이 연결 되었습니다", setPort.PortName));
+                    LogWriteEvent?.Invoke(string.Format("원격 I/O 통신({0})이 연결 되었습니다", setPort.PortName));
                 }
             }
         }
@@ -691,7 +690,7 @@ namespace CustomPages
                 ConnectButton.Enabled = true;
                 _mARMCommunicationManager.ReceiveDataUpdateEvent -= UpdateReceiveData;
                 UpdateTimer.Stop();
-                _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격 I/O 통신이 연결해제 되었습니다"));
+                LogWriteEvent?.Invoke(string.Format("원격 I/O 통신이 연결해제 되었습니다"));
             }
         }
         public void ConnectionClosed()
@@ -706,7 +705,7 @@ namespace CustomPages
                 ConnectButton.Enabled = true;
                 _mARMCommunicationManager.ReceiveDataUpdateEvent -= UpdateReceiveData;                
                 UpdateTimer.Stop();
-                _log.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), string.Format("원격 I/O 통신이 연결해제 되었습니다"));
+                LogWriteEvent?.Invoke(string.Format("원격 I/O 통신이 연결해제 되었습니다"));
             }
         }
         public void UpdateReceiveData(ARMData.RemoteIODatas update)

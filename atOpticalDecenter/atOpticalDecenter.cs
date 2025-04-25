@@ -203,8 +203,8 @@ namespace atOpticalDecenter
             {
                 //_log.WriteLogViewer += new Log.EventWriteLogViewer(OnWriteLogViewer);
                 mLog.WriteLogViewer += LogUpdated;//new Log.EventWriteLogViewer(LogUpdated);
-                MotionControl._log.WriteLogViewer += LogUpdated;
-                RemoteIOControl._log.WriteLogViewer += LogUpdated;
+                MotionControl.LogWriteEvent += Motion_StringToLogWriteEvent;
+                RemoteIOControl.LogWriteEvent += RemoteIO_StringToLogWriteEvent;
                 gridControl1.DataSource = mLogList;
                 //gridControlBlobs.DataSource = _workParams.Blobs;
                 //gridControlResult.DataSource = _workParams.InspectionPositions;                
@@ -2485,7 +2485,7 @@ namespace atOpticalDecenter
         {
             try
             {
-                pictureEditSystemImage.Refresh();
+                pictureEditSystemImage.Refresh();                
             }
             catch (Exception ex)
             {
@@ -2573,6 +2573,7 @@ namespace atOpticalDecenter
                     pictureEditSystemImage.Refresh();
                     barButtonItemFitSize.PerformClick();
                 }
+                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("{0}파일 이미지 불러오기", openFileDialogImageFileOpen.FileName));
             }
             catch (Exception ex)
             {
@@ -3999,6 +4000,28 @@ namespace atOpticalDecenter
             catch (Exception)
             {
                 mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), "모션 정지 명령을 하지 못햇습니다.");
+            }
+        }
+        private void Motion_StringToLogWriteEvent(string strLog)
+        {
+            try
+            {
+                mLog.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), strLog);
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), "모션 로그 이벤트에 오류가 있습니다.");
+            }
+        }
+        private void RemoteIO_StringToLogWriteEvent(string strLog)
+        {
+            try
+            {
+                mLog.WriteLog(LogLevel.Info, LogClass.RemoteIO.ToString(), strLog);
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), "RemoteIO 로그 이벤트에 오류가 있습니다.");
             }
         }
     }

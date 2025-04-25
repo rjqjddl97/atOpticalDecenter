@@ -27,7 +27,7 @@ namespace CustomPages
         private CommunicationManager _mAiCCommunicationManager = null;
         private AiCData _mAiCData = new AiCData();
         private RecipeManager.MotionParams _MotionParam = null;
-        public Log _log = new Log();
+        //public Log _log = new Log();
 
         //public AiCData MotionInfo = new AiCData();
         private bool _isRobotEnable = false;
@@ -69,6 +69,7 @@ namespace CustomPages
         public bool _IsInitialDrive = false;
 
         public event Action<RecipeManager.RobotInformation> RobotInfomationUpdatedEvent;
+        public event Action<string> LogWriteEvent;
 
         RecipeManager.CalibrationParams CalibrationParam = new RecipeManager.CalibrationParams();
         RecipeManager.RobotInformation _mRobotInfomation = new RecipeManager.RobotInformation();
@@ -81,7 +82,8 @@ namespace CustomPages
         {
             InitializeComponent();
             initialSystemDefineValue();
-            _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션제어 초기화 완료."));
+            //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션제어 초기화 완료."));
+            LogWriteEvent?.Invoke(string.Format("모션제어 초기화 완료."));
         }
         public void ChangeSystemLanguage(bool _bsystemlanguage)
         {
@@ -488,7 +490,8 @@ namespace CustomPages
                 case 8: ret = "COM9"; break;
                 default: ret = "COM1"; break;
             }
-            _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신 포트가 {0}로 변경되었습니다",ret));
+            //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신 포트가 {0}로 변경되었습니다",ret));
+            LogWriteEvent?.Invoke(string.Format("모션 제어 통신 포트가 {0}로 변경되었습니다", ret));
             return ret;
         }
         public int SelectBaudrate(int Select)
@@ -505,7 +508,8 @@ namespace CustomPages
                 case 6: ret = 115200; break;
                 default: ret = 9600; break;
             }
-            _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신 속도가 {0}로 변경되었습니다", ret.ToString()));
+            //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신 속도가 {0}로 변경되었습니다", ret.ToString()));
+            LogWriteEvent?.Invoke(string.Format("모션 제어 통신 속도가 {0}로 변경되었습니다", ret.ToString()));
             return ret;
         }
         public int SelectDataBit(int Select)
@@ -517,7 +521,8 @@ namespace CustomPages
                 case 1: ret = 8; break;
                 default: ret = 8; break;
             }
-            _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신 데이터 비트가 {0}로 변경되었습니다", ret.ToString()));
+            //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신 데이터 비트가 {0}로 변경되었습니다", ret.ToString()));
+            LogWriteEvent?.Invoke(string.Format("모션 제어 통신 데이터 비트가 {0}로 변경되었습니다", ret.ToString()));
             return ret;
         }
         public System.IO.Ports.StopBits SelectStopBit(int Select)
@@ -530,7 +535,8 @@ namespace CustomPages
                 case 2: ret = System.IO.Ports.StopBits.Two; break;
                 default: ret = System.IO.Ports.StopBits.One; break;
             }
-            _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신 정지 비트가 {0}로 변경되었습니다", ret.ToString()));
+            //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신 정지 비트가 {0}로 변경되었습니다", ret.ToString()));
+            LogWriteEvent?.Invoke(string.Format("모션 제어 통신 정지 비트가 {0}로 변경되었습니다", ret.ToString()));
             return ret;
         }
         public System.IO.Ports.Parity SelectParity(int Select)
@@ -543,7 +549,8 @@ namespace CustomPages
                 case 2: ret = System.IO.Ports.Parity.Even; break;        // Even
                 default: ret = System.IO.Ports.Parity.None; break;
             }
-            _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신 Parity가 {0}로 변경되었습니다", ret.ToString()));
+            //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신 Parity가 {0}로 변경되었습니다", ret.ToString()));
+            LogWriteEvent?.Invoke(string.Format("모션 제어 통신 Parity가 {0}로 변경되었습니다", ret.ToString()));
             return ret;
         }
 
@@ -576,7 +583,8 @@ namespace CustomPages
                     //    data = _mAiCCommunicationManager.mDrvCtrl.DriveInitialSetting((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[i], 100, 10000, 10000, 10000);
                     //    _mAiCCommunicationManager.SendData(data);
                     //}
-                    _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신({0})이 연결 되었습니다", setPort.PortName));
+                    //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신({0})이 연결 되었습니다", setPort.PortName));
+                    LogWriteEvent?.Invoke(string.Format("모션 제어 통신({0})이 연결 되었습니다", setPort.PortName));
                 }
             }
         }
@@ -595,7 +603,8 @@ namespace CustomPages
                     ConnectButton.Enabled = false;                    
                     _mAiCCommunicationManager.ReceiveDataUpdateEvent += UpdateReceiveData;
                     UpdateTimer.Start();
-                    _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신({0})이 연결 되었습니다", setPort.PortName));
+                    //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신({0})이 연결 되었습니다", setPort.PortName));
+                    LogWriteEvent?.Invoke(string.Format("모션 제어 통신({0})이 연결 되었습니다", setPort.PortName));
                 }
             }
         }
@@ -612,7 +621,8 @@ namespace CustomPages
                 _mAiCCommunicationManager.ReceiveDataUpdateEvent -= UpdateReceiveData;
                 UpdateTimer.Stop();
                 _IsInitialDrive = false;
-                _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신이 연결해제 되었습니다"));
+                //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신이 연결해제 되었습니다"));
+                LogWriteEvent?.Invoke(string.Format("모션 제어 통신이 연결해제 되었습니다"));
             }
         }
         public void ConnectionClosed()
@@ -628,7 +638,8 @@ namespace CustomPages
                 _mAiCCommunicationManager.ReceiveDataUpdateEvent -= UpdateReceiveData;
                 UpdateTimer.Stop();
                 _IsInitialDrive = false;
-                _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신이 연결해제 되었습니다"));
+                //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("모션 제어 통신이 연결해제 되었습니다"));
+                LogWriteEvent?.Invoke(string.Format("모션 제어 통신이 연결해제 되었습니다"));
             }
         }
         public void UpdateReceiveData(AiCData.AiCMotionDatas update)
@@ -1360,7 +1371,8 @@ namespace CustomPages
 
                                         data = _mAiCCommunicationManager.mDrvCtrl.MoveReleativeCommand((byte)1);
                                         _mAiCCommunicationManager.SendData(data);
-                                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("X축 +방향 조작 버튼을 눌렀습니다"));
+                                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("X축 +방향 조작 버튼을 눌렀습니다"));
+                                        LogWriteEvent?.Invoke(string.Format("X축 +방향 조작 버튼을 눌렀습니다"));
                                     }
                                     else
                                     {
@@ -1371,7 +1383,8 @@ namespace CustomPages
 
                                         data = _mAiCCommunicationManager.mDrvCtrl.MoveReleativeCommand((byte)1);
                                         _mAiCCommunicationManager.SendData(data);
-                                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("X축 -방향 조작 버튼을 눌렀습니다"));
+                                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("X축 -방향 조작 버튼을 눌렀습니다"));
+                                        LogWriteEvent?.Invoke(string.Format("X축 -방향 조작 버튼을 눌렀습니다"));
                                     }
                                 }
                                 else if ((button.Name == "CheckButtonYPlusControlCommand") || (button.Name == "CheckButtonYMinusControlCommand"))
@@ -1386,7 +1399,8 @@ namespace CustomPages
 
                                         data = _mAiCCommunicationManager.mDrvCtrl.MoveReleativeCommand((byte)2);
                                         _mAiCCommunicationManager.SendData(data);
-                                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Y축 +방향 조작 버튼을 눌렀습니다"));
+                                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Y축 +방향 조작 버튼을 눌렀습니다"));
+                                        LogWriteEvent?.Invoke(string.Format("Y축 +방향 조작 버튼을 눌렀습니다"));
                                     }
                                     else
                                     {
@@ -1397,7 +1411,8 @@ namespace CustomPages
 
                                         data = _mAiCCommunicationManager.mDrvCtrl.MoveReleativeCommand((byte)2);
                                         _mAiCCommunicationManager.SendData(data);
-                                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Y축 -방향 조작 버튼을 눌렀습니다"));
+                                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Y축 -방향 조작 버튼을 눌렀습니다"));
+                                        LogWriteEvent?.Invoke(string.Format("Y축 -방향 조작 버튼을 눌렀습니다"));
                                     }
                                 }
                                 else if ((button.Name == "CheckButtonZPlusControlCommand") || (button.Name == "CheckButtonZMinusControlCommand"))
@@ -1412,7 +1427,8 @@ namespace CustomPages
 
                                         data = _mAiCCommunicationManager.mDrvCtrl.MoveReleativeCommand((byte)3);
                                         _mAiCCommunicationManager.SendData(data);
-                                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Z축 +방향 조작 버튼을 눌렀습니다"));
+                                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Z축 +방향 조작 버튼을 눌렀습니다"));
+                                        LogWriteEvent?.Invoke(string.Format("Z축 +방향 조작 버튼을 눌렀습니다"));
                                     }
                                     else
                                     {
@@ -1423,7 +1439,8 @@ namespace CustomPages
 
                                         data = _mAiCCommunicationManager.mDrvCtrl.MoveReleativeCommand((byte)3);
                                         _mAiCCommunicationManager.SendData(data);
-                                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Z축 -방향 조작 버튼을 눌렀습니다"));
+                                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Z축 -방향 조작 버튼을 눌렀습니다"));
+                                        LogWriteEvent?.Invoke(string.Format("Z축 -방향 조작 버튼을 눌렀습니다"));
                                     }
                                 }
                                 else
@@ -1454,7 +1471,8 @@ namespace CustomPages
                                         }                                        
                                         data = _mAiCCommunicationManager.mDrvCtrl.CWJogCommand((byte)1);
                                         _mAiCCommunicationManager.SendData(data);
-                                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("X축 +방향 조작 버튼을 눌렀습니다"));
+                                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("X축 +방향 조작 버튼을 눌렀습니다"));
+                                        LogWriteEvent?.Invoke(string.Format("X축 +방향 조작 버튼을 눌렀습니다"));
                                     }
                                     else
                                     {
@@ -1467,7 +1485,8 @@ namespace CustomPages
                                         }
                                         data = _mAiCCommunicationManager.mDrvCtrl.CCWJogCommand((byte)1);
                                         _mAiCCommunicationManager.SendData(data);
-                                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("X축 -방향 조작 버튼을 눌렀습니다"));
+                                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("X축 -방향 조작 버튼을 눌렀습니다"));
+                                        LogWriteEvent?.Invoke(string.Format("X축 -방향 조작 버튼을 눌렀습니다"));
                                     }
                                 }
                                 else if ((button.Name == "CheckButtonYPlusControlCommand") || (button.Name == "CheckButtonYMinusControlCommand"))
@@ -1484,7 +1503,8 @@ namespace CustomPages
                                         }
                                         data = _mAiCCommunicationManager.mDrvCtrl.CWJogCommand((byte)2);
                                         _mAiCCommunicationManager.SendData(data);
-                                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Y축 +방향 조작 버튼을 눌렀습니다"));
+                                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Y축 +방향 조작 버튼을 눌렀습니다"));
+                                        LogWriteEvent?.Invoke(string.Format("Y축 +방향 조작 버튼을 눌렀습니다"));
                                     }
                                     else
                                     {
@@ -1496,7 +1516,8 @@ namespace CustomPages
                                         }
                                         data = _mAiCCommunicationManager.mDrvCtrl.CCWJogCommand((byte)2);
                                         _mAiCCommunicationManager.SendData(data);
-                                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Y축 -방향 조작 버튼을 눌렀습니다"));
+                                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Y축 -방향 조작 버튼을 눌렀습니다"));
+                                        LogWriteEvent?.Invoke(string.Format("Y축 -방향 조작 버튼을 눌렀습니다"));
                                     }
                                 }
                                 else if ((button.Name == "CheckButtonZPlusControlCommand") || (button.Name == "CheckButtonZMinusControlCommand"))
@@ -1512,7 +1533,8 @@ namespace CustomPages
                                         }
                                         data = _mAiCCommunicationManager.mDrvCtrl.CWJogCommand((byte)3);
                                         _mAiCCommunicationManager.SendData(data);
-                                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Z축 +방향 조작 버튼을 눌렀습니다"));
+                                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Z축 +방향 조작 버튼을 눌렀습니다"));
+                                        LogWriteEvent?.Invoke(string.Format("Z축 +방향 조작 버튼을 눌렀습니다"));
                                     }
                                     else
                                     {
@@ -1524,7 +1546,8 @@ namespace CustomPages
                                         }
                                         data = _mAiCCommunicationManager.mDrvCtrl.CCWJogCommand((byte)3);
                                         _mAiCCommunicationManager.SendData(data);
-                                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Z축 -방향 조작 버튼을 눌렀습니다"));
+                                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Z축 -방향 조작 버튼을 눌렀습니다"));
+                                        LogWriteEvent?.Invoke(string.Format("X축 -방향 조작 버튼을 눌렀습니다"));
                                     }
                                 }
                             }
@@ -1619,7 +1642,8 @@ namespace CustomPages
                             byte[] data = new byte[8];
                             data = _mAiCCommunicationManager.mDrvCtrl.MoveStopCommand((byte)0x81);      // Braodcast all Axis stop command
                             _mAiCCommunicationManager.SendData(data);
-                            _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("정지 조작 버튼을 눌렀습니다"));
+                            //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("정지 조작 버튼을 눌렀습니다"));
+                            LogWriteEvent?.Invoke(string.Format("정지 조작 버튼을 눌렀습니다"));
                         }
                     }
                 }
@@ -1834,7 +1858,8 @@ namespace CustomPages
                         data = _mAiCData.MoveAbsoluteCommand(129);
                         
                         _mAiCCommunicationManager.SendData(data);
-                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("수동 위치 이동 명령을 전송했습니다"));
+                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("수동 위치 이동 명령을 전송했습니다"));
+                        LogWriteEvent?.Invoke(string.Format("수동 위치 이동 명령을 전송했습니다"));
                         //UserCodesysData.TargetRobotPosition mCmdPosMove = new UserCodesysData.TargetRobotPosition();
                         //RecipeManager.CalibrationParams.Position PrePos = new RecipeManager.CalibrationParams.Position();
                         //RecipeManager.CalibrationParams.Position DeltaPos = new RecipeManager.CalibrationParams.Position();
@@ -1905,7 +1930,8 @@ namespace CustomPages
                         byte[] data = new byte[8];
                         data = _mAiCData.MoveStopCommand(129);
                         _mAiCCommunicationManager.SendData(data);
-                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("이동 정지 명령을 전송했습니다"));
+                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("이동 정지 명령을 전송했습니다"));
+                        LogWriteEvent?.Invoke(string.Format("이동 정지 명령을 전송했습니다"));
                         // Send Move Stop Command                        
                         //_mAiCCommunicationManager.SendCommand(UserCodesysData.Protocol_MSG.MSG_CMD_MOVE_STOP, null);
                     }
@@ -1962,7 +1988,8 @@ namespace CustomPages
                             //_mAiCCommunicationManager.SendCommand(UserCodesysData.Protocol_MSG.MSG_CMD_JOG_COORDINATE_MODE, data);
                         }
                     }
-                    _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("낮은 변화량 버튼을 눌렀습니다"));
+                    //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("낮은 변화량 버튼을 눌렀습니다"));
+                    LogWriteEvent?.Invoke(string.Format("낮은 변화량 버튼을 눌렀습니다"));
                 }
             }
         }
@@ -2013,7 +2040,8 @@ namespace CustomPages
                             //_mAiCCommunicationManager.SendCommand(UserCodesysData.Protocol_MSG.MSG_CMD_JOG_COORDINATE_MODE, data);
                         }
                     }
-                    _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("중간 변화량 버튼을 눌렀습니다"));
+                    //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("중간 변화량 버튼을 눌렀습니다"));
+                    LogWriteEvent?.Invoke(string.Format("중간 변화량 버튼을 눌렀습니다"));
                 }
             }
         }
@@ -2064,7 +2092,8 @@ namespace CustomPages
                             //_mAiCCommunicationManager.SendCommand(UserCodesysData.Protocol_MSG.MSG_CMD_JOG_COORDINATE_MODE, data);
                         }
                     }
-                    _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("높은 변화량 버튼을 눌렀습니다"));
+                    //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("높은 변화량 버튼을 눌렀습니다"));
+                    LogWriteEvent?.Invoke(string.Format("높은 변화량 버튼을 눌렀습니다"));
                 }
             }
         }
@@ -2212,7 +2241,8 @@ namespace CustomPages
                     _mAiCCommunicationManager.SendData(SeData);
                 }
                 _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.OperationReady, true);
-                _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("원점 복귀 버튼을 눌렀습니다"));
+                //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("원점 복귀 버튼을 눌렀습니다"));
+                LogWriteEvent?.Invoke(string.Format("원점 복귀 버튼을 눌렀습니다"));
             }
         }
 
@@ -2226,7 +2256,8 @@ namespace CustomPages
                     SeData = _mAiCCommunicationManager.mDrvCtrl.EmergencyCommand((byte)i);
                     _mAiCCommunicationManager.SendData(SeData);
                 }
-                _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("원점 복귀 버튼을 눌렀습니다"));
+                //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("원점 복귀 버튼을 눌렀습니다"));
+                LogWriteEvent?.Invoke(string.Format("응급 정지 버튼을 눌렀습니다"));
             }
         }
 
@@ -2240,7 +2271,8 @@ namespace CustomPages
                     SeData = _mAiCCommunicationManager.mDrvCtrl.AlarmResetCommand((byte)i);
                     _mAiCCommunicationManager.SendData(SeData);
                 }
-                _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("알람 리셋 버튼을 눌렀습니다"));
+                //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("알람 리셋 버튼을 눌렀습니다"));
+                LogWriteEvent?.Invoke(string.Format("알람 리셋 버튼을 눌렀습니다"));
             }
 
         }
@@ -2297,7 +2329,8 @@ namespace CustomPages
                         defineValueButtonDisable();
                         textEditUserDefineValue.Enabled = true;
                     }
-                    _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Menaul Mode {0}를 선택했습니다", radioGroupMenualMode.SelectedIndex.ToString()));
+                    //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Menaul Mode {0}를 선택했습니다", radioGroupMenualMode.SelectedIndex.ToString()));
+                    LogWriteEvent?.Invoke(string.Format("Menaul Mode {0}를 선택했습니다", radioGroupMenualMode.SelectedIndex.ToString()));
                 }
             }
             catch
@@ -2359,7 +2392,8 @@ namespace CustomPages
                         defineValueButtonDisable();
                         textEditUserDefineValue.Enabled = true;
                     }
-                    _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Menaul Control Mode {0}를 선택했습니다", radioGroupMenualControlMode.SelectedIndex.ToString()));
+                    //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Menaul Control Mode {0}를 선택했습니다", radioGroupMenualControlMode.SelectedIndex.ToString()));
+                    LogWriteEvent?.Invoke(string.Format("Menaul Control Mode {0}를 선택했습니다", radioGroupMenualControlMode.SelectedIndex.ToString()));
                 }
             }
             catch (Exception)
@@ -2387,7 +2421,8 @@ namespace CustomPages
                                 textEditUserDefineValue.Enabled = true;
                             }
                         }
-                        _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Menaul ValueMode {0}를 선택했습니다", radioGroupMenualValueMode.SelectedIndex.ToString()));
+                        //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("Menaul ValueMode {0}를 선택했습니다", radioGroupMenualValueMode.SelectedIndex.ToString()));
+                        LogWriteEvent?.Invoke(string.Format("Menaul ValueMode {0}를 선택했습니다", radioGroupMenualValueMode.SelectedIndex.ToString()));
                     }
                 }
             }
@@ -2449,7 +2484,8 @@ namespace CustomPages
                     }
                 }
             }
-            _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("사용자 정의값은 {0}입니다", textEditUserDefineValue.Text));
+            //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("사용자 정의값은 {0}입니다", textEditUserDefineValue.Text));
+            LogWriteEvent?.Invoke(string.Format("사용자 정의값은 {0}입니다", textEditUserDefineValue.Text));
         }
 
         private void simpleButtonReqMotionStatus_Click(object sender, EventArgs e)
@@ -2484,7 +2520,8 @@ namespace CustomPages
                 data = _mAiCCommunicationManager.mDrvCtrl.MoveTargetPositionSendData((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[0], Convert.ToInt32( Convert.ToDouble(textEditTargetPosX.Text) * _MotionParam.MM2PulseRatioX));
                 _mAiCCommunicationManager.SendData(data);
             }
-            _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("지령 위치X는 {0}입니다", textEditTargetPosX.Text));
+            //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("지령 위치X는 {0}입니다", textEditTargetPosX.Text));
+            LogWriteEvent?.Invoke(string.Format("지령 위치 X는 {0}입니다", textEditTargetPosX.Text));
         }
 
         private void textEditTargetPosY_EditValueChanged(object sender, EventArgs e)
@@ -2495,7 +2532,8 @@ namespace CustomPages
                 data = _mAiCCommunicationManager.mDrvCtrl.MoveTargetPositionSendData((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[1], Convert.ToInt32(Convert.ToDouble(textEditTargetPosY.Text) * _MotionParam.MM2PulseRatioY));
                 _mAiCCommunicationManager.SendData(data);
             }
-            _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("지령 위치Y는 {0}입니다", textEditTargetPosY.Text));
+            //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("지령 위치Y는 {0}입니다", textEditTargetPosY.Text));
+            LogWriteEvent?.Invoke(string.Format("지령 위치 Y는 {0}입니다", textEditTargetPosY.Text));
         }
 
         private void textEditTargetPosZ_EditValueChanged(object sender, EventArgs e)
@@ -2506,7 +2544,8 @@ namespace CustomPages
                 data = _mAiCCommunicationManager.mDrvCtrl.MoveTargetPositionSendData((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[2], Convert.ToInt32(Convert.ToDouble(textEditTargetPosZ.Text) * _MotionParam.MM2PulseRatioZ));
                 _mAiCCommunicationManager.SendData(data);
             }
-            _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("지령 위치Z는 {0}입니다", textEditTargetPosZ.Text));
+            //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("지령 위치Z는 {0}입니다", textEditTargetPosZ.Text));
+            LogWriteEvent?.Invoke(string.Format("지령 위치 Z는 {0}입니다", textEditTargetPosZ.Text));
         }
 
         private void textEditTargetVelocity_EditValueChanged(object sender, EventArgs e)
@@ -2539,7 +2578,8 @@ namespace CustomPages
                     _mAiCCommunicationManager.SendData(data);
                 }
             }
-            _log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("지령 속도는 {0}입니다", textEditTargetVelocity.Text));
+            //_log.WriteLog(LogLevel.Info, LogClass.MotionControl.ToString(), string.Format("지령 속도는 {0}입니다", textEditTargetVelocity.Text));
+            LogWriteEvent?.Invoke(string.Format("지령 속도는 {0}입니다", textEditTargetVelocity.Text));
         }
     }
 }
