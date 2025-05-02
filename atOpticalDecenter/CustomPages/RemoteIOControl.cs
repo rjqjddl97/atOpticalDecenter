@@ -90,10 +90,10 @@ namespace CustomPages
                 labelControlDIn7.Text = "7";
                 labelControlDIn6.Text = "6";
                 labelControlDIn5.Text = "5";
-                labelControlDIn4.Text = "4";
-                labelControlDIn3.Text = "3";
-                labelControlDIn2.Text = "2";
-                labelControlDIn1.Text = "1";
+                labelControlDIn4.Text = "Reset";
+                labelControlDIn3.Text = "Start";
+                labelControlDIn2.Text = "Jig";
+                labelControlDIn1.Text = "EMG";
 
                 groupControl5.Text = "Digital Output";
                 labelControlDOut32.Text = "32";
@@ -126,8 +126,8 @@ namespace CustomPages
                 labelControlDOut5.Text = "5";
                 labelControlDOut4.Text = "4";
                 labelControlDOut3.Text = "3";
-                labelControlDOut2.Text = "2";
-                labelControlDOut1.Text = "1";
+                labelControlDOut2.Text = "1";
+                labelControlDOut1.Text = "S PWR";
             }
             else
             {
@@ -174,10 +174,10 @@ namespace CustomPages
                 labelControlDIn7.Text = "7";
                 labelControlDIn6.Text = "6";
                 labelControlDIn5.Text = "5";
-                labelControlDIn4.Text = "4";
-                labelControlDIn3.Text = "3";
-                labelControlDIn2.Text = "2";
-                labelControlDIn1.Text = "1";
+                labelControlDIn4.Text = "Reset";
+                labelControlDIn3.Text = "Start";
+                labelControlDIn2.Text = "Jig";
+                labelControlDIn1.Text = "EMG";
 
                 groupControl5.Text = "Digital Output";
                 labelControlDOut32.Text = "32";
@@ -210,8 +210,8 @@ namespace CustomPages
                 labelControlDOut5.Text = "5";
                 labelControlDOut4.Text = "4";
                 labelControlDOut3.Text = "3";
-                labelControlDOut2.Text = "2";
-                labelControlDOut1.Text = "1";
+                labelControlDOut2.Text = "1";
+                labelControlDOut1.Text = "S PWR";
 
             }
         }

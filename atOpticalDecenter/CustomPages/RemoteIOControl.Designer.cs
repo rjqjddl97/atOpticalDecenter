@@ -649,7 +649,7 @@
             this.labelControlDIn4.Size = new System.Drawing.Size(53, 52);
             this.labelControlDIn4.StyleController = this.layoutControl17;
             this.labelControlDIn4.TabIndex = 7;
-            this.labelControlDIn4.Text = "4";
+            this.labelControlDIn4.Text = "Reset";
             // 
             // labelControlDIn3
             // 
@@ -661,7 +661,7 @@
             this.labelControlDIn3.Size = new System.Drawing.Size(52, 52);
             this.labelControlDIn3.StyleController = this.layoutControl17;
             this.labelControlDIn3.TabIndex = 6;
-            this.labelControlDIn3.Text = "3";
+            this.labelControlDIn3.Text = "Start";
             // 
             // labelControlDIn2
             // 
@@ -673,7 +673,7 @@
             this.labelControlDIn2.Size = new System.Drawing.Size(53, 52);
             this.labelControlDIn2.StyleController = this.layoutControl17;
             this.labelControlDIn2.TabIndex = 5;
-            this.labelControlDIn2.Text = "2";
+            this.labelControlDIn2.Text = "Jig";
             // 
             // labelControlDIn1
             // 
@@ -685,7 +685,7 @@
             this.labelControlDIn1.Size = new System.Drawing.Size(52, 52);
             this.labelControlDIn1.StyleController = this.layoutControl17;
             this.labelControlDIn1.TabIndex = 4;
-            this.labelControlDIn1.Text = "1";
+            this.labelControlDIn1.Text = "EMG";
             // 
             // labelControlDIn21
             // 
@@ -1641,7 +1641,7 @@
             this.labelControlDOut1.Size = new System.Drawing.Size(52, 56);
             this.labelControlDOut1.StyleController = this.layoutControl16;
             this.labelControlDOut1.TabIndex = 4;
-            this.labelControlDOut1.Text = "1";
+            this.labelControlDOut1.Text = "S PWR";
             this.labelControlDOut1.Click += new System.EventHandler(this.OutputControl_Click);
             // 
             // labelControlDOut25
