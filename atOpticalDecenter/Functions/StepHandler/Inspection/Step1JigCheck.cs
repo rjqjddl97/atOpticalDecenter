@@ -48,6 +48,11 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                             mStep = WorkingStep.JigCheck;
                             _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("Jig 점검 및 검사 설정 초기화"));
                         }
+                        else
+                        {
+                            _log.WriteLog(LogLevel.Fatal, LogClass.InspectStep.ToString(), string.Format("Remote I/O 연결 실패!! "));
+                            mStep = WorkingStep.ErrorOccured;
+                        }
                     }
                     break;
                 case WorkingStep.JigCheck:
@@ -65,7 +70,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         strstep = "Jig Not Contact or Noting";
                         ErrorStepString += strstep;
                         mStep = WorkingStep.ErrorOccured;
-                        _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("Jig 확인 실패"));
+                        _log.WriteLog(LogLevel.Error, LogClass.InspectStep.ToString(), string.Format("Jig 확인 실패"));
                     }
                     break;
 

@@ -314,7 +314,7 @@ namespace atOpticalDecenter
                 _ActuatorZImage = Properties.Resources.Z_Actuator;                
                 _bwMotionHome.RunWorkerAsync(mRobotInformation);
                 AutoStartButtonLock();
-                timerCurrentTime.Start();
+                timerCurrentTime.Start();                
             }
             catch (Exception ex)
             {

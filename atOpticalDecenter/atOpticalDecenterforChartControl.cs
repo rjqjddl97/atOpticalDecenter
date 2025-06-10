@@ -52,21 +52,21 @@ namespace atOpticalDecenter
                 int index = 0;
                 if ((angle >= -1f) && (angle <= 1f))
                     index = 0;
-                else if ((angle >= -2f) && (angle <= 2f))
+                else if (((angle >= -2f) && (angle < -1f)) || ((angle > 1f) && (angle <= 2f)))
                     index = 1;
-                else if ((angle >= -3f) && (angle <= 3f))
+                else if (((angle >= -3f) && (angle < -2f)) || ((angle > 2f) && (angle <= 3f)))
                     index = 2;
-                else if ((angle >= -4f) && (angle <= 4f))
+                else if (((angle >= -4f) && (angle < -3f)) || ((angle > 3f) && (angle <= 4f)))
                     index = 3;
-                else if ((angle >= -5f) && (angle <= 5f))
+                else if (((angle >= -5f) && (angle < -4f)) || ((angle > 4f) && (angle <= 5f)))
                     index = 4;
-                else if ((angle >= -6f) && (angle <= 6f))
+                else if (((angle >= -6f) && (angle < -5f)) || ((angle > 5f) && (angle <= 6f)))
                     index = 5;
-                else if ((angle >= -7f) && (angle <= 7f))
+                else if (((angle >= -7f) && (angle < -6f)) || ((angle > 6f) && (angle <= 7f)))
                     index = 6;
-                else if ((angle >= -8f) && (angle <= 8f))
+                else if (((angle >= -8f) && (angle < -7f)) || ((angle > 7f) && (angle <= 8f)))
                     index = 7;
-                else if ((angle >= -9f) && (angle <= 9f))
+                else if (((angle >= -9f) && (angle < -8f)) || ((angle > 8f) && (angle <= 9f)))
                     index = 8;
                 else
                     index = 9;

@@ -609,7 +609,7 @@
             // 
             this.repositoryItemTextEditInspectionResult.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.repositoryItemTextEditInspectionResult.Appearance.BackColor2 = System.Drawing.Color.Transparent;
-            this.repositoryItemTextEditInspectionResult.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.repositoryItemTextEditInspectionResult.Appearance.Font = new System.Drawing.Font("Tahoma", 18F);
             this.repositoryItemTextEditInspectionResult.Appearance.ForeColor = System.Drawing.Color.Black;
             this.repositoryItemTextEditInspectionResult.Appearance.Options.UseBackColor = true;
             this.repositoryItemTextEditInspectionResult.Appearance.Options.UseFont = true;

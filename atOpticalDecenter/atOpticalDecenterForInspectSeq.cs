@@ -457,6 +457,10 @@ namespace atOpticalDecenter
                     InpsectResultUpdate();
                     CreateResultFile(mResultData.bTotalResult);
                     UpdateStaticsData();
+                    string series = string.Empty;
+                    series = ProductSeriesNameReturn(_workParams._ProductSeries);
+                    InspectResultForm form = new InspectResultForm(series, _workParams._ProductModelName,mResultData,_systemParams._SystemLanguageKoreaUse);
+                    form.ShowDialog(this);
                 }
                 _isInspectCancel = false;
                 barEditItemInspectionProgress.EditValue = 100;
@@ -501,38 +505,40 @@ namespace atOpticalDecenter
             try
             {
                 string series = string.Empty;
-                if (_workParams._ProductSeries == 0)                     // 0: BTS, 1: BTF, 2: BJ, 3: BEN
-                {
-                    series = "BTS Series";
-                }
-                else if (_workParams._ProductSeries == 1)
-                {
-                    series = "BTF Series";
-                }
-                else if (_workParams._ProductSeries == 2)
-                {
-                    series = "BJ Series";
-                }
-                else if (_workParams._ProductSeries == 3)
-                {
-                    series = "BEN Series";
-                }
-                else
-                    series = "BTS Series";
+                //if (_workParams._ProductSeries == 0)                     // 0: BTS, 1: BTF, 2: BJ, 3: BEN
+                //{
+                //    series = "BTS Series";
+                //}
+                //else if (_workParams._ProductSeries == 1)
+                //{
+                //    series = "BTF Series";
+                //}
+                //else if (_workParams._ProductSeries == 2)
+                //{
+                //    series = "BJ Series";
+                //}
+                //else if (_workParams._ProductSeries == 3)
+                //{
+                //    series = "BEN Series";
+                //}
+                //else
+                //    series = "BTS Series";
+
+                series = ProductSeriesNameReturn(_workParams._ProductSeries);
 
                 pledSpotInspectionInfomation._InspectProductSeries = series;
                 pledSpotInspectionInfomation._InspectProductModelName = _workParams._ProductModelName;
-                pledSpotInspectionInfomation._InspectLedBlobHsize = mResultData.fOpticalSize[0];
-                pledSpotInspectionInfomation._InspectLedBlobVsize = mResultData.fOpticalSize[1];
+                pledSpotInspectionInfomation._InspectLedBlobHsize = Math.Round(mResultData.fOpticalSize[0],3);
+                pledSpotInspectionInfomation._InspectLedBlobVsize = Math.Round(mResultData.fOpticalSize[1],3);
                 pledSpotInspectionInfomation._InspectLedBlobBright = mResultData.fOpticalSpotImageBright;
-                pledSpotInspectionInfomation._InspectLedOpticalEccentricity = mResultData.fOpticalEccentricity;
-                pledSpotInspectionInfomation._InspectLedOpticalEmiterAngle = mResultData.fOpticalEmiterAngle * (180 / Math.PI);
-                pledSpotInspectionInfomation._InspectLedOpticalEccentricAngle = mResultData.fOpticalEccentricAngle;
+                pledSpotInspectionInfomation._InspectLedOpticalEccentricity = Math.Round(mResultData.fOpticalEccentricity,3);
+                pledSpotInspectionInfomation._InspectLedOpticalEmiterAngle = Math.Round(mResultData.fOpticalEmiterAngle * (180 / Math.PI),3);
+                pledSpotInspectionInfomation._InspectLedOpticalEccentricAngle = Math.Round(mResultData.fOpticalEccentricAngle,3);
                 pledSpotInspectionInfomation._InspectLedODFilterReduce = mResultData.fODFilterReduce;
                 pledSpotInspectionInfomation._InspectLedND_FilterAngle = mResultData.fND_FilterAngle;
                 pledSpotInspectionInfomation._InspectOperateMax_Distance = mResultData.fMaxOperateDistance;
                 pledSpotInspectionInfomation._InspectOperateMin_Distance = mResultData.fMinOperateDistance;
-                pledSpotInspectionInfomation._InspectOpticalResult = mResultData.bTotalResult;
+                pledSpotInspectionInfomation._InspectOpticalResult = mResultData.bTotalResult;                
 
                 xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 4; }));
                 _InspectionResult = true;
@@ -591,12 +597,12 @@ namespace atOpticalDecenter
                             _workParams._ProductModelName,
                             Convert.ToString(_workParams._ProductDistance),
                             _workParams._LEDInspectionExposureTime,
-                            mResultData.fOpticalSize[0],
-                            mResultData.fOpticalSize[1],
+                            Math.Round(mResultData.fOpticalSize[0],3),
+                            Math.Round(mResultData.fOpticalSize[1], 3),
                             mResultData.fOpticalSpotImageBright,
-                            mResultData.fOpticalEccentricity,                            
-                            mResultData.fOpticalEccentricAngle,
-                            mResultData.fOpticalEmiterAngle * (180 / Math.PI),
+                            Math.Round(mResultData.fOpticalEccentricity, 3),
+                            Math.Round(mResultData.fOpticalEccentricAngle, 3),
+                            Math.Round(mResultData.fOpticalEmiterAngle * (180 / Math.PI), 3),
                             mResultData.fODFilterReduce,
                             mResultData.fND_FilterAngle,
                             mResultData.fMinOperateDistance,
@@ -828,6 +834,30 @@ namespace atOpticalDecenter
                 mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("자동 검사 중 LED 검사 프로세싱이 실행되지 않았습니다."));
                 retBlob = null;
             }
+        }
+        public string ProductSeriesNameReturn(int series)
+        {
+            string strret = string.Empty;
+            if (series == 0)                     // 0: BTS, 1: BTF, 2: BJ, 3: BEN
+            {
+                strret = "BTS Series";
+            }
+            else if (series == 1)
+            {
+                strret = "BTF Series";
+            }
+            else if (series == 2)
+            {
+                strret = "BJ Series";
+            }
+            else if (series == 3)
+            {
+                strret = "BEN Series";
+            }
+            else
+                strret = "BTS Series";
+
+            return strret;
         }
     }
 }

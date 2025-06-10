@@ -466,3 +466,4 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Release\atOpt
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Release\atOpticalDecenter.csproj.CopyComplete
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Release\atOpticalDecenter.exe
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Release\atOpticalDecenter.pdb
+D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Release\atOpticalDecenter.InspectResultForm.resources

@@ -65,7 +65,20 @@ namespace CustomPages
                 rowOperateMinDistance.Properties.Caption = "동작 거리[ND 필터 각도]";
                 rowOperateMaxDistance.Properties.Caption = "최대 거리[ND 필터 각도]";
                 rowInspectResult.Properties.Caption = "투광 검사 결과";
-            }
+            }            
         }
+        //public void ChangeResultFontColor(bool _result)
+        //{
+        //    if (_result)
+        //    {                
+        //        rowOpticalEccentricAngle.Appearance.BackColor = System.Drawing.Color.Yellow;
+        //    }
+        //    else
+        //    {
+        //        rowOpticalEccentricAngle.Appearance.BackColor = System.Drawing.Color.Red;
+        //    }
+        //    rowOpticalEccentricAngle.Appearance.BackColor2 = System.Drawing.Color.White;
+            
+        //}
     }
 }

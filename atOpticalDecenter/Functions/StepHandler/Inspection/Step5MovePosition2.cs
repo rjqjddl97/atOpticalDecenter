@@ -83,6 +83,11 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                                 _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("2번째 검사 위치 이동 속도 명령 전송"));
                             }
                         }
+                        else
+                        {
+                            _log.WriteLog(LogLevel.Fatal, LogClass.InspectStep.ToString(), string.Format("AiC Motion 연결 실패!! "));
+                            mStep = WorkingStep.ErrorOccured;
+                        }
                     }
                     break;
                 case WorkingStep.WaitDelayTimeVelocityCommand:

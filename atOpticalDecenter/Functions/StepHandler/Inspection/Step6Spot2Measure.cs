@@ -53,6 +53,11 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                             mStep = WorkingStep.CaptureImage;
                             _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("2번째 광원 크기 측정 검사 시작"));
                         }
+                        else
+                        {
+                            _log.WriteLog(LogLevel.Fatal, LogClass.InspectStep.ToString(), string.Format("Remote I/O 연결 실패!! "));
+                            mStep = WorkingStep.ErrorOccured;
+                        }
                     }
                     break;
                 case WorkingStep.CaptureImage:

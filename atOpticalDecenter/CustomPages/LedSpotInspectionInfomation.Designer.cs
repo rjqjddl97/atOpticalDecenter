@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {   
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LedSpotInspectionInfomation));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemImageComboBoxInspectionResultOnOff = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.imageListOnOff = new System.Windows.Forms.ImageList(this.components);
+            this.imageListOnOff = new System.Windows.Forms.ImageList();
             this.categoryImageProcessResult = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.rowProductSeries = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowProductModelName = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -42,6 +41,7 @@
             this.rowLedSpotBlobInspectVSize = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowLedSpotImageBright = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowAlignmentDistance = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowOpticalEccentricAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowDivergenceAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowNDReduceRatio = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowNDFilterAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -52,7 +52,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.rowOpticalEccentricAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
@@ -92,6 +91,8 @@
             // 
             // vGridControl1
             // 
+            this.vGridControl1.Appearance.BandBorder.BackColor = System.Drawing.Color.Transparent;
+            this.vGridControl1.Appearance.BandBorder.Options.UseBackColor = true;
             this.vGridControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
@@ -143,6 +144,7 @@
             this.rowOperateMinDistance,
             this.rowOperateMaxDistance,
             this.rowInspectResult});
+            this.categoryImageProcessResult.Height = 19;
             this.categoryImageProcessResult.Name = "categoryImageProcessResult";
             this.categoryImageProcessResult.Properties.Caption = "투광 검사 결과";
             // 
@@ -207,6 +209,9 @@
             // 
             // rowOpticalEccentricAngle
             // 
+            this.rowOpticalEccentricAngle.Appearance.Options.UseTextOptions = true;
+            this.rowOpticalEccentricAngle.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.rowOpticalEccentricAngle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.rowOpticalEccentricAngle.Name = "rowOpticalEccentricAngle";
             this.rowOpticalEccentricAngle.Properties.Caption = "편심각도[˚]";
             this.rowOpticalEccentricAngle.Properties.ReadOnly = true;

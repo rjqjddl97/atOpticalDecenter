@@ -169,6 +169,12 @@
     <Compile Include="Functions\StepHandler\Inspection\Step8CalculateResult.cs" />
     <Compile Include="Functions\StepHandler\WorkingStateInfo.cs" />
     <Compile Include="Functions\Time\TimeChecker.cs" />
+    <Compile Include="InspectResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InspectResultForm.Designer.cs">
+      <DependentUpon>InspectResultForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomPages\RemoteIOControl.resx">
       <DependentUpon>RemoteIOControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InspectResultForm.resx">
+      <DependentUpon>InspectResultForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
