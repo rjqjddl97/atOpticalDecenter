@@ -71,7 +71,7 @@
             this.rowLEDInspectionSpotMinSize = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowLEDInspectionSpotMaxSize = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowLEDInspectionAlignmentDistance = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowLEDInspectionDivergenceAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowLEDInspectionDivergenceMinAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowLEDInspectionWorkAreaLeft = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowLEDInspectionWorkAreaTop = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowLEDInspectionWorkAreaWidth = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -118,6 +118,7 @@
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.rowLEDInspectionDivergenceMaxAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxProductSeries)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxProductType)).BeginInit();
@@ -448,11 +449,13 @@
             this.rowLEDInspectionSpotMinSize,
             this.rowLEDInspectionSpotMaxSize,
             this.rowLEDInspectionAlignmentDistance,
-            this.rowLEDInspectionDivergenceAngle,
+            this.rowLEDInspectionDivergenceMinAngle,
+            this.rowLEDInspectionDivergenceMaxAngle,
             this.rowLEDInspectionWorkAreaLeft,
             this.rowLEDInspectionWorkAreaTop,
             this.rowLEDInspectionWorkAreaWidth,
-            this.rowLEDInspectionWorkAreaHeight});
+            this.rowLEDInspectionWorkAreaHeight
+            });
             this.categoryLEDInspectionInformation.Height = 12;
             this.categoryLEDInspectionInformation.Name = "categoryLEDInspectionInformation";
             this.categoryLEDInspectionInformation.Properties.Caption = "투광 소자 검사 정보";
@@ -547,14 +550,23 @@
             this.rowLEDInspectionAlignmentDistance.Properties.Caption = "편심 합격거리[mm]";
             this.rowLEDInspectionAlignmentDistance.Properties.Value = "2";
             // 
-            // rowLEDInspectionDivergenceAngle
+            // rowLEDInspectionDivergenceMinAngle
             // 
-            this.rowLEDInspectionDivergenceAngle.Appearance.Options.UseTextOptions = true;
-            this.rowLEDInspectionDivergenceAngle.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.rowLEDInspectionDivergenceAngle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.rowLEDInspectionDivergenceAngle.Name = "rowLEDInspectionDivergenceAngle";
-            this.rowLEDInspectionDivergenceAngle.Properties.Caption = "편심각 합격각도[˚]";
-            this.rowLEDInspectionDivergenceAngle.Properties.Value = 5;
+            this.rowLEDInspectionDivergenceMinAngle.Appearance.Options.UseTextOptions = true;
+            this.rowLEDInspectionDivergenceMinAngle.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowLEDInspectionDivergenceMinAngle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowLEDInspectionDivergenceMinAngle.Name = "rowLEDInspectionDivergenceMinAngle";
+            this.rowLEDInspectionDivergenceMinAngle.Properties.Caption = "편심각 합격 범위 최소각도[˚]";
+            this.rowLEDInspectionDivergenceMinAngle.Properties.Value = -4;
+            // 
+            // rowLEDInspectionDivergenceMaxAngle
+            // 
+            this.rowLEDInspectionDivergenceMaxAngle.Appearance.Options.UseTextOptions = true;
+            this.rowLEDInspectionDivergenceMaxAngle.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowLEDInspectionDivergenceMaxAngle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowLEDInspectionDivergenceMaxAngle.Name = "rowLEDInspectionDivergenceMaxAngle";
+            this.rowLEDInspectionDivergenceMaxAngle.Properties.Caption = "편심각 합격 범위 최대각도[˚]";
+            this.rowLEDInspectionDivergenceMaxAngle.Properties.Value = 4;
             // 
             // rowLEDInspectionWorkAreaLeft
             // 
@@ -628,7 +640,7 @@
             // 
             // vGridControlInspectionParam
             // 
-            this.vGridControlInspectionParam.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControlInspectionParam.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControlInspectionParam.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControlInspectionParam.Location = new System.Drawing.Point(3, 3);
             this.vGridControlInspectionParam.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -1199,7 +1211,7 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLEDInspectionSpotMinSize;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLEDInspectionSpotMaxSize;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLEDInspectionAlignmentDistance;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLEDInspectionDivergenceAngle;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLEDInspectionDivergenceMinAngle;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLEDInspectionWorkAreaLeft;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLEDInspectionWorkAreaTop;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLEDInspectionWorkAreaWidth;
@@ -1246,5 +1258,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup6;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLEDInspectionDivergenceMaxAngle;
     }
 }

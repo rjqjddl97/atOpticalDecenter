@@ -35,7 +35,8 @@ namespace RecipeManager
         public float _LEDInspectionSpotMinSize { get; set; } = 20F;
         public float _LEDInspectionSpotMaxSize { get; set; } = 100F;
         public float _LEDInspectionAlignmentDistance { get; set; } = 2F;
-        public float _LEDInspectionDivergenceAngle { get; set; } = 2F;
+        public float _LEDInspectionDivergenceMinAngle { get; set; } = -4F;
+        public float _LEDInspectionDivergenceMaxAngle { get; set; } = 4F;
         public int _LEDInspectionWorkAreaLeft { get; set; } = 200;
         public int _LEDInspectionWorkAreaTop { get; set; } = 300;
         public int _LedInspectionWorkAreaWidth { get; set; } = 600;
@@ -182,7 +183,8 @@ namespace RecipeManager
             temp._LEDInspectionSpotMinSize = this._LEDInspectionSpotMinSize;
             temp._LEDInspectionSpotMaxSize = this._LEDInspectionSpotMaxSize;
             temp._LEDInspectionAlignmentDistance = this._LEDInspectionAlignmentDistance;
-            temp._LEDInspectionDivergenceAngle = this._LEDInspectionDivergenceAngle;
+            temp._LEDInspectionDivergenceMinAngle = this._LEDInspectionDivergenceMinAngle;
+            temp._LEDInspectionDivergenceMaxAngle = this._LEDInspectionDivergenceMaxAngle;
             temp._LEDInspectionWorkAreaLeft = this._LEDInspectionWorkAreaLeft;
             temp._LEDInspectionWorkAreaTop = this._LEDInspectionWorkAreaTop;
             temp._LedInspectionWorkAreaWidth = this._LedInspectionWorkAreaWidth;

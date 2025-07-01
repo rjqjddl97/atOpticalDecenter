@@ -66,7 +66,8 @@ namespace RecipeManager
             workParam._LEDInspectionReferenceThresholdH = Convert.ToInt32(recipeData[WorkParamSections[2]]["LEDInspectionReferenceThresholdH"]);
             workParam._LEDInspectionReferenceThresholdV = Convert.ToInt32(recipeData[WorkParamSections[2]]["LEDInspectionReferenceThresholdV"]);
             workParam._LEDInspectionAlignmentDistance = Convert.ToSingle(recipeData[WorkParamSections[2]]["LEDInspectionAlignmentDistance"]);
-            workParam._LEDInspectionDivergenceAngle = Convert.ToSingle(recipeData[WorkParamSections[2]]["LEDInspectionDivergenceAngle"]);
+            workParam._LEDInspectionDivergenceMinAngle = Convert.ToSingle(recipeData[WorkParamSections[2]]["LEDInspectionDivergenceMinAngle"]);
+            workParam._LEDInspectionDivergenceMaxAngle = Convert.ToSingle(recipeData[WorkParamSections[2]]["LEDInspectionDivergenceMaxAngle"]);
             workParam._LEDInspectionSpotMinSize = Convert.ToInt32(recipeData[WorkParamSections[2]]["LEDInspectionSpotMinSize"]);
             workParam._LEDInspectionSpotMaxSize = Convert.ToInt32(recipeData[WorkParamSections[2]]["LEDInspectionSpotMaxSize"]);
             workParam._LEDInspectionWorkAreaLeft = Convert.ToInt32(recipeData[WorkParamSections[2]]["LEDInspectionWorkAreaLeft"]);
@@ -124,7 +125,8 @@ namespace RecipeManager
             recipeData[WorkParamSections[2]].AddKey("LEDInspectionReferenceThresholdH", workParam._LEDInspectionReferenceThresholdH.ToString());
             recipeData[WorkParamSections[2]].AddKey("LEDInspectionReferenceThresholdV", workParam._LEDInspectionReferenceThresholdV.ToString());
             recipeData[WorkParamSections[2]].AddKey("LEDInspectionAlignmentDistance", workParam._LEDInspectionAlignmentDistance.ToString());
-            recipeData[WorkParamSections[2]].AddKey("LEDInspectionDivergenceAngle", workParam._LEDInspectionDivergenceAngle.ToString());
+            recipeData[WorkParamSections[2]].AddKey("LEDInspectionDivergenceMinAngle", workParam._LEDInspectionDivergenceMinAngle.ToString());
+            recipeData[WorkParamSections[2]].AddKey("LEDInspectionDivergenceMaxAngle", workParam._LEDInspectionDivergenceMaxAngle.ToString());
             recipeData[WorkParamSections[2]].AddKey("LEDInspectionSpotMinSize", workParam._LEDInspectionSpotMinSize.ToString());
             recipeData[WorkParamSections[2]].AddKey("LEDInspectionSpotMaxSize", workParam._LEDInspectionSpotMaxSize.ToString());
             recipeData[WorkParamSections[2]].AddKey("LEDInspectionWorkAreaLeft", workParam._LEDInspectionWorkAreaLeft.ToString());

@@ -67,7 +67,8 @@ namespace atOpticalDecenter
                 rowLEDInspectionSpotMinSize.Properties.Caption = "Min Spot Size[mm]";
                 rowLEDInspectionSpotMaxSize.Properties.Caption = "Max Spot Size[mm]";
                 rowLEDInspectionAlignmentDistance.Properties.Caption = "Reference Eccentricity[mm]";
-                rowLEDInspectionDivergenceAngle.Properties.Caption = "Reference Divergence Angle[˚]";
+                rowLEDInspectionDivergenceMinAngle.Properties.Caption = "Reference Divergence Min Angle[˚]";
+                rowLEDInspectionDivergenceMaxAngle.Properties.Caption = "Reference Divergence Max Angle[˚]";
                 rowLEDInspectionWorkAreaLeft.Properties.Caption = "ROI Left[Pixel]";
                 rowLEDInspectionWorkAreaTop.Properties.Caption = "ROI Top[Pixel]";
                 rowLEDInspectionWorkAreaWidth.Properties.Caption = "ROI Width[Pixel]";
@@ -119,7 +120,8 @@ namespace atOpticalDecenter
                 rowLEDInspectionSpotMinSize.Properties.Caption = "광원 최소크기[mm]";
                 rowLEDInspectionSpotMaxSize.Properties.Caption = "광원 최대크기[mm]";
                 rowLEDInspectionAlignmentDistance.Properties.Caption = "편심 합격거리[mm]";
-                rowLEDInspectionDivergenceAngle.Properties.Caption = "편심각 합격각도[˚]";
+                rowLEDInspectionDivergenceMinAngle.Properties.Caption = "편심각 합격범위 최소각도[˚]";
+                rowLEDInspectionDivergenceMaxAngle.Properties.Caption = "편심각 합격범위 최대각도[˚]";
                 rowLEDInspectionWorkAreaLeft.Properties.Caption = "검사 영역 X점[픽셀]";
                 rowLEDInspectionWorkAreaTop.Properties.Caption = "검사 영역 Y점[픽셀]";
                 rowLEDInspectionWorkAreaWidth.Properties.Caption = "검사 영역 폭[픽셀]";
@@ -201,7 +203,8 @@ namespace atOpticalDecenter
             _workParam._LEDInspectionReferenceThresholdH = Convert.ToInt32(rowLEDInspectionReferenceThresholdH.Properties.Value);
             _workParam._LEDInspectionReferenceThresholdV = Convert.ToInt32(rowLEDInspectionReferenceThresholdV.Properties.Value);
             _workParam._LEDInspectionAlignmentDistance = Convert.ToSingle(rowLEDInspectionAlignmentDistance.Properties.Value);
-            _workParam._LEDInspectionDivergenceAngle = Convert.ToSingle(rowLEDInspectionDivergenceAngle.Properties.Value);
+            _workParam._LEDInspectionDivergenceMinAngle = Convert.ToSingle(rowLEDInspectionDivergenceMinAngle.Properties.Value);
+            _workParam._LEDInspectionDivergenceMaxAngle = Convert.ToSingle(rowLEDInspectionDivergenceMaxAngle.Properties.Value);
             _workParam._LEDInspectionSpotMinSize = Convert.ToSingle(rowLEDInspectionSpotMinSize.Properties.Value);
             _workParam._LEDInspectionSpotMaxSize = Convert.ToSingle(rowLEDInspectionSpotMaxSize.Properties.Value);
             _workParam._LEDInspectionWorkAreaLeft = Convert.ToInt32(rowLEDInspectionWorkAreaLeft.Properties.Value);
@@ -240,7 +243,8 @@ namespace atOpticalDecenter
             rowLEDInspectionReferenceThresholdH.Properties.Value = _workParam._LEDInspectionReferenceThresholdH;
             rowLEDInspectionReferenceThresholdV.Properties.Value = _workParam._LEDInspectionReferenceThresholdV;
             rowLEDInspectionAlignmentDistance.Properties.Value = _workParam._LEDInspectionAlignmentDistance;
-            rowLEDInspectionDivergenceAngle.Properties.Value = _workParam._LEDInspectionDivergenceAngle;
+            rowLEDInspectionDivergenceMinAngle.Properties.Value = _workParam._LEDInspectionDivergenceMinAngle;
+            rowLEDInspectionDivergenceMaxAngle.Properties.Value = _workParam._LEDInspectionDivergenceMaxAngle;
             rowLEDInspectionSpotMinSize.Properties.Value = _workParam._LEDInspectionSpotMinSize;
             rowLEDInspectionSpotMaxSize.Properties.Value = _workParam._LEDInspectionSpotMaxSize;
             rowLEDInspectionWorkAreaLeft.Properties.Value = _workParam._LEDInspectionWorkAreaLeft;
@@ -1164,22 +1168,39 @@ namespace atOpticalDecenter
                 barButtonItemRecipeSave.Enabled = true;
                 _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("편심 합격 기준 거리가 {0}로 변경되었습니다.", _workParam._LEDInspectionAlignmentDistance));
             }
-            else if (e.Row == rowLEDInspectionDivergenceAngle)
+            else if (e.Row == rowLEDInspectionDivergenceMinAngle)
             {
-                fValue = Convert.ToSingle(rowLEDInspectionDivergenceAngle.Properties.Value);
+                fValue = Convert.ToSingle(rowLEDInspectionDivergenceMinAngle.Properties.Value);
 
-                if (fValue <= 0 || fValue > 20)
+                if (fValue <= -20 || fValue > 20)
                 {
-                    MessageBox.Show(string.Format("편심각 합격 각도를 잘못 입력되었습니다.{0}", strTemp), "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    rowLEDInspectionDivergenceAngle.Properties.Value = _workParam._LEDInspectionDivergenceAngle;
+                    MessageBox.Show(string.Format("편심각 합격범위 최소 각도를 잘못 입력되었습니다.{0}", strTemp), "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    rowLEDInspectionDivergenceMinAngle.Properties.Value = _workParam._LEDInspectionDivergenceMinAngle;
                     vGridControlInspectionParam.Refresh();
                     return;
                 }
 
-                _workParam._LEDInspectionDivergenceAngle = fValue;
+                _workParam._LEDInspectionDivergenceMinAngle = fValue;
 
                 barButtonItemRecipeSave.Enabled = true;
-                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("편심각 합격 기준 각도가 {0}로 변경되었습니다.", _workParam._LEDInspectionDivergenceAngle));
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("편심각 합격범위 최소 각도가 {0}로 변경되었습니다.", _workParam._LEDInspectionDivergenceMinAngle));
+            }
+            else if (e.Row == rowLEDInspectionDivergenceMaxAngle)
+            {
+                fValue = Convert.ToSingle(rowLEDInspectionDivergenceMaxAngle.Properties.Value);
+
+                if (fValue <= -20 || fValue > 20)
+                {
+                    MessageBox.Show(string.Format("편심각 합격범위 최대 각도를 잘못 입력되었습니다.{0}", strTemp), "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    rowLEDInspectionDivergenceMaxAngle.Properties.Value = _workParam._LEDInspectionDivergenceMaxAngle;
+                    vGridControlInspectionParam.Refresh();
+                    return;
+                }
+
+                _workParam._LEDInspectionDivergenceMaxAngle = fValue;
+
+                barButtonItemRecipeSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("편심각 합격범위 최대 각도가 {0}로 변경되었습니다.", _workParam._LEDInspectionDivergenceMaxAngle));
             }
             else if (e.Row == rowLEDInspectionSpotMinSize)
             {
@@ -1307,7 +1328,8 @@ namespace atOpticalDecenter
             rowLEDInspectionExposureTime.Properties.Value = _workParam._LEDInspectionExposureTime;
             rowLEDInspectionAcquisitionDelayTime.Properties.Value = _workParam._LEDInspectionAcquisitionDelaytime;
             rowLEDInspectionAlignmentDistance.Properties.Value = _workParam._LEDInspectionAlignmentDistance;
-            rowLEDInspectionDivergenceAngle.Properties.Value = _workParam._LEDInspectionDivergenceAngle;
+            rowLEDInspectionDivergenceMinAngle.Properties.Value = _workParam._LEDInspectionDivergenceMinAngle;
+            rowLEDInspectionDivergenceMaxAngle.Properties.Value = _workParam._LEDInspectionDivergenceMaxAngle;
             rowLEDInspectionReferenceThresholdH.Properties.Value = _workParam._LEDInspectionReferenceThresholdH;
             rowLEDInspectionReferenceThresholdV.Properties.Value = _workParam._LEDInspectionReferenceThresholdV;
             rowLEDInspectionSpotMinSize.Properties.Value = _workParam._LEDInspectionSpotMinSize;
@@ -1573,23 +1595,39 @@ namespace atOpticalDecenter
 
             _workParam._LEDInspectionAlignmentDistance = fValue;
 
-            fValue = Convert.ToSingle(rowLEDInspectionDivergenceAngle.Properties.Value);
+            fValue = Convert.ToSingle(rowLEDInspectionDivergenceMinAngle.Properties.Value);
 
-            if (fValue <= 0 || fValue > 20)
+            if (fValue < -20 || fValue > 20)
             {
-                MessageBox.Show("발산각 설정이 잘못 입력되었습니다.\r\n발산각의 최대 가로 크기는 20mm입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                rowLEDInspectionDivergenceAngle.Properties.Value = _workParam._LEDInspectionDivergenceAngle;
+                MessageBox.Show("편심각 합격 범위 최소각도 설정이 잘못 입력되었습니다.\r\n편심각 합격범위의 최소 각도는 -20도에서 20도 입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                rowLEDInspectionDivergenceMinAngle.Properties.Value = _workParam._LEDInspectionDivergenceMinAngle;
                 vGridControlInspectionParam.Refresh();
 
                 return;
             }
 
-            if (_workParam._LEDInspectionDivergenceAngle != fValue)
+            if (_workParam._LEDInspectionDivergenceMinAngle != fValue)
             {
                 barButtonItemRecipeSave.Enabled = true;
             }
-            _workParam._LEDInspectionDivergenceAngle = fValue;
-            
+            _workParam._LEDInspectionDivergenceMinAngle = fValue;
+
+            fValue = Convert.ToSingle(rowLEDInspectionDivergenceMaxAngle.Properties.Value);
+
+            if (fValue < -20 || fValue > 20)
+            {
+                MessageBox.Show("편심각 합격 범위 최대각도 설정이 잘못 입력되었습니다.\r\n편심각 합격범위의 최대 각도는 -20도에서 20도 입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                rowLEDInspectionDivergenceMaxAngle.Properties.Value = _workParam._LEDInspectionDivergenceMaxAngle;
+                vGridControlInspectionParam.Refresh();
+
+                return;
+            }
+
+            if (_workParam._LEDInspectionDivergenceMaxAngle != fValue)
+            {
+                barButtonItemRecipeSave.Enabled = true;
+            }
+            _workParam._LEDInspectionDivergenceMaxAngle = fValue;
             //IsValidate = Convert.ToBoolean(rowLEDInspectionUseEnable.Properties.Value);            
 
             //if (IsValidate)

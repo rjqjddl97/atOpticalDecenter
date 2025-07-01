@@ -272,8 +272,18 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         protected void LedSpotCalcuate()
         {
             mInspectResultData.CalculateOpticalInspect(mWorkParam._ProductType);
+
+            if (mWorkParam._ProductSeries == 0)
+            {
+                // BTS Series, Mirror Type
+                if (mWorkParam._ProductType == 0)
+                {
+                    mInspectResultData.fOpticalEccentricAngle = mInspectResultData.fOpticalEccentricAngle * (-1);
+                }
+            }
+
             //if ((mInspectResultData.fOpticalEmiterAngle >= -(mWorkParam._LEDInspectionDivergenceAngle*(Math.PI/180))) && (mInspectResultData.fOpticalEmiterAngle <= (mWorkParam._LEDInspectionDivergenceAngle * (Math.PI / 180))))
-            if ((mInspectResultData.fOpticalEccentricAngle >= -(mWorkParam._LEDInspectionDivergenceAngle)) && (mInspectResultData.fOpticalEccentricAngle <= (mWorkParam._LEDInspectionDivergenceAngle )))
+            if ( (mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceMaxAngle) )
                 mInspectResultData.bTotalResult = true;
             else
                 mInspectResultData.bTotalResult = false;

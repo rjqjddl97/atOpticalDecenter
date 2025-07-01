@@ -107,8 +107,17 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
 
                     if (LedSpotImageProcess(1, mRobotInformation.PositionX, mRobotInformation.PositionY, mRobotInformation.PositionZ))
                     {
-                        mStep = WorkingStep.Idle;
-                        _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("2번째 광원 크기 계산 완료"));
+                        if (mInspectResultData.fOpticalSize[1] >= mInspectResultData.fOpticalSize[0])
+                        {
+                            mStep = WorkingStep.Idle;
+                            _log.WriteLog(LogLevel.Info, LogClass.InspectStep.ToString(), string.Format("2번째 광원 크기 계산 완료"));
+                        }
+                        else
+                        {
+                            mStep = WorkingStep.ErrorOccured;
+                            _log.WriteLog(LogLevel.Error, LogClass.InspectStep.ToString(), string.Format("2번째 광원 크기가 1번째 광원 크기보다 작습니다."));
+                        }
+
                     }
                     else
                     {

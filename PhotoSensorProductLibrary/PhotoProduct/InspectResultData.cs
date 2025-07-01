@@ -188,7 +188,7 @@ namespace PhotoProduct
             // 0: 미러반사형, 1: 한정거리반사, 2: 확산반사, 3: BGS반사, 4: 협시계반사, 5: 투광, 6: 수광
             //fOpticalEmiterAngle = Math.Atan(((fOpticalSize[1] - fOpticalSize[0]) / 2f) / WorkDistance) * 2f * RADIAN_TO_DEGREE;      // 발산각 계산.
             fOpticalEmiterAngle = Math.Atan(((fOpticalSize[1] - fOpticalSize[0]) / 2f) / WorkDistance) * 2f;      // 발산각 계산.            
-            fOpticalEccentricAngle = (Math.Atan(fMeasureDecenter / WorkDistance)) * RADIAN_TO_DEGREE;
+            fOpticalEccentricAngle = (Math.Atan(fMeasureDecenter / WorkDistance)) * RADIAN_TO_DEGREE;             // 편심각 계산.
             CalcOpticalReduceQuantity(iProductType);
             if (iProductType == 6)
             {
