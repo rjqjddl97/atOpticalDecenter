@@ -1139,8 +1139,7 @@
             this.vGridControl1.Size = new System.Drawing.Size(290, 386);
             this.vGridControl1.TabIndex = 0;
             this.vGridControl1.CellValueChanging += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControl1_CellValueChanging);
-            this.vGridControl1.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControl1_CellValueChanged);
-            this.vGridControl1.Click += new System.EventHandler(this.vGridControl1_Click);
+            this.vGridControl1.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControl1_CellValueChanged);            
             // 
             // repositoryItemToggleSwitchCameraConnection
             // 

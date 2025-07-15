@@ -2921,12 +2921,14 @@ namespace atOpticalDecenter
                 if (_systemParams._SystemLanguageKoreaUse)
                 {
                     barEditItemTotalInspectionCount.EditValue = string.Format("총 검사 수: {0:00000}", _statistics.TotalCount);
-                    barEditItemTotalFailCount.EditValue = string.Format("불합격: {0:00000}", _statistics.FailCount);
+                    barEditItemTotalFailCount.EditValue = string.Format("불량 개수: {0:00000}", _statistics.FailCount);
+                    barEditItemTotalPassCount.EditValue = string.Format("양품 개수: {0:00000}", _statistics.PassCount);
                 }
                 else
                 {
                     barEditItemTotalInspectionCount.EditValue = string.Format("Total Count: {0:00000}", _statistics.TotalCount);
                     barEditItemTotalFailCount.EditValue = string.Format("Fail Count: {0:00000}", _statistics.FailCount);
+                    barEditItemTotalPassCount.EditValue = string.Format("Pass Count: {0:00000}", _statistics.PassCount);
                 }
 
                 for (int i = 0; i < _statistics.Statistics.Count; ++i)
@@ -4047,11 +4049,6 @@ namespace atOpticalDecenter
             {
                 mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), "RemoteIO 로그 이벤트에 오류가 있습니다.");
             }
-        }
-
-        private void vGridControl1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

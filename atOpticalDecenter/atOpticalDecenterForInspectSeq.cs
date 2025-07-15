@@ -457,10 +457,10 @@ namespace atOpticalDecenter
                     InpsectResultUpdate();
                     CreateResultFile(mResultData.bTotalResult);
                     UpdateStaticsData();
-                    string series = string.Empty;
-                    series = ProductSeriesNameReturn(_workParams._ProductSeries);
-                    InspectResultForm form = new InspectResultForm(series, _workParams._ProductModelName,mResultData,_systemParams._SystemLanguageKoreaUse);
-                    form.ShowDialog(this);
+                    //string series = string.Empty;
+                    //series = ProductSeriesNameReturn(_workParams._ProductSeries);
+                    //InspectResultForm form = new InspectResultForm(series, _workParams._ProductModelName,mResultData,_systemParams._SystemLanguageKoreaUse);
+                    //form.ShowDialog(this);
                 }
                 _isInspectCancel = false;
                 barEditItemInspectionProgress.EditValue = 100;
