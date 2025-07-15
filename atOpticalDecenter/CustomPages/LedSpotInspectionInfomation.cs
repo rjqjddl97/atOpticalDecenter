@@ -18,8 +18,10 @@ namespace CustomPages
         public string _InspectProductModelName { get { return rowProductModelName.Properties.Value.ToString(); } set { rowProductModelName.Properties.Value = value; } }
         public string _InspectProductSeries { get { return rowProductSeries.Properties.Value.ToString(); } set { rowProductSeries.Properties.Value = value; } }
         public double _InspectLedBlobBright { get { return Convert.ToDouble(rowLedSpotImageBright.Properties.Value); } set { rowLedSpotImageBright.Properties.Value = value; } }
-        public double _InspectLedOpticalEccentricity { get { return Convert.ToDouble(rowAlignmentDistance.Properties.Value); } set { rowAlignmentDistance.Properties.Value = value; } }
+        public double _InspectLedOpticalEccentricity { get { return Convert.ToDouble(rowAlignmentDistance.Properties.Value); } set { rowAlignmentDistance.Properties.Value = value; } }        
         public double _InspectLedOpticalEccentricAngle { get { return Convert.ToDouble(rowOpticalEccentricAngle.Properties.Value); } set { rowOpticalEccentricAngle.Properties.Value = value; } }
+        public double _InspectLedOpticalEccentricHorizonAngle { get { return Convert.ToDouble(rowOpticalEccentricHorizonAngle.Properties.Value); } set { rowOpticalEccentricHorizonAngle.Properties.Value = value; } }
+        public double _InspectLedOpticalEccentricVirticalAngle { get { return Convert.ToDouble(rowOpticalEccentricVirticalAngle.Properties.Value); } set { rowOpticalEccentricVirticalAngle.Properties.Value = value; } }
         public double _InspectLedOpticalEmiterAngle { get { return Convert.ToDouble(rowDivergenceAngle.Properties.Value); } set { rowDivergenceAngle.Properties.Value = value; } }
         public double _InspectLedODFilterReduce { get { return Convert.ToDouble(rowNDReduceRatio.Properties.Value); } set { rowNDReduceRatio.Properties.Value = value; } }
         public double _InspectLedND_FilterAngle { get { return Convert.ToDouble(rowNDFilterAngle.Properties.Value); } set { rowNDFilterAngle.Properties.Value = value; } }
@@ -42,6 +44,8 @@ namespace CustomPages
                 rowLedSpotImageBright.Properties.Caption = "Spot Image Bright[˚]";
                 rowAlignmentDistance.Properties.Caption = "Spot Eccentric Distance[mm]";
                 rowOpticalEccentricAngle.Properties.Caption = "Spot Eccentric Angle[˚]";
+                rowOpticalEccentricHorizonAngle.Properties.Caption = "Spot Eccentric Horizon Angle[˚]";
+                rowOpticalEccentricVirticalAngle.Properties.Caption = "Spot Eccentric Virtiacl Angle[˚]";
                 rowDivergenceAngle.Properties.Caption = "Divergence Angle[˚]";
                 rowNDReduceRatio.Properties.Caption = "ND Filter Reduction Ratio";
                 rowNDFilterAngle.Properties.Caption = "ND 필터 Estimate Angle";
@@ -59,6 +63,8 @@ namespace CustomPages
                 rowLedSpotImageBright.Properties.Caption = "광원 이미지 밝기";
                 rowAlignmentDistance.Properties.Caption = "편심 거리[mm]";
                 rowOpticalEccentricAngle.Properties.Caption = "편심 각도[˚]";
+                rowOpticalEccentricHorizonAngle.Properties.Caption = "편심 수평각도[˚]";
+                rowOpticalEccentricVirticalAngle.Properties.Caption = "편심 수직각도[˚]";
                 rowDivergenceAngle.Properties.Caption = "광원 발산 각도[˚]";
                 rowNDReduceRatio.Properties.Caption = "ND 필터감쇄율";
                 rowNDFilterAngle.Properties.Caption = "ND 필터 예측각도";

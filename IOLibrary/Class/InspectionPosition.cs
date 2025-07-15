@@ -36,7 +36,7 @@ namespace RecipeManager
         float _fOpticalSpotSizeX = 0.0f;
         float _fOpticalSpotSizeY = 0.0f;
 
-        INSPECTION_POSITION_MODE _positiontype = INSPECTION_POSITION_MODE.POSITION_BASE_MODE;
+        INSPECTION_POSITION_MODE _positiontype = INSPECTION_POSITION_MODE.POSITION_READY_MODE;
         float _positionX = 0F;
         float _positionY = 0F;        
         float _positionZ = 0F;

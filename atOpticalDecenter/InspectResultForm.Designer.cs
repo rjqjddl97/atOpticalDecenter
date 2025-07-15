@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.categoryInspectionResult = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.rowProductSeries = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -39,8 +40,10 @@
             this.rowInspectResult = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.categoryOpticalEccentricAngle = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
+            this.rowOpticalEccentricHorizonAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowOpticalEccentricVirticalAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
@@ -57,9 +60,19 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(398, 253);
+            this.layoutControl1.Size = new System.Drawing.Size(398, 343);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.simpleButton1.Location = new System.Drawing.Point(12, 309);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(374, 22);
+            this.simpleButton1.StyleController = this.layoutControl1;
+            this.simpleButton1.TabIndex = 5;
+            this.simpleButton1.Text = "OK";
             // 
             // vGridControl1
             // 
@@ -75,11 +88,11 @@
             this.vGridControl1.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControl1.Location = new System.Drawing.Point(12, 12);
             this.vGridControl1.Name = "vGridControl1";
-            this.vGridControl1.RecordWidth = 103;
-            this.vGridControl1.RowHeaderWidth = 97;
+            this.vGridControl1.RecordWidth = 89;
+            this.vGridControl1.RowHeaderWidth = 111;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.categoryInspectionResult});
-            this.vGridControl1.Size = new System.Drawing.Size(374, 203);
+            this.vGridControl1.Size = new System.Drawing.Size(374, 293);
             this.vGridControl1.TabIndex = 4;
             // 
             // categoryInspectionResult
@@ -89,8 +102,9 @@
             this.rowProductModelName,
             this.rowLedSpot1BlobSize,
             this.rowLedSpot2BlobSize,
-            this.rowOpticalEccentricAngle,
-            this.rowInspectResult});
+            this.categoryOpticalEccentricAngle,
+            this.rowInspectResult
+            });
             this.categoryInspectionResult.Height = 31;
             this.categoryInspectionResult.Name = "categoryInspectionResult";
             this.categoryInspectionResult.Properties.Caption = "투광 검사 결과";
@@ -135,6 +149,16 @@
             this.rowLedSpot2BlobSize.Properties.Caption = "Spot2 크기[mm]";
             this.rowLedSpot2BlobSize.Properties.ReadOnly = true;
             // 
+            // categoryOpticalEccentricAngle
+            // 
+            this.categoryOpticalEccentricAngle.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
+            this.rowOpticalEccentricAngle,
+            this.rowOpticalEccentricHorizonAngle,
+            this.rowOpticalEccentricVirticalAngle
+            });
+            this.categoryOpticalEccentricAngle.Name = "categoryOpticalEccentricAngle";
+            this.categoryOpticalEccentricAngle.Properties.Caption = "광 편심각도";
+            // 
             // rowOpticalEccentricAngle
             // 
             this.rowOpticalEccentricAngle.Appearance.Options.UseFont = true;
@@ -145,8 +169,29 @@
             this.rowOpticalEccentricAngle.Properties.Caption = "편심 각도[˚]";
             this.rowOpticalEccentricAngle.Properties.ReadOnly = true;
             // 
+            // rowOpticalEccentricHorizonAngle
+            // 
+            this.rowOpticalEccentricHorizonAngle.Appearance.Options.UseFont = true;
+            this.rowOpticalEccentricHorizonAngle.Appearance.Options.UseTextOptions = true;
+            this.rowOpticalEccentricHorizonAngle.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.rowOpticalEccentricHorizonAngle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowOpticalEccentricHorizonAngle.Name = "rowOpticalEccentricHorizonAngle";
+            this.rowOpticalEccentricHorizonAngle.Properties.Caption = "편심 수평 각도[˚]";
+            this.rowOpticalEccentricHorizonAngle.Properties.ReadOnly = true;
+            // 
+            // rowOpticalEccentricVirticalAngle
+            // 
+            this.rowOpticalEccentricVirticalAngle.Appearance.Options.UseFont = true;
+            this.rowOpticalEccentricVirticalAngle.Appearance.Options.UseTextOptions = true;
+            this.rowOpticalEccentricVirticalAngle.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.rowOpticalEccentricVirticalAngle.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowOpticalEccentricVirticalAngle.Name = "rowOpticalEccentricVirticalAngle";
+            this.rowOpticalEccentricVirticalAngle.Properties.Caption = "편심 수직 각도[˚]";
+            this.rowOpticalEccentricVirticalAngle.Properties.ReadOnly = true;
+            // 
             // rowInspectResult
             // 
+            this.rowInspectResult.Appearance.Font = new System.Drawing.Font("Tahoma", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rowInspectResult.Appearance.Options.UseFont = true;
             this.rowInspectResult.Appearance.Options.UseTextOptions = true;
             this.rowInspectResult.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -163,7 +208,7 @@
             this.layoutControlItem1,
             this.layoutControlItem2});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(398, 253);
+            this.Root.Size = new System.Drawing.Size(398, 343);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -171,24 +216,14 @@
             this.layoutControlItem1.Control = this.vGridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(378, 207);
+            this.layoutControlItem1.Size = new System.Drawing.Size(378, 297);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.simpleButton1.Location = new System.Drawing.Point(12, 219);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(374, 22);
-            this.simpleButton1.StyleController = this.layoutControl1;
-            this.simpleButton1.TabIndex = 5;
-            this.simpleButton1.Text = "OK";
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.simpleButton1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 207);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 297);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(378, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -198,7 +233,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 253);
+            this.ClientSize = new System.Drawing.Size(398, 343);
             this.Controls.Add(this.layoutControl1);
             this.Name = "InspectResultForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -228,5 +263,8 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowInspectResult;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraVerticalGrid.Rows.CategoryRow categoryOpticalEccentricAngle;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowOpticalEccentricHorizonAngle;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowOpticalEccentricVirticalAngle;
     }
 }

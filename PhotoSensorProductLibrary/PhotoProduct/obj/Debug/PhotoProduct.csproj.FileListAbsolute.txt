@@ -245,3 +245,5 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProd
 D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\obj\Debug\PhotoProduct.csproj.CopyComplete
 D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\obj\Debug\PhotoProduct.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\obj\Debug\PhotoProduct.pdb
+D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\bin\Debug\NLog.config
+D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoSensorProductLibrary\PhotoProduct\bin\Debug\NLog.xsd

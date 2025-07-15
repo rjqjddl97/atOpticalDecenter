@@ -125,8 +125,18 @@ namespace atOpticalDecenter
                     barEditItemInspectionResult.EditValue = "FAIL";
                     repositoryItemTextEditInspectionResult.Appearance.ForeColor = System.Drawing.Color.Red;
                 }
-                barEditItemTotalInspectionCount.EditValue = string.Format("총 검사 수:{0:00000}", _statistics.TotalCount);
-                barEditItemTotalFailCount.EditValue = string.Format("불합격 수:{0:00000}", _statistics.FailCount);
+                if (_systemParams._SystemLanguageKoreaUse)
+                {
+                    barEditItemTotalInspectionCount.EditValue = string.Format("총 검사 수:{0:00000}", _statistics.TotalCount);
+                    barEditItemTotalFailCount.EditValue = string.Format("불량 개수:{0:00000}", _statistics.FailCount);
+                    barEditItemTotalPassCount.EditValue = string.Format("양품 개수:{0:00000}", _statistics.PassCount);
+                }
+                else
+                {
+                    barEditItemTotalInspectionCount.EditValue = string.Format("Total Count: {0:00000}", _statistics.TotalCount);
+                    barEditItemTotalFailCount.EditValue = string.Format("Fail Count: {0:00000}", _statistics.FailCount);
+                    barEditItemTotalPassCount.EditValue = string.Format("Pass Count: {0:00000}", _statistics.PassCount);
+                }
                 string strStatistics = string.Format(@"{0}\{1}", global::atOpticalDecenter.Properties.Settings.Default.strSystemFolderPath, SystemDirectoryParams.StatisticsFileName);
                 //            UpdateChartInspectionAngle((float)(mResultData.fOpticalEmiterAngle * (180 / Math.PI)));
                 UpdateChartInspectionAngle((float)(mResultData.fOpticalEccentricAngle));

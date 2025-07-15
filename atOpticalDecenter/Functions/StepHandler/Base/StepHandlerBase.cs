@@ -280,13 +280,24 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                 {
                     mInspectResultData.fOpticalEccentricAngle = mInspectResultData.fOpticalEccentricAngle * (-1);
                 }
+                if ((mInspectResultData.fOpticalEccentricAngle_H >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle_H <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
+                    && (mInspectResultData.fOpticalEccentricAngle_V >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle_V <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
+                    )
+                    mInspectResultData.bTotalResult = true;
+                else
+                    mInspectResultData.bTotalResult = false;
             }
-
-            //if ((mInspectResultData.fOpticalEmiterAngle >= -(mWorkParam._LEDInspectionDivergenceAngle*(Math.PI/180))) && (mInspectResultData.fOpticalEmiterAngle <= (mWorkParam._LEDInspectionDivergenceAngle * (Math.PI / 180))))
-            if ( (mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceMaxAngle) )
-                mInspectResultData.bTotalResult = true;
             else
-                mInspectResultData.bTotalResult = false;
+            {
+                if ((mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
+                    //&& (mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
+                    )
+                    mInspectResultData.bTotalResult = true;
+                else
+                    mInspectResultData.bTotalResult = false;
+            }
+            //if ((mInspectResultData.fOpticalEmiterAngle >= -(mWorkParam._LEDInspectionDivergenceAngle*(Math.PI/180))) && (mInspectResultData.fOpticalEmiterAngle <= (mWorkParam._LEDInspectionDivergenceAngle * (Math.PI / 180))))
+
         }
         public InspectResultData UpdateInspectdData()
         {

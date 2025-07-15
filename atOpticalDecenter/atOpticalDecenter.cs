@@ -64,6 +64,7 @@ namespace atOpticalDecenter
         bool _isInsepctionResult = false;
         bool _isInspectError = false;
         bool _isInspectCancel = false;
+        
         System.Drawing.Image _sourceImage = null;
         System.Drawing.Image _resultImage = null;
 
@@ -792,12 +793,14 @@ namespace atOpticalDecenter
                 if (_systemParams._SystemLanguageKoreaUse)
                 {
                     barEditItemTotalInspectionCount.EditValue = string.Format("총 검사 수: {0:00000}", _statistics.TotalCount);
-                    barEditItemTotalFailCount.EditValue = string.Format("불합격: {0:00000}", _statistics.FailCount);
+                    barEditItemTotalFailCount.EditValue = string.Format("불량 개수: {0:00000}", _statistics.FailCount);
+                    barEditItemTotalPassCount.EditValue = string.Format("양품 개수: {0:00000}", _statistics.PassCount);
                 }
                 else
                 {
                     barEditItemTotalInspectionCount.EditValue = string.Format("Total Count: {0:00000}", _statistics.TotalCount);
                     barEditItemTotalFailCount.EditValue = string.Format("Fail Count: {0:00000}", _statistics.FailCount);
+                    barEditItemTotalPassCount.EditValue = string.Format("Pass Count: {0:00000}", _statistics.PassCount);
                 }
 
 
@@ -1848,7 +1851,7 @@ namespace atOpticalDecenter
                     //}
 
                     path = new GraphicsPath();
-                    font = new Font("Arial", 50, FontStyle.Bold);
+                    font = new Font("Arial", 150, FontStyle.Bold);
                     fptDrawString = new PointF(100, 50);
 
                     if (rtPassArea.Left <= rtBlob.Left && rtPassArea.Top <= rtBlob.Top && rtPassArea.Right >= rtBlob.Right && rtPassArea.Bottom >= rtBlob.Bottom
@@ -1981,6 +1984,25 @@ namespace atOpticalDecenter
                                                         (int)mfont.Style, mfont.Size, fptDrawString, null);
                         gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
                         gp.FillPath(Brushes.Red, path);
+                    }
+
+                    path = new GraphicsPath();
+                    font = new Font("Arial", 150, FontStyle.Bold);
+                    fptDrawString = new PointF(100, 50);
+                    if (_InspectionResult)
+                    {
+                        if (mResultData.bTotalResult)
+                        {
+                            path.AddString("PASS", font.FontFamily, (int)font.Style, font.Size, fptDrawString, null);
+                            gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
+                            gp.FillPath(Brushes.LimeGreen, path);
+                        }
+                        else
+                        {
+                            path.AddString("FAIL", font.FontFamily, (int)font.Style, font.Size, fptDrawString, null);
+                            gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
+                            gp.FillPath(Brushes.Red, path);
+                        }
                     }
                 }
                 if (_patternMatching)
@@ -3771,6 +3793,7 @@ namespace atOpticalDecenter
                     barEditItemInspectionResult.EditValue = "Ready";
                     barEditItemTotalInspectionCount.EditValue = "Total Count: 00000";
                     barEditItemTotalFailCount.EditValue = "Fail Count: 00000";
+                    barEditItemTotalPassCount.EditValue = "Pass Count: 00000";
                     barButtonItemInitializeStatistics.Caption = "Initial Chart";
 
                     dockPanelLogView.Text = "Log";
@@ -3876,7 +3899,8 @@ namespace atOpticalDecenter
                     barStaticItemInspectionTime.Caption = "검사 시간:";
                     barEditItemInspectionResult.EditValue = "Ready";
                     barEditItemTotalInspectionCount.EditValue = "총 검사 수: 00000";
-                    barEditItemTotalFailCount.EditValue = "불합격 수: 00000";
+                    barEditItemTotalFailCount.EditValue = "불량 개수: 00000";
+                    barEditItemTotalPassCount.EditValue = "양품 개수: 00000";
                     barButtonItemInitializeStatistics.Caption = "통계 초기화";
 
                     dockPanelLogView.Text = "로그";
@@ -4023,6 +4047,11 @@ namespace atOpticalDecenter
             {
                 mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), "RemoteIO 로그 이벤트에 오류가 있습니다.");
             }
+        }
+
+        private void vGridControl1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

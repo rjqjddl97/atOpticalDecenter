@@ -63,7 +63,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                         {
                             for (int i = 0; i < mWorkParam.InspectionPositions.Count; i++)
                             {
-                                if (mWorkParam.InspectionPositions[i].ePositionType == RecipeManager.INSPECTION_POSITION_MODE.POSITION_BASE_MODE)
+                                if (mWorkParam.InspectionPositions[i].ePositionType == RecipeManager.INSPECTION_POSITION_MODE.POSITION_READY_MODE)
                                 {
                                     byte[] data = new byte[100];
 

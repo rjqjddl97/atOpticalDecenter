@@ -75,6 +75,8 @@
             this.barStaticItemCurrentTime = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItemMotionStatus = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonItemMoveStop = new DevExpress.XtraBars.BarButtonItem();
+            this.barEditItemTotalPassCount = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEditTotalPassCount = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.ribbonPageEquipementFunctions = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonSystemPage = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupFile = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -225,6 +227,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditInspectionResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditTotalInspectionCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditTotalFailCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditTotalPassCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManagerMainForm)).BeginInit();
             this.dockPanelLogView.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
@@ -349,10 +352,11 @@
             this.barButtonItemReset,
             this.barStaticItemCurrentTime,
             this.barStaticItemMotionStatus,
-            this.barButtonItemMoveStop});
+            this.barButtonItemMoveStop,
+            this.barEditItemTotalPassCount});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.ribbonControl1.MaxItemId = 41;
+            this.ribbonControl1.MaxItemId = 45;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageEquipementFunctions});
@@ -360,7 +364,8 @@
             this.repositoryItemProgressBarInspectionProcess,
             this.repositoryItemTextEditInspectionResult,
             this.repositoryItemTextEditTotalInspectionCount,
-            this.repositoryItemTextEditTotalFailCount});
+            this.repositoryItemTextEditTotalFailCount,
+            this.repositoryItemTextEditTotalPassCount});
             this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.ShowToolbarCustomizeItem = false;
@@ -573,7 +578,7 @@
             // barEditItemInspectionProgress
             // 
             this.barEditItemInspectionProgress.Edit = this.repositoryItemProgressBarInspectionProcess;
-            this.barEditItemInspectionProgress.EditWidth = 120;
+            this.barEditItemInspectionProgress.EditWidth = 100;
             this.barEditItemInspectionProgress.Id = 24;
             this.barEditItemInspectionProgress.Name = "barEditItemInspectionProgress";
             // 
@@ -609,7 +614,7 @@
             // 
             this.repositoryItemTextEditInspectionResult.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.repositoryItemTextEditInspectionResult.Appearance.BackColor2 = System.Drawing.Color.Transparent;
-            this.repositoryItemTextEditInspectionResult.Appearance.Font = new System.Drawing.Font("Tahoma", 18F);
+            this.repositoryItemTextEditInspectionResult.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
             this.repositoryItemTextEditInspectionResult.Appearance.ForeColor = System.Drawing.Color.Black;
             this.repositoryItemTextEditInspectionResult.Appearance.Options.UseBackColor = true;
             this.repositoryItemTextEditInspectionResult.Appearance.Options.UseFont = true;
@@ -628,9 +633,9 @@
             this.barEditItemTotalInspectionCount.AutoFillWidthInMenu = DevExpress.Utils.DefaultBoolean.False;
             this.barEditItemTotalInspectionCount.CanOpenEdit = false;
             this.barEditItemTotalInspectionCount.Edit = this.repositoryItemTextEditTotalInspectionCount;
-            this.barEditItemTotalInspectionCount.EditHeight = 30;
+            this.barEditItemTotalInspectionCount.EditHeight = 100;
             this.barEditItemTotalInspectionCount.EditValue = "총 검사 수: 00000";
-            this.barEditItemTotalInspectionCount.EditWidth = 150;
+            this.barEditItemTotalInspectionCount.EditWidth = 130;
             this.barEditItemTotalInspectionCount.Id = 28;
             this.barEditItemTotalInspectionCount.Name = "barEditItemTotalInspectionCount";
             // 
@@ -638,7 +643,7 @@
             // 
             this.repositoryItemTextEditTotalInspectionCount.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.repositoryItemTextEditTotalInspectionCount.Appearance.BackColor2 = System.Drawing.Color.Transparent;
-            this.repositoryItemTextEditTotalInspectionCount.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.repositoryItemTextEditTotalInspectionCount.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.repositoryItemTextEditTotalInspectionCount.Appearance.ForeColor = System.Drawing.Color.Black;
             this.repositoryItemTextEditTotalInspectionCount.Appearance.Options.UseBackColor = true;
             this.repositoryItemTextEditTotalInspectionCount.Appearance.Options.UseFont = true;
@@ -657,8 +662,8 @@
             this.barEditItemTotalFailCount.CanOpenEdit = false;
             this.barEditItemTotalFailCount.Edit = this.repositoryItemTextEditTotalFailCount;
             this.barEditItemTotalFailCount.EditHeight = 30;
-            this.barEditItemTotalFailCount.EditValue = "불합격 수: 00000";
-            this.barEditItemTotalFailCount.EditWidth = 150;
+            this.barEditItemTotalFailCount.EditValue = "불량 개수: 00000";
+            this.barEditItemTotalFailCount.EditWidth = 130;
             this.barEditItemTotalFailCount.Id = 29;
             this.barEditItemTotalFailCount.Name = "barEditItemTotalFailCount";
             // 
@@ -666,7 +671,7 @@
             // 
             this.repositoryItemTextEditTotalFailCount.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.repositoryItemTextEditTotalFailCount.Appearance.BackColor2 = System.Drawing.Color.Transparent;
-            this.repositoryItemTextEditTotalFailCount.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.repositoryItemTextEditTotalFailCount.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.repositoryItemTextEditTotalFailCount.Appearance.ForeColor = System.Drawing.Color.Red;
             this.repositoryItemTextEditTotalFailCount.Appearance.Options.UseBackColor = true;
             this.repositoryItemTextEditTotalFailCount.Appearance.Options.UseFont = true;
@@ -744,6 +749,34 @@
             this.barButtonItemMoveStop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemMoveStop.ImageOptions.LargeImage")));
             this.barButtonItemMoveStop.Name = "barButtonItemMoveStop";
             this.barButtonItemMoveStop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMoveStop_ItemClick);
+            // 
+            // barEditItemTotalPassCount
+            // 
+            this.barEditItemTotalPassCount.AutoFillWidthInMenu = DevExpress.Utils.DefaultBoolean.False;
+            this.barEditItemTotalPassCount.CanOpenEdit = false;
+            this.barEditItemTotalPassCount.Edit = this.repositoryItemTextEditTotalPassCount;
+            this.barEditItemTotalPassCount.EditHeight = 30;
+            this.barEditItemTotalPassCount.EditValue = "양품 개수: 00000";
+            this.barEditItemTotalPassCount.EditWidth = 130;
+            this.barEditItemTotalPassCount.Id = 44;
+            this.barEditItemTotalPassCount.Name = "barEditItemTotalPassCount";
+            // 
+            // repositoryItemTextEditTotalPassCount
+            // 
+            this.repositoryItemTextEditTotalPassCount.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.repositoryItemTextEditTotalPassCount.Appearance.BackColor2 = System.Drawing.Color.Transparent;
+            this.repositoryItemTextEditTotalPassCount.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.repositoryItemTextEditTotalPassCount.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.repositoryItemTextEditTotalPassCount.Appearance.Options.UseBackColor = true;
+            this.repositoryItemTextEditTotalPassCount.Appearance.Options.UseFont = true;
+            this.repositoryItemTextEditTotalPassCount.Appearance.Options.UseForeColor = true;
+            this.repositoryItemTextEditTotalPassCount.Appearance.Options.UseTextOptions = true;
+            this.repositoryItemTextEditTotalPassCount.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.repositoryItemTextEditTotalPassCount.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.repositoryItemTextEditTotalPassCount.AutoHeight = false;
+            this.repositoryItemTextEditTotalPassCount.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.repositoryItemTextEditTotalPassCount.Name = "repositoryItemTextEditTotalPassCount";
+            this.repositoryItemTextEditTotalPassCount.ReadOnly = true;
             // 
             // ribbonPageEquipementFunctions
             // 
@@ -829,6 +862,7 @@
             this.ribbonPageGroupInspection.ItemLinks.Add(this.barStaticItemInspectionTime);
             this.ribbonPageGroupInspection.ItemLinks.Add(this.barEditItemInspectionResult, true);
             this.ribbonPageGroupInspection.ItemLinks.Add(this.barEditItemTotalInspectionCount);
+            this.ribbonPageGroupInspection.ItemLinks.Add(this.barEditItemTotalPassCount);
             this.ribbonPageGroupInspection.ItemLinks.Add(this.barEditItemTotalFailCount);
             this.ribbonPageGroupInspection.ItemLinks.Add(this.barButtonItemInitializeStatistics);
             this.ribbonPageGroupInspection.Name = "ribbonPageGroupInspection";
@@ -1088,7 +1122,7 @@
             // vGridControl1
             // 
             this.vGridControl1.BandsInterval = 1;
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -1106,6 +1140,7 @@
             this.vGridControl1.TabIndex = 0;
             this.vGridControl1.CellValueChanging += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControl1_CellValueChanging);
             this.vGridControl1.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControl1_CellValueChanged);
+            this.vGridControl1.Click += new System.EventHandler(this.vGridControl1_Click);
             // 
             // repositoryItemToggleSwitchCameraConnection
             // 
@@ -1744,7 +1779,9 @@
             this.pledSpotInspectionInfomation._InspectLedND_FilterAngle = 0D;
             this.pledSpotInspectionInfomation._InspectLedODFilterReduce = 0D;
             this.pledSpotInspectionInfomation._InspectLedOpticalEccentricAngle = 0D;
+            this.pledSpotInspectionInfomation._InspectLedOpticalEccentricHorizonAngle = 0D;
             this.pledSpotInspectionInfomation._InspectLedOpticalEccentricity = 0D;
+            this.pledSpotInspectionInfomation._InspectLedOpticalEccentricVirticalAngle = 0D;
             this.pledSpotInspectionInfomation._InspectLedOpticalEmiterAngle = 0D;
             this.pledSpotInspectionInfomation._InspectOperateMax_Distance = 0D;
             this.pledSpotInspectionInfomation._InspectOperateMin_Distance = 0D;
@@ -1959,26 +1996,26 @@
             this.pictureEditActuatorY.MenuManager = this.ribbonControl1;
             this.pictureEditActuatorY.Name = "pictureEditActuatorY";
             this.pictureEditActuatorY.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEditActuatorY.Size = new System.Drawing.Size(244, 184);
+            this.pictureEditActuatorY.Size = new System.Drawing.Size(195, 178);
             this.pictureEditActuatorY.StyleController = this.layoutControlMain;
             this.pictureEditActuatorY.TabIndex = 6;
             this.pictureEditActuatorY.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureEditpictureEditActuatorY_Paint);
             // 
             // pictureEditActuatorX
             // 
-            this.pictureEditActuatorX.Location = new System.Drawing.Point(3, 191);
+            this.pictureEditActuatorX.Location = new System.Drawing.Point(3, 185);
             this.pictureEditActuatorX.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.pictureEditActuatorX.MenuManager = this.ribbonControl1;
             this.pictureEditActuatorX.Name = "pictureEditActuatorX";
             this.pictureEditActuatorX.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEditActuatorX.Size = new System.Drawing.Size(244, 242);
+            this.pictureEditActuatorX.Size = new System.Drawing.Size(195, 248);
             this.pictureEditActuatorX.StyleController = this.layoutControlMain;
             this.pictureEditActuatorX.TabIndex = 5;
             this.pictureEditActuatorX.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureEditActuatorX_Paint);
             // 
             // pictureEditSystemImage
             // 
-            this.pictureEditSystemImage.Location = new System.Drawing.Point(251, 3);
+            this.pictureEditSystemImage.Location = new System.Drawing.Point(202, 3);
             this.pictureEditSystemImage.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.pictureEditSystemImage.Name = "pictureEditSystemImage";
             this.pictureEditSystemImage.Properties.ContextMenuStrip = this.contextMenuStripImageROI;
@@ -1987,7 +2024,7 @@
             this.pictureEditSystemImage.Properties.ShowMenu = false;
             this.pictureEditSystemImage.Properties.ShowScrollBars = true;
             this.pictureEditSystemImage.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.False;
-            this.pictureEditSystemImage.Size = new System.Drawing.Size(449, 430);
+            this.pictureEditSystemImage.Size = new System.Drawing.Size(498, 430);
             this.pictureEditSystemImage.StyleController = this.layoutControlMain;
             this.pictureEditSystemImage.TabIndex = 4;
             this.pictureEditSystemImage.ImageChanged += new System.EventHandler(this.pictureEditSystemImage_ImageChanged);
@@ -2049,18 +2086,18 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.pictureEditSystemImage;
-            this.layoutControlItem2.Location = new System.Drawing.Point(248, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(199, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(453, 434);
+            this.layoutControlItem2.Size = new System.Drawing.Size(502, 434);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem12
             // 
             this.layoutControlItem12.Control = this.pictureEditActuatorX;
-            this.layoutControlItem12.Location = new System.Drawing.Point(0, 188);
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 182);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(248, 246);
+            this.layoutControlItem12.Size = new System.Drawing.Size(199, 252);
             this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem12.TextVisible = false;
             // 
@@ -2069,7 +2106,7 @@
             this.layoutControlItem16.Control = this.pictureEditActuatorY;
             this.layoutControlItem16.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(248, 188);
+            this.layoutControlItem16.Size = new System.Drawing.Size(199, 182);
             this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem16.TextVisible = false;
             // 
@@ -2183,6 +2220,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditInspectionResult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditTotalInspectionCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditTotalFailCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditTotalPassCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManagerMainForm)).EndInit();
             this.dockPanelLogView.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
@@ -2457,5 +2495,7 @@
         private DevExpress.XtraBars.BarStaticItem barStaticItemCurrentTime;
         private DevExpress.XtraBars.BarStaticItem barStaticItemMotionStatus;
         private DevExpress.XtraBars.BarButtonItem barButtonItemMoveStop;
+        private DevExpress.XtraBars.BarEditItem barEditItemTotalPassCount;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditTotalPassCount;
     }
 }
