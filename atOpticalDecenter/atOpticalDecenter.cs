@@ -2961,7 +2961,7 @@ namespace atOpticalDecenter
                     barCheckItemInspectionStart.Caption = string.Format("검사 중지");
                     _isInspecting = true;
                     _isInspectError = false;
-                    _isInspectCancel = false;
+                    _isInspectCancel = false;                    
                     // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
                     //
                     xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 3; }));
@@ -3035,7 +3035,7 @@ namespace atOpticalDecenter
                     CheckTackTime.Reset();
                     _isInspecting = true;
                     _isInspectError = false;
-                    _isInspectCancel = false;
+                    _isInspectCancel = false;                    
                     // PLC 통신 연결 및 상태 정보 확인 후 로봇상태가 아닐 경우 검사 중지! 구문 추가.
                     //
                     xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 3; }));
