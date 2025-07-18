@@ -27,7 +27,7 @@ namespace CustomPages
         public double _InspectLedND_FilterAngle { get { return Convert.ToDouble(rowNDFilterAngle.Properties.Value); } set { rowNDFilterAngle.Properties.Value = value; } }
         public double _InspectOperateMax_Distance { get { return Convert.ToDouble(rowOperateMaxDistance.Properties.Value); } set { rowOperateMaxDistance.Properties.Value = value; } }
         public double _InspectOperateMin_Distance { get { return Convert.ToDouble(rowOperateMinDistance.Properties.Value); } set { rowOperateMinDistance.Properties.Value = value; } }
-        public bool _InspectOpticalResult { get { return Convert.ToBoolean(rowInspectResult.Properties.Value); } set { rowInspectResult.Properties.Value = value; } }
+        public string _InspectOpticalResult { get { return rowInspectResult.Properties.Value.ToString(); } set { rowInspectResult.Properties.Value = value; } }
         public LedSpotInspectionInfomation()
         {
             InitializeComponent();

@@ -49,8 +49,8 @@ namespace RecipeManager
         List<InspectionPosition> _listInspectionPositions = new List<InspectionPosition>();
         List<Blob> _blobs = new List<Blob>();
 
-        public int ImageCenterX = 800;
-        public int ImageCenterY = 600;
+        public int ImageCenterX = 813;
+        public int ImageCenterY = 618;
 
 
         public bool _isBinaryInverse { get; set; } = false;

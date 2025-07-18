@@ -211,7 +211,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                     mInspectResultData.fOpticalCenterPositionY = posy;
                     mInspectResultData.fOpticalCenterPositionZ = posz;
                     mInspectResultData.fMeasureOpticaCenterP1X = 0;
-                    mInspectResultData.fMeasureOpticaCenterP1Y = ((mFirstLedSpot.CenterX - (_ImageResolution_H / 2)) * fOnePixelResolution); 
+                    mInspectResultData.fMeasureOpticaCenterP1Y = (((_ImageResolution_H / 2) - mFirstLedSpot.CenterX) * fOnePixelResolution); 
                     mInspectResultData.fMeasureOpticaCenterP1Z = ((mFirstLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution); 
                     Array.Copy(_dHist_H,0,mInspectResultData._ImageHist_H,0,_dHist_H.Length);
                     Array.Copy(_dHist_V,0,mInspectResultData._ImageHist_V,0,_dHist_V.Length);
@@ -247,7 +247,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                     mInspectResultData.fMeasureP2Y = posy + ((mFinalLedSpot.CenterX - (_ImageResolution_H / 2)) * fOnePixelResolution);
                     mInspectResultData.fMeasureP2Z = posz + ((mFinalLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
                     mInspectResultData.fMeasureOpticaCenterP2X = 0;
-                    mInspectResultData.fMeasureOpticaCenterP2Y = ((mFinalLedSpot.CenterX - (_ImageResolution_H / 2)) * fOnePixelResolution);
+                    mInspectResultData.fMeasureOpticaCenterP2Y = (((_ImageResolution_H / 2) - mFinalLedSpot.CenterX) * fOnePixelResolution);
                     mInspectResultData.fMeasureOpticaCenterP2Z = ((mFinalLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
                     mInspectResultData.CalculateOpticalDecenter();
 

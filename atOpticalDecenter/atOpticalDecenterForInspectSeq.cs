@@ -540,7 +540,7 @@ namespace atOpticalDecenter
                 pledSpotInspectionInfomation._InspectLedND_FilterAngle = mResultData.fND_FilterAngle;
                 pledSpotInspectionInfomation._InspectOperateMax_Distance = mResultData.fMaxOperateDistance;
                 pledSpotInspectionInfomation._InspectOperateMin_Distance = mResultData.fMinOperateDistance;
-                pledSpotInspectionInfomation._InspectOpticalResult = mResultData.bTotalResult;                
+                pledSpotInspectionInfomation._InspectOpticalResult = (mResultData.bTotalResult ? "OK" : "NG");                
 
                 xtraTabControlMainSetup.Invoke(new MethodInvoker(delegate { xtraTabControlMainSetup.SelectedTabPageIndex = 4; }));
                 _InspectionResult = true;                
@@ -550,7 +550,7 @@ namespace atOpticalDecenter
                     "ND필터 예측각도 :{9:000}˚ , 최대거리 ND필터 :{10:000}˚, 검사 결과 : {11}",
                     mResultData.fOpticalSize[0], mResultData.fOpticalSize[1], mResultData.fOpticalSpotImageBright, mResultData.fOpticalEccentricity, mResultData.fOpticalEccentricAngle,
                     mResultData.fOpticalEccentricAngle_H,mResultData.fOpticalEccentricAngle_V, (mResultData.fOpticalEmiterAngle * (180 / Math.PI)),
-                    mResultData.fODFilterReduce, mResultData.fND_FilterAngle, mResultData.fMaxOperateDistance, (mResultData.bTotalResult ? "Pass" : "Fail")));
+                    mResultData.fODFilterReduce, mResultData.fND_FilterAngle, mResultData.fMaxOperateDistance, (mResultData.bTotalResult ? "OK" : "NG")));
             }
             catch (Exception)
             {

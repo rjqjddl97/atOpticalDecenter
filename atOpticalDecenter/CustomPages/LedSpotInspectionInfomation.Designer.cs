@@ -28,13 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {   
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LedSpotInspectionInfomation));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemImageComboBoxInspectionResultOnOff = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.imageListOnOff = new System.Windows.Forms.ImageList(this.components);
             this.categoryImageProcessResult = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.rowProductSeries = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowProductModelName = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -123,14 +120,6 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", true, 1)});
             this.repositoryItemImageComboBoxInspectionResultOnOff.Name = "repositoryItemImageComboBoxInspectionResultOnOff";
             this.repositoryItemImageComboBoxInspectionResultOnOff.ReadOnly = true;
-            this.repositoryItemImageComboBoxInspectionResultOnOff.SmallImages = this.imageListOnOff;
-            // 
-            // imageListOnOff
-            // 
-            this.imageListOnOff.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListOnOff.ImageStream")));
-            this.imageListOnOff.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListOnOff.Images.SetKeyName(0, "IconSetRedToBlack4_16x16.png");
-            this.imageListOnOff.Images.SetKeyName(1, "IconSetSigns3_16x16.png");
             // 
             // categoryImageProcessResult
             // 
@@ -311,7 +300,7 @@
             this.rowInspectResult.Properties.Caption = "투광 검사 결과";
             this.rowInspectResult.Properties.ReadOnly = true;
             this.rowInspectResult.Properties.RowEdit = this.repositoryItemImageComboBoxInspectionResultOnOff;
-            this.rowInspectResult.Properties.Value = true;
+            this.rowInspectResult.Properties.Value = "";
             // 
             // layoutControlGroup2
             // 
@@ -401,7 +390,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowOperateMaxDistance;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowNDFilterAngle;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBoxInspectionResultOnOff;
-        private System.Windows.Forms.ImageList imageListOnOff;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowOpticalEccentricAngle;
         private DevExpress.XtraVerticalGrid.Rows.CategoryRow categoryOpticalEccentricAngle;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowOpticalEccentricHorizonAngle;

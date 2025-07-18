@@ -1784,7 +1784,7 @@
             this.pledSpotInspectionInfomation._InspectLedOpticalEmiterAngle = 0D;
             this.pledSpotInspectionInfomation._InspectOperateMax_Distance = 0D;
             this.pledSpotInspectionInfomation._InspectOperateMin_Distance = 0D;
-            this.pledSpotInspectionInfomation._InspectOpticalResult = true;
+            this.pledSpotInspectionInfomation._InspectOpticalResult = "";
             this.pledSpotInspectionInfomation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pledSpotInspectionInfomation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pledSpotInspectionInfomation.Location = new System.Drawing.Point(12, 12);

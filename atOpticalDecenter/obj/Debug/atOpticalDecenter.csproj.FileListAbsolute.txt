@@ -1049,6 +1049,7 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOptic
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\CustomPages.LedSpotInspectionInfomation.resources
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\CustomPages.MotionControl.resources
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\CustomPages.RemoteIOControl.resources
+D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.InspectResultForm.resources
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.LoginForm.resources
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.Properties.Resources.resources
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.RecipeEditor.resources
@@ -1060,4 +1061,3 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOptic
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.csproj.CopyComplete
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.exe
 D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.pdb
-D:\Work\Visual_C++\Project\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.InspectResultForm.resources
