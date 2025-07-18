@@ -1907,35 +1907,35 @@ namespace atOpticalDecenter
 
                         path = new GraphicsPath();
                         //fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + ((_blobs[i].Height / 2) / fCharacter));
-                        fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (350 * fCharacter));
+                        fptDrawString = new PointF((100 * fCharacter), (_systemParams._cameraParams.VResolution - 300));
                         path.AddString(string.Format("Blob Center(X:{0:000.0}, Y:{1:000.0})Pixel", _blobs[i].CenterX, _blobs[i].CenterY), mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
-                        gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
+                        gp.DrawPath(new Pen(Brushes.Black, 2f / fCharacter), path);
                         gp.FillPath(Brushes.Yellow, path);
 
                         // Spot Size
                         path = new GraphicsPath();
                         //fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + (_blobs[i].Height / fCharacter));
-                        fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (300 * fCharacter));
+                        fptDrawString = new PointF((100 * fCharacter), (_systemParams._cameraParams.VResolution - 250));
 
                         path.AddString(string.Format("Spot Size(X:{0:000.000}mm, Y:{1:000.000}mm, Avg:{2:000.000}mm)",
                                                         _blobs[i].Width * _systemParams._cameraParams.OnePixelResolution,
                                                         _blobs[i].Height * _systemParams._cameraParams.OnePixelResolution,
                                                         ((_blobs[i].Width + _blobs[i].Height) / 2f) * _systemParams._cameraParams.OnePixelResolution),
                                                         mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
-                        gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
+                        gp.DrawPath(new Pen(Brushes.Black, 2f / fCharacter), path);
                         gp.FillPath(Brushes.LightGreen, path);
 
                         // Image Bright
                         path = new GraphicsPath();
                         //fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + (_blobs[i].Height / fCharacter));
-                        fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (250 * fCharacter));
+                        fptDrawString = new PointF((100 * fCharacter), (_systemParams._cameraParams.VResolution - 200));
 
                         path.AddString(string.Format("Spot Bright(X:{0:000.0}pixel, Y:{1:000.0}pixel, Avg:{2:000.0}pixel)",
                                                         _ImageHist_W[_blobs[i].PixelPeakXIndex],
                                                         _ImageHist_H[_blobs[i].PixelPeakYIndex],
                                                         _blobs[i].PixelPeak),
                                                         mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
-                        gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
+                        gp.DrawPath(new Pen(Brushes.Black, 2f / fCharacter), path);
                         gp.FillPath(Brushes.LightGreen, path);
 
                         Pen newPen = new Pen(Color.White, 2f / fCharacter);
@@ -1965,7 +1965,7 @@ namespace atOpticalDecenter
 
                     path = new GraphicsPath();
 
-                    fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (200 * fCharacter));
+                    fptDrawString = new PointF((100 * fCharacter), (_systemParams._cameraParams.VResolution - 150));
 
                     float fDistance = (float)(Math.Sqrt(Math.Pow(InspectionOpticalSpotCenterX - _blobs[0].CenterX, 2) + Math.Pow(InspectionOpticalSpotCenterY - _blobs[0].CenterY, 2)) * _systemParams._cameraParams.OnePixelResolution);
 
@@ -1975,7 +1975,7 @@ namespace atOpticalDecenter
                                                         (InspectionOpticalSpotCenterX - _blobs[0].CenterX) * _systemParams._cameraParams.OnePixelResolution * (-1),
                                                         (InspectionOpticalSpotCenterY - _blobs[0].CenterY) * _systemParams._cameraParams.OnePixelResolution * (-1)), mfont.FontFamily,
                                                         (int)mfont.Style, mfont.Size, fptDrawString, null);
-                        gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
+                        gp.DrawPath(new Pen(Brushes.Black, 3f / fCharacter), path);
                         gp.FillPath(Brushes.LimeGreen, path);
                     }
                     else
@@ -1984,7 +1984,7 @@ namespace atOpticalDecenter
                                                         (InspectionOpticalSpotCenterX - _blobs[0].CenterX) * _systemParams._cameraParams.OnePixelResolution * (-1),
                                                         (InspectionOpticalSpotCenterY - _blobs[0].CenterY) * _systemParams._cameraParams.OnePixelResolution * (-1)), mfont.FontFamily,
                                                         (int)mfont.Style, mfont.Size, fptDrawString, null);
-                        gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
+                        gp.DrawPath(new Pen(Brushes.Black, 3f / fCharacter), path);
                         gp.FillPath(Brushes.Red, path);
                     }
 

@@ -31,7 +31,6 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
-            this.repositoryItemImageComboBoxInspectionResultOnOff = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.categoryImageProcessResult = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.rowProductSeries = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowProductModelName = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -58,7 +57,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxInspectionResultOnOff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
@@ -95,31 +93,17 @@
             this.vGridControl1.Appearance.BandBorder.BackColor = System.Drawing.Color.Transparent;
             this.vGridControl1.Appearance.BandBorder.Options.UseBackColor = true;
             this.vGridControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControl1.Location = new System.Drawing.Point(3, 3);
             this.vGridControl1.Margin = new System.Windows.Forms.Padding(0);
             this.vGridControl1.Name = "vGridControl1";
             this.vGridControl1.RecordWidth = 72;
-            this.vGridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageComboBoxInspectionResultOnOff});
             this.vGridControl1.RowHeaderWidth = 128;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.categoryImageProcessResult});
             this.vGridControl1.Size = new System.Drawing.Size(321, 320);
             this.vGridControl1.TabIndex = 4;
-            // 
-            // repositoryItemImageComboBoxInspectionResultOnOff
-            // 
-            this.repositoryItemImageComboBoxInspectionResultOnOff.AutoHeight = false;
-            this.repositoryItemImageComboBoxInspectionResultOnOff.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBoxInspectionResultOnOff.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.repositoryItemImageComboBoxInspectionResultOnOff.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", false, 0),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", true, 1)});
-            this.repositoryItemImageComboBoxInspectionResultOnOff.Name = "repositoryItemImageComboBoxInspectionResultOnOff";
-            this.repositoryItemImageComboBoxInspectionResultOnOff.ReadOnly = true;
             // 
             // categoryImageProcessResult
             // 
@@ -296,10 +280,8 @@
             this.rowInspectResult.Height = 18;
             this.rowInspectResult.Name = "rowInspectResult";
             this.rowInspectResult.OptionsRow.AllowFocus = false;
-            this.rowInspectResult.Properties.AllowEdit = false;
             this.rowInspectResult.Properties.Caption = "투광 검사 결과";
             this.rowInspectResult.Properties.ReadOnly = true;
-            this.rowInspectResult.Properties.RowEdit = this.repositoryItemImageComboBoxInspectionResultOnOff;
             this.rowInspectResult.Properties.Value = "";
             // 
             // layoutControlGroup2
@@ -358,7 +340,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxInspectionResultOnOff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
@@ -389,7 +370,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowOperateMinDistance;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowOperateMaxDistance;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowNDFilterAngle;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBoxInspectionResultOnOff;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowOpticalEccentricAngle;
         private DevExpress.XtraVerticalGrid.Rows.CategoryRow categoryOpticalEccentricAngle;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowOpticalEccentricHorizonAngle;
