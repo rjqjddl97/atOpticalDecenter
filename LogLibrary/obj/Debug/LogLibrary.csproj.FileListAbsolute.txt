@@ -83,3 +83,4 @@ C:\Work\atOpticalDecenter\LogLibrary\obj\Debug\LogLibrary.csproj.CoreCompileInpu
 C:\Work\atOpticalDecenter\LogLibrary\obj\Debug\LogLibrary.csproj.CopyComplete
 C:\Work\atOpticalDecenter\LogLibrary\obj\Debug\LogLibrary.dll
 C:\Work\atOpticalDecenter\LogLibrary\obj\Debug\LogLibrary.pdb
+D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\Debug\LogLibrary.csprojAssemblyReference.cache
