@@ -2563,8 +2563,8 @@ namespace CustomPages
                             data = _mAiCCommunicationManager.mDrvCtrl.SetMoveTargetVelocity((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[0], Convert.ToInt32(vel * _MotionParam.MM2PulseRatioX));
                             break;
                         case 1:
-                            if (vel > 10)
-                                vel = 10;
+                            //if (vel > 10)
+                            //    vel = 10;
 
                             data = _mAiCCommunicationManager.mDrvCtrl.SetMoveTargetVelocity((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[1], Convert.ToInt32(vel * _MotionParam.MM2PulseRatioY));
                             break;

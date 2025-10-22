@@ -922,7 +922,7 @@ namespace atOpticalDecenter
                     if (_isContinuousShot)
                     {
                         pictureEditSystemImage.Image = grabEnd.Image;
-                        _sourceImage = grabEnd.Image;
+                        _sourceImage = grabEnd.Image;                        
                     }
                     else
                     {
@@ -2808,6 +2808,7 @@ namespace atOpticalDecenter
                 case System.Drawing.Imaging.PixelFormat.Format24bppRgb: bytesPerPixel = 3; break;
                 case System.Drawing.Imaging.PixelFormat.Format32bppArgb: bytesPerPixel = 4; break;
                 case System.Drawing.Imaging.PixelFormat.Format32bppRgb: bytesPerPixel = 4; break;
+                case System.Drawing.Imaging.PixelFormat.Format8bppIndexed: outImage = colorBitmap; return outImage; break;
                 default: throw new InvalidOperationException("Image format not supported");
             }
 
@@ -3558,11 +3559,13 @@ namespace atOpticalDecenter
                 Image tempact = new Bitmap(_ActuatorYImage);
                 Image tempzact = new Bitmap(_ActuatorZImage);
 
-                PointF ImagePos = new PointF(0, ((440 - (tempzact.Height / 2)) + (float)((posz - 0) * (190F / 52F))));
+                //PointF ImagePos = new PointF(0, ((440 - (tempzact.Height / 2)) + (float)((posz - 0) * (190F / 52F))));                // 고정밀 엑추에이터(한국미스미)
+                PointF ImagePos = new PointF(0, ((440 - (tempzact.Height / 2)) + (float)((posz - 0) * (190F / 90F))));                  // i-robo 엑추에이터
                 Graphics gp = Graphics.FromImage(tempact);
                 gp.DrawImage(tempzact, ImagePos);
 
-                ImagePos = new PointF(((360 - (tempact.Width / 2)) - (float)((posy - 0) * 195F / 50F)), 0);
+                //ImagePos = new PointF(((360 - (tempact.Width / 2)) - (float)((posy - 0) * 195F / 50F)), 0);                           // 고정밀 엑추에이터(한국미스미)
+                ImagePos = new PointF(((360 - (tempact.Width / 2)) - (float)((posy - 0) * 195F / 90F)), 0);                             // i-robo 엑추에이터
                 gp = Graphics.FromImage(tempimage);
                 gp.DrawImage(tempact, ImagePos);
                 gp.Save();

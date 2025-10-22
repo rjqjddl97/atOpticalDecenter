@@ -279,13 +279,24 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                 if (mWorkParam._ProductType == 0)
                 {
                     mInspectResultData.fOpticalEccentricAngle = mInspectResultData.fOpticalEccentricAngle * (-1);
+
+                    if ((mInspectResultData.fOpticalEccentricAngle_H >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle_H <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
+                        && (mInspectResultData.fOpticalEccentricAngle_V >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle_V <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
+                        )
+                        mInspectResultData.bTotalResult = true;
+                    else
+                        mInspectResultData.bTotalResult = false;
                 }
-                if ((mInspectResultData.fOpticalEccentricAngle_H >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle_H <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
-                    && (mInspectResultData.fOpticalEccentricAngle_V >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle_V <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
-                    )
-                    mInspectResultData.bTotalResult = true;
                 else
-                    mInspectResultData.bTotalResult = false;
+                {
+                    if ((mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
+                        //&& (mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
+                        )
+                        mInspectResultData.bTotalResult = true;
+                    else
+                        mInspectResultData.bTotalResult = false;
+                }
+
             }
             else
             {

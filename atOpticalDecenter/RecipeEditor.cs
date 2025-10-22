@@ -2003,14 +2003,14 @@ namespace atOpticalDecenter
 
             if (float.TryParse(textEditInspectionPositionY.Text, out fResult))
             {
-                if (fResult >= -20 && fResult <= 50)
+                if (fResult >= -20 && fResult <= 90)
                     inspectionPos.PositionY = fResult;
                 else
                 {
                     if (fResult < -20)
                         inspectionPos.PositionY = -20;
-                    if (fResult > 50)
-                        inspectionPos.PositionY = 50;
+                    if (fResult > 90)
+                        inspectionPos.PositionY = 90;
                 }
             }
             else
@@ -2022,14 +2022,14 @@ namespace atOpticalDecenter
 
             if (float.TryParse(textEditInspectionPositionZ.Text, out fResult))
             {
-                if (fResult >= -20 && fResult <= 50)
+                if (fResult >= -20 && fResult <= 90)
                     inspectionPos.PositionZ = fResult;
                 else
                 {
                     if (fResult < -20)
                         inspectionPos.PositionY = -20;
-                    if (fResult > 50)
-                        inspectionPos.PositionY = 50;
+                    if (fResult > 90)
+                        inspectionPos.PositionY = 90;
                 }
             }
             else
@@ -2220,14 +2220,14 @@ namespace atOpticalDecenter
 
             if (float.TryParse(textEditInspectionPositionY.Text, out fResult))
             {
-                if (fResult >= -20 && fResult <= 50)
+                if (fResult >= -20 && fResult <= 90)
                     inspectionPos.PositionY = fResult;
                 else
                 {
                     if (fResult < -20)
                         inspectionPos.PositionY = -20;
-                    if (fResult > 50)
-                        inspectionPos.PositionY = 50;
+                    if (fResult > 90)
+                        inspectionPos.PositionY = 90;
                 }
             }
             else
@@ -2239,14 +2239,14 @@ namespace atOpticalDecenter
 
             if (float.TryParse(textEditInspectionPositionZ.Text, out fResult))
             {
-                if (fResult >= -20 && fResult <= 50)
+                if (fResult >= -20 && fResult <= 90)
                     inspectionPos.PositionZ = fResult;
                 else
                 {
                     if (fResult < -20)
                         inspectionPos.PositionZ = -20;
-                    if (fResult > 50)
-                        inspectionPos.PositionZ = 50;
+                    if (fResult > 90)
+                        inspectionPos.PositionZ = 90;
                 }
             }
             else
