@@ -42,7 +42,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         public const int D_PLC_MOTION_COMMAND_TIMEOUT = 60000;
         public const int D_MOTION_COMMAND_RESPONSE_WAIT_TIME = 500;
         public const int D_PLC_MOTION_READYSIGNAL_WAIT_TIME = 500;
-        public const int D_MICRO_MOTION_VELOCITY_LIMIT = 50;
+        public const int D_MICRO_MOTION_VELOCITY_LIMIT = 20;
 
         public const int D_PERIPHERAL_SETTING_TIME = 2500;
         public const int D_WAIT_PUT_POWERSOURCE_STABLE_STATUS = 1800;
@@ -288,7 +288,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
                         mInspectResultData.bTotalResult = false;
                 }
                 else
-                {
+                {         
                     if ((mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
                         //&& (mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
                         )
@@ -300,12 +300,35 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             }
             else
             {
-                if ((mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
-                    //&& (mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
-                    )
-                    mInspectResultData.bTotalResult = true;
+                if (mWorkParam._ProductSeries == 1)
+                {
+                    if (mWorkParam._ProductType == 2)
+                    {
+                        if ((mInspectResultData.fOpticalEccentricAngle_V >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle_V <= mWorkParam._LEDInspectionDivergenceHMaxAngle))                            
+                            mInspectResultData.bTotalResult = true;
+                        else
+                            mInspectResultData.bTotalResult = false;
+                    }
+                    else
+                    {
+                        if ((mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
+                            //&& (mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
+                            )
+                            mInspectResultData.bTotalResult = true;
+                        else
+                            mInspectResultData.bTotalResult = false;
+                    }
+                }
                 else
-                    mInspectResultData.bTotalResult = false;
+                {
+                    if ((mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
+                        //&& (mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
+                        )
+                        mInspectResultData.bTotalResult = true;
+                    else
+                        mInspectResultData.bTotalResult = false;
+                }
+
             }
             //if ((mInspectResultData.fOpticalEmiterAngle >= -(mWorkParam._LEDInspectionDivergenceAngle*(Math.PI/180))) && (mInspectResultData.fOpticalEmiterAngle <= (mWorkParam._LEDInspectionDivergenceAngle * (Math.PI / 180))))
 

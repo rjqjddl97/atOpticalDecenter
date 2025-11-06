@@ -232,7 +232,7 @@ namespace atOpticalDecenter
                     {
                         if (!_IsHommingFinished)
                         {
-                            if (MessageBox.Show("원점복귀를 진행을 합니다.", "원점복귀", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly) == DialogResult.Yes)
+                            if (MessageBox.Show("Start Homming Processing.", "Homming Process", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly) == DialogResult.Yes)
                             {
                                 byte[] SeData = new byte[8];
                                 for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)

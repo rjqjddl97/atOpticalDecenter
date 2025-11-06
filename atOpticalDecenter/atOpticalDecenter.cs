@@ -340,11 +340,24 @@ namespace atOpticalDecenter
         }
         private void atOpticalDecenter_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show(string.Format("광 편심 검사 시스템을 종료하시겠습니까?"), "시스템 종료", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+            if (_systemParams._SystemLanguageKoreaUse)
             {
-                e.Cancel = true;
-                return;
+                if (MessageBox.Show(string.Format("광 편심 검사 시스템을 종료하시겠습니까?"), "시스템 종료", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                    return;
+                }
             }
+            else
+            {
+                if (MessageBox.Show(string.Format("Are you closing Inspection Program?"), "System Closed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
+
 
             if (_isContinuousShot)
                 _Camera.Stop();
@@ -3444,16 +3457,34 @@ namespace atOpticalDecenter
             {
                 if (_mMotionControlCommManager.IsOpen())
                 {
-                    if (MessageBox.Show("알람 리셋을 진행을 합니다.", "알람 리셋", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (_systemParams._SystemLanguageKoreaUse)
                     {
-                        byte[] SeData = new byte[8];
-                        for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                        if (MessageBox.Show("알람 리셋을 진행을 합니다.", "알람 리셋", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            SeData = _mMotionControlCommManager.mDrvCtrl.AlarmResetCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
-                            _mMotionControlCommManager.SendData(SeData);
+                            byte[] SeData = new byte[8];
+                            for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                            {
+                                SeData = _mMotionControlCommManager.mDrvCtrl.AlarmResetCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
+                                _mMotionControlCommManager.SendData(SeData);
+                            }
+                            mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "알람 리셋");
                         }
-                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "알람 리셋");
                     }
+                    else
+                    {
+                        if (MessageBox.Show("Start Alarm Reset.", "Alarm Reset", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            byte[] SeData = new byte[8];
+                            for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                            {
+                                SeData = _mMotionControlCommManager.mDrvCtrl.AlarmResetCommand((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i]);
+                                _mMotionControlCommManager.SendData(SeData);
+                            }
+                            mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "알람 리셋");
+                        }
+                    }
+
+
                 }
             }
             catch
@@ -3725,6 +3756,7 @@ namespace atOpticalDecenter
                     barButtonItemRecipeEditorOpen.Caption = "Recipe Editor";
                     barListItemRecipeOpen.Caption = "Open";
 
+                    ribbonPageGroupImageFile.Text = "Image";
                     barButtonItemImageOpen.Caption = "Open";
                     barButtonItemImageSave.Caption = "Save";
                     barCheckItemImageCrop.Caption = "Image Crop";
@@ -3835,6 +3867,7 @@ namespace atOpticalDecenter
                     barButtonItemRecipeEditorOpen.Caption = "레시피 편집기";
                     barListItemRecipeOpen.Caption = "레시피 선택";
 
+                    ribbonPageGroupImageFile.Text = "이미지";
                     barButtonItemImageOpen.Caption = "불러오기";
                     barButtonItemImageSave.Caption = "저장하기";
                     barCheckItemImageCrop.Caption = "템플릿 자르기";
@@ -3948,7 +3981,15 @@ namespace atOpticalDecenter
                 {
                     if (_IsDrvErr)
                     {
-                        barStaticItemMotionStatus.Caption = "모션 상태 : AiC드라이버 알람 또는 에러상태, 알람 리셋 필요!!";
+                        if (_systemParams._SystemLanguageKoreaUse)
+                        {
+                            barStaticItemMotionStatus.Caption = "모션 상태 : AiC드라이버 알람 또는 에러상태, 알람 리셋 필요!!";
+                        }
+                        else
+                        {
+                            barStaticItemMotionStatus.Caption = "Status : AiC Driver Alarm or Error Status, Must Reset !!";
+                        }
+
                         barStaticItemMotionStatus.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Red;
                     }
                     else
@@ -3956,13 +3997,28 @@ namespace atOpticalDecenter
                         barStaticItemMotionStatus.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Black;
 
                         if (!_IsHommingFinished)
-                            barStaticItemMotionStatus.Caption = "모션 상태 : AiC드라이버 원점 복귀 필요!";
+                        {
+                            if(_systemParams._SystemLanguageKoreaUse)
+                                barStaticItemMotionStatus.Caption = "모션 상태 : AiC드라이버 원점 복귀 필요!";
+                            else
+                                barStaticItemMotionStatus.Caption = "Status : Must Home Process!";
+                        }
                         else
                         {
-                            if ((mRobotInformation.mStatus & 0x00000042) != 0x00000042)
-                                barStaticItemMotionStatus.Caption = "모션 상태 : 이동중";
+                            if (_systemParams._SystemLanguageKoreaUse)
+                            {
+                                if ((mRobotInformation.mStatus & 0x00000042) != 0x00000042)
+                                    barStaticItemMotionStatus.Caption = "모션 상태 : 이동중";
+                                else
+                                    barStaticItemMotionStatus.Caption = "모션 상태 : 정지";
+                            }
                             else
-                                barStaticItemMotionStatus.Caption = "모션 상태 : 정지";
+                            {
+                                if ((mRobotInformation.mStatus & 0x00000042) != 0x00000042)
+                                    barStaticItemMotionStatus.Caption = "Status : Motion Moving";
+                                else
+                                    barStaticItemMotionStatus.Caption = "Status : Motion Ready";
+                            }
                         }
                     }
                     if (!mRobotInformation.mInputData.B0)
@@ -4022,7 +4078,7 @@ namespace atOpticalDecenter
 
                 if (_mMotionControlCommManager.IsOpen())
                 {
-                    if (MessageBox.Show("모션 정지을 진행을 합니다.", "모션 정지", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("Stop the Motion Move.", "Stop Motion", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         byte[] SeData = new byte[8];
                         for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)

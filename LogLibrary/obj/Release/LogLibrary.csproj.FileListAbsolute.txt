@@ -20,3 +20,14 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\Release\LogLibrary.c
 D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\Release\LogLibrary.csproj.CopyComplete
 D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\Release\LogLibrary.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\Release\LogLibrary.pdb
+D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\LogLibrary\bin\Release\NLog.config
+D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\LogLibrary\bin\Release\NLog.xsd
+D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\LogLibrary\bin\Release\LogLibrary.dll
+D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\LogLibrary\bin\Release\LogLibrary.pdb
+D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\LogLibrary\bin\Release\NLog.dll
+D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\LogLibrary\bin\Release\NLog.xml
+D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\LogLibrary\obj\Release\LogLibrary.csprojAssemblyReference.cache
+D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\LogLibrary\obj\Release\LogLibrary.csproj.CoreCompileInputs.cache
+D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\LogLibrary\obj\Release\LogLibrary.csproj.CopyComplete
+D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\LogLibrary\obj\Release\LogLibrary.dll
+D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\LogLibrary\obj\Release\LogLibrary.pdb
