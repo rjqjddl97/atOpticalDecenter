@@ -273,10 +273,10 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         {
             mInspectResultData.CalculateOpticalInspect(mWorkParam._ProductType);
 
-            if (mWorkParam._ProductSeries == 0)
+            if (mWorkParam._ProductSeries == 0)         //BTS
             {
                 // BTS Series, Mirror Type
-                if (mWorkParam._ProductType == 0)
+                if (mWorkParam._ProductType == 0)       // Mirror Type(PDT)
                 {
                     mInspectResultData.fOpticalEccentricAngle = mInspectResultData.fOpticalEccentricAngle * (-1);
 
@@ -300,9 +300,9 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             }
             else
             {
-                if (mWorkParam._ProductSeries == 1)
+                if (mWorkParam._ProductSeries == 1)         //BTF
                 {
-                    if (mWorkParam._ProductType == 2)
+                    if (mWorkParam._ProductType == 2)       // 확산반사형(DDT)
                     {
                         if ((mInspectResultData.fOpticalEccentricAngle_V >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle_V <= mWorkParam._LEDInspectionDivergenceHMaxAngle))                            
                             mInspectResultData.bTotalResult = true;

@@ -71,7 +71,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Inspection
                                     {
                                         if (j == 0)
                                         {
-                                            data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[j], Convert.ToInt32((double)(mWorkParam.InspectionPositions[i].PositionX + mWorkParam._LEDInspectionCameraDistance) * mSystemParam._motionParams.MM2PulseRatioX));
+                                            data = mMotionDrvCtrl.mDrvCtrl.MoveTargetPositionSendData((byte)mMotionDrvCtrl.mDrvCtrl.DrvID[j], Convert.ToInt32((double)mWorkParam.InspectionPositions[i].PositionX * mSystemParam._motionParams.MM2PulseRatioX));
                                         }
                                         else if (j == 1)
                                         {

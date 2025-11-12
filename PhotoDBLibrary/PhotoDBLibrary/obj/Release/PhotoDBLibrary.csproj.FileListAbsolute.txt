@@ -48,7 +48,6 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoDBLibrary\PhotoDBLibrary\bin\R
 D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoDBLibrary\PhotoDBLibrary\bin\Release\System.Numerics.Vectors.xml
 D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoDBLibrary\PhotoDBLibrary\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
 D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoDBLibrary\PhotoDBLibrary\bin\Release\System.Threading.Tasks.Extensions.xml
-D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoDBLibrary\PhotoDBLibrary\obj\Release\PhotoDBLibrary.csprojAssemblyReference.cache
 D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoDBLibrary\PhotoDBLibrary\obj\Release\PhotoDBLibrary.csproj.CoreCompileInputs.cache
 D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoDBLibrary\PhotoDBLibrary\obj\Release\PhotoDBLibrary.csproj.CopyComplete
 D:\Work\Visual_C++\Project\atOpticalDecenter\PhotoDBLibrary\PhotoDBLibrary\obj\Release\PhotoDBLibrary.dll

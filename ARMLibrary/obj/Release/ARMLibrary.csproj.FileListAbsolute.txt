@@ -5,7 +5,6 @@ C:\Work\atOpticalDecenter\ARMLibrary\obj\Release\ARMLibrary.dll
 C:\Work\atOpticalDecenter\ARMLibrary\obj\Release\ARMLibrary.pdb
 D:\Work\Visual_C++\Project\atOpticalDecenter\ARMLibrary\bin\Release\ARMLibrary.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\ARMLibrary\bin\Release\ARMLibrary.pdb
-D:\Work\Visual_C++\Project\atOpticalDecenter\ARMLibrary\obj\Release\ARMLibrary.csprojAssemblyReference.cache
 D:\Work\Visual_C++\Project\atOpticalDecenter\ARMLibrary\obj\Release\ARMLibrary.csproj.CoreCompileInputs.cache
 D:\Work\Visual_C++\Project\atOpticalDecenter\ARMLibrary\obj\Release\ARMLibrary.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\ARMLibrary\obj\Release\ARMLibrary.pdb
