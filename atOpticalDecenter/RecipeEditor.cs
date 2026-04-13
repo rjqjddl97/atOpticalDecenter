@@ -1421,6 +1421,19 @@ namespace atOpticalDecenter
             else
                 rowLEDInspectionShortDistance.Enabled = false;
 
+            if (_workParam._ProductType == (int)RecipeManager.ModelType.MirrorReflective)
+            {
+                rowLEDInspectionDivergenceHMinAngle.Enabled = true;
+                rowLEDInspectionDivergenceHMaxAngle.Enabled = true;
+                rowLEDInspectionDivergenceVMinAngle.Enabled = true;
+                rowLEDInspectionDivergenceVMaxAngle.Enabled = true;
+            }
+            else
+            {
+                rowLEDInspectionDivergenceVMinAngle.Enabled = false;
+                rowLEDInspectionDivergenceVMaxAngle.Enabled = false;
+            }
+
             gridViewInspectionPositions.RefreshData();
             vGridControlInspectionParam.Refresh();
             pictureEditInspectImage.Refresh();

@@ -26,8 +26,8 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\bin\x64\Release\LogLibra
 D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\bin\x64\Release\LogLibrary.pdb
 D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\bin\x64\Release\NLog.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\bin\x64\Release\NLog.xml
+D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\x64\Release\LogLibrary.csprojAssemblyReference.cache
 D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\x64\Release\LogLibrary.csproj.CoreCompileInputs.cache
 D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\x64\Release\LogLibrary.csproj.CopyComplete
 D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\x64\Release\LogLibrary.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\x64\Release\LogLibrary.pdb
-D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\x64\Release\LogLibrary.csprojAssemblyReference.cache
