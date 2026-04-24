@@ -40,6 +40,7 @@ namespace atOpticalDecenter
         List<Blob> _blobs = new List<Blob>();
         List<Blob> _MenaulInspectLed1blobs = new List<Blob>();
         List<Blob> _MenaulInspectLed2blobs = new List<Blob>();
+        Blob _LedPeak = new Blob();
         private const int MAX_LOG_QUEUE_COUNT = 10;
 
         const int MAX_STATISTICS = 10;
@@ -64,7 +65,7 @@ namespace atOpticalDecenter
         bool _isInsepctionResult = false;
         bool _isInspectError = false;
         bool _isInspectCancel = false;
-        
+
         System.Drawing.Image _sourceImage = null;
         System.Drawing.Image _resultImage = null;
 
@@ -89,7 +90,7 @@ namespace atOpticalDecenter
         bool _isSetROICheck = false;
         bool _IsLogin = false;
         bool _IsReciepLoad = false;
-        bool _IsHommingFinished = false;        
+        bool _IsHommingFinished = false;
         bool _IsDrvErr = false;
         bool _IsHommingCancle = false;
 
@@ -256,7 +257,7 @@ namespace atOpticalDecenter
                 // System 초기화
                 if (_systemParams != null)
                     pledSpotInspectionInfomation.ChangeSystemLanguage(_systemParams._SystemLanguageKoreaUse);
-                
+
                 // Camera 연결
                 if (InitializeCamera())
                 {
@@ -269,7 +270,7 @@ namespace atOpticalDecenter
 
                 InitailProgramFormLanguage();
                 InitializeAiCModule();
-                InitializeARMRemoteIOModule();                
+                InitializeARMRemoteIOModule();
 
                 InitializeStatistics();
                 InitializeTackTimes();
@@ -300,22 +301,22 @@ namespace atOpticalDecenter
                 UpdateConnectStatusForAll();
                 InitialGuiAllEdit();
                 ImageUpdateEvents += UpdateGUI;
-                                
+
                 _BaseXImage = Properties.Resources.X_Base;
                 pictureEditActuatorX.Image = _BaseXImage;
-                FilterActuatorImageXFitSize();                
-                _ActuatorXImage = Properties.Resources.X_Actuator;                
+                FilterActuatorImageXFitSize();
+                _ActuatorXImage = Properties.Resources.X_Actuator;
                 _BaseYImage = Properties.Resources.Y_Base;
-                pictureEditActuatorY.Image = _BaseYImage;                                
+                pictureEditActuatorY.Image = _BaseYImage;
                 _ActuatorYImage = Properties.Resources.Y_Actuator;
-                FilterActuatorImageYFitSize();                
+                FilterActuatorImageYFitSize();
                 //_BaseZImage = Properties.Resources.Y_Actuator;
                 //pictureEditActuatorZ.Image = _BaseZImage;
                 //FilterActuatorImageZFitSize();                
-                _ActuatorZImage = Properties.Resources.Z_Actuator;                
+                _ActuatorZImage = Properties.Resources.Z_Actuator;
                 _bwMotionHome.RunWorkerAsync(mRobotInformation);
                 AutoStartButtonLock();
-                timerCurrentTime.Start();                
+                timerCurrentTime.Start();
             }
             catch (Exception ex)
             {
@@ -380,7 +381,7 @@ namespace atOpticalDecenter
                 _backgroundWorkerOpticalDecenterInspection.ProgressChanged += new ProgressChangedEventHandler(backgroundWorkerInspection_ProgressChanged);
                 _backgroundWorkerOpticalDecenterInspection.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerInspection_RunWorkerCompleted);
                 _bwMotionHome.DoWork += new DoWorkEventHandler(backgroundWorkerMotionHome_DoWork);
-                _bwMotionHome.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerMotionHome_RunWorkerCompleted);                
+                _bwMotionHome.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerMotionHome_RunWorkerCompleted);
             }
             catch (Exception)
             {
@@ -440,7 +441,7 @@ namespace atOpticalDecenter
                     strTempFolder = string.Format(@"{0}\Result", strRootFolder);
                     global::atOpticalDecenter.Properties.Settings.Default.strResultFolderPath = strTempFolder;
                     SystemDirectoryParams.ResultFolderPath = strTempFolder;
-                    
+
                     strTempFolder = string.Format(@"{0}\Image", strRootFolder);
                     global::atOpticalDecenter.Properties.Settings.Default.strImageFolderPath = strTempFolder;
                     SystemDirectoryParams.ImageFolderPath = strTempFolder;
@@ -539,9 +540,9 @@ namespace atOpticalDecenter
                             //RecipeFileIO.WriteSystemFile(_systemParams, string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.SystemFileName));
 
                             //if (_ImageHist_H == null)
-                                _ImageHist_H = new double[Convert.ToInt32(rowCameraVResolution.Properties.Value)];
+                            _ImageHist_H = new double[Convert.ToInt32(rowCameraVResolution.Properties.Value)];
                             //if (_ImageHist_W == null)
-                                _ImageHist_W = new double[Convert.ToInt32(rowCameraHResolution.Properties.Value)];
+                            _ImageHist_W = new double[Convert.ToInt32(rowCameraHResolution.Properties.Value)];
 
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 연결 성공:{0}", liststrFriendlyNames[0]));
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(),
@@ -571,7 +572,7 @@ namespace atOpticalDecenter
                 rowCameraVResolution.Properties.Value = _systemParams._cameraParams.VResolution;
                 rowCameraGain.Properties.Value = _systemParams._cameraParams.Gain;
                 rowCameraFrame.Properties.Value = _systemParams._cameraParams.FrameRate;
-                if(_Camera.Open(_systemParams._cameraParams.FriendlyName))
+                if (_Camera.Open(_systemParams._cameraParams.FriendlyName))
                 {
                     IsInitialized = true;
                     _isCameraOpen = true;
@@ -585,7 +586,7 @@ namespace atOpticalDecenter
                     if (_ImageHist_W != null)
                         _ImageHist_W = new double[Convert.ToInt32(rowCameraHResolution.Properties.Value)];
                 }
-            }            
+            }
             return IsInitialized;
         }
         public bool InitializeAiCModule()
@@ -778,7 +779,7 @@ namespace atOpticalDecenter
                 mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("Remote I/O 모듈 접속 해제 명령이 실행되지 않았습니다."));
                 return false;
             }
-        }    
+        }
         private void InitializeStatistics()
         {
             try
@@ -871,11 +872,11 @@ namespace atOpticalDecenter
         {
             CheckTackTime.Stop();
             TimeSpan ts = CheckTackTime.Elapsed;
-            barStaticItemInspectionTime.Caption = string.Format("검사 시간: 00:{0:00}:{1:00}.{2}",ts.Minutes, ts.Seconds, ts.Milliseconds);
+            barStaticItemInspectionTime.Caption = string.Format("검사 시간: 00:{0:00}:{1:00}.{2}", ts.Minutes, ts.Seconds, ts.Milliseconds);
 
             if (IsLogWrite)
             {
-                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("레시피:{0}, 검사 시간:{1:000.000} sec", _workParams.RecipeName, (ts.Milliseconds/1000F)));
+                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("레시피:{0}, 검사 시간:{1:000.000} sec", _workParams.RecipeName, (ts.Milliseconds / 1000F)));
             }
         }
         private void OnCameraImageGrabStart(object sender, EventArgs e)
@@ -887,7 +888,7 @@ namespace atOpticalDecenter
             }
 
             if (_isContinuousShot)
-                _frameCount = 0;            
+                _frameCount = 0;
         }
 
         private void OnCameraImageGrabEnd(object sender, EventArgs e)
@@ -896,7 +897,7 @@ namespace atOpticalDecenter
             {
                 BeginInvoke(new EventHandler<EventArgs>(OnCameraImageGrabEnd), sender, e);
                 return;
-            }            
+            }
         }
 
         private void OnCameraConnectionLost(object sender, EventArgs e)
@@ -914,7 +915,7 @@ namespace atOpticalDecenter
             {
                 BeginInvoke(new EventHandler<EventArgs>(OnCameraConnectionOpen), sender, e);
                 return;
-            }            
+            }
         }
 
         private void OnCameraImageGrab(object sender, EventArgs e)
@@ -935,13 +936,13 @@ namespace atOpticalDecenter
                     if (_isContinuousShot)
                     {
                         pictureEditSystemImage.Image = grabEnd.Image;
-                        _sourceImage = grabEnd.Image;                        
+                        _sourceImage = grabEnd.Image;
                     }
                     else
                     {
                         pictureEditSystemImage.Image = grabEnd.Image;
                         _sourceImage = Utils.Clone<Bitmap>(grabEnd.Image);
-                    }                    
+                    }
                     ImageGrabbed?.Invoke(_sourceImage);
                     if (grabEnd.WaitHandle != null)
                         grabEnd.WaitHandle.Set();
@@ -976,7 +977,7 @@ namespace atOpticalDecenter
         {
             if (InvokeRequired)
             {
-                BeginInvoke(new EventHandler<EventArgs>(OnCameraClose), sender, e);                
+                BeginInvoke(new EventHandler<EventArgs>(OnCameraClose), sender, e);
                 return;
             }
         }
@@ -1144,7 +1145,7 @@ namespace atOpticalDecenter
             {
                 if (e.Item.Name == "barButtonItemConnectAll")
                 {
-                    if (!_mMotionControlCommManager.IsOpen())                                        
+                    if (!_mMotionControlCommManager.IsOpen())
                     {
                         AiCControlLibrary.SerialCommunication.Control.SerialPortSetData setPort = new AiCControlLibrary.SerialCommunication.Control.SerialPortSetData();
                         setPort.PortName = _systemParams._AiCParams.SerialParameters.PortName;
@@ -1246,7 +1247,7 @@ namespace atOpticalDecenter
                         _Camera.Stop();
 
                     if (!_Camera.IsAllocated)
-                    {                            
+                    {
                         if (!string.IsNullOrEmpty(Cameraname))
                         {
                             if (_Camera.Open(Cameraname))
@@ -1259,7 +1260,7 @@ namespace atOpticalDecenter
                             {
                                 repositoryItemToggleSwitchCameraConnection.ValueOn = true;
                                 repositoryItemToggleSwitchCameraConnection.ValueOff = false;
-                                _isCameraOpen = false;                                
+                                _isCameraOpen = false;
                                 mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("카메라 연결 실패:{0}", Cameraname));
                             }
                         }
@@ -1383,10 +1384,10 @@ namespace atOpticalDecenter
                     _systemParams.InspectionOpticalSpotCenterX = _systemParams._cameraParams.HResolution / 2;
                     _systemParams.InspectionOpticalSpotCenterY = _systemParams._cameraParams.VResolution / 2;
                     //if (_ImageHist_H == null)
-                        _ImageHist_H = new double[_systemParams._cameraParams.VResolution];
+                    _ImageHist_H = new double[_systemParams._cameraParams.VResolution];
                     //if (_ImageHist_W == null)
-                        _ImageHist_W = new double[_systemParams._cameraParams.HResolution];
-                }                
+                    _ImageHist_W = new double[_systemParams._cameraParams.HResolution];
+                }
                 else
                 {
                     Cameraname = _systemParams._cameraParams.FriendlyName;
@@ -1397,7 +1398,7 @@ namespace atOpticalDecenter
                     rowCameraVResolution.Properties.Value = _systemParams._cameraParams.VResolution;
                     rowCameraGain.Properties.Value = _systemParams._cameraParams.Gain;
                     rowCameraFrame.Properties.Value = _systemParams._cameraParams.FrameRate;
-                }                
+                }
             }
             catch (Exception ex)
             {
@@ -1584,8 +1585,8 @@ namespace atOpticalDecenter
                 gp.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
                 int crossMarkOffset = 10;
-                int InspectionOpticalSpotCenterX = _systemParams._cameraParams.HResolution/2;
-                int InspectionOpticalSpotCenterY = _systemParams._cameraParams.VResolution/2;
+                int InspectionOpticalSpotCenterX = _systemParams._cameraParams.HResolution / 2;
+                int InspectionOpticalSpotCenterY = _systemParams._cameraParams.VResolution / 2;
                 float fScale = (float)(pictureEditSystemImage.Properties.ZoomPercent / 100.0f);
                 float fHScroll = pictureEditSystemImage.HScrollBar.Value;
                 float fVScroll = pictureEditSystemImage.VScrollBar.Value;
@@ -1651,7 +1652,7 @@ namespace atOpticalDecenter
 
                         gp.DrawLine(Pens.Red, fptHLineStart, fptHLineEnd);
                         gp.DrawLine(Pens.Red, fptVLineStart, fptVLineEnd);
-                    }                    
+                    }
                 }
                 if (barCheckItemImageCrop.Checked)
                 {
@@ -1744,16 +1745,19 @@ namespace atOpticalDecenter
                 if (_isOpticalMeasurement)
                 {
                     //for Debugging
-                    Font mfont = new Font("Arial", ((15f / fCharacter) > 30f? 30f: (15f / fCharacter)), FontStyle.Bold);
+                    Font mfont = new Font("Arial", ((15f / fCharacter) > 30f ? 30f : (15f / fCharacter)), FontStyle.Bold);
                     PointF mfptDrawString = new PointF();
+                    RectangleF rtPeak = new RectangleF();
 
                     for (int i = 0; i < _blobs.Count; ++i)
                     {
                         path = new GraphicsPath();
 
                         rtBlob = new RectangleF(_blobs[i].Left, _blobs[i].Top, _blobs[i].Width, _blobs[i].Height);
+                        rtPeak = new RectangleF(_LedPeak.Left, _LedPeak.Top, _LedPeak.Width, _LedPeak.Height);
 
                         path.AddRectangle(rtBlob);
+                        path.AddRectangle(rtPeak);
 
                         gp.DrawPath(new Pen(Brushes.Black, 2f / fCharacter), path);
                         gp.DrawPath(new Pen(Brushes.Yellow, 1.2f / fCharacter), path);
@@ -1777,6 +1781,14 @@ namespace atOpticalDecenter
                         gp.DrawPath(new Pen(Brushes.Yellow, 1.2f / fCharacter), path);
 
                         path = new GraphicsPath();
+                        path.AddLine(new PointF(_LedPeak.CenterX - crossMarkOffset, _LedPeak.CenterY), new PointF(_LedPeak.CenterX + crossMarkOffset, _LedPeak.CenterY));
+                        gp.DrawPath(new Pen(Brushes.Blue, 1f / fCharacter), path);
+
+                        path = new GraphicsPath();
+                        path.AddLine(new PointF(_LedPeak.CenterX, _LedPeak.CenterY - crossMarkOffset), new PointF(_LedPeak.CenterX, _LedPeak.CenterY + crossMarkOffset));
+                        gp.DrawPath(new Pen(Brushes.Blue, 1f / fCharacter), path);
+
+                        path = new GraphicsPath();
                         //fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + ((_blobs[i].Height / 2) / fCharacter));
                         fptDrawString = new PointF((100 * fCharacter), (_systemParams._cameraParams.VResolution - 300) * 1);
                         //fptDrawString = new PointF((100 * fCharacter), (_systemParams._cameraParams.VResolution * fCharacter) - 150);
@@ -1787,16 +1799,16 @@ namespace atOpticalDecenter
                         // Spot Size
                         path = new GraphicsPath();
                         //fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + (_blobs[i].Height / fCharacter));
-                        fptDrawString = new PointF((100 * fCharacter), (_systemParams._cameraParams.VResolution - 250) * 1);                        
+                        fptDrawString = new PointF((100 * fCharacter), (_systemParams._cameraParams.VResolution - 250) * 1);
 
-                        path.AddString(string.Format("Spot Size(X:{0:000.000}mm, Y:{1:000.000}mm, Avg:{2:000.000}mm)", 
-                                                        _blobs[i].Width * _systemParams._cameraParams.OnePixelResolution, 
-                                                        _blobs[i].Height * _systemParams._cameraParams.OnePixelResolution, 
-                                                        ((_blobs[i].Width + _blobs[i].Height) / 2f) * _systemParams._cameraParams.OnePixelResolution), 
+                        path.AddString(string.Format("Spot Size(X:{0:000.000}mm, Y:{1:000.000}mm, Avg:{2:000.000}mm)",
+                                                        _blobs[i].Width * _systemParams._cameraParams.OnePixelResolution,
+                                                        _blobs[i].Height * _systemParams._cameraParams.OnePixelResolution,
+                                                        ((_blobs[i].Width + _blobs[i].Height) / 2f) * _systemParams._cameraParams.OnePixelResolution),
                                                         mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
                         gp.DrawPath(new Pen(Brushes.Black, 2f / fCharacter), path);
                         gp.FillPath(Brushes.LightGreen, path);
-                        
+
                         // Image Bright
                         path = new GraphicsPath();
                         //fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + (_blobs[i].Height / fCharacter));
@@ -1833,7 +1845,7 @@ namespace atOpticalDecenter
                             gp.DrawLine(histpen, j, _systemParams._cameraParams.VResolution, j, (float)(_systemParams._cameraParams.VResolution - (_ImageHist_W[j] * scale)));
                         }
                         j = 0;
-                    }
+                    }                
 
                     path = new GraphicsPath();
                     //fptDrawString = new PointF((_blobs[0].CenterX + _blobs[0].Width) / 1f + (20 * fCharacter),
@@ -1847,9 +1859,9 @@ namespace atOpticalDecenter
                     //{
                     if (fDistance < Convert.ToSingle(rowAlignmentDistance.Properties.Value))
                     {
-                        path.AddString(string.Format("Distance:{0:000.000}mm, dx:{1:000.000}mm, dy:{2:000.000}mm ", fDistance, 
-                                                        (InspectionOpticalSpotCenterX - _blobs[0].CenterX) * _systemParams._cameraParams.OnePixelResolution * (-1), 
-                                                        (InspectionOpticalSpotCenterY - _blobs[0].CenterY) * _systemParams._cameraParams.OnePixelResolution * (-1)), mfont.FontFamily, 
+                        path.AddString(string.Format("Distance:{0:000.000}mm, dx:{1:000.000}mm, dy:{2:000.000}mm ", fDistance,
+                                                        (InspectionOpticalSpotCenterX - _blobs[0].CenterX) * _systemParams._cameraParams.OnePixelResolution * (-1),
+                                                        (InspectionOpticalSpotCenterY - _blobs[0].CenterY) * _systemParams._cameraParams.OnePixelResolution * (-1)), mfont.FontFamily,
                                                         (int)mfont.Style, mfont.Size, fptDrawString, null);
                         gp.DrawPath(new Pen(Brushes.Black, 3f / fCharacter), path);
                         gp.FillPath(Brushes.LimeGreen, path);
@@ -1881,8 +1893,8 @@ namespace atOpticalDecenter
                         path.AddString("FAIL", font.FontFamily, (int)font.Style, font.Size, fptDrawString, null);
                         gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
                         gp.FillPath(Brushes.Red, path);
-                    }                    
-                }
+                    }
+                }          
                 if (_isAutoInspectMeasurement)
                 {
                     //for Debugging
@@ -2041,7 +2053,7 @@ namespace atOpticalDecenter
                          1, 0, 0, crossMarkOffset);
 
                     Pen newPenPattern = new Pen(Color.Black, 3.0f);
-                    Pen oldPenPattern = new Pen(Color.LightGreen, 1.5f);                    
+                    Pen oldPenPattern = new Pen(Color.LightGreen, 1.5f);
 
                     gp.DrawPath(newPenPattern, path);
                     gp.DrawPath(oldPenPattern, path);
@@ -2065,8 +2077,8 @@ namespace atOpticalDecenter
                     Font mfont = new Font("Arial", 15f / fCharacter, FontStyle.Bold);
                     //fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + ((_blobs[i].Height / 2) / fCharacter));
                     fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (300 * fCharacter));
-                    path.AddString(string.Format("패턴유사도{0:0.0}%, 중심과 Pattern사이:{1:0.000}mm, dx:{2:0.000}mm, dy:{3:0.000}mm", 
-                                                    _workParams.InspectionPositions[0].Similarity, fLedAlignmentCenterToLedMarkDistance * _systemParams._cameraParams.OnePixelResolution, dx, dy), 
+                    path.AddString(string.Format("패턴유사도{0:0.0}%, 중심과 Pattern사이:{1:0.000}mm, dx:{2:0.000}mm, dy:{3:0.000}mm",
+                                                    _workParams.InspectionPositions[0].Similarity, fLedAlignmentCenterToLedMarkDistance * _systemParams._cameraParams.OnePixelResolution, dx, dy),
                                     mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
                     gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
                     gp.FillPath(Brushes.LimeGreen, path);
@@ -2091,9 +2103,9 @@ namespace atOpticalDecenter
 
 
                     Font refont = new Font("Arial", 50, FontStyle.Bold);
-                    
 
-                    PointF refptDrawString = new PointF(100,50);
+
+                    PointF refptDrawString = new PointF(100, 50);
 
                     if (fLedAlignmentCenterToLedMarkDistance * _systemParams._cameraParams.OnePixelResolution <= Convert.ToSingle(rowResultPosition.Properties.Value))
                     {
@@ -2109,9 +2121,11 @@ namespace atOpticalDecenter
                     }
                     //_patternMatching = false;
                 }
+                GC.Collect();
             }
             catch (Exception ex)
             {
+                ;
             }
         }
 
@@ -2713,7 +2727,8 @@ namespace atOpticalDecenter
                     }
                     spot.OpticalSpotBlobProcess(tempImage, _blobs, _workParams, Convert.ToInt32(rowThresholdH.Properties.Value),Convert.ToInt32(rowThresholdV.Properties.Value), Convert.ToInt32(Convert.ToSingle(rowSpotBlobHSizeMin.Properties.Value)/(_systemParams._cameraParams.OnePixelResolution)), Convert.ToInt32(Convert.ToSingle(rowSpotBlobHSizeMax.Properties.Value) / (_systemParams._cameraParams.OnePixelResolution)),ref _ImageHist_W,ref _ImageHist_H);
                     //spot.OpticalSpotBlobProcess(tempImage, _blobs, Convert.ToInt32(rowThreshold.Properties.Value), Convert.ToInt32(rowSpotBlobHSizeMin.Properties.Value), Convert.ToInt32(rowSpotBlobHSizeMax.Properties.Value));
-                    //history.OpticalHistoryProcess(tempImage, Convert.ToInt32(rowThreshold.Properties.Value));
+                    //history.OpticalHistoryProcess(tempImage, Convert.ToInt32(rowThreshold.Properties.Value));                    
+                    _LedPeak = GetImageCenterFromBrightHistogram(_blobs[0],0.95,ref _ImageHist_W,ref _ImageHist_H);
                     _isOpticalMeasurement = true;
                     _isAutoInspectMeasurement = false;
                     _resultImage = outImage;
@@ -4118,4 +4133,5 @@ namespace atOpticalDecenter
             }
         }
     }
+
 }
