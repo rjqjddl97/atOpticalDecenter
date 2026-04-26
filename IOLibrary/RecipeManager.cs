@@ -66,6 +66,7 @@ namespace RecipeManager
             workParam._LEDInspectionReferenceThresholdH = Convert.ToInt32(recipeData[WorkParamSections[2]]["LEDInspectionReferenceThresholdH"]);
             workParam._LEDInspectionReferenceThresholdV = Convert.ToInt32(recipeData[WorkParamSections[2]]["LEDInspectionReferenceThresholdV"]);
             workParam._LEDInspectionAlignmentDistance = Convert.ToSingle(recipeData[WorkParamSections[2]]["LEDInspectionAlignmentDistance"]);
+            workParam._LEDInspectionBrightPeakValid = Convert.ToSingle(recipeData[WorkParamSections[2]]["LEDInspectionBrightPeakValidSize"]);
             workParam._LEDInspectionDivergenceHMinAngle = Convert.ToSingle(recipeData[WorkParamSections[2]]["LEDInspectionDivergenceHMinAngle"]);
             workParam._LEDInspectionDivergenceHMaxAngle = Convert.ToSingle(recipeData[WorkParamSections[2]]["LEDInspectionDivergenceHMaxAngle"]);
             workParam._LEDInspectionDivergenceVMinAngle = Convert.ToSingle(recipeData[WorkParamSections[2]]["LEDInspectionDivergenceVMinAngle"]);
@@ -127,6 +128,7 @@ namespace RecipeManager
             recipeData[WorkParamSections[2]].AddKey("LEDInspectionReferenceThresholdH", workParam._LEDInspectionReferenceThresholdH.ToString());
             recipeData[WorkParamSections[2]].AddKey("LEDInspectionReferenceThresholdV", workParam._LEDInspectionReferenceThresholdV.ToString());
             recipeData[WorkParamSections[2]].AddKey("LEDInspectionAlignmentDistance", workParam._LEDInspectionAlignmentDistance.ToString());
+            recipeData[WorkParamSections[2]].AddKey("LEDInspectionBrightPeakValidSize", workParam._LEDInspectionBrightPeakValid.ToString());            
             recipeData[WorkParamSections[2]].AddKey("LEDInspectionDivergenceHMinAngle", workParam._LEDInspectionDivergenceHMinAngle.ToString());
             recipeData[WorkParamSections[2]].AddKey("LEDInspectionDivergenceHMaxAngle", workParam._LEDInspectionDivergenceHMaxAngle.ToString());
             recipeData[WorkParamSections[2]].AddKey("LEDInspectionDivergenceVMinAngle", workParam._LEDInspectionDivergenceVMinAngle.ToString());

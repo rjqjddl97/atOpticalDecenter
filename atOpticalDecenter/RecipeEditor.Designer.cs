@@ -70,6 +70,7 @@
             this.rowLEDInspectionReferenceThresholdV = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowLEDInspectionSpotMinSize = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowLEDInspectionSpotMaxSize = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowLEDInspectionBrightPeakValid = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowLEDInspectionAlignmentDistance = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowLEDInspectionDivergenceHMinAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowLEDInspectionDivergenceHMaxAngle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -459,6 +460,7 @@
             this.rowLEDInspectionReferenceThresholdV,
             this.rowLEDInspectionSpotMinSize,
             this.rowLEDInspectionSpotMaxSize,
+            this.rowLEDInspectionBrightPeakValid,
             this.rowLEDInspectionAlignmentDistance,
             this.rowLEDInspectionDivergenceHMinAngle,
             this.rowLEDInspectionDivergenceHMaxAngle,
@@ -552,6 +554,15 @@
             this.rowLEDInspectionSpotMaxSize.Name = "rowLEDInspectionSpotMaxSize";
             this.rowLEDInspectionSpotMaxSize.Properties.Caption = "광원 최대크기[mm]";
             this.rowLEDInspectionSpotMaxSize.Properties.Value = 100;
+            // 
+            // rowLEDInspectionBrightPeakValid
+            // 
+            this.rowLEDInspectionBrightPeakValid.Appearance.Options.UseTextOptions = true;
+            this.rowLEDInspectionBrightPeakValid.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowLEDInspectionBrightPeakValid.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowLEDInspectionBrightPeakValid.Name = "rowLEDInspectionBrightPeakValid";
+            this.rowLEDInspectionBrightPeakValid.Properties.Caption = "밝기최대 대비 유효 크기[%]";
+            this.rowLEDInspectionBrightPeakValid.Properties.Value = 75;
             // 
             // rowLEDInspectionAlignmentDistance
             // 
@@ -1339,5 +1350,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLEDInspectionDivergenceVMinAngle;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLEDInspectionDivergenceVMaxAngle;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLEDInspectionBrightPeakValid;
     }
 }

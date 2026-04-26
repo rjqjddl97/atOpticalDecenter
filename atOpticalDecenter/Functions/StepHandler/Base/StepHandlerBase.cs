@@ -150,6 +150,8 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
 
         public static Blob mFirstLedSpot = null;
         public static Blob mFinalLedSpot = null;
+        public static Blob mFirstLedPeak = null;
+        public static Blob mFinalLedPeak = null;
 
         public double[] _dHist_H = null;
         public double[] _dHist_V = null;
@@ -200,27 +202,50 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
 
                 if (mFirstLedSpot != null)
                 {
-                    mInspectResultData.mFirstLedSpot = mFirstLedSpot;
-                    mInspectResultData.fOpticalSpotImageBright = (double)mFirstLedSpot.PixelPeak;
-                    mInspectResultData.WorkDistance = (double)mWorkParam._LEDInspectionCameraDistance;
-                    mInspectResultData.CalculateLedBlob(0);
-                    mInspectResultData.fMeasureP1X = posx;
-                    mInspectResultData.fMeasureP1Y = posy + ((mFirstLedSpot.CenterX - (_ImageResolution_H / 2)) * fOnePixelResolution);
-                    mInspectResultData.fMeasureP1Z = posz + ((mFirstLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
-                    mInspectResultData.fOpticalCenterPositionX = posx;
-                    mInspectResultData.fOpticalCenterPositionY = posy;
-                    mInspectResultData.fOpticalCenterPositionZ = posz;
-                    mInspectResultData.fMeasureOpticaCenterP1X = 0;
-                    mInspectResultData.fMeasureOpticaCenterP1Y = (((_ImageResolution_H / 2) - mFirstLedSpot.CenterX) * fOnePixelResolution); 
-                    mInspectResultData.fMeasureOpticaCenterP1Z = ((mFirstLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution); 
-                    Array.Copy(_dHist_H,0,mInspectResultData._ImageHist_H,0,_dHist_H.Length);
-                    Array.Copy(_dHist_V,0,mInspectResultData._ImageHist_V,0,_dHist_V.Length);
-                    LedSpotBlobUpdate(mFirstLedSpot);
-                    if (mSystemParam._saveResultLEDMeasurement)
+                    mFirstLedPeak = null;
+                    mFirstLedPeak = GetPeakCenterFromBrightHistogram(mFirstLedSpot, mWorkParam._LEDInspectionBrightPeakValid, ref _dHist_H,ref _dHist_V);
+                    //mInspectResultData.mFirstLedSpot = mFirstLedSpot;
+                    //mInspectResultData.fOpticalSpotImageBright = (double)mFirstLedSpot.PixelPeak;
+                    //mInspectResultData.WorkDistance = (double)mWorkParam._LEDInspectionCameraDistance;
+                    //mInspectResultData.CalculateLedBlob(0);
+                    //mInspectResultData.fMeasureP1X = posx;
+                    //mInspectResultData.fMeasureP1Y = posy + ((mFirstLedSpot.CenterX - (_ImageResolution_H / 2)) * fOnePixelResolution);
+                    //mInspectResultData.fMeasureP1Z = posz + ((mFirstLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
+                    //mInspectResultData.fOpticalCenterPositionX = posx;
+                    //mInspectResultData.fOpticalCenterPositionY = posy;
+                    //mInspectResultData.fOpticalCenterPositionZ = posz;
+                    //mInspectResultData.fMeasureOpticaCenterP1X = 0;
+                    //mInspectResultData.fMeasureOpticaCenterP1Y = (((_ImageResolution_H / 2) - mFirstLedSpot.CenterX) * fOnePixelResolution);
+                    //mInspectResultData.fMeasureOpticaCenterP1Z = ((mFirstLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
+                    //Array.Copy(_dHist_H, 0, mInspectResultData._ImageHist_H, 0, _dHist_H.Length);
+                    //Array.Copy(_dHist_V, 0, mInspectResultData._ImageHist_V, 0, _dHist_V.Length);
+                    //LedSpotBlobUpdate(mFirstLedSpot);
+                    if (mFirstLedPeak != null)
                     {
-                        inspectsource.Save(filepath + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + "_P1.bmp");
-                    }                    
-                    return true;
+                        mInspectResultData.mFirstLedSpot = mFirstLedPeak;
+                        mInspectResultData.fOpticalSpotImageBright = (double)mFirstLedPeak.PixelPeak;
+                        mInspectResultData.WorkDistance = (double)mWorkParam._LEDInspectionCameraDistance;
+                        mInspectResultData.CalculateLedBlob(0);
+                        mInspectResultData.fMeasureP1X = posx;
+                        mInspectResultData.fMeasureP1Y = posy + ((mFirstLedPeak.CenterX - (_ImageResolution_H / 2)) * fOnePixelResolution);
+                        mInspectResultData.fMeasureP1Z = posz + ((mFirstLedPeak.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
+                        mInspectResultData.fOpticalCenterPositionX = posx;
+                        mInspectResultData.fOpticalCenterPositionY = posy;
+                        mInspectResultData.fOpticalCenterPositionZ = posz;
+                        mInspectResultData.fMeasureOpticaCenterP1X = 0;
+                        mInspectResultData.fMeasureOpticaCenterP1Y = (((_ImageResolution_H / 2) - mFirstLedPeak.CenterX) * fOnePixelResolution);
+                        mInspectResultData.fMeasureOpticaCenterP1Z = ((mFirstLedPeak.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
+                        Array.Copy(_dHist_H, 0, mInspectResultData._ImageHist_H, 0, _dHist_H.Length);
+                        Array.Copy(_dHist_V, 0, mInspectResultData._ImageHist_V, 0, _dHist_V.Length);
+                        LedSpotBlobUpdate(mFirstLedPeak);
+                        if (mSystemParam._saveResultLEDMeasurement)
+                        {
+                            inspectsource.Save(filepath + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + "_P1.bmp");
+                        }
+                        return true;
+                    }
+                    else
+                        return false;
                 }
                 else
                     return false;
@@ -241,24 +266,44 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
 
                 if (mFinalLedSpot != null)
                 {
-                    mInspectResultData.mFinalLedSpot = mFinalLedSpot;
-                    mInspectResultData.CalculateLedBlob(1);
-                    mInspectResultData.fMeasureP2X = posx;
-                    mInspectResultData.fMeasureP2Y = posy + ((mFinalLedSpot.CenterX - (_ImageResolution_H / 2)) * fOnePixelResolution);
-                    mInspectResultData.fMeasureP2Z = posz + ((mFinalLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
-                    mInspectResultData.fMeasureOpticaCenterP2X = 0;
-                    mInspectResultData.fMeasureOpticaCenterP2Y = (((_ImageResolution_H / 2) - mFinalLedSpot.CenterX) * fOnePixelResolution);
-                    mInspectResultData.fMeasureOpticaCenterP2Z = ((mFinalLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
-                    mInspectResultData.CalculateOpticalDecenter();
+                    mFinalLedPeak = null;
+                    mFinalLedPeak = GetPeakCenterFromBrightHistogram(mFinalLedSpot, mWorkParam._LEDInspectionBrightPeakValid, ref _dHist_H, ref _dHist_V);
+                    //mInspectResultData.mFinalLedSpot = mFinalLedSpot;
+                    //mInspectResultData.CalculateLedBlob(1);
+                    //mInspectResultData.fMeasureP2X = posx;
+                    //mInspectResultData.fMeasureP2Y = posy + ((mFinalLedSpot.CenterX - (_ImageResolution_H / 2)) * fOnePixelResolution);
+                    //mInspectResultData.fMeasureP2Z = posz + ((mFinalLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
+                    //mInspectResultData.fMeasureOpticaCenterP2X = 0;
+                    //mInspectResultData.fMeasureOpticaCenterP2Y = (((_ImageResolution_H / 2) - mFinalLedSpot.CenterX) * fOnePixelResolution);
+                    //mInspectResultData.fMeasureOpticaCenterP2Z = ((mFinalLedSpot.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
+                    //mInspectResultData.CalculateOpticalDecenter();
 
-                    Array.Copy(_dHist_H, 0, mInspectResultData._ImageHist_H, 0, _dHist_H.Length);
-                    Array.Copy(_dHist_V, 0, mInspectResultData._ImageHist_V, 0, _dHist_V.Length);
-                    LedSpotBlobUpdate(mFinalLedSpot);
-                    if (mSystemParam._saveResultLEDMeasurement)
+                    //Array.Copy(_dHist_H, 0, mInspectResultData._ImageHist_H, 0, _dHist_H.Length);
+                    //Array.Copy(_dHist_V, 0, mInspectResultData._ImageHist_V, 0, _dHist_V.Length);
+                    //LedSpotBlobUpdate(mFinalLedSpot);
+                    if (mFinalLedPeak != null)
                     {
-                        inspectsource.Save(filepath + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + "_P2.bmp");
-                    }                    
-                    return true;
+                        mInspectResultData.mFinalLedSpot = mFinalLedPeak;
+                        mInspectResultData.CalculateLedBlob(1);
+                        mInspectResultData.fMeasureP2X = posx;
+                        mInspectResultData.fMeasureP2Y = posy + ((mFinalLedPeak.CenterX - (_ImageResolution_H / 2)) * fOnePixelResolution);
+                        mInspectResultData.fMeasureP2Z = posz + ((mFinalLedPeak.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
+                        mInspectResultData.fMeasureOpticaCenterP2X = 0;
+                        mInspectResultData.fMeasureOpticaCenterP2Y = (((_ImageResolution_H / 2) - mFinalLedPeak.CenterX) * fOnePixelResolution);
+                        mInspectResultData.fMeasureOpticaCenterP2Z = ((mFinalLedPeak.CenterY - (_ImageResolution_V / 2)) * fOnePixelResolution);
+                        mInspectResultData.CalculateOpticalDecenter();
+
+                        Array.Copy(_dHist_H, 0, mInspectResultData._ImageHist_H, 0, _dHist_H.Length);
+                        Array.Copy(_dHist_V, 0, mInspectResultData._ImageHist_V, 0, _dHist_V.Length);
+                        LedSpotBlobUpdate(mFinalLedPeak);
+                        if (mSystemParam._saveResultLEDMeasurement)
+                        {
+                            inspectsource.Save(filepath + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + "_P2.bmp");
+                        }
+                        return true;
+                    }
+                    else
+                        return false;
                 }
                 else
                     return false;
@@ -474,6 +519,141 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             mStopWatchForOptionInspection.Stop();
             //for (int i = 0; i < NumberOfCapacity; i++)
             //    mADMSProductResultInfoForOptionInspection[i].OptionInspectionElapsedTime = string.Format("{0:0.0}", (float)(mStopWatchForOptionInspection.ElapsedMilliseconds * 0.001));
+        }
+        public Blob GetPeakCenterFromBrightHistogram(Blob resultLed, double SizeRatio, ref double[] dHist_W, ref double[] dHist_H)
+        {
+            Blob _peakBlob = new Blob();
+
+            List<Point> _peaklist = new List<Point>();
+            List<Point> _listpeakCenter = new List<Point>();
+
+            bool _risingpeak = false;
+            bool _fallingpreak = false;
+            bool _peakcenter = false;
+
+            double dVPeak_Max = 0;
+            double dHPeak_Max = 0;
+
+            _peakBlob.PixelPeakXIndex = resultLed.PixelPeakXIndex;
+            _peakBlob.PixelPeakYIndex = resultLed.PixelPeakYIndex;
+            _peakBlob.PixelPeak = resultLed.PixelPeak;
+
+            _peaklist.Clear();
+            dHPeak_Max = dHist_W[resultLed.PixelPeakXIndex];
+            Point _tempPoint = new Point();
+            Point _CenterPoint = new Point();
+            for (int i = 0; i < dHist_W.Length; i++)
+            {
+                if (dHist_W[i] >= Math.Round(dHPeak_Max * SizeRatio))
+                {
+                    if (_risingpeak == false)
+                    {
+                        _tempPoint.X = i;
+                        _risingpeak = true;
+                    }
+                    if (dHist_W[i] == dHPeak_Max)
+                    {
+                        if (_peakcenter == false)
+                        {
+                            _CenterPoint.X = i;
+                            _peakcenter = true;
+                        }
+                    }
+                    else
+                    {
+                        if (_peakcenter == true)
+                        {
+                            _CenterPoint.Y = i - 1;
+                            _listpeakCenter.Add(_CenterPoint);
+                            _peakcenter = false;
+                        }
+                    }
+                }
+                else
+                {
+                    if (_risingpeak == true)
+                    {
+                        _tempPoint.Y = i - 1;
+                        _peaklist.Add(_tempPoint);
+                        _risingpeak = false;
+                    }
+                }
+            }
+            if (_peaklist.Count >= 1)
+            {
+                _peakBlob.Width = _peaklist[_peaklist.Count - 1].Y - _peaklist[0].X;
+                _peakBlob.Left = _peaklist[0].X;
+            }
+            else
+                _peakBlob.Width = 0;
+
+            if (_listpeakCenter.Count >= 1)
+            {
+                _peakBlob.CenterX = _listpeakCenter[0].X + ((_listpeakCenter[_listpeakCenter.Count - 1].Y - _listpeakCenter[0].X) / 2);
+            }
+            else
+                _peakBlob.CenterX = 0;
+
+            _peakcenter = false;
+            _risingpeak = false;
+            _peaklist.Clear();
+            _listpeakCenter.Clear();
+            dVPeak_Max = dHist_H[resultLed.PixelPeakYIndex];
+
+            for (int i = 0; i < dHist_H.Length; i++)
+            {
+                if (dHist_H[i] >= Math.Round(dVPeak_Max * SizeRatio))
+                {
+                    if (_risingpeak == false)
+                    {
+                        _tempPoint.X = i;
+                        _risingpeak = true;
+                    }
+                    if (dHist_H[i] == dVPeak_Max)
+                    {
+                        if (_peakcenter == false)
+                        {
+                            _CenterPoint.X = i;
+                            _peakcenter = true;
+                        }
+                    }
+                    else
+                    {
+                        if (_peakcenter == true)
+                        {
+                            _CenterPoint.Y = i - 1;
+                            _listpeakCenter.Add(_CenterPoint);
+                            _peakcenter = false;
+                        }
+                    }
+                }
+                else
+                {
+                    if (_risingpeak == true)
+                    {
+                        _tempPoint.Y = i - 1;
+                        _peaklist.Add(_tempPoint);
+                        _risingpeak = false;
+                    }
+                }
+            }
+            if (_peaklist.Count >= 1)
+            {
+                _peakBlob.Height = _peaklist[_peaklist.Count - 1].Y - _peaklist[0].X;
+                _peakBlob.Top = _peaklist[0].X;
+            }
+            else
+                _peakBlob.Height = 0;
+
+            if (_listpeakCenter.Count >= 1)
+            {
+                _peakBlob.CenterY = _listpeakCenter[0].X + ((_listpeakCenter[_listpeakCenter.Count - 1].Y - _listpeakCenter[0].X) / 2);
+            }
+            else
+                _peakBlob.CenterY = 0;
+
+
+            return _peakBlob;
         }
         public Bitmap ConverterToGray(Bitmap colorBitmap)
         {

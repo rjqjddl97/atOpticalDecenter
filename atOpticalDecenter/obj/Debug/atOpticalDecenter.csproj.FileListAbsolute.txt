@@ -1297,3 +1297,4 @@ D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\atOpticalDecenter\obj\Debug\a
 D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.csproj.CopyComplete
 D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.exe
 D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.pdb
+D:\Work\C_Sharp\2025\PhotoOpticalInspect\OpticalDecenter\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.InspectResultForm.resources

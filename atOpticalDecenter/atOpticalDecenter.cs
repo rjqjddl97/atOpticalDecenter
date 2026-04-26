@@ -2728,7 +2728,7 @@ namespace atOpticalDecenter
                     spot.OpticalSpotBlobProcess(tempImage, _blobs, _workParams, Convert.ToInt32(rowThresholdH.Properties.Value),Convert.ToInt32(rowThresholdV.Properties.Value), Convert.ToInt32(Convert.ToSingle(rowSpotBlobHSizeMin.Properties.Value)/(_systemParams._cameraParams.OnePixelResolution)), Convert.ToInt32(Convert.ToSingle(rowSpotBlobHSizeMax.Properties.Value) / (_systemParams._cameraParams.OnePixelResolution)),ref _ImageHist_W,ref _ImageHist_H);
                     //spot.OpticalSpotBlobProcess(tempImage, _blobs, Convert.ToInt32(rowThreshold.Properties.Value), Convert.ToInt32(rowSpotBlobHSizeMin.Properties.Value), Convert.ToInt32(rowSpotBlobHSizeMax.Properties.Value));
                     //history.OpticalHistoryProcess(tempImage, Convert.ToInt32(rowThreshold.Properties.Value));                    
-                    _LedPeak = GetImageCenterFromBrightHistogram(_blobs[0],0.95,ref _ImageHist_W,ref _ImageHist_H);
+                    _LedPeak = GetImageCenterFromBrightHistogram(_blobs[0],Convert.ToSingle(rowSpotBrightPeakValidRatio.Properties.Value)/100,ref _ImageHist_W,ref _ImageHist_H);
                     _isOpticalMeasurement = true;
                     _isAutoInspectMeasurement = false;
                     _resultImage = outImage;
@@ -3828,6 +3828,7 @@ namespace atOpticalDecenter
                     rowThresholdV.Properties.Caption = "Threshold Vertical[0~255]";
                     rowSpotBlobHSizeMin.Properties.Caption = "Min Spot Size[mm]";
                     rowSpotBlobHSizeMax.Properties.Caption = "Max Spot Size[mm]";
+                    rowSpotBrightPeakValidRatio.Properties.Caption = "Valid Size by Bright Peak[%]";
                     rowAlignmentDistance.Properties.Caption = "Optical Eccentricity Value[mm]";
                     rowDivergenceAngle.Properties.Caption = "DivergenceAngle Value[˚]";
 
@@ -3939,6 +3940,7 @@ namespace atOpticalDecenter
                     rowThresholdV.Properties.Caption = "수직 인식 임계값[0~255]";
                     rowSpotBlobHSizeMin.Properties.Caption = "광원 최소크기[mm]";
                     rowSpotBlobHSizeMax.Properties.Caption = "광원 최대크기[mm]";
+                    rowSpotBrightPeakValidRatio.Properties.Caption = "최대밝기대비 유효크기[%]";
                     rowAlignmentDistance.Properties.Caption = "편심 합격거리[mm]";
                     rowDivergenceAngle.Properties.Caption = "발산각 합격각도[˚]";
 

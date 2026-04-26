@@ -34,6 +34,7 @@ namespace RecipeManager
         public int _LEDInspectionReferenceThresholdV { get; set; } = 128;
         public float _LEDInspectionSpotMinSize { get; set; } = 20F;
         public float _LEDInspectionSpotMaxSize { get; set; } = 100F;
+        public float _LEDInspectionBrightPeakValid { get; set; } = 0.95F;
         public float _LEDInspectionAlignmentDistance { get; set; } = 2F;
         public float _LEDInspectionDivergenceHMinAngle { get; set; } = -4F;
         public float _LEDInspectionDivergenceHMaxAngle { get; set; } = 4F;

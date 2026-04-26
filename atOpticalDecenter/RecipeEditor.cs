@@ -66,6 +66,7 @@ namespace atOpticalDecenter
                 rowLEDInspectionReferenceThresholdV.Properties.Caption = "Threshold Vertical[0~255]";
                 rowLEDInspectionSpotMinSize.Properties.Caption = "Min Spot Size[mm]";
                 rowLEDInspectionSpotMaxSize.Properties.Caption = "Max Spot Size[mm]";
+                rowLEDInspectionBrightPeakValid.Properties.Caption = "Valid Size By Bright Ratio[%]";
                 rowLEDInspectionAlignmentDistance.Properties.Caption = "Reference Eccentricity[mm]";
                 rowLEDInspectionDivergenceHMinAngle.Properties.Caption = "Reference Eccentricity Horizon Min Angle[˚]";
                 rowLEDInspectionDivergenceHMaxAngle.Properties.Caption = "Reference Eccentricity Horizon Max Angle[˚]";
@@ -121,6 +122,7 @@ namespace atOpticalDecenter
                 rowLEDInspectionReferenceThresholdV.Properties.Caption = "수직 인식 임계값[0~255]";
                 rowLEDInspectionSpotMinSize.Properties.Caption = "광원 최소크기[mm]";
                 rowLEDInspectionSpotMaxSize.Properties.Caption = "광원 최대크기[mm]";
+                rowLEDInspectionBrightPeakValid.Properties.Caption = " 밝기최대대비 유효크기[%]";
                 rowLEDInspectionAlignmentDistance.Properties.Caption = "편심 합격거리[mm]";
                 rowLEDInspectionDivergenceHMinAngle.Properties.Caption = "편심각 합격범위 수평 최소각도[˚]";
                 rowLEDInspectionDivergenceHMaxAngle.Properties.Caption = "편심각 합격범위 수평 최대각도[˚]";
@@ -207,6 +209,7 @@ namespace atOpticalDecenter
             _workParam._LEDInspectionReferenceThresholdH = Convert.ToInt32(rowLEDInspectionReferenceThresholdH.Properties.Value);
             _workParam._LEDInspectionReferenceThresholdV = Convert.ToInt32(rowLEDInspectionReferenceThresholdV.Properties.Value);
             _workParam._LEDInspectionAlignmentDistance = Convert.ToSingle(rowLEDInspectionAlignmentDistance.Properties.Value);
+            _workParam._LEDInspectionBrightPeakValid = Convert.ToSingle(rowLEDInspectionBrightPeakValid.Properties.Value) / 100;            
             _workParam._LEDInspectionDivergenceHMinAngle = Convert.ToSingle(rowLEDInspectionDivergenceHMinAngle.Properties.Value);
             _workParam._LEDInspectionDivergenceHMaxAngle = Convert.ToSingle(rowLEDInspectionDivergenceHMaxAngle.Properties.Value);
             _workParam._LEDInspectionDivergenceVMinAngle = Convert.ToSingle(rowLEDInspectionDivergenceVMinAngle.Properties.Value);
@@ -254,6 +257,7 @@ namespace atOpticalDecenter
             rowLEDInspectionReferenceThresholdH.Properties.Value = _workParam._LEDInspectionReferenceThresholdH;
             rowLEDInspectionReferenceThresholdV.Properties.Value = _workParam._LEDInspectionReferenceThresholdV;
             rowLEDInspectionAlignmentDistance.Properties.Value = _workParam._LEDInspectionAlignmentDistance;
+            rowLEDInspectionBrightPeakValid.Properties.Value = _workParam._LEDInspectionBrightPeakValid * 100;
             rowLEDInspectionDivergenceHMinAngle.Properties.Value = _workParam._LEDInspectionDivergenceHMinAngle;
             rowLEDInspectionDivergenceHMaxAngle.Properties.Value = _workParam._LEDInspectionDivergenceHMaxAngle;
             rowLEDInspectionDivergenceVMinAngle.Properties.Value = _workParam._LEDInspectionDivergenceVMinAngle;
@@ -1199,6 +1203,23 @@ namespace atOpticalDecenter
                 barButtonItemRecipeSave.Enabled = true;
                 _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("편심 합격 기준 거리가 {0}로 변경되었습니다.", _workParam._LEDInspectionAlignmentDistance));
             }
+            else if (e.Row == rowLEDInspectionBrightPeakValid)
+            {
+                fValue = Convert.ToSingle(rowLEDInspectionBrightPeakValid.Properties.Value);
+
+                if (fValue <= 0 || fValue > 100)
+                {
+                    MessageBox.Show(string.Format("밝기기준 유효크기율을 잘못 입력되었습니다.{0}", strTemp), "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    rowLEDInspectionBrightPeakValid.Properties.Value = _workParam._LEDInspectionBrightPeakValid;
+                    vGridControlInspectionParam.Refresh();
+                    return;
+                }
+
+                _workParam._LEDInspectionAlignmentDistance = fValue / 100;
+
+                barButtonItemRecipeSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("밝기기준 유효크기율이 {0}로 변경되었습니다.", _workParam._LEDInspectionBrightPeakValid));
+            }
             else if (e.Row == rowLEDInspectionDivergenceHMinAngle)
             {
                 fValue = Convert.ToSingle(rowLEDInspectionDivergenceHMinAngle.Properties.Value);
@@ -1403,6 +1424,7 @@ namespace atOpticalDecenter
             rowLEDInspectionExposureTime.Properties.Value = _workParam._LEDInspectionExposureTime;
             rowLEDInspectionAcquisitionDelayTime.Properties.Value = _workParam._LEDInspectionAcquisitionDelaytime;
             rowLEDInspectionAlignmentDistance.Properties.Value = _workParam._LEDInspectionAlignmentDistance;
+            rowLEDInspectionBrightPeakValid.Properties.Value = _workParam._LEDInspectionBrightPeakValid * 100;
             rowLEDInspectionDivergenceHMinAngle.Properties.Value = _workParam._LEDInspectionDivergenceHMinAngle;
             rowLEDInspectionDivergenceHMaxAngle.Properties.Value = _workParam._LEDInspectionDivergenceHMaxAngle;
             rowLEDInspectionDivergenceVMinAngle.Properties.Value = _workParam._LEDInspectionDivergenceVMinAngle;
@@ -1697,6 +1719,23 @@ namespace atOpticalDecenter
             }
 
             _workParam._LEDInspectionAlignmentDistance = fValue;
+
+            fValue = Convert.ToSingle(rowLEDInspectionBrightPeakValid.Properties.Value);
+
+            if (fValue <= 0 || fValue > 100)
+            {
+                MessageBox.Show(string.Format("밝기기준 유효크기율을 잘못 입력되었습니다.{0}", strTemp), "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                rowLEDInspectionBrightPeakValid.Properties.Value = _workParam._LEDInspectionBrightPeakValid;
+                vGridControlInspectionParam.Refresh();
+                return;
+            }
+
+            if (_workParam._LEDInspectionBrightPeakValid != (fValue / 100))
+            {
+                barButtonItemRecipeSave.Enabled = true;
+            }
+
+            _workParam._LEDInspectionAlignmentDistance = fValue / 100;
 
             fValue = Convert.ToSingle(rowLEDInspectionDivergenceHMinAngle.Properties.Value);
 
