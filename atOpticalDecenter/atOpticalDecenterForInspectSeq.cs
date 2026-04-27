@@ -847,7 +847,7 @@ namespace atOpticalDecenter
         {
             Blob _peakBlob = new Blob();
 
-            List<Point> _peaklist = new List<Point>();            
+            List<Point> _peaklist = new List<Point>();
             List<Point> _listpeakCenter = new List<Point>();
 
             bool _risingpeak = false;
@@ -861,7 +861,7 @@ namespace atOpticalDecenter
             _peakBlob.PixelPeakYIndex = resultLed.PixelPeakYIndex;
             _peakBlob.PixelPeak = resultLed.PixelPeak;
 
-            _peaklist.Clear();            
+            _peaklist.Clear();
             dHPeak_Max = dHist_W[resultLed.PixelPeakXIndex];
             Point _tempPoint = new Point();
             Point _CenterPoint = new Point();
@@ -870,7 +870,7 @@ namespace atOpticalDecenter
                 if (dHist_W[i] >= Math.Round(dHPeak_Max * SizeRatio))
                 {
                     if (_risingpeak == false)
-                    {                        
+                    {
                         _tempPoint.X = i;
                         _risingpeak = true;
                     }
@@ -886,7 +886,7 @@ namespace atOpticalDecenter
                     {
                         if (_peakcenter == true)
                         {
-                            _CenterPoint.Y = i-1;
+                            _CenterPoint.Y = i - 1;
                             _listpeakCenter.Add(_CenterPoint);
                             _peakcenter = false;
                         }
@@ -895,7 +895,7 @@ namespace atOpticalDecenter
                 else
                 {
                     if (_risingpeak == true)
-                    {                        
+                    {
                         _tempPoint.Y = i - 1;
                         _peaklist.Add(_tempPoint);
                         _risingpeak = false;
@@ -906,16 +906,17 @@ namespace atOpticalDecenter
             {
                 _peakBlob.Width = _peaklist[_peaklist.Count - 1].Y - _peaklist[0].X;
                 _peakBlob.Left = _peaklist[0].X;
+                _peakBlob.CenterX = _peaklist[0].X + ((_peaklist[_peaklist.Count - 1].Y - _peaklist[0].X) / 2);
             }
             else
                 _peakBlob.Width = 0;
 
-            if (_listpeakCenter.Count >= 1)
-            {
-                _peakBlob.CenterX = _listpeakCenter[0].X + ((_listpeakCenter[_listpeakCenter.Count - 1].Y - _listpeakCenter[0].X) / 2);                
-            }
-            else
-                _peakBlob.CenterX = 0;
+            //if (_listpeakCenter.Count >= 1)            
+            //{
+            //    _peakBlob.CenterX = _listpeakCenter[0].X + ((_listpeakCenter[_listpeakCenter.Count - 1].Y - _listpeakCenter[0].X) / 2);                
+            //}
+            //else
+            //    _peakBlob.CenterX = 0;
 
             _peakcenter = false;
             _risingpeak = false;
@@ -928,7 +929,7 @@ namespace atOpticalDecenter
                 if (dHist_H[i] >= Math.Round(dVPeak_Max * SizeRatio))
                 {
                     if (_risingpeak == false)
-                    {                        
+                    {
                         _tempPoint.X = i;
                         _risingpeak = true;
                     }
@@ -953,7 +954,7 @@ namespace atOpticalDecenter
                 else
                 {
                     if (_risingpeak == true)
-                    {                        
+                    {
                         _tempPoint.Y = i - 1;
                         _peaklist.Add(_tempPoint);
                         _risingpeak = false;
@@ -964,17 +965,17 @@ namespace atOpticalDecenter
             {
                 _peakBlob.Height = _peaklist[_peaklist.Count - 1].Y - _peaklist[0].X;
                 _peakBlob.Top = _peaklist[0].X;
+                _peakBlob.CenterY = _peaklist[0].X + ((_peaklist[_peaklist.Count - 1].Y - _peaklist[0].X) / 2);
             }
             else
                 _peakBlob.Height = 0;
 
-            if (_listpeakCenter.Count >= 1)
-            {
-                _peakBlob.CenterY = _listpeakCenter[0].X + ((_listpeakCenter[_listpeakCenter.Count - 1].Y - _listpeakCenter[0].X) / 2);
-            }
-            else
-                _peakBlob.CenterY = 0;
-            
+            //if (_listpeakCenter.Count >= 1)            
+            //{
+            //    _peakBlob.CenterY = _listpeakCenter[0].X + ((_listpeakCenter[_listpeakCenter.Count - 1].Y - _listpeakCenter[0].X) / 2);                
+            //}
+            //else
+            //    _peakBlob.CenterY = 0;
 
             return _peakBlob;
         }
