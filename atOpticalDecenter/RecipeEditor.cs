@@ -1215,7 +1215,7 @@ namespace atOpticalDecenter
                     return;
                 }
 
-                _workParam._LEDInspectionAlignmentDistance = fValue / 100;
+                _workParam._LEDInspectionBrightPeakValid = fValue / 100;
 
                 barButtonItemRecipeSave.Enabled = true;
                 _log.WriteLog(LogLevel.Info, LogClass.RecipeEditor.ToString(), string.Format("밝기기준 유효크기율이 {0}로 변경되었습니다.", _workParam._LEDInspectionBrightPeakValid));

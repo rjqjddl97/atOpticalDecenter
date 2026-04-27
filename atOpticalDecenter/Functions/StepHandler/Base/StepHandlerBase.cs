@@ -590,6 +590,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             if (_listpeakCenter.Count >= 1)
             {
                 _peakBlob.CenterX = _listpeakCenter[0].X + ((_listpeakCenter[_listpeakCenter.Count - 1].Y - _listpeakCenter[0].X) / 2);
+                //_peakBlob.CenterX = _peaklist[0].X + ((_peaklist[_listpeakCenter.Count - 1].Y - _peaklist[0].X) / 2);
             }
             else
                 _peakBlob.CenterX = 0;
@@ -648,6 +649,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             if (_listpeakCenter.Count >= 1)
             {
                 _peakBlob.CenterY = _listpeakCenter[0].X + ((_listpeakCenter[_listpeakCenter.Count - 1].Y - _listpeakCenter[0].X) / 2);
+                //_peakBlob.CenterY = _peaklist[0].X + ((_peaklist[_listpeakCenter.Count - 1].Y - _peaklist[0].X) / 2);
             }
             else
                 _peakBlob.CenterY = 0;
