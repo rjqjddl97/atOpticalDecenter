@@ -583,7 +583,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             {
                 _peakBlob.Width = _peaklist[_peaklist.Count - 1].Y - _peaklist[0].X;
                 _peakBlob.Left = _peaklist[0].X;
-                _peakBlob.CenterX = _peaklist[0].X + ((_peaklist[_listpeakCenter.Count - 1].Y - _peaklist[0].X) / 2);
+                _peakBlob.CenterX = _peaklist[0].X + ((_peaklist[_peaklist.Count - 1].Y - _peaklist[0].X) / 2);
             }
             else
                 _peakBlob.Width = 0;
@@ -642,7 +642,7 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
             {
                 _peakBlob.Height = _peaklist[_peaklist.Count - 1].Y - _peaklist[0].X;
                 _peakBlob.Top = _peaklist[0].X;
-                _peakBlob.CenterY = _peaklist[0].X + ((_peaklist[_listpeakCenter.Count - 1].Y - _peaklist[0].X) / 2);
+                _peakBlob.CenterY = _peaklist[0].X + ((_peaklist[_peaklist.Count - 1].Y - _peaklist[0].X) / 2);
             }
             else
                 _peakBlob.Height = 0;
