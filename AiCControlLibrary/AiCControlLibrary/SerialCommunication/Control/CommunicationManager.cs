@@ -12,16 +12,18 @@ namespace AiCControlLibrary.SerialCommunication.Control
     public class CommunicationManager
     {
         public delegate void DataSendRequestEventHandler(byte[] data);
+        public delegate void DataSendRequestmessabeEventHandler(AiCData.CommandMassege msg, byte[] data);
         public delegate void DataPasorEventHandler(AiCData data);
         public static event DataSendRequestEventHandler CommandSendRequestEvent;
         public static event DataSendRequestEventHandler DataSendRequestEvent;
+        public static event DataSendRequestmessabeEventHandler DataSendMsgRequestEvent;
         //public static event DataPasorEventHandler DataReceivePasorEvent;
         //public event Action<byte[]> SendDataEvnet;
         //        public static event Action<byte[]> SerialSendedData;                // Send Data를 Log 기록 이벤트
         //        public static event Action<byte[]> SerialReceivedRawData;           // Receive Raw Data를 Log 기록 이벤트
         //        public static event Action<byte[]> SerialReceivedParsedData;        // Receive Parsor Data를 Log 기록 이벤트
         //        public event Action<string, bool> PortOpenedEvent;
-        public event Action<AiCData.AiCMotionDatas> ReceiveDataUpdateEvent;
+        public event Action<AiCData> ReceiveDataUpdateEvent;
 
         readonly SerialProcessEngine mSerialEngine;
         readonly SerialHandler mSerialHandler;
@@ -38,6 +40,15 @@ namespace AiCControlLibrary.SerialCommunication.Control
             mDrvCtrl = mSerialEngine.m_AiCDataCtrl;
             //ConnectEvents();
         }
+        public CommunicationManager(byte id)
+        {
+            mSerialEngine = new SerialProcessEngine();
+            //mSerialHandler = new SerialHandler();
+
+            mSerialHandler = mSerialEngine.m_SerialHandler;
+            mDrvCtrl = mSerialEngine.m_AiCDataCtrl;
+            //ConnectEvents();
+        }
         ~CommunicationManager() 
         {
             StopEngine();
@@ -46,24 +57,36 @@ namespace AiCControlLibrary.SerialCommunication.Control
         {
             //Connect Events.
             mSerialEngine.RequestDataEventHandler += mSerialHandler.SendData;
-            mSerialEngine.m_AiCDataCtrl.MotionMonitorEvent += PrevalueUpdateData;
-            mSerialHandler.ReceivedQueueDataEventHandler += mSerialEngine.ReceiveQueueData;
+            mSerialEngine.ReceiveAiCData += ReceiveUpdateData;
             //mSerialHandler.ParsedDataReceivedEvent += mSerialEngine.ParsingData;
             CommandSendRequestEvent += SendCommandToEngine;
             DataSendRequestEvent += SendDataToEngine;
+            DataSendMsgRequestEvent += SendCommandWithmessage;
 
             //DataReceivePasorEvent += mSerialEngine.ParsedDataReceivedEvent;
-           // mSerialHandler.SendDataEvent += SerialCommunicateSendedDataReceiver;      // Send Data Log 기록 이벤트                  
+            // mSerialHandler.SendDataEvent += SerialCommunicateSendedDataReceiver;      // Send Data Log 기록 이벤트                  
         }
         private void DisconnectEvents()
         {
             mSerialEngine.RequestDataEventHandler -= mSerialHandler.SendData;
-            mSerialEngine.m_AiCDataCtrl.MotionMonitorEvent -= PrevalueUpdateData;
-            mSerialHandler.ReceivedQueueDataEventHandler -= mSerialEngine.ReceiveQueueData;
+            mSerialEngine.ReceiveAiCData -= ReceiveUpdateData;
             CommandSendRequestEvent -= SendCommandToEngine;
             DataSendRequestEvent -= SendDataToEngine;
+            DataSendMsgRequestEvent -= SendCommandWithmessage;
         }
-
+        public void InitialPeriodData(byte[] ids)
+        {
+            List<byte[]> reqData = new List<byte[]>();
+            for (int i = 0; i < ids.Length; i++)
+                reqData.Add(mDrvCtrl.GetSettingMotionDatas(ids[i]));
+            mSerialEngine._ContinuousDataList = reqData;
+        }
+        public void InitialPeriodData(byte id)
+        {
+            List<byte[]> reqData = new List<byte[]>();
+            reqData.Add(mDrvCtrl.GetSettingMotionDatas(id));
+            mSerialEngine._ContinuousDataList = reqData;
+        }
         public void SetSerialData(SerialPortSetData data)
         {
             mSerialHandler.SetSettings(data);
@@ -80,7 +103,10 @@ namespace AiCControlLibrary.SerialCommunication.Control
         {
             CommandSendRequestEvent?.Invoke(data);
         }
-
+        private void SendCommandWithmessage(AiCData.CommandMassege msg, byte[] data)
+        {
+            mSerialEngine.SendData(msg, data);
+        }
         private void SendCommandToEngine(byte[] data)
         {
             mSerialEngine.SendCommand(data);
@@ -120,10 +146,11 @@ namespace AiCControlLibrary.SerialCommunication.Control
             if (IsConnected)
                 mPortOpenedButNoDataReceived = 0;
         }
-        public void PrevalueUpdateData(AiCData.AiCMotionDatas data)
+        public void ReceiveUpdateData(AiCData data)
         {
             //PresentVoltage = data.PresentValue;
-            ReceiveDataUpdateEvent.Invoke(data);
+            mDrvCtrl = data;
+            ReceiveDataUpdateEvent.Invoke(mDrvCtrl);
         }
         public void StopEngine()
         {

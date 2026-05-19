@@ -26,8 +26,8 @@ namespace AiCControlLibrary.SerialCommunication.Control
         };
         private Thread engine;
 
-        private const int EngineSleepTime = 100;
-        private const int ReceiveBuffSize = 4096;
+        private const int EngineSleepTime = 47;
+        private const int ReceiveBuffSize = 1024;
         private SerialEngineStep mSerialEngineStep;
         private List<byte[]> mContinuousCheckList = new List<byte[]>();
         private Queue<byte[]> mCommandList = new Queue<byte[]>();
@@ -53,8 +53,14 @@ namespace AiCControlLibrary.SerialCommunication.Control
         //public delegate void ReceiveMT4xData(MT4xPanelMeta data);
         public event RequestData RequestDataEventHandler;        
         public bool IsReceiveStart { get; set; }
-
+        public bool IsReceiveAck { get; set; } = true;
         public bool IsConnected { get; set; }
+        public UInt32 uiReceiveCount { get; set; } = 0;
+        public List<byte[]> _ContinuousDataList
+        {
+            get { return mContinuousCheckList; }
+            set { mContinuousCheckList = value; }
+        }
         public SerialProcessEngine()
         {
             IsConnected = false;
@@ -197,90 +203,105 @@ namespace AiCControlLibrary.SerialCommunication.Control
 
             IsEnqueueData = false;
         }
-        public void ReceiveQueueData(byte[] data, int length)
+        public void SendData(AiCData.CommandMassege msg, byte[] data)
         {
-            for (int i = 0; i < length; i++)
+            //byte[] Sedata = new byte[data.Length + 1]; 
+            m_AiCDataCtrl.SetRequestedCommand(msg);
+            byte[] Sedata = new byte[data.Length];
+            Buffer.BlockCopy(data, 0, Sedata, 0, data.Length);
+            mDataTransferList.Enqueue(Sedata);
+            if (mDataTransferList.Count != 0)
             {
-                m_SerialHandler.mQueue.Push(data[i]);
+                CurrentcountForDataTransfer = 0;
+                MaximumCountForDataTransfer = mDataTransferList.Count;
             }
+            else
+            {
+                mDataTransferList.Clear();
+            }
+
+            IsEnqueueData = false;
         }
         public void ReceivePacket()
         {
             int i;
             byte ReData = 0;
-            UInt32 buffsize = m_SerialHandler.mQueue.GetFilledSize();
+            UInt32 buffsize = (UInt32)m_SerialHandler._ReceiveDataQueue.Count;
             if (buffsize != 0)
-            {                               
-                int ReCounter = 0;
-                for (i = 0; i < buffsize; i++)
+            {
+                for (int k = 0; k < buffsize; k++)
                 {
-                    m_SerialHandler.mQueue.Pop(ref ReData);
-                    if ((IsReceiveStart == false) && ((ReData == 0x01) || (ReData == 0x02) || (ReData == 0x03)))
-                    {
-                        IsReceiveStart = true;
-                        ReCounter = 0;
-                    }                        
+                    byte[] recvData = m_SerialHandler._ReceiveDataQueue.Dequeue();
 
-                    if (IsReceiveStart)
+                    for (i = 0; i < recvData.Length; i++)
                     {
-                        ReceivePacketBuff[ReCounter] = ReData;
-                        ReCounter++;
-                    }
+                        ReData = recvData[i];
+                        if ((IsReceiveStart == false) && ((ReData == 0x01) || (ReData == 0x02) || (ReData == 0x03)))
+                        {
+                            IsReceiveStart = true;
+                            uiReceiveCount = 0;
+                        }
 
-                    if (ReCounter > 2)
-                    {
-                        if (ReceivePacketBuff[1] > (byte)ModbusRTU.FunctionCodes.Exception)
+                        if (IsReceiveStart)
                         {
-                            if (ReCounter == 5)
-                            {                                
-                                for (int j = 0; j < ReCounter; j++) ReceivePacketBuff[j] = 0;
-                                ReCounter = 0;
-                                IsReceiveStart = false;
-                            }
-                            else if (ReCounter > 5)
-                            {
-                                for (int j = 0; j < ReCounter; j++) ReceivePacketBuff[j] = 0;
-                                ReCounter = 0;
-                                IsReceiveStart = false;
-                            }
+                            ReceivePacketBuff[uiReceiveCount] = ReData;
+                            uiReceiveCount++;
                         }
-                        else if ((ReceivePacketBuff[1] != (byte)ModbusRTU.WriteFunctionCodes.WriteSingleCoil) && (ReceivePacketBuff[1] != (byte)ModbusRTU.WriteFunctionCodes.WriteSingleRegister) && (ReceivePacketBuff[1] != (byte)ModbusRTU.MultipleWriteFunctionCodes.WriteMultipleCoils) && (ReceivePacketBuff[1] != (byte)ModbusRTU.MultipleWriteFunctionCodes.WriteMultipleRegisters))
+
+                        if (uiReceiveCount > 2)
                         {
-                            if (ReCounter == ReceivePacketBuff[2] + 5)
+                            if (ReceivePacketBuff[1] > (byte)ModbusRTU.FunctionCodes.Exception)
                             {
-                                byte[] MainBuffer = new byte[ReCounter];
-                                Buffer.BlockCopy(ReceivePacketBuff, 0, MainBuffer, 0, ReCounter);
-                                ParsingData(ReceivePacketBuff);
-                                ReCounter = 0;
-                                IsReceiveStart = false;
+                                if (uiReceiveCount >= 5)
+                                {
+                                    //for (int j = 0; j < uiReceiveCount; j++) ReceivePacketBuff[j] = 0;
+                                    uiReceiveCount = 0;
+                                    IsReceiveAck = true;
+                                    IsReceiveStart = false;
+                                }
                             }
-                            else if (ReCounter > ReceivePacketBuff[2] + 5)
+                            else if ((ReceivePacketBuff[1] == (byte)ModbusRTU.ReadFunctionCodes.ReadInputs) || (ReceivePacketBuff[1] == (byte)ModbusRTU.ReadFunctionCodes.ReadHoldingRegisters) ||
+                                    (ReceivePacketBuff[1] == (byte)ModbusRTU.ReadFunctionCodes.ReadInputRegisters))
                             {
-                                for (int j = 0; j < ReCounter; j++) ReceivePacketBuff[j] = 0;
-                                ReCounter = 0;
-                                IsReceiveStart = false;
+                                if (uiReceiveCount >= ReceivePacketBuff[2] + 5)
+                                {
+                                    if (uiReceiveCount == ReceivePacketBuff[2] + 5)
+                                    {
+                                        byte[] MainBuffer = new byte[uiReceiveCount];
+                                        Buffer.BlockCopy(ReceivePacketBuff, 0, MainBuffer, 0, (int)uiReceiveCount);
+                                        ParsingData(MainBuffer);
+                                    }
+                                    uiReceiveCount = 0;
+                                    IsReceiveStart = false;
+                                    IsReceiveAck = true;
+                                }
                             }
-                        }
-                        else if ((ReceivePacketBuff[1] == (byte)ModbusRTU.MultipleWriteFunctionCodes.WriteMultipleRegisters) || (ReceivePacketBuff[1] == (byte)ModbusRTU.WriteFunctionCodes.WriteSingleCoil) || (ReceivePacketBuff[1] == (byte)ModbusRTU.WriteFunctionCodes.WriteSingleRegister))
-                        {
-                            if (ReCounter == 8)
+                            else if ((ReceivePacketBuff[1] == (byte)ModbusRTU.MultipleWriteFunctionCodes.WriteMultipleRegisters) || (ReceivePacketBuff[1] == (byte)ModbusRTU.WriteFunctionCodes.WriteSingleCoil) ||
+                                    (ReceivePacketBuff[1] == (byte)ModbusRTU.WriteFunctionCodes.WriteSingleRegister))
                             {
-                                //ParsingData(MainData);
-                                ReCounter = 0;
-                                IsReceiveStart = false;
+                                if (uiReceiveCount >= 8)
+                                {
+                                    //ParsingData(MainData);
+                                    uiReceiveCount = 0;
+                                    IsReceiveStart = false;
+                                    IsReceiveAck = true;
+                                }
                             }
-                            else if (ReCounter > 8)
+                            else
                             {
-                                for (int j = 0; j < ReCounter; j++) ReceivePacketBuff[j] = 0;
-                                ReCounter = 0;
-                                IsReceiveStart = false;
+                                //if (uiReceiveCount >= ReceivePacketBuff[2] + 5)
+                                {
+                                    uiReceiveCount = 0;
+                                    IsReceiveStart = false;
+                                    IsReceiveAck = true;
+                                }
                             }
                         }
                     }
-                }                
-            }
+                }
+            }        
         }
-        private void Run()
+        private async void Run()
         {
             byte[] data = null;
             int mContinuousCheckIndex = 0;
@@ -292,78 +313,87 @@ namespace AiCControlLibrary.SerialCommunication.Control
                     {
                         mCommandList.Clear();
                         mDataTransferList.Clear();
+                        m_SerialHandler._ReceiveDataQueue.Clear();
+                        m_AiCDataCtrl.ClearRequestedCommand();
                         IsEnqueueData = IsDequeueData = false;
                         Thread.Sleep(EngineSleepTime);
                         continue;
                     }
-
-                    if (IsEnqueueData && IsDequeueData)
+                    //else
                     {
-                        mDataTransferList.Clear();
-                        IsEnqueueData = IsDequeueData = false;
-                        
-                    }
-                    // receive Data Packet Parsor 구문 추가 필요.
-                    if (m_SerialHandler.mQueue.GetFilledSize() != 0)
-                    {
-                        ReceivePacket();
-                    }
-                    /////////////////////////////////////////////
-                    switch (mSerialEngineStep)
-                    {
-                        case SerialEngineStep.Idle:
-                            //Do nothing
-                            mCommandList.Clear();
+                        if (IsEnqueueData && IsDequeueData)
+                        {
                             mDataTransferList.Clear();
-                            break;
+                            IsEnqueueData = IsDequeueData = false;
 
-                        case SerialEngineStep.RequestPeriodData:
-                            if ((mDataTransferList.Count != 0) && !IsEnqueueData)
-                            {
-                                IsDequeueData = true;
-                                data = mDataTransferList.Dequeue();
+                        }
+                        // receive Data Packet Parsor 구문 추가 필요.
+                        if (m_SerialHandler._ReceiveDataQueue.Count > 0)
+                        {
+                            ReceivePacket();
+                        }
+                        /////////////////////////////////////////////
+                        switch (mSerialEngineStep)
+                        {
+                            case SerialEngineStep.Idle:
+                                //Do nothing
+                                mCommandList.Clear();
+                                mDataTransferList.Clear();
+                                break;
 
-                                if (data != null)
+                            case SerialEngineStep.RequestPeriodData:
+                                if ((mDataTransferList.Count != 0) && !IsEnqueueData)
                                 {
-                                    CurrentcountForDataTransfer++;
-                                    if (CurrentcountForDataTransfer >= MaximumCountForDataTransfer)
+                                    IsDequeueData = true;
+                                    data = mDataTransferList.Dequeue();
+
+                                    //if (data != null)
+                                    //{
+                                    //    CurrentcountForDataTransfer++;
+                                    //    if (CurrentcountForDataTransfer >= MaximumCountForDataTransfer)
+                                    //    {
+                                    //        CurrentcountForDataTransfer = MaximumCountForDataTransfer = 0;
+                                    //    }
+                                    //}
+                                    if (mDataTransferList.Count == 0)
                                     {
-                                        CurrentcountForDataTransfer = MaximumCountForDataTransfer = 0;
+                                        IsDequeueData = false;
                                     }
                                 }
-                                if (mDataTransferList.Count == 0)
+                                else if (mCommandList.Count != 0)
                                 {
-                                    IsDequeueData = false;                                    
+                                    data = mCommandList.Dequeue();
                                 }
-                            }
-                            else if (mCommandList.Count != 0)
-                            {
-                                data = mCommandList.Dequeue();
-                            }
-                            else if (mContinuousCheckList.Count != 0)
-                            {
-                                data = mContinuousCheckList.ElementAt(mContinuousCheckIndex++);
-                                if (mContinuousCheckIndex >= mContinuousCheckList.Count)
-                                    mContinuousCheckIndex = 0;
-                            }
+                                else if (mContinuousCheckList.Count != 0)
+                                {
+                                    if (!IsReceiveStart)
+                                    {
+                                        if (mContinuousCheckIndex >= mContinuousCheckList.Count)
+                                            mContinuousCheckIndex = 0;
+                                        data = mContinuousCheckList.ElementAt(mContinuousCheckIndex++);
+                                        //m_AiCDataCtrl.SetRequestedCommand(AiCData.CommandMassege.MSG_MONITOR_DATA);
+                                    }
+                                }
 
-                            break;
-                        default:
-                            //Do some error action.
-                            break;
-                    }
+                                break;
+                            default:
+                                //Do some error action.
+                                break;
+                        }
 
-                    if ((data != null) && (mSerialEngineStep != SerialEngineStep.Idle))
-                    {
-                        RequestDataEventHandler?.Invoke(data, 0, data.Length);
-                        data = null;
+                        if ((data != null) && (mSerialEngineStep != SerialEngineStep.Idle))
+                        {
+                            RequestDataEventHandler?.Invoke(data, 0, data.Length);
+                            data = null;
+                        }
                     }
                 }
                 catch (Exception)
                 {
                     //Log.LogManager.AddSystemLog(Log.Log.LogType.Error, "CommunicateEngine::Run -> Fail to working.");
                 }
-                Thread.Sleep(EngineSleepTime);
+                //Thread.Sleep(EngineSleepTime);
+                await Task.Delay(EngineSleepTime);
             }
         }
     }

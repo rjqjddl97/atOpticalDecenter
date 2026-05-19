@@ -250,7 +250,7 @@ namespace CustomPages
             textEditSendPacketData.Enabled = false;
             SendPacketDataButton.Enabled = false;
             memoEditCommunicationLogmessage.Enabled = false;
-            UpdateTimer.Interval = 100;
+            UpdateTimer.Interval = 50;
             UpdateTimer.Elapsed += new ElapsedEventHandler(UpdateRemoteIOData);
         }
         public void SetCommunicateManager(ref CommunicationManager manager)
@@ -260,6 +260,7 @@ namespace CustomPages
         public void SetCommunicationData(int idnum, byte[] idarry)
         {
             _mARMCommunicationManager.mRemoteIOCtrl.SetIDNumber(idnum, idarry);
+            //_mARMCommunicationManager.InitialPeriodData(idarry);
             _mARMData = _mARMCommunicationManager.mRemoteIOCtrl;
         }
         public string SelectPortName(int Select)
@@ -708,9 +709,9 @@ namespace CustomPages
                 LogWriteEvent?.Invoke(string.Format("원격 I/O 통신이 연결해제 되었습니다"));
             }
         }
-        public void UpdateReceiveData(ARMData.RemoteIODatas update)
+        public void UpdateReceiveData(ARMData update)
         {
-            _mARMData._mRemoteIODatas = update;
+            _mARMData = update;
 
             SetIOStatus(_mARMData._mRemoteIODatas);
         }

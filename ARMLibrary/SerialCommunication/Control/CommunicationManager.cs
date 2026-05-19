@@ -21,12 +21,13 @@ namespace ARMLibrary.SerialCommunication.Control
         //        public static event Action<byte[]> SerialReceivedRawData;           // Receive Raw Data를 Log 기록 이벤트
         //        public static event Action<byte[]> SerialReceivedParsedData;        // Receive Parsor Data를 Log 기록 이벤트
         //        public event Action<string, bool> PortOpenedEvent;
-        public event Action<ARMData.RemoteIODatas> ReceiveDataUpdateEvent;
+        public event Action<ARMData> ReceiveDataUpdateEvent;
+        public event Action<byte[]> ReceiveRawDataEvent;
 
         readonly SerialProcessEngine mSerialEngine;
         readonly SerialHandler mSerialHandler;
 
-        public ARMData mRemoteIOCtrl;
+        public ARMData mRemoteIOCtrl = null;
         public static bool IsConnected { get; private set; } = false;
         private int mPortOpenedButNoDataReceived = 0;
         public double PresentVoltage = 0;
@@ -35,20 +36,28 @@ namespace ARMLibrary.SerialCommunication.Control
             mSerialEngine = new SerialProcessEngine();
             //mSerialHandler = new SerialHandler();
             mSerialHandler = mSerialEngine.m_SerialHandler;
-            mRemoteIOCtrl = new ARMData();
-            mSerialEngine.m_ARMDataCtrl = mRemoteIOCtrl;
+            mRemoteIOCtrl = mSerialEngine.m_ARMDataCtrl;            
             //ConnectEvents();
         }
         ~CommunicationManager() 
         {
             StopEngine();
         }
+        public void InitialPeriodData(byte[] ids)
+        {
+            List<byte[]> reqData = new List<byte[]>();
+            for (int i = 0; i < ids.Length; i++)
+            {
+                reqData.Add(mRemoteIOCtrl.GetSettingInputs(ids[i]));
+                reqData.Add(mRemoteIOCtrl.GetSettingOutputs(ids[i]));
+            }
+            mSerialEngine._ContinuousDataList = reqData;
+        }
         private void ConnectEvents()
         {
             //Connect Events.
             mSerialEngine.RequestDataEventHandler += mSerialHandler.SendData;
-            mSerialEngine.m_ARMDataCtrl.RemoteIODataEvent += PrevalueUpdateData;
-            mSerialHandler.ReceivedQueueDataEventHandler += mSerialEngine.ReceiveQueueData;
+            mSerialEngine.ReceiveARMData += ReceiveUpdateData;            
             //mSerialHandler.ParsedDataReceivedEvent += mSerialEngine.ParsingData;
             CommandSendRequestEvent += SendCommandToEngine;
             DataSendRequestEvent += SendDataToEngine;
@@ -59,8 +68,7 @@ namespace ARMLibrary.SerialCommunication.Control
         private void DisconnectEvents()
         {
             mSerialEngine.RequestDataEventHandler -= mSerialHandler.SendData;
-            mSerialEngine.m_ARMDataCtrl.RemoteIODataEvent -= PrevalueUpdateData;
-            mSerialHandler.ReceivedQueueDataEventHandler -= mSerialEngine.ReceiveQueueData;
+            mSerialEngine.ReceiveARMData -= ReceiveUpdateData;            
             CommandSendRequestEvent -= SendCommandToEngine;
             DataSendRequestEvent -= SendDataToEngine;
         }
@@ -121,10 +129,15 @@ namespace ARMLibrary.SerialCommunication.Control
             if (IsConnected)
                 mPortOpenedButNoDataReceived = 0;
         }
-        public void PrevalueUpdateData(ARMData.RemoteIODatas data)
+        public void ReceiveUpdateData(ARMData data)
         {
             //PresentVoltage = data.PresentValue;
+            mRemoteIOCtrl = data;
             ReceiveDataUpdateEvent.Invoke(data);
+        }
+        public void ReceiveRawData(byte[] data)
+        {
+            ReceiveRawDataEvent.Invoke(data);
         }
         public void StopEngine()
         {
@@ -189,6 +202,10 @@ namespace ARMLibrary.SerialCommunication.Control
         public bool IsOpen()
         {
             return mSerialHandler.IsOpen;
+        }
+        public bool IsReceiveAck()
+        {
+            return mSerialEngine.IsReceiveAck;
         }
     }
 }

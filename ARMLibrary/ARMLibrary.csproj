@@ -44,7 +44,6 @@
     <Compile Include="ARMControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerialCommunication\Control\CommunicationManager.cs" />
-    <Compile Include="SerialCommunication\Control\Queue.cs" />
     <Compile Include="SerialCommunication\Control\SerialHandler.cs" />
     <Compile Include="SerialCommunication\Control\SerialPortSetData.cs" />
     <Compile Include="SerialCommunication\Control\SerialProcessEngine.cs" />

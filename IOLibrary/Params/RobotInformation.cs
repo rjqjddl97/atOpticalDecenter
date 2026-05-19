@@ -17,10 +17,17 @@ namespace RecipeManager
         public double PositionY { get; set; }
         public double PositionZ { get; set; }
 
+        public double TargetPositionX { get; set; }
+        public double TargetPositionY { get; set; }
+        public double TargetPositionZ { get; set; }
+        public double TargetPositionR { get; set; }
+
+
         public DigitalOutputControl mInputData = new DigitalOutputControl();
         public DigitalOutputControl mOutputData = new DigitalOutputControl();
         public ulong mStatus;
         public ulong mError;
+        public ulong DrvStatus;
         public class DigitalOutputControl
         {
             public ulong Bit64 { get; set; }
@@ -176,6 +183,42 @@ namespace RecipeManager
             er30,
             er31
         }
+        public enum DriveStatus
+        {
+            X_Limit_N = 0,
+            X_Home,
+            X_Limit_P,
+            Y_Limit_N,
+            Y_Home,
+            Y_Limit_P,
+            Z_Limit_N,
+            Z_Home,
+            Z_Limit_P,
+            st9,
+            st10,
+            st11,
+            st12,
+            st13,
+            st14,
+            st15,
+            st16,
+            st17,
+            st18,
+            st19,
+            st20,
+            st21,
+            st22,
+            st23,
+            st24,
+            st25,
+            st26,
+            st27,
+            st28,
+            st29,
+            st30,
+            st31,
+            st32
+        }
         public bool GetInputStatus(int i)
         {
             return (mInputData.Bit64 & (1U << i)) != 0;
@@ -202,6 +245,17 @@ namespace RecipeManager
                 mStatus |= (1U << (int)status);
             else
                 mStatus &= ~(1U << (int)status);
+        }
+        public bool GetDrvStatus(DriveStatus status)
+        {
+            return ((DrvStatus & (1U << (int)status)) != 0);
+        }
+        public void SetDrvStatus(DriveStatus status, bool value)
+        {
+            if (value)
+                DrvStatus |= (1U << (int)status);
+            else
+                DrvStatus &= ~(1U << (int)status);
         }
         public void SetError(ErrorStatus status, bool value)
         {
