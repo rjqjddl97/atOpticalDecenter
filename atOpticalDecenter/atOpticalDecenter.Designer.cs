@@ -223,6 +223,7 @@
             this.barButtonItemConnectionPLC = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemConnectionPhotoSensor = new DevExpress.XtraBars.BarButtonItem();
             this.timerCurrentTime = new System.Windows.Forms.Timer(this.components);
+            this.timerImageUpdate = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBarInspectionProcess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditInspectionResult)).BeginInit();
@@ -2210,6 +2211,10 @@
             this.timerCurrentTime.Interval = 1000;
             this.timerCurrentTime.Tick += new System.EventHandler(this.timerCurrentTime_Tick);
             // 
+            // timerImageUpdate
+            // 
+            this.timerImageUpdate.Tick += new System.EventHandler(this.timerImageUpdate_Tick);
+            // 
             // atOpticalDecenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -2513,5 +2518,6 @@
         private DevExpress.XtraBars.BarEditItem barEditItemTotalPassCount;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditTotalPassCount;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSpotBrightPeakValidRatio;
+        private System.Windows.Forms.Timer timerImageUpdate;
     }
 }

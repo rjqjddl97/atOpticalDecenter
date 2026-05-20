@@ -369,6 +369,9 @@ namespace atOpticalDecenter
                 _Camera.Close();
             ImageUpdateEvents -= UpdateGUI;
             timerCurrentTime.Stop();
+            timerImageUpdate.Stop();
+            MotionControl.UpdateTimer.Stop();
+            RemoteIOControl.UpdateTimer.Stop();
             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "프로그램 종료.");
         }
         private void InitializedBackGroundWorkers()
@@ -543,7 +546,7 @@ namespace atOpticalDecenter
                             _ImageHist_H = new double[Convert.ToInt32(rowCameraVResolution.Properties.Value)];
                             //if (_ImageHist_W == null)
                             _ImageHist_W = new double[Convert.ToInt32(rowCameraHResolution.Properties.Value)];
-
+                            timerImageUpdate.Start();
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 연결 성공:{0}", liststrFriendlyNames[0]));
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(),
                                 string.Format("노출 시간:{0}, 게인:{1}, 프레임비:{2}", Convert.ToString(rowCameraExposureTime.Properties.Value), Convert.ToString(rowCameraGain.Properties.Value), Convert.ToString(rowCameraFrame.Properties.Value)));
@@ -580,7 +583,7 @@ namespace atOpticalDecenter
                     repositoryItemToggleSwitchCameraConnection.ValueOn = false;
                     // System 파라미터를 Update한다.
                     //RecipeFileIO.WriteSystemFile(_systemParams, string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.SystemFileName));
-
+                    timerImageUpdate.Start();
                     if (_ImageHist_H != null)
                         _ImageHist_H = new double[Convert.ToInt32(rowCameraVResolution.Properties.Value)];
                     if (_ImageHist_W != null)
@@ -929,22 +932,25 @@ namespace atOpticalDecenter
                 }
 
                 GrabEndParam grabEnd = (GrabEndParam)sender as GrabEndParam;
-                System.Drawing.Image sourceImage = _sourceImage;
+                //System.Drawing.Image sourceImage = _sourceImage;
 
                 if (grabEnd != null)
                 {
-                    if (_isContinuousShot)
-                    {
-                        pictureEditSystemImage.Image = grabEnd.Image;
-                        _sourceImage = grabEnd.Image;
-                    }
-                    else
-                    {
-                        pictureEditSystemImage.Image = grabEnd.Image;
-                        _sourceImage = Utils.Clone<Bitmap>(grabEnd.Image);
-                    }
-                    ImageGrabbed?.Invoke(_sourceImage);
-                    if (grabEnd.WaitHandle != null)
+                    //if (_isContinuousShot)
+                    //{
+                    //    pictureEditSystemImage.Image = grabEnd.Image;
+                    //    _sourceImage = grabEnd.Image;
+                    //}
+                    //else
+                    //{
+                    //    pictureEditSystemImage.Image = grabEnd.Image;
+                    //    _sourceImage = Utils.Clone<Bitmap>(grabEnd.Image);
+                    //}
+                    _sourceImage = grabEnd.Image;
+
+                    //if (grabEnd.WaitHandle != null)
+                    //    grabEnd.WaitHandle.Set();
+                    if ((grabEnd.WaitHandle != null) && (!_isContinuousShot))
                         grabEnd.WaitHandle.Set();
                     _patternMatching = false;
                     _isOpticalMeasurement = false;
@@ -954,11 +960,11 @@ namespace atOpticalDecenter
                 _isGrabbed = true;
 
 
-                if (sourceImage != null)
-                {
-                    sourceImage.Dispose();
-                    sourceImage = null;
-                }
+                //if (sourceImage != null)
+                //{
+                //    sourceImage.Dispose();
+                //    sourceImage = null;
+                //}
 
                 if (_isContinuousShot)
                 {
@@ -1373,6 +1379,8 @@ namespace atOpticalDecenter
                         _isCameraOpen = true;
                         repositoryItemToggleSwitchCameraConnection.ValueOff = true;
                         repositoryItemToggleSwitchCameraConnection.ValueOn = false;
+
+                        timerImageUpdate.Start();
                         // System 파라미터를 Update한다.
                         //RecipeFileIO.WriteSystemFile(_systemParams, string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.SystemFileName));
 
@@ -1484,8 +1492,18 @@ namespace atOpticalDecenter
                     {
                         double oldValue = _Camera.FrameRate.Value;
                         CameraParameters cameraParam = new CameraParameters();
-                        cameraParam.Value = Convert.ToInt32(rowCameraFrame.Properties.Value);
+                        if (Convert.ToInt32(rowCameraFrame.Properties.Value) > 20)
+                        {
+                            cameraParam.Value = 20;
+                            timerImageUpdate.Interval = 50;
+                        }
+                        else
+                        {
+                            cameraParam.Value = Convert.ToInt32(rowCameraFrame.Properties.Value);
+                            timerImageUpdate.Interval = 1000 / Convert.ToInt32(rowCameraFrame.Properties.Value);
+                        }
                         _Camera.FrameRate = cameraParam;
+                        
                         mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 프레임 비(fps) 변경 전:{0}, 변경 후:{1}", (int)oldValue, (int)cameraParam.Value));
                     }
                     else if (e.Row.Name == "rowCameraExposureTime")
@@ -4138,6 +4156,13 @@ namespace atOpticalDecenter
             {
                 mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), "RemoteIO 로그 이벤트에 오류가 있습니다.");
             }
+        }
+
+        private void timerImageUpdate_Tick(object sender, EventArgs e)
+        {
+            pictureEditSystemImage.Image = _sourceImage;
+            pictureEditSystemImage.Refresh();
+            GC.Collect();
         }
     }
 
