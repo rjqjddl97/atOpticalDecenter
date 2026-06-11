@@ -469,7 +469,7 @@ namespace CustomPages
             textEditUserDefineValue.Enabled = false;
             JogControlPannelEnable();
             CoordinateControlPanelDisable();
-            UpdateTimer.Interval = 100;
+            UpdateTimer.Interval = 200;
             UpdateTimer.Elapsed += new ElapsedEventHandler(UpdateMotionData);
         }
         public void SetCommunicateManager(ref CommunicationManager manager)
@@ -710,27 +710,29 @@ namespace CustomPages
             {
                 if (status)
                 {
-                    if (label.InvokeRequired)
-                    {
-                        label.Invoke(new MethodInvoker(delegate { label.ForeColor = Color.FromArgb(255, 255, 255, 255); label.BackColor = Color.FromArgb(255, 20, 200, 129); }));
-                    }
-                    else
-                    {
-                        label.ForeColor = Color.FromArgb(255, 255, 255, 255);
-                        label.BackColor = Color.FromArgb(255, 20, 200, 129);
-                    }
+                    label.BeginInvoke(new MethodInvoker(delegate { label.ForeColor = Color.FromArgb(255, 255, 255, 255); label.BackColor = Color.FromArgb(255, 20, 200, 129); }));
+                    //if (label.InvokeRequired)
+                    //{
+                    //    label.Invoke(new MethodInvoker(delegate { label.ForeColor = Color.FromArgb(255, 255, 255, 255); label.BackColor = Color.FromArgb(255, 20, 200, 129); }));
+                    //}
+                    //else
+                    //{
+                    //    label.ForeColor = Color.FromArgb(255, 255, 255, 255);
+                    //    label.BackColor = Color.FromArgb(255, 20, 200, 129);
+                    //}
                 }
                 else
                 {
-                    if (label.InvokeRequired)
-                    {
-                        label.Invoke(new MethodInvoker(delegate { label.ForeColor = Color.FromArgb(255, 37, 37, 37); label.BackColor = Color.FromArgb(255, 224, 224, 224); }));
-                    }
-                    else
-                    {
-                        label.ForeColor = Color.FromArgb(255, 37, 37, 37);
-                        label.BackColor = Color.FromArgb(255, 224, 224, 224);
-                    }
+                    label.BeginInvoke(new MethodInvoker(delegate { label.ForeColor = Color.FromArgb(255, 37, 37, 37); label.BackColor = Color.FromArgb(255, 224, 224, 224); }));
+                    //if (label.InvokeRequired)
+                    //{
+                    //    label.Invoke(new MethodInvoker(delegate { label.ForeColor = Color.FromArgb(255, 37, 37, 37); label.BackColor = Color.FromArgb(255, 224, 224, 224); }));
+                    //}
+                    //else
+                    //{
+                    //    label.ForeColor = Color.FromArgb(255, 37, 37, 37);
+                    //    label.BackColor = Color.FromArgb(255, 224, 224, 224);
+                    //}
                 }
             }
             catch (Exception ex)
@@ -1165,29 +1167,6 @@ namespace CustomPages
                             _mRobotInfomation.SetStatus(RecipeManager.RobotInformation.RobotStatus.Error, false);
                             _mRobotInfomation.SetError(RecipeManager.RobotInformation.ErrorStatus.DrvError, false);
                         }
-
-                        //System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MotionControl));
-                        //if (!_mAiCCommunicationManager.IsOpen())
-                        //{
-                        //    ConnectButton.Enabled = true;
-                        //    DisconnectButton.Enabled = false;
-                        //}
-                        //else
-                        //{
-                        //    ConnectButton.Enabled = false;
-                        //    DisconnectButton.Enabled = true;
-                        //}
-
-                        //if (_isRobotEnable)
-                        //{
-                        //    this.RobotEnableButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("RobotDisableButton.ImageOptions.Image")));
-                        //    RobotEnableButton.Invoke(new MethodInvoker(delegate { RobotEnableButton.Text = "모션제 비활성화"; }));
-                        //}
-                        //else
-                        //{
-                        //    this.RobotEnableButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("RobotEnableButton.ImageOptions.Image")));
-                        //    RobotEnableButton.Invoke(new MethodInvoker(delegate { RobotEnableButton.Text = "모션제어 활성화"; }));
-                        //}
                     }
                 }
             }

@@ -119,10 +119,12 @@ namespace ARMLibrary.SerialCommunication.Control
                     if (data[1] == (byte)DataProcessor.ModbusRTU.ReadFunctionCodes.ReadInputs)
                     {
                         m_ARMDataCtrl.ReceiveSetInput(data);
+                        ReceiveARMData.Invoke(m_ARMDataCtrl);
                     }
                     else if(data[1] == (byte)DataProcessor.ModbusRTU.ReadFunctionCodes.ReadCoils)
                     {
                         m_ARMDataCtrl.ReceiveSetOutput(data);
+                        ReceiveARMData.Invoke(m_ARMDataCtrl);
                     }
 
                     //reCommMassege = m_ARMDataCtrl.GetRequestedCommand();
@@ -149,15 +151,35 @@ namespace ARMLibrary.SerialCommunication.Control
         }
         public void SendCommand(byte[] data)
         {
-            byte[] Sedata = new byte[data.Length];
-            Buffer.BlockCopy(data, 0, Sedata, 0, data.Length);
-            mDataTransferList.Enqueue(Sedata);
+            try
+            {
+                if (IsConnected)
+                {
+                    byte[] Sedata = new byte[data.Length];
+                    Buffer.BlockCopy(data, 0, Sedata, 0, data.Length);
+                    mDataTransferList.Enqueue(Sedata);
+                }
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
         }
         public void SendData(byte[] data)
         {
-            byte[] Sedata = new byte[data.Length];
-            Buffer.BlockCopy(data, 0, Sedata, 0, data.Length);
-            mDataTransferList.Enqueue(Sedata);
+            try
+            {
+                if (IsConnected)
+                {
+                    byte[] Sedata = new byte[data.Length];
+                    Buffer.BlockCopy(data, 0, Sedata, 0, data.Length);
+                    mDataTransferList.Enqueue(Sedata);
+                }
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
         }
         public void ReceivePacket()
         {

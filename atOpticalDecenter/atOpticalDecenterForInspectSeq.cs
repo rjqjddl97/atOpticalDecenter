@@ -111,14 +111,18 @@ namespace atOpticalDecenter
         {
             try
             {
-                mRobotInformation.PositionX = update.PositionX;
-                mRobotInformation.PositionY = update.PositionY;
-                mRobotInformation.PositionZ = update.PositionZ;
-                mRobotInformation.mStatus = update.mStatus;
-                mRobotInformation.mError = update.mError;
+                //mRobotInformation.PositionX = update.PositionX;
+                //mRobotInformation.PositionY = update.PositionY;
+                //mRobotInformation.PositionZ = update.PositionZ;
+                //mRobotInformation.mStatus = update.mStatus;
+                //mRobotInformation.mError = update.mError;
+                mRobotInformation = update;
 
                 if (_IsHommingFinished)
                     mRobotInformation.SetStatus(RobotInformation.RobotStatus.OperationReady, _IsHommingFinished);
+
+                if (mRobotInformation.GetStatus(RobotInformation.RobotStatus.OperationReady))
+                    _IsHommingFinished = true;
 
                 if (mStepBase != null)
                     mStepBase.UpdateRobotInfomation(mRobotInformation);

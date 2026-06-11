@@ -122,6 +122,7 @@ namespace AiCControlLibrary.SerialCommunication.Control
                         if (data[2] == 32)
                         {
                             m_AiCDataCtrl.ReceiveSetMotionData(data);
+                            ReceiveAiCData.Invoke(m_AiCDataCtrl);
                         }
                     }
                     /*

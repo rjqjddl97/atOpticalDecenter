@@ -133,7 +133,7 @@ namespace ARMLibrary.SerialCommunication.Control
         {
             //PresentVoltage = data.PresentValue;
             mRemoteIOCtrl = data;
-            ReceiveDataUpdateEvent.Invoke(data);
+            ReceiveDataUpdateEvent.Invoke(mRemoteIOCtrl);
         }
         public void ReceiveRawData(byte[] data)
         {
