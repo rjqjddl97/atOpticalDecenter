@@ -260,7 +260,7 @@ namespace CustomPages
         public void SetCommunicationData(int idnum, byte[] idarry)
         {
             _mARMCommunicationManager.mRemoteIOCtrl.SetIDNumber(idnum, idarry);
-            //_mARMCommunicationManager.InitialPeriodData(idarry);
+            _mARMCommunicationManager.InitialPeriodData(idarry);
             _mARMData = _mARMCommunicationManager.mRemoteIOCtrl;
         }
         public string SelectPortName(int Select)

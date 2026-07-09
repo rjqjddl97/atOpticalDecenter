@@ -69,7 +69,7 @@ namespace AiCControlLibrary.SerialCommunication.Control
             mSerialEngineStep = SerialEngineStep.Idle;
             mReceiveStep = SerialReceiveStep.Idle;
             //m_SerialHandler.ReceivedQueueDataEventHandler += ReceiveQueueData;
-            InitCheckDatas();
+            //InitCheckDatas();
             Array.Clear(ReceivePacketBuff, 0x00, ReceiveBuffSize);
             //ReceiveCountIndex = 0;
             engine = new Thread(Run);

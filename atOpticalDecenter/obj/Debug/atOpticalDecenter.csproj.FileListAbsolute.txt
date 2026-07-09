@@ -1062,6 +1062,7 @@ C:\Work\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.csproj.C
 C:\Work\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.csproj.CopyComplete
 C:\Work\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.exe
 C:\Work\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.pdb
+D:\Work\C_Sharp\2025\PhotoOpticalInspect\OpticalDecenter\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.InspectResultForm.resources
 D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\atOpticalDecenter\bin\Debug\dll\x86\OpenCvSharpExtern.dll
 D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\atOpticalDecenter\bin\Debug\dll\x86\opencv_ffmpeg400.dll
 D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\atOpticalDecenter\bin\Debug\dll\x64\OpenCvSharpExtern.dll
@@ -1297,4 +1298,3 @@ D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\atOpticalDecenter\obj\Debug\a
 D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.csproj.CopyComplete
 D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.exe
 D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.pdb
-D:\Work\C_Sharp\2025\PhotoOpticalInspect\OpticalDecenter\atOpticalDecenter\atOpticalDecenter\obj\Debug\atOpticalDecenter.InspectResultForm.resources

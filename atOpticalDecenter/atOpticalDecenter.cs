@@ -618,10 +618,12 @@ namespace atOpticalDecenter
                     {
                         MotionControl._fdefineStepValue[i] = (double)10;
                         MotionControl._fdefineVelValue[i] = (double)100;
-                    }
-                    _id[i] = (byte)_systemParams._AiCParams.IDs[i]._idNumber;
+                    }                    
                 }
-                MotionControl.SetCommunicationData(3, _id);
+                for (int j = 0; j < _systemParams._AiCParams.IDs.Count; j++)
+                    _id[j] = (byte)_systemParams._AiCParams.IDs[j]._idNumber;
+
+                MotionControl.SetCommunicationData(_systemParams._AiCParams.IDs.Count, _id);
                 AiCModuleConnect(); // connect command
                 return true;
             }
@@ -947,7 +949,7 @@ namespace atOpticalDecenter
                     //    _sourceImage = Utils.Clone<Bitmap>(grabEnd.Image);
                     //}
                     _sourceImage = grabEnd.Image;
-
+                    ImageGrabbed.Invoke(_sourceImage);
                     //if (grabEnd.WaitHandle != null)
                     //    grabEnd.WaitHandle.Set();
                     if ((grabEnd.WaitHandle != null) && (!_isContinuousShot))

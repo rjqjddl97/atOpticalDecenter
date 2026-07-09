@@ -69,7 +69,7 @@ namespace ARMLibrary.SerialCommunication.Control
             mSerialEngineStep = SerialEngineStep.Idle;
             mReceiveStep = SerialReceiveStep.Idle;
             //m_SerialHandler.ReceivedQueueDataEventHandler += ReceiveQueueData;
-            InitCheckDatas(5);
+            //InitCheckDatas(5);
             Array.Clear(ReceivePacketBuff, 0x00, ReceiveBuffSize);
             //ReceiveCountIndex = 0;
             engine = new Thread(Run);
@@ -191,8 +191,8 @@ namespace ARMLibrary.SerialCommunication.Control
                 for (int k = 0; k < buffsize; k++)
                 {
                     byte[] recvData = m_SerialHandler._ReceiveDataQueue.Dequeue();
-
-                    for (i = 0; i < buffsize; i++)
+                    
+                    for (i = 0; i < recvData.Length; i++)
                     {
                         ReData = recvData[i];
                         if ((IsReceiveStart == false) && ((ReData == 0x05) || (ReData == 0x06)))
@@ -218,7 +218,7 @@ namespace ARMLibrary.SerialCommunication.Control
                                 }
                             }
                             else if ((ReceivePacketBuff[1] == (byte)ModbusRTU.ReadFunctionCodes.ReadInputs) || (ReceivePacketBuff[1] == (byte)ModbusRTU.ReadFunctionCodes.ReadHoldingRegisters) ||
-                                    (ReceivePacketBuff[1] == (byte)ModbusRTU.ReadFunctionCodes.ReadInputRegisters))
+                                    (ReceivePacketBuff[1] == (byte)ModbusRTU.ReadFunctionCodes.ReadCoils) || (ReceivePacketBuff[1] == (byte)ModbusRTU.ReadFunctionCodes.ReadInputRegisters))
                             {
                                 if (uiReceiveCount >= ReceivePacketBuff[2] + 5)
                                 {
@@ -339,7 +339,7 @@ namespace ARMLibrary.SerialCommunication.Control
                     if ((data != null) && (mSerialEngineStep != SerialEngineStep.Idle))
                     {
                         RequestDataEventHandler?.Invoke(data, 0, data.Length);
-                        IsReceiveAck = false;
+                        //IsReceiveAck = false;
                         data = null;
                     }
                 }

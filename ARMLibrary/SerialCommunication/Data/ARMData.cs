@@ -631,34 +631,58 @@ namespace ARMLibrary.SerialCommunication.Data
         public class IO_8Bit
         {
             public byte Bit8;
-            public int B0 { get { return Bit8 & (1 << 0); } set { Bit8 |= (1 << 0); } }
-            public int B1 { get { return Bit8 & (1 << 1); } set { Bit8 |= (1 << 1); } }
-            public int B2 { get { return Bit8 & (1 << 2); } set { Bit8 |= (1 << 2); } }
-            public int B3 { get { return Bit8 & (1 << 3); } set { Bit8 |= (1 << 3); } }
-            public int B4 { get { return Bit8 & (1 << 4); } set { Bit8 |= (1 << 4); } }
-            public int B5 { get { return Bit8 & (1 << 5); } set { Bit8 |= (1 << 5); } }
-            public int B6 { get { return Bit8 & (1 << 6); } set { Bit8 |= (1 << 6); } }
-            public int B7 { get { return Bit8 & (1 << 7); } set { Bit8 |= (1 << 7); } }
+            //public int B0 { get { return Bit8 & (1 << 0); } set { Bit8 |= (1 << 0); } }
+            //public int B1 { get { return Bit8 & (1 << 1); } set { Bit8 |= (1 << 1); } }
+            //public int B2 { get { return Bit8 & (1 << 2); } set { Bit8 |= (1 << 2); } }
+            //public int B3 { get { return Bit8 & (1 << 3); } set { Bit8 |= (1 << 3); } }
+            //public int B4 { get { return Bit8 & (1 << 4); } set { Bit8 |= (1 << 4); } }
+            //public int B5 { get { return Bit8 & (1 << 5); } set { Bit8 |= (1 << 5); } }
+            //public int B6 { get { return Bit8 & (1 << 6); } set { Bit8 |= (1 << 6); } }
+            //public int B7 { get { return Bit8 & (1 << 7); } set { Bit8 |= (1 << 7); } }
+            public bool B0 { get { return Convert.ToBoolean((Bit8 >> 0) & 0x01); } set { Bit8 |= (1 << 0); } }
+            public bool B1 { get { return Convert.ToBoolean((Bit8 >> 1) & 0x01); } set { Bit8 |= (1 << 1); } }
+            public bool B2 { get { return Convert.ToBoolean((Bit8 >> 2) & 0x01); } set { Bit8 |= (1 << 2); } }
+            public bool B3 { get { return Convert.ToBoolean((Bit8 >> 3) & 0x01); } set { Bit8 |= (1 << 3); } }
+            public bool B4 { get { return Convert.ToBoolean((Bit8 >> 4) & 0x01); } set { Bit8 |= (1 << 4); } }
+            public bool B5 { get { return Convert.ToBoolean((Bit8 >> 5) & 0x01); } set { Bit8 |= (1 << 5); } }
+            public bool B6 { get { return Convert.ToBoolean((Bit8 >> 6) & 0x01); } set { Bit8 |= (1 << 6); } }
+            public bool B7 { get { return Convert.ToBoolean((Bit8 >> 7) & 0x01); } set { Bit8 |= (1 << 7); } }
         }
         public class IO_16Bit
         {
-            public UInt16 Bit16;            
-            public int B0 { get { return Bit16 & (1 << 0); } set { Bit16 |= (1 << 0); } }
-            public int B1 { get { return Bit16 & (1 << 1); } set { Bit16 |= (1 << 1); } }
-            public int B2 { get { return Bit16 & (1 << 2); } set { Bit16 |= (1 << 2); } }
-            public int B3 { get { return Bit16 & (1 << 3); } set { Bit16 |= (1 << 3); } }
-            public int B4 { get { return Bit16 & (1 << 4); } set { Bit16 |= (1 << 4); } }
-            public int B5 { get { return Bit16 & (1 << 5); } set { Bit16 |= (1 << 5); } }
-            public int B6 { get { return Bit16 & (1 << 6); } set { Bit16 |= (1 << 6); } }
-            public int B7 { get { return Bit16 & (1 << 7); } set { Bit16 |= (1 << 7); } }
-            public int B8 { get { return Bit16 & (1 << 8); } set { Bit16 |= (1 << 8); } }
-            public int B9 { get { return Bit16 & (1 << 9); } set { Bit16 |= (1 << 9); } }
-            public int B10 { get { return Bit16 & (1 << 10); } set { Bit16 |= (1 << 10); } }
-            public int B11 { get { return Bit16 & (1 << 11); } set { Bit16 |= (1 << 11); } }
-            public int B12 { get { return Bit16 & (1 << 12); } set { Bit16 |= (1 << 12); } }
-            public int B13 { get { return Bit16 & (1 << 13); } set { Bit16 |= (1 << 13); } }
-            public int B14 { get { return Bit16 & (1 << 14); } set { Bit16 |= (1 << 14); } }
-            public int B15 { get { return Bit16 & (1 << 15); } set { Bit16 |= (1 << 15); } }
+            public UInt16 Bit16;
+            //public int B0 { get { return Bit16 & (1 << 0); } set { Bit16 |= (1 << 0); } }
+            //public int B1 { get { return Bit16 & (1 << 1); } set { Bit16 |= (1 << 1); } }
+            //public int B2 { get { return Bit16 & (1 << 2); } set { Bit16 |= (1 << 2); } }
+            //public int B3 { get { return Bit16 & (1 << 3); } set { Bit16 |= (1 << 3); } }
+            //public int B4 { get { return Bit16 & (1 << 4); } set { Bit16 |= (1 << 4); } }
+            //public int B5 { get { return Bit16 & (1 << 5); } set { Bit16 |= (1 << 5); } }
+            //public int B6 { get { return Bit16 & (1 << 6); } set { Bit16 |= (1 << 6); } }
+            //public int B7 { get { return Bit16 & (1 << 7); } set { Bit16 |= (1 << 7); } }
+            //public int B8 { get { return Bit16 & (1 << 8); } set { Bit16 |= (1 << 8); } }
+            //public int B9 { get { return Bit16 & (1 << 9); } set { Bit16 |= (1 << 9); } }
+            //public int B10 { get { return Bit16 & (1 << 10); } set { Bit16 |= (1 << 10); } }
+            //public int B11 { get { return Bit16 & (1 << 11); } set { Bit16 |= (1 << 11); } }
+            //public int B12 { get { return Bit16 & (1 << 12); } set { Bit16 |= (1 << 12); } }
+            //public int B13 { get { return Bit16 & (1 << 13); } set { Bit16 |= (1 << 13); } }
+            //public int B14 { get { return Bit16 & (1 << 14); } set { Bit16 |= (1 << 14); } }
+            //public int B15 { get { return Bit16 & (1 << 15); } set { Bit16 |= (1 << 15); } }
+            public bool B0 { get { return Convert.ToBoolean((Bit16 >> 0) & 0x01); } set { Bit16 |= (1 << 0); } }
+            public bool B1 { get { return Convert.ToBoolean((Bit16 >> 1) & 0x01); } set { Bit16 |= (1 << 1); } }
+            public bool B2 { get { return Convert.ToBoolean((Bit16 >> 2) & 0x01); } set { Bit16 |= (1 << 2); } }
+            public bool B3 { get { return Convert.ToBoolean((Bit16 >> 3) & 0x01); } set { Bit16 |= (1 << 3); } }
+            public bool B4 { get { return Convert.ToBoolean((Bit16 >> 4) & 0x01); } set { Bit16 |= (1 << 4); } }
+            public bool B5 { get { return Convert.ToBoolean((Bit16 >> 5) & 0x01); } set { Bit16 |= (1 << 5); } }
+            public bool B6 { get { return Convert.ToBoolean((Bit16 >> 6) & 0x01); } set { Bit16 |= (1 << 6); } }
+            public bool B7 { get { return Convert.ToBoolean((Bit16 >> 7) & 0x01); } set { Bit16 |= (1 << 7); } }
+            public bool B8 { get { return Convert.ToBoolean((Bit16 >> 8) & 0x01); } set { Bit16 |= (1 << 8); } }
+            public bool B9 { get { return Convert.ToBoolean((Bit16 >> 9) & 0x01); } set { Bit16 |= (1 << 9); } }
+            public bool B10 { get { return Convert.ToBoolean((Bit16 >> 10) & 0x01); } set { Bit16 |= (1 << 10); } }
+            public bool B11 { get { return Convert.ToBoolean((Bit16 >> 11) & 0x01); } set { Bit16 |= (1 << 11); } }
+            public bool B12 { get { return Convert.ToBoolean((Bit16 >> 12) & 0x01); } set { Bit16 |= (1 << 12); } }
+            public bool B13 { get { return Convert.ToBoolean((Bit16 >> 13) & 0x01); } set { Bit16 |= (1 << 13); } }
+            public bool B14 { get { return Convert.ToBoolean((Bit16 >> 14) & 0x01); } set { Bit16 |= (1 << 14); } }
+            public bool B15 { get { return Convert.ToBoolean((Bit16 >> 15) & 0x01); } set { Bit16 |= (1 << 15); } }
         }
         public ARMData()
         {

@@ -478,7 +478,8 @@ namespace CustomPages
         }
         public void SetCommunicationData(int idnum, byte[] idarry)
         {
-            _mAiCCommunicationManager.mDrvCtrl.SetIDNumber(idnum, idarry);            
+            _mAiCCommunicationManager.mDrvCtrl.SetIDNumber(idnum, idarry);
+            _mAiCCommunicationManager.InitialPeriodData(idarry);
             _mAiCData = _mAiCCommunicationManager.mDrvCtrl;            
         }
         public void SetMotionParam(ref RecipeManager.MotionParams _param)
@@ -658,49 +659,57 @@ namespace CustomPages
             _mAiCData = update;
             
             SetMotionStatus(_mAiCData._mAiCMotionDatas);
-            RobotInfomationUpdatedEvent?.Invoke(_mRobotInfomation);
+            RobotInfomationUpdatedEvent?.Invoke(_mRobotInfomation);            
         }
         private void UpdateMotionData(object sender, ElapsedEventArgs e)
         {
-            if (_mAiCCommunicationManager.IsOpen())
+            try
             {
-                if (!_IsInitialDrive)
+                if (_mAiCCommunicationManager.IsOpen())
                 {
-                    byte[] data = new byte[100];
-                    for (int i = 0; i < _mAiCCommunicationManager.mDrvCtrl.DeviceIDCount; i++)
+                    if (!_IsInitialDrive)
                     {
-                        data = _mAiCCommunicationManager.mDrvCtrl.DriveInitialSetting((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[i], 10, 5000, 200, 200);
-                        _mAiCCommunicationManager.SendData(data);
+                        byte[] data = new byte[100];
+                        for (int i = 0; i < _mAiCCommunicationManager.mDrvCtrl.DeviceIDCount; i++)
+                        {
+                            data = _mAiCCommunicationManager.mDrvCtrl.DriveInitialSetting((byte)_mAiCCommunicationManager.mDrvCtrl.DrvID[i], 10, 5000, 200, 200);
+                            _mAiCCommunicationManager.SendData(data);
+                        }
+                        _IsInitialDrive = true;
                     }
-                    _IsInitialDrive = true;
+                    textEditOpMode1.BeginInvoke(new MethodInvoker(delegate { textEditOpMode1.EditValue = _iOpmode[0]; }));
+                    textEditTargetPos1.BeginInvoke(new MethodInvoker(delegate { textEditTargetPos1.EditValue = _fTargetPosition[0]; }));
+                    textEditPresentPosX.BeginInvoke(new MethodInvoker(delegate { textEditPresentPosX.EditValue = _fPresentPosition[0]; }));
+                    textEditPresentPos1.BeginInvoke(new MethodInvoker(delegate { textEditPresentPos1.EditValue = _fPresentPosition[0]; }));
+                    textEditTargetVel1.BeginInvoke(new MethodInvoker(delegate { textEditTargetVel1.EditValue = _fTargetVelocity[0]; }));
+                    textEditPresentVel1.BeginInvoke(new MethodInvoker(delegate { textEditPresentVel1.EditValue = _fPresentVelocity[0]; }));
+                    textEditMotorRPM1.BeginInvoke(new MethodInvoker(delegate { textEditMotorRPM1.EditValue = _iMotorRPM[0]; }));
+                    textEditProgramStep1.BeginInvoke(new MethodInvoker(delegate { textEditProgramStep1.EditValue = _iProgStep[0]; }));
+
+                    textEditOpMode2.BeginInvoke(new MethodInvoker(delegate { textEditOpMode2.EditValue = _iOpmode[1]; }));
+                    textEditTargetPos2.BeginInvoke(new MethodInvoker(delegate { textEditTargetPos2.EditValue = _fTargetPosition[1]; }));
+                    textEditPresentPosY.BeginInvoke(new MethodInvoker(delegate { textEditPresentPosY.EditValue = _fPresentPosition[1]; }));
+                    textEditPresentPos2.BeginInvoke(new MethodInvoker(delegate { textEditPresentPos2.EditValue = _fPresentPosition[1]; }));
+                    textEditTargetVel2.BeginInvoke(new MethodInvoker(delegate { textEditTargetVel2.EditValue = _fTargetVelocity[1]; }));
+                    textEditPresentVel2.BeginInvoke(new MethodInvoker(delegate { textEditPresentVel2.EditValue = _fPresentVelocity[1]; }));
+                    textEditMotorRPM2.BeginInvoke(new MethodInvoker(delegate { textEditMotorRPM2.EditValue = _iMotorRPM[1]; }));
+                    textEditProgramStep2.BeginInvoke(new MethodInvoker(delegate { textEditProgramStep2.EditValue = _iProgStep[1]; }));
+
+                    textEditOpMode3.BeginInvoke(new MethodInvoker(delegate { textEditOpMode3.EditValue = _iOpmode[2]; }));
+                    textEditTargetPos3.BeginInvoke(new MethodInvoker(delegate { textEditTargetPos3.EditValue = _fTargetPosition[2]; }));
+                    textEditPresentPosZ.BeginInvoke(new MethodInvoker(delegate { textEditPresentPosZ.EditValue = _fPresentPosition[2]; }));
+                    textEditPresentPos3.BeginInvoke(new MethodInvoker(delegate { textEditPresentPos3.EditValue = _fPresentPosition[2]; }));
+                    textEditTargetVel3.BeginInvoke(new MethodInvoker(delegate { textEditTargetVel3.EditValue = _fTargetVelocity[2]; }));
+                    textEditPresentVel3.BeginInvoke(new MethodInvoker(delegate { textEditPresentVel3.EditValue = _fPresentVelocity[2]; }));
+                    textEditMotorRPM3.BeginInvoke(new MethodInvoker(delegate { textEditMotorRPM3.EditValue = _iMotorRPM[2]; }));
+                    textEditProgramStep3.BeginInvoke(new MethodInvoker(delegate { textEditProgramStep3.EditValue = _iProgStep[2]; }));
+                    //LogWriteEvent?.Invoke(string.Format("모션 제어 통신데이터가 업데이트 되었습니다"));
                 }
-                textEditOpMode1.BeginInvoke(new MethodInvoker(delegate { textEditOpMode1.EditValue = _iOpmode[0]; }));
-                textEditTargetPos1.BeginInvoke(new MethodInvoker(delegate { textEditTargetPos1.EditValue = _fTargetPosition[0]; }));
-                textEditPresentPosX.BeginInvoke(new MethodInvoker(delegate { textEditPresentPosX.EditValue = _fPresentPosition[0]; }));
-                textEditPresentPos1.BeginInvoke(new MethodInvoker(delegate { textEditPresentPos1.EditValue = _fPresentPosition[0]; }));
-                textEditTargetVel1.BeginInvoke(new MethodInvoker(delegate { textEditTargetVel1.EditValue = _fTargetVelocity[0]; }));
-                textEditPresentVel1.BeginInvoke(new MethodInvoker(delegate { textEditPresentVel1.EditValue = _fPresentVelocity[0]; }));
-                textEditMotorRPM1.BeginInvoke(new MethodInvoker(delegate { textEditMotorRPM1.EditValue = _iMotorRPM[0]; }));
-                textEditProgramStep1.BeginInvoke(new MethodInvoker(delegate { textEditProgramStep1.EditValue = _iProgStep[0]; }));
-
-                textEditOpMode2.BeginInvoke(new MethodInvoker(delegate { textEditOpMode2.EditValue = _iOpmode[1]; }));
-                textEditTargetPos2.BeginInvoke(new MethodInvoker(delegate { textEditTargetPos2.EditValue = _fTargetPosition[1]; }));
-                textEditPresentPosY.BeginInvoke(new MethodInvoker(delegate { textEditPresentPosY.EditValue = _fPresentPosition[1]; }));
-                textEditPresentPos2.BeginInvoke(new MethodInvoker(delegate { textEditPresentPos2.EditValue = _fPresentPosition[1]; }));
-                textEditTargetVel2.BeginInvoke(new MethodInvoker(delegate { textEditTargetVel2.EditValue = _fTargetVelocity[1]; }));
-                textEditPresentVel2.BeginInvoke(new MethodInvoker(delegate { textEditPresentVel2.EditValue = _fPresentVelocity[1]; }));
-                textEditMotorRPM2.BeginInvoke(new MethodInvoker(delegate { textEditMotorRPM2.EditValue = _iMotorRPM[1]; }));
-                textEditProgramStep2.BeginInvoke(new MethodInvoker(delegate { textEditProgramStep2.EditValue = _iProgStep[1]; }));
-
-                textEditOpMode3.BeginInvoke(new MethodInvoker(delegate { textEditOpMode3.EditValue = _iOpmode[2]; }));
-                textEditTargetPos3.BeginInvoke(new MethodInvoker(delegate { textEditTargetPos3.EditValue = _fTargetPosition[2]; }));
-                textEditPresentPosZ.BeginInvoke(new MethodInvoker(delegate { textEditPresentPosZ.EditValue = _fPresentPosition[2]; }));
-                textEditPresentPos3.BeginInvoke(new MethodInvoker(delegate { textEditPresentPos3.EditValue = _fPresentPosition[2]; }));
-                textEditTargetVel3.BeginInvoke(new MethodInvoker(delegate { textEditTargetVel3.EditValue = _fTargetVelocity[2]; }));
-                textEditPresentVel3.BeginInvoke(new MethodInvoker(delegate { textEditPresentVel3.EditValue = _fPresentVelocity[2]; }));
-                textEditMotorRPM3.BeginInvoke(new MethodInvoker(delegate { textEditMotorRPM3.EditValue = _iMotorRPM[2]; }));
-                textEditProgramStep3.BeginInvoke(new MethodInvoker(delegate { textEditProgramStep3.EditValue = _iProgStep[2]; }));
             }
+            catch (Exception ex)
+            {
+                ;
+            } 
             //SetMotionStatus(_mAiCData._mAiCMotionDatas);
             //RobotInfomationUpdatedEvent?.Invoke(_mRobotInfomation); 
         }
