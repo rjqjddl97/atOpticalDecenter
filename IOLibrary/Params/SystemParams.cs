@@ -29,6 +29,19 @@ namespace RecipeManager
         public float InspectionDistanceThreshold { get; set; } = 500F;
         public Rectangle InspectionPassArea { get; set; } = new Rectangle(250, 100, 480, 860);
         public bool _bJobWorkInfomationEnable { get; set; } = false;
+
+        public double _ProductBTS_PDT_Offset { get; set; } = 0D;
+        public double _ProductBTS_DDT_Offset { get; set; } = 0D;
+        public double _ProductBTS_GDT_Offset { get; set; } = 0D;
+        public double _ProductBTS_TDT_Offset { get; set; } = 0D;
+        public double _ProductBTF_PDT_Offset { get; set; } = 0D;
+        public double _ProductBTF_DDT_Offset { get; set; } = 0D;
+        public double _ProductBTF_GDT_Offset { get; set; } = 0D;
+        public double _ProductBTF_TDT_Offset { get; set; } = 0D;
+        public double _ProductBJ_PDT_Offset { get; set; } = 0D;
+        public double _ProductBJ_DDT_Offset { get; set; } = 0D;
+        public double _ProductBJ_GDT_Offset { get; set; } = 0D;
+        public double _ProductBJ_TDT_Offset { get; set; } = 0D;
         public SystemParams()
         {
 

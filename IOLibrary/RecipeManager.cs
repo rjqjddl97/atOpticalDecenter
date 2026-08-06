@@ -26,7 +26,7 @@ namespace RecipeManager
         static public string[] SerialParity = new string[] { "None", "Odd", "Even"};
         //static public string[] SerialEncoding = new string[] { "ASCII", "Unicode", "UTF8", "UTF32" };
 
-        static string[] SystemParamSections = new string[] { "Camera Parameters","Calibration Parameters", "Motion Parameters", "AiC Parameters", "RemoteIO Parameters", "AMDS Parameters", "Save Results", "Language" };
+        static string[] SystemParamSections = new string[] { "Camera Parameters","Calibration Parameters", "Motion Parameters", "AiC Parameters", "RemoteIO Parameters", "AMDS Parameters", "Save Results", "Language" , "ProductOffset" };
         static string[] WorkParamSections = new string[] { "Recipe Information", "Product Infomation", "LED Inspection", "Inspection Positions" };
 
         static public string[] ProductSeries = new string[] {"BTS","BTF","BJ", "BEN" };        
@@ -314,6 +314,21 @@ namespace RecipeManager
 
             // Language Parameters
             systemParam._SystemLanguageKoreaUse = Convert.ToBoolean(systemData[SystemParamSections[7]]["CheckUseKoreaLanguage"]);
+
+            // Product Series Offset Parameters
+            systemParam._ProductBTS_PDT_Offset = Convert.ToDouble(systemData[SystemParamSections[8]]["BTS-PDT_Offset"]);
+            systemParam._ProductBTS_DDT_Offset = Convert.ToDouble(systemData[SystemParamSections[8]]["BTS-DDT_Offset"]);
+            systemParam._ProductBTS_GDT_Offset = Convert.ToDouble(systemData[SystemParamSections[8]]["BTS-GDT_Offset"]);
+            systemParam._ProductBTS_TDT_Offset = Convert.ToDouble(systemData[SystemParamSections[8]]["BTS-TDT_Offset"]);
+            systemParam._ProductBTF_PDT_Offset = Convert.ToDouble(systemData[SystemParamSections[8]]["BTF-PDT_Offset"]);
+            systemParam._ProductBTF_DDT_Offset = Convert.ToDouble(systemData[SystemParamSections[8]]["BTF-DDT_Offset"]);
+            systemParam._ProductBTF_GDT_Offset = Convert.ToDouble(systemData[SystemParamSections[8]]["BTF-GDT_Offset"]);
+            systemParam._ProductBTF_TDT_Offset = Convert.ToDouble(systemData[SystemParamSections[8]]["BTF-TDT_Offset"]);
+            systemParam._ProductBJ_PDT_Offset = Convert.ToDouble(systemData[SystemParamSections[8]]["BJ-PDT_Offset"]);
+            systemParam._ProductBJ_DDT_Offset = Convert.ToDouble(systemData[SystemParamSections[8]]["BJ-DDT_Offset"]);
+            systemParam._ProductBJ_GDT_Offset = Convert.ToDouble(systemData[SystemParamSections[8]]["BJ-GDT_Offset"]);
+            systemParam._ProductBJ_TDT_Offset = Convert.ToDouble(systemData[SystemParamSections[8]]["BJ-TDT_Offset"]);
+
         }
 
         static public void WriteSystemFile(SystemParams systemParam, string strFilePath)
@@ -418,6 +433,20 @@ namespace RecipeManager
 
             // Language Parameters
             systemData[SystemParamSections[7]].AddKey("CheckUseKoreaLanguage", systemParam._SystemLanguageKoreaUse.ToString());
+
+            // Product Series Offset Parameters
+            systemData[SystemParamSections[8]].AddKey("BTS-PDT_Offset", systemParam._ProductBTS_PDT_Offset.ToString());
+            systemData[SystemParamSections[8]].AddKey("BTS-DDT_Offset", systemParam._ProductBTS_DDT_Offset.ToString());
+            systemData[SystemParamSections[8]].AddKey("BTS-GDT_Offset", systemParam._ProductBTS_GDT_Offset.ToString());
+            systemData[SystemParamSections[8]].AddKey("BTS-TDT_Offset", systemParam._ProductBTS_TDT_Offset.ToString());
+            systemData[SystemParamSections[8]].AddKey("BTF-PDT_Offset", systemParam._ProductBTF_PDT_Offset.ToString());
+            systemData[SystemParamSections[8]].AddKey("BTF-DDT_Offset", systemParam._ProductBTF_DDT_Offset.ToString());
+            systemData[SystemParamSections[8]].AddKey("BTF-GDT_Offset", systemParam._ProductBTF_GDT_Offset.ToString());
+            systemData[SystemParamSections[8]].AddKey("BTF-TDT_Offset", systemParam._ProductBTF_TDT_Offset.ToString());
+            systemData[SystemParamSections[8]].AddKey("BJ-PDT_Offset", systemParam._ProductBJ_PDT_Offset.ToString());
+            systemData[SystemParamSections[8]].AddKey("BJ-DDT_Offset", systemParam._ProductBJ_DDT_Offset.ToString());
+            systemData[SystemParamSections[8]].AddKey("BJ-GDT_Offset", systemParam._ProductBJ_GDT_Offset.ToString());
+            systemData[SystemParamSections[8]].AddKey("BJ-TDT_Offset", systemParam._ProductBJ_TDT_Offset.ToString());            
 
             parser.WriteFile(strFilePath, systemData);
         }

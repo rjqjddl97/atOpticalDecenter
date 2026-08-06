@@ -140,6 +140,19 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.categoryProductOpticalAnlgeOffset = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
+            this.rowProductBTSPOffset = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowProductBTSDOffset = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowProductBTSGOffset = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowProductBTSTOffset = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowProductBTFPOffset = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowProductBTFDOffset = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowProductBTFGOffset = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowProductBTFTOffset = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowProductBJPOffset = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowProductBJDOffset = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowProductBJGOffset = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowProductBJTOffset = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControlSystemParameters)).BeginInit();
@@ -211,7 +224,8 @@
             this.categoryRemoteIOCommunicationParameters,
             this.categorySystemADMSInformation,
             this.categorySaveResult,
-            this.categorySystemLanguage});
+            this.categorySystemLanguage,
+            this.categoryProductOpticalAnlgeOffset});
             this.vGridControlSystemParameters.Size = new System.Drawing.Size(483, 636);
             this.vGridControlSystemParameters.TabIndex = 4;
             this.vGridControlSystemParameters.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControlSystemParameters_CellValueChanged);
@@ -1230,6 +1244,132 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
+            // categoryProductOpticalAnlgeOffset
+            // 
+            this.categoryProductOpticalAnlgeOffset.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
+            this.rowProductBTSPOffset,
+            this.rowProductBTSDOffset,
+            this.rowProductBTSGOffset,
+            this.rowProductBTSTOffset,
+            this.rowProductBTFPOffset,
+            this.rowProductBTFDOffset,
+            this.rowProductBTFGOffset,
+            this.rowProductBTFTOffset,
+            this.rowProductBJPOffset,
+            this.rowProductBJDOffset,
+            this.rowProductBJGOffset,
+            this.rowProductBJTOffset});
+            this.categoryProductOpticalAnlgeOffset.Name = "categoryProductOpticalAnlgeOffset";
+            this.categoryProductOpticalAnlgeOffset.Properties.Caption = "ProductOffset";
+            // 
+            // rowProductBTSPOffset
+            // 
+            this.rowProductBTSPOffset.Appearance.Options.UseTextOptions = true;
+            this.rowProductBTSPOffset.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowProductBTSPOffset.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowProductBTSPOffset.Name = "rowProductBTSPOffset";
+            this.rowProductBTSPOffset.Properties.Caption = "BTS-PDT Offset[˚]";
+            this.rowProductBTSPOffset.Properties.Value = 0D;
+            // 
+            // rowProductBTSDOffset
+            // 
+            this.rowProductBTSDOffset.Appearance.Options.UseTextOptions = true;
+            this.rowProductBTSDOffset.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowProductBTSDOffset.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowProductBTSDOffset.Name = "rowProductBTSDOffset";
+            this.rowProductBTSDOffset.Properties.Caption = "BTS-DDT Offset[˚]";
+            this.rowProductBTSDOffset.Properties.Value = 0D;
+            // 
+            // rowProductBTSGOffset
+            // 
+            this.rowProductBTSGOffset.Appearance.Options.UseTextOptions = true;
+            this.rowProductBTSGOffset.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowProductBTSGOffset.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowProductBTSGOffset.Name = "rowProductBTSGOffset";
+            this.rowProductBTSGOffset.Properties.Caption = "BTS-GDT Offset[˚]";
+            this.rowProductBTSGOffset.Properties.Value = 0D;
+            // 
+            // rowProductBTSTOffset
+            // 
+            this.rowProductBTSTOffset.Appearance.Options.UseTextOptions = true;
+            this.rowProductBTSTOffset.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowProductBTSTOffset.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowProductBTSTOffset.Name = "rowProductBTSTOffset";
+            this.rowProductBTSTOffset.Properties.Caption = "BTS-TDT[˚]";
+            this.rowProductBTSTOffset.Properties.Value = 0D;
+            // 
+            // rowProductBTFPOffset
+            // 
+            this.rowProductBTFPOffset.Appearance.Options.UseTextOptions = true;
+            this.rowProductBTFPOffset.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowProductBTFPOffset.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowProductBTFPOffset.Name = "rowProductBTFPOffset";
+            this.rowProductBTFPOffset.Properties.Caption = "BTF-PDT Offset[˚]";
+            this.rowProductBTFPOffset.Properties.Value = 0D;
+            // 
+            // rowProductBTFDOffset
+            // 
+            this.rowProductBTFDOffset.Appearance.Options.UseTextOptions = true;
+            this.rowProductBTFDOffset.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowProductBTFDOffset.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowProductBTFDOffset.Name = "rowProductBTFDOffset";
+            this.rowProductBTFDOffset.Properties.Caption = "BTF-DDT Offset[˚]";
+            this.rowProductBTFDOffset.Properties.Value = 0D;
+            // 
+            // rowProductBTFGOffset
+            // 
+            this.rowProductBTFGOffset.Appearance.Options.UseTextOptions = true;
+            this.rowProductBTFGOffset.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowProductBTFGOffset.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowProductBTFGOffset.Name = "rowProductBTFGOffset";
+            this.rowProductBTFGOffset.Properties.Caption = "BTF-GDT Offset[˚]";
+            this.rowProductBTFGOffset.Properties.Value = 0D;
+            // 
+            // rowProductBTFTOffset
+            // 
+            this.rowProductBTFTOffset.Appearance.Options.UseTextOptions = true;
+            this.rowProductBTFTOffset.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowProductBTFTOffset.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowProductBTFTOffset.Name = "rowProductBTFTOffset";
+            this.rowProductBTFTOffset.Properties.Caption = "BTF-TDT Offset[˚]";
+            this.rowProductBTFTOffset.Properties.Value = 0D;
+            // 
+            // rowProductBJPOffset
+            // 
+            this.rowProductBJPOffset.Appearance.Options.UseTextOptions = true;
+            this.rowProductBJPOffset.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowProductBJPOffset.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowProductBJPOffset.Name = "rowProductBJPOffset";
+            this.rowProductBJPOffset.Properties.Caption = "BJ-PDT Offset[˚]";
+            this.rowProductBJPOffset.Properties.Value = 0D;
+            // 
+            // rowProductBJDOffset
+            // 
+            this.rowProductBJDOffset.Appearance.Options.UseTextOptions = true;
+            this.rowProductBJDOffset.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowProductBJDOffset.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowProductBJDOffset.Name = "rowProductBJDOffset";
+            this.rowProductBJDOffset.Properties.Caption = "BJ-DDT Offset[˚]";
+            this.rowProductBJDOffset.Properties.Value = 0D;
+            // 
+            // rowProductBJGOffset
+            // 
+            this.rowProductBJGOffset.Appearance.Options.UseTextOptions = true;
+            this.rowProductBJGOffset.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowProductBJGOffset.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowProductBJGOffset.Name = "rowProductBJGOffset";
+            this.rowProductBJGOffset.Properties.Caption = "BJ-GDT Offset[˚]";
+            this.rowProductBJGOffset.Properties.Value = 0D;
+            // 
+            // rowProductBJTOffset
+            // 
+            this.rowProductBJTOffset.Appearance.Options.UseTextOptions = true;
+            this.rowProductBJTOffset.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowProductBJTOffset.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowProductBJTOffset.Name = "rowProductBJTOffset";
+            this.rowProductBJTOffset.Properties.Caption = "BJ-TDT Offset[˚]";
+            this.rowProductBJTOffset.Properties.Value = 0D;
+            // 
             // SystemEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1381,5 +1521,18 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReference_Y;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowReference_Z;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSystemJobWorkUse;
+        private DevExpress.XtraVerticalGrid.Rows.CategoryRow categoryProductOpticalAnlgeOffset;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBTSPOffset;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBTSDOffset;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBTSGOffset;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBTSTOffset;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBTFPOffset;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBTFDOffset;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBTFGOffset;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBTFTOffset;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBJPOffset;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBJDOffset;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBJGOffset;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBJTOffset;
     }
 }

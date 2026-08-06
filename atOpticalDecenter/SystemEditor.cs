@@ -110,6 +110,20 @@ namespace atOpticalDecenter
                 categorySystemLanguage.Properties.Caption = "System Language";
                 rowSystemUseLanguage.Properties.Caption = "Use Korea Language";
 
+                categoryProductOpticalAnlgeOffset.Properties.Caption = "Product InspectAngle Offset";
+                rowProductBTSPOffset.Properties.Caption = "BTS-PDT Offset";
+                rowProductBTSDOffset.Properties.Caption = "BTS-DDT Offset";
+                rowProductBTSGOffset.Properties.Caption = "BTS-GDT Offset";
+                rowProductBTSTOffset.Properties.Caption = "BTS-TDT Offset";
+                rowProductBTFPOffset.Properties.Caption = "BTF-PDT Offset";
+                rowProductBTFDOffset.Properties.Caption = "BTF-DDT Offset";
+                rowProductBTFGOffset.Properties.Caption = "BTF-GDT Offset";
+                rowProductBTFTOffset.Properties.Caption = "BTF-TDT Offset";
+                rowProductBJPOffset.Properties.Caption = "BJ-PDT Offset";
+                rowProductBJDOffset.Properties.Caption = "BJ-DDT Offset";
+                rowProductBJGOffset.Properties.Caption = "BJ-GDT Offset";
+                rowProductBJTOffset.Properties.Caption = "BJ-TDT Offset";
+
                 simpleButtonSystemSaveCancel.Text = "Cancle";
                 simpleButtonSystemFileSave.Text = "Save";
             }
@@ -193,6 +207,20 @@ namespace atOpticalDecenter
                 categorySaveResult.Properties.Caption = "결과 저장 옵션";
                 rowSaveResultLEDMeasurement.Properties.Caption = "투광 LED 이미지 저장";
                 rowSaveResultStatistics.Properties.Caption = "통계 데이터 저장";
+
+                categoryProductOpticalAnlgeOffset.Properties.Caption = "제품별 검사각도옵셋";
+                rowProductBTSPOffset.Properties.Caption = "BTS 미러반사 Offset";
+                rowProductBTSDOffset.Properties.Caption = "BTS 확산반사 Offset";
+                rowProductBTSGOffset.Properties.Caption = "BTS BGS반사 Offset";
+                rowProductBTSTOffset.Properties.Caption = "BTS 투광 Offset";
+                rowProductBTFPOffset.Properties.Caption = "BTF 미러반사 Offset";
+                rowProductBTFDOffset.Properties.Caption = "BTF 확산반사 Offset";
+                rowProductBTFGOffset.Properties.Caption = "BTF BGS반사 Offset";
+                rowProductBTFTOffset.Properties.Caption = "BTF 투광 Offset";
+                rowProductBJPOffset.Properties.Caption = "BJ 미러반사 Offset";
+                rowProductBJDOffset.Properties.Caption = "BJ 확산반사 Offset";
+                rowProductBJGOffset.Properties.Caption = "BJ BGS반사 Offset";
+                rowProductBJTOffset.Properties.Caption = "BJ 투광 Offset";
 
                 categorySystemLanguage.Properties.Caption = "시스템 언어 설정";
                 rowSystemUseLanguage.Properties.Caption = "한국어 사용";
@@ -367,6 +395,19 @@ namespace atOpticalDecenter
             _systemParameters._saveResultStatistics = Convert.ToBoolean(rowSaveResultStatistics.Properties.Value);
 
             _systemParameters._SystemLanguageKoreaUse = Convert.ToBoolean(rowSystemUseLanguage.Properties.Value);
+
+            _systemParameters._ProductBTS_PDT_Offset = Convert.ToDouble(rowProductBTSPOffset.Properties.Value);
+            _systemParameters._ProductBTS_DDT_Offset = Convert.ToDouble(rowProductBTSDOffset.Properties.Value);
+            _systemParameters._ProductBTS_GDT_Offset = Convert.ToDouble(rowProductBTSGOffset.Properties.Value);
+            _systemParameters._ProductBTS_TDT_Offset = Convert.ToDouble(rowProductBTSTOffset.Properties.Value);
+            _systemParameters._ProductBTF_PDT_Offset = Convert.ToDouble(rowProductBTFPOffset.Properties.Value);
+            _systemParameters._ProductBTF_DDT_Offset = Convert.ToDouble(rowProductBTFDOffset.Properties.Value);
+            _systemParameters._ProductBTF_GDT_Offset = Convert.ToDouble(rowProductBTFGOffset.Properties.Value);
+            _systemParameters._ProductBTF_TDT_Offset = Convert.ToDouble(rowProductBTFTOffset.Properties.Value);
+            _systemParameters._ProductBJ_PDT_Offset = Convert.ToDouble(rowProductBJPOffset.Properties.Value);
+            _systemParameters._ProductBJ_DDT_Offset = Convert.ToDouble(rowProductBJDOffset.Properties.Value);
+            _systemParameters._ProductBJ_GDT_Offset = Convert.ToDouble(rowProductBJGOffset.Properties.Value);
+            _systemParameters._ProductBJ_TDT_Offset = Convert.ToDouble(rowProductBJTOffset.Properties.Value);
         }
         private void LoadSystemParameters()
         {
@@ -497,6 +538,20 @@ namespace atOpticalDecenter
 
             // System Language Check
             rowSystemUseLanguage.Properties.Value = _systemParameters._SystemLanguageKoreaUse;
+
+            // Product Inspect Anlge Offset
+            rowProductBTSPOffset.Properties.Value = _systemParameters._ProductBTS_PDT_Offset;
+            rowProductBTSDOffset.Properties.Value = _systemParameters._ProductBTS_DDT_Offset;
+            rowProductBTSGOffset.Properties.Value = _systemParameters._ProductBTS_GDT_Offset;
+            rowProductBTSTOffset.Properties.Value = _systemParameters._ProductBTS_TDT_Offset;
+            rowProductBTFPOffset.Properties.Value = _systemParameters._ProductBTF_PDT_Offset;
+            rowProductBTFDOffset.Properties.Value = _systemParameters._ProductBTF_DDT_Offset;
+            rowProductBTFGOffset.Properties.Value = _systemParameters._ProductBTF_GDT_Offset;
+            rowProductBTFTOffset.Properties.Value = _systemParameters._ProductBTF_TDT_Offset;
+            rowProductBJPOffset.Properties.Value = _systemParameters._ProductBJ_PDT_Offset;
+            rowProductBJDOffset.Properties.Value = _systemParameters._ProductBJ_DDT_Offset;
+            rowProductBJGOffset.Properties.Value = _systemParameters._ProductBJ_GDT_Offset;
+            rowProductBJTOffset.Properties.Value = _systemParameters._ProductBJ_TDT_Offset;
         }
         private void vGridControlSystemParameters_EditorKeyDown(object sender, KeyEventArgs e)
         {
@@ -767,7 +822,7 @@ namespace atOpticalDecenter
                 simpleButtonSystemFileSave.Enabled = true;
                 _systemParameters._calibrationParams._Position_2_Z = dfValue;
                 _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("교정점 P2 Z축 기준값이 {0}로 변경되었습니다.", _systemParameters._calibrationParams._Position_2_Z.ToString()));
-            } 
+            }
             else if (currentRow == rowMotionMoveVelocity)
             {
                 fValue = Convert.ToSingle(rowMotionMoveVelocity.Properties.Value);
@@ -812,7 +867,7 @@ namespace atOpticalDecenter
             }
             else if (currentRow == rowMotionResolutionX)
             {
-                value =Convert.ToInt32(rowMotionGearRatioX.Properties.Value);
+                value = Convert.ToInt32(rowMotionGearRatioX.Properties.Value);
                 if (value <= 0)
                 {
                     MessageBox.Show("잘못된 값을 입력했습니다.\r\nX축 분해능 값은 0보다 큰 값입니다.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1629,6 +1684,102 @@ namespace atOpticalDecenter
                     MessageBox.Show("언어가 변경되었습니다.\r\n프로그램을 재시작이 필요합니다.", "알람", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     MessageBox.Show("System Language changed now.\r\nMust restart program.", "Alarm", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (currentRow == rowProductBTSPOffset)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowProductBTSPOffset.Properties.Value);
+                _systemParameters._ProductBTS_PDT_Offset = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("BTS-PDT 각도 Offset이 {0}로 변경되었습니다.", _systemParameters._ProductBTS_PDT_Offset.ToString()));
+            }
+            else if (currentRow == rowProductBTSDOffset)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowProductBTSDOffset.Properties.Value);
+                _systemParameters._ProductBTS_DDT_Offset = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("BTS-DDT 각도 Offset이 {0}로 변경되었습니다.", _systemParameters._ProductBTS_DDT_Offset.ToString()));
+            }
+            else if (currentRow == rowProductBTSGOffset)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowProductBTSGOffset.Properties.Value);
+                _systemParameters._ProductBTS_GDT_Offset = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("BTS-GDT 각도 Offset이 {0}로 변경되었습니다.", _systemParameters._ProductBTS_GDT_Offset.ToString()));
+            }
+            else if (currentRow == rowProductBTSTOffset)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowProductBTSTOffset.Properties.Value);
+                _systemParameters._ProductBTS_TDT_Offset = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("BTS-TDT 각도 Offset이 {0}로 변경되었습니다.", _systemParameters._ProductBTS_TDT_Offset.ToString()));
+            }
+            else if (currentRow == rowProductBTFPOffset)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowProductBTFPOffset.Properties.Value);
+                _systemParameters._ProductBTF_PDT_Offset = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("BTF-PDT 각도 Offset이 {0}로 변경되었습니다.", _systemParameters._ProductBTF_PDT_Offset.ToString()));
+            }
+            else if (currentRow == rowProductBTFDOffset)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowProductBTFDOffset.Properties.Value);
+                _systemParameters._ProductBTF_DDT_Offset = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("BTF-DDT 각도 Offset이 {0}로 변경되었습니다.", _systemParameters._ProductBTF_DDT_Offset.ToString()));
+            }
+            else if (currentRow == rowProductBTFGOffset)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowProductBTFGOffset.Properties.Value);
+                _systemParameters._ProductBTF_GDT_Offset = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("BTF-GDT 각도 Offset이 {0}로 변경되었습니다.", _systemParameters._ProductBTF_GDT_Offset.ToString()));
+            }
+            else if (currentRow == rowProductBTFTOffset)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowProductBTFTOffset.Properties.Value);
+                _systemParameters._ProductBTF_TDT_Offset = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("BTF-TDT 각도 Offset이 {0}로 변경되었습니다.", _systemParameters._ProductBTF_TDT_Offset.ToString()));
+            }
+            else if (currentRow == rowProductBJPOffset)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowProductBJPOffset.Properties.Value);
+                _systemParameters._ProductBJ_PDT_Offset = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("BJ-PDT 각도 Offset이 {0}로 변경되었습니다.", _systemParameters._ProductBJ_PDT_Offset.ToString()));
+            }
+            else if (currentRow == rowProductBJDOffset)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowProductBJDOffset.Properties.Value);
+                _systemParameters._ProductBJ_DDT_Offset = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("BJ-DDT 각도 Offset이 {0}로 변경되었습니다.", _systemParameters._ProductBJ_DDT_Offset.ToString()));
+            }
+            else if (currentRow == rowProductBJGOffset)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowProductBJGOffset.Properties.Value);
+                _systemParameters._ProductBJ_GDT_Offset = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("BJ-GDT 각도 Offset이 {0}로 변경되었습니다.", _systemParameters._ProductBJ_GDT_Offset.ToString()));
+            }
+            else if (currentRow == rowProductBJTOffset)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowProductBJTOffset.Properties.Value);
+                _systemParameters._ProductBJ_TDT_Offset = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("BJ-TDT 각도 Offset이 {0}로 변경되었습니다.", _systemParameters._ProductBJ_TDT_Offset.ToString()));
             }
         }
 
