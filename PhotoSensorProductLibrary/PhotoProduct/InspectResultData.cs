@@ -194,7 +194,7 @@ namespace PhotoProduct
             fOpticalEmiterAngle = Math.Atan(((fOpticalSize[1] - fOpticalSize[0]) / 2f) / WorkDistance) * 2f;      // 발산각 계산.            
             fOpticalEccentricAngle = (Math.Atan(fMeasureDecenter / WorkDistance)) * RADIAN_TO_DEGREE;             // 편심각 계산.
             fOpticalEccentricAngle_H = (Math.Atan(fMeasureDecenter_H / WorkDistance)) * RADIAN_TO_DEGREE;         // 수평 편심각 계산.
-            fOpticalEccentricAngle_V = (Math.Atan(fMeasureDecenter_V / WorkDistance)) * RADIAN_TO_DEGREE;         // 수직 편심각 계산.
+            fOpticalEccentricAngle_V = (Math.Atan(fMeasureDecenter_V / WorkDistance)) * RADIAN_TO_DEGREE * (-1);         // 수직 편심각 계산.
 
             CalcOpticalReduceQuantity(iProductType);
             if (iProductType == 6)
