@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(atOpticalDecenter));
-            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.ChartTitle chartTitle2 = new DevExpress.XtraCharts.ChartTitle();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemSystemFolderPathSetting = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSystemEditor = new DevExpress.XtraBars.BarButtonItem();
@@ -224,6 +224,7 @@
             this.barButtonItemConnectionPhotoSensor = new DevExpress.XtraBars.BarButtonItem();
             this.timerCurrentTime = new System.Windows.Forms.Timer(this.components);
             this.timerImageUpdate = new System.Windows.Forms.Timer(this.components);
+            this.rowSimilarityValue = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBarInspectionProcess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditInspectionResult)).BeginInit();
@@ -282,8 +283,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControlInspectionAngle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
@@ -1130,7 +1131,6 @@
             // vGridControl1
             // 
             this.vGridControl1.BandsInterval = 1;
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -1273,7 +1273,7 @@
             // 
             this.vGridControl5.BandsInterval = 1;
             this.vGridControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl5.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl5.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl5.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControl5.Location = new System.Drawing.Point(3, 105);
             this.vGridControl5.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
@@ -1511,7 +1511,8 @@
             this.rowTempletePath,
             this.rowTempleteImage,
             this.rowrThresholdValue,
-            this.rowResultPosition});
+            this.rowResultPosition,
+            this.rowSimilarityValue});
             this.categoryPatternMaching.Height = 19;
             this.categoryPatternMaching.Name = "categoryPatternMaching";
             this.categoryPatternMaching.Properties.Caption = "패턴 매칭";
@@ -1875,22 +1876,22 @@
             // 
             // chartControlInspectionAngle
             // 
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartControlInspectionAngle.Diagram = xyDiagram1;
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControlInspectionAngle.Diagram = xyDiagram2;
             this.chartControlInspectionAngle.Legend.Name = "Default Legend";
             this.chartControlInspectionAngle.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
             this.chartControlInspectionAngle.Location = new System.Drawing.Point(12, 12);
             this.chartControlInspectionAngle.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.chartControlInspectionAngle.Name = "chartControlInspectionAngle";
-            series1.Name = "Series 1";
+            series2.Name = "Series 1";
             this.chartControlInspectionAngle.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1};
+        series2};
             this.chartControlInspectionAngle.Size = new System.Drawing.Size(266, 286);
             this.chartControlInspectionAngle.TabIndex = 4;
-            chartTitle1.Text = "편심 각도[˚]";
+            chartTitle2.Text = "편심 각도[˚]";
             this.chartControlInspectionAngle.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle1});
+            chartTitle2});
             // 
             // Root
             // 
@@ -2213,7 +2214,17 @@
             // 
             // timerImageUpdate
             // 
+            this.timerImageUpdate.Interval = 200;
             this.timerImageUpdate.Tick += new System.EventHandler(this.timerImageUpdate_Tick);
+            // 
+            // rowSimilarityValue
+            // 
+            this.rowSimilarityValue.Appearance.Options.UseTextOptions = true;
+            this.rowSimilarityValue.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowSimilarityValue.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowSimilarityValue.Name = "rowSimilarityValue";
+            this.rowSimilarityValue.Properties.Caption = "패턴 유사도[%]";
+            this.rowSimilarityValue.Properties.Value = 80;
             // 
             // atOpticalDecenter
             // 
@@ -2292,8 +2303,8 @@
             this.xtraTabPageStatistics.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControlInspectionAngle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
@@ -2519,5 +2530,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditTotalPassCount;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSpotBrightPeakValidRatio;
         private System.Windows.Forms.Timer timerImageUpdate;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSimilarityValue;
     }
 }

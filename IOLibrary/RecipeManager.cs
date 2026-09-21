@@ -26,7 +26,7 @@ namespace RecipeManager
         static public string[] SerialParity = new string[] { "None", "Odd", "Even"};
         //static public string[] SerialEncoding = new string[] { "ASCII", "Unicode", "UTF8", "UTF32" };
 
-        static string[] SystemParamSections = new string[] { "Camera Parameters","Calibration Parameters", "Motion Parameters", "AiC Parameters", "RemoteIO Parameters", "AMDS Parameters", "Save Results", "Language" , "ProductOffset" };
+        static string[] SystemParamSections = new string[] { "Camera Parameters","Calibration Parameters", "Motion Parameters", "AiC Parameters", "RemoteIO Parameters", "AMDS Parameters", "Save Results", "Language" , "ProductOffset" , "Jig Inspection Parameter"};
         static string[] WorkParamSections = new string[] { "Recipe Information", "Product Infomation", "LED Inspection", "Inspection Positions" };
 
         static public string[] ProductSeries = new string[] {"BTS","BTF","BJ", "BEN" };        
@@ -340,6 +340,14 @@ namespace RecipeManager
             systemParam._ProductBJ_GDT_OffsetV = Convert.ToDouble(systemData[SystemParamSections[8]]["BJ-GDT_V_Offset"]);
             systemParam._ProductBJ_TDT_OffsetH = Convert.ToDouble(systemData[SystemParamSections[8]]["BJ-TDT_H_Offset"]);
             systemParam._ProductBJ_TDT_OffsetV = Convert.ToDouble(systemData[SystemParamSections[8]]["BJ-TDT_V_Offset"]);
+
+            systemParam._InspectionJigExposureTime = Convert.ToInt32(systemData[SystemParamSections[9]]["InspectionExposureTime"]);
+            systemParam._InspectionMatchingImagePath = Convert.ToString(systemData[SystemParamSections[9]]["PatternImagePath"]);
+            systemParam._InspectionThresholdValue = Convert.ToInt32(systemData[SystemParamSections[9]]["InspectionThresholde"]);
+            systemParam._InspectionPatternSimilarity = Convert.ToInt32(systemData[SystemParamSections[9]]["InspectionSimilarity"]);
+            systemParam._InspectionJigPositionX = Convert.ToDouble(systemData[SystemParamSections[9]]["InspectionPositionX"]);
+            systemParam._InspectionJigPositionY = Convert.ToDouble(systemData[SystemParamSections[9]]["InspectionPositionY"]);
+            systemParam._InspectionJigPositionZ = Convert.ToDouble(systemData[SystemParamSections[9]]["InspectionPositionZ"]);
         }
 
         static public void WriteSystemFile(SystemParams systemParam, string strFilePath)
@@ -443,9 +451,11 @@ namespace RecipeManager
             systemData[SystemParamSections[6]].AddKey("SaveStatistics", systemParam._saveResultStatistics.ToString());
 
             // Language Parameters
+            systemData.Sections.AddSection(SystemParamSections[7]);
             systemData[SystemParamSections[7]].AddKey("CheckUseKoreaLanguage", systemParam._SystemLanguageKoreaUse.ToString());
 
             // Product Series Offset Parameters
+            systemData.Sections.AddSection(SystemParamSections[8]);
             systemData[SystemParamSections[8]].AddKey("BTS-PDT_H_Offset", systemParam._ProductBTS_PDT_OffsetH.ToString());
             systemData[SystemParamSections[8]].AddKey("BTS-PDT_V_Offset", systemParam._ProductBTS_PDT_OffsetV.ToString());
             systemData[SystemParamSections[8]].AddKey("BTS-DDT_H_Offset", systemParam._ProductBTS_DDT_OffsetH.ToString());
@@ -470,6 +480,15 @@ namespace RecipeManager
             systemData[SystemParamSections[8]].AddKey("BJ-GDT_V_Offset", systemParam._ProductBJ_GDT_OffsetV.ToString());
             systemData[SystemParamSections[8]].AddKey("BJ-TDT_H_Offset", systemParam._ProductBJ_TDT_OffsetH.ToString());
             systemData[SystemParamSections[8]].AddKey("BJ-TDT_V_Offset", systemParam._ProductBJ_TDT_OffsetV.ToString());
+
+            systemData.Sections.AddSection(SystemParamSections[9]);
+            systemData[SystemParamSections[9]].AddKey("InspectionExposureTime", systemParam._InspectionJigExposureTime.ToString());
+            systemData[SystemParamSections[9]].AddKey("PatternImagePath", systemParam._InspectionMatchingImagePath.ToString());
+            systemData[SystemParamSections[9]].AddKey("InspectionThresholde", systemParam._InspectionThresholdValue.ToString());
+            systemData[SystemParamSections[9]].AddKey("InspectionSimilarity", systemParam._InspectionPatternSimilarity.ToString());
+            systemData[SystemParamSections[9]].AddKey("InspectionPositionX", systemParam._InspectionJigPositionX.ToString());
+            systemData[SystemParamSections[9]].AddKey("InspectionPositionY", systemParam._InspectionJigPositionY.ToString());
+            systemData[SystemParamSections[9]].AddKey("InspectionPositionZ", systemParam._InspectionJigPositionZ.ToString());
 
             parser.WriteFile(strFilePath, systemData);
         }

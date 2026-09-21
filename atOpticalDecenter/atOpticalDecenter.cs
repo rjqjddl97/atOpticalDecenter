@@ -1496,13 +1496,14 @@ namespace atOpticalDecenter
                         CameraParameters cameraParam = new CameraParameters();
                         if (Convert.ToInt32(rowCameraFrame.Properties.Value) > 20)
                         {
-                            cameraParam.Value = 20;
-                            timerImageUpdate.Interval = 50;
+                            cameraParam.Value = 5;
+                            timerImageUpdate.Interval = 200;
                         }
                         else
                         {
-                            cameraParam.Value = Convert.ToInt32(rowCameraFrame.Properties.Value);
-                            timerImageUpdate.Interval = 1000 / Convert.ToInt32(rowCameraFrame.Properties.Value);
+                            cameraParam.Value = Convert.ToInt32(rowCameraFrame.Properties.Value);                            
+                            //timerImageUpdate.Interval = 1000 / Convert.ToInt32(rowCameraFrame.Properties.Value);
+                            timerImageUpdate.Interval = 200;
                         }
                         _Camera.FrameRate = cameraParam;
                         
@@ -2803,7 +2804,7 @@ namespace atOpticalDecenter
 
                 if (tempImage.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
                 {
-                    inspectsource = ConverterColorToGray(tempImage);
+                    inspectsource = ConverterColorToGray(tempImage);                    
                     tempImage = inspectsource;
                     outImage = tempImage;
                 }
@@ -2814,7 +2815,20 @@ namespace atOpticalDecenter
                     _workParams.AreaEnd = _fptAreaEnd;
                 }
 
-                if (tm.PatternMatching(outImage, _workParams, 0))
+                Bitmap TemplateImage = (Bitmap)Image.FromFile(_workParams.MatchingImagePath);
+                Bitmap _tempTemplate = Utils.Clone<Bitmap>((Bitmap)TemplateImage);
+                if (_tempTemplate.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+                {
+                    TemplateImage = ConverterColorToGray(_tempTemplate);
+                }
+                //if (tm.PatternMatching(outImage, _workParams, 0))
+                int ithresholde = 0, isimilarity = 0;
+                ithresholde = Convert.ToInt32(rowrThresholdValue.Properties.Value);
+                isimilarity = Convert.ToInt32(rowSimilarityValue.Properties.Value);
+                if (tm.JigCalibrationPatternMatching(outImage, TemplateImage, ithresholde, isimilarity) )
+                //List<TemplateMatch.MatchResult> retResult = new List<TemplateMatch.MatchResult>();
+                //retResult = tm.DetectMultiRotatedPatterns(outImage, TemplateImage, ithresholde, isimilarity);
+                //if (retResult != null)
                 {
                     _patternMatching = true;
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 완료"));                    

@@ -52,6 +52,15 @@ namespace RecipeManager
         public double _ProductBJ_GDT_OffsetV { get; set; } = 0D;
         public double _ProductBJ_TDT_OffsetH { get; set; } = 0D;
         public double _ProductBJ_TDT_OffsetV { get; set; } = 0D;
+
+        public int _InspectionJigExposureTime { get; set; } = 100000;
+        public string _InspectionMatchingImagePath { get; set; } = string.Empty;
+        public int _InspectionThresholdValue { get; set; } = 10;
+        public int _InspectionPatternSimilarity { get; set; } = 80;
+        public double _InspectionJigPositionX { get; set; } = 30;
+        public double _InspectionJigPositionY { get; set; } = 20;
+        public double _InspectionJigPositionZ { get; set; } = 20;
+
         public SystemParams()
         {
 

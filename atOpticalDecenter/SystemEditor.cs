@@ -136,6 +136,15 @@ namespace atOpticalDecenter
                 rowProductBJTOffset_H.Properties.Caption = "BJ-TDT H_Offset";
                 rowProductBJTOffset_V.Properties.Caption = "BJ-TDT V_Offset";
 
+                rowJigInspectionCameraExposureTime.Properties.Caption = "Inspection Camera ExposureTime[us]";
+                rowJigInspectionThresholdValue.Properties.Caption = "Inspection Threshold Value[0~255]";
+                rowJigInspectionSimilaraty.Properties.Caption = "Pattern Similarity[%]";
+                rowJigInspectionTempletePath.Properties.Caption = "Templete Image Path";
+                rowJigInspectionTempleteImage.Properties.Caption = "Templete Image";
+                rowJigInspectionPositionX.Properties.Caption = "Jig Inspection Position X[mm]";
+                rowJigInspectionPositionY.Properties.Caption = "Jig Inspection Position Y[mm]";
+                rowJigInspectionPositionZ.Properties.Caption = "Jig Inspection Position Z[mm]";
+
                 simpleButtonSystemSaveCancel.Text = "Cancle";
                 simpleButtonSystemFileSave.Text = "Save";
             }
@@ -245,6 +254,15 @@ namespace atOpticalDecenter
                 rowProductBJGOffset_V.Properties.Caption = "BJ BGS반사 수직각 Offset";
                 rowProductBJTOffset_H.Properties.Caption = "BJ 투광 수평각 Offset";
                 rowProductBJTOffset_V.Properties.Caption = "BJ 투광 수직각 Offset";
+
+                rowJigInspectionCameraExposureTime.Properties.Caption = "지그 검사 카메라 노출시간[us]";
+                rowJigInspectionThresholdValue.Properties.Caption = "지그 검사 이진화 값[0~255]";
+                rowJigInspectionSimilaraty.Properties.Caption = "패턴 유사도[%]";
+                rowJigInspectionTempletePath.Properties.Caption = "템플릿 파일경로";
+                rowJigInspectionTempleteImage.Properties.Caption = "템플릿 이미지";
+                rowJigInspectionPositionX.Properties.Caption = "지그 교정 위치 X[mm]";
+                rowJigInspectionPositionY.Properties.Caption = "지그 교정 위치 Y[mm]";
+                rowJigInspectionPositionZ.Properties.Caption = "지그 교정 위치 Z[mm]";
 
                 categorySystemLanguage.Properties.Caption = "시스템 언어 설정";
                 rowSystemUseLanguage.Properties.Caption = "한국어 사용";
@@ -444,6 +462,15 @@ namespace atOpticalDecenter
             _systemParameters._ProductBJ_GDT_OffsetV = Convert.ToDouble(rowProductBJGOffset_V.Properties.Value);
             _systemParameters._ProductBJ_TDT_OffsetH = Convert.ToDouble(rowProductBJTOffset_H.Properties.Value);
             _systemParameters._ProductBJ_TDT_OffsetV = Convert.ToDouble(rowProductBJTOffset_V.Properties.Value);
+
+            _systemParameters._InspectionJigExposureTime = Convert.ToInt32(rowJigInspectionCameraExposureTime.Properties.Value);
+            _systemParameters._InspectionThresholdValue = Convert.ToInt32(rowJigInspectionThresholdValue.Properties.Value);
+            _systemParameters._InspectionPatternSimilarity = Convert.ToInt32(rowJigInspectionSimilaraty.Properties.Value);
+            _systemParameters._InspectionMatchingImagePath = Convert.ToString(rowJigInspectionTempletePath.Properties.Value);
+            _systemParameters._InspectionJigPositionX = Convert.ToDouble(rowJigInspectionPositionX.Properties.Value);
+            _systemParameters._InspectionJigPositionY = Convert.ToDouble(rowJigInspectionPositionY.Properties.Value);
+            _systemParameters._InspectionJigPositionZ = Convert.ToDouble(rowJigInspectionPositionZ.Properties.Value);
+
         }
         private void LoadSystemParameters()
         {
@@ -600,6 +627,14 @@ namespace atOpticalDecenter
             rowProductBJGOffset_V.Properties.Value = _systemParameters._ProductBJ_GDT_OffsetV;
             rowProductBJTOffset_H.Properties.Value = _systemParameters._ProductBJ_TDT_OffsetH;
             rowProductBJTOffset_V.Properties.Value = _systemParameters._ProductBJ_TDT_OffsetV;
+
+            rowJigInspectionCameraExposureTime.Properties.Value = _systemParameters._InspectionJigExposureTime;
+            rowJigInspectionTempletePath.Properties.Value = _systemParameters._InspectionMatchingImagePath;
+            rowJigInspectionThresholdValue.Properties.Value = _systemParameters._InspectionThresholdValue;
+            rowJigInspectionSimilaraty.Properties.Value = _systemParameters._InspectionPatternSimilarity;
+            rowJigInspectionPositionX.Properties.Value = _systemParameters._InspectionJigPositionX;
+            rowJigInspectionPositionY.Properties.Value = _systemParameters._InspectionJigPositionY;
+            rowJigInspectionPositionZ.Properties.Value = _systemParameters._InspectionJigPositionZ;
         }
         private void vGridControlSystemParameters_EditorKeyDown(object sender, KeyEventArgs e)
         {
@@ -1909,6 +1944,64 @@ namespace atOpticalDecenter
                 simpleButtonSystemFileSave.Enabled = true;
                 _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("BJ-TDT 수직 각도 Offset이 {0}로 변경되었습니다.", _systemParameters._ProductBJ_TDT_OffsetV.ToString()));
             }
+            else if (currentRow == rowJigInspectionCameraExposureTime)
+            {                
+                value = Convert.ToInt32(rowJigInspectionCameraExposureTime.Properties.Value);
+                _systemParameters._InspectionJigExposureTime = value;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Jig 검사 카메라 노출이 {0}로 변경되었습니다.", _systemParameters._InspectionJigExposureTime.ToString()));
+            }
+            else if (currentRow == rowJigInspectionThresholdValue)
+            {
+                value = Convert.ToInt32(rowJigInspectionThresholdValue.Properties.Value);
+                _systemParameters._InspectionThresholdValue = value;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Jig 검사 이진화 값이 {0}로 변경되었습니다.", _systemParameters._InspectionThresholdValue.ToString()));
+            }
+            else if (currentRow == rowJigInspectionSimilaraty)
+            {
+                value = Convert.ToInt32(rowJigInspectionSimilaraty.Properties.Value);
+                _systemParameters._InspectionPatternSimilarity = value;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Jig 검사 패턴 유사도 값이 {0}로 변경되었습니다.", _systemParameters._InspectionPatternSimilarity.ToString()));
+            }
+            else if (currentRow == rowJigInspectionTempletePath)
+            {
+                string svalue = string.Empty;
+                svalue = Convert.ToString(rowJigInspectionTempletePath.Properties.Value);
+                _systemParameters._InspectionMatchingImagePath = svalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Jig 검사 템플릿 이미지 경로가 {0}로 변경되었습니다.", _systemParameters._InspectionMatchingImagePath));
+            }
+            else if (currentRow == rowJigInspectionPositionX)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowJigInspectionPositionX.Properties.Value);
+                if (dvalue > 15)
+                {
+                    _systemParameters._InspectionJigPositionX = dvalue;
+                    simpleButtonSystemFileSave.Enabled = true;
+                    _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Jig 검사 위치 X가 {0}로 변경되었습니다.", _systemParameters._InspectionJigPositionX.ToString()));
+                }                
+            }
+            else if (currentRow == rowJigInspectionPositionY)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowJigInspectionPositionY.Properties.Value);               
+                
+                _systemParameters._InspectionJigPositionY = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Jig 검사 위치 Y가 {0}로 변경되었습니다.", _systemParameters._InspectionJigPositionY.ToString()));                
+            }
+            else if (currentRow == rowJigInspectionPositionZ)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowJigInspectionPositionZ.Properties.Value);
+
+                _systemParameters._InspectionJigPositionZ = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Jig 검사 위치 Z가 {0}로 변경되었습니다.", _systemParameters._InspectionJigPositionZ.ToString()));
+            }
         }
 
         private void simpleButtonSystemFileSave_Click(object sender, EventArgs e)
@@ -1953,6 +2046,27 @@ namespace atOpticalDecenter
         private void vGridControlSystemParameter2_CellValueChanged(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e)
         {
             SetCellValue(e.Row);
+        }
+
+        private void repositoryItemButtonEditJigInspectionPatternImagePath_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            try
+            {
+                if (openFileDialogJigInspectionPatternImage.ShowDialog() == DialogResult.OK)
+                {
+                    rowJigInspectionTempletePath.Properties.Value = openFileDialogJigInspectionPatternImage.FileName;
+                    _systemParameters._InspectionMatchingImagePath = openFileDialogJigInspectionPatternImage.FileName;
+                    rowJigInspectionTempleteImage.Properties.Value = System.Drawing.Image.FromFile(openFileDialogJigInspectionPatternImage.FileName);
+
+                    vGridControlSystemParameter2.Refresh();
+
+                    _log.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("Pattern Image 로드완료:{0}", openFileDialogJigInspectionPatternImage.FileName));
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 이미지 로드가 실행되지 않았습니다."));
+            }
         }
     }
 }

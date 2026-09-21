@@ -30,6 +30,8 @@
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.vGridControlSystemParameter2 = new DevExpress.XtraVerticalGrid.VGridControl();
+            this.repositoryItemButtonEditJigInspectionPatternImagePath = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.repositoryItemPictureEditJigInspectionPatternImage = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.categoryProductOpticalAnlgeOffset = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.rowProductBTSPOffset_H = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowProductBTSPOffset_V = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -53,6 +55,15 @@
             this.rowProductBJGOffset_V = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowProductBJTOffset_H = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowProductBJTOffset_V = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.categoryJigInspectionParams = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
+            this.rowJigInspectionCameraExposureTime = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowJigInspectionThresholdValue = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowJigInspectionSimilaraty = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowJigInspectionTempletePath = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowJigInspectionTempleteImage = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowJigInspectionPositionX = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowJigInspectionPositionY = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowJigInspectionPositionZ = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.vGridControlSystemParameters = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemComboBoxAiCCommunicationPortName = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBoxAiCCommunicationBaudRate = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
@@ -165,9 +176,12 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.openFileDialogJigInspectionPatternImage = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControlSystemParameter2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEditJigInspectionPatternImagePath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEditJigInspectionPatternImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControlSystemParameters)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxAiCCommunicationPortName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxAiCCommunicationBaudRate)).BeginInit();
@@ -208,16 +222,32 @@
             // 
             // vGridControlSystemParameter2
             // 
-            this.vGridControlSystemParameter2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControlSystemParameter2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.vGridControlSystemParameter2.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControlSystemParameter2.Location = new System.Drawing.Point(420, 3);
             this.vGridControlSystemParameter2.Name = "vGridControlSystemParameter2";
+            this.vGridControlSystemParameter2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemButtonEditJigInspectionPatternImagePath,
+            this.repositoryItemPictureEditJigInspectionPatternImage});
             this.vGridControlSystemParameter2.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.categoryProductOpticalAnlgeOffset});
+            this.categoryProductOpticalAnlgeOffset,
+            this.categoryJigInspectionParams});
             this.vGridControlSystemParameter2.Size = new System.Drawing.Size(400, 636);
             this.vGridControlSystemParameter2.TabIndex = 7;
             this.vGridControlSystemParameter2.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControlSystemParameter2_CellValueChanged);
             this.vGridControlSystemParameter2.EditorKeyDown += new System.Windows.Forms.KeyEventHandler(this.vGridControlSystemParameter2_EditorKeyDown);
+            // 
+            // repositoryItemButtonEditJigInspectionPatternImagePath
+            // 
+            this.repositoryItemButtonEditJigInspectionPatternImagePath.AutoHeight = false;
+            this.repositoryItemButtonEditJigInspectionPatternImagePath.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemButtonEditJigInspectionPatternImagePath.Name = "repositoryItemButtonEditJigInspectionPatternImagePath";
+            this.repositoryItemButtonEditJigInspectionPatternImagePath.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEditJigInspectionPatternImagePath_ButtonClick);
+            // 
+            // repositoryItemPictureEditJigInspectionPatternImage
+            // 
+            this.repositoryItemPictureEditJigInspectionPatternImage.Name = "repositoryItemPictureEditJigInspectionPatternImage";
             // 
             // categoryProductOpticalAnlgeOffset
             // 
@@ -244,6 +274,7 @@
             this.rowProductBJGOffset_V,
             this.rowProductBJTOffset_H,
             this.rowProductBJTOffset_V});
+            this.categoryProductOpticalAnlgeOffset.Height = 18;
             this.categoryProductOpticalAnlgeOffset.Name = "categoryProductOpticalAnlgeOffset";
             this.categoryProductOpticalAnlgeOffset.Properties.Caption = "ProductOffset";
             // 
@@ -444,6 +475,92 @@
             this.rowProductBJTOffset_V.Name = "rowProductBJTOffset_V";
             this.rowProductBJTOffset_V.Properties.Caption = "BJ-TDT 수직각 Offset[˚]";
             this.rowProductBJTOffset_V.Properties.Value = 0D;
+            // 
+            // categoryJigInspectionParams
+            // 
+            this.categoryJigInspectionParams.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
+            this.rowJigInspectionCameraExposureTime,
+            this.rowJigInspectionThresholdValue,
+            this.rowJigInspectionSimilaraty,
+            this.rowJigInspectionTempletePath,
+            this.rowJigInspectionTempleteImage,
+            this.rowJigInspectionPositionX,
+            this.rowJigInspectionPositionY,
+            this.rowJigInspectionPositionZ});
+            this.categoryJigInspectionParams.Name = "categoryJigInspectionParams";
+            this.categoryJigInspectionParams.Properties.Caption = "Jig Inspection Parameter";
+            // 
+            // rowJigInspectionCameraExposureTime
+            // 
+            this.rowJigInspectionCameraExposureTime.Appearance.Options.UseTextOptions = true;
+            this.rowJigInspectionCameraExposureTime.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowJigInspectionCameraExposureTime.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowJigInspectionCameraExposureTime.Name = "rowJigInspectionCameraExposureTime";
+            this.rowJigInspectionCameraExposureTime.Properties.Caption = "카메라 노출 시간[us]";
+            this.rowJigInspectionCameraExposureTime.Properties.Value = 100000;
+            // 
+            // rowJigInspectionThresholdValue
+            // 
+            this.rowJigInspectionThresholdValue.Appearance.Options.UseTextOptions = true;
+            this.rowJigInspectionThresholdValue.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowJigInspectionThresholdValue.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowJigInspectionThresholdValue.Name = "rowJigInspectionThresholdValue";
+            this.rowJigInspectionThresholdValue.Properties.Caption = "템플릿 이진화 값[0~255]";
+            this.rowJigInspectionThresholdValue.Properties.Value = 128;
+            // 
+            // rowJigInspectionSimilaraty
+            // 
+            this.rowJigInspectionSimilaraty.Appearance.Options.UseTextOptions = true;
+            this.rowJigInspectionSimilaraty.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowJigInspectionSimilaraty.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowJigInspectionSimilaraty.Name = "rowJigInspectionSimilaraty";
+            this.rowJigInspectionSimilaraty.Properties.Caption = "팸플릿 유사도[%]";
+            this.rowJigInspectionSimilaraty.Properties.Value = 80;
+            // 
+            // rowJigInspectionTempletePath
+            // 
+            this.rowJigInspectionTempletePath.Appearance.Options.UseTextOptions = true;
+            this.rowJigInspectionTempletePath.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowJigInspectionTempletePath.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowJigInspectionTempletePath.Name = "rowJigInspectionTempletePath";
+            this.rowJigInspectionTempletePath.Properties.Caption = "템플릿 이미지 경로";
+            this.rowJigInspectionTempletePath.Properties.RowEdit = this.repositoryItemButtonEditJigInspectionPatternImagePath;
+            // 
+            // rowJigInspectionTempleteImage
+            // 
+            this.rowJigInspectionTempleteImage.Appearance.Options.UseTextOptions = true;
+            this.rowJigInspectionTempleteImage.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowJigInspectionTempleteImage.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowJigInspectionTempleteImage.Name = "rowJigInspectionTempleteImage";
+            this.rowJigInspectionTempleteImage.Properties.Caption = "기준 템플릿 이미지";
+            this.rowJigInspectionTempleteImage.Properties.RowEdit = this.repositoryItemPictureEditJigInspectionPatternImage;
+            // 
+            // rowJigInspectionPositionX
+            // 
+            this.rowJigInspectionPositionX.Appearance.Options.UseTextOptions = true;
+            this.rowJigInspectionPositionX.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowJigInspectionPositionX.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowJigInspectionPositionX.Name = "rowJigInspectionPositionX";
+            this.rowJigInspectionPositionX.Properties.Caption = "Jig 교정 X 위치[mm]";
+            this.rowJigInspectionPositionX.Properties.Value = 50D;
+            // 
+            // rowJigInspectionPositionY
+            // 
+            this.rowJigInspectionPositionY.Appearance.Options.UseTextOptions = true;
+            this.rowJigInspectionPositionY.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowJigInspectionPositionY.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowJigInspectionPositionY.Name = "rowJigInspectionPositionY";
+            this.rowJigInspectionPositionY.Properties.Caption = "Jig 교정 Y 위치[mm]";
+            this.rowJigInspectionPositionY.Properties.Value = 20D;
+            // 
+            // rowJigInspectionPositionZ
+            // 
+            this.rowJigInspectionPositionZ.Appearance.Options.UseTextOptions = true;
+            this.rowJigInspectionPositionZ.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowJigInspectionPositionZ.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowJigInspectionPositionZ.Name = "rowJigInspectionPositionZ";
+            this.rowJigInspectionPositionZ.Properties.Caption = "Jig 교정 Z 위치[mm]";
+            this.rowJigInspectionPositionZ.Properties.Value = 20D;
             // 
             // vGridControlSystemParameters
             // 
@@ -1509,6 +1626,10 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
+            // openFileDialogJigInspectionPatternImage
+            // 
+            this.openFileDialogJigInspectionPatternImage.FileName = "openFileDialogJigPatternImage";
+            // 
             // SystemEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1524,6 +1645,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridControlSystemParameter2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEditJigInspectionPatternImagePath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEditJigInspectionPatternImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControlSystemParameters)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxAiCCommunicationPortName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxAiCCommunicationBaudRate)).EndInit();
@@ -1687,5 +1810,17 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBJDOffset_V;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBJGOffset_V;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowProductBJTOffset_V;
+        private DevExpress.XtraVerticalGrid.Rows.CategoryRow categoryJigInspectionParams;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowJigInspectionCameraExposureTime;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowJigInspectionTempletePath;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowJigInspectionTempleteImage;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowJigInspectionPositionX;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowJigInspectionPositionY;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowJigInspectionPositionZ;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEditJigInspectionPatternImagePath;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEditJigInspectionPatternImage;
+        private System.Windows.Forms.OpenFileDialog openFileDialogJigInspectionPatternImage;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowJigInspectionThresholdValue;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowJigInspectionSimilaraty;
     }
 }

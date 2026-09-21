@@ -138,6 +138,9 @@
     <Compile Include="atOpticalDecenter.Designer.cs">
       <DependentUpon>atOpticalDecenter.cs</DependentUpon>
     </Compile>
+    <Compile Include="atOpticalDecenterForjigcalibrationSeq.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CustomPages\LedSpotInspectionInfomation.cs">
       <SubType>UserControl</SubType>
     </Compile>
