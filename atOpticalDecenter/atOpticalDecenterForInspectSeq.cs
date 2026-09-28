@@ -62,7 +62,8 @@ namespace atOpticalDecenter
                 if (_Camera.IsAllocated)
                 {
                     _Camera.OneShot(_waitHandle);
-                    _isOpticalMeasurement = false;                                        
+                    _isOpticalMeasurement = false;
+                    _patternMatching = false;
                     barButtonItemFitSize.PerformClick();
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "자동 검사 중 싱글 샷");
                 }
@@ -827,6 +828,7 @@ namespace atOpticalDecenter
                     spot.OpticalSpotBlobProcess(tempImage, _blobs, _workParams, _workParams._LEDInspectionReferenceThresholdH, _workParams._LEDInspectionReferenceThresholdV, BlobMinSize, BlobMaxSize, ref _ImageHist_W, ref _ImageHist_H);
 
                     _isOpticalMeasurement = true;
+                    _patternMatching = false;
                     _resultImage = outImage;
                     if (_blobs.Count == 1)
                     {

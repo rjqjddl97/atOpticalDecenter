@@ -144,6 +144,7 @@ namespace atOpticalDecenter
                 rowJigInspectionPositionX.Properties.Caption = "Jig Inspection Position X[mm]";
                 rowJigInspectionPositionY.Properties.Caption = "Jig Inspection Position Y[mm]";
                 rowJigInspectionPositionZ.Properties.Caption = "Jig Inspection Position Z[mm]";
+                rowJigInspectionReferenceValue.Properties.Caption = "Inspection Reference Value[mm]";
 
                 simpleButtonSystemSaveCancel.Text = "Cancle";
                 simpleButtonSystemFileSave.Text = "Save";
@@ -263,6 +264,7 @@ namespace atOpticalDecenter
                 rowJigInspectionPositionX.Properties.Caption = "지그 교정 위치 X[mm]";
                 rowJigInspectionPositionY.Properties.Caption = "지그 교정 위치 Y[mm]";
                 rowJigInspectionPositionZ.Properties.Caption = "지그 교정 위치 Z[mm]";
+                rowJigInspectionReferenceValue.Properties.Caption = "교정 편차 기준값[mm]";
 
                 categorySystemLanguage.Properties.Caption = "시스템 언어 설정";
                 rowSystemUseLanguage.Properties.Caption = "한국어 사용";
@@ -470,6 +472,7 @@ namespace atOpticalDecenter
             _systemParameters._InspectionJigPositionX = Convert.ToDouble(rowJigInspectionPositionX.Properties.Value);
             _systemParameters._InspectionJigPositionY = Convert.ToDouble(rowJigInspectionPositionY.Properties.Value);
             _systemParameters._InspectionJigPositionZ = Convert.ToDouble(rowJigInspectionPositionZ.Properties.Value);
+            _systemParameters._InspectionJigReferenceValue = Convert.ToDouble(rowJigInspectionReferenceValue.Properties.Value);
 
         }
         private void LoadSystemParameters()
@@ -635,6 +638,7 @@ namespace atOpticalDecenter
             rowJigInspectionPositionX.Properties.Value = _systemParameters._InspectionJigPositionX;
             rowJigInspectionPositionY.Properties.Value = _systemParameters._InspectionJigPositionY;
             rowJigInspectionPositionZ.Properties.Value = _systemParameters._InspectionJigPositionZ;
+            rowJigInspectionReferenceValue.Properties.Value = _systemParameters._InspectionJigReferenceValue;
         }
         private void vGridControlSystemParameters_EditorKeyDown(object sender, KeyEventArgs e)
         {
@@ -2001,6 +2005,15 @@ namespace atOpticalDecenter
                 _systemParameters._InspectionJigPositionZ = dvalue;
                 simpleButtonSystemFileSave.Enabled = true;
                 _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Jig 검사 위치 Z가 {0}로 변경되었습니다.", _systemParameters._InspectionJigPositionZ.ToString()));
+            }
+            else if (currentRow == rowJigInspectionReferenceValue)
+            {
+                double dvalue = 0;
+                dvalue = Convert.ToDouble(rowJigInspectionReferenceValue.Properties.Value);
+
+                _systemParameters._InspectionJigReferenceValue = dvalue;
+                simpleButtonSystemFileSave.Enabled = true;
+                _log.WriteLog(LogLevel.Info, LogClass.SystemEditor.ToString(), string.Format("Jig 검사 위치 편차 기준값이 {0}로 변경되었습니다.", _systemParameters._InspectionJigReferenceValue.ToString()));
             }
         }
 

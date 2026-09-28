@@ -25,10 +25,10 @@ namespace ImageLibrary
         }
         public struct MatchResult
         {
-            public Rect Rect { get; set; }       // 인식 위치 및 크기 (X, Y, Width, Height)
-            public double Angle { get; set; }    // 회전 변화량 (Degree 단위)
-            public double Score { get; set; }    // 매칭 유사도 (0.0 ~ 1.0)
-            public Point2f[] Corners { get; set; } // 실제 회전된 사각형의 4개 꼭지점 좌표
+            public Rectangle _Rect { get; set; }       // 인식 위치 및 크기 (X, Y, Width, Height)
+            public double _Angle { get; set; }    // 회전 변화량 (Degree 단위)
+            public double _Score { get; set; }    // 매칭 유사도 (0.0 ~ 1.0)
+            public Point2f[] _Corners { get; set; } // 실제 회전된 사각형의 4개 꼭지점 좌표
         }
 
         public TemplateMatch()
@@ -349,6 +349,118 @@ namespace ImageLibrary
                 return false;
             }            
         }
+
+        public List<MatchResult> MultiPatternMatching(Bitmap image, Bitmap templateimg, int _ithreshold, int _similarity)
+        {
+            try
+            {
+                List<MatchResult> finalResults = new List<MatchResult>();
+
+                Mat source = new Mat(), template = new Mat(), tempimg = new Mat(), result = new Mat();
+                Mat sourcegray = new Mat(), templategray = new Mat();
+                Mat sourcebinary = new Mat(), templatebinary = new Mat();
+                Mat templatePy1 = new Mat(), templatePy2 = new Mat(), templatePy3 = new Mat(), templatePy4 = new Mat();
+                Mat mark1 = new Mat(), mark2 = new Mat(), ledSearch = new Mat(), matchROI = new Mat();
+
+                double minval = 0D, maxval = 0D;
+                OpenCvSharp.Point minLoc1, minLoc2, maxLoc1, maxLoc2;
+                if (templateimg != null)
+                {
+                    if (image.PixelFormat != PixelFormat.Format8bppIndexed)
+                    {
+                        source = OpenCvSharp.Extensions.BitmapConverter.ToMat(Utils.Clone<Bitmap>(image));
+                        Cv2.CvtColor(source, sourcegray, ColorConversionCodes.BGR2GRAY);
+                        Cv2.GaussianBlur(sourcegray, sourcegray, new OpenCvSharp.Size(3, 3), 0);
+                        Cv2.Threshold(sourcegray, sourcebinary, _ithreshold, 255, ThresholdTypes.Binary | ThresholdTypes.Otsu);
+                    }
+                    else
+                    {
+                        source = OpenCvSharp.Extensions.BitmapConverter.ToMat(Utils.Clone<Bitmap>(image));
+                        sourcegray = source;
+                        Cv2.GaussianBlur(sourcegray, sourcegray, new OpenCvSharp.Size(3, 3), 0);
+                        Cv2.Threshold(sourcegray, sourcebinary, _ithreshold, 255, ThresholdTypes.Binary | ThresholdTypes.Otsu);
+                    }
+                    if (templateimg.PixelFormat != PixelFormat.Format8bppIndexed)
+                    {
+                        template = OpenCvSharp.Extensions.BitmapConverter.ToMat(Utils.Clone<Bitmap>(templateimg));
+                        Cv2.CvtColor(template, templategray, ColorConversionCodes.BGR2GRAY);
+                        Cv2.GaussianBlur(templategray, templategray, new OpenCvSharp.Size(3, 3), 0);
+                        Cv2.Threshold(templategray, templategray, 0, _ithreshold, ThresholdTypes.Binary | ThresholdTypes.Otsu);
+                    }
+                    else
+                    {
+                        template = OpenCvSharp.Extensions.BitmapConverter.ToMat(Utils.Clone<Bitmap>(templateimg));
+                        templategray = template;
+                        Cv2.GaussianBlur(templategray, templategray, new OpenCvSharp.Size(3, 3), 0);
+                        Cv2.Threshold(templategray, templatebinary, _ithreshold, 255, ThresholdTypes.Binary | ThresholdTypes.Otsu);
+                    }
+                    //Cv2.ImShow("gray Results", sourcegray);
+                    //Cv2.ImShow("source binary Results", sourcebinary);
+                    //Cv2.ImShow("binary Results", templatebinary);
+                    Cv2.MatchTemplate(sourcebinary, templatebinary, result, TemplateMatchModes.CCoeffNormed);
+
+                    double similarthreshold = 0;
+                    List<Rect> detectedObjects = new List<Rect>();
+
+                    var indexer = result.GetGenericIndexer<float>();
+
+                    similarthreshold = (_similarity / 100D);
+                    for (int y = 0; y < result.Rows; y++)
+                    {
+                        for (int x = 0; x < result.Cols; x++)
+                        {
+                            float matchValue = indexer[y, x];
+
+                            // 임계값 조건을 충족하는 경우 위치와 크기 저장
+                            if (matchValue >= similarthreshold)
+                            {
+                                // 크기는 항상 찾으려는 템플릿 이미지의 크기와 같습니다.
+                                Rect rect = new Rect(x, y, template.Width, template.Height);
+                                detectedObjects.Add(rect);
+                            }
+                        }
+                    }
+                    // 중복 검출 영역 제거 (NMS - Non-Maximum Suppression 개념 적용)
+                    // 패턴 주위로 픽셀 단위의 미세하게 겹치는 사각형들이 무수히 생기므로 이를 하나로 병합합니다.
+                    List<Rect> filteredObjects = FilterGroupRectangles(detectedObjects, groupThreshold: 1, eps: 0.2);
+
+                    // 6. 결과 출력 및 화면 사각형 표시
+                    Console.WriteLine($"총 {filteredObjects.Count}개의 객체를 발견했습니다.\n");
+
+                    for (int i = 0; i < filteredObjects.Count; i++)
+                    {
+                        Rect obj = filteredObjects[i];
+                        Rectangle rectobj = new Rectangle(obj.X,obj.Y,obj.Width,obj.Height);
+                        // 크기와 위치 정보 출력
+                        Console.WriteLine($"[객체 {i + 1}] 위치: X={obj.X}, Y={obj.Y} | 크기: W={obj.Width}, H={obj.Height}");
+
+                        // 원본 영상에 시각화 (녹색 사각형)
+                        Cv2.Rectangle(sourcegray, obj, Scalar.FromRgb(0, 255, 0), 2);
+
+                        // 사각형 위에 번호 텍스트 쓰기
+                        Cv2.PutText(sourcegray, (i + 1).ToString(), new OpenCvSharp.Point(obj.X, obj.Y - 5),
+                                    HersheyFonts.HersheySimplex, 0.6, Scalar.FromRgb(0, 255, 0), 2);
+                        finalResults.Add(new MatchResult
+                        {
+                            _Rect = rectobj,                     // 대략적인 감싸는 사각형 영역 위치
+                            _Angle = 0,                      // 단 한 번에 알아낸 정밀 회전량
+                            _Score = 0,                      // 매칭된 점의 개수를 신뢰도 점수로 활용
+                            //Corners = new OpenCvSharp.Point2f()                     // 실제 찌그러지고 회전된 형태의 4점 좌표
+                        });
+                    }
+                    //Cv2.ImShow("Multi-Pattern Results", sourcegray);
+                    //Cv2.WaitKey(0);
+                }
+                else
+                    return finalResults;
+
+                return finalResults;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public List<MatchResult> DetectMultiRotatedPatterns(Bitmap image, Bitmap templateimg, int _ithreshold, int _similarity)
         {
             try
@@ -454,14 +566,14 @@ namespace ImageLibrary
                                     Point2f[] sceneCorners = Cv2.PerspectiveTransform(templateCorners, homography);
 
                                     // 9. 결과 데이터 래핑 및 Bounds Rect 연산
-                                    RotatedRect rRect = Cv2.MinAreaRect(sceneCorners);
-
+                                    RotatedRect rRect = Cv2.MinAreaRect(sceneCorners);                                    
+                                    Rectangle rectobj = new Rectangle(rRect.BoundingRect().X, rRect.BoundingRect().Y, rRect.BoundingRect().Width, rRect.BoundingRect().Height);
                                     finalResults.Add(new MatchResult
                                     {
-                                        Rect = rRect.BoundingRect(), // 대략적인 감싸는 사각형 영역 위치
-                                        Angle = calculatedAngle,    // 단 한 번에 알아낸 정밀 회전량
-                                        Score = goodMatches.Count,   // 매칭된 점의 개수를 신뢰도 점수로 활용
-                                        Corners = sceneCorners       // 실제 찌그러지고 회전된 형태의 4점 좌표
+                                        _Rect = rectobj, // 대략적인 감싸는 사각형 영역 위치
+                                        _Angle = calculatedAngle,    // 단 한 번에 알아낸 정밀 회전량
+                                        _Score = goodMatches.Count,   // 매칭된 점의 개수를 신뢰도 점수로 활용
+                                        _Corners = sceneCorners       // 실제 찌그러지고 회전된 형태의 4점 좌표
                                     });
                                     Console.WriteLine("회전된 패턴을 성공적으로 검출했습니다.");
                                 }
@@ -476,18 +588,18 @@ namespace ImageLibrary
                                 {
                                     MatchResult item = finalResults[i];
                                     Console.WriteLine($"[객체 {i + 1}]");
-                                    Console.WriteLine($" -> 위치(중심점 부근): X={item.Rect.X}, Y={item.Rect.Y}");
-                                    Console.WriteLine($" -> 회전 변화량: {item.Angle:F2}°");
-                                    Console.WriteLine($" -> 신뢰도(매칭점 개수): {item.Score}개\n");
+                                    Console.WriteLine($" -> 위치(중심점 부근): X={item._Rect.X}, Y={item._Rect.Y}");
+                                    Console.WriteLine($" -> 회전 변화량: {item._Angle:F2}°");
+                                    Console.WriteLine($" -> 신뢰도(매칭점 개수): {item._Score}개\n");
 
                                     // 실제 회전된 사각형의 4개 꼭지점을 연결하여 초록색 선으로 시각화
                                     for (int j = 0; j < 4; j++)
                                     {
-                                        Cv2.Line(sourcegray, (OpenCvSharp.Point)item.Corners[j], (OpenCvSharp.Point)item.Corners[(j + 1) % 4], Scalar.FromRgb(0, 255, 0), 2);
+                                        Cv2.Line(sourcegray, (OpenCvSharp.Point)item._Corners[j], (OpenCvSharp.Point)item._Corners[(j + 1) % 4], Scalar.FromRgb(0, 255, 0), 2);
                                     }
 
                                     // 텍스트 정보 표시 (번호 및 각도)
-                                    Cv2.PutText(sourcegray, $"#{i + 1} ({item.Angle:F1}°)", (OpenCvSharp.Point)item.Corners[0],
+                                    Cv2.PutText(sourcegray, $"#{i + 1} ({item._Angle:F1}°)", (OpenCvSharp.Point)item._Corners[0],
                                                 HersheyFonts.HersheySimplex, 0.5, Scalar.FromRgb(0, 255, 0), 2);
                                 }
 

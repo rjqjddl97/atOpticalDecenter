@@ -60,7 +60,7 @@ namespace RecipeManager
         public double _InspectionJigPositionX { get; set; } = 30;
         public double _InspectionJigPositionY { get; set; } = 20;
         public double _InspectionJigPositionZ { get; set; } = 20;
-
+        public double _InspectionJigReferenceValue { get; set; } = 0.5;
         public SystemParams()
         {
 

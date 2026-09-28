@@ -177,6 +177,7 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.openFileDialogJigInspectionPatternImage = new System.Windows.Forms.OpenFileDialog();
+            this.rowJigInspectionReferenceValue = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControlSystemParameter2)).BeginInit();
@@ -222,7 +223,7 @@
             // 
             // vGridControlSystemParameter2
             // 
-            this.vGridControlSystemParameter2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.vGridControlSystemParameter2.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControlSystemParameter2.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControlSystemParameter2.Location = new System.Drawing.Point(420, 3);
             this.vGridControlSystemParameter2.Name = "vGridControlSystemParameter2";
@@ -486,7 +487,8 @@
             this.rowJigInspectionTempleteImage,
             this.rowJigInspectionPositionX,
             this.rowJigInspectionPositionY,
-            this.rowJigInspectionPositionZ});
+            this.rowJigInspectionPositionZ,
+            this.rowJigInspectionReferenceValue});
             this.categoryJigInspectionParams.Name = "categoryJigInspectionParams";
             this.categoryJigInspectionParams.Properties.Caption = "Jig Inspection Parameter";
             // 
@@ -564,7 +566,7 @@
             // 
             // vGridControlSystemParameters
             // 
-            this.vGridControlSystemParameters.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControlSystemParameters.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControlSystemParameters.CustomizationFormBounds = new System.Drawing.Rectangle(1643, 643, 243, 271);
             this.vGridControlSystemParameters.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControlSystemParameters.Location = new System.Drawing.Point(3, 3);
@@ -1630,6 +1632,15 @@
             // 
             this.openFileDialogJigInspectionPatternImage.FileName = "openFileDialogJigPatternImage";
             // 
+            // rowJigInspectionReferenceValue
+            // 
+            this.rowJigInspectionReferenceValue.Appearance.Options.UseTextOptions = true;
+            this.rowJigInspectionReferenceValue.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.rowJigInspectionReferenceValue.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.rowJigInspectionReferenceValue.Name = "rowJigInspectionReferenceValue";
+            this.rowJigInspectionReferenceValue.Properties.Caption = "Jig 검사 기준값[mm]";
+            this.rowJigInspectionReferenceValue.Properties.Value = 0.5D;
+            // 
             // SystemEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1822,5 +1833,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialogJigInspectionPatternImage;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowJigInspectionThresholdValue;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowJigInspectionSimilaraty;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowJigInspectionReferenceValue;
     }
 }

@@ -26,6 +26,7 @@ using atOpticalDecenter;
 using AiCControlLibrary;
 using PhotoDBLibrary;
 
+
 namespace atOpticalDecenter
 {
     public partial class atOpticalDecenter : DevExpress.XtraBars.Ribbon.RibbonForm
@@ -107,6 +108,7 @@ namespace atOpticalDecenter
         PointF _fptAreaEnd = new PointF();
         RectangleF _frtArearect = new RectangleF();
         ManualResetEvent _waitHandle = new ManualResetEvent(false);
+        public List<TemplateMatch.MatchResult> _MatchingResult = new List<TemplateMatch.MatchResult>();
 
         BackgroundWorker _backgroundWorkerOpticalDecenterInspection = new BackgroundWorker();
 
@@ -1546,6 +1548,7 @@ namespace atOpticalDecenter
                 {
                     _Camera.OneShot(_waitHandle);
 
+                    _patternMatching = false;
                     _isOpticalMeasurement = false;
                     pictureEditSystemImage.Refresh();
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "싱글 샷");
@@ -1609,6 +1612,7 @@ namespace atOpticalDecenter
                 int InspectionOpticalSpotCenterX = _systemParams._cameraParams.HResolution / 2;
                 int InspectionOpticalSpotCenterY = _systemParams._cameraParams.VResolution / 2;
                 float fScale = (float)(pictureEditSystemImage.Properties.ZoomPercent / 100.0f);
+                
                 float fHScroll = pictureEditSystemImage.HScrollBar.Value;
                 float fVScroll = pictureEditSystemImage.VScrollBar.Value;
                 float fCharacter = (fScale > 1f) ? 1f : fScale;
@@ -1618,6 +1622,10 @@ namespace atOpticalDecenter
                 float fCenterx = InspectionOpticalSpotCenterX;
                 float fCentery = InspectionOpticalSpotCenterY;
 
+                if (pictureEditSystemImage.HScrollBar.Value == 0)
+                    fHScroll = -1;
+                if (pictureEditSystemImage.VScrollBar.Value == 0)
+                    fVScroll = -1;
 
                 Matrix matrix = new Matrix();
                 matrix.Scale(fScale, fScale);
@@ -2070,84 +2078,137 @@ namespace atOpticalDecenter
                     gp.DrawLine(Pens.Red, ptCrossStart1, ptCrossEnd1);
                     gp.DrawLine(Pens.Red, ptCrossStart2, ptCrossEnd2);
 
-                    //////////////////////////////////////////////////////////////////////////////////////
-                    // LED Mark
-                    //PointF ptCrossStart1, ptCrossStart2, ptCrossEnd1, ptCrossEnd2;
 
-                    Utils.CrossMarkPosition(
-                         _workParams.AreaCenter, out ptCrossStart1, out ptCrossEnd1, out ptCrossStart2, out ptCrossEnd2,
-                         1, 0, 0, crossMarkOffset);
 
-                    Pen newPenPattern = new Pen(Color.Black, 3.0f);
-                    Pen oldPenPattern = new Pen(Color.LightGreen, 1.5f);
+                    //////////////////////////////////////////////////////////////////////////////////////                    
+                    //
+                    
 
-                    gp.DrawPath(newPenPattern, path);
-                    gp.DrawPath(oldPenPattern, path);
 
-                    gp.DrawLine(newPenPattern, ptCrossStart1, ptCrossEnd1);
-                    gp.DrawLine(newPenPattern, ptCrossStart2, ptCrossEnd2);
-                    gp.DrawLine(oldPenPattern, ptCrossStart1, ptCrossEnd1);
-                    gp.DrawLine(oldPenPattern, ptCrossStart2, ptCrossEnd2);
                     // 매칭점 중심을 표시한다.
                     //gp.DrawLine(Pens.LightGreen, ptCrossStart1, ptCrossEnd1);
                     //gp.DrawLine(Pens.LightGreen, ptCrossStart2, ptCrossEnd2);
+                    if (_MatchingResult.Count == 2)
+                    {
+                        double[] _Offsetdy = new double[_MatchingResult.Count];
+                        for (int i = 0; i < _MatchingResult.Count; i++)
+                        {
+                            Point temppoint = new Point(_MatchingResult[i]._Rect.X + (_MatchingResult[i]._Rect.Width / 2),
+                                _MatchingResult[i]._Rect.Y + (_MatchingResult[i]._Rect.Height / 2));
+                            Utils.CrossMarkPosition(temppoint, out ptCrossStart1, out ptCrossEnd1, out ptCrossStart2, out ptCrossEnd2,1, 0, 0, crossMarkOffset);
 
-                    float fLedAlignmentCenterToLedMarkDistance = (float)Math.Sqrt(Math.Pow((_systemParams._cameraParams.HResolution / 2) - _workParams.AreaCenter.X, 2.0)
-                        + Math.Pow((_systemParams._cameraParams.VResolution / 2) - _workParams.AreaCenter.Y, 2.0));
+                            double detectCenterX = _MatchingResult[i]._Rect.X + (_MatchingResult[i]._Rect.Width / 2), detectCenterY = _MatchingResult[i]._Rect.Y + (_MatchingResult[i]._Rect.Height / 2);
 
-                    double dx, dy;
-                    dx = ((_systemParams._cameraParams.HResolution / 2) - _workParams.AreaCenter.X) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemXcoordi;
-                    dy = ((_systemParams._cameraParams.VResolution / 2) - _workParams.AreaCenter.Y) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemYcoordi;
+                            Pen newPenPattern = new Pen(Color.Black, 3.0f);
+                            Pen oldPenPattern = new Pen(Color.LightGreen, 1.5f);
 
-                    path = new GraphicsPath();
-                    Font mfont = new Font("Arial", 15f / fCharacter, FontStyle.Bold);
-                    //fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + ((_blobs[i].Height / 2) / fCharacter));
-                    fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (300 * fCharacter));
-                    path.AddString(string.Format("패턴유사도{0:0.0}%, 중심과 Pattern사이:{1:0.000}mm, dx:{2:0.000}mm, dy:{3:0.000}mm",
-                                                    _workParams.InspectionPositions[0].Similarity, fLedAlignmentCenterToLedMarkDistance * _systemParams._cameraParams.OnePixelResolution, dx, dy),
-                                    mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
-                    gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
-                    gp.FillPath(Brushes.LimeGreen, path);
+                            gp.DrawPath(newPenPattern, path);
+                            gp.DrawPath(oldPenPattern, path);
 
+                            gp.DrawLine(newPenPattern, ptCrossStart1, ptCrossEnd1);
+                            gp.DrawLine(newPenPattern, ptCrossStart2, ptCrossEnd2);
+                            gp.DrawLine(oldPenPattern, ptCrossStart1, ptCrossEnd1);
+                            gp.DrawLine(oldPenPattern, ptCrossStart2, ptCrossEnd2);
 
+                            Pen DetectPenPattern = new Pen(Color.Blue, 3.0f);
+                            gp.DrawPath(DetectPenPattern, path);
 
-                    path = new GraphicsPath();
-                    //fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + (_blobs[i].Height / fCharacter));
-                    fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (250 * fCharacter));
+                            gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y), new Point(_MatchingResult[i]._Rect.X + _MatchingResult[i]._Rect.Width, _MatchingResult[i]._Rect.Y));
+                            gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y), new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height));
+                            gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X + _MatchingResult[i]._Rect.Width, _MatchingResult[i]._Rect.Y), new Point(_MatchingResult[i]._Rect.X + _MatchingResult[i]._Rect.Width, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height));
+                            gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height), new Point(_MatchingResult[i]._Rect.X + _MatchingResult[i]._Rect.Width, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height));
 
-                    path.AddString(string.Format("중심 픽셀 좌표 X:{0:0000.0}, Y:{1:0000.0}", _workParams.AreaCenter.X, _workParams.AreaCenter.Y), mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
-                    gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
-                    gp.FillPath(Brushes.LightGreen, path);
-                    //gp.DrawString(
-                    //        string.Format("패턴유사도{0:0.0}%, 중심과 Pattern사이:{1:0.000}mm, dx:{2:0.000}mm, dy:{3:0.000}mm", _workParams.InspectionPositions[0].Similarity, fLedAlignmentCenterToLedMarkDistance * _systemParams._cameraParams.OnePixelResolution, dx, dy), //_systemParams.CameraParameter.OnePixelResolution),
-                    //        new Font(FontFamily.GenericSansSerif, 20.0F),
-                    //        Brushes.LimeGreen,
-                    //        new Point((int)(100 * fCharacter), (int)(_systemParams._cameraParams.VResolution - (200 * fCharacter))));
-                    //new PointF((float)(_workParams.LEDMark.X * fScale - pictureEditImage.HScrollBar.Value), (float)(_workParams.LEDMark.Y * fScale - pictureEditImage.VScrollBar.Value - 15)));
+                            float fLedAlignmentCenterToLedMarkDistance = (float)Math.Sqrt(Math.Pow((_systemParams._cameraParams.HResolution / 2) - (_MatchingResult[i]._Rect.X + (_MatchingResult[i]._Rect.Width / 2)), 2.0)
+                                + Math.Pow((_systemParams._cameraParams.VResolution / 2) - (_MatchingResult[i]._Rect.Y + (_MatchingResult[i]._Rect.Height / 2)), 2.0));
+
+                            double dx, dy;
+                            dx = ((_systemParams._cameraParams.HResolution / 2) - detectCenterX) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemXcoordi;
+                            dy = ((_systemParams._cameraParams.VResolution / 2) - detectCenterY) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemYcoordi;
+
+                            _Offsetdy[i] = dy;
+                            
+                            gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
+                            gp.DrawPath(new Pen(Brushes.LimeGreen, 2 / fCharacter), path);
+                            Font mfont = new Font("Arial", 15f / fCharacter, FontStyle.Bold);                            
+                            fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - ((300 - (50*i)) * fCharacter));
+                            path.AddString(string.Format("패턴 대상{0:0}, dx:{1:0.000}mm, dy:{2:0.000}mm",i, dx, dy),
+                                            mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
+                            gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
+                            gp.FillPath(Brushes.LimeGreen, path);
+
+                            //path = new GraphicsPath();
+                            ////fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + (_blobs[i].Height / fCharacter));
+                            //fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (250 * fCharacter));
+
+                            //path.AddString(string.Format("중심 픽셀 좌표 X:{0:0000.0}, Y:{1:0000.0}", _MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y), mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
+                            //gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
+                            //gp.FillPath(Brushes.LightGreen, path);
+                        }
+                        double deviation = _Offsetdy[0] - _Offsetdy[1];
+                        path = new GraphicsPath();
+                        Font refont = new Font("Arial", 50, FontStyle.Bold);
+                        PointF refptDrawString = new PointF(100, 50);
+                        if (Math.Abs(deviation) < _systemParams._InspectionJigReferenceValue)
+                        {
+                            path.AddString("PASS", refont.FontFamily, (int)font.Style, refont.Size, refptDrawString, null);
+                            gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
+                            gp.FillPath(Brushes.LimeGreen, path);
+                        }
+                        else
+                        {
+                            path.AddString("FAIL", refont.FontFamily, (int)font.Style, refont.Size, refptDrawString, null);
+                            gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
+                            gp.FillPath(Brushes.Red, path);
+                        }
+                    }
+                    //float fLedAlignmentCenterToLedMarkDistance = (float)Math.Sqrt(Math.Pow((_systemParams._cameraParams.HResolution / 2) - _workParams.AreaCenter.X, 2.0)
+                    //    + Math.Pow((_systemParams._cameraParams.VResolution / 2) - _workParams.AreaCenter.Y, 2.0));
+
+                    //double dx, dy;
+                    //dx = ((_systemParams._cameraParams.HResolution / 2) - _workParams.AreaCenter.X) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemXcoordi;
+                    //dy = ((_systemParams._cameraParams.VResolution / 2) - _workParams.AreaCenter.Y) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemYcoordi;
+
+                    //path = new GraphicsPath();
+                    //Font mfont = new Font("Arial", 15f / fCharacter, FontStyle.Bold);
+                    ////fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + ((_blobs[i].Height / 2) / fCharacter));
+                    //fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (300 * fCharacter));
+                    //path.AddString(string.Format("패턴유사도{0:0.0}%, 중심과 Pattern사이:{1:0.000}mm, dx:{2:0.000}mm, dy:{3:0.000}mm",
+                    //                                _workParams.InspectionPositions[0].Similarity, fLedAlignmentCenterToLedMarkDistance * _systemParams._cameraParams.OnePixelResolution, dx, dy),
+                    //                mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
+                    //gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
+                    //gp.FillPath(Brushes.LimeGreen, path);
+
+                    //path = new GraphicsPath();
+                    ////fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + (_blobs[i].Height / fCharacter));
+                    //fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (250 * fCharacter));
+
+                    //path.AddString(string.Format("중심 픽셀 좌표 X:{0:0000.0}, Y:{1:0000.0}", _workParams.AreaCenter.X, _workParams.AreaCenter.Y), mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
+                    //gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
+                    //gp.FillPath(Brushes.LightGreen, path);
 
                     // 검사 결과 표시
 
 
-                    Font refont = new Font("Arial", 50, FontStyle.Bold);
+                    //Font refont = new Font("Arial", 50, FontStyle.Bold);
 
 
-                    PointF refptDrawString = new PointF(100, 50);
+                    //PointF refptDrawString = new PointF(100, 50);
 
-                    if (fLedAlignmentCenterToLedMarkDistance * _systemParams._cameraParams.OnePixelResolution <= Convert.ToSingle(rowResultPosition.Properties.Value))
-                    {
-                        path.AddString("PASS", refont.FontFamily, (int)font.Style, refont.Size, refptDrawString, null);
-                        gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
-                        gp.FillPath(Brushes.LimeGreen, path);
-                    }
-                    else
-                    {
-                        path.AddString("FAIL", refont.FontFamily, (int)font.Style, refont.Size, refptDrawString, null);
-                        gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
-                        gp.FillPath(Brushes.Red, path);
-                    }
+                    //if (fLedAlignmentCenterToLedMarkDistance * _systemParams._cameraParams.OnePixelResolution <= Convert.ToSingle(rowResultPosition.Properties.Value))
+                    //{
+                    //    path.AddString("PASS", refont.FontFamily, (int)font.Style, refont.Size, refptDrawString, null);
+                    //    gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
+                    //    gp.FillPath(Brushes.LimeGreen, path);
+                    //}
+                    //else
+                    //{
+                    //    path.AddString("FAIL", refont.FontFamily, (int)font.Style, refont.Size, refptDrawString, null);
+                    //    gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
+                    //    gp.FillPath(Brushes.Red, path);
+                    //}
                     //_patternMatching = false;
                 }
-                GC.Collect();
+                //GC.Collect();
             }
             catch (Exception ex)
             {
@@ -2825,10 +2886,12 @@ namespace atOpticalDecenter
                 int ithresholde = 0, isimilarity = 0;
                 ithresholde = Convert.ToInt32(rowrThresholdValue.Properties.Value);
                 isimilarity = Convert.ToInt32(rowSimilarityValue.Properties.Value);
-                if (tm.JigCalibrationPatternMatching(outImage, TemplateImage, ithresholde, isimilarity) )
-                //List<TemplateMatch.MatchResult> retResult = new List<TemplateMatch.MatchResult>();
+                _MatchingResult.Clear();
+                //if (tm.JigCalibrationPatternMatching(outImage, TemplateImage, ithresholde, isimilarity) )
+                List<TemplateMatch.MatchResult> retResult = new List<TemplateMatch.MatchResult>();
+                retResult = tm.MultiPatternMatching(outImage, TemplateImage, ithresholde, isimilarity);
                 //retResult = tm.DetectMultiRotatedPatterns(outImage, TemplateImage, ithresholde, isimilarity);
-                //if (retResult != null)
+                if (retResult != null)
                 {
                     _patternMatching = true;
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 완료"));                    
@@ -2836,6 +2899,7 @@ namespace atOpticalDecenter
                     pictureEditSystemImage.Refresh();           
                     //_resultImage = outImage;                                      
                     barButtonItemFitSize.PerformClick();
+                    _MatchingResult = retResult;
                 }
                 else
                 {
@@ -4176,9 +4240,20 @@ namespace atOpticalDecenter
 
         private void timerImageUpdate_Tick(object sender, EventArgs e)
         {
-            pictureEditSystemImage.Image = _sourceImage;
-            pictureEditSystemImage.Refresh();
-            GC.Collect();
+            try
+            {
+                if (_isCameraOpen)
+                {
+                    pictureEditSystemImage.Image = _sourceImage;
+                    pictureEditSystemImage.Refresh();
+                    GC.Collect();
+                }
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
+
         }
     }
 

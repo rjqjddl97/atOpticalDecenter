@@ -348,6 +348,7 @@ namespace RecipeManager
             systemParam._InspectionJigPositionX = Convert.ToDouble(systemData[SystemParamSections[9]]["InspectionPositionX"]);
             systemParam._InspectionJigPositionY = Convert.ToDouble(systemData[SystemParamSections[9]]["InspectionPositionY"]);
             systemParam._InspectionJigPositionZ = Convert.ToDouble(systemData[SystemParamSections[9]]["InspectionPositionZ"]);
+            systemParam._InspectionJigReferenceValue = Convert.ToDouble(systemData[SystemParamSections[9]]["InspectionJigRefereceValue"]);
         }
 
         static public void WriteSystemFile(SystemParams systemParam, string strFilePath)
@@ -489,6 +490,7 @@ namespace RecipeManager
             systemData[SystemParamSections[9]].AddKey("InspectionPositionX", systemParam._InspectionJigPositionX.ToString());
             systemData[SystemParamSections[9]].AddKey("InspectionPositionY", systemParam._InspectionJigPositionY.ToString());
             systemData[SystemParamSections[9]].AddKey("InspectionPositionZ", systemParam._InspectionJigPositionZ.ToString());
+            systemData[SystemParamSections[9]].AddKey("InspectionJigRefereceValue", systemParam._InspectionJigReferenceValue.ToString());            
 
             parser.WriteFile(strFilePath, systemData);
         }
