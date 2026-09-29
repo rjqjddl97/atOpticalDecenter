@@ -38,9 +38,15 @@ namespace atOpticalDecenter
         bool _InspectionWorking = false;
         bool _HommingProcess = false;
         bool _InspectionResult = false;
+        bool _JigInspectionResult = false;
+        bool _JigInspectionProcess = false;
+        bool _JigInspectionRunning = false;
+        bool _JigInspectionEnd = false;
         public InspectResultData mResultData = new InspectResultData();
         public RobotInformation mRobotInformation = new RobotInformation();
-        
+        double[] _RobotTargetPosition = new double[3];
+        public bool _IsRequestAutoJigInspect = false;
+
         private enum InspectionStepType
         {
             Idle = 0,
@@ -138,6 +144,18 @@ namespace atOpticalDecenter
                 }
                 else
                     _IsDrvErr = false;
+
+                if ((Math.Round(mRobotInformation.PositionX, 3) == Math.Round(_RobotTargetPosition[0], 3)) &&
+                    (Math.Round(mRobotInformation.PositionY, 3) == Math.Round(_RobotTargetPosition[1], 3)) &&
+                    (Math.Round(mRobotInformation.PositionZ, 3) == Math.Round(_RobotTargetPosition[2], 3))
+                    )
+                {
+                    if ((mRobotInformation.mStatus & 0x00000052) == 0x00000052)
+                    {
+                        if (_IsRequestAutoJigInspect && _JigInspectionRunning)
+                            _waitHandle.Set();
+                    }
+                }
 
                 ImageUpdateEvents?.Invoke();
             }
@@ -1008,6 +1026,184 @@ namespace atOpticalDecenter
                 strret = "BTS Series";
 
             return strret;
+        }
+        private void backgroundJigInspection_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                RobotInformation info = e.Argument as RobotInformation;
+                if (sender is BackgroundWorker worker)
+                {
+                    //if (_mMotionControlCommManager.IsOpen() && _Camera.IsOpen)
+                    {
+                        if (_JigInspectionProcess)
+                        {
+                            byte[] SeData = new byte[20];
+                            if (MessageBox.Show("Start Jig Inspection Processing.", "Jig Inspection Process", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly) == DialogResult.Yes)
+                            {
+                                //int[] itargetpos = new int[4];
+
+                                //itargetpos[0] = (int)(_systemParams._InspectionJigPositionX * _systemParams._motionParams.MM2PulseRatioX);
+                                //itargetpos[1] = (int)(_systemParams._InspectionJigPositionY * _systemParams._motionParams.MM2PulseRatioY);
+                                //itargetpos[2] = (int)(_systemParams._InspectionJigPositionZ * _systemParams._motionParams.MM2PulseRatioZ);
+
+                                //while ((mRobotInformation.mStatus & 0x00000052) != 0x00000052) ;
+
+                                //for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                                //{
+                                //    _RobotTargetPosition[i] = itargetpos[i];
+                                //    SeData = _mMotionControlCommManager.mDrvCtrl.MoveTargetPositionSendData((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i], itargetpos[i]);
+                                //    _mMotionControlCommManager.SendData(SeData);
+                                //    Thread.Sleep(50);       //Task.Delay(50);
+                                //}
+                                //SeData = _mMotionControlCommManager.mDrvCtrl.MoveAbsoluteCommand(129);
+                                //_mMotionControlCommManager.SendData(SeData);
+                                //_IsRequestAutoJigInspect = true;
+                                //mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("Jig 검사 위치이동 명령 실행을 시작합니다."));
+                                //_waitHandle.Reset();
+                                //_waitHandle.WaitOne();
+
+                                //while ((mRobotInformation.mStatus & 0x00000052) != 0x00000052) ;
+                                //Thread.Sleep(1000);       //Task.Delay(50);
+
+                                if (_JigInspectionProcess)
+                                {
+                                    _patternMatching = false;
+                                    _isOpticalMeasurement = false;
+                                    _isAutoInspectMeasurement = false;                                    
+
+                                    _waitHandle.Reset();
+                                    _Camera.OneShot(_waitHandle);
+                                    Thread.Sleep(1000);       //Task.Delay(50);
+                                    
+                                    _waitHandle.WaitOne();
+
+                                    if (_JigInspectionProcess)
+                                    {
+                                        //pictureEditSystemImage.Refresh();
+                                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "Jig 이미지 취득 완료");
+                                        System.Drawing.Image TempleteImage = System.Drawing.Image.FromFile(_systemParams._InspectionMatchingImagePath);
+                                        if (PatternMatchingFromImage(_sourceImage, TempleteImage, _systemParams._InspectionThresholdValue, _systemParams._InspectionPatternSimilarity))
+                                        {
+                                            _isAutoJigInspectMeasurement = true;
+                                        }
+                                        else
+                                        {
+                                            _JigInspectionEnd = false;
+                                            _JigInspectionRunning = false;
+                                            e.Cancel = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        _waitHandle.Reset();
+                                        _JigInspectionEnd = false;
+                                        _JigInspectionRunning = false;
+                                        e.Cancel = true;
+                                    }
+                                }
+                                else
+                                {
+                                    _waitHandle.Reset();
+                                    _JigInspectionEnd = false;
+                                    _JigInspectionRunning = false;
+                                    e.Cancel = true;
+                                }
+                            }
+                            else
+                            {
+                                _waitHandle.Reset();
+                                _JigInspectionEnd = false;
+                                _JigInspectionRunning = false;
+                                e.Cancel = true;
+                            }
+                        }
+                        else
+                        {
+                            _waitHandle.Reset();
+                            _JigInspectionEnd = false;
+                            _JigInspectionRunning = false;
+                            e.Cancel = true;
+                        }
+                    }
+                    //else
+                    //{
+                    //    _waitHandle.Reset();
+                    //    _JigInspectionEnd = false;
+                    //    _JigInspectionRunning = false;
+                    //    e.Cancel = true;
+                    //}
+                }
+                else
+                {
+                    _waitHandle.Reset();
+                    _JigInspectionEnd = false;
+                    _JigInspectionRunning = false;
+                    e.Cancel = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                mLog.WriteLog(LogLevel.Warn, LogClass.atPhoto.ToString(), string.Format("{0}\r\n{1}", ex.Message, ex.StackTrace));
+            }
+        }
+        private void backgroundJigInspection_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                AutoStartButtonRelease();
+                _JigInspectionProcess = false;
+                _JigInspectionRunning = false;
+                _JigInspectionEnd = true;
+                _JigInspectionResult = JigInspectionCalculate();
+                barCheckItemInspectionStart.Enabled = true;
+                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "지그 검사 실행을 종료합니다.");
+                
+            }
+            catch (Exception)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("원점 복귀 명령 완료가 실행되지 않았습니다."));
+            }
+        }
+        public bool JigInspectionCalculate()
+        {
+            try
+            {
+                if (_MatchingResult.Count == 2)
+                {
+                    double[] _OffsetLevel = new double[_MatchingResult.Count];
+                    for (int i = 0; i < _MatchingResult.Count; i++)
+                    {
+                        double detectCenterX = _MatchingResult[i]._Rect.X + (_MatchingResult[i]._Rect.Width / 2), detectCenterY = _MatchingResult[i]._Rect.Y + (_MatchingResult[i]._Rect.Height / 2);
+                        double dx, dy;
+                        dx = ((_systemParams._cameraParams.HResolution / 2) - detectCenterX) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemXcoordi;
+                        dy = ((_systemParams._cameraParams.VResolution / 2) - detectCenterY) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemYcoordi;
+
+                        _OffsetLevel[i] = dy;
+                    }
+                    double deviation = _OffsetLevel[0] - _OffsetLevel[1];
+
+                    if (Math.Abs(deviation) < _systemParams._InspectionJigReferenceValue)
+                    {
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(),string.Format("차이가 기준 {0}mm, 측정 {1}mm로  지그 검사 결과는 합격이다.",_systemParams._InspectionJigReferenceValue, Math.Abs(deviation)));
+                        return true;
+                    }
+                    else
+                    {
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(),string.Format("차이가 기준 {0}mm, 측정 {1}mm로  지그 검사 결과는 불합격이다.", _systemParams._InspectionJigReferenceValue, Math.Abs(deviation)));
+                        return false;
+                    }
+                }
+                else
+                {
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "매칭 개수가 맞지않다.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

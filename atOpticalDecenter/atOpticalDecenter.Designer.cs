@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(atOpticalDecenter));
-            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.ChartTitle chartTitle2 = new DevExpress.XtraCharts.ChartTitle();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemSystemFolderPathSetting = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSystemEditor = new DevExpress.XtraBars.BarButtonItem();
@@ -77,6 +77,7 @@
             this.barButtonItemMoveStop = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItemTotalPassCount = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTextEditTotalPassCount = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.barButtonItemJigInspectionStart = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageEquipementFunctions = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonSystemPage = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupFile = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -283,8 +284,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControlInspectionAngle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
@@ -356,10 +357,11 @@
             this.barStaticItemCurrentTime,
             this.barStaticItemMotionStatus,
             this.barButtonItemMoveStop,
-            this.barEditItemTotalPassCount});
+            this.barEditItemTotalPassCount,
+            this.barButtonItemJigInspectionStart});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.ribbonControl1.MaxItemId = 45;
+            this.ribbonControl1.MaxItemId = 46;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageEquipementFunctions});
@@ -781,6 +783,15 @@
             this.repositoryItemTextEditTotalPassCount.Name = "repositoryItemTextEditTotalPassCount";
             this.repositoryItemTextEditTotalPassCount.ReadOnly = true;
             // 
+            // barButtonItemJigInspectionStart
+            // 
+            this.barButtonItemJigInspectionStart.Caption = "지그 검사 시작";
+            this.barButtonItemJigInspectionStart.Id = 45;
+            this.barButtonItemJigInspectionStart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemJigInspectionStart.ImageOptions.Image")));
+            this.barButtonItemJigInspectionStart.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemJigInspectionStart.ImageOptions.LargeImage")));
+            this.barButtonItemJigInspectionStart.Name = "barButtonItemJigInspectionStart";
+            this.barButtonItemJigInspectionStart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemJigInspectionStart_ItemClick);
+            // 
             // ribbonPageEquipementFunctions
             // 
             this.ribbonPageEquipementFunctions.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -801,6 +812,7 @@
             this.ribbonSystemPage.ItemLinks.Add(this.barButtonItemSystemFolderPathSetting);
             this.ribbonSystemPage.ItemLinks.Add(this.barButtonItemSystemEditor);
             this.ribbonSystemPage.ItemLinks.Add(this.barButtonItemWorkInfo);
+            this.ribbonSystemPage.ItemLinks.Add(this.barButtonItemJigInspectionStart);
             this.ribbonSystemPage.Name = "ribbonSystemPage";
             this.ribbonSystemPage.State = DevExpress.XtraBars.Ribbon.RibbonPageGroupState.Collapsed;
             this.ribbonSystemPage.Text = "시스템";
@@ -1131,7 +1143,7 @@
             // vGridControl1
             // 
             this.vGridControl1.BandsInterval = 1;
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -1886,22 +1898,22 @@
             // 
             // chartControlInspectionAngle
             // 
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartControlInspectionAngle.Diagram = xyDiagram1;
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControlInspectionAngle.Diagram = xyDiagram2;
             this.chartControlInspectionAngle.Legend.Name = "Default Legend";
             this.chartControlInspectionAngle.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
             this.chartControlInspectionAngle.Location = new System.Drawing.Point(12, 12);
             this.chartControlInspectionAngle.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.chartControlInspectionAngle.Name = "chartControlInspectionAngle";
-            series1.Name = "Series 1";
+            series2.Name = "Series 1";
             this.chartControlInspectionAngle.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1};
+        series2};
             this.chartControlInspectionAngle.Size = new System.Drawing.Size(266, 286);
             this.chartControlInspectionAngle.TabIndex = 4;
-            chartTitle1.Text = "편심 각도[˚]";
+            chartTitle2.Text = "편심 각도[˚]";
             this.chartControlInspectionAngle.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle1});
+            chartTitle2});
             // 
             // Root
             // 
@@ -2305,8 +2317,8 @@
             this.xtraTabPageStatistics.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControlInspectionAngle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
@@ -2533,5 +2545,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSpotBrightPeakValidRatio;
         private System.Windows.Forms.Timer timerImageUpdate;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSimilarityValue;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemJigInspectionStart;
     }
 }

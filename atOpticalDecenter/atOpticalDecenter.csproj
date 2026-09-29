@@ -645,6 +645,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="free_icon_light_sensor_11231182_wsY_icon.ico" />
+    <None Include="Resources\iconsetsymbols3_32x32.png" />
+    <None Include="Resources\iconsetsymbols3_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

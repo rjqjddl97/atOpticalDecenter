@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
@@ -88,7 +89,7 @@ namespace CustomPages
         public System.Timers.Timer UpdateTimer = new System.Timers.Timer();
 
         public int[][] DrvMotionMonitor = new int[4][];
-
+        public ManualResetEvent _waitHandle = new ManualResetEvent(false);
         public MotionControl()
         {
             InitializeComponent();

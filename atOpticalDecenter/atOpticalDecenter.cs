@@ -60,6 +60,7 @@ namespace atOpticalDecenter
         ADMSEquipmentInfo _admsEquipment = new ADMSEquipmentInfo();
         ADMSProductInfo _admsProduct = new ADMSProductInfo();
         BackgroundWorker _bwMotionHome = new BackgroundWorker();
+        BackgroundWorker _bwJigInspection = new BackgroundWorker();
 
         bool _isInspecting = false;
         bool _isInspectionDone = false;
@@ -82,6 +83,7 @@ namespace atOpticalDecenter
 
         bool _isOpticalMeasurement = false;
         bool _isAutoInspectMeasurement = false;
+        bool _isAutoJigInspectMeasurement = false;
 
         bool _isCropMove = false;
         bool _isGrabbed = false;
@@ -316,7 +318,7 @@ namespace atOpticalDecenter
                 //pictureEditActuatorZ.Image = _BaseZImage;
                 //FilterActuatorImageZFitSize();                
                 _ActuatorZImage = Properties.Resources.Z_Actuator;
-                _bwMotionHome.RunWorkerAsync(mRobotInformation);
+                _bwMotionHome.RunWorkerAsync(mRobotInformation);                
                 AutoStartButtonLock();
                 timerCurrentTime.Start();
             }
@@ -387,6 +389,8 @@ namespace atOpticalDecenter
                 _backgroundWorkerOpticalDecenterInspection.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerInspection_RunWorkerCompleted);
                 _bwMotionHome.DoWork += new DoWorkEventHandler(backgroundWorkerMotionHome_DoWork);
                 _bwMotionHome.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerMotionHome_RunWorkerCompleted);
+                _bwJigInspection.DoWork += new DoWorkEventHandler(backgroundJigInspection_DoWork);
+                _bwJigInspection.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundJigInspection_RunWorkerCompleted);
             }
             catch (Exception)
             {
@@ -504,7 +508,7 @@ namespace atOpticalDecenter
                     if (liststrFriendlyNames.Count > 0)
                     {
                         //rowCameraFriendlyName.Properties.Value = liststrFriendlyNames[0];
-
+                        
                         Cameraname = liststrFriendlyNames[0];
                         if (_Camera.Open(liststrFriendlyNames[0]))
                         {
@@ -958,6 +962,7 @@ namespace atOpticalDecenter
                         grabEnd.WaitHandle.Set();
                     _patternMatching = false;
                     _isOpticalMeasurement = false;
+                    _isAutoJigInspectMeasurement = false;
 
                 }
 
@@ -2077,17 +2082,11 @@ namespace atOpticalDecenter
 
                     gp.DrawLine(Pens.Red, ptCrossStart1, ptCrossEnd1);
                     gp.DrawLine(Pens.Red, ptCrossStart2, ptCrossEnd2);
-
-
-
+                                       
                     //////////////////////////////////////////////////////////////////////////////////////                    
-                    //
-                    
-
-
+                    //                
                     // 매칭점 중심을 표시한다.
-                    //gp.DrawLine(Pens.LightGreen, ptCrossStart1, ptCrossEnd1);
-                    //gp.DrawLine(Pens.LightGreen, ptCrossStart2, ptCrossEnd2);
+
                     if (_MatchingResult.Count == 2)
                     {
                         double[] _Offsetdy = new double[_MatchingResult.Count];
@@ -2135,20 +2134,77 @@ namespace atOpticalDecenter
                                             mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
                             gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
                             gp.FillPath(Brushes.LimeGreen, path);
-
-                            //path = new GraphicsPath();
-                            ////fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + (_blobs[i].Height / fCharacter));
-                            //fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (250 * fCharacter));
-
-                            //path.AddString(string.Format("중심 픽셀 좌표 X:{0:0000.0}, Y:{1:0000.0}", _MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y), mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
-                            //gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
-                            //gp.FillPath(Brushes.LightGreen, path);
                         }
-                        double deviation = _Offsetdy[0] - _Offsetdy[1];
+                    }
+                }
+                if (_isAutoJigInspectMeasurement)
+                {
+                    PointF ptCrossStart1, ptCrossStart2, ptCrossEnd1, ptCrossEnd2;
+                    PointF ptCenter = new PointF((_systemParams._cameraParams.HResolution) / 2f, (_systemParams._cameraParams.VResolution) / 2f);
+
+                    Utils.CrossMarkPosition(
+                         ptCenter, out ptCrossStart1, out ptCrossEnd1, out ptCrossStart2, out ptCrossEnd2,
+                         1, 0, 0, crossMarkOffset);
+
+                    gp.DrawLine(Pens.Red, ptCrossStart1, ptCrossEnd1);
+                    gp.DrawLine(Pens.Red, ptCrossStart2, ptCrossEnd2);
+
+                    //////////////////////////////////////////////////////////////////////////////////////                    
+                    //                
+                    // 매칭점 중심을 표시한다.
+
+                    if (_MatchingResult.Count == 2)
+                    {
+                        double[] _Offsetdy = new double[_MatchingResult.Count];
+                        for (int i = 0; i < _MatchingResult.Count; i++)
+                        {
+                            Point temppoint = new Point(_MatchingResult[i]._Rect.X + (_MatchingResult[i]._Rect.Width / 2),
+                                _MatchingResult[i]._Rect.Y + (_MatchingResult[i]._Rect.Height / 2));
+                            Utils.CrossMarkPosition(temppoint, out ptCrossStart1, out ptCrossEnd1, out ptCrossStart2, out ptCrossEnd2, 1, 0, 0, crossMarkOffset);
+
+                            double detectCenterX = _MatchingResult[i]._Rect.X + (_MatchingResult[i]._Rect.Width / 2), detectCenterY = _MatchingResult[i]._Rect.Y + (_MatchingResult[i]._Rect.Height / 2);
+
+                            Pen newPenPattern = new Pen(Color.Black, 3.0f);
+                            Pen oldPenPattern = new Pen(Color.LightGreen, 1.5f);
+
+                            gp.DrawPath(newPenPattern, path);
+                            gp.DrawPath(oldPenPattern, path);
+
+                            gp.DrawLine(newPenPattern, ptCrossStart1, ptCrossEnd1);
+                            gp.DrawLine(newPenPattern, ptCrossStart2, ptCrossEnd2);
+                            gp.DrawLine(oldPenPattern, ptCrossStart1, ptCrossEnd1);
+                            gp.DrawLine(oldPenPattern, ptCrossStart2, ptCrossEnd2);
+
+                            Pen DetectPenPattern = new Pen(Color.Blue, 3.0f);
+                            gp.DrawPath(DetectPenPattern, path);
+
+                            gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y), new Point(_MatchingResult[i]._Rect.X + _MatchingResult[i]._Rect.Width, _MatchingResult[i]._Rect.Y));
+                            gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y), new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height));
+                            gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X + _MatchingResult[i]._Rect.Width, _MatchingResult[i]._Rect.Y), new Point(_MatchingResult[i]._Rect.X + _MatchingResult[i]._Rect.Width, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height));
+                            gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height), new Point(_MatchingResult[i]._Rect.X + _MatchingResult[i]._Rect.Width, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height));
+
+                            float fLedAlignmentCenterToLedMarkDistance = (float)Math.Sqrt(Math.Pow((_systemParams._cameraParams.HResolution / 2) - (_MatchingResult[i]._Rect.X + (_MatchingResult[i]._Rect.Width / 2)), 2.0)
+                                + Math.Pow((_systemParams._cameraParams.VResolution / 2) - (_MatchingResult[i]._Rect.Y + (_MatchingResult[i]._Rect.Height / 2)), 2.0));
+
+                            double dx, dy;
+                            dx = ((_systemParams._cameraParams.HResolution / 2) - detectCenterX) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemXcoordi;
+                            dy = ((_systemParams._cameraParams.VResolution / 2) - detectCenterY) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemYcoordi;
+
+                            _Offsetdy[i] = dy;
+
+                            gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
+                            gp.DrawPath(new Pen(Brushes.LimeGreen, 2 / fCharacter), path);
+                            Font mfont = new Font("Arial", 15f / fCharacter, FontStyle.Bold);
+                            fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - ((300 - (50 * i)) * fCharacter));
+                            path.AddString(string.Format("패턴 대상{0:0}, dx:{1:0.000}mm, dy:{2:0.000}mm", i, dx, dy),
+                                            mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
+                            gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
+                            gp.FillPath(Brushes.LimeGreen, path);
+                        }                        
                         path = new GraphicsPath();
                         Font refont = new Font("Arial", 50, FontStyle.Bold);
-                        PointF refptDrawString = new PointF(100, 50);
-                        if (Math.Abs(deviation) < _systemParams._InspectionJigReferenceValue)
+                        PointF refptDrawString = new PointF(100, 50);                        
+                        if (_JigInspectionResult)
                         {
                             path.AddString("PASS", refont.FontFamily, (int)font.Style, refont.Size, refptDrawString, null);
                             gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
@@ -2160,53 +2216,8 @@ namespace atOpticalDecenter
                             gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
                             gp.FillPath(Brushes.Red, path);
                         }
-                    }
-                    //float fLedAlignmentCenterToLedMarkDistance = (float)Math.Sqrt(Math.Pow((_systemParams._cameraParams.HResolution / 2) - _workParams.AreaCenter.X, 2.0)
-                    //    + Math.Pow((_systemParams._cameraParams.VResolution / 2) - _workParams.AreaCenter.Y, 2.0));
-
-                    //double dx, dy;
-                    //dx = ((_systemParams._cameraParams.HResolution / 2) - _workParams.AreaCenter.X) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemXcoordi;
-                    //dy = ((_systemParams._cameraParams.VResolution / 2) - _workParams.AreaCenter.Y) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemYcoordi;
-
-                    //path = new GraphicsPath();
-                    //Font mfont = new Font("Arial", 15f / fCharacter, FontStyle.Bold);
-                    ////fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + ((_blobs[i].Height / 2) / fCharacter));
-                    //fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (300 * fCharacter));
-                    //path.AddString(string.Format("패턴유사도{0:0.0}%, 중심과 Pattern사이:{1:0.000}mm, dx:{2:0.000}mm, dy:{3:0.000}mm",
-                    //                                _workParams.InspectionPositions[0].Similarity, fLedAlignmentCenterToLedMarkDistance * _systemParams._cameraParams.OnePixelResolution, dx, dy),
-                    //                mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
-                    //gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
-                    //gp.FillPath(Brushes.LimeGreen, path);
-
-                    //path = new GraphicsPath();
-                    ////fptDrawString = new PointF(_blobs[i].CenterX * fCharacter, _blobs[i].CenterY + (_blobs[i].Height / fCharacter));
-                    //fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (250 * fCharacter));
-
-                    //path.AddString(string.Format("중심 픽셀 좌표 X:{0:0000.0}, Y:{1:0000.0}", _workParams.AreaCenter.X, _workParams.AreaCenter.Y), mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
-                    //gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
-                    //gp.FillPath(Brushes.LightGreen, path);
-
-                    // 검사 결과 표시
-
-
-                    //Font refont = new Font("Arial", 50, FontStyle.Bold);
-
-
-                    //PointF refptDrawString = new PointF(100, 50);
-
-                    //if (fLedAlignmentCenterToLedMarkDistance * _systemParams._cameraParams.OnePixelResolution <= Convert.ToSingle(rowResultPosition.Properties.Value))
-                    //{
-                    //    path.AddString("PASS", refont.FontFamily, (int)font.Style, refont.Size, refptDrawString, null);
-                    //    gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
-                    //    gp.FillPath(Brushes.LimeGreen, path);
-                    //}
-                    //else
-                    //{
-                    //    path.AddString("FAIL", refont.FontFamily, (int)font.Style, refont.Size, refptDrawString, null);
-                    //    gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
-                    //    gp.FillPath(Brushes.Red, path);
-                    //}
-                    //_patternMatching = false;
+                        //_isAutoJigInspectMeasurement = false;
+                    }                   
                 }
                 //GC.Collect();
             }
@@ -3122,6 +3133,9 @@ namespace atOpticalDecenter
                         MakeInspectionList();
                         _InspectionWorking = true;
                         _InspectionResult = false;
+                        _patternMatching = false;
+                        _isOpticalMeasurement = false;
+                        _isAutoJigInspectMeasurement = false;
                         mInspectStep = InspectionStepType.CheckWaitRobotReady;
 
                         InspectionRecipeParameterSetup();
@@ -3619,6 +3633,8 @@ namespace atOpticalDecenter
             ribbonPageGroupImageViewer.Enabled = false;
             ribbonPageGroupConnection.Enabled = false;
             //ribbonPageGroupMotionControl.Enabled = false;
+            barButtonItemInitializeStatistics.Enabled = false;
+               
             xtraTabControlMainSetup.Enabled = false;
         }
         public void AutoStartButtonRelease()
@@ -3633,6 +3649,7 @@ namespace atOpticalDecenter
             xtraTabControlMainSetup.Enabled = true;            
             MotionControl.Enabled = true;
             RemoteIOControl.Enabled = true;
+            barButtonItemInitializeStatistics.Enabled = true;
             pledSpotInspectionInfomation.Enabled = true;
         }
         private void FilterActuatorImageXFitSize()
@@ -3868,6 +3885,7 @@ namespace atOpticalDecenter
                     barButtonItemSystemFolderPathSetting.Caption = "Set Path";
                     barButtonItemSystemEditor.Caption = "Set Parameter";
                     barButtonItemWorkInfo.Caption = "Login Information";
+                    barButtonItemJigInspectionStart.Caption = "Jig Inspection Start";
 
                     ribbonPageGroupFile.Text = "Recipe";
                     barButtonItemRecipeOpen.Caption = "Load";
@@ -3980,6 +3998,7 @@ namespace atOpticalDecenter
                     barButtonItemSystemFolderPathSetting.Caption = "경로설정";
                     barButtonItemSystemEditor.Caption = "시스템 설정";
                     barButtonItemWorkInfo.Caption = "로그인 정보";
+                    barButtonItemJigInspectionStart.Caption = "지그 검사 시작";
 
                     ribbonPageGroupFile.Text = "레시피";
                     barButtonItemRecipeOpen.Caption = "불러오기";
@@ -4254,6 +4273,94 @@ namespace atOpticalDecenter
                 ;
             }
 
+        }
+
+        private void barButtonItemJigInspectionStart_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                //if ((!_bwJigInspection.IsBusy) && _IsHommingFinished && (!_JigInspectionRunning))
+                if ((!_bwJigInspection.IsBusy) && (!_JigInspectionRunning))
+                {
+                    _JigInspectionProcess = true;
+                    _JigInspectionRunning = true;
+                    _JigInspectionEnd = false;
+                    _patternMatching = false;
+                    _isOpticalMeasurement = false;
+                    _isAutoInspectMeasurement = false;
+                    _bwJigInspection.RunWorkerAsync(mRobotInformation);
+                    AutoStartButtonLock();
+                    barButtonItemJigInspectionStart.Enabled = true;
+                    barCheckItemInspectionStart.Enabled = false;
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "지그 검사 명령을 실행 하였습니다.");
+                }
+                else
+                {
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "지그 검사 명령을 생략합니다.");
+                }
+            }
+            catch (Exception ex)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("지그 검사 명령을 실행 하지 못하였습니다."));
+            }
+        }
+        public bool PatternMatchingFromImage(System.Drawing.Image Imagesource, System.Drawing.Image ImageTemplete, int ithresholde, int isimilarity)
+        {
+            try
+            {
+                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 시작"));
+
+                if (Imagesource == null)
+                {
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("입력 영상 또는 매칭 영상 읽기 실패"));
+                    return false;
+                }
+
+                TemplateMatch tm = new TemplateMatch();
+
+                //tm._log.WriteLogViewer += new Log.EventWriteLogViewer(OnWriteLogViewer);
+                //tm.IsLog = true;
+
+                Bitmap tempImage = Utils.Clone<Bitmap>((Bitmap)Imagesource);
+                Bitmap outImage = Utils.Clone<Bitmap>((Bitmap)Imagesource);
+                Bitmap inspectsource = new Bitmap(Imagesource.Width, Imagesource.Height);
+
+                if (tempImage.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+                {
+                    inspectsource = ConverterColorToGray(tempImage);
+                    tempImage = inspectsource;
+                    outImage = tempImage;
+                }
+
+                Bitmap TemplateImage = Utils.Clone<Bitmap>((Bitmap)ImageTemplete);
+                Bitmap _tempTemplate = Utils.Clone<Bitmap>((Bitmap)ImageTemplete);
+                if (_tempTemplate.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+                {
+                    TemplateImage = ConverterColorToGray(_tempTemplate);
+                }
+                _MatchingResult.Clear();                
+                List<TemplateMatch.MatchResult> retResult = new List<TemplateMatch.MatchResult>();
+                retResult = tm.MultiPatternMatching(outImage, TemplateImage, ithresholde, isimilarity);                
+                if (retResult != null)
+                {                    
+                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 완료"));
+                    //pictureEditSystemImage.Image = Imagesource;
+                    //pictureEditSystemImage.Refresh();                    
+                    //barButtonItemFitSize.PerformClick();
+                    _MatchingResult = retResult;
+                    return true;
+                }
+                else
+                {                    
+                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 실패"));
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 프로세싱이 실행되지 않았습니다."));
+                return false;
+            }
         }
     }
 
