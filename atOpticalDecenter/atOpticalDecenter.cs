@@ -552,7 +552,7 @@ namespace atOpticalDecenter
                             _ImageHist_H = new double[Convert.ToInt32(rowCameraVResolution.Properties.Value)];
                             //if (_ImageHist_W == null)
                             _ImageHist_W = new double[Convert.ToInt32(rowCameraHResolution.Properties.Value)];
-                            timerImageUpdate.Start();
+                            //timerImageUpdate.Start();
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 연결 성공:{0}", liststrFriendlyNames[0]));
                             mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(),
                                 string.Format("노출 시간:{0}, 게인:{1}, 프레임비:{2}", Convert.ToString(rowCameraExposureTime.Properties.Value), Convert.ToString(rowCameraGain.Properties.Value), Convert.ToString(rowCameraFrame.Properties.Value)));
@@ -589,7 +589,7 @@ namespace atOpticalDecenter
                     repositoryItemToggleSwitchCameraConnection.ValueOn = false;
                     // System 파라미터를 Update한다.
                     //RecipeFileIO.WriteSystemFile(_systemParams, string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.SystemFileName));
-                    timerImageUpdate.Start();
+                    //timerImageUpdate.Start();
                     if (_ImageHist_H != null)
                         _ImageHist_H = new double[Convert.ToInt32(rowCameraVResolution.Properties.Value)];
                     if (_ImageHist_W != null)
@@ -940,40 +940,35 @@ namespace atOpticalDecenter
                 }
 
                 GrabEndParam grabEnd = (GrabEndParam)sender as GrabEndParam;
-                //System.Drawing.Image sourceImage = _sourceImage;
+                System.Drawing.Image sourceImage = _sourceImage;
 
                 if (grabEnd != null)
                 {
-                    //if (_isContinuousShot)
-                    //{
-                    //    pictureEditSystemImage.Image = grabEnd.Image;
-                    //    _sourceImage = grabEnd.Image;
-                    //}
-                    //else
-                    //{
-                    //    pictureEditSystemImage.Image = grabEnd.Image;
-                    //    _sourceImage = Utils.Clone<Bitmap>(grabEnd.Image);
-                    //}
-                    _sourceImage = grabEnd.Image;
-                    ImageGrabbed.Invoke(_sourceImage);
-                    //if (grabEnd.WaitHandle != null)
-                    //    grabEnd.WaitHandle.Set();
-                    if ((grabEnd.WaitHandle != null) && (!_isContinuousShot))
-                        grabEnd.WaitHandle.Set();
+                    if (_isContinuousShot)
+                    {
+                        pictureEditSystemImage.Image = grabEnd.Image;
+                        _sourceImage = grabEnd.Image;
+                    }
+                    else
+                    {
+                        pictureEditSystemImage.Image = grabEnd.Image;
+                        _sourceImage = Utils.Clone<Bitmap>(grabEnd.Image);
+                        //_sourceImage = grabEnd.Image;
+                        ImageGrabbed.Invoke(_sourceImage);
+                        if ((grabEnd.WaitHandle != null) && (!_isContinuousShot))
+                            grabEnd.WaitHandle.Set();
+                    }
                     _patternMatching = false;
                     _isOpticalMeasurement = false;
                     _isAutoJigInspectMeasurement = false;
-
                 }
-
                 _isGrabbed = true;
 
-
-                //if (sourceImage != null)
-                //{
-                //    sourceImage.Dispose();
-                //    sourceImage = null;
-                //}
+                if (sourceImage != null)
+                {
+                    sourceImage.Dispose();
+                    sourceImage = null;
+                }
 
                 if (_isContinuousShot)
                 {
@@ -1389,7 +1384,7 @@ namespace atOpticalDecenter
                         repositoryItemToggleSwitchCameraConnection.ValueOff = true;
                         repositoryItemToggleSwitchCameraConnection.ValueOn = false;
 
-                        timerImageUpdate.Start();
+                        //timerImageUpdate.Start();
                         // System 파라미터를 Update한다.
                         //RecipeFileIO.WriteSystemFile(_systemParams, string.Format(@"{0}\{1}", SystemDirectoryParams.SystemFolderPath, SystemDirectoryParams.SystemFileName));
 
@@ -1552,9 +1547,10 @@ namespace atOpticalDecenter
                 try
                 {
                     _Camera.OneShot(_waitHandle);
-
+                    _isAutoJigInspectMeasurement = false;
                     _patternMatching = false;
                     _isOpticalMeasurement = false;
+                    _isAutoInspectMeasurement = false;
                     pictureEditSystemImage.Refresh();
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "싱글 샷");
                     barButtonItemFitSize.PerformClick();
@@ -1575,6 +1571,10 @@ namespace atOpticalDecenter
                     _Camera.ContinuousShot(_systemParams._cameraParams.FrameRate);
                     _isContinuousShot = true;
                     _frameCount = 0;
+                    _isAutoJigInspectMeasurement = false;
+                    _patternMatching = false;
+                    _isOpticalMeasurement = false;
+                    _isAutoInspectMeasurement = false;
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "연속 샷 시작");
                 }
                 catch (Exception)
@@ -2194,16 +2194,34 @@ namespace atOpticalDecenter
 
                             gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
                             gp.DrawPath(new Pen(Brushes.LimeGreen, 2 / fCharacter), path);
-                            Font mfont = new Font("Arial", 15f / fCharacter, FontStyle.Bold);
-                            fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - ((300 - (50 * i)) * fCharacter));
+                            int fntheight = (int)(15f / fCharacter) + 5;
+
+                            if (fntheight > 50)
+                                fntheight = 50;
+                            Font mfont = new Font("Arial", fntheight, FontStyle.Bold);
+                            
+                            //fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - ((300 - (fntheight * i)) * fCharacter));
+                            fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (200 - (fntheight * i)) );
                             path.AddString(string.Format("패턴 대상{0:0}, dx:{1:0.000}mm, dy:{2:0.000}mm", i, dx, dy),
                                             mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
                             gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
                             gp.FillPath(Brushes.LimeGreen, path);
-                        }                        
+                        }
+                        gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
+                        gp.DrawPath(new Pen(Brushes.LimeGreen, 2 / fCharacter), path);                        
+                        int fnt1height = (int)(15f / fCharacter) + 5;
+                        if (fnt1height > 50)
+                            fnt1height = 50;
+                        Font m1font = new Font("Arial", fnt1height, FontStyle.Bold);
+                        fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (200 - (fnt1height * 2)));
+                        path.AddString(string.Format("수평 기준 단차: {0:0.0000}mm , 수평 측정 단차: {1:0.0000}mm",_systemParams._InspectionJigReferenceValue ,Math.Abs(_Offsetdy[0] - _Offsetdy[1])),
+                                        m1font.FontFamily, (int)m1font.Style, m1font.Size, fptDrawString, null);
+                        gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
+                        gp.FillPath(Brushes.LimeGreen, path);
+
                         path = new GraphicsPath();
-                        Font refont = new Font("Arial", 50, FontStyle.Bold);
-                        PointF refptDrawString = new PointF(100, 50);                        
+                        Font refont = new Font("Arial", 70, FontStyle.Bold);
+                        PointF refptDrawString = new PointF(100, 50);
                         if (_JigInspectionResult)
                         {
                             path.AddString("PASS", refont.FontFamily, (int)font.Style, refont.Size, refptDrawString, null);
@@ -2217,7 +2235,16 @@ namespace atOpticalDecenter
                             gp.FillPath(Brushes.Red, path);
                         }
                         //_isAutoJigInspectMeasurement = false;
-                    }                   
+                    }
+                    else
+                    {
+                        path = new GraphicsPath();
+                        Font refont = new Font("Arial", 50, FontStyle.Bold);
+                        PointF refptDrawString = new PointF(100, 50);
+                        path.AddString("FAIL", refont.FontFamily, (int)font.Style, refont.Size, refptDrawString, null);
+                        gp.DrawPath(new Pen(Brushes.Black, 3 / fCharacter), path);
+                        gp.FillPath(Brushes.Red, path);
+                    }
                 }
                 //GC.Collect();
             }
@@ -2846,8 +2873,12 @@ namespace atOpticalDecenter
         private void menualPatternMatchingButton_Click(object sender, EventArgs e)
         {
             try
-            {
+            {                
+                _isAutoJigInspectMeasurement = false;
+                _patternMatching = false;
                 _isOpticalMeasurement = false;
+                _isAutoInspectMeasurement = false;
+
                 InspectionPosition inspectionPos = new InspectionPosition();
                 inspectionPos.Index = 0;
                 inspectionPos.PositionX = 0;
@@ -3348,6 +3379,8 @@ namespace atOpticalDecenter
             {
                 _patternMatching = false;
                 _isOpticalMeasurement = false;
+                _isAutoJigInspectMeasurement = false;
+                _isAutoInspectMeasurement = false;
                 if ((Spot1BlobImage != null) && (Spot2BlobImage != null))
                 {
                     Bitmap tempImage = Utils.Clone<Bitmap>((Bitmap)Spot1BlobImage);                    
@@ -4263,7 +4296,7 @@ namespace atOpticalDecenter
             {
                 if (_isCameraOpen)
                 {
-                    pictureEditSystemImage.Image = _sourceImage;
+                    //pictureEditSystemImage.Image = _sourceImage;
                     pictureEditSystemImage.Refresh();
                     GC.Collect();
                 }
@@ -4282,6 +4315,23 @@ namespace atOpticalDecenter
                 //if ((!_bwJigInspection.IsBusy) && _IsHommingFinished && (!_JigInspectionRunning))
                 if ((!_bwJigInspection.IsBusy) && (!_JigInspectionRunning))
                 {
+                    if (_isContinuousShot)
+                    {
+                        _Camera.Stop();
+                        _isContinuousShot = false;
+                        barButtonItemSingleShot.Enabled = true;
+                        barButtonItemContinueousShot.Enabled = true;
+                    }
+                    if ((_systemParams._InspectionJigExposureTime >= 50) && (_systemParams._InspectionJigExposureTime <= 10000000))
+                    {
+                        CameraParameters cameraParam = new CameraParameters();
+                        cameraParam.Value = _systemParams._InspectionJigExposureTime;
+                        _Camera.ExposureTime = cameraParam;
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("카메라 노출 시간 변경: {0}", (int)cameraParam.Value));
+                    }
+                    else
+                        return;
+
                     _JigInspectionProcess = true;
                     _JigInspectionRunning = true;
                     _JigInspectionEnd = false;
@@ -4290,13 +4340,23 @@ namespace atOpticalDecenter
                     _isAutoInspectMeasurement = false;
                     _bwJigInspection.RunWorkerAsync(mRobotInformation);
                     AutoStartButtonLock();
-                    barButtonItemJigInspectionStart.Enabled = true;
-                    barCheckItemInspectionStart.Enabled = false;
+                    ribbonSystemPage.Enabled = true;
+                    //barButtonItemJigInspectionStart.Enabled = true;
+                    //barCheckItemInspectionStart.Enabled = false;
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "지그 검사 명령을 실행 하였습니다.");
                 }
                 else
                 {
-                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "지그 검사 명령을 생략합니다.");
+                    if (_JigInspectionRunning)
+                    {
+                        _JigInspectionProcess = false;
+                        _JigInspectionRunning = false;
+                        _JigInspectionEnd = false;
+                        _waitHandle.Set();
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "지그 검사를 중지합니다.");
+                    }
+                    else
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "지그 검사 명령을 생략합니다.");
                 }
             }
             catch (Exception ex)
@@ -4309,8 +4369,9 @@ namespace atOpticalDecenter
             try
             {
                 mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 시작"));
+                _MatchingResult.Clear();
 
-                if (Imagesource == null)
+                if ((Imagesource == null) && (ImageTemplete == null))
                 {
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("입력 영상 또는 매칭 영상 읽기 실패"));
                     return false;
@@ -4318,47 +4379,80 @@ namespace atOpticalDecenter
 
                 TemplateMatch tm = new TemplateMatch();
 
+                bool bret = false;
                 //tm._log.WriteLogViewer += new Log.EventWriteLogViewer(OnWriteLogViewer);
                 //tm.IsLog = true;
 
-                Bitmap tempImage = Utils.Clone<Bitmap>((Bitmap)Imagesource);
-                Bitmap outImage = Utils.Clone<Bitmap>((Bitmap)Imagesource);
-                Bitmap inspectsource = new Bitmap(Imagesource.Width, Imagesource.Height);
-
-                if (tempImage.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+                //Bitmap tempImage = Utils.Clone<Bitmap>((Bitmap)Imagesource);
+                //Bitmap outImage = Utils.Clone<Bitmap>((Bitmap)Imagesource);
+                //Bitmap inspectsource = new Bitmap(tempImage.Width, tempImage.Height);    
+                Bitmap tempImage;
+                Bitmap outImage;
+                lock (Imagesource)
                 {
-                    inspectsource = ConverterColorToGray(tempImage);
-                    tempImage = inspectsource;
-                    outImage = tempImage;
+                    tempImage = new Bitmap(Imagesource);
+                    outImage = new Bitmap(Imagesource);
+                }
+                using (tempImage)
+                {
+                    if (tempImage.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+                    {
+                        outImage = ConverterColorToGray(tempImage);
+                    }
+                    else
+                        outImage = tempImage;
                 }
 
-                Bitmap TemplateImage = Utils.Clone<Bitmap>((Bitmap)ImageTemplete);
-                Bitmap _tempTemplate = Utils.Clone<Bitmap>((Bitmap)ImageTemplete);
-                if (_tempTemplate.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+                //Bitmap TemplateImage = Utils.Clone<Bitmap>((Bitmap)ImageTemplete);
+                //Bitmap _tempTemplate = Utils.Clone<Bitmap>((Bitmap)ImageTemplete);
+                Bitmap TemplateImage;
+                Bitmap _tempTemplate;
+                lock (ImageTemplete)
                 {
-                    TemplateImage = ConverterColorToGray(_tempTemplate);
+                    TemplateImage = new Bitmap(ImageTemplete);
+                    _tempTemplate = new Bitmap(ImageTemplete);
                 }
-                _MatchingResult.Clear();                
-                List<TemplateMatch.MatchResult> retResult = new List<TemplateMatch.MatchResult>();
-                retResult = tm.MultiPatternMatching(outImage, TemplateImage, ithresholde, isimilarity);                
-                if (retResult != null)
-                {                    
-                    mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 완료"));
-                    //pictureEditSystemImage.Image = Imagesource;
-                    //pictureEditSystemImage.Refresh();                    
-                    //barButtonItemFitSize.PerformClick();
-                    _MatchingResult = retResult;
-                    return true;
+                using (ImageTemplete)
+                {
+                    if (_tempTemplate.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+                    {
+                        TemplateImage = ConverterColorToGray(_tempTemplate);
+                    }
+                    else
+                        TemplateImage = _tempTemplate;
+                }
+                if ((outImage != null) && (TemplateImage != null))
+                {
+                    List<TemplateMatch.MatchResult> retResult = new List<TemplateMatch.MatchResult>();
+                    retResult = tm.MultiPatternMatching(outImage, TemplateImage, ithresholde, isimilarity);
+                    if (retResult != null)
+                    {
+                        mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 완료"));
+                        //pictureEditSystemImage.Image = Imagesource;
+                        //pictureEditSystemImage.Refresh();                    
+                        //barButtonItemFitSize.PerformClick();
+                        _MatchingResult = retResult;
+                        bret = true;
+                    }
+                    else
+                    {
+                        mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 실패"));
+                        bret = false;
+                    }
+                    tempImage.Dispose();
+                    outImage.Dispose();
+                    TemplateImage.Dispose();
+                    _tempTemplate.Dispose();
+                    tm.Dispose();
                 }
                 else
-                {                    
-                    mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 실패"));
-                    return false;
-                }
+                    bret = false;
+
+                return bret;
             }
             catch (Exception ex)
             {
-                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 프로세싱이 실행되지 않았습니다."));
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 프로세싱에 오류가 발생습니다."));
                 return false;
             }
         }

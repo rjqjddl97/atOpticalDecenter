@@ -67,9 +67,13 @@ namespace atOpticalDecenter
             {
                 if (_Camera.IsAllocated)
                 {
+                    _waitHandle.Reset();
                     _Camera.OneShot(_waitHandle);
+                    _waitHandle.WaitOne();
                     _isOpticalMeasurement = false;
                     _patternMatching = false;
+                    _isAutoJigInspectMeasurement = false;
+                    //pictureEditSystemImage.Image = _sourceImage;
                     barButtonItemFitSize.PerformClick();
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "자동 검사 중 싱글 샷");
                 }
@@ -1074,7 +1078,7 @@ namespace atOpticalDecenter
 
                                     _waitHandle.Reset();
                                     _Camera.OneShot(_waitHandle);
-                                    Thread.Sleep(1000);       //Task.Delay(50);
+                                    //Thread.Sleep(1000);       //Task.Delay(50);
                                     
                                     _waitHandle.WaitOne();
 
@@ -1083,14 +1087,17 @@ namespace atOpticalDecenter
                                         //pictureEditSystemImage.Refresh();
                                         mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "Jig 이미지 취득 완료");
                                         System.Drawing.Image TempleteImage = System.Drawing.Image.FromFile(_systemParams._InspectionMatchingImagePath);
-                                        if (PatternMatchingFromImage(_sourceImage, TempleteImage, _systemParams._InspectionThresholdValue, _systemParams._InspectionPatternSimilarity))
+                                        System.Drawing.Image Tempsource;
+                                        Tempsource = _sourceImage;
+                                        if (PatternMatchingFromImage(Tempsource, TempleteImage, _systemParams._InspectionThresholdValue, _systemParams._InspectionPatternSimilarity))
                                         {
-                                            _isAutoJigInspectMeasurement = true;
+                                            _isAutoJigInspectMeasurement = true;                                                                                        
                                         }
                                         else
-                                        {
+                                        {                                            
                                             _JigInspectionEnd = false;
                                             _JigInspectionRunning = false;
+                                            _isAutoJigInspectMeasurement = true;
                                             e.Cancel = true;
                                         }
                                     }
@@ -1156,7 +1163,9 @@ namespace atOpticalDecenter
                 _JigInspectionRunning = false;
                 _JigInspectionEnd = true;
                 _JigInspectionResult = JigInspectionCalculate();
+                pictureEditSystemImage.Image = _sourceImage;
                 barCheckItemInspectionStart.Enabled = true;
+                barButtonItemFitSize.PerformClick();
                 mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "지그 검사 실행을 종료합니다.");
                 
             }
@@ -1183,7 +1192,7 @@ namespace atOpticalDecenter
                     }
                     double deviation = _OffsetLevel[0] - _OffsetLevel[1];
 
-                    if (Math.Abs(deviation) < _systemParams._InspectionJigReferenceValue)
+                    if (Math.Abs(deviation) <= _systemParams._InspectionJigReferenceValue)
                     {
                         mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(),string.Format("차이가 기준 {0}mm, 측정 {1}mm로  지그 검사 결과는 합격이다.",_systemParams._InspectionJigReferenceValue, Math.Abs(deviation)));
                         return true;

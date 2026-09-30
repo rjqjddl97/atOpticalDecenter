@@ -359,37 +359,37 @@ namespace ImageLibrary
                 Mat source = new Mat(), template = new Mat(), tempimg = new Mat(), result = new Mat();
                 Mat sourcegray = new Mat(), templategray = new Mat();
                 Mat sourcebinary = new Mat(), templatebinary = new Mat();
-                Mat templatePy1 = new Mat(), templatePy2 = new Mat(), templatePy3 = new Mat(), templatePy4 = new Mat();
-                Mat mark1 = new Mat(), mark2 = new Mat(), ledSearch = new Mat(), matchROI = new Mat();
 
-                double minval = 0D, maxval = 0D;
-                OpenCvSharp.Point minLoc1, minLoc2, maxLoc1, maxLoc2;
                 if (templateimg != null)
                 {
                     if (image.PixelFormat != PixelFormat.Format8bppIndexed)
                     {
-                        source = OpenCvSharp.Extensions.BitmapConverter.ToMat(Utils.Clone<Bitmap>(image));
+                        //source = OpenCvSharp.Extensions.BitmapConverter.ToMat(Utils.Clone<Bitmap>(image));
+                        source = OpenCvSharp.Extensions.BitmapConverter.ToMat(image);
                         Cv2.CvtColor(source, sourcegray, ColorConversionCodes.BGR2GRAY);
                         Cv2.GaussianBlur(sourcegray, sourcegray, new OpenCvSharp.Size(3, 3), 0);
                         Cv2.Threshold(sourcegray, sourcebinary, _ithreshold, 255, ThresholdTypes.Binary | ThresholdTypes.Otsu);
                     }
                     else
                     {
-                        source = OpenCvSharp.Extensions.BitmapConverter.ToMat(Utils.Clone<Bitmap>(image));
+                        //source = OpenCvSharp.Extensions.BitmapConverter.ToMat(Utils.Clone<Bitmap>(image));
+                        source = OpenCvSharp.Extensions.BitmapConverter.ToMat(image);
                         sourcegray = source;
                         Cv2.GaussianBlur(sourcegray, sourcegray, new OpenCvSharp.Size(3, 3), 0);
                         Cv2.Threshold(sourcegray, sourcebinary, _ithreshold, 255, ThresholdTypes.Binary | ThresholdTypes.Otsu);
                     }
                     if (templateimg.PixelFormat != PixelFormat.Format8bppIndexed)
                     {
-                        template = OpenCvSharp.Extensions.BitmapConverter.ToMat(Utils.Clone<Bitmap>(templateimg));
+                        //template = OpenCvSharp.Extensions.BitmapConverter.ToMat(Utils.Clone<Bitmap>(templateimg));
+                        template = OpenCvSharp.Extensions.BitmapConverter.ToMat(templateimg);
                         Cv2.CvtColor(template, templategray, ColorConversionCodes.BGR2GRAY);
                         Cv2.GaussianBlur(templategray, templategray, new OpenCvSharp.Size(3, 3), 0);
                         Cv2.Threshold(templategray, templategray, 0, _ithreshold, ThresholdTypes.Binary | ThresholdTypes.Otsu);
                     }
                     else
                     {
-                        template = OpenCvSharp.Extensions.BitmapConverter.ToMat(Utils.Clone<Bitmap>(templateimg));
+                        //template = OpenCvSharp.Extensions.BitmapConverter.ToMat(Utils.Clone<Bitmap>(templateimg));
+                        template = OpenCvSharp.Extensions.BitmapConverter.ToMat(templateimg);
                         templategray = template;
                         Cv2.GaussianBlur(templategray, templategray, new OpenCvSharp.Size(3, 3), 0);
                         Cv2.Threshold(templategray, templatebinary, _ithreshold, 255, ThresholdTypes.Binary | ThresholdTypes.Otsu);
