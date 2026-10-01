@@ -4312,8 +4312,8 @@ namespace atOpticalDecenter
         {
             try
             {
-                //if ((!_bwJigInspection.IsBusy) && _IsHommingFinished && (!_JigInspectionRunning))
-                if ((!_bwJigInspection.IsBusy) && (!_JigInspectionRunning))
+                if ((!_bwJigInspection.IsBusy) && _IsHommingFinished && (!_JigInspectionRunning))
+                //if ((!_bwJigInspection.IsBusy) && (!_JigInspectionRunning))
                 {
                     if (_isContinuousShot)
                     {
@@ -4332,6 +4332,10 @@ namespace atOpticalDecenter
                     else
                         return;
 
+                    _RobotTargetPosition[0] = _systemParams._InspectionJigPositionX;
+                    _RobotTargetPosition[1] = _systemParams._InspectionJigPositionY;
+                    _RobotTargetPosition[2] = _systemParams._InspectionJigPositionZ;
+
                     _JigInspectionProcess = true;
                     _JigInspectionRunning = true;
                     _JigInspectionEnd = false;
@@ -4341,8 +4345,6 @@ namespace atOpticalDecenter
                     _bwJigInspection.RunWorkerAsync(mRobotInformation);
                     AutoStartButtonLock();
                     ribbonSystemPage.Enabled = true;
-                    //barButtonItemJigInspectionStart.Enabled = true;
-                    //barCheckItemInspectionStart.Enabled = false;
                     mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "지그 검사 명령을 실행 하였습니다.");
                 }
                 else

@@ -154,10 +154,16 @@ namespace atOpticalDecenter
                     (Math.Round(mRobotInformation.PositionZ, 3) == Math.Round(_RobotTargetPosition[2], 3))
                     )
                 {
+                    //mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("pre x:{0:0.000},pre y:{1:0.000},pre z:{2:0.000}," +
+                    //    "cmd x:{0:0.000},cmd y:{1:0.000},cmd z:{2:0.000},", Math.Round(mRobotInformation.PositionX, 3), Math.Round(mRobotInformation.PositionY, 3), Math.Round(mRobotInformation.PositionZ, 3),
+                    //    Math.Round(_RobotTargetPosition[0], 3), Math.Round(_RobotTargetPosition[1], 3), Math.Round(_RobotTargetPosition[2], 3)));
                     if ((mRobotInformation.mStatus & 0x00000052) == 0x00000052)
                     {
                         if (_IsRequestAutoJigInspect && _JigInspectionRunning)
                             _waitHandle.Set();
+                            //mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("pre x:{0:0.000},pre y:{1:0.000},pre z:{2:0.000}," +
+                            //    "cmd x:{0:0.000},cmd y:{1:0.000},cmd z:{2:0.000},", Math.Round(mRobotInformation.PositionX, 3), Math.Round(mRobotInformation.PositionY, 3), Math.Round(mRobotInformation.PositionZ, 3),
+                            //    Math.Round(_RobotTargetPosition[0], 3), Math.Round(_RobotTargetPosition[1], 3), Math.Round(_RobotTargetPosition[2], 3)));
                     }
                 }
 
@@ -1038,24 +1044,22 @@ namespace atOpticalDecenter
                 RobotInformation info = e.Argument as RobotInformation;
                 if (sender is BackgroundWorker worker)
                 {
-                    //if (_mMotionControlCommManager.IsOpen() && _Camera.IsOpen)
+                    if (_mMotionControlCommManager.IsOpen() && _Camera.IsOpen)
                     {
                         if (_JigInspectionProcess)
                         {
                             byte[] SeData = new byte[20];
                             if (MessageBox.Show("Start Jig Inspection Processing.", "Jig Inspection Process", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly) == DialogResult.Yes)
                             {
-                                int[] itargetpos = new int[4];
+                                while ((info.mStatus & 0x00000052) != 0x00000052) ;
 
-                                itargetpos[0] = (int)(_systemParams._InspectionJigPositionX * _systemParams._motionParams.MM2PulseRatioX);
-                                itargetpos[1] = (int)(_systemParams._InspectionJigPositionY * _systemParams._motionParams.MM2PulseRatioY);
-                                itargetpos[2] = (int)(_systemParams._InspectionJigPositionZ * _systemParams._motionParams.MM2PulseRatioZ);
+                                int[] itargetpos = new int[_mMotionControlCommManager.mDrvCtrl.DeviceIDCount];
 
-                                while ((mRobotInformation.mStatus & 0x00000052) != 0x00000052) ;
-
+                                itargetpos[0] = (int)(_RobotTargetPosition[0] * _systemParams._motionParams.MM2PulseRatioX);
+                                itargetpos[1] = (int)(_RobotTargetPosition[1] * _systemParams._motionParams.MM2PulseRatioY);
+                                itargetpos[2] = (int)(_RobotTargetPosition[2] * _systemParams._motionParams.MM2PulseRatioZ);
                                 for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
-                                {
-                                    _RobotTargetPosition[i] = itargetpos[i];
+                                {                                    
                                     SeData = _mMotionControlCommManager.mDrvCtrl.MoveTargetPositionSendData((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i], itargetpos[i]);
                                     _mMotionControlCommManager.SendData(SeData);
                                     Thread.Sleep(50);       //Task.Delay(50);
@@ -1068,8 +1072,9 @@ namespace atOpticalDecenter
                                 _waitHandle.Reset();
                                 _waitHandle.WaitOne();
 
-                                while ((mRobotInformation.mStatus & 0x00000052) != 0x00000052) ;
+                                while ((info.mStatus & 0x00000052) != 0x00000052) ;
                                 Thread.Sleep(1000);       //Task.Delay(50);
+                                _IsRequestAutoJigInspect = false;
 
                                 if (_JigInspectionProcess)
                                 {
@@ -1134,13 +1139,13 @@ namespace atOpticalDecenter
                             e.Cancel = true;
                         }
                     }
-                    //else
-                    //{
-                    //    _waitHandle.Reset();
-                    //    _JigInspectionEnd = false;
-                    //    _JigInspectionRunning = false;
-                    //    e.Cancel = true;
-                    //}
+                    else
+                    {
+                        _waitHandle.Reset();
+                        _JigInspectionEnd = false;
+                        _JigInspectionRunning = false;
+                        e.Cancel = true;
+                    }
                 }
                 else
                 {

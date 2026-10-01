@@ -94,3 +94,4 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\Debug\LogLibrary.csp
 D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\Debug\LogLibrary.csproj.CopyComplete
 D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\Debug\LogLibrary.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\LogLibrary\obj\Debug\LogLibrary.pdb
+D:\Work\Programming\C_Sharp\2025\atOpticalDecenter\LogLibrary\obj\Debug\LogLibrary.csprojAssemblyReference.cache
