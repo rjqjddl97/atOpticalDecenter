@@ -1045,30 +1045,31 @@ namespace atOpticalDecenter
                             byte[] SeData = new byte[20];
                             if (MessageBox.Show("Start Jig Inspection Processing.", "Jig Inspection Process", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly) == DialogResult.Yes)
                             {
-                                //int[] itargetpos = new int[4];
+                                int[] itargetpos = new int[4];
 
-                                //itargetpos[0] = (int)(_systemParams._InspectionJigPositionX * _systemParams._motionParams.MM2PulseRatioX);
-                                //itargetpos[1] = (int)(_systemParams._InspectionJigPositionY * _systemParams._motionParams.MM2PulseRatioY);
-                                //itargetpos[2] = (int)(_systemParams._InspectionJigPositionZ * _systemParams._motionParams.MM2PulseRatioZ);
+                                itargetpos[0] = (int)(_systemParams._InspectionJigPositionX * _systemParams._motionParams.MM2PulseRatioX);
+                                itargetpos[1] = (int)(_systemParams._InspectionJigPositionY * _systemParams._motionParams.MM2PulseRatioY);
+                                itargetpos[2] = (int)(_systemParams._InspectionJigPositionZ * _systemParams._motionParams.MM2PulseRatioZ);
 
-                                //while ((mRobotInformation.mStatus & 0x00000052) != 0x00000052) ;
+                                while ((mRobotInformation.mStatus & 0x00000052) != 0x00000052) ;
 
-                                //for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
-                                //{
-                                //    _RobotTargetPosition[i] = itargetpos[i];
-                                //    SeData = _mMotionControlCommManager.mDrvCtrl.MoveTargetPositionSendData((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i], itargetpos[i]);
-                                //    _mMotionControlCommManager.SendData(SeData);
-                                //    Thread.Sleep(50);       //Task.Delay(50);
-                                //}
-                                //SeData = _mMotionControlCommManager.mDrvCtrl.MoveAbsoluteCommand(129);
-                                //_mMotionControlCommManager.SendData(SeData);
-                                //_IsRequestAutoJigInspect = true;
-                                //mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("Jig 검사 위치이동 명령 실행을 시작합니다."));
-                                //_waitHandle.Reset();
-                                //_waitHandle.WaitOne();
+                                for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                                {
+                                    _RobotTargetPosition[i] = itargetpos[i];
+                                    SeData = _mMotionControlCommManager.mDrvCtrl.MoveTargetPositionSendData((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i], itargetpos[i]);
+                                    _mMotionControlCommManager.SendData(SeData);
+                                    Thread.Sleep(50);       //Task.Delay(50);
+                                }
+                                SeData = _mMotionControlCommManager.mDrvCtrl.MoveAbsoluteCommand(129);
+                                _mMotionControlCommManager.SendData(SeData);
+                                Thread.Sleep(500);       //Task.Delay(50);
+                                _IsRequestAutoJigInspect = true;
+                                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("Jig 검사 위치이동 명령 실행을 시작합니다."));
+                                _waitHandle.Reset();
+                                _waitHandle.WaitOne();
 
-                                //while ((mRobotInformation.mStatus & 0x00000052) != 0x00000052) ;
-                                //Thread.Sleep(1000);       //Task.Delay(50);
+                                while ((mRobotInformation.mStatus & 0x00000052) != 0x00000052) ;
+                                Thread.Sleep(1000);       //Task.Delay(50);
 
                                 if (_JigInspectionProcess)
                                 {
