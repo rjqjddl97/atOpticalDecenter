@@ -4332,6 +4332,26 @@ namespace atOpticalDecenter
                     else
                         return;
 
+                    byte[] sedata = new byte[20];
+                    int[] vel = new int[_mMotionControlCommManager.mDrvCtrl.DeviceIDCount];
+
+                    for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
+                    {
+                        if (i == 0)
+                        {
+                            vel[i] = (int)(_systemParams._motionParams.MoveVelocity * _systemParams._motionParams.MM2PulseRatioX);
+                        }
+                        else if (i == 1)
+                        {
+                            vel[i] = (int)(20 * _systemParams._motionParams.MM2PulseRatioY);
+                        }
+                        else if (i == 2)
+                        {
+                            vel[i] = (int)(20 * _systemParams._motionParams.MM2PulseRatioZ);
+                        }
+                        sedata = _mMotionControlCommManager.mDrvCtrl.SetMoveTargetVelocity((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i], vel[i]);
+                        _mMotionControlCommManager.SendData(sedata);
+                    }
                     _RobotTargetPosition[0] = _systemParams._InspectionJigPositionX;
                     _RobotTargetPosition[1] = _systemParams._InspectionJigPositionY;
                     _RobotTargetPosition[2] = _systemParams._InspectionJigPositionZ;

@@ -1059,7 +1059,7 @@ namespace atOpticalDecenter
                                 itargetpos[1] = (int)(_RobotTargetPosition[1] * _systemParams._motionParams.MM2PulseRatioY);
                                 itargetpos[2] = (int)(_RobotTargetPosition[2] * _systemParams._motionParams.MM2PulseRatioZ);
                                 for (int i = 0; i < _mMotionControlCommManager.mDrvCtrl.DeviceIDCount; i++)
-                                {                                    
+                                {
                                     SeData = _mMotionControlCommManager.mDrvCtrl.MoveTargetPositionSendData((byte)_mMotionControlCommManager.mDrvCtrl.DrvID[i], itargetpos[i]);
                                     _mMotionControlCommManager.SendData(SeData);
                                     Thread.Sleep(50);       //Task.Delay(50);
@@ -1073,7 +1073,7 @@ namespace atOpticalDecenter
                                 _waitHandle.WaitOne();
 
                                 while ((info.mStatus & 0x00000052) != 0x00000052) ;
-                                Thread.Sleep(1000);       //Task.Delay(50);
+                                //Thread.Sleep(1000);       //Task.Delay(50);
                                 _IsRequestAutoJigInspect = false;
 
                                 if (_JigInspectionProcess)
@@ -1089,8 +1089,7 @@ namespace atOpticalDecenter
                                     _waitHandle.WaitOne();
 
                                     if (_JigInspectionProcess)
-                                    {
-                                        //pictureEditSystemImage.Refresh();
+                                    {                                        
                                         mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "Jig 이미지 취득 완료");
                                         System.Drawing.Image TempleteImage = System.Drawing.Image.FromFile(_systemParams._InspectionMatchingImagePath);
                                         System.Drawing.Image Tempsource;

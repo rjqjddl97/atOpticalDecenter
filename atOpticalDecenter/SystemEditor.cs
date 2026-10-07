@@ -639,6 +639,8 @@ namespace atOpticalDecenter
             rowJigInspectionPositionY.Properties.Value = _systemParameters._InspectionJigPositionY;
             rowJigInspectionPositionZ.Properties.Value = _systemParameters._InspectionJigPositionZ;
             rowJigInspectionReferenceValue.Properties.Value = _systemParameters._InspectionJigReferenceValue;
+            rowJigInspectionTempleteImage.Properties.Value = System.Drawing.Image.FromFile(_systemParameters._InspectionMatchingImagePath);
+            vGridControlSystemParameter2.Refresh();
         }
         private void vGridControlSystemParameters_EditorKeyDown(object sender, KeyEventArgs e)
         {
