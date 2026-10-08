@@ -2087,7 +2087,7 @@ namespace atOpticalDecenter
                     //                
                     // 매칭점 중심을 표시한다.
 
-                    if (_MatchingResult.Count == 2)
+                    if (_MatchingResult.Count != 0)
                     {
                         double[] _Offsetdy = new double[_MatchingResult.Count];
                         for (int i = 0; i < _MatchingResult.Count; i++)
@@ -2109,14 +2109,17 @@ namespace atOpticalDecenter
                             gp.DrawLine(oldPenPattern, ptCrossStart1, ptCrossEnd1);
                             gp.DrawLine(oldPenPattern, ptCrossStart2, ptCrossEnd2);
 
+                            Font objfont = new Font("Arial", 15f / fCharacter, FontStyle.Bold);
                             Pen DetectPenPattern = new Pen(Color.Blue, 3.0f);
                             gp.DrawPath(DetectPenPattern, path);
+                            path.AddString(string.Format("{0:0}", i), objfont.FontFamily, (int)objfont.Style, objfont.Size, 
+                                new PointF(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height + 5), null);
 
                             gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y), new Point(_MatchingResult[i]._Rect.X + _MatchingResult[i]._Rect.Width, _MatchingResult[i]._Rect.Y));
                             gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y), new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height));
                             gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X + _MatchingResult[i]._Rect.Width, _MatchingResult[i]._Rect.Y), new Point(_MatchingResult[i]._Rect.X + _MatchingResult[i]._Rect.Width, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height));
                             gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height), new Point(_MatchingResult[i]._Rect.X + _MatchingResult[i]._Rect.Width, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height));
-
+                            
                             float fLedAlignmentCenterToLedMarkDistance = (float)Math.Sqrt(Math.Pow((_systemParams._cameraParams.HResolution / 2) - (_MatchingResult[i]._Rect.X + (_MatchingResult[i]._Rect.Width / 2)), 2.0)
                                 + Math.Pow((_systemParams._cameraParams.VResolution / 2) - (_MatchingResult[i]._Rect.Y + (_MatchingResult[i]._Rect.Height / 2)), 2.0));
 
@@ -2130,7 +2133,7 @@ namespace atOpticalDecenter
                             gp.DrawPath(new Pen(Brushes.LimeGreen, 2 / fCharacter), path);
                             Font mfont = new Font("Arial", 15f / fCharacter, FontStyle.Bold);                            
                             fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - ((300 - (50*i)) * fCharacter));
-                            path.AddString(string.Format("패턴 대상{0:0}, dx:{1:0.000}mm, dy:{2:0.000}mm",i, dx, dy),
+                            path.AddString(string.Format("패턴 대상{0:0}, dx:{1:0.000}mm, dy:{2:0.000}mm, 유사도:{3:0.00}%",i, dx, dy,_MatchingResult[i]._Score),
                                             mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
                             gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
                             gp.FillPath(Brushes.LimeGreen, path);
@@ -2202,7 +2205,7 @@ namespace atOpticalDecenter
                             
                             //fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - ((300 - (fntheight * i)) * fCharacter));
                             fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (200 - (fntheight * i)) );
-                            path.AddString(string.Format("패턴 대상{0:0}, dx:{1:0.000}mm, dy:{2:0.000}mm", i, dx, dy),
+                            path.AddString(string.Format("패턴 대상{0:0}, dx:{1:0.000}mm, dy:{2:0.000}mm, , 유사도:{3:0.00}%", i, dx, dy, _MatchingResult[i]._Score),
                                             mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
                             gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
                             gp.FillPath(Brushes.LimeGreen, path);
@@ -2931,6 +2934,7 @@ namespace atOpticalDecenter
                 _MatchingResult.Clear();
                 //if (tm.JigCalibrationPatternMatching(outImage, TemplateImage, ithresholde, isimilarity) )
                 List<TemplateMatch.MatchResult> retResult = new List<TemplateMatch.MatchResult>();
+                List<TemplateMatch.MatchResult> sortResult = new List<TemplateMatch.MatchResult>();
                 retResult = tm.MultiPatternMatching(outImage, TemplateImage, ithresholde, isimilarity);
                 //retResult = tm.DetectMultiRotatedPatterns(outImage, TemplateImage, ithresholde, isimilarity);
                 if (retResult != null)
@@ -2941,7 +2945,9 @@ namespace atOpticalDecenter
                     pictureEditSystemImage.Refresh();           
                     //_resultImage = outImage;                                      
                     barButtonItemFitSize.PerformClick();
-                    _MatchingResult = retResult;
+                    sortResult = SortByRowCol(retResult);
+                    _MatchingResult = sortResult;
+
                 }
                 else
                 {
@@ -4476,6 +4482,48 @@ namespace atOpticalDecenter
             {
                 mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("패턴 매칭 프로세싱에 오류가 발생습니다."));
                 return false;
+            }
+        }
+        public List<TemplateMatch.MatchResult> SortByRowCol(List<TemplateMatch.MatchResult> matches, double? rowTolerance = null)
+        {
+            try
+            {
+                var result = new List<TemplateMatch.MatchResult>();
+                if (matches == null || matches.Count == 0) return result;
+
+                var byX = matches.OrderBy(m => m._Rect.X + m._Rect.Width / 2.0).ToList();
+                var row = new List<TemplateMatch.MatchResult>();
+
+                foreach (var m in byX)
+                {
+                    double cx = m._Rect.X + m._Rect.Width / 2.0;
+
+                    if (row.Count > 0)
+                    {
+                        double rowCx = row.Average(r => r._Rect.X + r._Rect.Width / 2.0);
+                        double tol = rowTolerance ?? row.Average(r => r._Rect.Width) / 2.0;
+
+                        if (Math.Abs(cx - rowCx) > tol)
+                        {
+                            //result.AddRange(row.OrderBy(r => r._Rect.Y + r._Rect.Height / 2.0)
+                            //                   .ThenByDescending(r => r._Score));
+                            result.AddRange(row);
+                            row.Clear();
+                        }
+                    }
+                    row.Add(m);
+                }
+
+                if (row.Count > 0)
+                    result.AddRange(row);
+                    //result.AddRange(row.OrderBy(r => r._Rect.Y + r._Rect.Height / 2.0)
+                    //                   .ThenByDescending(r => r._Score));
+
+                return result;
+            }
+            catch(Exception ex) 
+            {
+                return null;
             }
         }
     }

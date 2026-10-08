@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using LogLibrary;
 using OpenCvSharp;
 using RecipeManager;
+using System.Linq;
 
 namespace ImageLibrary
 {
@@ -376,6 +377,7 @@ namespace ImageLibrary
                         source = OpenCvSharp.Extensions.BitmapConverter.ToMat(image);
                         sourcegray = source;
                         Cv2.GaussianBlur(sourcegray, sourcegray, new OpenCvSharp.Size(3, 3), 0);
+                        //sourcebinary = sourcegray;
                         Cv2.Threshold(sourcegray, sourcebinary, _ithreshold, 255, ThresholdTypes.Binary | ThresholdTypes.Otsu);
                     }
                     if (templateimg.PixelFormat != PixelFormat.Format8bppIndexed)
@@ -384,7 +386,7 @@ namespace ImageLibrary
                         template = OpenCvSharp.Extensions.BitmapConverter.ToMat(templateimg);
                         Cv2.CvtColor(template, templategray, ColorConversionCodes.BGR2GRAY);
                         Cv2.GaussianBlur(templategray, templategray, new OpenCvSharp.Size(3, 3), 0);
-                        Cv2.Threshold(templategray, templategray, 0, _ithreshold, ThresholdTypes.Binary | ThresholdTypes.Otsu);
+                        Cv2.Threshold(templategray, templatebinary, 0, _ithreshold, ThresholdTypes.Binary | ThresholdTypes.Otsu);
                     }
                     else
                     {
@@ -392,6 +394,7 @@ namespace ImageLibrary
                         template = OpenCvSharp.Extensions.BitmapConverter.ToMat(templateimg);
                         templategray = template;
                         Cv2.GaussianBlur(templategray, templategray, new OpenCvSharp.Size(3, 3), 0);
+                        //templatebinary = templategray;
                         Cv2.Threshold(templategray, templatebinary, _ithreshold, 255, ThresholdTypes.Binary | ThresholdTypes.Otsu);
                     }
                     //Cv2.ImShow("gray Results", sourcegray);
@@ -400,8 +403,8 @@ namespace ImageLibrary
                     Cv2.MatchTemplate(sourcebinary, templatebinary, result, TemplateMatchModes.CCoeffNormed);
 
                     double similarthreshold = 0;
-                    List<Rect> detectedObjects = new List<Rect>();
-
+                    //List<Rect> detectedObjects = new List<Rect>();
+                    var detectedObjects = new List<(Rect Box, float Score)>();
                     var indexer = result.GetGenericIndexer<float>();
 
                     similarthreshold = (_similarity / 100D);
@@ -415,22 +418,24 @@ namespace ImageLibrary
                             if (matchValue >= similarthreshold)
                             {
                                 // 크기는 항상 찾으려는 템플릿 이미지의 크기와 같습니다.
-                                Rect rect = new Rect(x, y, template.Width, template.Height);
-                                detectedObjects.Add(rect);
+                                Rect rect = new Rect(x, y, templatebinary.Width, templatebinary.Height);
+                                detectedObjects.Add((rect,matchValue));
                             }
                         }
                     }
                     // 중복 검출 영역 제거 (NMS - Non-Maximum Suppression 개념 적용)
                     // 패턴 주위로 픽셀 단위의 미세하게 겹치는 사각형들이 무수히 생기므로 이를 하나로 병합합니다.
-                    List<Rect> filteredObjects = FilterGroupRectangles(detectedObjects, groupThreshold: 1, eps: 0.2);
+                    //List<Rect> filteredObjects = FilterGroupRectangles(detectedObjects, groupThreshold: 1, eps: 0.2);
+                    var filteredObjects = NonMaxSuppression(detectedObjects, iouThreshold: 0.3);
 
                     // 6. 결과 출력 및 화면 사각형 표시
                     Console.WriteLine($"총 {filteredObjects.Count}개의 객체를 발견했습니다.\n");
 
                     for (int i = 0; i < filteredObjects.Count; i++)
                     {
-                        Rect obj = filteredObjects[i];
-                        Rectangle rectobj = new Rectangle(obj.X,obj.Y,obj.Width,obj.Height);
+                        Rect obj = filteredObjects[i].Box;
+                        float score = filteredObjects[i].Score * 100;
+                        Rectangle rectobj = new Rectangle(obj.X, obj.Y, obj.Width, obj.Height);
                         // 크기와 위치 정보 출력
                         Console.WriteLine($"[객체 {i + 1}] 위치: X={obj.X}, Y={obj.Y} | 크기: W={obj.Width}, H={obj.Height}");
 
@@ -443,11 +448,33 @@ namespace ImageLibrary
                         finalResults.Add(new MatchResult
                         {
                             _Rect = rectobj,                     // 대략적인 감싸는 사각형 영역 위치
-                            _Angle = 0,                      // 단 한 번에 알아낸 정밀 회전량
-                            _Score = 0,                      // 매칭된 점의 개수를 신뢰도 점수로 활용
+                            _Angle = 0,                          // 단 한 번에 알아낸 정밀 회전량
+                            _Score = score,                      // 매칭된 점의 개수를 신뢰도 점수로 활용
                             //Corners = new OpenCvSharp.Point2f()                     // 실제 찌그러지고 회전된 형태의 4점 좌표
                         });
                     }
+
+                    //for (int i = 0; i < filteredObjects.Count; i++)
+                    //{
+                    //    Rect obj = filteredObjects[i];
+                    //    Rectangle rectobj = new Rectangle(obj.X,obj.Y,obj.Width,obj.Height);
+                    //    // 크기와 위치 정보 출력
+                    //    Console.WriteLine($"[객체 {i + 1}] 위치: X={obj.X}, Y={obj.Y} | 크기: W={obj.Width}, H={obj.Height}");
+
+                    //    // 원본 영상에 시각화 (녹색 사각형)
+                    //    Cv2.Rectangle(sourcegray, obj, Scalar.FromRgb(0, 255, 0), 2);
+
+                    //    // 사각형 위에 번호 텍스트 쓰기
+                    //    Cv2.PutText(sourcegray, (i + 1).ToString(), new OpenCvSharp.Point(obj.X, obj.Y - 5),
+                    //                HersheyFonts.HersheySimplex, 0.6, Scalar.FromRgb(0, 255, 0), 2);
+                    //    finalResults.Add(new MatchResult
+                    //    {
+                    //        _Rect = rectobj,                     // 대략적인 감싸는 사각형 영역 위치
+                    //        _Angle = 0,                      // 단 한 번에 알아낸 정밀 회전량
+                    //        _Score = 0,                      // 매칭된 점의 개수를 신뢰도 점수로 활용
+                    //        //Corners = new OpenCvSharp.Point2f()                     // 실제 찌그러지고 회전된 형태의 4점 좌표
+                    //    });
+                    //}
                     //Cv2.ImShow("Multi-Pattern Results", sourcegray);
                     //Cv2.WaitKey(0);
                 }
@@ -951,6 +978,44 @@ namespace ImageLibrary
             else
                 return (angle);
 
+        }
+        private static List<(Rect Box, float Score)> NonMaxSuppression(List<(Rect Box, float Score)> candidates, double iouThreshold)
+        {
+            // 점수 높은 순으로 정렬
+            var sorted = candidates.OrderByDescending(c => c.Score).ToList();
+            var kept = new List<(Rect Box, float Score)>();
+
+            foreach (var cand in sorted)
+            {
+                bool suppressed = false;
+                foreach (var k in kept)
+                {
+                    // 이미 채택된(더 높은 점수의) 사각형과 많이 겹치면 제거
+                    if (IoU(cand.Box, k.Box) > iouThreshold)
+                    {
+                        suppressed = true;
+                        break;
+                    }
+                }
+                if (!suppressed)
+                    kept.Add(cand);
+            }
+            return kept;
+        }
+
+        private static double IoU(Rect a, Rect b)
+        {
+            int x1 = Math.Max(a.X, b.X);
+            int y1 = Math.Max(a.Y, b.Y);
+            int x2 = Math.Min(a.X + a.Width, b.X + b.Width);
+            int y2 = Math.Min(a.Y + a.Height, b.Y + b.Height);
+
+            int interW = Math.Max(0, x2 - x1);
+            int interH = Math.Max(0, y2 - y1);
+            double inter = (double)interW * interH;
+            double union = (double)a.Width * a.Height + (double)b.Width * b.Height - inter;
+
+            return union <= 0 ? 0 : inter / union;
         }
         //public bool PCBProcess(Bitmap image, WorkParams workParam, int index)
         //{
