@@ -2178,8 +2178,11 @@ namespace atOpticalDecenter
                             gp.DrawLine(oldPenPattern, ptCrossStart1, ptCrossEnd1);
                             gp.DrawLine(oldPenPattern, ptCrossStart2, ptCrossEnd2);
 
+                            Font objfont = new Font("Arial", 15f / fCharacter, FontStyle.Bold);
                             Pen DetectPenPattern = new Pen(Color.Blue, 3.0f);
                             gp.DrawPath(DetectPenPattern, path);
+                            path.AddString(string.Format("{0:0}", i), objfont.FontFamily, (int)objfont.Style, objfont.Size,
+                                new PointF(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height + 5), null);
 
                             gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y), new Point(_MatchingResult[i]._Rect.X + _MatchingResult[i]._Rect.Width, _MatchingResult[i]._Rect.Y));
                             gp.DrawLine(DetectPenPattern, new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y), new Point(_MatchingResult[i]._Rect.X, _MatchingResult[i]._Rect.Y + _MatchingResult[i]._Rect.Height));
@@ -2193,7 +2196,8 @@ namespace atOpticalDecenter
                             dx = ((_systemParams._cameraParams.HResolution / 2) - detectCenterX) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemXcoordi;
                             dy = ((_systemParams._cameraParams.VResolution / 2) - detectCenterY) * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemYcoordi;
 
-                            _Offsetdy[i] = dy;
+                            _Offsetdy[i] = detectCenterY * _systemParams._cameraParams.OnePixelResolution * _systemParams._calibrationParams._imagetoSystemYcoordi;
+                            //_Offsetdy[i] = dy;
 
                             gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
                             gp.DrawPath(new Pen(Brushes.LimeGreen, 2 / fCharacter), path);
@@ -2217,7 +2221,7 @@ namespace atOpticalDecenter
                             fnt1height = 50;
                         Font m1font = new Font("Arial", fnt1height, FontStyle.Bold);
                         fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (200 - (fnt1height * 2)));
-                        path.AddString(string.Format("수평 기준 단차: {0:0.0000}mm , 수평 측정 단차: {1:0.0000}mm",_systemParams._InspectionJigReferenceValue ,Math.Abs(_Offsetdy[0] - _Offsetdy[1])),
+                        path.AddString(string.Format("평가 기준 범위: {0:0.0000}mm , 측정 단차: {1:0.0000}mm, , 0번 기준 편차: {2:0.0000}mm", _systemParams._InspectionJigReferenceValue, Math.Abs(_Offsetdy[0] - _Offsetdy[1]), (_Offsetdy[0] - _Offsetdy[1])/*Math.Abs(_Offsetdy[0] - _Offsetdy[1])*/),
                                         m1font.FontFamily, (int)m1font.Style, m1font.Size, fptDrawString, null);
                         gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
                         gp.FillPath(Brushes.LimeGreen, path);
@@ -4318,8 +4322,8 @@ namespace atOpticalDecenter
         {
             try
             {
-                if ((!_bwJigInspection.IsBusy) && _IsHommingFinished && (!_JigInspectionRunning))
-                //if ((!_bwJigInspection.IsBusy) && (!_JigInspectionRunning))
+                //if ((!_bwJigInspection.IsBusy) && _IsHommingFinished && (!_JigInspectionRunning))
+                if ((!_bwJigInspection.IsBusy) && (!_JigInspectionRunning))
                 {
                     if (_isContinuousShot)
                     {
@@ -4452,6 +4456,7 @@ namespace atOpticalDecenter
                 if ((outImage != null) && (TemplateImage != null))
                 {
                     List<TemplateMatch.MatchResult> retResult = new List<TemplateMatch.MatchResult>();
+                    List<TemplateMatch.MatchResult> sortResult = new List<TemplateMatch.MatchResult>();
                     retResult = tm.MultiPatternMatching(outImage, TemplateImage, ithresholde, isimilarity);
                     if (retResult != null)
                     {
@@ -4459,7 +4464,9 @@ namespace atOpticalDecenter
                         //pictureEditSystemImage.Image = Imagesource;
                         //pictureEditSystemImage.Refresh();                    
                         //barButtonItemFitSize.PerformClick();
-                        _MatchingResult = retResult;
+                        sortResult = SortByRowCol(retResult);
+                        _MatchingResult = sortResult;
+                        //_MatchingResult = retResult;
                         bret = true;
                     }
                     else
