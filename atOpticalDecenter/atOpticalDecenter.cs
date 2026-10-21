@@ -2209,7 +2209,7 @@ namespace atOpticalDecenter
                             
                             //fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - ((300 - (fntheight * i)) * fCharacter));
                             fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (200 - (fntheight * i)) );
-                            path.AddString(string.Format("패턴 대상{0:0}, dx:{1:0.000}mm, dy:{2:0.000}mm, , 유사도:{3:0.00}%", i, dx, dy, _MatchingResult[i]._Score),
+                            path.AddString(string.Format("패턴 대상{0:0}, dx:{1:0.000}mm, dy:{2:0.000}mm, 유사도:{3:0.00}%", i, dx, dy, _MatchingResult[i]._Score),
                                             mfont.FontFamily, (int)mfont.Style, mfont.Size, fptDrawString, null);
                             gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
                             gp.FillPath(Brushes.LimeGreen, path);
@@ -2221,7 +2221,7 @@ namespace atOpticalDecenter
                             fnt1height = 50;
                         Font m1font = new Font("Arial", fnt1height, FontStyle.Bold);
                         fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (200 - (fnt1height * 2)));
-                        path.AddString(string.Format("평가 기준 범위: {0:0.0000}mm , 측정 단차: {1:0.0000}mm, , 0번 기준 편차: {2:0.0000}mm", _systemParams._InspectionJigReferenceValue, Math.Abs(_Offsetdy[0] - _Offsetdy[1]), (_Offsetdy[0] - _Offsetdy[1])/*Math.Abs(_Offsetdy[0] - _Offsetdy[1])*/),
+                        path.AddString(string.Format("평가 기준 범위: {0:0.0000}mm , 0번 기준 편차: {2:0.0000}mm", _systemParams._InspectionJigReferenceValue, (_Offsetdy[0] - _Offsetdy[1])/*Math.Abs(_Offsetdy[0] - _Offsetdy[1])*/),
                                         m1font.FontFamily, (int)m1font.Style, m1font.Size, fptDrawString, null);
                         gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
                         gp.FillPath(Brushes.LimeGreen, path);
@@ -4322,8 +4322,8 @@ namespace atOpticalDecenter
         {
             try
             {
-                //if ((!_bwJigInspection.IsBusy) && _IsHommingFinished && (!_JigInspectionRunning))
-                if ((!_bwJigInspection.IsBusy) && (!_JigInspectionRunning))
+                if ((!_bwJigInspection.IsBusy) && _IsHommingFinished && (!_JigInspectionRunning))
+                //if ((!_bwJigInspection.IsBusy) && (!_JigInspectionRunning))
                 {
                     if (_isContinuousShot)
                     {
