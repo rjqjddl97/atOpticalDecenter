@@ -216,7 +216,6 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\DLL\uxto
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\DLL\XmlParser_MD_VC141_v3_1_Basler_pylon_v5_1.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\BaslerCamera.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\BaslerCamera.pdb
-D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\Basler.Pylon.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\LogLibrary.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\OpenCvSharp.Blob.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\OpenCvSharp.dll
@@ -224,7 +223,6 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\OpenCvSh
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\OpenCvSharp.UserInterface.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\NLog.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\LogLibrary.pdb
-D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\Basler.Pylon.xml
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\OpenCvSharp.pdb
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\OpenCvSharp.xml
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\OpenCvSharp.Blob.pdb
@@ -239,3 +237,5 @@ D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\obj\x64\Debug\BaslerCa
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\obj\x64\Debug\BaslerCamera.csproj.CopyComplete
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\obj\x64\Debug\BaslerCamera.dll
 D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\obj\x64\Debug\BaslerCamera.pdb
+D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\Basler.Pylon.dll
+D:\Work\Visual_C++\Project\atOpticalDecenter\BaslerCamera\bin\x64\Debug\Basler.Pylon.xml

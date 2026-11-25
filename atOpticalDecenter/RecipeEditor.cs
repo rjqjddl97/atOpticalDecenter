@@ -942,8 +942,8 @@ namespace atOpticalDecenter
                 {
                     rowLEDInspectionDivergenceHMinAngle.Enabled = true;
                     rowLEDInspectionDivergenceHMaxAngle.Enabled = true;
-                    rowLEDInspectionDivergenceVMinAngle.Enabled = true;
-                    rowLEDInspectionDivergenceVMaxAngle.Enabled = true;
+                    //rowLEDInspectionDivergenceVMinAngle.Enabled = true;
+                    //rowLEDInspectionDivergenceVMaxAngle.Enabled = true;
                 }
                 else
                 {
@@ -1447,8 +1447,8 @@ namespace atOpticalDecenter
             {
                 rowLEDInspectionDivergenceHMinAngle.Enabled = true;
                 rowLEDInspectionDivergenceHMaxAngle.Enabled = true;
-                rowLEDInspectionDivergenceVMinAngle.Enabled = true;
-                rowLEDInspectionDivergenceVMaxAngle.Enabled = true;
+                //rowLEDInspectionDivergenceVMinAngle.Enabled = true;
+                //rowLEDInspectionDivergenceVMaxAngle.Enabled = true;
             }
             else
             {
@@ -1597,8 +1597,8 @@ namespace atOpticalDecenter
             {
                 rowLEDInspectionDivergenceHMinAngle.Enabled = true;
                 rowLEDInspectionDivergenceHMaxAngle.Enabled = true;
-                rowLEDInspectionDivergenceVMinAngle.Enabled = true;
-                rowLEDInspectionDivergenceVMaxAngle.Enabled = true;
+                //rowLEDInspectionDivergenceVMinAngle.Enabled = true;
+                //rowLEDInspectionDivergenceVMaxAngle.Enabled = true;
             }
             else
             {

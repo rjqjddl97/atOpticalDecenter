@@ -318,64 +318,62 @@ namespace atOpticalDecenter.Functions.StepHandler.Base
         {
             mInspectResultData.CalculateOpticalInspect(mWorkParam._ProductType);
 
-            if (mWorkParam._ProductSeries == 0)         //BTS
-            {
-                // BTS Series, Mirror Type
-                if (mWorkParam._ProductType == 0)       // Mirror Type(PDT)
-                {
-                    mInspectResultData.fOpticalEccentricAngle = mInspectResultData.fOpticalEccentricAngle * (-1);
+            //if (mWorkParam._ProductSeries == 0)         //BTS
+            //{
+            //    // BTS Series, Mirror Type
+            //    if (mWorkParam._ProductType == 0)       // Mirror Type(PDT)
+            //    {
+            //        mInspectResultData.fOpticalEccentricAngle = mInspectResultData.fOpticalEccentricAngle * (-1);
 
-                    if ((mInspectResultData.fOpticalEccentricAngle_H >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle_H <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
-                        && (mInspectResultData.fOpticalEccentricAngle_V >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle_V <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
-                        )
-                        mInspectResultData.bTotalResult = true;
-                    else
-                        mInspectResultData.bTotalResult = false;
-                }
-                else
-                {         
-                    if ((mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
-                        //&& (mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
-                        )
-                        mInspectResultData.bTotalResult = true;
-                    else
-                        mInspectResultData.bTotalResult = false;
-                }
-
-            }
+            //        if ((mInspectResultData.fOpticalEccentricAngle_H >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle_H <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
+            //            && (mInspectResultData.fOpticalEccentricAngle_V >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle_V <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
+            //            mInspectResultData.bTotalResult = true;
+            //        else
+            //            mInspectResultData.bTotalResult = false;
+            //    }
+            //    else
+            //    {
+            //        if ((mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
+            //            )
+            //            mInspectResultData.bTotalResult = true;
+            //        else
+            //            mInspectResultData.bTotalResult = false;
+            //    }
+            //}
+            //else
+            //{
+            //    if (mWorkParam._ProductSeries == 1)         //BTF
+            //    {
+            //        if (mWorkParam._ProductType == 2)       // 확산반사형(DDT)
+            //        {
+            //            if ((mInspectResultData.fOpticalEccentricAngle_V >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle_V <= mWorkParam._LEDInspectionDivergenceHMaxAngle))
+            //                mInspectResultData.bTotalResult = true;
+            //            else
+            //                mInspectResultData.bTotalResult = false;
+            //        }
+            //        else
+            //        {
+            //            if ((mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
+            //                )
+            //                mInspectResultData.bTotalResult = true;
+            //            else
+            //                mInspectResultData.bTotalResult = false;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if ((mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceHMaxAngle)                        
+            //            )
+            //            mInspectResultData.bTotalResult = true;
+            //        else
+            //            mInspectResultData.bTotalResult = false;
+            //    }
+            //}
+            // 20261119 BTS PDT 검사 기준 변경에 따른 모든 시리즈 동일 합/불 조건 변경
+            if ((mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceHMaxAngle))
+                mInspectResultData.bTotalResult = true;
             else
-            {
-                if (mWorkParam._ProductSeries == 1)         //BTF
-                {
-                    if (mWorkParam._ProductType == 2)       // 확산반사형(DDT)
-                    {
-                        if ((mInspectResultData.fOpticalEccentricAngle_V >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle_V <= mWorkParam._LEDInspectionDivergenceHMaxAngle))                            
-                            mInspectResultData.bTotalResult = true;
-                        else
-                            mInspectResultData.bTotalResult = false;
-                    }
-                    else
-                    {
-                        if ((mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
-                            //&& (mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
-                            )
-                            mInspectResultData.bTotalResult = true;
-                        else
-                            mInspectResultData.bTotalResult = false;
-                    }
-                }
-                else
-                {
-                    if ((mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceHMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceHMaxAngle)
-                        //&& (mInspectResultData.fOpticalEccentricAngle >= mWorkParam._LEDInspectionDivergenceVMinAngle) && (mInspectResultData.fOpticalEccentricAngle <= mWorkParam._LEDInspectionDivergenceVMaxAngle)
-                        )
-                        mInspectResultData.bTotalResult = true;
-                    else
-                        mInspectResultData.bTotalResult = false;
-                }
-
-            }
-            //if ((mInspectResultData.fOpticalEmiterAngle >= -(mWorkParam._LEDInspectionDivergenceAngle*(Math.PI/180))) && (mInspectResultData.fOpticalEmiterAngle <= (mWorkParam._LEDInspectionDivergenceAngle * (Math.PI / 180))))
+                mInspectResultData.bTotalResult = false;            
 
         }
         public InspectResultData UpdateInspectdData()

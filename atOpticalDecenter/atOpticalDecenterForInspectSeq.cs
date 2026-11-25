@@ -1171,12 +1171,12 @@ namespace atOpticalDecenter
                 pictureEditSystemImage.Image = _sourceImage;
                 barCheckItemInspectionStart.Enabled = true;
                 barButtonItemFitSize.PerformClick();
-                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), "지그 검사 실행을 종료합니다.");
+                mLog.WriteLog(LogLevel.Info, LogClass.atPhoto.ToString(), string.Format("검사 결과는 {0}, 지그 검사 실행을 종료합니다.", _JigInspectionResult));
                 
             }
             catch (Exception)
             {
-                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("원점 복귀 명령 완료가 실행되지 않았습니다."));
+                mLog.WriteLog(LogLevel.Error, LogClass.atPhoto.ToString(), string.Format("지그 검사 결과 완료가 실행되지 않았습니다."));
             }
         }
         public bool JigInspectionCalculate()

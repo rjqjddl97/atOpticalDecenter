@@ -2221,7 +2221,7 @@ namespace atOpticalDecenter
                             fnt1height = 50;
                         Font m1font = new Font("Arial", fnt1height, FontStyle.Bold);
                         fptDrawString = new PointF((100 * fCharacter), _systemParams._cameraParams.VResolution - (200 - (fnt1height * 2)));
-                        path.AddString(string.Format("평가 기준 범위: {0:0.0000}mm , 0번 기준 편차: {2:0.0000}mm", _systemParams._InspectionJigReferenceValue, (_Offsetdy[0] - _Offsetdy[1])/*Math.Abs(_Offsetdy[0] - _Offsetdy[1])*/),
+                        path.AddString(string.Format("평가 기준 범위: {0:0.0000}mm , 0번 기준 측정 편차: {1:0.0000}mm", _systemParams._InspectionJigReferenceValue, (_Offsetdy[0] - _Offsetdy[1])/*Math.Abs(_Offsetdy[0] - _Offsetdy[1])*/),
                                         m1font.FontFamily, (int)m1font.Style, m1font.Size, fptDrawString, null);
                         gp.DrawPath(new Pen(Brushes.Black, 2 / fCharacter), path);
                         gp.FillPath(Brushes.LimeGreen, path);
